@@ -1,0 +1,382 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2020-12-23T11:29:43.814776+01:00",
+            "magic": "a38780f6f3450f3a89bb8a12bd62f1e61d13d9f4d73c9de91fc2e4215680a6d3",
+            "version": "v2.16.0-alpha.1608245210+g860ea4dc8"
+        },
+        "secrets_providers": {
+            "type": "service",
+            "state": {
+                "url": "https://api.pulumi.com",
+                "owner": "mikhailshilkov",
+                "project": "google-cloud-simple",
+                "stack": "dev"
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "outputs": {
+                    "functionUrl": "https://us-central1-pulumi-development.cloudfunctions.net/python-func"
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1",
+                "custom": true,
+                "id": "de06a5ae-083f-4eea-926f-291290e11fe1",
+                "type": "pulumi:providers:google-cloud",
+                "inputs": {
+                    "version": "0.0.1"
+                },
+                "outputs": {
+                    "version": "0.0.1"
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:storage/v1:Bucket::bucket",
+                "custom": true,
+                "id": "b/bucket-nextgen",
+                "type": "google-cloud:storage/v1:Bucket",
+                "inputs": {
+                    "name": "bucket-nextgen",
+                    "project": "pulumi-development"
+                },
+                "outputs": {
+                    "etag": "CAE=",
+                    "iamConfiguration": {
+                        "bucketPolicyOnly": {
+                            "enabled": false
+                        },
+                        "uniformBucketLevelAccess": {
+                            "enabled": false
+                        }
+                    },
+                    "id": "bucket-nextgen",
+                    "kind": "storage#bucket",
+                    "location": "US",
+                    "locationType": "multi-region",
+                    "metageneration": "1",
+                    "name": "bucket-nextgen",
+                    "projectNumber": "921927215178",
+                    "selfLink": "https://www.googleapis.com/storage/v1/b/bucket-nextgen",
+                    "storageClass": "STANDARD",
+                    "timeCreated": "2020-12-23T10:28:59.529Z",
+                    "updated": "2020-12-23T10:28:59.529Z"
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "name": null,
+                    "project": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:run/v1:Service::service",
+                "custom": true,
+                "id": "v1/projects/pulumi-development/locations/us-central1/services/run-nextgen",
+                "type": "google-cloud:run/v1:Service",
+                "inputs": {
+                    "apiVersion": "serving.knative.dev/v1",
+                    "kind": "Service",
+                    "metadata": {
+                        "name": "run-nextgen"
+                    },
+                    "parent": "projects/pulumi-development/locations/us-central1",
+                    "spec": {
+                        "template": {
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "image": "gcr.io/cloudrun/hello"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "outputs": {
+                    "apiVersion": "serving.knative.dev/v1",
+                    "kind": "Service",
+                    "metadata": {
+                        "annotations": {
+                            "run.googleapis.com/ingress": "all",
+                            "serving.knative.dev/creator": "mikhail@pulumi.com",
+                            "serving.knative.dev/lastModifier": "mikhail@pulumi.com"
+                        },
+                        "creationTimestamp": "2020-12-23T10:28:59.917853Z",
+                        "generation": 1,
+                        "labels": {
+                            "cloud.googleapis.com/location": "us-central1"
+                        },
+                        "name": "run-nextgen",
+                        "namespace": "921927215178",
+                        "resourceVersion": "AAW3HyjMkh0",
+                        "selfLink": "/apis/serving.knative.dev/v1/namespaces/921927215178/services/run-nextgen",
+                        "uid": "bab8c14f-f967-4ae3-8cfb-10bbc044040f"
+                    },
+                    "spec": {
+                        "template": {
+                            "metadata": {
+                                "annotations": {
+                                    "autoscaling.knative.dev/maxScale": "1000"
+                                }
+                            },
+                            "spec": {
+                                "containerConcurrency": 80,
+                                "containers": [
+                                    {
+                                        "image": "gcr.io/cloudrun/hello",
+                                        "ports": [
+                                            {
+                                                "containerPort": 8080
+                                            }
+                                        ],
+                                        "resources": {
+                                            "limits": {
+                                                "cpu": "1000m",
+                                                "memory": "256Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "timeoutSeconds": 300
+                            }
+                        },
+                        "traffic": [
+                            {
+                                "latestRevision": true,
+                                "percent": 100
+                            }
+                        ]
+                    },
+                    "status": {}
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "apiVersion": null,
+                    "kind": null,
+                    "metadata": null,
+                    "parent": null,
+                    "spec": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:container/v1:Cluster::cluster",
+                "custom": true,
+                "id": "v1/projects/pulumi-development/locations/us-central1/clusters/gke-nextgen",
+                "type": "google-cloud:container/v1:Cluster",
+                "inputs": {
+                    "cluster": {
+                        "initialClusterVersion": "1.17.14-gke.1600",
+                        "initialNodeCount": 1,
+                        "masterAuth": {
+                            "password": "hDiqST+U7{t+BkQA+OD*",
+                            "username": "admin"
+                        },
+                        "name": "gke-nextgen",
+                        "network": "projects/pulumi-development/global/networks/default",
+                        "nodeConfig": {
+                            "oauthScopes": [
+                                "https://www.googleapis.com/auth/devstorage.read_only",
+                                "https://www.googleapis.com/auth/logging.write",
+                                "https://www.googleapis.com/auth/monitoring",
+                                "https://www.googleapis.com/auth/service.management.readonly",
+                                "https://www.googleapis.com/auth/servicecontrol",
+                                "https://www.googleapis.com/auth/trace.append"
+                            ]
+                        }
+                    },
+                    "parent": "projects/pulumi-development/locations/us-central1"
+                },
+                "outputs": {
+                    "name": "operation-1608719341779-80db24e9",
+                    "operationType": "CREATE_CLUSTER",
+                    "selfLink": "https://container.googleapis.com/v1/projects/921927215178/locations/us-central1/operations/operation-1608719341779-80db24e9",
+                    "startTime": "2020-12-23T10:29:01.779258625Z",
+                    "status": "RUNNING",
+                    "targetLink": "https://container.googleapis.com/v1/projects/921927215178/locations/us-central1/clusters/gke-nextgen",
+                    "zone": "us-central1"
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "cluster": null,
+                    "parent": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:storage/v1:BucketObject::zip2",
+                "custom": true,
+                "id": "b/bucket-nextgen/o/zip2",
+                "type": "google-cloud:storage/v1:BucketObject",
+                "inputs": {
+                    "bucket": "bucket-nextgen",
+                    "name": "zip2",
+                    "source": {
+                        "4dabf18193072939515e22adb298388d": "0def7320c3a5731c473e5ecbe6d01bc7",
+                        "assets": {
+                            ".": {
+                                "4dabf18193072939515e22adb298388d": "0def7320c3a5731c473e5ecbe6d01bc7",
+                                "hash": "2aa70ef350b60ca4aac346d23c9ccba454cbb7c3aa756689ab2fa08fc591470f",
+                                "path": "./pythonfunc"
+                            }
+                        },
+                        "hash": "2aa70ef350b60ca4aac346d23c9ccba454cbb7c3aa756689ab2fa08fc591470f"
+                    }
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "dependencies": [
+                    "urn:pulumi:dev::google-cloud-simple::google-cloud:storage/v1:Bucket::bucket"
+                ],
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "bucket": null,
+                    "name": null,
+                    "source": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:cloudfunctions/v1:CloudFunction::python-func",
+                "custom": true,
+                "id": "v1/projects/pulumi-development/locations/us-central1/functions/python-func",
+                "type": "google-cloud:cloudfunctions/v1:CloudFunction",
+                "inputs": {
+                    "availableMemoryMb": 128,
+                    "entryPoint": "handler",
+                    "httpsTrigger": {},
+                    "ingressSettings": "ALLOW_ALL",
+                    "location": "projects/pulumi-development/locations/us-central1",
+                    "name": "projects/pulumi-development/locations/us-central1/functions/python-func",
+                    "runtime": "python37",
+                    "sourceArchiveUrl": "gs://bucket-nextgen/zip2",
+                    "timeout": "60s",
+                    "versionId": "1"
+                },
+                "outputs": {
+                    "metadata": {
+                        "@type": "type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1",
+                        "request": {
+                            "@type": "type.googleapis.com/google.cloud.functions.v1.CloudFunction",
+                            "availableMemoryMb": 128,
+                            "entryPoint": "handler",
+                            "httpsTrigger": {},
+                            "ingressSettings": "ALLOW_ALL",
+                            "name": "projects/pulumi-development/locations/us-central1/functions/python-func",
+                            "runtime": "python37",
+                            "sourceArchiveUrl": "gs://bucket-nextgen/zip2",
+                            "timeout": "60s",
+                            "versionId": "1"
+                        },
+                        "target": "projects/pulumi-development/locations/us-central1/functions/python-func",
+                        "type": "CREATE_FUNCTION",
+                        "updateTime": "2020-12-23T10:29:01Z",
+                        "versionId": "1"
+                    },
+                    "name": "operations/cHVsdW1pLWRldmVsb3BtZW50L3VzLWNlbnRyYWwxL3B5dGhvbi1mdW5jL1ZZTHVwaEhFTndR"
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "dependencies": [
+                    "urn:pulumi:dev::google-cloud-simple::google-cloud:storage/v1:BucketObject::zip2"
+                ],
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "availableMemoryMb": null,
+                    "entryPoint": null,
+                    "httpsTrigger": null,
+                    "ingressSettings": null,
+                    "location": null,
+                    "name": null,
+                    "runtime": null,
+                    "sourceArchiveUrl": null,
+                    "timeout": null,
+                    "versionId": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:cloudfunctions/v1:Policy::py-invoker",
+                "custom": true,
+                "id": "v1/projects/pulumi-development/locations/us-central1/functions/python-func:setIamPolicy",
+                "type": "google-cloud:cloudfunctions/v1:Policy",
+                "inputs": {
+                    "policy": {
+                        "bindings": [
+                            {
+                                "members": [
+                                    "allUsers"
+                                ],
+                                "role": "roles/cloudfunctions.invoker"
+                            }
+                        ]
+                    },
+                    "resource": "projects/pulumi-development/locations/us-central1/functions/python-func"
+                },
+                "outputs": {
+                    "bindings": [
+                        {
+                            "members": [
+                                "allUsers"
+                            ],
+                            "role": "roles/cloudfunctions.invoker"
+                        }
+                    ],
+                    "etag": "BwW3HytiOZE=",
+                    "version": 1
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "dependencies": [
+                    "urn:pulumi:dev::google-cloud-simple::google-cloud:cloudfunctions/v1:CloudFunction::python-func"
+                ],
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "policy": null,
+                    "resource": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::google-cloud-simple::google-cloud:run/v1:Policy::allow-all",
+                "custom": true,
+                "id": "v1/projects/pulumi-development/locations/us-central1/services/run-nextgen:setIamPolicy",
+                "type": "google-cloud:run/v1:Policy",
+                "inputs": {
+                    "policy": {
+                        "bindings": [
+                            {
+                                "members": [
+                                    "allUsers"
+                                ],
+                                "role": "roles/run.invoker"
+                            }
+                        ]
+                    },
+                    "resource": "projects/pulumi-development/locations/us-central1/services/run-nextgen"
+                },
+                "outputs": {
+                    "bindings": [
+                        {
+                            "members": [
+                                "allUsers"
+                            ],
+                            "role": "roles/run.invoker"
+                        }
+                    ],
+                    "etag": "BwW3HytlA5c=",
+                    "version": 1
+                },
+                "parent": "urn:pulumi:dev::google-cloud-simple::pulumi:pulumi:Stack::google-cloud-simple-dev",
+                "dependencies": [
+                    "urn:pulumi:dev::google-cloud-simple::google-cloud:run/v1:Service::service"
+                ],
+                "provider": "urn:pulumi:dev::google-cloud-simple::pulumi:providers:google-cloud::default_0_0_1::de06a5ae-083f-4eea-926f-291290e11fe1",
+                "propertyDependencies": {
+                    "policy": null,
+                    "resource": null
+                }
+            }
+        ]
+    }
+}
