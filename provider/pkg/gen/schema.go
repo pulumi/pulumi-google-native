@@ -24,6 +24,7 @@ import (
 	"google.golang.org/api/discovery/v1"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 )
@@ -61,9 +62,11 @@ func PulumiSchema() (*schema.PackageSpec, error) {
 	golangImportAliases := map[string]string{}
 
 	var fileNames []string
-	root := "./discovery"
+	root := path.Join(".", "discovery")
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		fileNames = append(fileNames, path)
+		if !info.IsDir() {
+			fileNames = append(fileNames, path)
+		}
 		return nil
 	})
 	if err != nil {
@@ -119,17 +122,17 @@ func PulumiSchema() (*schema.PackageSpec, error) {
 }
 
 func readDiscoveryDocument(fileName string) (*discovery.RestDescription, error) {
-	// Open our jsonFile
 	jsonFile, err := os.Open(fileName)
 	if err != nil {
 		return nil, err
 	}
 	defer jsonFile.Close()
 
-	// read our opened jsonFile as a byte array.
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	byteValue, err := ioutil.ReadAll(jsonFile)
+	if err != nil {
+		return nil, err
+	}
 
-	// we initialize our Users array
 	var rest discovery.RestDescription
 	err = json.Unmarshal(byteValue, &rest)
 	if err != nil {
