@@ -79,7 +79,7 @@ func PulumiSchema() (*schema.PackageSpec, error) {
 		}
 
 		module := fmt.Sprintf("%s/%s", document.Name, document.Version)
-		gen := packageGenerator{pkg: &pkg, rest: document, mod: module}
+		gen := packageGenerator{pkg: &pkg, rest: document, mod: module, visitedTypes: codegen.NewStringSet()}
 		csharpNamespaces[module] = fmt.Sprintf("%s.%s", strings.Title(document.Name), strings.Title(document.Version))
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
@@ -142,9 +142,10 @@ func readDiscoveryDocument(fileName string) (*discovery.RestDescription, error) 
 }
 
 type packageGenerator struct {
-	pkg  *schema.PackageSpec
-	rest *discovery.RestDescription
-	mod  string
+	pkg          *schema.PackageSpec
+	rest         *discovery.RestDescription
+	mod          string
+	visitedTypes codegen.StringSet
 }
 
 func (g *packageGenerator) findResources(resources map[string]discovery.RestResource) error {
@@ -246,25 +247,32 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.Type
 			Type:  "array",
 			Items: items,
 		}, nil
+	case prop.Type == "any":
+		return &schema.TypeSpec{Ref: "pulumi.json#/Any"}, nil
 	case prop.Type != "":
 		return &schema.TypeSpec{Type: prop.Type}, nil
 	case prop.Ref != "":
 		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, prop.Ref)
-
-		typeSchema := g.rest.Schemas[prop.Ref]
-		properties, err := g.genProperties(&typeSchema)
-		if err != nil {
-			return nil, err
-		}
-
-		g.pkg.Types[tok] = schema.ComplexTypeSpec{
-			ObjectTypeSpec: schema.ObjectTypeSpec{
-				Description: typeSchema.Description,
-				Type:        "object",
-				Properties:  properties,
-			},
-		}
 		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
+
+		if !g.visitedTypes.Has(tok) {
+			g.visitedTypes.Add(tok)
+
+			typeSchema := g.rest.Schemas[prop.Ref]
+			properties, err := g.genProperties(&typeSchema)
+			if err != nil {
+				return nil, err
+			}
+
+			g.pkg.Types[tok] = schema.ComplexTypeSpec{
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Description: typeSchema.Description,
+					Type:        "object",
+					Properties:  properties,
+				},
+			}
+		}
+
 		return &schema.TypeSpec{
 			Type: "object",
 			Ref:  referencedTypeName,
@@ -275,14 +283,14 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.Type
 
 func resourceName(restMethod discovery.RestMethod) (name string) {
 	// TODO: This is very ad-hoc, find a universal naming approach.
-	typeName := restMethod.Response.Ref
-	switch typeName {
+	name = restMethod.Response.Ref
+	switch name {
 	case "Operation":
-		typeName = restMethod.Request.Ref
+		name = restMethod.Request.Ref
 		name = strings.TrimPrefix(name, "Create")
 		name = strings.TrimSuffix(name, "Request")
 	case "Object":
-		typeName = "BucketObject"
+		name = "BucketObject"
 	}
 	return
 }
