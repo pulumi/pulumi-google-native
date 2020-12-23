@@ -52,12 +52,16 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
             __props__['node_pool'] = node_pool
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(NodePool, __self__).__init__(
             'google-cloud:container/v1beta1:NodePool',

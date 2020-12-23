@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new ACL entry on the specified object.
+ * Creates a new default object ACL entry on the specified bucket.
  */
 export class ObjectAccessControl extends pulumi.CustomResource {
     /**
@@ -47,9 +47,6 @@ export class ObjectAccessControl extends pulumi.CustomResource {
         if (!(opts && opts.id)) {
             if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
-            }
-            if ((!args || args.object === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'object'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["domain"] = args ? args.domain : undefined;
@@ -133,7 +130,7 @@ export interface ObjectAccessControlArgs {
     /**
      * The name of the object, if applied to an object.
      */
-    readonly object: pulumi.Input<string>;
+    readonly object?: pulumi.Input<string>;
     /**
      * The project team associated with the entity, if any.
      */

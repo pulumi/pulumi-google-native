@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NodePool(string name, NodePoolArgs args, CustomResourceOptions? options = null)
+        public NodePool(string name, NodePoolArgs? args = null, CustomResourceOptions? options = null)
             : base("google-cloud:container/v1:NodePool", name, args ?? new NodePoolArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -74,8 +74,8 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.

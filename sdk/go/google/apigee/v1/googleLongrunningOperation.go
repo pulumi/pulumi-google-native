@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new canary evaluation for an organization.
+// Creates an environment in an organization.
 type GoogleLongrunningOperation struct {
 	pulumi.CustomResourceState
 }
@@ -58,50 +58,38 @@ func (GoogleLongrunningOperationState) ElementType() reflect.Type {
 }
 
 type googleLongrunningOperationArgs struct {
-	// Required. The stable version that is serving requests.
-	Control *string `pulumi:"control"`
-	// Output only. Create time of the canary evaluation.
-	CreateTime *string `pulumi:"createTime"`
-	// Required. End time for the evaluation's analysis.
-	EndTime *string `pulumi:"endTime"`
-	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels *GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
-	// Output only. Name of the canary evalution.
+	// Output only. Creation time of this environment as milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Optional. Description of the environment.
+	Description *string `pulumi:"description"`
+	// Optional. Display name for this environment.
+	DisplayName *string `pulumi:"displayName"`
+	// Output only. Last modification time of this environment as milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name *string `pulumi:"name"`
-	// Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`.
+	// Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
 	Parent string `pulumi:"parent"`
-	// Required. Start time for the canary evaluation's analysis.
-	StartTime *string `pulumi:"startTime"`
-	// Output only. The current state of the canary evaluation.
-	State *string `pulumi:"state"`
-	// Required. The newer version that is serving requests.
-	Treatment *string `pulumi:"treatment"`
-	// Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-	Verdict *string `pulumi:"verdict"`
+	// Optional. Key-value pairs that may be used for customizing the environment.
+	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a GoogleLongrunningOperation resource.
 type GoogleLongrunningOperationArgs struct {
-	// Required. The stable version that is serving requests.
-	Control pulumi.StringPtrInput
-	// Output only. Create time of the canary evaluation.
-	CreateTime pulumi.StringPtrInput
-	// Required. End time for the evaluation's analysis.
-	EndTime pulumi.StringPtrInput
-	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput
-	// Output only. Name of the canary evalution.
+	// Output only. Creation time of this environment as milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// Optional. Description of the environment.
+	Description pulumi.StringPtrInput
+	// Optional. Display name for this environment.
+	DisplayName pulumi.StringPtrInput
+	// Output only. Last modification time of this environment as milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput
+	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name pulumi.StringPtrInput
-	// Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`.
+	// Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
 	Parent pulumi.StringInput
-	// Required. Start time for the canary evaluation's analysis.
-	StartTime pulumi.StringPtrInput
-	// Output only. The current state of the canary evaluation.
-	State pulumi.StringPtrInput
-	// Required. The newer version that is serving requests.
-	Treatment pulumi.StringPtrInput
-	// Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-	Verdict pulumi.StringPtrInput
+	// Optional. Key-value pairs that may be used for customizing the environment.
+	Properties GoogleCloudApigeeV1PropertiesPtrInput
 }
 
 func (GoogleLongrunningOperationArgs) ElementType() reflect.Type {

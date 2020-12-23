@@ -46,8 +46,11 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'projectId'");
+            }
+            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -77,13 +80,13 @@ export interface ClusterArgs {
     /**
      * The parent (project and location) where the cluster will be created. Specified in the format `projects/*&#47;locations/*`.
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
     /**
      * Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly projectId: pulumi.Input<string>;
     /**
      * Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

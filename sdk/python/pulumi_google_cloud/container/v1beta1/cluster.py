@@ -51,10 +51,12 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cluster'] = cluster
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(Cluster, __self__).__init__(
             'google-cloud:container/v1beta1:Cluster',

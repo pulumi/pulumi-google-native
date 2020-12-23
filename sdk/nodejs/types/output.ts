@@ -185,6 +185,17 @@ export namespace composer {
     }
 }
 
+export namespace compute {
+    export namespace alpha {
+    }
+
+    export namespace beta {
+    }
+
+    export namespace v1 {
+    }
+}
+
 export namespace container {
     export namespace v1 {
     }

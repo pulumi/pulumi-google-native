@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
+        public Cluster(string name, ClusterArgs? args = null, CustomResourceOptions? options = null)
             : base("google-cloud:container/v1:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -68,8 +68,8 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <summary>
         /// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.

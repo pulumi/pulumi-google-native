@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new ACL entry on the specified object.
+// Creates a new default object ACL entry on the specified bucket.
 type ObjectAccessControl struct {
 	pulumi.CustomResourceState
 }
@@ -25,9 +25,6 @@ func NewObjectAccessControl(ctx *pulumi.Context,
 
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
-	}
-	if args.Object == nil {
-		return nil, errors.New("invalid value for required argument 'Object'")
 	}
 	var resource ObjectAccessControl
 	err := ctx.RegisterResource("google-cloud:storage/v1:ObjectAccessControl", name, args, &resource, opts...)
@@ -91,7 +88,7 @@ type objectAccessControlArgs struct {
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The name of the object, if applied to an object.
-	Object string `pulumi:"object"`
+	Object *string `pulumi:"object"`
 	// The project team associated with the entity, if any.
 	ProjectTeam map[string]string `pulumi:"projectTeam"`
 	// The project to be billed for this request if the target bucket is requester-pays bucket.
@@ -136,7 +133,7 @@ type ObjectAccessControlArgs struct {
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind pulumi.StringPtrInput
 	// The name of the object, if applied to an object.
-	Object pulumi.StringInput
+	Object pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
 	ProjectTeam pulumi.StringMapInput
 	// The project to be billed for this request if the target bucket is requester-pays bucket.

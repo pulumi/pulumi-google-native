@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new canary evaluation for an organization.
+ * Creates an environment in an organization.
  */
 export class GoogleLongrunningOperation extends pulumi.CustomResource {
     /**
@@ -49,16 +49,13 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["control"] = args ? args.control : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["metricLabels"] = args ? args.metricLabels : undefined;
+            inputs["createdAt"] = args ? args.createdAt : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["treatment"] = args ? args.treatment : undefined;
-            inputs["verdict"] = args ? args.verdict : undefined;
+            inputs["properties"] = args ? args.properties : undefined;
         } else {
         }
         if (!opts) {
@@ -77,43 +74,31 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
  */
 export interface GoogleLongrunningOperationArgs {
     /**
-     * Required. The stable version that is serving requests.
+     * Output only. Creation time of this environment as milliseconds since epoch.
      */
-    readonly control?: pulumi.Input<string>;
+    readonly createdAt?: pulumi.Input<string>;
     /**
-     * Output only. Create time of the canary evaluation.
+     * Optional. Description of the environment.
      */
-    readonly createTime?: pulumi.Input<string>;
+    readonly description?: pulumi.Input<string>;
     /**
-     * Required. End time for the evaluation's analysis.
+     * Optional. Display name for this environment.
      */
-    readonly endTime?: pulumi.Input<string>;
+    readonly displayName?: pulumi.Input<string>;
     /**
-     * Required. Labels used to filter the metrics used for a canary evaluation.
+     * Output only. Last modification time of this environment as milliseconds since epoch.
      */
-    readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabels>;
+    readonly lastModifiedAt?: pulumi.Input<string>;
     /**
-     * Output only. Name of the canary evalution.
+     * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`.
+     * Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
      */
     readonly parent: pulumi.Input<string>;
     /**
-     * Required. Start time for the canary evaluation's analysis.
+     * Optional. Key-value pairs that may be used for customizing the environment.
      */
-    readonly startTime?: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the canary evaluation.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Required. The newer version that is serving requests.
-     */
-    readonly treatment?: pulumi.Input<string>;
-    /**
-     * Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-     */
-    readonly verdict?: pulumi.Input<string>;
+    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Properties>;
 }

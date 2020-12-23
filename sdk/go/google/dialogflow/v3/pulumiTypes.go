@@ -1115,31 +1115,6 @@ func (i GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs) ToGoogleCloudDial
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput)
 }
 
-// GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray and GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput` via:
-//
-//          GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray{ GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{...} }
-type GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput() GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput
-	ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput
-}
-
-type GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray []GoogleCloudDialogflowCxV3EnvironmentVersionConfigInput
-
-func (GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3EnvironmentVersionConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray) ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput() GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput {
-	return i.ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray) ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput)
-}
-
 // Configuration for the version.
 type GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1158,26 +1133,6 @@ func (o GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput) ToGoogleCloudDi
 // Required. Format: projects//locations//agents//flows//versions/.
 func (o GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3EnvironmentVersionConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3EnvironmentVersionConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput) ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput() GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput) ToGoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
-		return vs[0].([]GoogleCloudDialogflowCxV3EnvironmentVersionConfig)[vs[1].(int)]
-	}).(GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput)
 }
 
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
@@ -7077,7 +7032,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EventHandlerOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3EventInputOutput{})

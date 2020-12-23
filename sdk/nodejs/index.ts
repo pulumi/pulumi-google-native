@@ -34,6 +34,7 @@ import * as cloudshell from "./cloudshell";
 import * as cloudtasks from "./cloudtasks";
 import * as cloudtrace from "./cloudtrace";
 import * as composer from "./composer";
+import * as compute from "./compute";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
 import * as datacatalog from "./datacatalog";
@@ -123,6 +124,7 @@ export {
     cloudtasks,
     cloudtrace,
     composer,
+    compute,
     container,
     containeranalysis,
     datacatalog,

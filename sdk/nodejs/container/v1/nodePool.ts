@@ -43,12 +43,9 @@ export class NodePool extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: NodePoolArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'parent'");
-            }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -82,7 +79,7 @@ export interface NodePoolArgs {
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
     /**
      * Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
      */

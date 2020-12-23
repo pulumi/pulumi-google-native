@@ -43,12 +43,9 @@ export class Cluster extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'parent'");
-            }
             inputs["cluster"] = args ? args.cluster : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
@@ -77,7 +74,7 @@ export interface ClusterArgs {
     /**
      * The parent (project and location) where the cluster will be created. Specified in the format `projects/*&#47;locations/*`.
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
     /**
      * Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
      */

@@ -16,7 +16,6 @@ __all__ = [
     'GoogleCloudDialogflowCxV3DtmfInputArgs',
     'GoogleCloudDialogflowCxV3EntityTypeEntityArgs',
     'GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs',
-    'GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs',
     'GoogleCloudDialogflowCxV3EventHandlerArgs',
     'GoogleCloudDialogflowCxV3EventInputArgs',
     'GoogleCloudDialogflowCxV3FormArgs',
@@ -413,30 +412,6 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs:
-    def __init__(__self__, *,
-                 version: Optional[pulumi.Input[str]] = None):
-        """
-        Configuration for the version.
-        :param pulumi.Input[str] version: Required. Format: projects//locations//agents//flows//versions/.
-        """
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Format: projects//locations//agents//flows//versions/.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

@@ -62,8 +62,8 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         /// <summary>
         /// Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("clusterId")]
-        public Input<string>? ClusterId { get; set; }
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
         /// Required. The node pool to create.
@@ -74,20 +74,20 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public NodePoolArgs()
         {

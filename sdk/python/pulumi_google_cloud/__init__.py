@@ -33,6 +33,7 @@ from . import (
     cloudtasks,
     cloudtrace,
     composer,
+    compute,
     container,
     containeranalysis,
     datacatalog,

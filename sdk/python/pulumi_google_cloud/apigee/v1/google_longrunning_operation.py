@@ -16,34 +16,28 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 control: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 metric_labels: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 treatment: Optional[pulumi.Input[str]] = None,
-                 verdict: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new canary evaluation for an organization.
+        Creates an environment in an organization.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] control: Required. The stable version that is serving requests.
-        :param pulumi.Input[str] create_time: Output only. Create time of the canary evaluation.
-        :param pulumi.Input[str] end_time: Required. End time for the evaluation's analysis.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] metric_labels: Required. Labels used to filter the metrics used for a canary evaluation.
-        :param pulumi.Input[str] name: Output only. Name of the canary evalution.
-        :param pulumi.Input[str] parent: Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`.
-        :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
-        :param pulumi.Input[str] state: Output only. The current state of the canary evaluation.
-        :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
-        :param pulumi.Input[str] verdict: Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+        :param pulumi.Input[str] created_at: Output only. Creation time of this environment as milliseconds since epoch.
+        :param pulumi.Input[str] description: Optional. Description of the environment.
+        :param pulumi.Input[str] display_name: Optional. Display name for this environment.
+        :param pulumi.Input[str] last_modified_at: Output only. Last modification time of this environment as milliseconds since epoch.
+        :param pulumi.Input[str] name: Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        :param pulumi.Input[str] parent: Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,18 +56,15 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['control'] = control
-            __props__['create_time'] = create_time
-            __props__['end_time'] = end_time
-            __props__['metric_labels'] = metric_labels
+            __props__['created_at'] = created_at
+            __props__['description'] = description
+            __props__['display_name'] = display_name
+            __props__['last_modified_at'] = last_modified_at
             __props__['name'] = name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
-            __props__['start_time'] = start_time
-            __props__['state'] = state
-            __props__['treatment'] = treatment
-            __props__['verdict'] = verdict
+            __props__['properties'] = properties
         super(GoogleLongrunningOperation, __self__).__init__(
             'google-cloud:apigee/v1:GoogleLongrunningOperation',
             resource_name,

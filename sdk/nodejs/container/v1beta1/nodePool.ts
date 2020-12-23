@@ -46,8 +46,14 @@ export class NodePool extends pulumi.CustomResource {
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'clusterId'");
+            }
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'projectId'");
+            }
+            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
@@ -74,7 +80,7 @@ export interface NodePoolArgs {
     /**
      * Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    readonly clusterId: pulumi.Input<string>;
     /**
      * Required. The node pool to create.
      */
@@ -82,13 +88,13 @@ export interface NodePoolArgs {
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
     /**
      * Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly projectId: pulumi.Input<string>;
     /**
      * Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

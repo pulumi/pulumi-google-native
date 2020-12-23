@@ -104,9 +104,9 @@ class Build(pulumi.CustomResource):
             __props__['logs_bucket'] = logs_bucket
             __props__['name'] = name
             __props__['options'] = options
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['queue_ttl'] = queue_ttl
             __props__['results'] = results

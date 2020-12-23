@@ -84,7 +84,8 @@ func emitDiscoveryFiles(outDir string) error {
 	for _, item := range list.Items {
 		// TODO: this is arbitrary - find a better way?
 		if !strings.HasPrefix(item.DocumentationLink, "https://cloud.google.com") &&
-			!strings.HasPrefix(item.Title, "Cloud") {
+			!strings.HasPrefix(item.Title, "Cloud") &&
+			!strings.HasPrefix(item.Title, "Compute"){
 			continue
 		}
 

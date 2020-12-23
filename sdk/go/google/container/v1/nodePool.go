@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -20,12 +19,9 @@ type NodePool struct {
 func NewNodePool(ctx *pulumi.Context,
 	name string, args *NodePoolArgs, opts ...pulumi.ResourceOption) (*NodePool, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NodePoolArgs{}
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
-	}
 	var resource NodePool
 	err := ctx.RegisterResource("google-cloud:container/v1:NodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -63,7 +59,7 @@ type nodePoolArgs struct {
 	// Required. The node pool to create.
 	NodePool *NodePoolType `pulumi:"nodePool"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent string `pulumi:"parent"`
+	Parent *string `pulumi:"parent"`
 	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
 	ProjectId *string `pulumi:"projectId"`
 	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
@@ -77,7 +73,7 @@ type NodePoolArgs struct {
 	// Required. The node pool to create.
 	NodePool NodePoolTypePtrInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent pulumi.StringInput
+	Parent pulumi.StringPtrInput
 	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
 	ProjectId pulumi.StringPtrInput
 	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.

@@ -54,8 +54,6 @@ class NodePool(pulumi.CustomResource):
 
             __props__['cluster_id'] = cluster_id
             __props__['node_pool'] = node_pool
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['project_id'] = project_id
             __props__['zone'] = zone

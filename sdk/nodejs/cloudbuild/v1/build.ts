@@ -46,8 +46,8 @@ export class Build extends pulumi.CustomResource {
     constructor(name: string, args: BuildArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (!(opts && opts.id)) {
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'parent'");
             }
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["buildTriggerId"] = args ? args.buildTriggerId : undefined;
@@ -135,11 +135,11 @@ export interface BuildArgs {
     /**
      * The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
      */
-    readonly parent?: pulumi.Input<string>;
+    readonly parent: pulumi.Input<string>;
     /**
      * Output only. ID of the project.
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly projectId?: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */
