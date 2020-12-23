@@ -37,6 +37,9 @@ test_provider::
 lint_provider:: provider # lint the provider code
 	cd provider && GOGC=20 golangci-lint run -c ../.golangci.yml
 
+discovery::codegen
+	$(WORKING_DIR)/bin/$(CODEGEN) discovery ${VERSION}
+
 generate_nodejs::
 	$(WORKING_DIR)/bin/$(CODEGEN) nodejs ${VERSION}
 

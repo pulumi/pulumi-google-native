@@ -8,18 +8,182 @@ import * as utilities from "./utilities";
 export * from "./provider";
 
 // Export sub-modules:
+import * as accesscontextmanager from "./accesscontextmanager";
+import * as apigee from "./apigee";
+import * as appengine from "./appengine";
+import * as artifactregistry from "./artifactregistry";
+import * as assuredworkloads from "./assuredworkloads";
+import * as bigqueryconnection from "./bigqueryconnection";
+import * as bigquerydatatransfer from "./bigquerydatatransfer";
+import * as bigqueryreservation from "./bigqueryreservation";
+import * as bigtableadmin from "./bigtableadmin";
+import * as billingbudgets from "./billingbudgets";
+import * as binaryauthorization from "./binaryauthorization";
+import * as cloudasset from "./cloudasset";
+import * as cloudbilling from "./cloudbilling";
+import * as cloudbuild from "./cloudbuild";
 import * as cloudfunctions from "./cloudfunctions";
+import * as cloudidentity from "./cloudidentity";
+import * as cloudiot from "./cloudiot";
+import * as cloudkms from "./cloudkms";
+import * as cloudprofiler from "./cloudprofiler";
+import * as cloudresourcemanager from "./cloudresourcemanager";
+import * as cloudscheduler from "./cloudscheduler";
+import * as cloudsearch from "./cloudsearch";
+import * as cloudshell from "./cloudshell";
+import * as cloudtasks from "./cloudtasks";
+import * as cloudtrace from "./cloudtrace";
+import * as composer from "./composer";
 import * as container from "./container";
+import * as containeranalysis from "./containeranalysis";
+import * as datacatalog from "./datacatalog";
+import * as dataflow from "./dataflow";
+import * as datafusion from "./datafusion";
+import * as datalabeling from "./datalabeling";
+import * as datamigration from "./datamigration";
+import * as dataproc from "./dataproc";
+import * as datastore from "./datastore";
+import * as deploymentmanager from "./deploymentmanager";
+import * as dialogflow from "./dialogflow";
+import * as dlp from "./dlp";
+import * as dns from "./dns";
+import * as domains from "./domains";
+import * as eventarc from "./eventarc";
+import * as file from "./file";
+import * as firestore from "./firestore";
+import * as gameservices from "./gameservices";
+import * as genomics from "./genomics";
+import * as healthcare from "./healthcare";
+import * as iam from "./iam";
+import * as iap from "./iap";
+import * as jobs from "./jobs";
+import * as logging from "./logging";
+import * as managedidentities from "./managedidentities";
+import * as memcache from "./memcache";
+import * as metastore from "./metastore";
+import * as ml from "./ml";
+import * as monitoring from "./monitoring";
+import * as networkmanagement from "./networkmanagement";
+import * as notebooks from "./notebooks";
+import * as osconfig from "./osconfig";
+import * as privateca from "./privateca";
+import * as pubsub from "./pubsub";
+import * as pubsublite from "./pubsublite";
+import * as recommendationengine from "./recommendationengine";
+import * as redis from "./redis";
+import * as remotebuildexecution from "./remotebuildexecution";
 import * as run from "./run";
+import * as runtimeconfig from "./runtimeconfig";
+import * as secretmanager from "./secretmanager";
+import * as serviceconsumermanagement from "./serviceconsumermanagement";
+import * as servicedirectory from "./servicedirectory";
+import * as servicemanagement from "./servicemanagement";
+import * as servicenetworking from "./servicenetworking";
+import * as serviceusage from "./serviceusage";
+import * as sourcerepo from "./sourcerepo";
+import * as spanner from "./spanner";
+import * as sqladmin from "./sqladmin";
 import * as storage from "./storage";
+import * as storagetransfer from "./storagetransfer";
+import * as testing from "./testing";
+import * as toolresults from "./toolresults";
+import * as tpu from "./tpu";
+import * as transcoder from "./transcoder";
+import * as translate from "./translate";
 import * as types from "./types";
+import * as vision from "./vision";
+import * as websecurityscanner from "./websecurityscanner";
+import * as workflowexecutions from "./workflowexecutions";
+import * as workflows from "./workflows";
 
 export {
+    accesscontextmanager,
+    apigee,
+    appengine,
+    artifactregistry,
+    assuredworkloads,
+    bigqueryconnection,
+    bigquerydatatransfer,
+    bigqueryreservation,
+    bigtableadmin,
+    billingbudgets,
+    binaryauthorization,
+    cloudasset,
+    cloudbilling,
+    cloudbuild,
     cloudfunctions,
+    cloudidentity,
+    cloudiot,
+    cloudkms,
+    cloudprofiler,
+    cloudresourcemanager,
+    cloudscheduler,
+    cloudsearch,
+    cloudshell,
+    cloudtasks,
+    cloudtrace,
+    composer,
     container,
+    containeranalysis,
+    datacatalog,
+    dataflow,
+    datafusion,
+    datalabeling,
+    datamigration,
+    dataproc,
+    datastore,
+    deploymentmanager,
+    dialogflow,
+    dlp,
+    dns,
+    domains,
+    eventarc,
+    file,
+    firestore,
+    gameservices,
+    genomics,
+    healthcare,
+    iam,
+    iap,
+    jobs,
+    logging,
+    managedidentities,
+    memcache,
+    metastore,
+    ml,
+    monitoring,
+    networkmanagement,
+    notebooks,
+    osconfig,
+    privateca,
+    pubsub,
+    pubsublite,
+    recommendationengine,
+    redis,
+    remotebuildexecution,
     run,
+    runtimeconfig,
+    secretmanager,
+    serviceconsumermanagement,
+    servicedirectory,
+    servicemanagement,
+    servicenetworking,
+    serviceusage,
+    sourcerepo,
+    spanner,
+    sqladmin,
     storage,
+    storagetransfer,
+    testing,
+    toolresults,
+    tpu,
+    transcoder,
+    translate,
     types,
+    vision,
+    websecurityscanner,
+    workflowexecutions,
+    workflows,
 };
 
 import { Provider } from "./provider";

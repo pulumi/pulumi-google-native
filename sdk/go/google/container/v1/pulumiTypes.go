@@ -978,7 +978,7 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) UpgradeSettings() UpgradeSett
 	}).(UpgradeSettingsPtrOutput)
 }
 
-// CreateParams for using BigQuery as the destination of resource usage export.
+// Parameters for using BigQuery as the destination of resource usage export.
 type BigQueryDestination struct {
 	// The ID of a BigQuery Dataset.
 	DatasetId *string `pulumi:"datasetId"`
@@ -995,7 +995,7 @@ type BigQueryDestinationInput interface {
 	ToBigQueryDestinationOutputWithContext(context.Context) BigQueryDestinationOutput
 }
 
-// CreateParams for using BigQuery as the destination of resource usage export.
+// Parameters for using BigQuery as the destination of resource usage export.
 type BigQueryDestinationArgs struct {
 	// The ID of a BigQuery Dataset.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
@@ -1054,7 +1054,7 @@ func (i *bigQueryDestinationPtrType) ToBigQueryDestinationPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationPtrOutput)
 }
 
-// CreateParams for using BigQuery as the destination of resource usage export.
+// Parameters for using BigQuery as the destination of resource usage export.
 type BigQueryDestinationOutput struct{ *pulumi.OutputState }
 
 func (BigQueryDestinationOutput) ElementType() reflect.Type {
@@ -1712,7 +1712,7 @@ type ClusterType struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
-	// CreateParams used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
@@ -1829,7 +1829,7 @@ type ClusterTypeArgs struct {
 	NetworkConfig NetworkConfigPtrInput `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput `pulumi:"networkPolicy"`
-	// CreateParams used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
 	NodeConfig NodeConfigPtrInput `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput `pulumi:"nodeIpv4CidrSize"`
@@ -2113,7 +2113,7 @@ func (o ClusterTypeOutput) NetworkPolicy() NetworkPolicyPtrOutput {
 	return o.ApplyT(func(v ClusterType) *NetworkPolicy { return v.NetworkPolicy }).(NetworkPolicyPtrOutput)
 }
 
-// CreateParams used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
 func (o ClusterTypeOutput) NodeConfig() NodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterType) *NodeConfig { return v.NodeConfig }).(NodeConfigPtrOutput)
 }
@@ -2556,7 +2556,7 @@ func (o ClusterTypePtrOutput) NetworkPolicy() NetworkPolicyPtrOutput {
 	}).(NetworkPolicyPtrOutput)
 }
 
-// CreateParams used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
 func (o ClusterTypePtrOutput) NodeConfig() NodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterType) *NodeConfig {
 		if v == nil {
@@ -3053,7 +3053,7 @@ func (o ConfigConnectorConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// CreateParams for controlling consumption metering.
+// Parameters for controlling consumption metering.
 type ConsumptionMeteringConfig struct {
 	// Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
 	Enabled *bool `pulumi:"enabled"`
@@ -3070,7 +3070,7 @@ type ConsumptionMeteringConfigInput interface {
 	ToConsumptionMeteringConfigOutputWithContext(context.Context) ConsumptionMeteringConfigOutput
 }
 
-// CreateParams for controlling consumption metering.
+// Parameters for controlling consumption metering.
 type ConsumptionMeteringConfigArgs struct {
 	// Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -3129,7 +3129,7 @@ func (i *consumptionMeteringConfigPtrType) ToConsumptionMeteringConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumptionMeteringConfigPtrOutput)
 }
 
-// CreateParams for controlling consumption metering.
+// Parameters for controlling consumption metering.
 type ConsumptionMeteringConfigOutput struct{ *pulumi.OutputState }
 
 func (ConsumptionMeteringConfigOutput) ElementType() reflect.Type {
@@ -6131,7 +6131,7 @@ func (o NetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// CreateParams that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfig `pulumi:"accelerators"`
@@ -6186,7 +6186,7 @@ type NodeConfigInput interface {
 	ToNodeConfigOutputWithContext(context.Context) NodeConfigOutput
 }
 
-// CreateParams that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster.
 type NodeConfigArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigArrayInput `pulumi:"accelerators"`
@@ -6283,7 +6283,7 @@ func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
 }
 
-// CreateParams that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigOutput) ElementType() reflect.Type {

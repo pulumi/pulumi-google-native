@@ -7,6 +7,10 @@ import (
 	"compress/gzip"
 	"encoding/json"
 	"fmt"
+	"google.golang.org/api/discovery/v1"
+	"io"
+	"io/ioutil"
+	"net/http"
 	"os"
 	"path"
 	"strings"
@@ -38,20 +42,78 @@ func main() {
 
 	for _, language := range strings.Split(languages, ",") {
 		switch language {
+		case "discovery":
+			dir := path.Join(".", "discovery")
+			if err = emitDiscoveryFiles(dir); err != nil {
+				break
+			}
 		case "schema":
-			outdir := path.Join(".", "provider", "cmd", "pulumi-resource-google-cloud")
-			if err = emitSchema(*pkgSpec, version, outdir, "main", true); err != nil {
+			dir := path.Join(".", "provider", "cmd", "pulumi-resource-google-cloud")
+			if err = emitSchema(*pkgSpec, version, dir, "main", true); err != nil {
 				break
 			}
 		default:
-			outdir := path.Join(".", "sdk", language)
+			dir := path.Join(".", "sdk", language)
 			pkgSpec.Version = version
-			err = emitPackage(pkgSpec, language, outdir)
+			err = emitPackage(pkgSpec, language, dir)
 		}
 		if err != nil {
 			panic(err)
 		}
 	}
+}
+
+func emitDiscoveryFiles(outDir string) error {
+	resp, err := http.Get("https://discovery.googleapis.com/discovery/v1/apis?parameters")
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	byteValue, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	var list discovery.DirectoryList
+	err = json.Unmarshal(byteValue, &list)
+	if err != nil {
+		return err
+	}
+
+	for _, item := range list.Items {
+		// TODO: this is arbitrary - find a better way?
+		if !strings.HasPrefix(item.DocumentationLink, "https://cloud.google.com") &&
+			!strings.HasPrefix(item.Title, "Cloud") {
+			continue
+		}
+
+		fileName := fmt.Sprintf("%s.json", strings.ReplaceAll(item.Id, ":", "_"))
+		filePath := path.Join(outDir, fileName)
+		err := downloadFile(item.DiscoveryRestUrl, filePath)
+		if err != nil {
+			return errors.Wrapf(err, "writing %s", filePath)
+		}
+	}
+
+	return nil
+}
+
+func downloadFile(url, path string) error {
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	out, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	return err
 }
 
 // emitSchema writes the Pulumi schema JSON to the 'schema.json' file in the given directory.

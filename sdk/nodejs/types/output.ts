@@ -4,22 +4,568 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export namespace accesscontextmanager {
+    export namespace v1 {
+    }
+
+    export namespace v1beta {
+    }
+}
+
+export namespace apigee {
+    export namespace v1 {
+    }
+}
+
+export namespace appengine {
+    export namespace v1 {
+    }
+
+    export namespace v1alpha {
+    }
+
+    export namespace v1beta {
+    }
+}
+
+export namespace artifactregistry {
+    export namespace v1beta1 {
+    }
+
+    export namespace v1beta2 {
+    }
+}
+
+export namespace assuredworkloads {
+    export namespace v1 {
+    }
+}
+
+export namespace bigqueryconnection {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace bigquerydatatransfer {
+    export namespace v1 {
+    }
+}
+
+export namespace bigqueryreservation {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace bigtableadmin {
+    export namespace v2 {
+    }
+}
+
+export namespace billingbudgets {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace binaryauthorization {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace cloudasset {
+    export namespace v1 {
+    }
+}
+
+export namespace cloudbilling {
+    export namespace v1 {
+    }
+}
+
+export namespace cloudbuild {
+    export namespace v1 {
+    }
+
+    export namespace v1alpha1 {
+    }
+
+    export namespace v1alpha2 {
+    }
+}
+
 export namespace cloudfunctions {
     export namespace v1 {
+    }
+}
+
+export namespace cloudidentity {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace cloudiot {
+    export namespace v1 {
+    }
+}
+
+export namespace cloudkms {
+    export namespace v1 {
+    }
+}
+
+export namespace cloudprofiler {
+    export namespace v2 {
+    }
+}
+
+export namespace cloudresourcemanager {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+
+    export namespace v2 {
+    }
+
+    export namespace v2beta1 {
+    }
+}
+
+export namespace cloudscheduler {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace cloudsearch {
+    export namespace v1 {
+    }
+}
+
+export namespace cloudshell {
+    export namespace v1alpha1 {
+    }
+}
+
+export namespace cloudtasks {
+    export namespace v2 {
+    }
+
+    export namespace v2beta2 {
+    }
+
+    export namespace v2beta3 {
+    }
+}
+
+export namespace cloudtrace {
+    export namespace v2beta1 {
+    }
+}
+
+export namespace composer {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
     }
 }
 
 export namespace container {
     export namespace v1 {
     }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace containeranalysis {
+    export namespace v1alpha1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace datacatalog {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace dataflow {
+    export namespace v1b3 {
+    }
+}
+
+export namespace datafusion {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace datalabeling {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace datamigration {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace dataproc {
+    export namespace v1 {
+    }
+
+    export namespace v1beta2 {
+    }
+}
+
+export namespace datastore {
+    export namespace v1 {
+    }
+}
+
+export namespace deploymentmanager {
+    export namespace alpha {
+    }
+
+    export namespace v2 {
+    }
+
+    export namespace v2beta {
+    }
+}
+
+export namespace dialogflow {
+    export namespace v2 {
+    }
+
+    export namespace v2beta1 {
+    }
+
+    export namespace v3 {
+    }
+
+    export namespace v3beta1 {
+    }
+}
+
+export namespace dlp {
+    export namespace v2 {
+    }
+}
+
+export namespace dns {
+    export namespace v1 {
+    }
+
+    export namespace v1beta2 {
+    }
+}
+
+export namespace domains {
+    export namespace v1alpha2 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace eventarc {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace file {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace firestore {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+
+    export namespace v1beta2 {
+    }
+}
+
+export namespace gameservices {
+    export namespace v1 {
+    }
+
+    export namespace v1beta {
+    }
+}
+
+export namespace genomics {
+    export namespace v1alpha2 {
+    }
+}
+
+export namespace healthcare {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace iam {
+    export namespace v1 {
+    }
+}
+
+export namespace iap {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace jobs {
+    export namespace v3 {
+    }
+
+    export namespace v3p1beta1 {
+    }
+
+    export namespace v4 {
+    }
+}
+
+export namespace logging {
+    export namespace v2 {
+    }
+}
+
+export namespace managedidentities {
+    export namespace v1 {
+    }
+
+    export namespace v1alpha1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace memcache {
+    export namespace v1beta2 {
+    }
+}
+
+export namespace metastore {
+    export namespace v1alpha {
+    }
+
+    export namespace v1beta {
+    }
+}
+
+export namespace ml {
+    export namespace v1 {
+    }
+}
+
+export namespace monitoring {
+    export namespace v1 {
+    }
+
+    export namespace v3 {
+    }
+}
+
+export namespace networkmanagement {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace notebooks {
+    export namespace v1 {
+    }
+}
+
+export namespace osconfig {
+    export namespace v1 {
+    }
+
+    export namespace v1beta {
+    }
+}
+
+export namespace privateca {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace pubsub {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1a {
+    }
+
+    export namespace v1beta2 {
+    }
+}
+
+export namespace pubsublite {
+    export namespace v1 {
+    }
+}
+
+export namespace recommendationengine {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace redis {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace remotebuildexecution {
+    export namespace v1alpha {
+    }
 }
 
 export namespace run {
     export namespace v1 {
     }
+
+    export namespace v1alpha1 {
+    }
+}
+
+export namespace runtimeconfig {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace secretmanager {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace servicedirectory {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace servicemanagement {
+    export namespace v1 {
+    }
+}
+
+export namespace sourcerepo {
+    export namespace v1 {
+    }
+}
+
+export namespace spanner {
+    export namespace v1 {
+    }
+}
+
+export namespace sqladmin {
+    export namespace v1beta4 {
+    }
 }
 
 export namespace storage {
     export namespace v1 {
+    }
+}
+
+export namespace storagetransfer {
+    export namespace v1 {
+    }
+}
+
+export namespace testing {
+    export namespace v1 {
+    }
+}
+
+export namespace toolresults {
+    export namespace v1beta3 {
+    }
+}
+
+export namespace tpu {
+    export namespace v1 {
+    }
+
+    export namespace v1alpha1 {
+    }
+}
+
+export namespace transcoder {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace translate {
+    export namespace v3 {
+    }
+
+    export namespace v3beta1 {
+    }
+}
+
+export namespace vision {
+    export namespace v1 {
+    }
+}
+
+export namespace websecurityscanner {
+    export namespace v1 {
+    }
+
+    export namespace v1alpha {
+    }
+
+    export namespace v1beta {
+    }
+}
+
+export namespace workflowexecutions {
+    export namespace v1beta {
     }
 }

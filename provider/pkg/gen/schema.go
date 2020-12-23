@@ -176,6 +176,10 @@ func (g *packageGenerator) genResource(typeName string, restMethod *discovery.Re
 	requiredProperties := codegen.NewStringSet()
 
 	for name, param := range restMethod.Parameters {
+		if strings.HasPrefix(param.Description, "Deprecated.") {
+			continue
+		}
+
 		inputProperties[name] = schema.PropertySpec{
 			Description: param.Description,
 			TypeSpec:    schema.TypeSpec{Type: param.Type},
