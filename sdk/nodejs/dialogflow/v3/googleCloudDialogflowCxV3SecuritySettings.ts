@@ -44,8 +44,9 @@ export class GoogleCloudDialogflowCxV3SecuritySettings extends pulumi.CustomReso
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3SecuritySettingsArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -58,12 +59,8 @@ export class GoogleCloudDialogflowCxV3SecuritySettings extends pulumi.CustomReso
             inputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3SecuritySettings.__pulumiType, name, inputs, opts);
     }

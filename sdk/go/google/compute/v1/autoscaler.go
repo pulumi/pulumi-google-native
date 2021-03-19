@@ -26,8 +26,8 @@ func NewAutoscaler(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Autoscaler
 	err := ctx.RegisterResource("google-cloud:compute/v1:Autoscaler", name, args, &resource, opts...)
@@ -80,13 +80,15 @@ type autoscalerArgs struct {
 	// [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
 	RecommendedSize *int `pulumi:"recommendedSize"`
 	// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// [Output Only] Status information of existing scaling schedules.
+	ScalingScheduleStatus map[string]string `pulumi:"scalingScheduleStatus"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
@@ -100,7 +102,7 @@ type autoscalerArgs struct {
 	// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
 	Target *string `pulumi:"target"`
 	// [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Autoscaler resource.
@@ -124,13 +126,15 @@ type AutoscalerArgs struct {
 	// [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
 	RecommendedSize pulumi.IntPtrInput
 	// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// [Output Only] Status information of existing scaling schedules.
+	ScalingScheduleStatus pulumi.StringMapInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The status of the autoscaler configuration. Current set of possible values:
@@ -144,7 +148,7 @@ type AutoscalerArgs struct {
 	// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
 	Target pulumi.StringPtrInput
 	// [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (AutoscalerArgs) ElementType() reflect.Type {

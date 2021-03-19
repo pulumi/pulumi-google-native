@@ -23,6 +23,7 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -38,6 +39,7 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
         :param pulumi.Input[str] name: Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input[str] parent: Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
+        :param pulumi.Input[str] state: Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,6 +67,7 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['properties'] = properties
+            __props__['state'] = state
         super(GoogleLongrunningOperation, __self__).__init__(
             'google-cloud:apigee/v1:GoogleLongrunningOperation',
             resource_name,

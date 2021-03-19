@@ -5,45 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./cloudAuditLogsSource";
-export * from "./cloudPubSubSource";
-export * from "./cloudSchedulerSource";
-export * from "./cloudStorageSource";
 export * from "./domainMapping";
+export * from "./job";
 export * from "./policy";
 export * from "./service";
-export * from "./trigger";
 
 // Import resources to register:
-import { CloudAuditLogsSource } from "./cloudAuditLogsSource";
-import { CloudPubSubSource } from "./cloudPubSubSource";
-import { CloudSchedulerSource } from "./cloudSchedulerSource";
-import { CloudStorageSource } from "./cloudStorageSource";
 import { DomainMapping } from "./domainMapping";
+import { Job } from "./job";
 import { Policy } from "./policy";
 import { Service } from "./service";
-import { Trigger } from "./trigger";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:run/v1alpha1:CloudAuditLogsSource":
-                return new CloudAuditLogsSource(name, <any>undefined, { urn })
-            case "google-cloud:run/v1alpha1:CloudPubSubSource":
-                return new CloudPubSubSource(name, <any>undefined, { urn })
-            case "google-cloud:run/v1alpha1:CloudSchedulerSource":
-                return new CloudSchedulerSource(name, <any>undefined, { urn })
-            case "google-cloud:run/v1alpha1:CloudStorageSource":
-                return new CloudStorageSource(name, <any>undefined, { urn })
             case "google-cloud:run/v1alpha1:DomainMapping":
                 return new DomainMapping(name, <any>undefined, { urn })
+            case "google-cloud:run/v1alpha1:Job":
+                return new Job(name, <any>undefined, { urn })
             case "google-cloud:run/v1alpha1:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "google-cloud:run/v1alpha1:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-cloud:run/v1alpha1:Trigger":
-                return new Trigger(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

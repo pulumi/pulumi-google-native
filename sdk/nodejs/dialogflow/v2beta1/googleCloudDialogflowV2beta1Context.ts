@@ -44,8 +44,9 @@ export class GoogleCloudDialogflowV2beta1Context extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowV2beta1ContextArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["lifespanCount"] = args ? args.lifespanCount : undefined;
@@ -54,12 +55,8 @@ export class GoogleCloudDialogflowV2beta1Context extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowV2beta1Context.__pulumiType, name, inputs, opts);
     }
@@ -78,7 +75,7 @@ export interface GoogleCloudDialogflowV2beta1ContextArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+     * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
      */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

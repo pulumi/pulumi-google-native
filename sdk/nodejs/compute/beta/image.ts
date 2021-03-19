@@ -45,8 +45,9 @@ export class Image extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["archiveSizeBytes"] = args ? args.archiveSizeBytes : undefined;
@@ -68,6 +69,7 @@ export class Image extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["shieldedInstanceInitialState"] = args ? args.shieldedInstanceInitialState : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
@@ -84,12 +86,8 @@ export class Image extends pulumi.CustomResource {
             inputs["storageLocations"] = args ? args.storageLocations : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Image.__pulumiType, name, inputs, opts);
     }
@@ -187,6 +185,10 @@ export interface ImageArgs {
      * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     readonly requestId?: pulumi.Input<string>;
+    /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

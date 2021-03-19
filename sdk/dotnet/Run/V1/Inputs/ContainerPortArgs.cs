@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         public Input<int>? ContainerPort { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        /// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

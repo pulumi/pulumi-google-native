@@ -31,20 +31,20 @@ class Consent(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Consent in the parent Consent store.
+        Creates a new Consent in the parent consent store.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] consent_artifact: Required. The resource name of the consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-        :param pulumi.Input[str] expire_time: Timestamp in UTC of when this consent is considered expired.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
-        :param pulumi.Input[str] name: Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+        :param pulumi.Input[str] consent_artifact: Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        :param pulumi.Input[str] expire_time: Timestamp in UTC of when this Consent is considered expired.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+        :param pulumi.Input[str] name: Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
         :param pulumi.Input[str] parent: Required. Name of the consent store.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]] policies: Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]] policies: Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
         :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the revision was created.
-        :param pulumi.Input[str] revision_id: Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
-        :param pulumi.Input[str] state: Indicates the current state of this consent.
-        :param pulumi.Input[str] ttl: Input only. The time to live for this consent from when it is created.
+        :param pulumi.Input[str] revision_id: Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+        :param pulumi.Input[str] state: Required. Indicates the current state of this Consent.
+        :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
         if __name__ is not None:

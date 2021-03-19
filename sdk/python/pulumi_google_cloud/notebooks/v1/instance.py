@@ -42,8 +42,11 @@ class Instance(pulumi.CustomResource):
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  upgrade_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UpgradeHistoryEntryArgs']]]]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['VmImageArgs']]] = None,
@@ -81,8 +84,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] proxy_uri: Output only. The proxy endpoint that is used to access the Jupyter notebook.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+        :param pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         :param pulumi.Input[str] state: Output only. The state of this instance.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[str] update_time: Output only. Instance update time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UpgradeHistoryEntryArgs']]]] upgrade_history: The upgrade history of this instance.
         :param pulumi.Input[pulumi.InputType['VmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
@@ -132,8 +138,11 @@ class Instance(pulumi.CustomResource):
             __props__['post_startup_script'] = post_startup_script
             __props__['proxy_uri'] = proxy_uri
             __props__['service_account'] = service_account
+            __props__['service_account_scopes'] = service_account_scopes
+            __props__['shielded_instance_config'] = shielded_instance_config
             __props__['state'] = state
             __props__['subnet'] = subnet
+            __props__['tags'] = tags
             __props__['update_time'] = update_time
             __props__['upgrade_history'] = upgrade_history
             __props__['vm_image'] = vm_image

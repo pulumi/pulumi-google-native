@@ -90,7 +90,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
         }
 
         /// <summary>
-        /// The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

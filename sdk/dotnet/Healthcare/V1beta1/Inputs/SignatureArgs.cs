@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1.Inputs
     public sealed class SignatureArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An image of the user's signature.
+        /// Optional. An image of the user's signature.
         /// </summary>
         [Input("image")]
         public Input<Inputs.ImageArgs>? Image { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Metadata associated with the user's signature. For example, the user's name or the user's title.
+        /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -34,13 +34,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1.Inputs
         }
 
         /// <summary>
-        /// Timestamp of the signature.
+        /// Optional. Timestamp of the signature.
         /// </summary>
         [Input("signatureTime")]
         public Input<string>? SignatureTime { get; set; }
 
         /// <summary>
-        /// User's UUID provided by the client.
+        /// Required. User's UUID provided by the client.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

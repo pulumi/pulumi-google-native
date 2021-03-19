@@ -45,8 +45,9 @@ export class Attestor extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttestorArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["attestorId"] = args ? args.attestorId : undefined;
@@ -57,12 +58,8 @@ export class Attestor extends pulumi.CustomResource {
             inputs["userOwnedGrafeasNote"] = args ? args.userOwnedGrafeasNote : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Attestor.__pulumiType, name, inputs, opts);
     }

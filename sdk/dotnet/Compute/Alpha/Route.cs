@@ -60,6 +60,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public sealed class RouteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
+        /// </summary>
+        [Input("allowConflictingSubnetworks")]
+        public Input<bool>? AllowConflictingSubnetworks { get; set; }
+
+        /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>
         [Input("creationTimestamp")]

@@ -76,7 +76,7 @@ namespace Pulumi.GoogleCloud.Dataproc.V1.Inputs
         }
 
         /// <summary>
-        /// Optional. Shielded Instance Config for clusters using shielded VMs.
+        /// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }

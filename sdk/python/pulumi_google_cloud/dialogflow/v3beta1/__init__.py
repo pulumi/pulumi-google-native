@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .google_cloud_dialogflow_cx_v3beta1_agent import *
 from .google_cloud_dialogflow_cx_v3beta1_entity_type import *
+from .google_cloud_dialogflow_cx_v3beta1_experiment import *
 from .google_cloud_dialogflow_cx_v3beta1_flow import *
 from .google_cloud_dialogflow_cx_v3beta1_intent import *
 from .google_cloud_dialogflow_cx_v3beta1_page import *
@@ -32,6 +33,8 @@ def _register_module():
                 return GoogleCloudDialogflowCxV3beta1Agent(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v3beta1:GoogleCloudDialogflowCxV3beta1EntityType":
                 return GoogleCloudDialogflowCxV3beta1EntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3beta1:GoogleCloudDialogflowCxV3beta1Experiment":
+                return GoogleCloudDialogflowCxV3beta1Experiment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v3beta1:GoogleCloudDialogflowCxV3beta1Flow":
                 return GoogleCloudDialogflowCxV3beta1Flow(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v3beta1:GoogleCloudDialogflowCxV3beta1Intent":

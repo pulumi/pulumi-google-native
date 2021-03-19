@@ -45,10 +45,12 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
             inputs["groupKey"] = args ? args.groupKey : undefined;
             inputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -57,12 +59,8 @@ export class Group extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Group.__pulumiType, name, inputs, opts);
     }
@@ -84,6 +82,10 @@ export interface GroupArgs {
      * The display name of the `Group`.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Dynamic group metadata like queries and status.
+     */
+    readonly dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1.DynamicGroupMetadata>;
     /**
      * Required. Immutable. The `EntityKey` of the `Group`.
      */

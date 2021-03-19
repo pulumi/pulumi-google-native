@@ -15,6 +15,9 @@ __all__ = [
     'GoogleCloudApigeeV1CustomReportMetricArgs',
     'GoogleCloudApigeeV1DatastoreConfigArgs',
     'GoogleCloudApigeeV1DateRangeArgs',
+    'GoogleCloudApigeeV1GraphQLOperationArgs',
+    'GoogleCloudApigeeV1GraphQLOperationConfigArgs',
+    'GoogleCloudApigeeV1GraphQLOperationGroupArgs',
     'GoogleCloudApigeeV1OperationArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
@@ -25,6 +28,7 @@ __all__ = [
     'GoogleCloudApigeeV1ReportPropertyArgs',
     'GoogleCloudApigeeV1TlsInfoArgs',
     'GoogleCloudApigeeV1TlsInfoCommonNameArgs',
+    'GoogleCloudApigeeV1TraceSamplingConfigArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
@@ -412,6 +416,158 @@ class GoogleCloudApigeeV1DateRangeArgs:
     @start.setter
     def start(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1GraphQLOperationArgs:
+    def __init__(__self__, *,
+                 operation: Optional[pulumi.Input[str]] = None,
+                 operation_type: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+        :param pulumi.Input[str] operation: GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_type: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        """
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if operation_type is not None:
+            pulumi.set(__self__, "operation_type", operation_type)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input[str]]:
+        """
+        GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter(name="operationType")
+    def operation_type(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        """
+        return pulumi.get(self, "operation_type")
+
+    @operation_type.setter
+    def operation_type(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "operation_type", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1GraphQLOperationConfigArgs:
+    def __init__(__self__, *,
+                 api_source: Optional[pulumi.Input[str]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]]] = None,
+                 quota: Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']] = None):
+        """
+        GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+        :param pulumi.Input[str] api_source: Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: Custom attributes associated with the operation.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]] operations: Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        :param pulumi.Input['GoogleCloudApigeeV1QuotaArgs'] quota: Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        """
+        if api_source is not None:
+            pulumi.set(__self__, "api_source", api_source)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+
+    @property
+    @pulumi.getter(name="apiSource")
+    def api_source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        """
+        return pulumi.get(self, "api_source")
+
+    @api_source.setter
+    def api_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_source", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]]:
+        """
+        Custom attributes associated with the operation.
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]]):
+        pulumi.set(self, "attributes", value)
+
+    @property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]]]:
+        """
+        Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationArgs']]]]):
+        pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']]:
+        """
+        Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1QuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1GraphQLOperationGroupArgs:
+    def __init__(__self__, *,
+                 operation_config_type: Optional[pulumi.Input[str]] = None,
+                 operation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationConfigArgs']]]] = None):
+        """
+        List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+        :param pulumi.Input[str] operation_config_type: Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationConfigArgs']]] operation_configs: Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        """
+        if operation_config_type is not None:
+            pulumi.set(__self__, "operation_config_type", operation_config_type)
+        if operation_configs is not None:
+            pulumi.set(__self__, "operation_configs", operation_configs)
+
+    @property
+    @pulumi.getter(name="operationConfigType")
+    def operation_config_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+        """
+        return pulumi.get(self, "operation_config_type")
+
+    @operation_config_type.setter
+    def operation_config_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation_config_type", value)
+
+    @property
+    @pulumi.getter(name="operationConfigs")
+    def operation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationConfigArgs']]]]:
+        """
+        Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        """
+        return pulumi.get(self, "operation_configs")
+
+    @operation_configs.setter
+    def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1GraphQLOperationConfigArgs']]]]):
+        pulumi.set(self, "operation_configs", value)
 
 
 @pulumi.input_type
@@ -1002,6 +1158,46 @@ class GoogleCloudApigeeV1TlsInfoCommonNameArgs:
     @wildcard_match.setter
     def wildcard_match(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "wildcard_match", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1TraceSamplingConfigArgs:
+    def __init__(__self__, *,
+                 sampler: Optional[pulumi.Input[str]] = None,
+                 sampling_rate: Optional[pulumi.Input[float]] = None):
+        """
+        TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+        :param pulumi.Input[str] sampler: Sampler of distributed tracing. OFF is the default value.
+        :param pulumi.Input[float] sampling_rate: Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+        """
+        if sampler is not None:
+            pulumi.set(__self__, "sampler", sampler)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @property
+    @pulumi.getter
+    def sampler(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sampler of distributed tracing. OFF is the default value.
+        """
+        return pulumi.get(self, "sampler")
+
+    @sampler.setter
+    def sampler(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sampler", value)
+
+    @property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+        """
+        return pulumi.get(self, "sampling_rate")
+
+    @sampling_rate.setter
+    def sampling_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_rate", value)
 
 
 @pulumi.input_type

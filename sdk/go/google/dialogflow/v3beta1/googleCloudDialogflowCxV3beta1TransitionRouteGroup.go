@@ -60,13 +60,13 @@ func (GoogleCloudDialogflowCxV3beta1TransitionRouteGroupState) ElementType() ref
 type googleCloudDialogflowCxV3beta1TransitionRouteGroupArgs struct {
 	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// The language to list transition route groups for. The field `messages` in TransitionRoute is language dependent. If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	// The language to list transition route groups for. The field `messages` in TransitionRoute is language dependent. If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name *string `pulumi:"name"`
 	// Required. The flow to create an TransitionRouteGroup for. Format: `projects//locations//agents//flows/`.
 	Parent string `pulumi:"parent"`
-	// Transition routes associated with the TransitionRouteGroup. Duplicate transition routes (i.e. using the same `intent`) are not allowed. Note that the `name` field is not used in the transition route group scope.
+	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes []GoogleCloudDialogflowCxV3beta1TransitionRoute `pulumi:"transitionRoutes"`
 }
 
@@ -74,13 +74,13 @@ type googleCloudDialogflowCxV3beta1TransitionRouteGroupArgs struct {
 type GoogleCloudDialogflowCxV3beta1TransitionRouteGroupArgs struct {
 	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName pulumi.StringPtrInput
-	// The language to list transition route groups for. The field `messages` in TransitionRoute is language dependent. If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	// The language to list transition route groups for. The field `messages` in TransitionRoute is language dependent. If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name pulumi.StringPtrInput
 	// Required. The flow to create an TransitionRouteGroup for. Format: `projects//locations//agents//flows/`.
 	Parent pulumi.StringInput
-	// Transition routes associated with the TransitionRouteGroup. Duplicate transition routes (i.e. using the same `intent`) are not allowed. Note that the `name` field is not used in the transition route group scope.
+	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes GoogleCloudDialogflowCxV3beta1TransitionRouteArrayInput
 }
 

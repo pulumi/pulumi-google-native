@@ -13,7 +13,7 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2.Inputs
     public sealed class PolicyAlternativeNameServerConfigTargetNameServerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         /// </summary>
         [Input("forwardingPath")]
         public Input<string>? ForwardingPath { get; set; }
@@ -23,6 +23,12 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2.Inputs
         /// </summary>
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }
+
+        /// <summary>
+        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp; ipv6) being populated.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         [Input("kind")]
         public Input<string>? Kind { get; set; }

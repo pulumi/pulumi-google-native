@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
+ * Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
  */
 export class GoogleCloudApigeeV1AsyncQuery extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class GoogleCloudApigeeV1AsyncQuery extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudApigeeV1AsyncQueryArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
@@ -63,12 +64,8 @@ export class GoogleCloudApigeeV1AsyncQuery extends pulumi.CustomResource {
             inputs["timeRange"] = args ? args.timeRange : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1AsyncQuery.__pulumiType, name, inputs, opts);
     }
@@ -115,7 +112,7 @@ export interface GoogleCloudApigeeV1AsyncQueryArgs {
      */
     readonly outputFormat?: pulumi.Input<string>;
     /**
-     * Required. The parent resource name. Must be of the form `organizations/{org}`.
+     * Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`.
      */
     readonly parent: pulumi.Input<string>;
     /**

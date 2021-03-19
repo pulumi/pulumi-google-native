@@ -240,7 +240,7 @@ namespace Pulumi.GoogleCloud.Datafusion.V1beta1
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// Name of the zone in which the Data Fusion instance will be created.
+        /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

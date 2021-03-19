@@ -45,8 +45,9 @@ export class GoogleCloudMlV1__Job extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudMlV1__JobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -64,12 +65,8 @@ export class GoogleCloudMlV1__Job extends pulumi.CustomResource {
             inputs["trainingOutput"] = args ? args.trainingOutput : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudMlV1__Job.__pulumiType, name, inputs, opts);
     }

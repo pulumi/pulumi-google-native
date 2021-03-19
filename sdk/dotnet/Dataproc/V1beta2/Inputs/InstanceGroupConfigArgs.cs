@@ -88,7 +88,7 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2.Inputs
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        /// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
         /// </summary>
         [Input("numInstances")]
         public Input<int>? NumInstances { get; set; }

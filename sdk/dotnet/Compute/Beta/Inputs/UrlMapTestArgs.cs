@@ -22,6 +22,34 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters.
+        /// For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+        /// For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters.
+        /// expectedOutputUrl is optional when service is specified.
+        /// </summary>
+        [Input("expectedOutputUrl")]
+        public Input<string>? ExpectedOutputUrl { get; set; }
+
+        /// <summary>
+        /// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+        /// expectedRedirectResponseCode cannot be set when service is set.
+        /// </summary>
+        [Input("expectedRedirectResponseCode")]
+        public Input<int>? ExpectedRedirectResponseCode { get; set; }
+
+        [Input("headers")]
+        private InputList<Inputs.UrlMapTestHeaderArgs>? _headers;
+
+        /// <summary>
+        /// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
+        /// </summary>
+        public InputList<Inputs.UrlMapTestHeaderArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.UrlMapTestHeaderArgs>());
+            set => _headers = value;
+        }
+
+        /// <summary>
         /// Host portion of the URL. If headers contains a host header, then host must also match the header value.
         /// </summary>
         [Input("host")]

@@ -68,6 +68,8 @@ type googleCloudApigeeV1DeveloperAppKeyArgs struct {
 	ConsumerSecret *string `pulumi:"consumerSecret"`
 	// Time the developer app expires in milliseconds since epoch.
 	ExpiresAt *string `pulumi:"expiresAt"`
+	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	ExpiresInSeconds *string `pulumi:"expiresInSeconds"`
 	// Time the developer app was created in milliseconds since epoch.
 	IssuedAt *string `pulumi:"issuedAt"`
 	// Parent of the developer app key. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/apps`
@@ -90,6 +92,8 @@ type GoogleCloudApigeeV1DeveloperAppKeyArgs struct {
 	ConsumerSecret pulumi.StringPtrInput
 	// Time the developer app expires in milliseconds since epoch.
 	ExpiresAt pulumi.StringPtrInput
+	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	ExpiresInSeconds pulumi.StringPtrInput
 	// Time the developer app was created in milliseconds since epoch.
 	IssuedAt pulumi.StringPtrInput
 	// Parent of the developer app key. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/apps`

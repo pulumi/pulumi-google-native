@@ -108,7 +108,7 @@ namespace Pulumi.GoogleCloud.Storagetransfer.V1
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Schedule specification.
+        /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ScheduleArgs>? Schedule { get; set; }

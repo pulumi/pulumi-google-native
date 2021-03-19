@@ -27,6 +27,7 @@ class InstantSnapshot(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
@@ -59,12 +60,16 @@ class InstantSnapshot(pulumi.CustomResource):
                For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
                
                The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource's resource id.
         :param pulumi.Input[str] source_disk: URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-               - projects/project/zones/zone/disks/disk 
-               - zones/zone/disks/disk
+               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+               - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+               - projects/project/zones/zone/disks/disk  
+               - projects/project/regions/region/disks/disk  
+               - zones/zone/disks/disk  
+               - regions/region/disks/disk
         :param pulumi.Input[str] source_disk_id: [Output Only] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
         :param pulumi.Input[str] status: [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -100,6 +105,7 @@ class InstantSnapshot(pulumi.CustomResource):
             __props__['project'] = project
             __props__['region'] = region
             __props__['request_id'] = request_id
+            __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['source_disk'] = source_disk

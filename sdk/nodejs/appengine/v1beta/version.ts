@@ -45,11 +45,12 @@ export class Version extends pulumi.CustomResource {
      */
     constructor(name: string, args: VersionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.appsId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.appsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appsId'");
             }
-            if ((!args || args.servicesId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.servicesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicesId'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
@@ -86,6 +87,7 @@ export class Version extends pulumi.CustomResource {
             inputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
             inputs["runtimeChannel"] = args ? args.runtimeChannel : undefined;
             inputs["runtimeMainExecutablePath"] = args ? args.runtimeMainExecutablePath : undefined;
+            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
             inputs["threadsafe"] = args ? args.threadsafe : undefined;
@@ -95,12 +97,8 @@ export class Version extends pulumi.CustomResource {
             inputs["zones"] = args ? args.zones : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Version.__pulumiType, name, inputs, opts);
     }
@@ -115,7 +113,7 @@ export interface VersionArgs {
      */
     readonly apiConfig?: pulumi.Input<inputs.appengine.v1beta.ApiConfigHandler>;
     /**
-     * app_engine_apis allows Second Generation runtimes to access the App Engine APIs.
+     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
      */
     readonly appEngineApis?: pulumi.Input<boolean>;
     /**
@@ -246,6 +244,10 @@ export interface VersionArgs {
      * The path or name of the app's main executable.
      */
     readonly runtimeMainExecutablePath?: pulumi.Input<string>;
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    readonly serviceAccount?: pulumi.Input<string>;
     /**
      * Part of `parent`. See documentation of `appsId`.
      */

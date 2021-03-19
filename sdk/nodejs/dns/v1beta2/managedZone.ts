@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Create a new ManagedZone.
+ * Creates a new ManagedZone.
  */
 export class ManagedZone extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     constructor(name: string, args: ManagedZoneArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
@@ -69,12 +70,8 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["visibility"] = args ? args.visibility : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ManagedZone.__pulumiType, name, inputs, opts);
     }
@@ -122,7 +119,7 @@ export interface ManagedZoneArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.
+     * Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
      */
     readonly nameServerSet?: pulumi.Input<string>;
     /**
@@ -142,11 +139,11 @@ export interface ManagedZoneArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
-     * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+     * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
      */
     readonly reverseLookupConfig?: pulumi.Input<inputs.dns.v1beta2.ManagedZoneReverseLookupConfig>;
     /**
-     * This field links to the associated service directory namespace. This field should not be set for public zones or forwarding zones.
+     * This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
      */
     readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.v1beta2.ManagedZoneServiceDirectoryConfig>;
     /**

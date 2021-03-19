@@ -45,8 +45,9 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleLongrunningOperationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["createdAt"] = args ? args.createdAt : undefined;
@@ -56,14 +57,11 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["properties"] = args ? args.properties : undefined;
+            inputs["state"] = args ? args.state : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleLongrunningOperation.__pulumiType, name, inputs, opts);
     }
@@ -101,4 +99,8 @@ export interface GoogleLongrunningOperationArgs {
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
     readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Properties>;
+    /**
+     * Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
+     */
+    readonly state?: pulumi.Input<string>;
 }

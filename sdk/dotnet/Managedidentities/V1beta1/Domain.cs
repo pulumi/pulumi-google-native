@@ -65,6 +65,12 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1beta1
         [Input("admin")]
         public Input<string>? Admin { get; set; }
 
+        /// <summary>
+        /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        /// </summary>
+        [Input("auditLogsEnabled")]
+        public Input<bool>? AuditLogsEnabled { get; set; }
+
         [Input("authorizedNetworks")]
         private InputList<string>? _authorizedNetworks;
 
@@ -84,7 +90,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1beta1
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segement length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+        /// Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

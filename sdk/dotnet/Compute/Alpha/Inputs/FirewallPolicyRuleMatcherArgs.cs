@@ -63,6 +63,18 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
             set => _srcSecureLabels = value;
         }
 
+        [Input("srcSecureTags")]
+        private InputList<Inputs.FirewallPolicyRuleSecureTagArgs>? _srcSecureTags;
+
+        /// <summary>
+        /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyRuleSecureTagArgs> SrcSecureTags
+        {
+            get => _srcSecureTags ?? (_srcSecureTags = new InputList<Inputs.FirewallPolicyRuleSecureTagArgs>());
+            set => _srcSecureTags = value;
+        }
+
         public FirewallPolicyRuleMatcherArgs()
         {
         }

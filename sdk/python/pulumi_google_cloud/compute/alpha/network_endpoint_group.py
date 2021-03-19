@@ -30,10 +30,12 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
+                 serverless_deployment: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -60,6 +62,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         :param pulumi.Input[str] project: Project ID for this request.
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the network endpoint group is located.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
                
@@ -68,6 +71,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
+        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         :param pulumi.Input[str] type: Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
@@ -106,13 +110,17 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
+            __props__['psc_target_service'] = psc_target_service
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
+            __props__['serverless_deployment'] = serverless_deployment
             __props__['size'] = size
             __props__['subnetwork'] = subnetwork
             __props__['type'] = type
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(NetworkEndpointGroup, __self__).__init__(
             'google-cloud:compute/alpha:NetworkEndpointGroup',

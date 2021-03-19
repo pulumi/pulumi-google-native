@@ -67,6 +67,8 @@ type targetHttpsProxyArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
@@ -86,7 +88,6 @@ type targetHttpsProxyArgs struct {
 	// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible.
 	// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
 	// - If the quic-override flag is not specified, NONE is implied.
-	// -
 	QuicOverride *string `pulumi:"quicOverride"`
 	// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 	Region *string `pulumi:"region"`
@@ -125,6 +126,8 @@ type TargetHttpsProxyArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
@@ -144,7 +147,6 @@ type TargetHttpsProxyArgs struct {
 	// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible.
 	// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
 	// - If the quic-override flag is not specified, NONE is implied.
-	// -
 	QuicOverride pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
 	Region pulumi.StringPtrInput

@@ -45,7 +45,8 @@ export class DataSource extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DataSourceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["disableModifications"] = args ? args.disableModifications : undefined;
             inputs["disableServing"] = args ? args.disableServing : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -56,12 +57,8 @@ export class DataSource extends pulumi.CustomResource {
             inputs["shortName"] = args ? args.shortName : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DataSource.__pulumiType, name, inputs, opts);
     }

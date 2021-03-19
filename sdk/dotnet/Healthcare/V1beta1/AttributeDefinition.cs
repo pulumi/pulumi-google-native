@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 {
     /// <summary>
-    /// Creates a new Attribute definition in the parent Consent store.
+    /// Creates a new Attribute definition in the parent consent store.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:AttributeDefinition")]
     public partial class AttributeDefinition : Pulumi.CustomResource
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputList<string>? _consentDefaultValues;
 
         /// <summary>
-        /// Default values of the attribute in consents. If no default values are specified, it defaults to an empty value.
+        /// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         /// </summary>
         public InputList<string> ConsentDefaultValues
         {
@@ -96,19 +96,19 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         }
 
         /// <summary>
-        /// Default value of the attribute in user data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+        /// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         /// </summary>
         [Input("dataMappingDefaultValue")]
         public Input<string>? DataMappingDefaultValue { get; set; }
 
         /// <summary>
-        /// A description of the attribute.
+        /// Optional. A description of the attribute.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name of the attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+        /// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

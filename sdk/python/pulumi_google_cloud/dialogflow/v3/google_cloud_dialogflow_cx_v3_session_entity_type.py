@@ -24,7 +24,7 @@ class GoogleCloudDialogflowCxV3SessionEntityType(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a session entity type. If the specified session entity type already exists, overrides the session entity type.
+        Creates a session entity type.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

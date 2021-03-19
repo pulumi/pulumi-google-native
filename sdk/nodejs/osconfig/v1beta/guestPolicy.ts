@@ -45,8 +45,9 @@ export class GuestPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: GuestPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["assignment"] = args ? args.assignment : undefined;
@@ -62,12 +63,8 @@ export class GuestPolicy extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GuestPolicy.__pulumiType, name, inputs, opts);
     }

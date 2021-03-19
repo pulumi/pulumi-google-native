@@ -60,6 +60,8 @@ type groupArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the `Group`.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. Dynamic group metadata like queries and status.
+	DynamicGroupMetadata *DynamicGroupMetadata `pulumi:"dynamicGroupMetadata"`
 	// Required. Immutable. The `EntityKey` of the `Group`.
 	GroupKey *EntityKey `pulumi:"groupKey"`
 	// Optional. The initial configuration option for the `Group`.
@@ -82,6 +84,8 @@ type GroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the `Group`.
 	DisplayName pulumi.StringPtrInput
+	// Optional. Dynamic group metadata like queries and status.
+	DynamicGroupMetadata DynamicGroupMetadataPtrInput
 	// Required. Immutable. The `EntityKey` of the `Group`.
 	GroupKey EntityKeyPtrInput
 	// Optional. The initial configuration option for the `Group`.

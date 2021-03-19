@@ -67,7 +67,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3.Inputs
         private InputList<Inputs.GoogleCloudDialogflowCxV3TransitionRouteArgs>? _transitionRoutes;
 
         /// <summary>
-        /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+        /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowCxV3TransitionRouteArgs> TransitionRoutes
         {

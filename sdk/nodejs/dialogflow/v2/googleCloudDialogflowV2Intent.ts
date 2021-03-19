@@ -45,19 +45,22 @@ export class GoogleCloudDialogflowV2Intent extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowV2IntentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["action"] = args ? args.action : undefined;
             inputs["defaultResponsePlatforms"] = args ? args.defaultResponsePlatforms : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["endInteraction"] = args ? args.endInteraction : undefined;
             inputs["events"] = args ? args.events : undefined;
             inputs["followupIntentInfo"] = args ? args.followupIntentInfo : undefined;
             inputs["inputContextNames"] = args ? args.inputContextNames : undefined;
             inputs["intentView"] = args ? args.intentView : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
+            inputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
             inputs["messages"] = args ? args.messages : undefined;
             inputs["mlDisabled"] = args ? args.mlDisabled : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -72,12 +75,8 @@ export class GoogleCloudDialogflowV2Intent extends pulumi.CustomResource {
             inputs["webhookState"] = args ? args.webhookState : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowV2Intent.__pulumiType, name, inputs, opts);
     }
@@ -99,6 +98,10 @@ export interface GoogleCloudDialogflowV2IntentArgs {
      * Required. The name of this intent.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+     */
+    readonly endInteraction?: pulumi.Input<boolean>;
     /**
      * Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
      */
@@ -123,6 +126,10 @@ export interface GoogleCloudDialogflowV2IntentArgs {
      * Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
      */
     readonly languageCode?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+     */
+    readonly liveAgentHandoff?: pulumi.Input<boolean>;
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */

@@ -10,13 +10,149 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Defines the Automated Agent to connect to a conversation.
+type GoogleCloudDialogflowV2beta1AutomatedAgentConfig struct {
+	// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+	Agent *string `pulumi:"agent"`
+}
+
+// GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs and GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs{...}
+type GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput
+	ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput
+}
+
+// Defines the Automated Agent to connect to a conversation.
+type GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs struct {
+	// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+}
+
+func (GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1AutomatedAgentConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput).ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs, GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtr and GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1AutomatedAgentConfigPtrType GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs
+
+func GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtr(v *GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1AutomatedAgentConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1AutomatedAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1AutomatedAgentConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1AutomatedAgentConfigPtrType) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1AutomatedAgentConfigPtrType) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput)
+}
+
+// Defines the Automated Agent to connect to a conversation.
+type GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1AutomatedAgentConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1AutomatedAgentConfig) *GoogleCloudDialogflowV2beta1AutomatedAgentConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput)
+}
+
+// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1AutomatedAgentConfig) *string { return v.Agent }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1AutomatedAgentConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput() GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) ToGoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1AutomatedAgentConfig) GoogleCloudDialogflowV2beta1AutomatedAgentConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput)
+}
+
+// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1AutomatedAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 type GoogleCloudDialogflowV2beta1ContextType struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount *int `pulumi:"lifespanCount"`
 	// Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name *string `pulumi:"name"`
-	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters map[string]string `pulumi:"parameters"`
 }
 
@@ -37,7 +173,7 @@ type GoogleCloudDialogflowV2beta1ContextTypeArgs struct {
 	LifespanCount pulumi.IntPtrInput `pulumi:"lifespanCount"`
 	// Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 }
 
@@ -103,7 +239,7 @@ func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) Name() pulumi.StringPtrOu
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextType) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -126,6 +262,142 @@ func (o GoogleCloudDialogflowV2beta1ContextTypeArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1ContextType {
 		return vs[0].([]GoogleCloudDialogflowV2beta1ContextType)[vs[1].(int)]
 	}).(GoogleCloudDialogflowV2beta1ContextTypeOutput)
+}
+
+// Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
+type GoogleCloudDialogflowV2beta1ConversationPhoneNumber struct {
+	// Output only. The phone number to connect to this conversation.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+}
+
+// GoogleCloudDialogflowV2beta1ConversationPhoneNumberInput is an input type that accepts GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs and GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ConversationPhoneNumberInput` via:
+//
+//          GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs{...}
+type GoogleCloudDialogflowV2beta1ConversationPhoneNumberInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput
+	ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput
+}
+
+// Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
+type GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs struct {
+	// Output only. The phone number to connect to this conversation.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+}
+
+func (GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1ConversationPhoneNumber)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput {
+	return i.ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput).ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs, GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtr and GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput
+	ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput
+}
+
+type googleCloudDialogflowV2beta1ConversationPhoneNumberPtrType GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs
+
+func GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtr(v *GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs) GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrInput {
+	return (*googleCloudDialogflowV2beta1ConversationPhoneNumberPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1ConversationPhoneNumberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1ConversationPhoneNumber)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1ConversationPhoneNumberPtrType) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1ConversationPhoneNumberPtrType) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput)
+}
+
+// Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
+type GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1ConversationPhoneNumber)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ConversationPhoneNumber) *GoogleCloudDialogflowV2beta1ConversationPhoneNumber {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput)
+}
+
+// Output only. The phone number to connect to this conversation.
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ConversationPhoneNumber) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1ConversationPhoneNumber)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput() GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput) ToGoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput) Elem() GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1ConversationPhoneNumber) GoogleCloudDialogflowV2beta1ConversationPhoneNumber {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput)
+}
+
+// Output only. The phone number to connect to this conversation.
+func (o GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1ConversationPhoneNumber) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 // The status of a reload attempt.
@@ -390,6 +662,1763 @@ func (o GoogleCloudDialogflowV2beta1EntityTypeEntityArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1EntityTypeEntity {
 		return vs[0].([]GoogleCloudDialogflowV2beta1EntityTypeEntity)[vs[1].(int)]
 	}).(GoogleCloudDialogflowV2beta1EntityTypeEntityOutput)
+}
+
+// Defines the Human Agent Assistant to connect to a conversation.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig struct {
+	// Configuration for agent assistance of human agent participant.
+	HumanAgentSuggestionConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig `pulumi:"humanAgentSuggestionConfig"`
+	// Configuration for message analysis.
+	MessageAnalysisConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig `pulumi:"messageAnalysisConfig"`
+	// Pub/Sub topic on which to publish new agent assistant events.
+	NotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfig `pulumi:"notificationConfig"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput
+}
+
+// Defines the Human Agent Assistant to connect to a conversation.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs struct {
+	// Configuration for agent assistance of human agent participant.
+	HumanAgentSuggestionConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput `pulumi:"humanAgentSuggestionConfig"`
+	// Configuration for message analysis.
+	MessageAnalysisConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput `pulumi:"messageAnalysisConfig"`
+	// Pub/Sub topic on which to publish new agent assistant events.
+	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigPtrInput `pulumi:"notificationConfig"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput)
+}
+
+// Defines the Human Agent Assistant to connect to a conversation.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput)
+}
+
+// Configuration for agent assistance of human agent participant.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) HumanAgentSuggestionConfig() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
+		return v.HumanAgentSuggestionConfig
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput)
+}
+
+// Configuration for message analysis.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) MessageAnalysisConfig() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig {
+		return v.MessageAnalysisConfig
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Pub/Sub topic on which to publish new agent assistant events.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput) NotificationConfig() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1NotificationConfig {
+		return v.NotificationConfig
+	}).(GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput)
+}
+
+// Configuration for agent assistance of human agent participant.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) HumanAgentSuggestionConfig() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HumanAgentSuggestionConfig
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput)
+}
+
+// Configuration for message analysis.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) MessageAnalysisConfig() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MessageAnalysisConfig
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Pub/Sub topic on which to publish new agent assistant events.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) NotificationConfig() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig) *GoogleCloudDialogflowV2beta1NotificationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationConfig
+	}).(GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput)
+}
+
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig struct {
+	// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+	Model *string `pulumi:"model"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput
+}
+
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs struct {
+	// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput)
+}
+
+// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput)
+}
+
+// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig) *string {
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput)
+}
+
+// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for analyses to run on each conversation message.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig struct {
+	// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
+	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput
+}
+
+// Configuration for analyses to run on each conversation message.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs struct {
+	// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
+	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Configuration for analyses to run on each conversation message.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
+}
+
+// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput)
+}
+
+// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Detail human agent assistant config.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig struct {
+	// Configuration of different suggestion features. One feature can have only one config.
+	FeatureConfigs []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig `pulumi:"featureConfigs"`
+	// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+	GroupSuggestionResponses *bool `pulumi:"groupSuggestionResponses"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput
+}
+
+// Detail human agent assistant config.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs struct {
+	// Configuration of different suggestion features. One feature can have only one config.
+	FeatureConfigs GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput `pulumi:"featureConfigs"`
+	// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+	GroupSuggestionResponses pulumi.BoolPtrInput `pulumi:"groupSuggestionResponses"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput)
+}
+
+// Detail human agent assistant config.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput)
+}
+
+// Configuration of different suggestion features. One feature can have only one config.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) FeatureConfigs() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig) []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig {
+		return v.FeatureConfigs
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput)
+}
+
+// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig) *bool {
+		return v.GroupSuggestionResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput)
+}
+
+// Configuration of different suggestion features. One feature can have only one config.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput) FeatureConfigs() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig) []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureConfigs
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput)
+}
+
+// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GroupSuggestionResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Config for suggestion features.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig struct {
+	// Configs of custom conversation model.
+	ConversationModelConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig `pulumi:"conversationModelConfig"`
+	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+	EnableEventBasedSuggestion *bool `pulumi:"enableEventBasedSuggestion"`
+	// Configs of query.
+	QueryConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig `pulumi:"queryConfig"`
+	// The suggestion feature.
+	SuggestionFeature *GoogleCloudDialogflowV2beta1SuggestionFeature `pulumi:"suggestionFeature"`
+	// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
+	SuggestionTriggerSettings *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings `pulumi:"suggestionTriggerSettings"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput
+}
+
+// Config for suggestion features.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs struct {
+	// Configs of custom conversation model.
+	ConversationModelConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput `pulumi:"conversationModelConfig"`
+	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+	EnableEventBasedSuggestion pulumi.BoolPtrInput `pulumi:"enableEventBasedSuggestion"`
+	// Configs of query.
+	QueryConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput `pulumi:"queryConfig"`
+	// The suggestion feature.
+	SuggestionFeature GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput `pulumi:"suggestionFeature"`
+	// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
+	SuggestionTriggerSettings GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput `pulumi:"suggestionTriggerSettings"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray{ GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs{...} }
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray []GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput)
+}
+
+// Config for suggestion features.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput {
+	return o
+}
+
+// Configs of custom conversation model.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) ConversationModelConfig() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig {
+		return v.ConversationModelConfig
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput)
+}
+
+// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) EnableEventBasedSuggestion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *bool {
+		return v.EnableEventBasedSuggestion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configs of query.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) QueryConfig() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig {
+		return v.QueryConfig
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput)
+}
+
+// The suggestion feature.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) SuggestionFeature() GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *GoogleCloudDialogflowV2beta1SuggestionFeature {
+		return v.SuggestionFeature
+	}).(GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput)
+}
+
+// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) SuggestionTriggerSettings() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings {
+		return v.SuggestionTriggerSettings
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig {
+		return vs[0].([]GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput)
+}
+
+// Config for suggestion query.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig struct {
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+	ConfidenceThreshold *float64 `pulumi:"confidenceThreshold"`
+	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+	ContextFilterSettings *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings `pulumi:"contextFilterSettings"`
+	// Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+	DialogflowQuerySource *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource `pulumi:"dialogflowQuerySource"`
+	// Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+	DocumentQuerySource *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource `pulumi:"documentQuerySource"`
+	// Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+	KnowledgeBaseQuerySource *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource `pulumi:"knowledgeBaseQuerySource"`
+	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+	MaxResults *int `pulumi:"maxResults"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput
+}
+
+// Config for suggestion query.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs struct {
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+	ConfidenceThreshold pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
+	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+	ContextFilterSettings GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput `pulumi:"contextFilterSettings"`
+	// Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+	DialogflowQuerySource GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput `pulumi:"dialogflowQuerySource"`
+	// Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+	DocumentQuerySource GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput `pulumi:"documentQuerySource"`
+	// Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+	KnowledgeBaseQuerySource GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput `pulumi:"knowledgeBaseQuerySource"`
+	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput)
+}
+
+// Config for suggestion query.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput)
+}
+
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *float64 {
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) ContextFilterSettings() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
+		return v.ContextFilterSettings
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) DialogflowQuerySource() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
+		return v.DialogflowQuerySource
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) DocumentQuerySource() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
+		return v.DocumentQuerySource
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) KnowledgeBaseQuerySource() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
+		return v.KnowledgeBaseQuerySource
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *int {
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput)
+}
+
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ContextFilterSettings() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ContextFilterSettings
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) DialogflowQuerySource() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.DialogflowQuerySource
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) DocumentQuerySource() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentQuerySource
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) KnowledgeBaseQuerySource() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
+		if v == nil {
+			return nil
+		}
+		return v.KnowledgeBaseQuerySource
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxResults
+	}).(pulumi.IntPtrOutput)
+}
+
+// Settings that determine how to filter recent conversation context when generating suggestions.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings struct {
+	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+	DropHandoffMessages *bool `pulumi:"dropHandoffMessages"`
+	// If set to true, all messages from ivr stage are dropped.
+	DropIvrMessages *bool `pulumi:"dropIvrMessages"`
+	// If set to true, all messages from virtual agent are dropped.
+	DropVirtualAgentMessages *bool `pulumi:"dropVirtualAgentMessages"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput
+}
+
+// Settings that determine how to filter recent conversation context when generating suggestions.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs struct {
+	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+	DropHandoffMessages pulumi.BoolPtrInput `pulumi:"dropHandoffMessages"`
+	// If set to true, all messages from ivr stage are dropped.
+	DropIvrMessages pulumi.BoolPtrInput `pulumi:"dropIvrMessages"`
+	// If set to true, all messages from virtual agent are dropped.
+	DropVirtualAgentMessages pulumi.BoolPtrInput `pulumi:"dropVirtualAgentMessages"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// Settings that determine how to filter recent conversation context when generating suggestions.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput)
+}
+
+// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) DropHandoffMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *bool {
+		return v.DropHandoffMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from ivr stage are dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) DropIvrMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *bool {
+		return v.DropIvrMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from virtual agent are dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput) DropVirtualAgentMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *bool {
+		return v.DropVirtualAgentMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput)
+}
+
+// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) DropHandoffMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropHandoffMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from ivr stage are dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) DropIvrMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropIvrMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, all messages from virtual agent are dropped.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput) DropVirtualAgentMessages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DropVirtualAgentMessages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource struct {
+	// Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+	Agent *string `pulumi:"agent"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput
+}
+
+// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs struct {
+	// Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput)
+}
+
+// Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *string {
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput)
+}
+
+// Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource struct {
+	// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+	Documents []string `pulumi:"documents"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput
+}
+
+// Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs struct {
+	// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+	Documents pulumi.StringArrayInput `pulumi:"documents"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput)
+}
+
+// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) Documents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) []string {
+		return v.Documents
+	}).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput)
+}
+
+// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) Documents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Documents
+	}).(pulumi.StringArrayOutput)
+}
+
+// Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource struct {
+	// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+	KnowledgeBases []string `pulumi:"knowledgeBases"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput
+}
+
+// Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs struct {
+	// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+	KnowledgeBases pulumi.StringArrayInput `pulumi:"knowledgeBases"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput)
+}
+
+// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) KnowledgeBases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) []string {
+		return v.KnowledgeBases
+	}).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput)
+}
+
+// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) KnowledgeBases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KnowledgeBases
+	}).(pulumi.StringArrayOutput)
+}
+
+// Settings of suggestion trigger.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings struct {
+	// Do not trigger if last utterance is small talk.
+	NoSmallTalk *bool `pulumi:"noSmallTalk"`
+	// Only trigger suggestion if participant role of last utterance is END_USER.
+	OnlyEndUser *bool `pulumi:"onlyEndUser"`
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{...}
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput
+}
+
+// Settings of suggestion trigger.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs struct {
+	// Do not trigger if last utterance is small talk.
+	NoSmallTalk pulumi.BoolPtrInput `pulumi:"noSmallTalk"`
+	// Only trigger suggestion if participant role of last utterance is END_USER.
+	OnlyEndUser pulumi.BoolPtrInput `pulumi:"onlyEndUser"`
+}
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput).ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput
+	ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput
+}
+
+type googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrType GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs
+
+func GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtr(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput {
+	return (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrType) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+// Settings of suggestion trigger.
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings) *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput)
+}
+
+// Do not trigger if last utterance is small talk.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) NoSmallTalk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings) *bool {
+		return v.NoSmallTalk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only trigger suggestion if participant role of last utterance is END_USER.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput) OnlyEndUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings) *bool {
+		return v.OnlyEndUser
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) ToGoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) Elem() GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings) GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput)
+}
+
+// Do not trigger if last utterance is small talk.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) NoSmallTalk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoSmallTalk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only trigger suggestion if participant role of last utterance is END_USER.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput) OnlyEndUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OnlyEndUser
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Represents a single followup intent in the chain.
@@ -7375,6 +9404,569 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayOutput) Index(i
 	}).(GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartOutput)
 }
 
+// Defines logging behavior for conversation lifecycle events.
+type GoogleCloudDialogflowV2beta1LoggingConfig struct {
+	// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// GoogleCloudDialogflowV2beta1LoggingConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1LoggingConfigArgs and GoogleCloudDialogflowV2beta1LoggingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1LoggingConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1LoggingConfigArgs{...}
+type GoogleCloudDialogflowV2beta1LoggingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1LoggingConfigOutput() GoogleCloudDialogflowV2beta1LoggingConfigOutput
+	ToGoogleCloudDialogflowV2beta1LoggingConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1LoggingConfigOutput
+}
+
+// Defines logging behavior for conversation lifecycle events.
+type GoogleCloudDialogflowV2beta1LoggingConfigArgs struct {
+	// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (GoogleCloudDialogflowV2beta1LoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1LoggingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1LoggingConfigArgs) ToGoogleCloudDialogflowV2beta1LoggingConfigOutput() GoogleCloudDialogflowV2beta1LoggingConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1LoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1LoggingConfigArgs) ToGoogleCloudDialogflowV2beta1LoggingConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1LoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1LoggingConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1LoggingConfigArgs) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutput() GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1LoggingConfigArgs) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1LoggingConfigOutput).ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1LoggingConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1LoggingConfigArgs, GoogleCloudDialogflowV2beta1LoggingConfigPtr and GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1LoggingConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1LoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1LoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutput() GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1LoggingConfigPtrType GoogleCloudDialogflowV2beta1LoggingConfigArgs
+
+func GoogleCloudDialogflowV2beta1LoggingConfigPtr(v *GoogleCloudDialogflowV2beta1LoggingConfigArgs) GoogleCloudDialogflowV2beta1LoggingConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1LoggingConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1LoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1LoggingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1LoggingConfigPtrType) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutput() GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1LoggingConfigPtrType) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput)
+}
+
+// Defines logging behavior for conversation lifecycle events.
+type GoogleCloudDialogflowV2beta1LoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1LoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1LoggingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigOutput) ToGoogleCloudDialogflowV2beta1LoggingConfigOutput() GoogleCloudDialogflowV2beta1LoggingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigOutput) ToGoogleCloudDialogflowV2beta1LoggingConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1LoggingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigOutput) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutput() GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigOutput) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1LoggingConfig) *GoogleCloudDialogflowV2beta1LoggingConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput)
+}
+
+// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
+func (o GoogleCloudDialogflowV2beta1LoggingConfigOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1LoggingConfig) *bool { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1LoggingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutput() GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput) ToGoogleCloudDialogflowV2beta1LoggingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1LoggingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1LoggingConfig) GoogleCloudDialogflowV2beta1LoggingConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1LoggingConfigOutput)
+}
+
+// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
+func (o GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1LoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines notification behavior.
+type GoogleCloudDialogflowV2beta1NotificationConfig struct {
+	// Format of message.
+	MessageFormat *string `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+	Topic *string `pulumi:"topic"`
+}
+
+// GoogleCloudDialogflowV2beta1NotificationConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1NotificationConfigArgs and GoogleCloudDialogflowV2beta1NotificationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1NotificationConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1NotificationConfigArgs{...}
+type GoogleCloudDialogflowV2beta1NotificationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1NotificationConfigOutput() GoogleCloudDialogflowV2beta1NotificationConfigOutput
+	ToGoogleCloudDialogflowV2beta1NotificationConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1NotificationConfigOutput
+}
+
+// Defines notification behavior.
+type GoogleCloudDialogflowV2beta1NotificationConfigArgs struct {
+	// Format of message.
+	MessageFormat pulumi.StringPtrInput `pulumi:"messageFormat"`
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (GoogleCloudDialogflowV2beta1NotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1NotificationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1NotificationConfigArgs) ToGoogleCloudDialogflowV2beta1NotificationConfigOutput() GoogleCloudDialogflowV2beta1NotificationConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1NotificationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1NotificationConfigArgs) ToGoogleCloudDialogflowV2beta1NotificationConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1NotificationConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1NotificationConfigArgs) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutput() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1NotificationConfigArgs) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1NotificationConfigOutput).ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1NotificationConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1NotificationConfigArgs, GoogleCloudDialogflowV2beta1NotificationConfigPtr and GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1NotificationConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1NotificationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1NotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutput() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1NotificationConfigPtrType GoogleCloudDialogflowV2beta1NotificationConfigArgs
+
+func GoogleCloudDialogflowV2beta1NotificationConfigPtr(v *GoogleCloudDialogflowV2beta1NotificationConfigArgs) GoogleCloudDialogflowV2beta1NotificationConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1NotificationConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1NotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1NotificationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1NotificationConfigPtrType) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutput() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1NotificationConfigPtrType) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput)
+}
+
+// Defines notification behavior.
+type GoogleCloudDialogflowV2beta1NotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1NotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1NotificationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigOutput() GoogleCloudDialogflowV2beta1NotificationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutput() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1NotificationConfig) *GoogleCloudDialogflowV2beta1NotificationConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput)
+}
+
+// Format of message.
+func (o GoogleCloudDialogflowV2beta1NotificationConfigOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1NotificationConfig) *string { return v.MessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+func (o GoogleCloudDialogflowV2beta1NotificationConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1NotificationConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1NotificationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutput() GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput) ToGoogleCloudDialogflowV2beta1NotificationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1NotificationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1NotificationConfig) GoogleCloudDialogflowV2beta1NotificationConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1NotificationConfigOutput)
+}
+
+// Format of message.
+func (o GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput) MessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1NotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+func (o GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1NotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configures speech transcription for ConversationProfile.
+type GoogleCloudDialogflowV2beta1SpeechToTextConfig struct {
+	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+	SpeechModelVariant *string `pulumi:"speechModelVariant"`
+}
+
+// GoogleCloudDialogflowV2beta1SpeechToTextConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs and GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SpeechToTextConfigInput` via:
+//
+//          GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{...}
+type GoogleCloudDialogflowV2beta1SpeechToTextConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput
+	ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput
+}
+
+// Configures speech transcription for ConversationProfile.
+type GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs struct {
+	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+	SpeechModelVariant pulumi.StringPtrInput `pulumi:"speechModelVariant"`
+}
+
+func (GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SpeechToTextConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput).ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs, GoogleCloudDialogflowV2beta1SpeechToTextConfigPtr and GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1SpeechToTextConfigPtrType GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs
+
+func GoogleCloudDialogflowV2beta1SpeechToTextConfigPtr(v *GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1SpeechToTextConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1SpeechToTextConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SpeechToTextConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1SpeechToTextConfigPtrType) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1SpeechToTextConfigPtrType) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput)
+}
+
+// Configures speech transcription for ConversationProfile.
+type GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SpeechToTextConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SpeechToTextConfig) *GoogleCloudDialogflowV2beta1SpeechToTextConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput)
+}
+
+// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) SpeechModelVariant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SpeechToTextConfig) *string { return v.SpeechModelVariant }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SpeechToTextConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput() GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) ToGoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SpeechToTextConfig) GoogleCloudDialogflowV2beta1SpeechToTextConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput)
+}
+
+// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) SpeechModelVariant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SpeechToTextConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechModelVariant
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
+type GoogleCloudDialogflowV2beta1SuggestionFeature struct {
+	// Type of Human Agent Assistant API feature to request.
+	Type *string `pulumi:"type"`
+}
+
+// GoogleCloudDialogflowV2beta1SuggestionFeatureInput is an input type that accepts GoogleCloudDialogflowV2beta1SuggestionFeatureArgs and GoogleCloudDialogflowV2beta1SuggestionFeatureOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SuggestionFeatureInput` via:
+//
+//          GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{...}
+type GoogleCloudDialogflowV2beta1SuggestionFeatureInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutput() GoogleCloudDialogflowV2beta1SuggestionFeatureOutput
+	ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SuggestionFeatureOutput
+}
+
+// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
+type GoogleCloudDialogflowV2beta1SuggestionFeatureArgs struct {
+	// Type of Human Agent Assistant API feature to request.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SuggestionFeature)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutput() GoogleCloudDialogflowV2beta1SuggestionFeatureOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SuggestionFeatureOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput() GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SuggestionFeatureOutput).ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1SuggestionFeatureArgs, GoogleCloudDialogflowV2beta1SuggestionFeaturePtr and GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput() GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput
+	ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput
+}
+
+type googleCloudDialogflowV2beta1SuggestionFeaturePtrType GoogleCloudDialogflowV2beta1SuggestionFeatureArgs
+
+func GoogleCloudDialogflowV2beta1SuggestionFeaturePtr(v *GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput {
+	return (*googleCloudDialogflowV2beta1SuggestionFeaturePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1SuggestionFeaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SuggestionFeature)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1SuggestionFeaturePtrType) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput() GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1SuggestionFeaturePtrType) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput)
+}
+
+// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
+type GoogleCloudDialogflowV2beta1SuggestionFeatureOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SuggestionFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SuggestionFeature)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutput() GoogleCloudDialogflowV2beta1SuggestionFeatureOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeatureOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeatureOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput() GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SuggestionFeature) *GoogleCloudDialogflowV2beta1SuggestionFeature {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput)
+}
+
+// Type of Human Agent Assistant API feature to request.
+func (o GoogleCloudDialogflowV2beta1SuggestionFeatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SuggestionFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SuggestionFeature)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput() GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput) ToGoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput) Elem() GoogleCloudDialogflowV2beta1SuggestionFeatureOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SuggestionFeature) GoogleCloudDialogflowV2beta1SuggestionFeature {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1SuggestionFeatureOutput)
+}
+
+// Type of Human Agent Assistant API feature to request.
+func (o GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SuggestionFeature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatus struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -7548,12 +10140,38 @@ func (o GoogleRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ContextTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ContextTypeArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1DocumentReloadStatusOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1DocumentReloadStatusPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1EntityTypeEntityArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1IntentMessageOutput{})
@@ -7647,6 +10265,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1IntentTrainingPhraseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1LoggingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1NotificationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeatureOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusPtrOutput{})
 }

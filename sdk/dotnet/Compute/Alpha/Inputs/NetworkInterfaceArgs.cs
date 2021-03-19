@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.
+        /// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -125,6 +125,18 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
+
+        [Input("subinterfaces")]
+        private InputList<Inputs.NetworkInterfaceSubInterfaceArgs>? _subinterfaces;
+
+        /// <summary>
+        /// SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
+        /// </summary>
+        public InputList<Inputs.NetworkInterfaceSubInterfaceArgs> Subinterfaces
+        {
+            get => _subinterfaces ?? (_subinterfaces = new InputList<Inputs.NetworkInterfaceSubInterfaceArgs>());
+            set => _subinterfaces = value;
+        }
 
         /// <summary>
         /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:  

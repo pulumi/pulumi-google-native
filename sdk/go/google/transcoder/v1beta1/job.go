@@ -68,7 +68,7 @@ type jobArgs struct {
 	FailureDetails []FailureDetail `pulumi:"failureDetails"`
 	// Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
 	FailureReason *string `pulumi:"failureReason"`
-	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. It must be stored in Cloud Storage. For example, `gs://bucket/inputs/file.mp4`.
+	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
 	InputUri *string `pulumi:"inputUri"`
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
@@ -104,7 +104,7 @@ type JobArgs struct {
 	FailureDetails FailureDetailArrayInput
 	// Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
 	FailureReason pulumi.StringPtrInput
-	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. It must be stored in Cloud Storage. For example, `gs://bucket/inputs/file.mp4`.
+	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
 	InputUri pulumi.StringPtrInput
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput

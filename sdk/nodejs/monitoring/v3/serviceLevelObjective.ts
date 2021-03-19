@@ -45,8 +45,9 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceLevelObjectiveArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["calendarPeriod"] = args ? args.calendarPeriod : undefined;
@@ -59,12 +60,8 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
             inputs["serviceLevelObjectiveId"] = args ? args.serviceLevelObjectiveId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceLevelObjective.__pulumiType, name, inputs, opts);
     }

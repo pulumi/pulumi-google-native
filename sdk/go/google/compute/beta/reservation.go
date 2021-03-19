@@ -81,6 +81,8 @@ type reservationArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
@@ -115,6 +117,8 @@ type ReservationArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringPtrInput
 	// Reservation for instances with specific machine shapes.

@@ -83,6 +83,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+        /// </summary>
+        [Input("endInteraction")]
+        public Input<bool>? EndInteraction { get; set; }
+
         [Input("events")]
         private InputList<string>? _events;
 
@@ -136,6 +142,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+        /// </summary>
+        [Input("liveAgentHandoff")]
+        public Input<bool>? LiveAgentHandoff { get; set; }
 
         [Input("messages")]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageArgs>? _messages;

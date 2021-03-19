@@ -45,7 +45,8 @@ export class Pipeline extends pulumi.CustomResource {
      */
     constructor(name: string, args?: PipelineArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["description"] = args ? args.description : undefined;
             inputs["docker"] = args ? args.docker : undefined;
             inputs["inputParameters"] = args ? args.inputParameters : undefined;
@@ -56,12 +57,8 @@ export class Pipeline extends pulumi.CustomResource {
             inputs["resources"] = args ? args.resources : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Pipeline.__pulumiType, name, inputs, opts);
     }

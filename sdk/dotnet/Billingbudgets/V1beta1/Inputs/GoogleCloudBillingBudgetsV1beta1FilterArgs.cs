@@ -15,6 +15,12 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudBillingBudgetsV1beta1FilterArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+        /// </summary>
+        [Input("calendarPeriod")]
+        public Input<string>? CalendarPeriod { get; set; }
+
         [Input("creditTypes")]
         private InputList<string>? _creditTypes;
 
@@ -32,6 +38,12 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1beta1.Inputs
         /// </summary>
         [Input("creditTypesTreatment")]
         public Input<string>? CreditTypesTreatment { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies to track usage from any start date (required) to any end date (optional).
+        /// </summary>
+        [Input("customPeriod")]
+        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs>? CustomPeriod { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -44,8 +44,9 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      */
     constructor(name: string, args: HttpHealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
@@ -66,12 +67,8 @@ export class HttpHealthCheck extends pulumi.CustomResource {
             inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HttpHealthCheck.__pulumiType, name, inputs, opts);
     }

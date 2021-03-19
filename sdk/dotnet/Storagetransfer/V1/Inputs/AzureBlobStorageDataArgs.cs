@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Storagetransfer.V1.Inputs
     public sealed class AzureBlobStorageDataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](data-retention#user-credentials).
+        /// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
         [Input("azureCredentials")]
         public Input<Inputs.AzureCredentialsArgs>? AzureCredentials { get; set; }
@@ -26,6 +26,12 @@ namespace Pulumi.GoogleCloud.Storagetransfer.V1.Inputs
         /// </summary>
         [Input("container")]
         public Input<string>? Container { get; set; }
+
+        /// <summary>
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
 
         /// <summary>
         /// Required. The name of the Azure Storage account.

@@ -45,8 +45,9 @@ export class GoogleLongrunning__Operation extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleLongrunning__OperationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
@@ -61,6 +62,8 @@ export class GoogleLongrunning__Operation extends pulumi.CustomResource {
             inputs["framework"] = args ? args.framework : undefined;
             inputs["isDefault"] = args ? args.isDefault : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["lastMigrationModelId"] = args ? args.lastMigrationModelId : undefined;
+            inputs["lastMigrationTime"] = args ? args.lastMigrationTime : undefined;
             inputs["lastUseTime"] = args ? args.lastUseTime : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["manualScaling"] = args ? args.manualScaling : undefined;
@@ -76,12 +79,8 @@ export class GoogleLongrunning__Operation extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleLongrunning__Operation.__pulumiType, name, inputs, opts);
     }
@@ -96,7 +95,7 @@ export interface GoogleLongrunning__OperationArgs {
      */
     readonly acceleratorConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__AcceleratorConfig>;
     /**
-     * Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes. Note that you cannot use AutoScaling if your version uses [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use specify `manual_scaling`.
+     * Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
      */
     readonly autoScaling?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__AutoScaling>;
     /**
@@ -140,11 +139,19 @@ export interface GoogleLongrunning__OperationArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Output only. The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
+     */
+    readonly lastMigrationModelId?: pulumi.Input<string>;
+    /**
+     * Output only. The last time this version was successfully [migrated to AI Platform (Unified)](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
+     */
+    readonly lastMigrationTime?: pulumi.Input<string>;
+    /**
      * Output only. The time the version was last used for prediction.
      */
     readonly lastUseTime?: pulumi.Input<string>;
     /**
-     * Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. If this field is not specified, it defaults to `mls1-c1-m2`. Online prediction supports the following machine types: * `mls1-c1-m2` * `mls1-c4-m2` * `n1-standard-2` * `n1-standard-4` * `n1-standard-8` * `n1-standard-16` * `n1-standard-32` * `n1-highmem-2` * `n1-highmem-4` * `n1-highmem-8` * `n1-highmem-16` * `n1-highmem-32` * `n1-highcpu-2` * `n1-highcpu-4` * `n1-highcpu-8` * `n1-highcpu-16` * `n1-highcpu-32` `mls1-c4-m2` is in beta. All other machine types are generally available. Learn more about the [differences between machine types](/ml-engine/docs/machine-types-online-prediction).
+     * Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
      */
     readonly machineType?: pulumi.Input<string>;
     /**

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1.Inputs
 {
 
     /// <summary>
-    /// An **entity entry** for an associated entity type. Next Id = 8
+    /// An **entity entry** for an associated entity type.
     /// </summary>
     public sealed class GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs : Pulumi.ResourceArgs
     {

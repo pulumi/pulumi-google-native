@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 {
     /// <summary>
-    /// Creates a new Consent in the parent Consent store.
+    /// Creates a new Consent in the parent consent store.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:Consent")]
     public partial class Consent : Pulumi.CustomResource
@@ -60,13 +60,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public sealed class ConsentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The resource name of the consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// </summary>
         [Input("consentArtifact")]
         public Input<string>? ConsentArtifact { get; set; }
 
         /// <summary>
-        /// Timestamp in UTC of when this consent is considered expired.
+        /// Timestamp in UTC of when this Consent is considered expired.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -75,7 +75,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+        /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         }
 
         /// <summary>
-        /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+        /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputList<Inputs.GoogleCloudHealthcareV1beta1ConsentPolicyArgs>? _policies;
 
         /// <summary>
-        /// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+        /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
         /// </summary>
         public InputList<Inputs.GoogleCloudHealthcareV1beta1ConsentPolicyArgs> Policies
         {
@@ -114,19 +114,19 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         public Input<string>? RevisionCreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+        /// Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
         /// </summary>
         [Input("revisionId")]
         public Input<string>? RevisionId { get; set; }
 
         /// <summary>
-        /// Indicates the current state of this consent.
+        /// Required. Indicates the current state of this Consent.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Input only. The time to live for this consent from when it is created.
+        /// Input only. The time to live for this Consent from when it is created.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }

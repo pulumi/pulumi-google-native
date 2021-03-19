@@ -120,7 +120,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. The network must belong to the same project as the metastore instance. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+        /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

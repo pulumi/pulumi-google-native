@@ -76,7 +76,7 @@ type serviceArgs struct {
 	MetadataManagementActivity *MetadataManagementActivity `pulumi:"metadataManagementActivity"`
 	// Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
 	Name *string `pulumi:"name"`
-	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. The network must belong to the same project as the metastore instance. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
 	Network *string `pulumi:"network"`
 	// Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
 	Parent string `pulumi:"parent"`
@@ -118,7 +118,7 @@ type ServiceArgs struct {
 	MetadataManagementActivity MetadataManagementActivityPtrInput
 	// Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
 	Name pulumi.StringPtrInput
-	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. The network must belong to the same project as the metastore instance. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
 	Network pulumi.StringPtrInput
 	// Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
 	Parent pulumi.StringInput

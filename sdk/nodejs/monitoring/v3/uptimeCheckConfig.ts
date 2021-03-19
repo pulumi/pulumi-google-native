@@ -45,8 +45,9 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: UptimeCheckConfigArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
@@ -64,12 +65,8 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(UptimeCheckConfig.__pulumiType, name, inputs, opts);
     }
@@ -100,7 +97,7 @@ export interface UptimeCheckConfigArgs {
      */
     readonly isInternal?: pulumi.Input<boolean>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for Uptime checks: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
      */
     readonly monitoredResource?: pulumi.Input<inputs.monitoring.v3.MonitoredResource>;
     /**

@@ -11,6 +11,7 @@ from .commitment import *
 from .disk import *
 from .external_vpn_gateway import *
 from .firewall import *
+from .firewall_policy import *
 from .forwarding_rule import *
 from .health_check import *
 from .health_check_service import *
@@ -32,11 +33,14 @@ from .node_template import *
 from .notification_endpoint import *
 from .packet_mirroring import *
 from .policy import *
+from .public_advertised_prefix import *
+from .public_delegated_prefix import *
 from .reservation import *
 from .resource_policy import *
 from .route import *
 from .router import *
 from .security_policy import *
+from .service_attachment import *
 from .snapshot import *
 from .ssl_certificate import *
 from .ssl_policy import *
@@ -82,6 +86,8 @@ def _register_module():
                 return ExternalVpnGateway(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:Firewall":
                 return Firewall(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/beta:FirewallPolicy":
+                return FirewallPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:ForwardingRule":
                 return ForwardingRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:HealthCheck":
@@ -124,6 +130,10 @@ def _register_module():
                 return PacketMirroring(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/beta:PublicAdvertisedPrefix":
+                return PublicAdvertisedPrefix(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/beta:PublicDelegatedPrefix":
+                return PublicDelegatedPrefix(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:Reservation":
                 return Reservation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:ResourcePolicy":
@@ -134,6 +144,8 @@ def _register_module():
                 return Router(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:SecurityPolicy":
                 return SecurityPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/beta:ServiceAttachment":
+                return ServiceAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:Snapshot":
                 return Snapshot(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/beta:SslCertificate":

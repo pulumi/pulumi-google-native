@@ -44,13 +44,15 @@ export class V1Beta1QuotaOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: V1Beta1QuotaOverrideArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["adminOverrideAncestor"] = args ? args.adminOverrideAncestor : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
             inputs["force"] = args ? args.force : undefined;
+            inputs["forceOnly"] = args ? args.forceOnly : undefined;
             inputs["metric"] = args ? args.metric : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["overrideValue"] = args ? args.overrideValue : undefined;
@@ -58,12 +60,8 @@ export class V1Beta1QuotaOverride extends pulumi.CustomResource {
             inputs["unit"] = args ? args.unit : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(V1Beta1QuotaOverride.__pulumiType, name, inputs, opts);
     }
@@ -82,9 +80,13 @@ export interface V1Beta1QuotaOverrideArgs {
      */
     readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether to force the creation of the quota override. If creating an override would cause the effective quota for the consumer to decrease by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+     * Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
      */
     readonly force?: pulumi.Input<boolean>;
+    /**
+     * The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set.
+     */
+    readonly forceOnly?: pulumi.Input<string>;
     /**
      * The name of the metric to which this override applies. An example name would be: `compute.googleapis.com/cpus`
      */

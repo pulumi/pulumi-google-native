@@ -45,8 +45,9 @@ export class Firewall extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["allowed"] = args ? args.allowed : undefined;
@@ -74,12 +75,8 @@ export class Firewall extends pulumi.CustomResource {
             inputs["targetTags"] = args ? args.targetTags : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Firewall.__pulumiType, name, inputs, opts);
     }

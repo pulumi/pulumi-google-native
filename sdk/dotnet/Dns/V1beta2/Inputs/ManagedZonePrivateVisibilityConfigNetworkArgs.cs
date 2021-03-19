@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2.Inputs
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         /// </summary>
         [Input("networkUrl")]
         public Input<string>? NetworkUrl { get; set; }

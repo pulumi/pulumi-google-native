@@ -45,12 +45,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["appEngine"] = args ? args.appEngine : undefined;
@@ -73,12 +71,8 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkEndpointGroup.__pulumiType, name, inputs, opts);
     }
@@ -143,7 +137,7 @@ export interface NetworkEndpointGroupArgs {
     /**
      * [Output Only] The URL of the region where the network endpoint group is located.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

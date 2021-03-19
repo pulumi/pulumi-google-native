@@ -90,6 +90,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+        /// </summary>
+        [Input("istioCanonicalService")]
+        public Input<Inputs.IstioCanonicalServiceArgs>? IstioCanonicalService { get; set; }
+
+        /// <summary>
         /// Type used for Istio services scoped to an Istio mesh.
         /// </summary>
         [Input("meshIstio")]

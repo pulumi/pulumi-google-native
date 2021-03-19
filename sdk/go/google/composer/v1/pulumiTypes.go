@@ -119,12 +119,284 @@ func (o AllowedIpRangeArrayOutput) Index(i pulumi.IntInput) AllowedIpRangeOutput
 	}).(AllowedIpRangeOutput)
 }
 
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+type DatabaseConfig struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+	MachineType *string `pulumi:"machineType"`
+}
+
+// DatabaseConfigInput is an input type that accepts DatabaseConfigArgs and DatabaseConfigOutput values.
+// You can construct a concrete instance of `DatabaseConfigInput` via:
+//
+//          DatabaseConfigArgs{...}
+type DatabaseConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseConfigOutput() DatabaseConfigOutput
+	ToDatabaseConfigOutputWithContext(context.Context) DatabaseConfigOutput
+}
+
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+type DatabaseConfigArgs struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (DatabaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConfig)(nil)).Elem()
+}
+
+func (i DatabaseConfigArgs) ToDatabaseConfigOutput() DatabaseConfigOutput {
+	return i.ToDatabaseConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseConfigArgs) ToDatabaseConfigOutputWithContext(ctx context.Context) DatabaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigOutput)
+}
+
+func (i DatabaseConfigArgs) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutput {
+	return i.ToDatabaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseConfigArgs) ToDatabaseConfigPtrOutputWithContext(ctx context.Context) DatabaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigOutput).ToDatabaseConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseConfigPtrInput is an input type that accepts DatabaseConfigArgs, DatabaseConfigPtr and DatabaseConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseConfigPtrInput` via:
+//
+//          DatabaseConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutput
+	ToDatabaseConfigPtrOutputWithContext(context.Context) DatabaseConfigPtrOutput
+}
+
+type databaseConfigPtrType DatabaseConfigArgs
+
+func DatabaseConfigPtr(v *DatabaseConfigArgs) DatabaseConfigPtrInput {
+	return (*databaseConfigPtrType)(v)
+}
+
+func (*databaseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConfig)(nil)).Elem()
+}
+
+func (i *databaseConfigPtrType) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutput {
+	return i.ToDatabaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseConfigPtrType) ToDatabaseConfigPtrOutputWithContext(ctx context.Context) DatabaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigPtrOutput)
+}
+
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+type DatabaseConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConfig)(nil)).Elem()
+}
+
+func (o DatabaseConfigOutput) ToDatabaseConfigOutput() DatabaseConfigOutput {
+	return o
+}
+
+func (o DatabaseConfigOutput) ToDatabaseConfigOutputWithContext(ctx context.Context) DatabaseConfigOutput {
+	return o
+}
+
+func (o DatabaseConfigOutput) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutput {
+	return o.ToDatabaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseConfigOutput) ToDatabaseConfigPtrOutputWithContext(ctx context.Context) DatabaseConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseConfig) *DatabaseConfig {
+		return &v
+	}).(DatabaseConfigPtrOutput)
+}
+
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+func (o DatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConfig)(nil)).Elem()
+}
+
+func (o DatabaseConfigPtrOutput) ToDatabaseConfigPtrOutput() DatabaseConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseConfigPtrOutput) ToDatabaseConfigPtrOutputWithContext(ctx context.Context) DatabaseConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseConfigPtrOutput) Elem() DatabaseConfigOutput {
+	return o.ApplyT(func(v *DatabaseConfig) DatabaseConfig { return *v }).(DatabaseConfigOutput)
+}
+
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+func (o DatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The encryption options for the Cloud Composer environment and its dependencies.
+type EncryptionConfig struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
+// You can construct a concrete instance of `EncryptionConfigInput` via:
+//
+//          EncryptionConfigArgs{...}
+type EncryptionConfigInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigOutput() EncryptionConfigOutput
+	ToEncryptionConfigOutputWithContext(context.Context) EncryptionConfigOutput
+}
+
+// The encryption options for the Cloud Composer environment and its dependencies.
+type EncryptionConfigArgs struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (EncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return i.ToEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput).ToEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigPtrInput` via:
+//
+//          EncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput
+	ToEncryptionConfigPtrOutputWithContext(context.Context) EncryptionConfigPtrOutput
+}
+
+type encryptionConfigPtrType EncryptionConfigArgs
+
+func EncryptionConfigPtr(v *EncryptionConfigArgs) EncryptionConfigPtrInput {
+	return (*encryptionConfigPtrType)(v)
+}
+
+func (*encryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
+}
+
+// The encryption options for the Cloud Composer environment and its dependencies.
+type EncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+		return &v
+	}).(EncryptionConfigPtrOutput)
+}
+
+// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
+func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+}
+
+// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
+func (o EncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration information for an environment.
 type EnvironmentConfig struct {
 	// Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
 	AirflowUri *string `pulumi:"airflowUri"`
 	// Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
 	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Output only. The Kubernetes Engine cluster used to run this environment.
 	GkeCluster *string `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.
@@ -135,6 +407,8 @@ type EnvironmentConfig struct {
 	PrivateEnvironmentConfig *PrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
+	// Optional. The configuration settings for the Airflow web server App Engine instance.
+	WebServerConfig *WebServerConfig `pulumi:"webServerConfig"`
 	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl *WebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
 }
@@ -156,6 +430,10 @@ type EnvironmentConfigArgs struct {
 	AirflowUri pulumi.StringPtrInput `pulumi:"airflowUri"`
 	// Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
 	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Output only. The Kubernetes Engine cluster used to run this environment.
 	GkeCluster pulumi.StringPtrInput `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.
@@ -166,6 +444,8 @@ type EnvironmentConfigArgs struct {
 	PrivateEnvironmentConfig PrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	// Optional. The configuration settings for the Airflow web server App Engine instance.
+	WebServerConfig WebServerConfigPtrInput `pulumi:"webServerConfig"`
 	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
 	WebServerNetworkAccessControl WebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
 }
@@ -258,6 +538,16 @@ func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
+}
+
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
+}
+
 // Output only. The Kubernetes Engine cluster used to run this environment.
 func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
@@ -281,6 +571,11 @@ func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() PrivateEnvironmentCo
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
+}
+
+// Optional. The configuration settings for the Airflow web server App Engine instance.
+func (o EnvironmentConfigOutput) WebServerConfig() WebServerConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *WebServerConfig { return v.WebServerConfig }).(WebServerConfigPtrOutput)
 }
 
 // Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -324,6 +619,26 @@ func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 		}
 		return v.DagGcsPrefix
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *DatabaseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseConfig
+	}).(DatabaseConfigPtrOutput)
+}
+
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(EncryptionConfigPtrOutput)
 }
 
 // Output only. The Kubernetes Engine cluster used to run this environment.
@@ -374,6 +689,16 @@ func (o EnvironmentConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 		}
 		return v.SoftwareConfig
 	}).(SoftwareConfigPtrOutput)
+}
+
+// Optional. The configuration settings for the Airflow web server App Engine instance.
+func (o EnvironmentConfigPtrOutput) WebServerConfig() WebServerConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *WebServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerConfig
+	}).(WebServerConfigPtrOutput)
 }
 
 // Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -606,7 +931,7 @@ type NodeConfig struct {
 	Location *string `pulumi:"location"`
 	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
 	MachineType *string `pulumi:"machineType"`
-	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided.
+	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 	Network *string `pulumi:"network"`
 	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
 	OauthScopes []string `pulumi:"oauthScopes"`
@@ -639,7 +964,7 @@ type NodeConfigArgs struct {
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided.
+	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
@@ -749,7 +1074,7 @@ func (o NodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided.
+// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 func (o NodeConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -832,7 +1157,7 @@ func (o NodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided.
+// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
 func (o NodeConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
 		if v == nil {
@@ -1474,6 +1799,140 @@ func (o SoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration settings for the Airflow web server App Engine instance.
+type WebServerConfig struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+	MachineType *string `pulumi:"machineType"`
+}
+
+// WebServerConfigInput is an input type that accepts WebServerConfigArgs and WebServerConfigOutput values.
+// You can construct a concrete instance of `WebServerConfigInput` via:
+//
+//          WebServerConfigArgs{...}
+type WebServerConfigInput interface {
+	pulumi.Input
+
+	ToWebServerConfigOutput() WebServerConfigOutput
+	ToWebServerConfigOutputWithContext(context.Context) WebServerConfigOutput
+}
+
+// The configuration settings for the Airflow web server App Engine instance.
+type WebServerConfigArgs struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (WebServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebServerConfig)(nil)).Elem()
+}
+
+func (i WebServerConfigArgs) ToWebServerConfigOutput() WebServerConfigOutput {
+	return i.ToWebServerConfigOutputWithContext(context.Background())
+}
+
+func (i WebServerConfigArgs) ToWebServerConfigOutputWithContext(ctx context.Context) WebServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigOutput)
+}
+
+func (i WebServerConfigArgs) ToWebServerConfigPtrOutput() WebServerConfigPtrOutput {
+	return i.ToWebServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WebServerConfigArgs) ToWebServerConfigPtrOutputWithContext(ctx context.Context) WebServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigOutput).ToWebServerConfigPtrOutputWithContext(ctx)
+}
+
+// WebServerConfigPtrInput is an input type that accepts WebServerConfigArgs, WebServerConfigPtr and WebServerConfigPtrOutput values.
+// You can construct a concrete instance of `WebServerConfigPtrInput` via:
+//
+//          WebServerConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WebServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToWebServerConfigPtrOutput() WebServerConfigPtrOutput
+	ToWebServerConfigPtrOutputWithContext(context.Context) WebServerConfigPtrOutput
+}
+
+type webServerConfigPtrType WebServerConfigArgs
+
+func WebServerConfigPtr(v *WebServerConfigArgs) WebServerConfigPtrInput {
+	return (*webServerConfigPtrType)(v)
+}
+
+func (*webServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebServerConfig)(nil)).Elem()
+}
+
+func (i *webServerConfigPtrType) ToWebServerConfigPtrOutput() WebServerConfigPtrOutput {
+	return i.ToWebServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *webServerConfigPtrType) ToWebServerConfigPtrOutputWithContext(ctx context.Context) WebServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigPtrOutput)
+}
+
+// The configuration settings for the Airflow web server App Engine instance.
+type WebServerConfigOutput struct{ *pulumi.OutputState }
+
+func (WebServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebServerConfig)(nil)).Elem()
+}
+
+func (o WebServerConfigOutput) ToWebServerConfigOutput() WebServerConfigOutput {
+	return o
+}
+
+func (o WebServerConfigOutput) ToWebServerConfigOutputWithContext(ctx context.Context) WebServerConfigOutput {
+	return o
+}
+
+func (o WebServerConfigOutput) ToWebServerConfigPtrOutput() WebServerConfigPtrOutput {
+	return o.ToWebServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WebServerConfigOutput) ToWebServerConfigPtrOutputWithContext(ctx context.Context) WebServerConfigPtrOutput {
+	return o.ApplyT(func(v WebServerConfig) *WebServerConfig {
+		return &v
+	}).(WebServerConfigPtrOutput)
+}
+
+// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+func (o WebServerConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebServerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type WebServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WebServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebServerConfig)(nil)).Elem()
+}
+
+func (o WebServerConfigPtrOutput) ToWebServerConfigPtrOutput() WebServerConfigPtrOutput {
+	return o
+}
+
+func (o WebServerConfigPtrOutput) ToWebServerConfigPtrOutputWithContext(ctx context.Context) WebServerConfigPtrOutput {
+	return o
+}
+
+func (o WebServerConfigPtrOutput) Elem() WebServerConfigOutput {
+	return o.ApplyT(func(v *WebServerConfig) WebServerConfig { return *v }).(WebServerConfigOutput)
+}
+
+// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+func (o WebServerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControl struct {
 	// A collection of allowed IP ranges with descriptions.
@@ -1611,6 +2070,10 @@ func (o WebServerNetworkAccessControlPtrOutput) AllowedIpRanges() AllowedIpRange
 func init() {
 	pulumi.RegisterOutputType(AllowedIpRangeOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseConfigPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyOutput{})
@@ -1623,6 +2086,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(WebServerConfigOutput{})
+	pulumi.RegisterOutputType(WebServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WebServerNetworkAccessControlOutput{})
 	pulumi.RegisterOutputType(WebServerNetworkAccessControlPtrOutput{})
 }

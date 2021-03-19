@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowCxV3Agent extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3AgentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["avatarUri"] = args ? args.avatarUri : undefined;
@@ -57,17 +58,14 @@ export class GoogleCloudDialogflowCxV3Agent extends pulumi.CustomResource {
             inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
             inputs["startFlow"] = args ? args.startFlow : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3Agent.__pulumiType, name, inputs, opts);
     }
@@ -82,7 +80,7 @@ export interface GoogleCloudDialogflowCxV3AgentArgs {
      */
     readonly avatarUri?: pulumi.Input<string>;
     /**
-     * Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+     * Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
      */
     readonly defaultLanguageCode?: pulumi.Input<string>;
     /**
@@ -109,6 +107,10 @@ export interface GoogleCloudDialogflowCxV3AgentArgs {
      * Required. The location to create a agent for. Format: `projects//locations/`.
      */
     readonly parent: pulumi.Input<string>;
+    /**
+     * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+     */
+    readonly securitySettings?: pulumi.Input<string>;
     /**
      * Speech recognition related settings.
      */

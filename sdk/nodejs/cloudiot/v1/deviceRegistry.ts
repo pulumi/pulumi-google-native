@@ -45,8 +45,9 @@ export class DeviceRegistry extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeviceRegistryArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["credentials"] = args ? args.credentials : undefined;
@@ -60,12 +61,8 @@ export class DeviceRegistry extends pulumi.CustomResource {
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DeviceRegistry.__pulumiType, name, inputs, opts);
     }

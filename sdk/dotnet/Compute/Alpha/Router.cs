@@ -90,7 +90,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (Encrypted Interconnect feature).
+        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
         /// </summary>
         [Input("encryptedInterconnectRouter")]
         public Input<bool>? EncryptedInterconnectRouter { get; set; }

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Consent artifact in the parent Consent store.
+ * Creates a new Consent artifact in the parent consent store.
  */
 export class ConsentArtifact extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class ConsentArtifact extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsentArtifactArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["consentContentScreenshots"] = args ? args.consentContentScreenshots : undefined;
@@ -60,12 +61,8 @@ export class ConsentArtifact extends pulumi.CustomResource {
             inputs["witnessSignature"] = args ? args.witnessSignature : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConsentArtifact.__pulumiType, name, inputs, opts);
     }
@@ -76,27 +73,27 @@ export class ConsentArtifact extends pulumi.CustomResource {
  */
 export interface ConsentArtifactArgs {
     /**
-     * Screenshots of the consent content.
+     * Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
      */
     readonly consentContentScreenshots?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.Image>[]>;
     /**
-     * An string indicating the version of the consent content.
+     * Optional. An string indicating the version of the consent information shown to the user.
      */
     readonly consentContentVersion?: pulumi.Input<string>;
     /**
-     * A signature from guardian.
+     * Optional. A signature from a guardian.
      */
     readonly guardianSignature?: pulumi.Input<inputs.healthcare.v1beta1.Signature>;
     /**
-     * Metadata associated with the consent artifact. For example, the consent locale or user agent version.
+     * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+     * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The name of the Consent store this consent artifact belongs to.
+     * Required. The name of the consent store this Consent artifact belongs to.
      */
     readonly parent: pulumi.Input<string>;
     /**
@@ -104,11 +101,11 @@ export interface ConsentArtifactArgs {
      */
     readonly userId?: pulumi.Input<string>;
     /**
-     * User's signature.
+     * Optional. User's signature.
      */
     readonly userSignature?: pulumi.Input<inputs.healthcare.v1beta1.Signature>;
     /**
-     * A signature from a witness.
+     * Optional. A signature from a witness.
      */
     readonly witnessSignature?: pulumi.Input<inputs.healthcare.v1beta1.Signature>;
 }

@@ -45,8 +45,9 @@ export class Snapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: SnapshotArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["autoCreated"] = args ? args.autoCreated : undefined;
@@ -63,6 +64,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["licenseCodes"] = args ? args.licenseCodes : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
+            inputs["locationHint"] = args ? args.locationHint : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
@@ -79,12 +81,8 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["storageLocations"] = args ? args.storageLocations : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Snapshot.__pulumiType, name, inputs, opts);
     }
@@ -152,6 +150,10 @@ export interface SnapshotArgs {
      * [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
      */
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
+     */
+    readonly locationHint?: pulumi.Input<string>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

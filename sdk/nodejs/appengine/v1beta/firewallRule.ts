@@ -44,8 +44,9 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallRuleArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.appsId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.appsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appsId'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -55,12 +56,8 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["sourceRange"] = args ? args.sourceRange : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FirewallRule.__pulumiType, name, inputs, opts);
     }

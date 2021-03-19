@@ -176,6 +176,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         }
 
         /// <summary>
+        /// An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+        /// </summary>
+        [Input("locationHint")]
+        public Input<string>? LocationHint { get; set; }
+
+        /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>
         [Input("multiWriter")]
@@ -204,6 +210,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// Indicates how many IOPS must be provisioned for the disk.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
         /// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -246,6 +258,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Input("selfLink")]
@@ -261,9 +279,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
 
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        /// - projects/project/zones/zone/disks/disk 
-        /// - zones/zone/disks/disk
+        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+        /// - projects/project/zones/zone/disks/disk  
+        /// - projects/project/regions/region/disks/disk  
+        /// - zones/zone/disks/disk  
+        /// - regions/region/disks/disk
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }
@@ -329,13 +350,18 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<string>? SourceSnapshotId { get; set; }
 
         /// <summary>
-        /// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/.
+        /// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
         /// </summary>
         [Input("sourceStorageObject")]
         public Input<string>? SourceStorageObject { get; set; }
 
         /// <summary>
-        /// [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+        /// [Output Only] The status of disk creation.  
+        /// - CREATING: Disk is provisioning. 
+        /// - RESTORING: Source data is being copied into the disk. 
+        /// - FAILED: Disk creation failed. 
+        /// - READY: Disk is ready for use. 
+        /// - DELETING: Disk is deleting.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

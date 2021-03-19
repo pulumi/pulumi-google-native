@@ -4,9 +4,12 @@
 
 # Export this package's modules as members:
 from .google_cloud_dialogflow_v2beta1_context import *
+from .google_cloud_dialogflow_v2beta1_conversation import *
+from .google_cloud_dialogflow_v2beta1_conversation_profile import *
 from .google_cloud_dialogflow_v2beta1_entity_type import *
 from .google_cloud_dialogflow_v2beta1_intent import *
 from .google_cloud_dialogflow_v2beta1_knowledge_base import *
+from .google_cloud_dialogflow_v2beta1_participant import *
 from .google_cloud_dialogflow_v2beta1_session_entity_type import *
 from .google_longrunning_operation import *
 from ._inputs import *
@@ -25,12 +28,18 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Context":
                 return GoogleCloudDialogflowV2beta1Context(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Conversation":
+                return GoogleCloudDialogflowV2beta1Conversation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1ConversationProfile":
+                return GoogleCloudDialogflowV2beta1ConversationProfile(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1EntityType":
                 return GoogleCloudDialogflowV2beta1EntityType(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Intent":
                 return GoogleCloudDialogflowV2beta1Intent(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1KnowledgeBase":
                 return GoogleCloudDialogflowV2beta1KnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Participant":
+                return GoogleCloudDialogflowV2beta1Participant(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1SessionEntityType":
                 return GoogleCloudDialogflowV2beta1SessionEntityType(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2beta1:GoogleLongrunningOperation":

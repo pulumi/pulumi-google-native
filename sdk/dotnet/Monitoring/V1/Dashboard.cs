@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Monitoring.V1
 {
     /// <summary>
-    /// Creates a new custom dashboard.This method requires the monitoring.dashboards.create permission on the specified project. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+    /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:monitoring/v1:Dashboard")]
     public partial class Dashboard : Pulumi.CustomResource

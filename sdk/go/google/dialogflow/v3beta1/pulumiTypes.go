@@ -458,7 +458,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) IsWebh
 
 // The output from the virtual agent.
 type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput struct {
-	// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage *GoogleCloudDialogflowCxV3beta1PageType `pulumi:"currentPage"`
 	// Required. Input only. The diagnostic info output for the turn.
 	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
@@ -470,7 +470,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput struct {
 	Status *GoogleRpcStatus `pulumi:"status"`
 	// The text responses from the agent for the turn.
 	TextResponses []GoogleCloudDialogflowCxV3beta1ResponseMessageText `pulumi:"textResponses"`
-	// The Intent that triggered the response. Only some fields such as name and displayname will be set.
+	// The Intent that triggered the response. Only name and displayName will be set.
 	TriggeredIntent *GoogleCloudDialogflowCxV3beta1IntentType `pulumi:"triggeredIntent"`
 }
 
@@ -487,7 +487,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputInput inter
 
 // The output from the virtual agent.
 type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs struct {
-	// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3beta1PageTypePtrInput `pulumi:"currentPage"`
 	// Required. Input only. The diagnostic info output for the turn.
 	DiagnosticInfo pulumi.StringMapInput `pulumi:"diagnosticInfo"`
@@ -499,7 +499,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs struct
 	Status GoogleRpcStatusPtrInput `pulumi:"status"`
 	// The text responses from the agent for the turn.
 	TextResponses GoogleCloudDialogflowCxV3beta1ResponseMessageTextArrayInput `pulumi:"textResponses"`
-	// The Intent that triggered the response. Only some fields such as name and displayname will be set.
+	// The Intent that triggered the response. Only name and displayName will be set.
 	TriggeredIntent GoogleCloudDialogflowCxV3beta1IntentTypePtrInput `pulumi:"triggeredIntent"`
 }
 
@@ -581,7 +581,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) 
 	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput)
 }
 
-// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+// The Page on which the utterance was spoken. Only name and displayName will be set.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) CurrentPage() GoogleCloudDialogflowCxV3beta1PageTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) *GoogleCloudDialogflowCxV3beta1PageType {
 		return v.CurrentPage
@@ -623,7 +623,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) 
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageTextArrayOutput)
 }
 
-// The Intent that triggered the response. Only some fields such as name and displayname will be set.
+// The Intent that triggered the response. Only name and displayName will be set.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) TriggeredIntent() GoogleCloudDialogflowCxV3beta1IntentTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) *GoogleCloudDialogflowCxV3beta1IntentType {
 		return v.TriggeredIntent
@@ -650,7 +650,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutpu
 	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput)
 }
 
-// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+// The Page on which the utterance was spoken. Only name and displayName will be set.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) CurrentPage() GoogleCloudDialogflowCxV3beta1PageTypePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) *GoogleCloudDialogflowCxV3beta1PageType {
 		if v == nil {
@@ -710,7 +710,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutpu
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageTextArrayOutput)
 }
 
-// The Intent that triggered the response. Only some fields such as name and displayname will be set.
+// The Intent that triggered the response. Only name and displayName will be set.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) TriggeredIntent() GoogleCloudDialogflowCxV3beta1IntentTypePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) *GoogleCloudDialogflowCxV3beta1IntentType {
 		if v == nil {
@@ -873,7 +873,7 @@ func (o GoogleCloudDialogflowCxV3beta1DtmfInputPtrOutput) FinishDigit() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// An **entity entry** for an associated entity type. Next Id = 8
+// An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntity struct {
 	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms []string `pulumi:"synonyms"`
@@ -892,7 +892,7 @@ type GoogleCloudDialogflowCxV3beta1EntityTypeEntityInput interface {
 	ToGoogleCloudDialogflowCxV3beta1EntityTypeEntityOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput
 }
 
-// An **entity entry** for an associated entity type. Next Id = 8
+// An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs struct {
 	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
@@ -937,7 +937,7 @@ func (i GoogleCloudDialogflowCxV3beta1EntityTypeEntityArray) ToGoogleCloudDialog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1EntityTypeEntityArrayOutput)
 }
 
-// An **entity entry** for an associated entity type. Next Id = 8
+// An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput) ElementType() reflect.Type {
@@ -1117,6 +1117,31 @@ func (i GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput)
 }
 
+// GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayInput is an input type that accepts GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArray and GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArray{ GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs{...} }
+type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput() GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput
+	ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArray []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigInput
+
+func (GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArray) ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput() GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArray) ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput)
+}
+
 // Configuration for the version.
 type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput struct{ *pulumi.OutputState }
 
@@ -1135,6 +1160,26 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput) ToGoogleCl
 // Required. Format: projects//locations//agents//flows//versions/.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput) ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput() GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput) ToGoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig {
+		return vs[0].([]GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput)
 }
 
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
@@ -1409,6 +1454,773 @@ func (o GoogleCloudDialogflowCxV3beta1EventInputPtrOutput) Event() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of the experiment.
+type GoogleCloudDialogflowCxV3beta1ExperimentDefinition struct {
+	// The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	Condition *string `pulumi:"condition"`
+	// The flow versions as the variants of this experiment.
+	VersionVariants *GoogleCloudDialogflowCxV3beta1VersionVariants `pulumi:"versionVariants"`
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentDefinitionInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs and GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentDefinitionInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs{...}
+type GoogleCloudDialogflowCxV3beta1ExperimentDefinitionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput
+}
+
+// Definition of the experiment.
+type GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs struct {
+	// The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The flow versions as the variants of this experiment.
+	VersionVariants GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput `pulumi:"versionVariants"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentDefinition)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput).ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs, GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtr and GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1ExperimentDefinitionPtrType GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs
+
+func GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtr(v *GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrInput {
+	return (*googleCloudDialogflowCxV3beta1ExperimentDefinitionPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1ExperimentDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1ExperimentDefinition)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1ExperimentDefinitionPtrType) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1ExperimentDefinitionPtrType) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput)
+}
+
+// Definition of the experiment.
+type GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentDefinition)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentDefinition) *GoogleCloudDialogflowCxV3beta1ExperimentDefinition {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput)
+}
+
+// The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentDefinition) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// The flow versions as the variants of this experiment.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput) VersionVariants() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentDefinition) *GoogleCloudDialogflowCxV3beta1VersionVariants {
+		return v.VersionVariants
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1ExperimentDefinition)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentDefinition) GoogleCloudDialogflowCxV3beta1ExperimentDefinition {
+		return *v
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput)
+}
+
+// The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flow versions as the variants of this experiment.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput) VersionVariants() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentDefinition) *GoogleCloudDialogflowCxV3beta1VersionVariants {
+		if v == nil {
+			return nil
+		}
+		return v.VersionVariants
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput)
+}
+
+// The inference result which includes an objective metric to optimize and the confidence interval.
+type GoogleCloudDialogflowCxV3beta1ExperimentResult struct {
+	// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
+	LastUpdateTime *string `pulumi:"lastUpdateTime"`
+	// Version variants and metrics.
+	VersionMetrics []GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics `pulumi:"versionMetrics"`
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultArgs and GoogleCloudDialogflowCxV3beta1ExperimentResultOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultArgs{...}
+type GoogleCloudDialogflowCxV3beta1ExperimentResultInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultOutput
+}
+
+// The inference result which includes an objective metric to optimize and the confidence interval.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultArgs struct {
+	// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
+	LastUpdateTime pulumi.StringPtrInput `pulumi:"lastUpdateTime"`
+	// Version variants and metrics.
+	VersionMetrics GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayInput `pulumi:"versionMetrics"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResult)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultOutput).ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultArgs, GoogleCloudDialogflowCxV3beta1ExperimentResultPtr and GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3beta1ExperimentResultPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1ExperimentResultPtrType GoogleCloudDialogflowCxV3beta1ExperimentResultArgs
+
+func GoogleCloudDialogflowCxV3beta1ExperimentResultPtr(v *GoogleCloudDialogflowCxV3beta1ExperimentResultArgs) GoogleCloudDialogflowCxV3beta1ExperimentResultPtrInput {
+	return (*googleCloudDialogflowCxV3beta1ExperimentResultPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1ExperimentResultPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1ExperimentResult)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1ExperimentResultPtrType) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1ExperimentResultPtrType) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput)
+}
+
+// The inference result which includes an objective metric to optimize and the confidence interval.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResult)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResult) *GoogleCloudDialogflowCxV3beta1ExperimentResult {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput)
+}
+
+// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) LastUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResult) *string { return v.LastUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// Version variants and metrics.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultOutput) VersionMetrics() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResult) []GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
+		return v.VersionMetrics
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1ExperimentResult)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1ExperimentResultOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResult) GoogleCloudDialogflowCxV3beta1ExperimentResult {
+		return *v
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultOutput)
+}
+
+// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput) LastUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResult) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastUpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version variants and metrics.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput) VersionMetrics() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResult) []GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
+		if v == nil {
+			return nil
+		}
+		return v.VersionMetrics
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput)
+}
+
+// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval struct {
+	// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
+	ConfidenceLevel *float64 `pulumi:"confidenceLevel"`
+	// Lower bound of the interval.
+	LowerBound *float64 `pulumi:"lowerBound"`
+	// The percent change between an experiment metric's value and the value for its control.
+	Ratio *float64 `pulumi:"ratio"`
+	// Upper bound of the interval.
+	UpperBound *float64 `pulumi:"upperBound"`
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs and GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs{...}
+type GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput
+}
+
+// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs struct {
+	// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
+	ConfidenceLevel pulumi.Float64PtrInput `pulumi:"confidenceLevel"`
+	// Lower bound of the interval.
+	LowerBound pulumi.Float64PtrInput `pulumi:"lowerBound"`
+	// The percent change between an experiment metric's value and the value for its control.
+	Ratio pulumi.Float64PtrInput `pulumi:"ratio"`
+	// Upper bound of the interval.
+	UpperBound pulumi.Float64PtrInput `pulumi:"upperBound"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput).ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs, GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtr and GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrType GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs
+
+func GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtr(v *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrInput {
+	return (*googleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrType) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrType) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput)
+}
+
+// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput)
+}
+
+// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) ConfidenceLevel() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 {
+		return v.ConfidenceLevel
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Lower bound of the interval.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) LowerBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 { return v.LowerBound }).(pulumi.Float64PtrOutput)
+}
+
+// The percent change between an experiment metric's value and the value for its control.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) Ratio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 { return v.Ratio }).(pulumi.Float64PtrOutput)
+}
+
+// Upper bound of the interval.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 { return v.UpperBound }).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval {
+		return *v
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput)
+}
+
+// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) ConfidenceLevel() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidenceLevel
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Lower bound of the interval.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) LowerBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LowerBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The percent change between an experiment metric's value and the value for its control.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) Ratio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Ratio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Upper bound of the interval.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Metric and corresponding confidence intervals.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetric struct {
+	// The probability that the treatment is better than all other treatments in the experiment
+	ConfidenceInterval *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval `pulumi:"confidenceInterval"`
+	// Count value of a metric.
+	Count *float64 `pulumi:"count"`
+	// Count-based metric type. Only one of type or count_type is specified in each Metric.
+	CountType *string `pulumi:"countType"`
+	// Ratio value of a metric.
+	Ratio *float64 `pulumi:"ratio"`
+	// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
+	Type *string `pulumi:"type"`
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultMetricInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs and GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultMetricInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs{...}
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput
+}
+
+// Metric and corresponding confidence intervals.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs struct {
+	// The probability that the treatment is better than all other treatments in the experiment
+	ConfidenceInterval GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrInput `pulumi:"confidenceInterval"`
+	// Count value of a metric.
+	Count pulumi.Float64PtrInput `pulumi:"count"`
+	// Count-based metric type. Only one of type or count_type is specified in each Metric.
+	CountType pulumi.StringPtrInput `pulumi:"countType"`
+	// Ratio value of a metric.
+	Ratio pulumi.Float64PtrInput `pulumi:"ratio"`
+	// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultMetric)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArray and GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArray{ GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs{...} }
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArray []GoogleCloudDialogflowCxV3beta1ExperimentResultMetricInput
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1ExperimentResultMetric)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArray) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArray) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput)
+}
+
+// Metric and corresponding confidence intervals.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultMetric)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput {
+	return o
+}
+
+// The probability that the treatment is better than all other treatments in the experiment
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) ConfidenceInterval() GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval {
+		return v.ConfidenceInterval
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput)
+}
+
+// Count value of a metric.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// Count-based metric type. Only one of type or count_type is specified in each Metric.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) CountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *string { return v.CountType }).(pulumi.StringPtrOutput)
+}
+
+// Ratio value of a metric.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Ratio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *float64 { return v.Ratio }).(pulumi.Float64PtrOutput)
+}
+
+// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1ExperimentResultMetric)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
+		return vs[0].([]GoogleCloudDialogflowCxV3beta1ExperimentResultMetric)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput)
+}
+
+// Version variant and associated metrics.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics struct {
+	// The metrics and corresponding confidence intervals in the inference result.
+	Metrics []GoogleCloudDialogflowCxV3beta1ExperimentResultMetric `pulumi:"metrics"`
+	// Number of sessions that were allocated to this version.
+	SessionCount *int `pulumi:"sessionCount"`
+	// The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
+	Version *string `pulumi:"version"`
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs and GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs{...}
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput
+}
+
+// Version variant and associated metrics.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs struct {
+	// The metrics and corresponding confidence intervals in the inference result.
+	Metrics GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayInput `pulumi:"metrics"`
+	// Number of sessions that were allocated to this version.
+	SessionCount pulumi.IntPtrInput `pulumi:"sessionCount"`
+	// The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArray and GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArray{ GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs{...} }
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput
+	ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArray []GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsInput
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArray) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArray) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput)
+}
+
+// Version variant and associated metrics.
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput {
+	return o
+}
+
+// The metrics and corresponding confidence intervals in the inference result.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput) Metrics() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics) []GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
+		return v.Metrics
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput)
+}
+
+// Number of sessions that were allocated to this version.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput) SessionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics) *int { return v.SessionCount }).(pulumi.IntPtrOutput)
+}
+
+// The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput() GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput) ToGoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
+		return vs[0].([]GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput)
+}
+
 // A form is a data model that groups related parameters that can be collected from the user. The process in which the agent prompts the user and collects parameter values from the user is called form filling. A form can be added to a page. When form filling is done, the filled parameters will be written to the session.
 type GoogleCloudDialogflowCxV3beta1Form struct {
 	// Parameters to collect from the user.
@@ -1557,7 +2369,7 @@ type GoogleCloudDialogflowCxV3beta1FormParameter struct {
 	FillBehavior *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior `pulumi:"fillBehavior"`
 	// Indicates whether the parameter represents a list of values.
 	IsList *bool `pulumi:"isList"`
-	// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter name in both request and response. The default value is false.
+	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
 	Redact *bool `pulumi:"redact"`
 	// Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required parameters must be filled before form filling concludes.
 	Required *bool `pulumi:"required"`
@@ -1586,7 +2398,7 @@ type GoogleCloudDialogflowCxV3beta1FormParameterArgs struct {
 	FillBehavior GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrInput `pulumi:"fillBehavior"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolPtrInput `pulumi:"isList"`
-	// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter name in both request and response. The default value is false.
+	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
 	Redact pulumi.BoolPtrInput `pulumi:"redact"`
 	// Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required parameters must be filled before form filling concludes.
 	Required pulumi.BoolPtrInput `pulumi:"required"`
@@ -1671,7 +2483,7 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) IsList() pulumi.BoolP
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) *bool { return v.IsList }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter name in both request and response. The default value is false.
+// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
 func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) Redact() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) *bool { return v.Redact }).(pulumi.BoolPtrOutput)
 }
@@ -3116,134 +3928,134 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTypePtrOutput) TrainingPhrases() Goo
 }
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
-type GoogleCloudDialogflowCxV3beta1IntentInput struct {
+type GoogleCloudDialogflowCxV3beta1IntentInputType struct {
 	// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
 	Intent *string `pulumi:"intent"`
 }
 
-// GoogleCloudDialogflowCxV3beta1IntentInputInput is an input type that accepts GoogleCloudDialogflowCxV3beta1IntentInputArgs and GoogleCloudDialogflowCxV3beta1IntentInputOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1IntentInputInput` via:
+// GoogleCloudDialogflowCxV3beta1IntentInputTypeInput is an input type that accepts GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs and GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1IntentInputTypeInput` via:
 //
-//          GoogleCloudDialogflowCxV3beta1IntentInputArgs{...}
-type GoogleCloudDialogflowCxV3beta1IntentInputInput interface {
+//          GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs{...}
+type GoogleCloudDialogflowCxV3beta1IntentInputTypeInput interface {
 	pulumi.Input
 
-	ToGoogleCloudDialogflowCxV3beta1IntentInputOutput() GoogleCloudDialogflowCxV3beta1IntentInputOutput
-	ToGoogleCloudDialogflowCxV3beta1IntentInputOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1IntentInputOutput
+	ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput
+	ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput
 }
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
-type GoogleCloudDialogflowCxV3beta1IntentInputArgs struct {
+type GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs struct {
 	// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
 	Intent pulumi.StringPtrInput `pulumi:"intent"`
 }
 
-func (GoogleCloudDialogflowCxV3beta1IntentInputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1IntentInput)(nil)).Elem()
+func (GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1IntentInputType)(nil)).Elem()
 }
 
-func (i GoogleCloudDialogflowCxV3beta1IntentInputArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputOutput() GoogleCloudDialogflowCxV3beta1IntentInputOutput {
-	return i.ToGoogleCloudDialogflowCxV3beta1IntentInputOutputWithContext(context.Background())
+func (i GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudDialogflowCxV3beta1IntentInputArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1IntentInputOutput)
+func (i GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput)
 }
 
-func (i GoogleCloudDialogflowCxV3beta1IntentInputArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return i.ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(context.Background())
+func (i GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudDialogflowCxV3beta1IntentInputArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1IntentInputOutput).ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(ctx)
+func (i GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput).ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(ctx)
 }
 
-// GoogleCloudDialogflowCxV3beta1IntentInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1IntentInputArgs, GoogleCloudDialogflowCxV3beta1IntentInputPtr and GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1IntentInputPtrInput` via:
+// GoogleCloudDialogflowCxV3beta1IntentInputTypePtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs, GoogleCloudDialogflowCxV3beta1IntentInputTypePtr and GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1IntentInputTypePtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3beta1IntentInputArgs{...}
+//          GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs{...}
 //
 //  or:
 //
 //          nil
-type GoogleCloudDialogflowCxV3beta1IntentInputPtrInput interface {
+type GoogleCloudDialogflowCxV3beta1IntentInputTypePtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput
-	ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput
+	ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput
 }
 
-type googleCloudDialogflowCxV3beta1IntentInputPtrType GoogleCloudDialogflowCxV3beta1IntentInputArgs
+type googleCloudDialogflowCxV3beta1IntentInputTypePtrType GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs
 
-func GoogleCloudDialogflowCxV3beta1IntentInputPtr(v *GoogleCloudDialogflowCxV3beta1IntentInputArgs) GoogleCloudDialogflowCxV3beta1IntentInputPtrInput {
-	return (*googleCloudDialogflowCxV3beta1IntentInputPtrType)(v)
+func GoogleCloudDialogflowCxV3beta1IntentInputTypePtr(v *GoogleCloudDialogflowCxV3beta1IntentInputTypeArgs) GoogleCloudDialogflowCxV3beta1IntentInputTypePtrInput {
+	return (*googleCloudDialogflowCxV3beta1IntentInputTypePtrType)(v)
 }
 
-func (*googleCloudDialogflowCxV3beta1IntentInputPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1IntentInput)(nil)).Elem()
+func (*googleCloudDialogflowCxV3beta1IntentInputTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1IntentInputType)(nil)).Elem()
 }
 
-func (i *googleCloudDialogflowCxV3beta1IntentInputPtrType) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return i.ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(context.Background())
+func (i *googleCloudDialogflowCxV3beta1IntentInputTypePtrType) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(context.Background())
 }
 
-func (i *googleCloudDialogflowCxV3beta1IntentInputPtrType) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
+func (i *googleCloudDialogflowCxV3beta1IntentInputTypePtrType) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput)
 }
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
-type GoogleCloudDialogflowCxV3beta1IntentInputOutput struct{ *pulumi.OutputState }
+type GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudDialogflowCxV3beta1IntentInputOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1IntentInput)(nil)).Elem()
+func (GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1IntentInputType)(nil)).Elem()
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputOutput() GoogleCloudDialogflowCxV3beta1IntentInputOutput {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputOutput {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return o.ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(context.Background())
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInput) *GoogleCloudDialogflowCxV3beta1IntentInput {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInputType) *GoogleCloudDialogflowCxV3beta1IntentInputType {
 		return &v
-	}).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput)
 }
 
 // Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) Intent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInput) *string { return v.Intent }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput) Intent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInputType) *string { return v.Intent }).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1IntentInput)(nil)).Elem()
+func (GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1IntentInputType)(nil)).Elem()
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1IntentInputOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1IntentInput) GoogleCloudDialogflowCxV3beta1IntentInput {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1IntentInputType) GoogleCloudDialogflowCxV3beta1IntentInputType {
 		return *v
-	}).(GoogleCloudDialogflowCxV3beta1IntentInputOutput)
+	}).(GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput)
 }
 
 // Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-func (o GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) Intent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1IntentInput) *string {
+func (o GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput) Intent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1IntentInputType) *string {
 		if v == nil {
 			return nil
 		}
@@ -3259,7 +4071,7 @@ type GoogleCloudDialogflowCxV3beta1IntentParameter struct {
 	Id *string `pulumi:"id"`
 	// Indicates whether the parameter represents a list of values.
 	IsList *bool `pulumi:"isList"`
-	// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter id in both request and response. The default value is false.
+	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
 	Redact *bool `pulumi:"redact"`
 }
 
@@ -3282,7 +4094,7 @@ type GoogleCloudDialogflowCxV3beta1IntentParameterArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolPtrInput `pulumi:"isList"`
-	// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter id in both request and response. The default value is false.
+	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
 	Redact pulumi.BoolPtrInput `pulumi:"redact"`
 }
 
@@ -3353,7 +4165,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) IsList() pulumi.Boo
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameter) *bool { return v.IsList }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter id in both request and response. The default value is false.
+// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
 func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) Redact() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameter) *bool { return v.Redact }).(pulumi.BoolPtrOutput)
 }
@@ -3795,7 +4607,7 @@ type GoogleCloudDialogflowCxV3beta1PageType struct {
 	Name *string `pulumi:"name"`
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
-	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 	TransitionRoutes []GoogleCloudDialogflowCxV3beta1TransitionRoute `pulumi:"transitionRoutes"`
 }
 
@@ -3824,7 +4636,7 @@ type GoogleCloudDialogflowCxV3beta1PageTypeArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups pulumi.StringArrayInput `pulumi:"transitionRouteGroups"`
-	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 	TransitionRoutes GoogleCloudDialogflowCxV3beta1TransitionRouteArrayInput `pulumi:"transitionRoutes"`
 }
 
@@ -3940,7 +4752,7 @@ func (o GoogleCloudDialogflowCxV3beta1PageTypeOutput) TransitionRouteGroups() pu
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1PageType) []string { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
 }
 
-// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 func (o GoogleCloudDialogflowCxV3beta1PageTypeOutput) TransitionRoutes() GoogleCloudDialogflowCxV3beta1TransitionRouteArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1PageType) []GoogleCloudDialogflowCxV3beta1TransitionRoute {
 		return v.TransitionRoutes
@@ -4025,7 +4837,7 @@ func (o GoogleCloudDialogflowCxV3beta1PageTypePtrOutput) TransitionRouteGroups()
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
 func (o GoogleCloudDialogflowCxV3beta1PageTypePtrOutput) TransitionRoutes() GoogleCloudDialogflowCxV3beta1TransitionRouteArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1PageType) []GoogleCloudDialogflowCxV3beta1TransitionRoute {
 		if v == nil {
@@ -4044,8 +4856,8 @@ type GoogleCloudDialogflowCxV3beta1QueryInput struct {
 	// The event to be triggered.
 	Event *GoogleCloudDialogflowCxV3beta1EventInput `pulumi:"event"`
 	// The intent to be triggered.
-	Intent *GoogleCloudDialogflowCxV3beta1IntentInput `pulumi:"intent"`
-	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+	Intent *GoogleCloudDialogflowCxV3beta1IntentInputType `pulumi:"intent"`
+	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 	LanguageCode *string `pulumi:"languageCode"`
 	// The natural language text to be processed.
 	Text *GoogleCloudDialogflowCxV3beta1TextInput `pulumi:"text"`
@@ -4071,8 +4883,8 @@ type GoogleCloudDialogflowCxV3beta1QueryInputArgs struct {
 	// The event to be triggered.
 	Event GoogleCloudDialogflowCxV3beta1EventInputPtrInput `pulumi:"event"`
 	// The intent to be triggered.
-	Intent GoogleCloudDialogflowCxV3beta1IntentInputPtrInput `pulumi:"intent"`
-	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+	Intent GoogleCloudDialogflowCxV3beta1IntentInputTypePtrInput `pulumi:"intent"`
+	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 	// The natural language text to be processed.
 	Text GoogleCloudDialogflowCxV3beta1TextInputPtrInput `pulumi:"text"`
@@ -4178,13 +4990,13 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) Event() GoogleCloudDialo
 }
 
 // The intent to be triggered.
-func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) Intent() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1QueryInput) *GoogleCloudDialogflowCxV3beta1IntentInput {
+func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) Intent() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1QueryInput) *GoogleCloudDialogflowCxV3beta1IntentInputType {
 		return v.Intent
-	}).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput)
 }
 
-// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1QueryInput) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
@@ -4245,16 +5057,16 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) Event() GoogleCloudDi
 }
 
 // The intent to be triggered.
-func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) Intent() GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1QueryInput) *GoogleCloudDialogflowCxV3beta1IntentInput {
+func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) Intent() GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1QueryInput) *GoogleCloudDialogflowCxV3beta1IntentInputType {
 		if v == nil {
 			return nil
 		}
 		return v.Intent
-	}).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput)
 }
 
-// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1QueryInput) *string {
 		if v == nil {
@@ -4278,7 +5090,7 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) Text() GoogleCloudDia
 type GoogleCloudDialogflowCxV3beta1ResponseMessage struct {
 	// Indicates that the conversation succeeded.
 	ConversationSuccess *GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess `pulumi:"conversationSuccess"`
-	// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+	// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
 	EndInteraction *GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction `pulumi:"endInteraction"`
 	// Hands off conversation to a human agent.
 	LiveAgentHandoff *GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
@@ -4309,7 +5121,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageInput interface {
 type GoogleCloudDialogflowCxV3beta1ResponseMessageArgs struct {
 	// Indicates that the conversation succeeded.
 	ConversationSuccess GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
-	// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+	// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
 	EndInteraction GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionPtrInput `pulumi:"endInteraction"`
 	// Hands off conversation to a human agent.
 	LiveAgentHandoff GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
@@ -4435,7 +5247,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) ConversationSuccess
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutput)
 }
 
-// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) EndInteraction() GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessage) *GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
 		return v.EndInteraction
@@ -4512,7 +5324,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) ConversationSucc
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutput)
 }
 
-// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) EndInteraction() GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessage) *GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
 		if v == nil {
@@ -5926,7 +6738,7 @@ func (o GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsPtrOutput) EnableSpeec
 type GoogleCloudDialogflowCxV3beta1TestCaseResult struct {
 	// The conversation turns uttered during the test case replay in chronological order.
 	ConversationTurns []GoogleCloudDialogflowCxV3beta1ConversationTurn `pulumi:"conversationTurns"`
-	// Optional. Environment where the test was run. If not set, it indicates the draft environment.
+	// Environment where the test was run. If not set, it indicates the draft environment.
 	Environment *string `pulumi:"environment"`
 	// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
 	Name *string `pulumi:"name"`
@@ -5951,7 +6763,7 @@ type GoogleCloudDialogflowCxV3beta1TestCaseResultInput interface {
 type GoogleCloudDialogflowCxV3beta1TestCaseResultArgs struct {
 	// The conversation turns uttered during the test case replay in chronological order.
 	ConversationTurns GoogleCloudDialogflowCxV3beta1ConversationTurnArrayInput `pulumi:"conversationTurns"`
-	// Optional. Environment where the test was run. If not set, it indicates the draft environment.
+	// Environment where the test was run. If not set, it indicates the draft environment.
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
 	// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6046,7 +6858,7 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultOutput) ConversationTurns() 
 	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnArrayOutput)
 }
 
-// Optional. Environment where the test was run. If not set, it indicates the draft environment.
+// Environment where the test was run. If not set, it indicates the draft environment.
 func (o GoogleCloudDialogflowCxV3beta1TestCaseResultOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestCaseResult) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
@@ -6096,7 +6908,7 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultPtrOutput) ConversationTurns
 	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnArrayOutput)
 }
 
-// Optional. Environment where the test was run. If not set, it indicates the draft environment.
+// Environment where the test was run. If not set, it indicates the draft environment.
 func (o GoogleCloudDialogflowCxV3beta1TestCaseResultPtrOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TestCaseResult) *string {
 		if v == nil {
@@ -6679,6 +7491,373 @@ func (o GoogleCloudDialogflowCxV3beta1TransitionRouteArrayOutput) Index(i pulumi
 	}).(GoogleCloudDialogflowCxV3beta1TransitionRouteOutput)
 }
 
+// The history of variants update.
+type GoogleCloudDialogflowCxV3beta1VariantsHistory struct {
+	// Update time of the variants.
+	UpdateTime *string `pulumi:"updateTime"`
+	// The flow versions as the variants.
+	VersionVariants *GoogleCloudDialogflowCxV3beta1VersionVariants `pulumi:"versionVariants"`
+}
+
+// GoogleCloudDialogflowCxV3beta1VariantsHistoryInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs and GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VariantsHistoryInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs{...}
+type GoogleCloudDialogflowCxV3beta1VariantsHistoryInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutput() GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput
+	ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput
+}
+
+// The history of variants update.
+type GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs struct {
+	// Update time of the variants.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// The flow versions as the variants.
+	VersionVariants GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput `pulumi:"versionVariants"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VariantsHistory)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutput() GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VariantsHistoryArray and GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1VariantsHistoryArray{ GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs{...} }
+type GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput() GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput
+	ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3beta1VariantsHistoryArray []GoogleCloudDialogflowCxV3beta1VariantsHistoryInput
+
+func (GoogleCloudDialogflowCxV3beta1VariantsHistoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1VariantsHistory)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VariantsHistoryArray) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput() GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VariantsHistoryArray) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput)
+}
+
+// The history of variants update.
+type GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VariantsHistory)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutput() GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput {
+	return o
+}
+
+// Update time of the variants.
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VariantsHistory) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// The flow versions as the variants.
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput) VersionVariants() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VariantsHistory) *GoogleCloudDialogflowCxV3beta1VersionVariants {
+		return v.VersionVariants
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1VariantsHistory)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput() GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput) ToGoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1VariantsHistory {
+		return vs[0].([]GoogleCloudDialogflowCxV3beta1VariantsHistory)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput)
+}
+
+// A list of flow version variants.
+type GoogleCloudDialogflowCxV3beta1VersionVariants struct {
+	// A list of flow version variants.
+	Variants []GoogleCloudDialogflowCxV3beta1VersionVariantsVariant `pulumi:"variants"`
+}
+
+// GoogleCloudDialogflowCxV3beta1VersionVariantsInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VersionVariantsArgs and GoogleCloudDialogflowCxV3beta1VersionVariantsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VersionVariantsInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1VersionVariantsArgs{...}
+type GoogleCloudDialogflowCxV3beta1VersionVariantsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsOutput
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsOutput
+}
+
+// A list of flow version variants.
+type GoogleCloudDialogflowCxV3beta1VersionVariantsArgs struct {
+	// A list of flow version variants.
+	Variants GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayInput `pulumi:"variants"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariants)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsArgs) ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsArgs) ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VersionVariantsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsArgs) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsArgs) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VersionVariantsOutput).ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VersionVariantsArgs, GoogleCloudDialogflowCxV3beta1VersionVariantsPtr and GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1VersionVariantsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1VersionVariantsPtrType GoogleCloudDialogflowCxV3beta1VersionVariantsArgs
+
+func GoogleCloudDialogflowCxV3beta1VersionVariantsPtr(v *GoogleCloudDialogflowCxV3beta1VersionVariantsArgs) GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput {
+	return (*googleCloudDialogflowCxV3beta1VersionVariantsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1VersionVariantsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1VersionVariants)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1VersionVariantsPtrType) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1VersionVariantsPtrType) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput)
+}
+
+// A list of flow version variants.
+type GoogleCloudDialogflowCxV3beta1VersionVariantsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariants)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VersionVariants) *GoogleCloudDialogflowCxV3beta1VersionVariants {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput)
+}
+
+// A list of flow version variants.
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsOutput) Variants() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VersionVariants) []GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
+		return v.Variants
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1VersionVariants)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1VersionVariantsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1VersionVariants) GoogleCloudDialogflowCxV3beta1VersionVariants {
+		return *v
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsOutput)
+}
+
+// A list of flow version variants.
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput) Variants() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1VersionVariants) []GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
+		if v == nil {
+			return nil
+		}
+		return v.Variants
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput)
+}
+
+// A single flow version with specified traffic allocation.
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariant struct {
+	// Whether the variant is for the control group.
+	IsControlGroup *bool `pulumi:"isControlGroup"`
+	// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
+	TrafficAllocation *float64 `pulumi:"trafficAllocation"`
+	// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
+	Version *string `pulumi:"version"`
+}
+
+// GoogleCloudDialogflowCxV3beta1VersionVariantsVariantInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs and GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VersionVariantsVariantInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs{...}
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput
+}
+
+// A single flow version with specified traffic allocation.
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs struct {
+	// Whether the variant is for the control group.
+	IsControlGroup pulumi.BoolPtrInput `pulumi:"isControlGroup"`
+	// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
+	TrafficAllocation pulumi.Float64PtrInput `pulumi:"trafficAllocation"`
+	// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariantsVariant)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray and GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray{ GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs{...} }
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput
+	ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput
+}
+
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray []GoogleCloudDialogflowCxV3beta1VersionVariantsVariantInput
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1VersionVariantsVariant)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput)
+}
+
+// A single flow version with specified traffic allocation.
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariantsVariant)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput {
+	return o
+}
+
+// Whether the variant is for the control group.
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput) IsControlGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VersionVariantsVariant) *bool { return v.IsControlGroup }).(pulumi.BoolPtrOutput)
+}
+
+// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput) TrafficAllocation() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VersionVariantsVariant) *float64 { return v.TrafficAllocation }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VersionVariantsVariant) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowCxV3beta1VersionVariantsVariant)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput() GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput) ToGoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
+		return vs[0].([]GoogleCloudDialogflowCxV3beta1VersionVariantsVariant)[vs[1].(int)]
+	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput)
+}
+
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebService struct {
 	// The password for HTTP Basic authentication.
@@ -7062,10 +8241,21 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EventHandlerOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EventInputOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1EventInputPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterOutput{})
@@ -7087,8 +8277,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentTypePtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentInputOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentInputTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentInputTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentParameterOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseOutput{})
@@ -7133,6 +8323,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TextInputPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TransitionRouteOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TransitionRouteArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VariantsHistoryOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusOutput{})

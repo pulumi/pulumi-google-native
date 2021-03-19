@@ -97,6 +97,8 @@ type diskArgs struct {
 	LicenseCodes []string `pulumi:"licenseCodes"`
 	// A list of publicly visible licenses. Reserved for Google's use.
 	Licenses []string `pulumi:"licenses"`
+	// An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint *string `pulumi:"locationHint"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -107,6 +109,8 @@ type diskArgs struct {
 	PhysicalBlockSizeBytes *string `pulumi:"physicalBlockSizeBytes"`
 	// Project ID for this request.
 	Project string `pulumi:"project"`
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
@@ -119,6 +123,8 @@ type diskArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
@@ -127,8 +133,11 @@ type diskArgs struct {
 	SizeGb *string `pulumi:"sizeGb"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk
 	// - projects/project/zones/zone/disks/disk
+	// - projects/project/regions/region/disks/disk
 	// - zones/zone/disks/disk
+	// - regions/region/disks/disk
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
 	SourceDiskId *string `pulumi:"sourceDiskId"`
@@ -159,9 +168,14 @@ type diskArgs struct {
 	SourceSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
-	// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
 	SourceStorageObject *string `pulumi:"sourceStorageObject"`
-	// [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+	// [Output Only] The status of disk creation.
+	// - CREATING: Disk is provisioning.
+	// - RESTORING: Source data is being copied into the disk.
+	// - FAILED: Disk creation failed.
+	// - READY: Disk is ready for use.
+	// - DELETING: Disk is deleting.
 	Status *string `pulumi:"status"`
 	// [Deprecated] Storage type of the persistent disk.
 	StorageType *string `pulumi:"storageType"`
@@ -211,6 +225,8 @@ type DiskArgs struct {
 	LicenseCodes pulumi.StringArrayInput
 	// A list of publicly visible licenses. Reserved for Google's use.
 	Licenses pulumi.StringArrayInput
+	// An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint pulumi.StringPtrInput
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -221,6 +237,8 @@ type DiskArgs struct {
 	PhysicalBlockSizeBytes pulumi.StringPtrInput
 	// Project ID for this request.
 	Project pulumi.StringInput
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops pulumi.StringPtrInput
 	// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
@@ -233,6 +251,8 @@ type DiskArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies pulumi.StringArrayInput
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringPtrInput
 	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
@@ -241,8 +261,11 @@ type DiskArgs struct {
 	SizeGb pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk
 	// - projects/project/zones/zone/disks/disk
+	// - projects/project/regions/region/disks/disk
 	// - zones/zone/disks/disk
+	// - regions/region/disks/disk
 	SourceDisk pulumi.StringPtrInput
 	// [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
 	SourceDiskId pulumi.StringPtrInput
@@ -273,9 +296,14 @@ type DiskArgs struct {
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyPtrInput
 	// [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 	SourceSnapshotId pulumi.StringPtrInput
-	// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/.
+	// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
 	SourceStorageObject pulumi.StringPtrInput
-	// [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+	// [Output Only] The status of disk creation.
+	// - CREATING: Disk is provisioning.
+	// - RESTORING: Source data is being copied into the disk.
+	// - FAILED: Disk creation failed.
+	// - READY: Disk is ready for use.
+	// - DELETING: Disk is deleting.
 	Status pulumi.StringPtrInput
 	// [Deprecated] Storage type of the persistent disk.
 	StorageType pulumi.StringPtrInput

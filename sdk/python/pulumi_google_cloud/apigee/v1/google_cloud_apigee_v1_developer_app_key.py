@@ -21,6 +21,7 @@ class GoogleCloudApigeeV1DeveloperAppKey(pulumi.CustomResource):
                  consumer_key: Optional[pulumi.Input[str]] = None,
                  consumer_secret: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
+                 expires_in_seconds: Optional[pulumi.Input[str]] = None,
                  issued_at: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,6 +39,7 @@ class GoogleCloudApigeeV1DeveloperAppKey(pulumi.CustomResource):
         :param pulumi.Input[str] consumer_key: Consumer key.
         :param pulumi.Input[str] consumer_secret: Secret key.
         :param pulumi.Input[str] expires_at: Time the developer app expires in milliseconds since epoch.
+        :param pulumi.Input[str] expires_in_seconds: Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
         :param pulumi.Input[str] issued_at: Time the developer app was created in milliseconds since epoch.
         :param pulumi.Input[str] parent: Parent of the developer app key. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/apps`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
@@ -65,6 +67,7 @@ class GoogleCloudApigeeV1DeveloperAppKey(pulumi.CustomResource):
             __props__['consumer_key'] = consumer_key
             __props__['consumer_secret'] = consumer_secret
             __props__['expires_at'] = expires_at
+            __props__['expires_in_seconds'] = expires_in_seconds
             __props__['issued_at'] = issued_at
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

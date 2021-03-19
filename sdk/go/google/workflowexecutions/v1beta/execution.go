@@ -58,7 +58,7 @@ func (ExecutionState) ElementType() reflect.Type {
 }
 
 type executionArgs struct {
-	// Input parameters of the execution represented as a JSON string. The size limit is 32KB.
+	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 	Argument *string `pulumi:"argument"`
 	// Output only. Marks the end of execution, successful or not.
 	EndTime *string `pulumi:"endTime"`
@@ -80,7 +80,7 @@ type executionArgs struct {
 
 // The set of arguments for constructing a Execution resource.
 type ExecutionArgs struct {
-	// Input parameters of the execution represented as a JSON string. The size limit is 32KB.
+	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
 	Argument pulumi.StringPtrInput
 	// Output only. Marks the end of execution, successful or not.
 	EndTime pulumi.StringPtrInput

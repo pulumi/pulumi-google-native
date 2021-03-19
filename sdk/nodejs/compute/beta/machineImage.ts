@@ -45,8 +45,9 @@ export class MachineImage extends pulumi.CustomResource {
      */
     constructor(name: string, args: MachineImageArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -58,6 +59,7 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sourceDiskEncryptionKeys"] = args ? args.sourceDiskEncryptionKeys : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
@@ -67,12 +69,8 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["totalStorageBytes"] = args ? args.totalStorageBytes : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MachineImage.__pulumiType, name, inputs, opts);
     }
@@ -128,6 +126,10 @@ export interface MachineImageArgs {
      * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     readonly requestId?: pulumi.Input<string>;
+    /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * [Output Only] The URL for this machine image. The server defines this URL.
      */

@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .policy import *
+from .schema import *
 from .snapshot import *
 from .subscription import *
 from .topic import *
@@ -23,6 +24,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:pubsub/v1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:pubsub/v1:Schema":
+                return Schema(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:pubsub/v1:Snapshot":
                 return Snapshot(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:pubsub/v1:Subscription":

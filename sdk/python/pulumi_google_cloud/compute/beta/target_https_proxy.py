@@ -20,6 +20,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
                  http_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -38,7 +39,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
+        Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -50,6 +51,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Note: This field currently has no impact.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_filters: URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
                httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -66,7 +68,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
                - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
                - If the quic-override flag is not specified, NONE is implied.
-               -
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
                
@@ -107,6 +108,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__['authorization_policy'] = authorization_policy
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
+            __props__['fingerprint'] = fingerprint
             __props__['http_filters'] = http_filters
             __props__['id'] = id
             __props__['kind'] = kind
@@ -116,6 +118,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__['project'] = project
             __props__['proxy_bind'] = proxy_bind
             __props__['quic_override'] = quic_override
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['self_link'] = self_link

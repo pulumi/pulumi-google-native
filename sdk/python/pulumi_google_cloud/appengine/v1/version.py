@@ -49,6 +49,7 @@ class Version(pulumi.CustomResource):
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
@@ -97,6 +98,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] services_id: Part of `parent`. See documentation of `appsId`.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
@@ -157,6 +159,7 @@ class Version(pulumi.CustomResource):
             __props__['runtime_api_version'] = runtime_api_version
             __props__['runtime_channel'] = runtime_channel
             __props__['runtime_main_executable_path'] = runtime_main_executable_path
+            __props__['service_account'] = service_account
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__['services_id'] = services_id

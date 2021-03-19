@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Beta
 {
     /// <summary>
-    /// Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
+    /// Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/beta:TargetHttpsProxy")]
     public partial class TargetHttpsProxy : Pulumi.CustomResource
@@ -92,6 +92,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+        /// </summary>
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
+
         [Input("httpFilters")]
         private InputList<string>? _httpFilters;
 
@@ -145,7 +151,6 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
         /// - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
         /// - If the quic-override flag is not specified, NONE is implied.
-        /// -
         /// </summary>
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }
@@ -153,8 +158,8 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.

@@ -45,12 +45,13 @@ export class Autoscaler extends pulumi.CustomResource {
      */
     constructor(name: string, args: AutoscalerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'zone'");
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -62,6 +63,7 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["recommendedSize"] = args ? args.recommendedSize : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["scalingScheduleStatus"] = args ? args.scalingScheduleStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["statusDetails"] = args ? args.statusDetails : undefined;
@@ -69,12 +71,8 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Autoscaler.__pulumiType, name, inputs, opts);
     }
@@ -121,7 +119,7 @@ export interface AutoscalerArgs {
     /**
      * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *
@@ -130,6 +128,10 @@ export interface AutoscalerArgs {
      * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     readonly requestId?: pulumi.Input<string>;
+    /**
+     * [Output Only] Status information of existing scaling schedules.
+     */
+    readonly scalingScheduleStatus?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -153,5 +155,5 @@ export interface AutoscalerArgs {
     /**
      * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

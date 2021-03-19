@@ -45,8 +45,9 @@ export class GoogleCloudApigeeV1DeveloperAppKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudApigeeV1DeveloperAppKeyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["apiProducts"] = args ? args.apiProducts : undefined;
@@ -54,18 +55,15 @@ export class GoogleCloudApigeeV1DeveloperAppKey extends pulumi.CustomResource {
             inputs["consumerKey"] = args ? args.consumerKey : undefined;
             inputs["consumerSecret"] = args ? args.consumerSecret : undefined;
             inputs["expiresAt"] = args ? args.expiresAt : undefined;
+            inputs["expiresInSeconds"] = args ? args.expiresInSeconds : undefined;
             inputs["issuedAt"] = args ? args.issuedAt : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["scopes"] = args ? args.scopes : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1DeveloperAppKey.__pulumiType, name, inputs, opts);
     }
@@ -95,6 +93,10 @@ export interface GoogleCloudApigeeV1DeveloperAppKeyArgs {
      * Time the developer app expires in milliseconds since epoch.
      */
     readonly expiresAt?: pulumi.Input<string>;
+    /**
+     * Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+     */
+    readonly expiresInSeconds?: pulumi.Input<string>;
     /**
      * Time the developer app was created in milliseconds since epoch.
      */

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FirewallPolicy(string name, FirewallPolicyArgs args, CustomResourceOptions? options = null)
+        public FirewallPolicy(string name, FirewallPolicyArgs? args = null, CustomResourceOptions? options = null)
             : base("google-cloud:compute/alpha:FirewallPolicy", name, args ?? new FirewallPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Depreacted, please use short name instead. User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -122,10 +122,16 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Project ID for this request.
+        /// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
         /// </summary>
-        [Input("project", required: true)]
-        public Input<string> Project { get; set; } = null!;
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        /// <summary>
+        /// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -166,6 +172,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// </summary>
         [Input("selfLinkWithId")]
         public Input<string>? SelfLinkWithId { get; set; }
+
+        /// <summary>
+        /// User-provided name of the Organization firewall plicy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Input("shortName")]
+        public Input<string>? ShortName { get; set; }
 
         public FirewallPolicyArgs()
         {

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleCloud.Dns.V1.Inputs
     public sealed class ManagedZoneForwardingConfigNameServerTargetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         /// </summary>
         [Input("forwardingPath")]
         public Input<string>? ForwardingPath { get; set; }

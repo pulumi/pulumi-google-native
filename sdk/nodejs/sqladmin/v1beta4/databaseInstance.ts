@@ -45,8 +45,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseInstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["backendType"] = args ? args.backendType : undefined;
@@ -82,12 +83,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["suspensionReason"] = args ? args.suspensionReason : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatabaseInstance.__pulumiType, name, inputs, opts);
     }
@@ -186,7 +183,7 @@ export interface DatabaseInstanceArgs {
      */
     readonly rootPassword?: pulumi.Input<string>;
     /**
-     * The status indicating if instance satisfies physical zone separation. Reserved for future use.
+     * The status indicating if instance satisfiesPzs. Reserved for future use.
      */
     readonly satisfiesPzs?: pulumi.Input<boolean>;
     /**
@@ -214,7 +211,7 @@ export interface DatabaseInstanceArgs {
      */
     readonly settings?: pulumi.Input<inputs.sqladmin.v1beta4.Settings>;
     /**
-     * The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+     * The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
      */
     readonly state?: pulumi.Input<string>;
     /**

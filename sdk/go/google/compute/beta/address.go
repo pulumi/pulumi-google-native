@@ -26,9 +26,6 @@ func NewAddress(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	var resource Address
 	err := ctx.RegisterResource("google-cloud:compute/beta:Address", name, args, &resource, opts...)
 	if err != nil {
@@ -89,7 +86,7 @@ type addressArgs struct {
 	//
 	// If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
-	// The prefix length if the resource reprensents an IP range.
+	// The prefix length if the resource represents an IP range.
 	PrefixLength *int `pulumi:"prefixLength"`
 	// Project ID for this request.
 	Project string `pulumi:"project"`
@@ -98,10 +95,10 @@ type addressArgs struct {
 	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
 	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
 	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec encrypted Interconnect configuration. These addresses are regional resources.
+	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
 	Purpose *string `pulumi:"purpose"`
-	// [Output Only] The URL of the region where the regional address resides. This field is not applicable to global addresses. You must specify this field as part of the HTTP request URL.
-	Region string `pulumi:"region"`
+	// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+	Region *string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -148,7 +145,7 @@ type AddressArgs struct {
 	//
 	// If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
-	// The prefix length if the resource reprensents an IP range.
+	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
 	// Project ID for this request.
 	Project pulumi.StringInput
@@ -157,10 +154,10 @@ type AddressArgs struct {
 	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
 	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
 	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec encrypted Interconnect configuration. These addresses are regional resources.
+	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
 	Purpose pulumi.StringPtrInput
-	// [Output Only] The URL of the region where the regional address resides. This field is not applicable to global addresses. You must specify this field as part of the HTTP request URL.
-	Region pulumi.StringInput
+	// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+	Region pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.

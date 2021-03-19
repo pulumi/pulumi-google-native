@@ -108,7 +108,7 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
         /// </summary>
         [Input("customer")]
         public Input<string>? Customer { get; set; }

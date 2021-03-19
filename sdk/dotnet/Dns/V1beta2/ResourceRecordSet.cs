@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Dns.V1beta2
 {
     /// <summary>
-    /// Create a new ResourceRecordSet.
+    /// Creates a new ResourceRecordSet.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:dns/v1beta2:ResourceRecordSet")]
     public partial class ResourceRecordSet : Pulumi.CustomResource
@@ -85,12 +85,6 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-        /// </summary>
-        [Input("routingPolicy")]
-        public Input<Inputs.RRSetRoutingPolicyArgs>? RoutingPolicy { get; set; }
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;

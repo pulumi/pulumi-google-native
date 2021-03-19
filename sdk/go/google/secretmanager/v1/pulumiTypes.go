@@ -1258,6 +1258,106 @@ func (o ReplicationPtrOutput) UserManaged() UserManagedPtrOutput {
 	}).(UserManagedPtrOutput)
 }
 
+// A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
+type Topic struct {
+	// Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+	Name *string `pulumi:"name"`
+}
+
+// TopicInput is an input type that accepts TopicArgs and TopicOutput values.
+// You can construct a concrete instance of `TopicInput` via:
+//
+//          TopicArgs{...}
+type TopicInput interface {
+	pulumi.Input
+
+	ToTopicOutput() TopicOutput
+	ToTopicOutputWithContext(context.Context) TopicOutput
+}
+
+// A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
+type TopicArgs struct {
+	// Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (TopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Topic)(nil)).Elem()
+}
+
+func (i TopicArgs) ToTopicOutput() TopicOutput {
+	return i.ToTopicOutputWithContext(context.Background())
+}
+
+func (i TopicArgs) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicOutput)
+}
+
+// TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
+// You can construct a concrete instance of `TopicArrayInput` via:
+//
+//          TopicArray{ TopicArgs{...} }
+type TopicArrayInput interface {
+	pulumi.Input
+
+	ToTopicArrayOutput() TopicArrayOutput
+	ToTopicArrayOutputWithContext(context.Context) TopicArrayOutput
+}
+
+type TopicArray []TopicInput
+
+func (TopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Topic)(nil)).Elem()
+}
+
+func (i TopicArray) ToTopicArrayOutput() TopicArrayOutput {
+	return i.ToTopicArrayOutputWithContext(context.Background())
+}
+
+func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicArrayOutput)
+}
+
+// A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
+type TopicOutput struct{ *pulumi.OutputState }
+
+func (TopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Topic)(nil)).Elem()
+}
+
+func (o TopicOutput) ToTopicOutput() TopicOutput {
+	return o
+}
+
+func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
+	return o
+}
+
+// Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+func (o TopicOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Topic) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type TopicArrayOutput struct{ *pulumi.OutputState }
+
+func (TopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Topic)(nil)).Elem()
+}
+
+func (o TopicArrayOutput) ToTopicArrayOutput() TopicArrayOutput {
+	return o
+}
+
+func (o TopicArrayOutput) ToTopicArrayOutputWithContext(ctx context.Context) TopicArrayOutput {
+	return o
+}
+
+func (o TopicArrayOutput) Index(i pulumi.IntInput) TopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Topic {
+		return vs[0].([]Topic)[vs[1].(int)]
+	}).(TopicOutput)
+}
+
 // A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
 type UserManaged struct {
 	// Required. The list of Replicas for this Secret. Cannot be empty.
@@ -1411,6 +1511,8 @@ func init() {
 	pulumi.RegisterOutputType(ReplicaArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationOutput{})
 	pulumi.RegisterOutputType(ReplicationPtrOutput{})
+	pulumi.RegisterOutputType(TopicOutput{})
+	pulumi.RegisterOutputType(TopicArrayOutput{})
 	pulumi.RegisterOutputType(UserManagedOutput{})
 	pulumi.RegisterOutputType(UserManagedPtrOutput{})
 }

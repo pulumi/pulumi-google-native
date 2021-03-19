@@ -45,8 +45,9 @@ export class GoogleCloudApigeeV1Developer extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudApigeeV1DeveloperArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["accessType"] = args ? args.accessType : undefined;
@@ -66,12 +67,8 @@ export class GoogleCloudApigeeV1Developer extends pulumi.CustomResource {
             inputs["userName"] = args ? args.userName : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1Developer.__pulumiType, name, inputs, opts);
     }
@@ -110,7 +107,7 @@ export interface GoogleCloudApigeeV1DeveloperArgs {
      */
     readonly developerId?: pulumi.Input<string>;
     /**
-     * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid.
+     * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */
     readonly email?: pulumi.Input<string>;
     /**

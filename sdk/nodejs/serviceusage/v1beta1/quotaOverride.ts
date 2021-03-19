@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization.
+ * Creates a consumer override. A consumer override is applied to the consumer on its own authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides, producer overrides, or the default limit of the service.
  */
 export class QuotaOverride extends pulumi.CustomResource {
     /**
@@ -44,13 +44,15 @@ export class QuotaOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuotaOverrideArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["adminOverrideAncestor"] = args ? args.adminOverrideAncestor : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
             inputs["force"] = args ? args.force : undefined;
+            inputs["forceOnly"] = args ? args.forceOnly : undefined;
             inputs["metric"] = args ? args.metric : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["overrideValue"] = args ? args.overrideValue : undefined;
@@ -58,12 +60,8 @@ export class QuotaOverride extends pulumi.CustomResource {
             inputs["unit"] = args ? args.unit : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(QuotaOverride.__pulumiType, name, inputs, opts);
     }
@@ -82,9 +80,13 @@ export interface QuotaOverrideArgs {
      */
     readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether to force the creation of the quota override. If creating an override would cause the effective quota for the consumer to decrease by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+     * Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
      */
     readonly force?: pulumi.Input<boolean>;
+    /**
+     * The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set.
+     */
+    readonly forceOnly?: pulumi.Input<string>;
     /**
      * The name of the metric to which this override applies. An example name would be: `compute.googleapis.com/cpus`
      */

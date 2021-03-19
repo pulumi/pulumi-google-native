@@ -4,9 +4,14 @@
 
 # Export this package's modules as members:
 from .google_cloud_dialogflow_v2_context import *
+from .google_cloud_dialogflow_v2_conversation import *
+from .google_cloud_dialogflow_v2_conversation_profile import *
 from .google_cloud_dialogflow_v2_entity_type import *
 from .google_cloud_dialogflow_v2_intent import *
+from .google_cloud_dialogflow_v2_knowledge_base import *
+from .google_cloud_dialogflow_v2_participant import *
 from .google_cloud_dialogflow_v2_session_entity_type import *
+from .google_longrunning_operation import *
 from ._inputs import *
 
 def _register_module():
@@ -23,12 +28,22 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Context":
                 return GoogleCloudDialogflowV2Context(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Conversation":
+                return GoogleCloudDialogflowV2Conversation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2ConversationProfile":
+                return GoogleCloudDialogflowV2ConversationProfile(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2EntityType":
                 return GoogleCloudDialogflowV2EntityType(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Intent":
                 return GoogleCloudDialogflowV2Intent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2KnowledgeBase":
+                return GoogleCloudDialogflowV2KnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Participant":
+                return GoogleCloudDialogflowV2Participant(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2SessionEntityType":
                 return GoogleCloudDialogflowV2SessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:GoogleLongrunningOperation":
+                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

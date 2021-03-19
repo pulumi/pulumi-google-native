@@ -16,6 +16,12 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1.Inputs
     public sealed class MembershipRoleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+        /// </summary>
+        [Input("expiryDetail")]
+        public Input<Inputs.ExpiryDetailArgs>? ExpiryDetail { get; set; }
+
+        /// <summary>
         /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         /// </summary>
         [Input("name")]

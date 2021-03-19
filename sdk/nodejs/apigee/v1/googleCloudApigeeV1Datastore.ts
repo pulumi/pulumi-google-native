@@ -45,8 +45,9 @@ export class GoogleCloudApigeeV1Datastore extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudApigeeV1DatastoreArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -59,12 +60,8 @@ export class GoogleCloudApigeeV1Datastore extends pulumi.CustomResource {
             inputs["targetType"] = args ? args.targetType : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1Datastore.__pulumiType, name, inputs, opts);
     }

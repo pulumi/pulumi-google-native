@@ -44,8 +44,9 @@ export class Notification extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -62,12 +63,8 @@ export class Notification extends pulumi.CustomResource {
             inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Notification.__pulumiType, name, inputs, opts);
     }

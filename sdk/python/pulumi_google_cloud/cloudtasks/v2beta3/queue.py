@@ -25,6 +25,8 @@ class Queue(pulumi.CustomResource):
                  stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  stats: Optional[pulumi.Input[pulumi.InputType['QueueStatsArgs']]] = None,
+                 task_ttl: Optional[pulumi.Input[str]] = None,
+                 tombstone_ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -43,6 +45,8 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
         :param pulumi.Input[str] state: Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         :param pulumi.Input[pulumi.InputType['QueueStatsArgs']] stats: Output only. The realtime, informational statistics for a queue. In order to receive the statistics the caller should include this field in the FieldMask.
+        :param pulumi.Input[str] task_ttl: The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.
+        :param pulumi.Input[str] tombstone_ttl: The task tombstone time to live (TTL). After a task is deleted or executed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
         :param pulumi.Input[str] type: Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
         """
         if __name__ is not None:
@@ -73,6 +77,8 @@ class Queue(pulumi.CustomResource):
             __props__['stackdriver_logging_config'] = stackdriver_logging_config
             __props__['state'] = state
             __props__['stats'] = stats
+            __props__['task_ttl'] = task_ttl
+            __props__['tombstone_ttl'] = tombstone_ttl
             __props__['type'] = type
         super(Queue, __self__).__init__(
             'google-cloud:cloudtasks/v2beta3:Queue',

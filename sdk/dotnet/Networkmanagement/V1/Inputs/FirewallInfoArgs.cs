@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
 {
 
     /// <summary>
-    /// For display only. Metadata associated with a Compute Engine firewall rule.
+    /// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
     /// </summary>
     public sealed class FirewallInfoArgs : Pulumi.ResourceArgs
     {
@@ -28,19 +28,31 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Name of a Compute Engine firewall rule.
+        /// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// URI of a Compute Engine network.
+        /// The firewall rule's type.
+        /// </summary>
+        [Input("firewallRuleType")]
+        public Input<string>? FirewallRuleType { get; set; }
+
+        /// <summary>
+        /// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
         /// </summary>
         [Input("networkUri")]
         public Input<string>? NetworkUri { get; set; }
 
         /// <summary>
-        /// Priority of the firewall rule.
+        /// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
+
+        /// <summary>
+        /// The priority of the firewall rule.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -49,7 +61,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         private InputList<string>? _targetServiceAccounts;
 
         /// <summary>
-        /// Target service accounts of the firewall rule.
+        /// The target service accounts specified by the firewall rule.
         /// </summary>
         public InputList<string> TargetServiceAccounts
         {
@@ -61,7 +73,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         private InputList<string>? _targetTags;
 
         /// <summary>
-        /// Target tags of the firewall rule.
+        /// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
         /// </summary>
         public InputList<string> TargetTags
         {
@@ -70,7 +82,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         }
 
         /// <summary>
-        /// URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+        /// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

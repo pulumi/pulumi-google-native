@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
 {
 
     /// <summary>
-    /// Configuration to control the number of findings returned.
+    /// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
     /// </summary>
     public sealed class GooglePrivacyDlpV2FindingLimitsArgs : Pulumi.ResourceArgs
     {

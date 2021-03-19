@@ -46,6 +46,12 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1.Inputs
         public Input<string>? Interval { get; set; }
 
         /// <summary>
+        /// The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
+        /// </summary>
+        [Input("quality")]
+        public Input<int>? Quality { get; set; }
+
+        /// <summary>
         /// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
         /// </summary>
         [Input("rowCount")]

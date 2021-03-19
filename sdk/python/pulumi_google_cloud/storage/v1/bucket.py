@@ -41,6 +41,7 @@ class Bucket(pulumi.CustomResource):
                  projection: Optional[pulumi.Input[str]] = None,
                  provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
@@ -82,6 +83,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
         :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+        :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
@@ -135,6 +137,7 @@ class Bucket(pulumi.CustomResource):
             __props__['projection'] = projection
             __props__['provisional_user_project'] = provisional_user_project
             __props__['retention_policy'] = retention_policy
+            __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link
             __props__['storage_class'] = storage_class
             __props__['time_created'] = time_created

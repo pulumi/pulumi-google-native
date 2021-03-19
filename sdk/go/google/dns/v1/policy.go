@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Create a new Policy
+// Creates a new Policy.
 type Policy struct {
 	pulumi.CustomResourceState
 }
@@ -64,14 +64,14 @@ type policyArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description *string `pulumi:"description"`
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
 	EnableInboundForwarding *bool `pulumi:"enableInboundForwarding"`
 	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// Unique identifier for the resource; defined by the server (output only).
 	Id   *string `pulumi:"id"`
 	Kind *string `pulumi:"kind"`
-	// User assigned name for this policy.
+	// User-assigned name for this policy.
 	Name *string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []PolicyNetwork `pulumi:"networks"`
@@ -87,14 +87,14 @@ type PolicyArgs struct {
 	ClientOperationId pulumi.StringPtrInput
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description pulumi.StringPtrInput
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
 	EnableInboundForwarding pulumi.BoolPtrInput
 	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrInput
 	// Unique identifier for the resource; defined by the server (output only).
 	Id   pulumi.StringPtrInput
 	Kind pulumi.StringPtrInput
-	// User assigned name for this policy.
+	// User-assigned name for this policy.
 	Name pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks PolicyNetworkArrayInput

@@ -60,6 +60,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
     public sealed class NotificationChannelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Record of the creation of this channel.
+        /// </summary>
+        [Input("creationRecord")]
+        public Input<Inputs.MutationRecordArgs>? CreationRecord { get; set; }
+
+        /// <summary>
         /// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         /// </summary>
         [Input("description")]
@@ -87,6 +93,18 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
+        }
+
+        [Input("mutationRecords")]
+        private InputList<Inputs.MutationRecordArgs>? _mutationRecords;
+
+        /// <summary>
+        /// Records of the modification of this channel.
+        /// </summary>
+        public InputList<Inputs.MutationRecordArgs> MutationRecords
+        {
+            get => _mutationRecords ?? (_mutationRecords = new InputList<Inputs.MutationRecordArgs>());
+            set => _mutationRecords = value;
         }
 
         /// <summary>

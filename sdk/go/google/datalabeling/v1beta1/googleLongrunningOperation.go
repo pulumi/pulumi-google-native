@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates an instruction for how data should be labeled.
+// Create a FeedbackMessage object.
 type GoogleLongrunningOperation struct {
 	pulumi.CustomResourceState
 }
@@ -58,18 +58,34 @@ func (GoogleLongrunningOperationState) ElementType() reflect.Type {
 }
 
 type googleLongrunningOperationArgs struct {
-	// Required. Instruction of how to perform the labeling task.
-	Instruction *GoogleCloudDatalabelingV1beta1Instruction `pulumi:"instruction"`
-	// Required. Instruction resource parent, format: projects/{project_id}
-	Parent string `pulumi:"parent"`
+	// String content of the feedback. Maximum of 10000 characters.
+	Body *string `pulumi:"body"`
+	// Create time.
+	CreateTime *string `pulumi:"createTime"`
+	// The image storing this feedback if the feedback is an image representing operator's comments.
+	Image *string `pulumi:"image"`
+	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+	Name                     *string                                                 `pulumi:"name"`
+	OperatorFeedbackMetadata *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata `pulumi:"operatorFeedbackMetadata"`
+	// Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}.
+	Parent                    string                                                   `pulumi:"parent"`
+	RequesterFeedbackMetadata *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata `pulumi:"requesterFeedbackMetadata"`
 }
 
 // The set of arguments for constructing a GoogleLongrunningOperation resource.
 type GoogleLongrunningOperationArgs struct {
-	// Required. Instruction of how to perform the labeling task.
-	Instruction GoogleCloudDatalabelingV1beta1InstructionPtrInput
-	// Required. Instruction resource parent, format: projects/{project_id}
-	Parent pulumi.StringInput
+	// String content of the feedback. Maximum of 10000 characters.
+	Body pulumi.StringPtrInput
+	// Create time.
+	CreateTime pulumi.StringPtrInput
+	// The image storing this feedback if the feedback is an image representing operator's comments.
+	Image pulumi.StringPtrInput
+	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+	Name                     pulumi.StringPtrInput
+	OperatorFeedbackMetadata GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput
+	// Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}.
+	Parent                    pulumi.StringInput
+	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput
 }
 
 func (GoogleLongrunningOperationArgs) ElementType() reflect.Type {

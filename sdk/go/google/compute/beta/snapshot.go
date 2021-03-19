@@ -86,6 +86,8 @@ type snapshotArgs struct {
 	LicenseCodes []string `pulumi:"licenseCodes"`
 	// [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
 	Licenses []string `pulumi:"licenses"`
+	// An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint *string `pulumi:"locationHint"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Project ID for this request.
@@ -96,6 +98,8 @@ type snapshotArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key.
@@ -152,6 +156,8 @@ type SnapshotArgs struct {
 	LicenseCodes pulumi.StringArrayInput
 	// [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).
 	Licenses pulumi.StringArrayInput
+	// An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Project ID for this request.
@@ -162,6 +168,8 @@ type SnapshotArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Encrypts the snapshot using a customer-supplied encryption key.

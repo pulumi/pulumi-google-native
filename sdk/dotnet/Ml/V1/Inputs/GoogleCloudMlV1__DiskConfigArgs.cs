@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<int>? BootDiskSizeGb { get; set; }
 
         /// <summary>
-        /// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        /// Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }

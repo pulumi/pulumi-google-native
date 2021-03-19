@@ -11,8 +11,10 @@ from ... import _utilities, _tables
 __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
+    'AwsArgs',
     'BindingArgs',
     'ExprArgs',
+    'OidcArgs',
     'PolicyArgs',
     'RoleArgs',
     'ServiceAccountArgs',
@@ -96,6 +98,30 @@ class AuditLogConfigArgs:
     @log_type.setter
     def log_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_type", value)
+
+
+@pulumi.input_type
+class AwsArgs:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None):
+        """
+        Represents an Amazon Web Services identity provider.
+        :param pulumi.Input[str] account_id: Required. The AWS account ID.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The AWS account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -224,6 +250,46 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class OidcArgs:
+    def __init__(__self__, *,
+                 allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 issuer_uri: Optional[pulumi.Input[str]] = None):
+        """
+        Represents an OpenId Connect 1.0 identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_audiences: Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ``` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ ```
+        :param pulumi.Input[str] issuer_uri: Required. The OIDC issuer URL.
+        """
+        if allowed_audiences is not None:
+            pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        if issuer_uri is not None:
+            pulumi.set(__self__, "issuer_uri", issuer_uri)
+
+    @property
+    @pulumi.getter(name="allowedAudiences")
+    def allowed_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ``` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ ```
+        """
+        return pulumi.get(self, "allowed_audiences")
+
+    @allowed_audiences.setter
+    def allowed_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_audiences", value)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The OIDC issuer URL.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_uri", value)
 
 
 @pulumi.input_type

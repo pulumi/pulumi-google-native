@@ -730,6 +730,140 @@ func (o AutoUpgradeOptionsPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Autopilot is the configuration for Autopilot settings on the cluster.
+type Autopilot struct {
+	// Enable Autopilot
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AutopilotInput is an input type that accepts AutopilotArgs and AutopilotOutput values.
+// You can construct a concrete instance of `AutopilotInput` via:
+//
+//          AutopilotArgs{...}
+type AutopilotInput interface {
+	pulumi.Input
+
+	ToAutopilotOutput() AutopilotOutput
+	ToAutopilotOutputWithContext(context.Context) AutopilotOutput
+}
+
+// Autopilot is the configuration for Autopilot settings on the cluster.
+type AutopilotArgs struct {
+	// Enable Autopilot
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AutopilotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Autopilot)(nil)).Elem()
+}
+
+func (i AutopilotArgs) ToAutopilotOutput() AutopilotOutput {
+	return i.ToAutopilotOutputWithContext(context.Background())
+}
+
+func (i AutopilotArgs) ToAutopilotOutputWithContext(ctx context.Context) AutopilotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotOutput)
+}
+
+func (i AutopilotArgs) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return i.ToAutopilotPtrOutputWithContext(context.Background())
+}
+
+func (i AutopilotArgs) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotOutput).ToAutopilotPtrOutputWithContext(ctx)
+}
+
+// AutopilotPtrInput is an input type that accepts AutopilotArgs, AutopilotPtr and AutopilotPtrOutput values.
+// You can construct a concrete instance of `AutopilotPtrInput` via:
+//
+//          AutopilotArgs{...}
+//
+//  or:
+//
+//          nil
+type AutopilotPtrInput interface {
+	pulumi.Input
+
+	ToAutopilotPtrOutput() AutopilotPtrOutput
+	ToAutopilotPtrOutputWithContext(context.Context) AutopilotPtrOutput
+}
+
+type autopilotPtrType AutopilotArgs
+
+func AutopilotPtr(v *AutopilotArgs) AutopilotPtrInput {
+	return (*autopilotPtrType)(v)
+}
+
+func (*autopilotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Autopilot)(nil)).Elem()
+}
+
+func (i *autopilotPtrType) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return i.ToAutopilotPtrOutputWithContext(context.Background())
+}
+
+func (i *autopilotPtrType) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotPtrOutput)
+}
+
+// Autopilot is the configuration for Autopilot settings on the cluster.
+type AutopilotOutput struct{ *pulumi.OutputState }
+
+func (AutopilotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Autopilot)(nil)).Elem()
+}
+
+func (o AutopilotOutput) ToAutopilotOutput() AutopilotOutput {
+	return o
+}
+
+func (o AutopilotOutput) ToAutopilotOutputWithContext(ctx context.Context) AutopilotOutput {
+	return o
+}
+
+func (o AutopilotOutput) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return o.ToAutopilotPtrOutputWithContext(context.Background())
+}
+
+func (o AutopilotOutput) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return o.ApplyT(func(v Autopilot) *Autopilot {
+		return &v
+	}).(AutopilotPtrOutput)
+}
+
+// Enable Autopilot
+func (o AutopilotOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Autopilot) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AutopilotPtrOutput struct{ *pulumi.OutputState }
+
+func (AutopilotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Autopilot)(nil)).Elem()
+}
+
+func (o AutopilotPtrOutput) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return o
+}
+
+func (o AutopilotPtrOutput) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return o
+}
+
+func (o AutopilotPtrOutput) Elem() AutopilotOutput {
+	return o.ApplyT(func(v *Autopilot) Autopilot { return *v }).(AutopilotOutput)
+}
+
+// Enable Autopilot
+func (o AutopilotPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Autopilot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
 type AutoprovisioningNodePoolDefaults struct {
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -1686,6 +1820,8 @@ type ClusterType struct {
 	AddonsConfig *AddonsConfig `pulumi:"addonsConfig"`
 	// Configuration controlling RBAC group membership information.
 	AuthenticatorGroupsConfig *AuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// Autopilot configuration for the cluster.
+	Autopilot *Autopilot `pulumi:"autopilot"`
 	// Cluster-level autoscaling configuration.
 	Autoscaling *ClusterAutoscaling `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
@@ -1819,6 +1955,8 @@ type ClusterTypeArgs struct {
 	AddonsConfig AddonsConfigPtrInput `pulumi:"addonsConfig"`
 	// Configuration controlling RBAC group membership information.
 	AuthenticatorGroupsConfig AuthenticatorGroupsConfigPtrInput `pulumi:"authenticatorGroupsConfig"`
+	// Autopilot configuration for the cluster.
+	Autopilot AutopilotPtrInput `pulumi:"autopilot"`
 	// Cluster-level autoscaling configuration.
 	Autoscaling ClusterAutoscalingPtrInput `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
@@ -2021,6 +2159,11 @@ func (o ClusterTypeOutput) AddonsConfig() AddonsConfigPtrOutput {
 // Configuration controlling RBAC group membership information.
 func (o ClusterTypeOutput) AuthenticatorGroupsConfig() AuthenticatorGroupsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterType) *AuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfig }).(AuthenticatorGroupsConfigPtrOutput)
+}
+
+// Autopilot configuration for the cluster.
+func (o ClusterTypeOutput) Autopilot() AutopilotPtrOutput {
+	return o.ApplyT(func(v ClusterType) *Autopilot { return v.Autopilot }).(AutopilotPtrOutput)
 }
 
 // Cluster-level autoscaling configuration.
@@ -2344,6 +2487,16 @@ func (o ClusterTypePtrOutput) AuthenticatorGroupsConfig() AuthenticatorGroupsCon
 		}
 		return v.AuthenticatorGroupsConfig
 	}).(AuthenticatorGroupsConfigPtrOutput)
+}
+
+// Autopilot configuration for the cluster.
+func (o ClusterTypePtrOutput) Autopilot() AutopilotPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *Autopilot {
+		if v == nil {
+			return nil
+		}
+		return v.Autopilot
+	}).(AutopilotPtrOutput)
 }
 
 // Cluster-level autoscaling configuration.
@@ -6804,6 +6957,8 @@ type NetworkConfig struct {
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
 	// Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network *string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -6831,6 +6986,8 @@ type NetworkConfigArgs struct {
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
 	// Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -6932,6 +7089,11 @@ func (o NetworkConfigOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolPtrOutput)
 }
 
+// Whether L4ILB Subsetting is enabled for this cluster.
+func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolPtrOutput)
+}
+
 // Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
@@ -6992,6 +7154,16 @@ func (o NetworkConfigPtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput
 			return nil
 		}
 		return v.EnableIntraNodeVisibility
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether L4ILB Subsetting is enabled for this cluster.
+func (o NetworkConfigPtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableL4ilbSubsetting
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -8208,6 +8380,178 @@ func (o NodeManagementPtrOutput) UpgradeOptions() AutoUpgradeOptionsPtrOutput {
 	}).(AutoUpgradeOptionsPtrOutput)
 }
 
+// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+type NodeNetworkConfig struct {
+	// Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+	CreatePodRange *bool `pulumi:"createPodRange"`
+	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
+	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+	PodRange *string `pulumi:"podRange"`
+}
+
+// NodeNetworkConfigInput is an input type that accepts NodeNetworkConfigArgs and NodeNetworkConfigOutput values.
+// You can construct a concrete instance of `NodeNetworkConfigInput` via:
+//
+//          NodeNetworkConfigArgs{...}
+type NodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToNodeNetworkConfigOutput() NodeNetworkConfigOutput
+	ToNodeNetworkConfigOutputWithContext(context.Context) NodeNetworkConfigOutput
+}
+
+// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+type NodeNetworkConfigArgs struct {
+	// Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
+	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
+}
+
+func (NodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeNetworkConfig)(nil)).Elem()
+}
+
+func (i NodeNetworkConfigArgs) ToNodeNetworkConfigOutput() NodeNetworkConfigOutput {
+	return i.ToNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i NodeNetworkConfigArgs) ToNodeNetworkConfigOutputWithContext(ctx context.Context) NodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkConfigOutput)
+}
+
+func (i NodeNetworkConfigArgs) ToNodeNetworkConfigPtrOutput() NodeNetworkConfigPtrOutput {
+	return i.ToNodeNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodeNetworkConfigArgs) ToNodeNetworkConfigPtrOutputWithContext(ctx context.Context) NodeNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkConfigOutput).ToNodeNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// NodeNetworkConfigPtrInput is an input type that accepts NodeNetworkConfigArgs, NodeNetworkConfigPtr and NodeNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `NodeNetworkConfigPtrInput` via:
+//
+//          NodeNetworkConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodeNetworkConfigPtrOutput() NodeNetworkConfigPtrOutput
+	ToNodeNetworkConfigPtrOutputWithContext(context.Context) NodeNetworkConfigPtrOutput
+}
+
+type nodeNetworkConfigPtrType NodeNetworkConfigArgs
+
+func NodeNetworkConfigPtr(v *NodeNetworkConfigArgs) NodeNetworkConfigPtrInput {
+	return (*nodeNetworkConfigPtrType)(v)
+}
+
+func (*nodeNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeNetworkConfig)(nil)).Elem()
+}
+
+func (i *nodeNetworkConfigPtrType) ToNodeNetworkConfigPtrOutput() NodeNetworkConfigPtrOutput {
+	return i.ToNodeNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeNetworkConfigPtrType) ToNodeNetworkConfigPtrOutputWithContext(ctx context.Context) NodeNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkConfigPtrOutput)
+}
+
+// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+type NodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (NodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeNetworkConfig)(nil)).Elem()
+}
+
+func (o NodeNetworkConfigOutput) ToNodeNetworkConfigOutput() NodeNetworkConfigOutput {
+	return o
+}
+
+func (o NodeNetworkConfigOutput) ToNodeNetworkConfigOutputWithContext(ctx context.Context) NodeNetworkConfigOutput {
+	return o
+}
+
+func (o NodeNetworkConfigOutput) ToNodeNetworkConfigPtrOutput() NodeNetworkConfigPtrOutput {
+	return o.ToNodeNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodeNetworkConfigOutput) ToNodeNetworkConfigPtrOutputWithContext(ctx context.Context) NodeNetworkConfigPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *NodeNetworkConfig {
+		return &v
+	}).(NodeNetworkConfigPtrOutput)
+}
+
+// Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
+}
+
+// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+func (o NodeNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+func (o NodeNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
+}
+
+type NodeNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeNetworkConfig)(nil)).Elem()
+}
+
+func (o NodeNetworkConfigPtrOutput) ToNodeNetworkConfigPtrOutput() NodeNetworkConfigPtrOutput {
+	return o
+}
+
+func (o NodeNetworkConfigPtrOutput) ToNodeNetworkConfigPtrOutputWithContext(ctx context.Context) NodeNetworkConfigPtrOutput {
+	return o
+}
+
+func (o NodeNetworkConfigPtrOutput) Elem() NodeNetworkConfigOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) NodeNetworkConfig { return *v }).(NodeNetworkConfigOutput)
+}
+
+// Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreatePodRange
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+func (o NodeNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodRange
+	}).(pulumi.StringPtrOutput)
+}
+
 // NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
 type NodePoolType struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
@@ -8228,6 +8572,8 @@ type NodePoolType struct {
 	MaxPodsConstraint *MaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name *string `pulumi:"name"`
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize *int `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -8273,6 +8619,8 @@ type NodePoolTypeArgs struct {
 	MaxPodsConstraint MaxPodsConstraintPtrInput `pulumi:"maxPodsConstraint"`
 	// The name of the node pool.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+	NetworkConfig NodeNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntPtrInput `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -8435,6 +8783,11 @@ func (o NodePoolTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+func (o NodePoolTypeOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolType) *NodeNetworkConfig { return v.NetworkConfig }).(NodeNetworkConfigPtrOutput)
+}
+
 // [Output only] The pod CIDR block size per node in this node pool.
 func (o NodePoolTypeOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *int { return v.PodIpv4CidrSize }).(pulumi.IntPtrOutput)
@@ -8571,6 +8924,16 @@ func (o NodePoolTypePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+func (o NodePoolTypePtrOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolType) *NodeNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfig
+	}).(NodeNetworkConfigPtrOutput)
 }
 
 // [Output only] The pod CIDR block size per node in this node pool.
@@ -12020,6 +12383,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeOptionsOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AutopilotOutput{})
+	pulumi.RegisterOutputType(AutopilotPtrOutput{})
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsOutput{})
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryDestinationOutput{})
@@ -12096,6 +12461,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeManagementOutput{})
 	pulumi.RegisterOutputType(NodeManagementPtrOutput{})
+	pulumi.RegisterOutputType(NodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(NodeNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeOutput{})
 	pulumi.RegisterOutputType(NodePoolTypePtrOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeArrayOutput{})

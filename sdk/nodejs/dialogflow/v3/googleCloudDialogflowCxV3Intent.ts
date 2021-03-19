@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowCxV3Intent extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3IntentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -61,12 +62,8 @@ export class GoogleCloudDialogflowCxV3Intent extends pulumi.CustomResource {
             inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3Intent.__pulumiType, name, inputs, opts);
     }
@@ -93,7 +90,7 @@ export interface GoogleCloudDialogflowCxV3IntentArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     * The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
      */
     readonly languageCode?: pulumi.Input<string>;
     /**

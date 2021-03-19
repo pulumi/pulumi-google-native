@@ -45,11 +45,12 @@ export class ResourcePolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ResourcePolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -62,6 +63,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
@@ -69,12 +71,8 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["vmMaintenancePolicy"] = args ? args.vmMaintenancePolicy : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourcePolicy.__pulumiType, name, inputs, opts);
     }
@@ -122,6 +120,10 @@ export interface ResourcePolicyArgs {
      * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     readonly requestId?: pulumi.Input<string>;
+    /**
+     * [Output Only] The system status of the resource policy.
+     */
+    readonly resourceStatus?: pulumi.Input<inputs.compute.alpha.ResourcePolicyResourceStatus>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */

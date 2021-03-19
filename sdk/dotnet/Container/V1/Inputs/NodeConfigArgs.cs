@@ -51,6 +51,12 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
+        /// <summary>
+        /// Node kubelet configs.
+        /// </summary>
+        [Input("kubeletConfig")]
+        public Input<Inputs.NodeKubeletConfigArgs>? KubeletConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -62,6 +68,12 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Parameters that can be configured on Linux nodes.
+        /// </summary>
+        [Input("linuxNodeConfig")]
+        public Input<Inputs.LinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
 
         /// <summary>
         /// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.

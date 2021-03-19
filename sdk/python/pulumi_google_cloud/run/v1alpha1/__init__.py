@@ -3,14 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .cloud_audit_logs_source import *
-from .cloud_pub_sub_source import *
-from .cloud_scheduler_source import *
-from .cloud_storage_source import *
 from .domain_mapping import *
+from .job import *
 from .policy import *
 from .service import *
-from .trigger import *
 from ._inputs import *
 
 def _register_module():
@@ -25,22 +21,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:run/v1alpha1:CloudAuditLogsSource":
-                return CloudAuditLogsSource(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:run/v1alpha1:CloudPubSubSource":
-                return CloudPubSubSource(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:run/v1alpha1:CloudSchedulerSource":
-                return CloudSchedulerSource(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:run/v1alpha1:CloudStorageSource":
-                return CloudStorageSource(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:run/v1alpha1:DomainMapping":
+            if typ == "google-cloud:run/v1alpha1:DomainMapping":
                 return DomainMapping(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:run/v1alpha1:Job":
+                return Job(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:run/v1alpha1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:run/v1alpha1:Service":
                 return Service(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:run/v1alpha1:Trigger":
-                return Trigger(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

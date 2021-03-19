@@ -52,7 +52,7 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1.Inputs
         }
 
         /// <summary>
-        /// The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+        /// The database engine type and version.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1.Inputs
         public Input<string>? StorageAutoResizeLimit { get; set; }
 
         /// <summary>
-        /// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+        /// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

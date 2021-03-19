@@ -23,6 +23,7 @@ class GoogleCloudApigeeV1ApiProduct(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 graphql_operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GraphQLOperationGroupArgs']]] = None,
                  last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']]] = None,
@@ -46,6 +47,7 @@ class GoogleCloudApigeeV1ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the API product. Include key information about the API product that is not captured by other fields. Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the `proxy.pathsuffix` variable. The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the `apiResources` element is defined to be `/forecastrss` and the base path defined for the API proxy is `/weather`, then only requests to `/weather/forecastrss` are permitted by the API product. You can select a specific path, or you can select all subpaths with the following wildcard: - `/**`: Indicates that all sub-URIs are included. - `/*` : Indicates that only URIs one level down are included. By default, / supports the same resources as /** as well as the base path defined by the API proxy. For example, if the base path of the API proxy is `/v1/weatherapikey`, then the API product supports requests to `/v1/weatherapikey` and to any sub-URIs, such as `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on. For more information, see Managing API products.
         :param pulumi.Input[str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1GraphQLOperationGroupArgs']] graphql_operation_group: Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
         :param pulumi.Input[str] last_modified_at: Response only. Modified time of this environment as milliseconds since epoch.
         :param pulumi.Input[str] name: Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
@@ -80,6 +82,7 @@ class GoogleCloudApigeeV1ApiProduct(pulumi.CustomResource):
             __props__['description'] = description
             __props__['display_name'] = display_name
             __props__['environments'] = environments
+            __props__['graphql_operation_group'] = graphql_operation_group
             __props__['last_modified_at'] = last_modified_at
             __props__['name'] = name
             __props__['operation_group'] = operation_group

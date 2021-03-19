@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowCxV3beta1TestCase extends pulumi.CustomResourc
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3beta1TestCaseArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["creationTime"] = args ? args.creationTime : undefined;
@@ -60,12 +61,8 @@ export class GoogleCloudDialogflowCxV3beta1TestCase extends pulumi.CustomResourc
             inputs["testConfig"] = args ? args.testConfig : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3beta1TestCase.__pulumiType, name, inputs, opts);
     }

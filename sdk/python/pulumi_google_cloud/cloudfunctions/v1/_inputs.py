@@ -328,13 +328,29 @@ class FailurePolicyArgs:
 @pulumi.input_type
 class HttpsTriggerArgs:
     def __init__(__self__, *,
+                 security_level: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Describes HttpsTrigger, could be used to connect web hooks to function.
+        :param pulumi.Input[str] security_level: The security level for the function.
         :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
+        if security_level is not None:
+            pulumi.set(__self__, "security_level", security_level)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="securityLevel")
+    def security_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security level for the function.
+        """
+        return pulumi.get(self, "security_level")
+
+    @security_level.setter
+    def security_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_level", value)
 
     @property
     @pulumi.getter

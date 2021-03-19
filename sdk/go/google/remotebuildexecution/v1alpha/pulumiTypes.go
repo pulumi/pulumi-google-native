@@ -888,7 +888,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Machine type of the worker, such as `n1-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+	// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 	MachineType *string `pulumi:"machineType"`
 	// The maximum number of actions a worker can execute concurrently.
 	MaxConcurrentActions *string `pulumi:"maxConcurrentActions"`
@@ -925,7 +925,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Required. Machine type of the worker, such as `n1-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+	// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The maximum number of actions a worker can execute concurrently.
 	MaxConcurrentActions pulumi.StringPtrInput `pulumi:"maxConcurrentActions"`
@@ -1041,7 +1041,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) Labels
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Required. Machine type of the worker, such as `n1-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -1140,7 +1140,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) Lab
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. Machine type of the worker, such as `n1-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string {
 		if v == nil {

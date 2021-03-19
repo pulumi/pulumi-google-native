@@ -12,6 +12,14 @@ export namespace accesscontextmanager {
     }
 }
 
+export namespace apigateway {
+    export namespace v1 {
+    }
+
+    export namespace v1beta {
+    }
+}
+
 export namespace apigee {
     export namespace v1 {
     }
@@ -38,6 +46,11 @@ export namespace artifactregistry {
 
 export namespace assuredworkloads {
     export namespace v1 {
+    }
+}
+
+export namespace bigquery {
+    export namespace v2 {
     }
 }
 
@@ -99,6 +112,14 @@ export namespace cloudbuild {
 
     export namespace v1alpha2 {
     }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace cloudchannel {
+    export namespace v1 {
+    }
 }
 
 export namespace cloudfunctions {
@@ -140,6 +161,9 @@ export namespace cloudresourcemanager {
     }
 
     export namespace v2beta1 {
+    }
+
+    export namespace v3 {
     }
 }
 
@@ -236,6 +260,9 @@ export namespace datalabeling {
 }
 
 export namespace datamigration {
+    export namespace v1 {
+    }
+
     export namespace v1beta1 {
     }
 }
@@ -300,6 +327,9 @@ export namespace domains {
 }
 
 export namespace eventarc {
+    export namespace v1 {
+    }
+
     export namespace v1beta1 {
     }
 }
@@ -333,6 +363,20 @@ export namespace gameservices {
 
 export namespace genomics {
     export namespace v1alpha2 {
+    }
+}
+
+export namespace gkehub {
+    export namespace v1 {
+    }
+
+    export namespace v1alpha {
+    }
+
+    export namespace v1alpha2 {
+    }
+
+    export namespace v1beta1 {
     }
 }
 
@@ -385,6 +429,9 @@ export namespace managedidentities {
 }
 
 export namespace memcache {
+    export namespace v1 {
+    }
+
     export namespace v1beta2 {
     }
 }
@@ -410,6 +457,11 @@ export namespace monitoring {
     }
 }
 
+export namespace networkconnectivity {
+    export namespace v1alpha1 {
+    }
+}
+
 export namespace networkmanagement {
     export namespace v1 {
     }
@@ -423,11 +475,21 @@ export namespace notebooks {
     }
 }
 
+export namespace orgpolicy {
+    export namespace v2 {
+    }
+}
+
 export namespace osconfig {
     export namespace v1 {
     }
 
     export namespace v1beta {
+    }
+}
+
+export namespace policysimulator {
+    export namespace v1beta1 {
     }
 }
 
@@ -470,6 +532,17 @@ export namespace remotebuildexecution {
     }
 }
 
+export namespace retail {
+    export namespace v2 {
+    }
+
+    export namespace v2alpha {
+    }
+
+    export namespace v2beta {
+    }
+}
+
 export namespace run {
     export namespace v1 {
     }
@@ -484,6 +557,14 @@ export namespace runtimeconfig {
 }
 
 export namespace secretmanager {
+    export namespace v1 {
+    }
+
+    export namespace v1beta1 {
+    }
+}
+
+export namespace securitycenter {
     export namespace v1 {
     }
 
@@ -511,6 +592,11 @@ export namespace sourcerepo {
 
 export namespace spanner {
     export namespace v1 {
+    }
+}
+
+export namespace speech {
+    export namespace v1p1beta1 {
     }
 }
 
@@ -577,6 +663,9 @@ export namespace websecurityscanner {
 }
 
 export namespace workflowexecutions {
+    export namespace v1 {
+    }
+
     export namespace v1beta {
     }
 }

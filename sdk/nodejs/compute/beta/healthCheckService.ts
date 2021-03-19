@@ -44,11 +44,12 @@ export class HealthCheckService extends pulumi.CustomResource {
      */
     constructor(name: string, args: HealthCheckServiceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -68,12 +69,8 @@ export class HealthCheckService extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HealthCheckService.__pulumiType, name, inputs, opts);
     }

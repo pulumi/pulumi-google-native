@@ -8,7 +8,7 @@ import * as utilities from "../../utilities";
 /**
  * Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
  *
- * A regional managed instance group can contain up to 2000 instances.
+ * A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
  */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -47,12 +47,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
@@ -80,12 +81,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceGroupManager.__pulumiType, name, inputs, opts);
     }
@@ -156,7 +153,7 @@ export interface InstanceGroupManagerArgs {
     /**
      * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *
@@ -198,5 +195,5 @@ export interface InstanceGroupManagerArgs {
     /**
      * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

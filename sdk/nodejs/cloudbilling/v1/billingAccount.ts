@@ -44,19 +44,16 @@ export class BillingAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BillingAccountArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["open"] = args ? args.open : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BillingAccount.__pulumiType, name, inputs, opts);
     }

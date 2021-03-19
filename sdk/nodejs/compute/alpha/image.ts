@@ -45,8 +45,9 @@ export class Image extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["archiveSizeBytes"] = args ? args.archiveSizeBytes : undefined;
@@ -68,6 +69,8 @@ export class Image extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["rolloutOverride"] = args ? args.rolloutOverride : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["shieldedInstanceInitialState"] = args ? args.shieldedInstanceInitialState : undefined;
@@ -85,12 +88,8 @@ export class Image extends pulumi.CustomResource {
             inputs["storageLocations"] = args ? args.storageLocations : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Image.__pulumiType, name, inputs, opts);
     }
@@ -188,6 +187,14 @@ export interface ImageArgs {
      * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     readonly requestId?: pulumi.Input<string>;
+    /**
+     * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+     */
+    readonly rolloutOverride?: pulumi.Input<inputs.compute.alpha.RolloutPolicy>;
+    /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

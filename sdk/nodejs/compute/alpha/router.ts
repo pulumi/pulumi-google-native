@@ -45,11 +45,12 @@ export class Router extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["bgp"] = args ? args.bgp : undefined;
@@ -70,12 +71,8 @@ export class Router extends pulumi.CustomResource {
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Router.__pulumiType, name, inputs, opts);
     }
@@ -102,7 +99,7 @@ export interface RouterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (Encrypted Interconnect feature).
+     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
      */
     readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**

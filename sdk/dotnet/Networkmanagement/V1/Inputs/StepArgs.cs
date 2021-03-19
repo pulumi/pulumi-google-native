@@ -46,7 +46,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         public Input<Inputs.DropInfoArgs>? Drop { get; set; }
 
         /// <summary>
-        /// Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+        /// Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
         /// </summary>
         [Input("endpoint")]
         public Input<Inputs.EndpointInfoArgs>? Endpoint { get; set; }

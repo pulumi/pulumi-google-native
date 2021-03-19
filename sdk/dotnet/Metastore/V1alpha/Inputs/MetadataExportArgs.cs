@@ -16,6 +16,12 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha.Inputs
     public sealed class MetadataExportArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Output only. The type of the database dump.
+        /// </summary>
+        [Input("databaseDumpType")]
+        public Input<string>? DatabaseDumpType { get; set; }
+
+        /// <summary>
         /// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
         /// </summary>
         [Input("destinationGcsUri")]

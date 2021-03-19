@@ -112,6 +112,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Input("selfLink")]

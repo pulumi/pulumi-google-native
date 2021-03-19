@@ -44,11 +44,12 @@ export class SslCertsInsertResponse extends pulumi.CustomResource {
      */
     constructor(name: string, args: SslCertsInsertResponseArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["commonName"] = args ? args.commonName : undefined;
@@ -56,12 +57,8 @@ export class SslCertsInsertResponse extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SslCertsInsertResponse.__pulumiType, name, inputs, opts);
     }

@@ -29,6 +29,9 @@ func NewPolicy(ctx *pulumi.Context,
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
+	}
 	var resource Policy
 	err := ctx.RegisterResource("google-cloud:compute/alpha:Policy", name, args, &resource, opts...)
 	if err != nil {
@@ -61,7 +64,7 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+	// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
 	Bindings []Binding `pulumi:"bindings"`
 	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
 	Etag *string `pulumi:"etag"`
@@ -71,11 +74,13 @@ type policyArgs struct {
 	Project string `pulumi:"project"`
 	// Name or id of the resource for this request.
 	Resource string `pulumi:"resource"`
+	// The name of the zone for this request.
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+	// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
 	Bindings BindingArrayInput
 	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
 	Etag pulumi.StringPtrInput
@@ -85,6 +90,8 @@ type PolicyArgs struct {
 	Project pulumi.StringInput
 	// Name or id of the resource for this request.
 	Resource pulumi.StringInput
+	// The name of the zone for this request.
+	Zone pulumi.StringInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {

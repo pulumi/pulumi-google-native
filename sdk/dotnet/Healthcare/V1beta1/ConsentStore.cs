@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 {
     /// <summary>
-    /// Creates a new Consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
+    /// Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:ConsentStore")]
     public partial class ConsentStore : Pulumi.CustomResource
@@ -60,19 +60,19 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public sealed class ConsentStoreArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
         /// </summary>
         [Input("consentStoreId")]
         public Input<string>? ConsentStoreId { get; set; }
 
         /// <summary>
-        /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
+        /// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
         /// </summary>
         [Input("defaultConsentTtl")]
         public Input<string>? DefaultConsentTtl { get; set; }
 
         /// <summary>
-        /// If true, UpdateConsent creates the consent if it does not already exist.
+        /// Optional. If `true`, UpdateConsent creates the Consent if it does not already exist. If unspecified, defaults to `false`.
         /// </summary>
         [Input("enableConsentCreateOnUpdate")]
         public Input<bool>? EnableConsentCreateOnUpdate { get; set; }
@@ -81,7 +81,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize Consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        /// Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
         /// </summary>
         public InputMap<string> Labels
         {
@@ -90,13 +90,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         }
 
         /// <summary>
-        /// Resource name of the Consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
+        /// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the dataset this Consent store belongs to.
+        /// Required. The name of the dataset this consent store belongs to.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;

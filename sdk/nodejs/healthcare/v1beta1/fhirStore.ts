@@ -45,8 +45,9 @@ export class FhirStore extends pulumi.CustomResource {
      */
     constructor(name: string, args: FhirStoreArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
@@ -59,15 +60,12 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
+            inputs["validationConfig"] = args ? args.validationConfig : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FhirStore.__pulumiType, name, inputs, opts);
     }
@@ -90,7 +88,7 @@ export interface FhirStoreArgs {
      */
     readonly disableResourceVersioning?: pulumi.Input<boolean>;
     /**
-     * Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. Be careful with the audit logs if client-specified resource IDs contain sensitive data such as patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications.
+     * Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
      */
     readonly enableUpdateCreate?: pulumi.Input<boolean>;
     /**
@@ -117,6 +115,10 @@ export interface FhirStoreArgs {
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */
     readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.StreamConfig>[]>;
+    /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     */
+    readonly validationConfig?: pulumi.Input<inputs.healthcare.v1beta1.ValidationConfig>;
     /**
      * Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
      */

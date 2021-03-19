@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new User data mapping in the parent Consent store.
+ * Creates a new User data mapping in the parent consent store.
  */
 export class UserDataMapping extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class UserDataMapping extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserDataMappingArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["archiveTime"] = args ? args.archiveTime : undefined;
@@ -58,12 +59,8 @@ export class UserDataMapping extends pulumi.CustomResource {
             inputs["userId"] = args ? args.userId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(UserDataMapping.__pulumiType, name, inputs, opts);
     }
@@ -74,15 +71,15 @@ export class UserDataMapping extends pulumi.CustomResource {
  */
 export interface UserDataMappingArgs {
     /**
-     * Output only. Indicates the time when this data mapping was archived.
+     * Output only. Indicates the time when this mapping was archived.
      */
     readonly archiveTime?: pulumi.Input<string>;
     /**
-     * Output only. Indicates whether this data mapping is archived.
+     * Output only. Indicates whether this mapping is archived.
      */
     readonly archived?: pulumi.Input<boolean>;
     /**
-     * Required. A unique identifier for the mapped data.
+     * Required. A unique identifier for the mapped resource.
      */
     readonly dataId?: pulumi.Input<string>;
     /**
@@ -94,7 +91,7 @@ export interface UserDataMappingArgs {
      */
     readonly parent: pulumi.Input<string>;
     /**
-     * Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+     * Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
      */
     readonly resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.Attribute>[]>;
     /**

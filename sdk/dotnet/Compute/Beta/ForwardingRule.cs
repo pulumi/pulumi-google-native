@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Beta
 {
     /// <summary>
-    /// Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+    /// Creates a ForwardingRule resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/beta:ForwardingRule")]
     public partial class ForwardingRule : Pulumi.CustomResource
@@ -283,10 +283,16 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// [Output Only] The PSC connection id of the PSC Forwarding Rule.
+        /// </summary>
+        [Input("pscConnectionId")]
+        public Input<string>? PscConnectionId { get; set; }
+
+        /// <summary>
         /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -346,15 +352,6 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
-        /// <summary>
-        /// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// 
-        /// For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle. Currently, the supported Google API bundles include:
-        /// 
-        ///  
-        /// - vpc-sc - GCP APIs that support VPC Service Controls. For more information about which APIs support VPC Service Controls, refer to VPC-SC supported products and limitations.  
-        /// - all-apis - All GCP APIs. For more information about which APIs are supported with this bundle, refer to Private Google Access-specific domains and VIPs.
-        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 

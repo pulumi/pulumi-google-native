@@ -16,13 +16,13 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1.Inputs
     public sealed class PubsubArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        /// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         /// </summary>
         [Input("subscription")]
         public Input<string>? Subscription { get; set; }
 
         /// <summary>
-        /// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+        /// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

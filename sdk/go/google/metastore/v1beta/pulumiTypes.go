@@ -346,14 +346,150 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfig struct {
+	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DataCatalogConfigInput is an input type that accepts DataCatalogConfigArgs and DataCatalogConfigOutput values.
+// You can construct a concrete instance of `DataCatalogConfigInput` via:
+//
+//          DataCatalogConfigArgs{...}
+type DataCatalogConfigInput interface {
+	pulumi.Input
+
+	ToDataCatalogConfigOutput() DataCatalogConfigOutput
+	ToDataCatalogConfigOutputWithContext(context.Context) DataCatalogConfigOutput
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfigArgs struct {
+	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DataCatalogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogConfig)(nil)).Elem()
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigOutput() DataCatalogConfigOutput {
+	return i.ToDataCatalogConfigOutputWithContext(context.Background())
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigOutputWithContext(ctx context.Context) DataCatalogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigOutput)
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return i.ToDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataCatalogConfigArgs) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigOutput).ToDataCatalogConfigPtrOutputWithContext(ctx)
+}
+
+// DataCatalogConfigPtrInput is an input type that accepts DataCatalogConfigArgs, DataCatalogConfigPtr and DataCatalogConfigPtrOutput values.
+// You can construct a concrete instance of `DataCatalogConfigPtrInput` via:
+//
+//          DataCatalogConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DataCatalogConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput
+	ToDataCatalogConfigPtrOutputWithContext(context.Context) DataCatalogConfigPtrOutput
+}
+
+type dataCatalogConfigPtrType DataCatalogConfigArgs
+
+func DataCatalogConfigPtr(v *DataCatalogConfigArgs) DataCatalogConfigPtrInput {
+	return (*dataCatalogConfigPtrType)(v)
+}
+
+func (*dataCatalogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCatalogConfig)(nil)).Elem()
+}
+
+func (i *dataCatalogConfigPtrType) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return i.ToDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataCatalogConfigPtrType) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigPtrOutput)
+}
+
+// Specifies how metastore metadata should be integrated with the Data Catalog service.
+type DataCatalogConfigOutput struct{ *pulumi.OutputState }
+
+func (DataCatalogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCatalogConfig)(nil)).Elem()
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigOutput() DataCatalogConfigOutput {
+	return o
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigOutputWithContext(ctx context.Context) DataCatalogConfigOutput {
+	return o
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return o.ToDataCatalogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataCatalogConfigOutput) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return o.ApplyT(func(v DataCatalogConfig) *DataCatalogConfig {
+		return &v
+	}).(DataCatalogConfigPtrOutput)
+}
+
+// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o DataCatalogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataCatalogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DataCatalogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataCatalogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataCatalogConfig)(nil)).Elem()
+}
+
+func (o DataCatalogConfigPtrOutput) ToDataCatalogConfigPtrOutput() DataCatalogConfigPtrOutput {
+	return o
+}
+
+func (o DataCatalogConfigPtrOutput) ToDataCatalogConfigPtrOutputWithContext(ctx context.Context) DataCatalogConfigPtrOutput {
+	return o
+}
+
+func (o DataCatalogConfigPtrOutput) Elem() DataCatalogConfigOutput {
+	return o.ApplyT(func(v *DataCatalogConfig) DataCatalogConfig { return *v }).(DataCatalogConfigOutput)
+}
+
+// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o DataCatalogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataCatalogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A specification of the location of and metadata about a database dump from a relational database management system.
 type DatabaseDump struct {
 	// The type of the database.
 	DatabaseType *string `pulumi:"databaseType"`
-	// A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+	// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 	GcsUri *string `pulumi:"gcsUri"`
 	// The name of the source database.
 	SourceDatabase *string `pulumi:"sourceDatabase"`
+	// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+	Type *string `pulumi:"type"`
 }
 
 // DatabaseDumpInput is an input type that accepts DatabaseDumpArgs and DatabaseDumpOutput values.
@@ -371,10 +507,12 @@ type DatabaseDumpInput interface {
 type DatabaseDumpArgs struct {
 	// The type of the database.
 	DatabaseType pulumi.StringPtrInput `pulumi:"databaseType"`
-	// A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+	// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 	GcsUri pulumi.StringPtrInput `pulumi:"gcsUri"`
 	// The name of the source database.
 	SourceDatabase pulumi.StringPtrInput `pulumi:"sourceDatabase"`
+	// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DatabaseDumpArgs) ElementType() reflect.Type {
@@ -460,7 +598,7 @@ func (o DatabaseDumpOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseDump) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
 }
 
-// A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 func (o DatabaseDumpOutput) GcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseDump) *string { return v.GcsUri }).(pulumi.StringPtrOutput)
 }
@@ -468,6 +606,11 @@ func (o DatabaseDumpOutput) GcsUri() pulumi.StringPtrOutput {
 // The name of the source database.
 func (o DatabaseDumpOutput) SourceDatabase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseDump) *string { return v.SourceDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+func (o DatabaseDumpOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseDump) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseDumpPtrOutput struct{ *pulumi.OutputState }
@@ -498,7 +641,7 @@ func (o DatabaseDumpPtrOutput) DatabaseType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 func (o DatabaseDumpPtrOutput) GcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseDump) *string {
 		if v == nil {
@@ -515,6 +658,16 @@ func (o DatabaseDumpPtrOutput) SourceDatabase() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SourceDatabase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+func (o DatabaseDumpPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseDump) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1208,6 +1361,8 @@ func (o MaintenanceWindowPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 
 // The details of a metadata export operation.
 type MetadataExport struct {
+	// Output only. The type of the database dump.
+	DatabaseDumpType *string `pulumi:"databaseDumpType"`
 	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
 	DestinationGcsUri *string `pulumi:"destinationGcsUri"`
 	// Output only. The time when the export ended.
@@ -1231,6 +1386,8 @@ type MetadataExportInput interface {
 
 // The details of a metadata export operation.
 type MetadataExportArgs struct {
+	// Output only. The type of the database dump.
+	DatabaseDumpType pulumi.StringPtrInput `pulumi:"databaseDumpType"`
 	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
 	DestinationGcsUri pulumi.StringPtrInput `pulumi:"destinationGcsUri"`
 	// Output only. The time when the export ended.
@@ -1293,6 +1450,11 @@ func (o MetadataExportOutput) ToMetadataExportOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Output only. The type of the database dump.
+func (o MetadataExportOutput) DatabaseDumpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetadataExport) *string { return v.DatabaseDumpType }).(pulumi.StringPtrOutput)
+}
+
 // Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
 func (o MetadataExportOutput) DestinationGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataExport) *string { return v.DestinationGcsUri }).(pulumi.StringPtrOutput)
@@ -1335,6 +1497,8 @@ func (o MetadataExportArrayOutput) Index(i pulumi.IntInput) MetadataExportOutput
 
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegration struct {
+	// The integration config for the Data Catalog service.
+	DataCatalogConfig *DataCatalogConfig `pulumi:"dataCatalogConfig"`
 }
 
 // MetadataIntegrationInput is an input type that accepts MetadataIntegrationArgs and MetadataIntegrationOutput values.
@@ -1350,6 +1514,8 @@ type MetadataIntegrationInput interface {
 
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegrationArgs struct {
+	// The integration config for the Data Catalog service.
+	DataCatalogConfig DataCatalogConfigPtrInput `pulumi:"dataCatalogConfig"`
 }
 
 func (MetadataIntegrationArgs) ElementType() reflect.Type {
@@ -1430,6 +1596,11 @@ func (o MetadataIntegrationOutput) ToMetadataIntegrationPtrOutputWithContext(ctx
 	}).(MetadataIntegrationPtrOutput)
 }
 
+// The integration config for the Data Catalog service.
+func (o MetadataIntegrationOutput) DataCatalogConfig() DataCatalogConfigPtrOutput {
+	return o.ApplyT(func(v MetadataIntegration) *DataCatalogConfig { return v.DataCatalogConfig }).(DataCatalogConfigPtrOutput)
+}
+
 type MetadataIntegrationPtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataIntegrationPtrOutput) ElementType() reflect.Type {
@@ -1448,10 +1619,22 @@ func (o MetadataIntegrationPtrOutput) Elem() MetadataIntegrationOutput {
 	return o.ApplyT(func(v *MetadataIntegration) MetadataIntegration { return *v }).(MetadataIntegrationOutput)
 }
 
+// The integration config for the Data Catalog service.
+func (o MetadataIntegrationPtrOutput) DataCatalogConfig() DataCatalogConfigPtrOutput {
+	return o.ApplyT(func(v *MetadataIntegration) *DataCatalogConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataCatalogConfig
+	}).(DataCatalogConfigPtrOutput)
+}
+
 // The metadata management activities of the metastore service.
 type MetadataManagementActivity struct {
 	// Output only. The latest metadata exports of the metastore service.
 	MetadataExports []MetadataExport `pulumi:"metadataExports"`
+	// Output only. The latest restores of the metastore service.
+	Restores []Restore `pulumi:"restores"`
 }
 
 // MetadataManagementActivityInput is an input type that accepts MetadataManagementActivityArgs and MetadataManagementActivityOutput values.
@@ -1469,6 +1652,8 @@ type MetadataManagementActivityInput interface {
 type MetadataManagementActivityArgs struct {
 	// Output only. The latest metadata exports of the metastore service.
 	MetadataExports MetadataExportArrayInput `pulumi:"metadataExports"`
+	// Output only. The latest restores of the metastore service.
+	Restores RestoreArrayInput `pulumi:"restores"`
 }
 
 func (MetadataManagementActivityArgs) ElementType() reflect.Type {
@@ -1554,6 +1739,11 @@ func (o MetadataManagementActivityOutput) MetadataExports() MetadataExportArrayO
 	return o.ApplyT(func(v MetadataManagementActivity) []MetadataExport { return v.MetadataExports }).(MetadataExportArrayOutput)
 }
 
+// Output only. The latest restores of the metastore service.
+func (o MetadataManagementActivityOutput) Restores() RestoreArrayOutput {
+	return o.ApplyT(func(v MetadataManagementActivity) []Restore { return v.Restores }).(RestoreArrayOutput)
+}
+
 type MetadataManagementActivityPtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataManagementActivityPtrOutput) ElementType() reflect.Type {
@@ -1580,6 +1770,16 @@ func (o MetadataManagementActivityPtrOutput) MetadataExports() MetadataExportArr
 		}
 		return v.MetadataExports
 	}).(MetadataExportArrayOutput)
+}
+
+// Output only. The latest restores of the metastore service.
+func (o MetadataManagementActivityPtrOutput) Restores() RestoreArrayOutput {
+	return o.ApplyT(func(v *MetadataManagementActivity) []Restore {
+		if v == nil {
+			return nil
+		}
+		return v.Restores
+	}).(RestoreArrayOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members to a single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example: { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/).
@@ -1773,6 +1973,151 @@ func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The details of a metadata restore operation.
+type Restore struct {
+	// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	Backup *string `pulumi:"backup"`
+	// Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
+	Details *string `pulumi:"details"`
+	// Output only. The time when the restore ended.
+	EndTime *string `pulumi:"endTime"`
+	// Output only. The time when the restore started.
+	StartTime *string `pulumi:"startTime"`
+	// Output only. The current state of the restore.
+	State *string `pulumi:"state"`
+	// Output only. The type of restore.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreInput is an input type that accepts RestoreArgs and RestoreOutput values.
+// You can construct a concrete instance of `RestoreInput` via:
+//
+//          RestoreArgs{...}
+type RestoreInput interface {
+	pulumi.Input
+
+	ToRestoreOutput() RestoreOutput
+	ToRestoreOutputWithContext(context.Context) RestoreOutput
+}
+
+// The details of a metadata restore operation.
+type RestoreArgs struct {
+	// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	Backup pulumi.StringPtrInput `pulumi:"backup"`
+	// Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// Output only. The time when the restore ended.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Output only. The time when the restore started.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Output only. The current state of the restore.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output only. The type of restore.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Restore)(nil)).Elem()
+}
+
+func (i RestoreArgs) ToRestoreOutput() RestoreOutput {
+	return i.ToRestoreOutputWithContext(context.Background())
+}
+
+func (i RestoreArgs) ToRestoreOutputWithContext(ctx context.Context) RestoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreOutput)
+}
+
+// RestoreArrayInput is an input type that accepts RestoreArray and RestoreArrayOutput values.
+// You can construct a concrete instance of `RestoreArrayInput` via:
+//
+//          RestoreArray{ RestoreArgs{...} }
+type RestoreArrayInput interface {
+	pulumi.Input
+
+	ToRestoreArrayOutput() RestoreArrayOutput
+	ToRestoreArrayOutputWithContext(context.Context) RestoreArrayOutput
+}
+
+type RestoreArray []RestoreInput
+
+func (RestoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Restore)(nil)).Elem()
+}
+
+func (i RestoreArray) ToRestoreArrayOutput() RestoreArrayOutput {
+	return i.ToRestoreArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreArray) ToRestoreArrayOutputWithContext(ctx context.Context) RestoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreArrayOutput)
+}
+
+// The details of a metadata restore operation.
+type RestoreOutput struct{ *pulumi.OutputState }
+
+func (RestoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Restore)(nil)).Elem()
+}
+
+func (o RestoreOutput) ToRestoreOutput() RestoreOutput {
+	return o
+}
+
+func (o RestoreOutput) ToRestoreOutputWithContext(ctx context.Context) RestoreOutput {
+	return o
+}
+
+// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+func (o RestoreOutput) Backup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Restore) *string { return v.Backup }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
+func (o RestoreOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Restore) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The time when the restore ended.
+func (o RestoreOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Restore) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The time when the restore started.
+func (o RestoreOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Restore) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The current state of the restore.
+func (o RestoreOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Restore) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The type of restore.
+func (o RestoreOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Restore) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RestoreArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Restore)(nil)).Elem()
+}
+
+func (o RestoreArrayOutput) ToRestoreArrayOutput() RestoreArrayOutput {
+	return o
+}
+
+func (o RestoreArrayOutput) ToRestoreArrayOutputWithContext(ctx context.Context) RestoreArrayOutput {
+	return o
+}
+
+func (o RestoreArrayOutput) Index(i pulumi.IntInput) RestoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Restore {
+		return vs[0].([]Restore)[vs[1].(int)]
+	}).(RestoreOutput)
+}
+
 // A securely stored value.
 type Secret struct {
 	// The relative resource name of a Secret Manager secret version, in the following form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
@@ -1914,6 +2259,8 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(DataCatalogConfigOutput{})
+	pulumi.RegisterOutputType(DataCatalogConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpPtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
@@ -1932,6 +2279,8 @@ func init() {
 	pulumi.RegisterOutputType(MetadataManagementActivityPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTypeOutput{})
 	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(RestoreOutput{})
+	pulumi.RegisterOutputType(RestoreArrayOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 }

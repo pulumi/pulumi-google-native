@@ -25,7 +25,7 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1.Inputs
         private InputList<string>? _requirements;
 
         /// <summary>
-        /// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'.
+        /// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
         /// </summary>
         public InputList<string> Requirements
         {

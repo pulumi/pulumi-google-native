@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
 {
     /// <summary>
-    /// Creates an instruction for how data should be labeled.
+    /// Create a FeedbackMessage object.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:datalabeling/v1beta1:GoogleLongrunningOperation")]
     public partial class GoogleLongrunningOperation : Pulumi.CustomResource
@@ -60,16 +60,40 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
     public sealed class GoogleLongrunningOperationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Instruction of how to perform the labeling task.
+        /// String content of the feedback. Maximum of 10000 characters.
         /// </summary>
-        [Input("instruction")]
-        public Input<Inputs.GoogleCloudDatalabelingV1beta1InstructionArgs>? Instruction { get; set; }
+        [Input("body")]
+        public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Required. Instruction resource parent, format: projects/{project_id}
+        /// Create time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The image storing this feedback if the feedback is an image representing operator's comments.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("operatorFeedbackMetadata")]
+        public Input<Inputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>? OperatorFeedbackMetadata { get; set; }
+
+        /// <summary>
+        /// Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        [Input("requesterFeedbackMetadata")]
+        public Input<Inputs.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>? RequesterFeedbackMetadata { get; set; }
 
         public GoogleLongrunningOperationArgs()
         {

@@ -45,7 +45,8 @@ export class Application extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ApplicationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["authDomain"] = args ? args.authDomain : undefined;
             inputs["codeBucket"] = args ? args.codeBucket : undefined;
             inputs["databaseType"] = args ? args.databaseType : undefined;
@@ -62,12 +63,8 @@ export class Application extends pulumi.CustomResource {
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Application.__pulumiType, name, inputs, opts);
     }

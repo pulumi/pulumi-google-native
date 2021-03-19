@@ -45,11 +45,12 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeTemplateArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["accelerators"] = args ? args.accelerators : undefined;
@@ -72,12 +73,8 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodeTemplate.__pulumiType, name, inputs, opts);
     }

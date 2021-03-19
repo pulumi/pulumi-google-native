@@ -45,8 +45,9 @@ export class AuthorizedCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthorizedCertificateArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.appsId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.appsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appsId'");
             }
             inputs["appsId"] = args ? args.appsId : undefined;
@@ -61,12 +62,8 @@ export class AuthorizedCertificate extends pulumi.CustomResource {
             inputs["visibleDomainMappings"] = args ? args.visibleDomainMappings : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AuthorizedCertificate.__pulumiType, name, inputs, opts);
     }

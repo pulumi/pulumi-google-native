@@ -28,6 +28,18 @@ namespace Pulumi.GoogleCloud.Composer.V1.Inputs
         public Input<string>? DagGcsPrefix { get; set; }
 
         /// <summary>
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// </summary>
+        [Input("databaseConfig")]
+        public Input<Inputs.DatabaseConfigArgs>? DatabaseConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// Output only. The Kubernetes Engine cluster used to run this environment.
         /// </summary>
         [Input("gkeCluster")]
@@ -56,6 +68,12 @@ namespace Pulumi.GoogleCloud.Composer.V1.Inputs
         /// </summary>
         [Input("softwareConfig")]
         public Input<Inputs.SoftwareConfigArgs>? SoftwareConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration settings for the Airflow web server App Engine instance.
+        /// </summary>
+        [Input("webServerConfig")]
+        public Input<Inputs.WebServerConfigArgs>? WebServerConfig { get; set; }
 
         /// <summary>
         /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.

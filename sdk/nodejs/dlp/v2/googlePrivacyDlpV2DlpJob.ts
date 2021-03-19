@@ -45,8 +45,9 @@ export class GooglePrivacyDlpV2DlpJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: GooglePrivacyDlpV2DlpJobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
@@ -56,12 +57,8 @@ export class GooglePrivacyDlpV2DlpJob extends pulumi.CustomResource {
             inputs["riskJob"] = args ? args.riskJob : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GooglePrivacyDlpV2DlpJob.__pulumiType, name, inputs, opts);
     }

@@ -1501,6 +1501,8 @@ func (o FleetConfigArrayOutput) Index(i pulumi.IntInput) FleetConfigOutput {
 type GameServerClusterConnectionInfo struct {
 	// Reference to the GKE cluster where the game servers are installed.
 	GkeClusterReference *GkeClusterReference `pulumi:"gkeClusterReference"`
+	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+	GkeHubClusterReference *GkeHubClusterReference `pulumi:"gkeHubClusterReference"`
 	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 	Namespace *string `pulumi:"namespace"`
 }
@@ -1520,6 +1522,8 @@ type GameServerClusterConnectionInfoInput interface {
 type GameServerClusterConnectionInfoArgs struct {
 	// Reference to the GKE cluster where the game servers are installed.
 	GkeClusterReference GkeClusterReferencePtrInput `pulumi:"gkeClusterReference"`
+	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+	GkeHubClusterReference GkeHubClusterReferencePtrInput `pulumi:"gkeHubClusterReference"`
 	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
@@ -1607,6 +1611,11 @@ func (o GameServerClusterConnectionInfoOutput) GkeClusterReference() GkeClusterR
 	return o.ApplyT(func(v GameServerClusterConnectionInfo) *GkeClusterReference { return v.GkeClusterReference }).(GkeClusterReferencePtrOutput)
 }
 
+// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+func (o GameServerClusterConnectionInfoOutput) GkeHubClusterReference() GkeHubClusterReferencePtrOutput {
+	return o.ApplyT(func(v GameServerClusterConnectionInfo) *GkeHubClusterReference { return v.GkeHubClusterReference }).(GkeHubClusterReferencePtrOutput)
+}
+
 // Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 func (o GameServerClusterConnectionInfoOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfo) *string { return v.Namespace }).(pulumi.StringPtrOutput)
@@ -1638,6 +1647,16 @@ func (o GameServerClusterConnectionInfoPtrOutput) GkeClusterReference() GkeClust
 		}
 		return v.GkeClusterReference
 	}).(GkeClusterReferencePtrOutput)
+}
+
+// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+func (o GameServerClusterConnectionInfoPtrOutput) GkeHubClusterReference() GkeHubClusterReferencePtrOutput {
+	return o.ApplyT(func(v *GameServerClusterConnectionInfo) *GkeHubClusterReference {
+		if v == nil {
+			return nil
+		}
+		return v.GkeHubClusterReference
+	}).(GkeHubClusterReferencePtrOutput)
 }
 
 // Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
@@ -1781,6 +1800,140 @@ func (o GkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+type GkeHubClusterReference struct {
+	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+	Membership *string `pulumi:"membership"`
+}
+
+// GkeHubClusterReferenceInput is an input type that accepts GkeHubClusterReferenceArgs and GkeHubClusterReferenceOutput values.
+// You can construct a concrete instance of `GkeHubClusterReferenceInput` via:
+//
+//          GkeHubClusterReferenceArgs{...}
+type GkeHubClusterReferenceInput interface {
+	pulumi.Input
+
+	ToGkeHubClusterReferenceOutput() GkeHubClusterReferenceOutput
+	ToGkeHubClusterReferenceOutputWithContext(context.Context) GkeHubClusterReferenceOutput
+}
+
+// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+type GkeHubClusterReferenceArgs struct {
+	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+}
+
+func (GkeHubClusterReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeHubClusterReference)(nil)).Elem()
+}
+
+func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferenceOutput() GkeHubClusterReferenceOutput {
+	return i.ToGkeHubClusterReferenceOutputWithContext(context.Background())
+}
+
+func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferenceOutputWithContext(ctx context.Context) GkeHubClusterReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceOutput)
+}
+
+func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
+	return i.ToGkeHubClusterReferencePtrOutputWithContext(context.Background())
+}
+
+func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceOutput).ToGkeHubClusterReferencePtrOutputWithContext(ctx)
+}
+
+// GkeHubClusterReferencePtrInput is an input type that accepts GkeHubClusterReferenceArgs, GkeHubClusterReferencePtr and GkeHubClusterReferencePtrOutput values.
+// You can construct a concrete instance of `GkeHubClusterReferencePtrInput` via:
+//
+//          GkeHubClusterReferenceArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeHubClusterReferencePtrInput interface {
+	pulumi.Input
+
+	ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput
+	ToGkeHubClusterReferencePtrOutputWithContext(context.Context) GkeHubClusterReferencePtrOutput
+}
+
+type gkeHubClusterReferencePtrType GkeHubClusterReferenceArgs
+
+func GkeHubClusterReferencePtr(v *GkeHubClusterReferenceArgs) GkeHubClusterReferencePtrInput {
+	return (*gkeHubClusterReferencePtrType)(v)
+}
+
+func (*gkeHubClusterReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeHubClusterReference)(nil)).Elem()
+}
+
+func (i *gkeHubClusterReferencePtrType) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
+	return i.ToGkeHubClusterReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeHubClusterReferencePtrType) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferencePtrOutput)
+}
+
+// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+type GkeHubClusterReferenceOutput struct{ *pulumi.OutputState }
+
+func (GkeHubClusterReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeHubClusterReference)(nil)).Elem()
+}
+
+func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferenceOutput() GkeHubClusterReferenceOutput {
+	return o
+}
+
+func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferenceOutputWithContext(ctx context.Context) GkeHubClusterReferenceOutput {
+	return o
+}
+
+func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
+	return o.ToGkeHubClusterReferencePtrOutputWithContext(context.Background())
+}
+
+func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
+	return o.ApplyT(func(v GkeHubClusterReference) *GkeHubClusterReference {
+		return &v
+	}).(GkeHubClusterReferencePtrOutput)
+}
+
+// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+func (o GkeHubClusterReferenceOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeHubClusterReference) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+type GkeHubClusterReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeHubClusterReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeHubClusterReference)(nil)).Elem()
+}
+
+func (o GkeHubClusterReferencePtrOutput) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
+	return o
+}
+
+func (o GkeHubClusterReferencePtrOutput) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
+	return o
+}
+
+func (o GkeHubClusterReferencePtrOutput) Elem() GkeHubClusterReferenceOutput {
+	return o.ApplyT(func(v *GkeHubClusterReference) GkeHubClusterReference { return *v }).(GkeHubClusterReferenceOutput)
+}
+
+// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+func (o GkeHubClusterReferencePtrOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeHubClusterReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Membership
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2662,6 +2815,8 @@ func init() {
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferenceOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferencePtrOutput{})
+	pulumi.RegisterOutputType(GkeHubClusterReferenceOutput{})
+	pulumi.RegisterOutputType(GkeHubClusterReferencePtrOutput{})
 	pulumi.RegisterOutputType(LabelSelectorOutput{})
 	pulumi.RegisterOutputType(LabelSelectorArrayOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})

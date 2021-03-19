@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Servicedirectory.V1beta1
 {
     /// <summary>
-    /// Creates a namespace, and returns the new Namespace.
+    /// Creates a namespace, and returns the new namespace.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:servicedirectory/v1beta1:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
@@ -63,7 +63,7 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1beta1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Resource labels associated with this Namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+        /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1beta1
         }
 
         /// <summary>
-        /// Immutable. The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

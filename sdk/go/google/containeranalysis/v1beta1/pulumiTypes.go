@@ -3092,6 +3092,8 @@ type Detail struct {
 	PackageType *string `pulumi:"packageType"`
 	// The severity (eg: distro assigned severity) for this vulnerability.
 	SeverityName *string `pulumi:"severityName"`
+	// The source from which the information in this Detail was obtained.
+	Source *string `pulumi:"source"`
 	// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
 	SourceUpdateTime *string `pulumi:"sourceUpdateTime"`
 }
@@ -3127,6 +3129,8 @@ type DetailArgs struct {
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
 	// The severity (eg: distro assigned severity) for this vulnerability.
 	SeverityName pulumi.StringPtrInput `pulumi:"severityName"`
+	// The source from which the information in this Detail was obtained.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
 	SourceUpdateTime pulumi.StringPtrInput `pulumi:"sourceUpdateTime"`
 }
@@ -3226,6 +3230,11 @@ func (o DetailOutput) PackageType() pulumi.StringPtrOutput {
 // The severity (eg: distro assigned severity) for this vulnerability.
 func (o DetailOutput) SeverityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Detail) *string { return v.SeverityName }).(pulumi.StringPtrOutput)
+}
+
+// The source from which the information in this Detail was obtained.
+func (o DetailOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Detail) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 // The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
@@ -9417,6 +9426,8 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 type Version struct {
 	// Used to correct mistakes in the version numbering scheme.
 	Epoch *int `pulumi:"epoch"`
+	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
+	Inclusive *bool `pulumi:"inclusive"`
 	// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
 	Kind *string `pulumi:"kind"`
 	// Required only when version kind is NORMAL. The main part of the version name.
@@ -9440,6 +9451,8 @@ type VersionInput interface {
 type VersionArgs struct {
 	// Used to correct mistakes in the version numbering scheme.
 	Epoch pulumi.IntPtrInput `pulumi:"epoch"`
+	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
+	Inclusive pulumi.BoolPtrInput `pulumi:"inclusive"`
 	// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Required only when version kind is NORMAL. The main part of the version name.
@@ -9531,6 +9544,11 @@ func (o VersionOutput) Epoch() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Version) *int { return v.Epoch }).(pulumi.IntPtrOutput)
 }
 
+// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
+func (o VersionOutput) Inclusive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Version) *bool { return v.Inclusive }).(pulumi.BoolPtrOutput)
+}
+
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
 func (o VersionOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Version) *string { return v.Kind }).(pulumi.StringPtrOutput)
@@ -9572,6 +9590,16 @@ func (o VersionPtrOutput) Epoch() pulumi.IntPtrOutput {
 		}
 		return v.Epoch
 	}).(pulumi.IntPtrOutput)
+}
+
+// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
+func (o VersionPtrOutput) Inclusive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Version) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Inclusive
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.

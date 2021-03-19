@@ -45,8 +45,9 @@ export class BuildTrigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: BuildTriggerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["build"] = args ? args.build : undefined;
@@ -65,12 +66,8 @@ export class BuildTrigger extends pulumi.CustomResource {
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BuildTrigger.__pulumiType, name, inputs, opts);
     }
@@ -97,7 +94,7 @@ export interface BuildTriggerArgs {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * Path, from the source root, to a file whose contents is used for the template.
+     * Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
      */
     readonly filename?: pulumi.Input<string>;
     /**

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./googleCloudDialogflowCxV3Agent";
 export * from "./googleCloudDialogflowCxV3EntityType";
+export * from "./googleCloudDialogflowCxV3Experiment";
 export * from "./googleCloudDialogflowCxV3Flow";
 export * from "./googleCloudDialogflowCxV3Intent";
 export * from "./googleCloudDialogflowCxV3Page";
@@ -20,6 +21,7 @@ export * from "./googleLongrunningOperation";
 // Import resources to register:
 import { GoogleCloudDialogflowCxV3Agent } from "./googleCloudDialogflowCxV3Agent";
 import { GoogleCloudDialogflowCxV3EntityType } from "./googleCloudDialogflowCxV3EntityType";
+import { GoogleCloudDialogflowCxV3Experiment } from "./googleCloudDialogflowCxV3Experiment";
 import { GoogleCloudDialogflowCxV3Flow } from "./googleCloudDialogflowCxV3Flow";
 import { GoogleCloudDialogflowCxV3Intent } from "./googleCloudDialogflowCxV3Intent";
 import { GoogleCloudDialogflowCxV3Page } from "./googleCloudDialogflowCxV3Page";
@@ -38,6 +40,8 @@ const _module = {
                 return new GoogleCloudDialogflowCxV3Agent(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3EntityType":
                 return new GoogleCloudDialogflowCxV3EntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Experiment":
+                return new GoogleCloudDialogflowCxV3Experiment(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Flow":
                 return new GoogleCloudDialogflowCxV3Flow(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Intent":

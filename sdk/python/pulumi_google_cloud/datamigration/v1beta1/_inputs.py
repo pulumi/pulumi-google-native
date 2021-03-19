@@ -259,13 +259,13 @@ class CloudSqlSettingsArgs:
         :param pulumi.Input[str] data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         :param pulumi.Input[str] data_disk_type: The type of storage: `PD_SSD` (default) or `PD_HDD`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] database_version: The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+        :param pulumi.Input[str] database_version: The database engine type and version.
         :param pulumi.Input['SqlIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
         :param pulumi.Input[bool] root_password_set: Output only. Indicates If this connection profile root password is stored.
         :param pulumi.Input[str] source_id: The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+        :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
         :param pulumi.Input[str] zone: The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
         """
@@ -362,7 +362,7 @@ class CloudSqlSettingsArgs:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+        The database engine type and version.
         """
         return pulumi.get(self, "database_version")
 
@@ -434,7 +434,7 @@ class CloudSqlSettingsArgs:
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+        The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
         """
         return pulumi.get(self, "tier")
 

@@ -45,8 +45,9 @@ export class TransferConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransferConfigArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["authorizationCode"] = args ? args.authorizationCode : undefined;
@@ -71,12 +72,8 @@ export class TransferConfig extends pulumi.CustomResource {
             inputs["versionInfo"] = args ? args.versionInfo : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TransferConfig.__pulumiType, name, inputs, opts);
     }
@@ -119,7 +116,7 @@ export interface TransferConfigArgs {
      */
     readonly emailPreferences?: pulumi.Input<inputs.bigquerydatatransfer.v1.EmailPreferences>;
     /**
-     * The resource name of the transfer config. Transfer config names have the form of `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated based on the config_id specified in CreateTransferConfigRequest along with project_id and region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required, will be generated for config_id.
+     * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -131,7 +128,7 @@ export interface TransferConfigArgs {
      */
     readonly notificationPubsubTopic?: pulumi.Input<string>;
     /**
-     * Data transfer specific parameters.
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     readonly params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

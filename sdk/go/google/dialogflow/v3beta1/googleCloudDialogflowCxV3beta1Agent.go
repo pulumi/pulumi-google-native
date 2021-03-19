@@ -60,7 +60,7 @@ func (GoogleCloudDialogflowCxV3beta1AgentState) ElementType() reflect.Type {
 type googleCloudDialogflowCxV3beta1AgentArgs struct {
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri *string `pulumi:"avatarUri"`
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
@@ -74,6 +74,8 @@ type googleCloudDialogflowCxV3beta1AgentArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. The location to create a agent for. Format: `projects//locations/`.
 	Parent string `pulumi:"parent"`
+	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+	SecuritySettings *string `pulumi:"securitySettings"`
 	// Speech recognition related settings.
 	SpeechToTextSettings *GoogleCloudDialogflowCxV3beta1SpeechToTextSettings `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
@@ -86,7 +88,7 @@ type googleCloudDialogflowCxV3beta1AgentArgs struct {
 type GoogleCloudDialogflowCxV3beta1AgentArgs struct {
 	// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
 	AvatarUri pulumi.StringPtrInput
-	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+	// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
 	DefaultLanguageCode pulumi.StringPtrInput
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
@@ -100,6 +102,8 @@ type GoogleCloudDialogflowCxV3beta1AgentArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. The location to create a agent for. Format: `projects//locations/`.
 	Parent pulumi.StringInput
+	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+	SecuritySettings pulumi.StringPtrInput
 	// Speech recognition related settings.
 	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsPtrInput
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.

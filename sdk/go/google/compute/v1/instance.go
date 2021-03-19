@@ -61,6 +61,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
 	CanIpForward               *bool                       `pulumi:"canIpForward"`
 	ConfidentialInstanceConfig *ConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
@@ -118,6 +120,8 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType *string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// Project ID for this request.
@@ -132,6 +136,8 @@ type instanceArgs struct {
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
 	Scheduling *Scheduling `pulumi:"scheduling"`
 	// [Output Only] Server-defined URL for this resource.
@@ -163,6 +169,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput
 	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
 	CanIpForward               pulumi.BoolPtrInput
 	ConfidentialInstanceConfig ConfidentialInstanceConfigPtrInput
@@ -220,6 +228,8 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
 	NetworkInterfaces NetworkInterfaceArrayInput
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType pulumi.StringPtrInput
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// Project ID for this request.
@@ -234,6 +244,8 @@ type InstanceArgs struct {
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
 	ResourcePolicies pulumi.StringArrayInput
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// Sets the scheduling options for this instance.
 	Scheduling SchedulingPtrInput
 	// [Output Only] Server-defined URL for this resource.

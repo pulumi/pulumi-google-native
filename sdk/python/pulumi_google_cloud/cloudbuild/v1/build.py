@@ -17,6 +17,7 @@ class Build(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
+                 available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
                  build_trigger_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  finish_time: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,7 @@ class Build(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ArtifactsArgs']] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        :param pulumi.Input[pulumi.InputType['SecretsArgs']] available_secrets: Secrets and secret environment variables.
         :param pulumi.Input[str] build_trigger_id: Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         :param pulumi.Input[str] create_time: Output only. Time at which the request to create the build was received.
         :param pulumi.Input[str] finish_time: Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
@@ -64,7 +66,7 @@ class Build(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Output only. ID of the project.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
         :param pulumi.Input[pulumi.InputType['ResultsArgs']] results: Output only. Results of the build.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]] secrets: Secrets to decrypt using Cloud Key Management Service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
         :param pulumi.Input[pulumi.InputType['SourceArgs']] source: The location of the source files to build.
         :param pulumi.Input[pulumi.InputType['SourceProvenanceArgs']] source_provenance: Output only. A permanent fixed identifier for source.
@@ -95,6 +97,7 @@ class Build(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['artifacts'] = artifacts
+            __props__['available_secrets'] = available_secrets
             __props__['build_trigger_id'] = build_trigger_id
             __props__['create_time'] = create_time
             __props__['finish_time'] = finish_time
@@ -104,9 +107,9 @@ class Build(pulumi.CustomResource):
             __props__['logs_bucket'] = logs_bucket
             __props__['name'] = name
             __props__['options'] = options
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['queue_ttl'] = queue_ttl
             __props__['results'] = results

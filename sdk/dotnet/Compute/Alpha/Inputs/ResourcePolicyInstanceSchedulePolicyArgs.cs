@@ -16,6 +16,18 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
     public sealed class ResourcePolicyInstanceSchedulePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The expiration time of the schedule. The timestamp is an RFC3339 string.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// The start time of the schedule. The timestamp is an RFC3339 string.
+        /// </summary>
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
+
+        /// <summary>
         /// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         /// </summary>
         [Input("timeZone")]

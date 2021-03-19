@@ -45,11 +45,12 @@ export class Autoscaler extends pulumi.CustomResource {
      */
     constructor(name: string, args: AutoscalerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
@@ -70,12 +71,8 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Autoscaler.__pulumiType, name, inputs, opts);
     }

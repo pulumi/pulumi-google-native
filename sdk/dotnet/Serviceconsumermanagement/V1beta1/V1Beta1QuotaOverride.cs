@@ -78,10 +78,16 @@ namespace Pulumi.GoogleCloud.Serviceconsumermanagement.V1beta1
         }
 
         /// <summary>
-        /// Whether to force the creation of the quota override. If creating an override would cause the effective quota for the consumer to decrease by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+        /// Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set.
+        /// </summary>
+        [Input("forceOnly")]
+        public Input<string>? ForceOnly { get; set; }
 
         /// <summary>
         /// The name of the metric to which this override applies. An example name would be: `compute.googleapis.com/cpus`

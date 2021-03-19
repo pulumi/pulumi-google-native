@@ -26,6 +26,7 @@ class Autoscaler(pulumi.CustomResource):
                  recommended_size: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutoscalerStatusDetailsArgs']]]]] = None,
@@ -55,6 +56,7 @@ class Autoscaler(pulumi.CustomResource):
                For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
                
                The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedule_status: [Output Only] Status information of existing scaling schedules.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] status: [Output Only] The status of the autoscaler configuration. Current set of possible values:  
                - PENDING: Autoscaler backend hasn't read new/updated configuration. 
@@ -92,14 +94,15 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['recommended_size'] = recommended_size
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
+            __props__['scaling_schedule_status'] = scaling_schedule_status
             __props__['self_link'] = self_link
             __props__['status'] = status
             __props__['status_details'] = status_details
             __props__['target'] = target
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(Autoscaler, __self__).__init__(
             'google-cloud:compute/v1:Autoscaler',

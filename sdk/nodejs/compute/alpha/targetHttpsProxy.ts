@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
+ * Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
  */
 export class TargetHttpsProxy extends pulumi.CustomResource {
     /**
@@ -44,12 +44,10 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetHttpsProxyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["authentication"] = args ? args.authentication : undefined;
             inputs["authorization"] = args ? args.authorization : undefined;
@@ -75,12 +73,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetHttpsProxy.__pulumiType, name, inputs, opts);
     }
@@ -156,13 +150,12 @@ export interface TargetHttpsProxyArgs {
      * - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
      * - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
      * - If the quic-override flag is not specified, NONE is implied.
-     * -
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

@@ -20,6 +20,7 @@ class Router(pulumi.CustomResource):
                  bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]] bgp_peers: BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]] interfaces: Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
         :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#router for routers.
@@ -78,6 +80,7 @@ class Router(pulumi.CustomResource):
             __props__['bgp_peers'] = bgp_peers
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
+            __props__['encrypted_interconnect_router'] = encrypted_interconnect_router
             __props__['id'] = id
             __props__['interfaces'] = interfaces
             __props__['kind'] = kind

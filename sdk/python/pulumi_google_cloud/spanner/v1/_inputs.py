@@ -10,10 +10,13 @@ from ... import _utilities, _tables
 
 __all__ = [
     'BindingArgs',
+    'EncryptionConfigArgs',
+    'EncryptionInfoArgs',
     'ExprArgs',
     'InstanceArgs',
     'PolicyArgs',
     'SessionArgs',
+    'StatusArgs',
 ]
 
 @pulumi.input_type
@@ -70,6 +73,86 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class EncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        Encryption configuration for a Cloud Spanner database.
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class EncryptionInfoArgs:
+    def __init__(__self__, *,
+                 encryption_status: Optional[pulumi.Input['StatusArgs']] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
+                 kms_key_version: Optional[pulumi.Input[str]] = None):
+        """
+        Encryption information for a Cloud Spanner database or backup.
+        :param pulumi.Input['StatusArgs'] encryption_status: Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
+        :param pulumi.Input[str] encryption_type: Output only. The type of encryption.
+        :param pulumi.Input[str] kms_key_version: Output only. A Cloud KMS key version that is being used to protect the database or backup.
+        """
+        if encryption_status is not None:
+            pulumi.set(__self__, "encryption_status", encryption_status)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
+
+    @property
+    @pulumi.getter(name="encryptionStatus")
+    def encryption_status(self) -> Optional[pulumi.Input['StatusArgs']]:
+        """
+        Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
+        """
+        return pulumi.get(self, "encryption_status")
+
+    @encryption_status.setter
+    def encryption_status(self, value: Optional[pulumi.Input['StatusArgs']]):
+        pulumi.set(self, "encryption_status", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. A Cloud KMS key version that is being used to protect the database or backup.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
 
 @pulumi.input_type
@@ -390,5 +473,61 @@ class SessionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class StatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
 
 

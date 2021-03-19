@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+ * Creates a persistent regional disk in the specified project using the data included in the request.
  */
 export class Disk extends pulumi.CustomResource {
     /**
@@ -45,12 +45,13 @@ export class Disk extends pulumi.CustomResource {
      */
     constructor(name: string, args: DiskArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'zone'");
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -64,14 +65,17 @@ export class Disk extends pulumi.CustomResource {
             inputs["lastDetachTimestamp"] = args ? args.lastDetachTimestamp : undefined;
             inputs["licenseCodes"] = args ? args.licenseCodes : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
+            inputs["locationHint"] = args ? args.locationHint : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["options"] = args ? args.options : undefined;
             inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaZones"] = args ? args.replicaZones : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sizeGb"] = args ? args.sizeGb : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
@@ -82,18 +86,15 @@ export class Disk extends pulumi.CustomResource {
             inputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
             inputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             inputs["sourceSnapshotId"] = args ? args.sourceSnapshotId : undefined;
+            inputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["users"] = args ? args.users : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Disk.__pulumiType, name, inputs, opts);
     }
@@ -160,6 +161,10 @@ export interface DiskArgs {
      */
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+     */
+    readonly locationHint?: pulumi.Input<string>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
@@ -176,9 +181,13 @@ export interface DiskArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
+     * Indicates how many IOPS must be provisioned for the disk.
+     */
+    readonly provisionedIops?: pulumi.Input<string>;
+    /**
      * [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */
@@ -196,6 +205,10 @@ export interface DiskArgs {
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink?: pulumi.Input<string>;
@@ -207,9 +220,12 @@ export interface DiskArgs {
     readonly sizeGb?: pulumi.Input<string>;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-     * - projects/project/zones/zone/disks/disk 
-     * - zones/zone/disks/disk
+     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+     * - projects/project/zones/zone/disks/disk  
+     * - projects/project/regions/region/disks/disk  
+     * - zones/zone/disks/disk  
+     * - regions/region/disks/disk
      */
     readonly sourceDisk?: pulumi.Input<string>;
     /**
@@ -259,7 +275,16 @@ export interface DiskArgs {
      */
     readonly sourceSnapshotId?: pulumi.Input<string>;
     /**
-     * [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+     * The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+     */
+    readonly sourceStorageObject?: pulumi.Input<string>;
+    /**
+     * [Output Only] The status of disk creation.  
+     * - CREATING: Disk is provisioning. 
+     * - RESTORING: Source data is being copied into the disk. 
+     * - FAILED: Disk creation failed. 
+     * - READY: Disk is ready for use. 
+     * - DELETING: Disk is deleting.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -273,5 +298,5 @@ export interface DiskArgs {
     /**
      * [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

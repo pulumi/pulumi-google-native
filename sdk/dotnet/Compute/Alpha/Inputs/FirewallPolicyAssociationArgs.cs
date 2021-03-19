@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         public Input<string>? AttachmentTarget { get; set; }
 
         /// <summary>
-        /// [Output Only] The display name of the firewall policy of the association.
+        /// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -35,6 +35,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// [Output Only] The short name of the firewall policy of the association.
+        /// </summary>
+        [Input("shortName")]
+        public Input<string>? ShortName { get; set; }
 
         public FirewallPolicyAssociationArgs()
         {

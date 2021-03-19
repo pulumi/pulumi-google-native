@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an instruction for how data should be labeled.
+ * Create a FeedbackMessage object.
  */
 export class GoogleLongrunningOperation extends pulumi.CustomResource {
     /**
@@ -45,20 +45,22 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleLongrunningOperationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["instruction"] = args ? args.instruction : undefined;
+            inputs["body"] = args ? args.body : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["image"] = args ? args.image : undefined;
+            inputs["name"] = args ? args.name : undefined;
+            inputs["operatorFeedbackMetadata"] = args ? args.operatorFeedbackMetadata : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["requesterFeedbackMetadata"] = args ? args.requesterFeedbackMetadata : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleLongrunningOperation.__pulumiType, name, inputs, opts);
     }
@@ -69,11 +71,25 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
  */
 export interface GoogleLongrunningOperationArgs {
     /**
-     * Required. Instruction of how to perform the labeling task.
+     * String content of the feedback. Maximum of 10000 characters.
      */
-    readonly instruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1Instruction>;
+    readonly body?: pulumi.Input<string>;
     /**
-     * Required. Instruction resource parent, format: projects/{project_id}
+     * Create time.
+     */
+    readonly createTime?: pulumi.Input<string>;
+    /**
+     * The image storing this feedback if the feedback is an image representing operator's comments.
+     */
+    readonly image?: pulumi.Input<string>;
+    /**
+     * Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+     */
+    readonly name?: pulumi.Input<string>;
+    readonly operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata>;
+    /**
+     * Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}.
      */
     readonly parent: pulumi.Input<string>;
+    readonly requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata>;
 }

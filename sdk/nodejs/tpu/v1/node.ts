@@ -45,8 +45,9 @@ export class Node extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
@@ -71,12 +72,8 @@ export class Node extends pulumi.CustomResource {
             inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Node.__pulumiType, name, inputs, opts);
     }

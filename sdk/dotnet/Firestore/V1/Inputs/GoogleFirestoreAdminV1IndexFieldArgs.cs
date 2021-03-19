@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Firestore.V1.Inputs
         public Input<string>? FieldPath { get; set; }
 
         /// <summary>
-        /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
+        /// Indicates that this field supports ordering by the specified order or comparing using =, !=, &lt;, &lt;=, &gt;, &gt;=.
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

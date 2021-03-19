@@ -45,8 +45,9 @@ export class GoogleCloudMlV1__Model extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudMlV1__ModelArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["defaultVersion"] = args ? args.defaultVersion : undefined;
@@ -60,12 +61,8 @@ export class GoogleCloudMlV1__Model extends pulumi.CustomResource {
             inputs["regions"] = args ? args.regions : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudMlV1__Model.__pulumiType, name, inputs, opts);
     }

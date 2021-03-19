@@ -50,6 +50,7 @@ class Instance(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_status: Optional[pulumi.Input[pulumi.InputType['ResourceStatusArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
                  secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -136,6 +137,7 @@ class Instance(pulumi.CustomResource):
                The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
+        :param pulumi.Input[pulumi.InputType['ResourceStatusArgs']] resource_status: [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_labels: Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
@@ -154,7 +156,7 @@ class Instance(pulumi.CustomResource):
                - projects/project/global/instanceTemplates/instanceTemplate 
                - global/instanceTemplates/instanceTemplate
         :param pulumi.Input[str] source_machine_image: Source machine image
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source GMI encryption key when creating an instance from GMI.
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input[bool] start_restricted: [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
         :param pulumi.Input[str] status: [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
         :param pulumi.Input[str] status_message: [Output Only] An optional, human-readable explanation of the status.
@@ -215,6 +217,7 @@ class Instance(pulumi.CustomResource):
             __props__['request_id'] = request_id
             __props__['reservation_affinity'] = reservation_affinity
             __props__['resource_policies'] = resource_policies
+            __props__['resource_status'] = resource_status
             __props__['satisfies_pzs'] = satisfies_pzs
             __props__['scheduling'] = scheduling
             __props__['secure_labels'] = secure_labels

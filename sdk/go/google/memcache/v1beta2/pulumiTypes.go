@@ -277,6 +277,8 @@ type Node struct {
 	Port *int `pulumi:"port"`
 	// Output only. Current state of the Memcached node.
 	State *string `pulumi:"state"`
+	// Output only. Returns true if there is an update waiting to be applied
+	UpdateAvailable *bool `pulumi:"updateAvailable"`
 	// Output only. Location (GCP Zone) for the Memcached node.
 	Zone *string `pulumi:"zone"`
 }
@@ -303,6 +305,8 @@ type NodeArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Output only. Current state of the Memcached node.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output only. Returns true if there is an update waiting to be applied
+	UpdateAvailable pulumi.BoolPtrInput `pulumi:"updateAvailable"`
 	// Output only. Location (GCP Zone) for the Memcached node.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -381,6 +385,11 @@ func (o NodeOutput) Port() pulumi.IntPtrOutput {
 // Output only. Current state of the Memcached node.
 func (o NodeOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Node) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Output only. Returns true if there is an update waiting to be applied
+func (o NodeOutput) UpdateAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Node) *bool { return v.UpdateAvailable }).(pulumi.BoolPtrOutput)
 }
 
 // Output only. Location (GCP Zone) for the Memcached node.

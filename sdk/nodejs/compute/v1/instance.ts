@@ -45,13 +45,15 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
+            inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["confidentialInstanceConfig"] = args ? args.confidentialInstanceConfig : undefined;
             inputs["cpuPlatform"] = args ? args.cpuPlatform : undefined;
@@ -75,11 +77,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            inputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAccounts"] = args ? args.serviceAccounts : undefined;
@@ -93,12 +97,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }
@@ -108,6 +108,10 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Controls for advanced machine-related behavior features.
+     */
+    readonly advancedMachineFeatures?: pulumi.Input<inputs.compute.v1.AdvancedMachineFeatures>;
     /**
      * Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
      */
@@ -212,6 +216,10 @@ export interface InstanceArgs {
      */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.NetworkInterface>[]>;
     /**
+     * PostKeyRevocationActionType of the instance.
+     */
+    readonly postKeyRevocationActionType?: pulumi.Input<string>;
+    /**
      * The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
      */
     readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
@@ -235,6 +243,10 @@ export interface InstanceArgs {
      * Resource policies applied to this instance.
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * Sets the scheduling options for this instance.
      */

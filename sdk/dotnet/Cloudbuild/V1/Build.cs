@@ -66,6 +66,12 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         public Input<Inputs.ArtifactsArgs>? Artifacts { get; set; }
 
         /// <summary>
+        /// Secrets and secret environment variables.
+        /// </summary>
+        [Input("availableSecrets")]
+        public Input<Inputs.SecretsArgs>? AvailableSecrets { get; set; }
+
+        /// <summary>
         /// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         /// </summary>
         [Input("buildTriggerId")]
@@ -128,14 +134,14 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         /// <summary>
         /// The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
         /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// Output only. ID of the project.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
@@ -153,7 +159,7 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         private InputList<Inputs.SecretArgs>? _secrets;
 
         /// <summary>
-        /// Secrets to decrypt using Cloud Key Management Service.
+        /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         /// </summary>
         public InputList<Inputs.SecretArgs> Secrets
         {

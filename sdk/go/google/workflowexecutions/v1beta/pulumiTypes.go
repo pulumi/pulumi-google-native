@@ -12,10 +12,12 @@ import (
 
 // Error describes why the execution was abnormally terminated.
 type Error struct {
-	// Human readable error context, helpful for debugging purposes.
+	// Human readable stack trace string.
 	Context *string `pulumi:"context"`
-	// Error payload returned by the execution, represented as a JSON string.
+	// Error message and data returned represented as a JSON string.
 	Payload *string `pulumi:"payload"`
+	// Stack trace with detailed information of where error was generated.
+	StackTrace *StackTrace `pulumi:"stackTrace"`
 }
 
 // ErrorInput is an input type that accepts ErrorArgs and ErrorOutput values.
@@ -31,10 +33,12 @@ type ErrorInput interface {
 
 // Error describes why the execution was abnormally terminated.
 type ErrorArgs struct {
-	// Human readable error context, helpful for debugging purposes.
+	// Human readable stack trace string.
 	Context pulumi.StringPtrInput `pulumi:"context"`
-	// Error payload returned by the execution, represented as a JSON string.
+	// Error message and data returned represented as a JSON string.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Stack trace with detailed information of where error was generated.
+	StackTrace StackTracePtrInput `pulumi:"stackTrace"`
 }
 
 func (ErrorArgs) ElementType() reflect.Type {
@@ -115,14 +119,19 @@ func (o ErrorOutput) ToErrorPtrOutputWithContext(ctx context.Context) ErrorPtrOu
 	}).(ErrorPtrOutput)
 }
 
-// Human readable error context, helpful for debugging purposes.
+// Human readable stack trace string.
 func (o ErrorOutput) Context() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Error) *string { return v.Context }).(pulumi.StringPtrOutput)
 }
 
-// Error payload returned by the execution, represented as a JSON string.
+// Error message and data returned represented as a JSON string.
 func (o ErrorOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Error) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Stack trace with detailed information of where error was generated.
+func (o ErrorOutput) StackTrace() StackTracePtrOutput {
+	return o.ApplyT(func(v Error) *StackTrace { return v.StackTrace }).(StackTracePtrOutput)
 }
 
 type ErrorPtrOutput struct{ *pulumi.OutputState }
@@ -143,7 +152,7 @@ func (o ErrorPtrOutput) Elem() ErrorOutput {
 	return o.ApplyT(func(v *Error) Error { return *v }).(ErrorOutput)
 }
 
-// Human readable error context, helpful for debugging purposes.
+// Human readable stack trace string.
 func (o ErrorPtrOutput) Context() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Error) *string {
 		if v == nil {
@@ -153,7 +162,7 @@ func (o ErrorPtrOutput) Context() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Error payload returned by the execution, represented as a JSON string.
+// Error message and data returned represented as a JSON string.
 func (o ErrorPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Error) *string {
 		if v == nil {
@@ -163,7 +172,447 @@ func (o ErrorPtrOutput) Payload() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Stack trace with detailed information of where error was generated.
+func (o ErrorPtrOutput) StackTrace() StackTracePtrOutput {
+	return o.ApplyT(func(v *Error) *StackTrace {
+		if v == nil {
+			return nil
+		}
+		return v.StackTrace
+	}).(StackTracePtrOutput)
+}
+
+// Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.
+type Position struct {
+	// The source code column position (of the line) the current instruction was generated from.
+	Column *string `pulumi:"column"`
+	// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+	Length *string `pulumi:"length"`
+	// The source code line number the current instruction was generated from.
+	Line *string `pulumi:"line"`
+}
+
+// PositionInput is an input type that accepts PositionArgs and PositionOutput values.
+// You can construct a concrete instance of `PositionInput` via:
+//
+//          PositionArgs{...}
+type PositionInput interface {
+	pulumi.Input
+
+	ToPositionOutput() PositionOutput
+	ToPositionOutputWithContext(context.Context) PositionOutput
+}
+
+// Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.
+type PositionArgs struct {
+	// The source code column position (of the line) the current instruction was generated from.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+	Length pulumi.StringPtrInput `pulumi:"length"`
+	// The source code line number the current instruction was generated from.
+	Line pulumi.StringPtrInput `pulumi:"line"`
+}
+
+func (PositionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Position)(nil)).Elem()
+}
+
+func (i PositionArgs) ToPositionOutput() PositionOutput {
+	return i.ToPositionOutputWithContext(context.Background())
+}
+
+func (i PositionArgs) ToPositionOutputWithContext(ctx context.Context) PositionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PositionOutput)
+}
+
+func (i PositionArgs) ToPositionPtrOutput() PositionPtrOutput {
+	return i.ToPositionPtrOutputWithContext(context.Background())
+}
+
+func (i PositionArgs) ToPositionPtrOutputWithContext(ctx context.Context) PositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PositionOutput).ToPositionPtrOutputWithContext(ctx)
+}
+
+// PositionPtrInput is an input type that accepts PositionArgs, PositionPtr and PositionPtrOutput values.
+// You can construct a concrete instance of `PositionPtrInput` via:
+//
+//          PositionArgs{...}
+//
+//  or:
+//
+//          nil
+type PositionPtrInput interface {
+	pulumi.Input
+
+	ToPositionPtrOutput() PositionPtrOutput
+	ToPositionPtrOutputWithContext(context.Context) PositionPtrOutput
+}
+
+type positionPtrType PositionArgs
+
+func PositionPtr(v *PositionArgs) PositionPtrInput {
+	return (*positionPtrType)(v)
+}
+
+func (*positionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Position)(nil)).Elem()
+}
+
+func (i *positionPtrType) ToPositionPtrOutput() PositionPtrOutput {
+	return i.ToPositionPtrOutputWithContext(context.Background())
+}
+
+func (i *positionPtrType) ToPositionPtrOutputWithContext(ctx context.Context) PositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PositionPtrOutput)
+}
+
+// Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.
+type PositionOutput struct{ *pulumi.OutputState }
+
+func (PositionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Position)(nil)).Elem()
+}
+
+func (o PositionOutput) ToPositionOutput() PositionOutput {
+	return o
+}
+
+func (o PositionOutput) ToPositionOutputWithContext(ctx context.Context) PositionOutput {
+	return o
+}
+
+func (o PositionOutput) ToPositionPtrOutput() PositionPtrOutput {
+	return o.ToPositionPtrOutputWithContext(context.Background())
+}
+
+func (o PositionOutput) ToPositionPtrOutputWithContext(ctx context.Context) PositionPtrOutput {
+	return o.ApplyT(func(v Position) *Position {
+		return &v
+	}).(PositionPtrOutput)
+}
+
+// The source code column position (of the line) the current instruction was generated from.
+func (o PositionOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Position) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+func (o PositionOutput) Length() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Position) *string { return v.Length }).(pulumi.StringPtrOutput)
+}
+
+// The source code line number the current instruction was generated from.
+func (o PositionOutput) Line() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Position) *string { return v.Line }).(pulumi.StringPtrOutput)
+}
+
+type PositionPtrOutput struct{ *pulumi.OutputState }
+
+func (PositionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Position)(nil)).Elem()
+}
+
+func (o PositionPtrOutput) ToPositionPtrOutput() PositionPtrOutput {
+	return o
+}
+
+func (o PositionPtrOutput) ToPositionPtrOutputWithContext(ctx context.Context) PositionPtrOutput {
+	return o
+}
+
+func (o PositionPtrOutput) Elem() PositionOutput {
+	return o.ApplyT(func(v *Position) Position { return *v }).(PositionOutput)
+}
+
+// The source code column position (of the line) the current instruction was generated from.
+func (o PositionPtrOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Position) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+func (o PositionPtrOutput) Length() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Position) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Length
+	}).(pulumi.StringPtrOutput)
+}
+
+// The source code line number the current instruction was generated from.
+func (o PositionPtrOutput) Line() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Position) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Line
+	}).(pulumi.StringPtrOutput)
+}
+
+// A collection of stack elements (frames) where an error occurred.
+type StackTrace struct {
+	// An array of Stack elements.
+	Elements []StackTraceElement `pulumi:"elements"`
+}
+
+// StackTraceInput is an input type that accepts StackTraceArgs and StackTraceOutput values.
+// You can construct a concrete instance of `StackTraceInput` via:
+//
+//          StackTraceArgs{...}
+type StackTraceInput interface {
+	pulumi.Input
+
+	ToStackTraceOutput() StackTraceOutput
+	ToStackTraceOutputWithContext(context.Context) StackTraceOutput
+}
+
+// A collection of stack elements (frames) where an error occurred.
+type StackTraceArgs struct {
+	// An array of Stack elements.
+	Elements StackTraceElementArrayInput `pulumi:"elements"`
+}
+
+func (StackTraceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTrace)(nil)).Elem()
+}
+
+func (i StackTraceArgs) ToStackTraceOutput() StackTraceOutput {
+	return i.ToStackTraceOutputWithContext(context.Background())
+}
+
+func (i StackTraceArgs) ToStackTraceOutputWithContext(ctx context.Context) StackTraceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceOutput)
+}
+
+func (i StackTraceArgs) ToStackTracePtrOutput() StackTracePtrOutput {
+	return i.ToStackTracePtrOutputWithContext(context.Background())
+}
+
+func (i StackTraceArgs) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceOutput).ToStackTracePtrOutputWithContext(ctx)
+}
+
+// StackTracePtrInput is an input type that accepts StackTraceArgs, StackTracePtr and StackTracePtrOutput values.
+// You can construct a concrete instance of `StackTracePtrInput` via:
+//
+//          StackTraceArgs{...}
+//
+//  or:
+//
+//          nil
+type StackTracePtrInput interface {
+	pulumi.Input
+
+	ToStackTracePtrOutput() StackTracePtrOutput
+	ToStackTracePtrOutputWithContext(context.Context) StackTracePtrOutput
+}
+
+type stackTracePtrType StackTraceArgs
+
+func StackTracePtr(v *StackTraceArgs) StackTracePtrInput {
+	return (*stackTracePtrType)(v)
+}
+
+func (*stackTracePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackTrace)(nil)).Elem()
+}
+
+func (i *stackTracePtrType) ToStackTracePtrOutput() StackTracePtrOutput {
+	return i.ToStackTracePtrOutputWithContext(context.Background())
+}
+
+func (i *stackTracePtrType) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTracePtrOutput)
+}
+
+// A collection of stack elements (frames) where an error occurred.
+type StackTraceOutput struct{ *pulumi.OutputState }
+
+func (StackTraceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTrace)(nil)).Elem()
+}
+
+func (o StackTraceOutput) ToStackTraceOutput() StackTraceOutput {
+	return o
+}
+
+func (o StackTraceOutput) ToStackTraceOutputWithContext(ctx context.Context) StackTraceOutput {
+	return o
+}
+
+func (o StackTraceOutput) ToStackTracePtrOutput() StackTracePtrOutput {
+	return o.ToStackTracePtrOutputWithContext(context.Background())
+}
+
+func (o StackTraceOutput) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return o.ApplyT(func(v StackTrace) *StackTrace {
+		return &v
+	}).(StackTracePtrOutput)
+}
+
+// An array of Stack elements.
+func (o StackTraceOutput) Elements() StackTraceElementArrayOutput {
+	return o.ApplyT(func(v StackTrace) []StackTraceElement { return v.Elements }).(StackTraceElementArrayOutput)
+}
+
+type StackTracePtrOutput struct{ *pulumi.OutputState }
+
+func (StackTracePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackTrace)(nil)).Elem()
+}
+
+func (o StackTracePtrOutput) ToStackTracePtrOutput() StackTracePtrOutput {
+	return o
+}
+
+func (o StackTracePtrOutput) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return o
+}
+
+func (o StackTracePtrOutput) Elem() StackTraceOutput {
+	return o.ApplyT(func(v *StackTrace) StackTrace { return *v }).(StackTraceOutput)
+}
+
+// An array of Stack elements.
+func (o StackTracePtrOutput) Elements() StackTraceElementArrayOutput {
+	return o.ApplyT(func(v *StackTrace) []StackTraceElement {
+		if v == nil {
+			return nil
+		}
+		return v.Elements
+	}).(StackTraceElementArrayOutput)
+}
+
+// A single stack element (frame) where an error occurred.
+type StackTraceElement struct {
+	// The source position information of the stacktrace element.
+	Position *Position `pulumi:"position"`
+	// The routine where the error occurred.
+	Routine *string `pulumi:"routine"`
+	// The step the error occurred at.
+	Step *string `pulumi:"step"`
+}
+
+// StackTraceElementInput is an input type that accepts StackTraceElementArgs and StackTraceElementOutput values.
+// You can construct a concrete instance of `StackTraceElementInput` via:
+//
+//          StackTraceElementArgs{...}
+type StackTraceElementInput interface {
+	pulumi.Input
+
+	ToStackTraceElementOutput() StackTraceElementOutput
+	ToStackTraceElementOutputWithContext(context.Context) StackTraceElementOutput
+}
+
+// A single stack element (frame) where an error occurred.
+type StackTraceElementArgs struct {
+	// The source position information of the stacktrace element.
+	Position PositionPtrInput `pulumi:"position"`
+	// The routine where the error occurred.
+	Routine pulumi.StringPtrInput `pulumi:"routine"`
+	// The step the error occurred at.
+	Step pulumi.StringPtrInput `pulumi:"step"`
+}
+
+func (StackTraceElementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTraceElement)(nil)).Elem()
+}
+
+func (i StackTraceElementArgs) ToStackTraceElementOutput() StackTraceElementOutput {
+	return i.ToStackTraceElementOutputWithContext(context.Background())
+}
+
+func (i StackTraceElementArgs) ToStackTraceElementOutputWithContext(ctx context.Context) StackTraceElementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceElementOutput)
+}
+
+// StackTraceElementArrayInput is an input type that accepts StackTraceElementArray and StackTraceElementArrayOutput values.
+// You can construct a concrete instance of `StackTraceElementArrayInput` via:
+//
+//          StackTraceElementArray{ StackTraceElementArgs{...} }
+type StackTraceElementArrayInput interface {
+	pulumi.Input
+
+	ToStackTraceElementArrayOutput() StackTraceElementArrayOutput
+	ToStackTraceElementArrayOutputWithContext(context.Context) StackTraceElementArrayOutput
+}
+
+type StackTraceElementArray []StackTraceElementInput
+
+func (StackTraceElementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackTraceElement)(nil)).Elem()
+}
+
+func (i StackTraceElementArray) ToStackTraceElementArrayOutput() StackTraceElementArrayOutput {
+	return i.ToStackTraceElementArrayOutputWithContext(context.Background())
+}
+
+func (i StackTraceElementArray) ToStackTraceElementArrayOutputWithContext(ctx context.Context) StackTraceElementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceElementArrayOutput)
+}
+
+// A single stack element (frame) where an error occurred.
+type StackTraceElementOutput struct{ *pulumi.OutputState }
+
+func (StackTraceElementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTraceElement)(nil)).Elem()
+}
+
+func (o StackTraceElementOutput) ToStackTraceElementOutput() StackTraceElementOutput {
+	return o
+}
+
+func (o StackTraceElementOutput) ToStackTraceElementOutputWithContext(ctx context.Context) StackTraceElementOutput {
+	return o
+}
+
+// The source position information of the stacktrace element.
+func (o StackTraceElementOutput) Position() PositionPtrOutput {
+	return o.ApplyT(func(v StackTraceElement) *Position { return v.Position }).(PositionPtrOutput)
+}
+
+// The routine where the error occurred.
+func (o StackTraceElementOutput) Routine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackTraceElement) *string { return v.Routine }).(pulumi.StringPtrOutput)
+}
+
+// The step the error occurred at.
+func (o StackTraceElementOutput) Step() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackTraceElement) *string { return v.Step }).(pulumi.StringPtrOutput)
+}
+
+type StackTraceElementArrayOutput struct{ *pulumi.OutputState }
+
+func (StackTraceElementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackTraceElement)(nil)).Elem()
+}
+
+func (o StackTraceElementArrayOutput) ToStackTraceElementArrayOutput() StackTraceElementArrayOutput {
+	return o
+}
+
+func (o StackTraceElementArrayOutput) ToStackTraceElementArrayOutputWithContext(ctx context.Context) StackTraceElementArrayOutput {
+	return o
+}
+
+func (o StackTraceElementArrayOutput) Index(i pulumi.IntInput) StackTraceElementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackTraceElement {
+		return vs[0].([]StackTraceElement)[vs[1].(int)]
+	}).(StackTraceElementOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ErrorOutput{})
 	pulumi.RegisterOutputType(ErrorPtrOutput{})
+	pulumi.RegisterOutputType(PositionOutput{})
+	pulumi.RegisterOutputType(PositionPtrOutput{})
+	pulumi.RegisterOutputType(StackTraceOutput{})
+	pulumi.RegisterOutputType(StackTracePtrOutput{})
+	pulumi.RegisterOutputType(StackTraceElementOutput{})
+	pulumi.RegisterOutputType(StackTraceElementArrayOutput{})
 }

@@ -118,6 +118,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
+        /// [Output Only] The system status of the resource policy.
+        /// </summary>
+        [Input("resourceStatus")]
+        public Input<Inputs.ResourcePolicyResourceStatusArgs>? ResourceStatus { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Input("selfLink")]

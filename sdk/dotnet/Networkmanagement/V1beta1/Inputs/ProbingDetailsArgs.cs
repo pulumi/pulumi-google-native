@@ -11,36 +11,36 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1beta1.Inputs
 {
 
     /// <summary>
-    /// The details of probing from the latest run.
+    /// Results of active probing from the last run of the test.
     /// </summary>
     public sealed class ProbingDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Causes that the probing was aborted.
+        /// The reason probing was aborted.
         /// </summary>
         [Input("abortCause")]
         public Input<string>? AbortCause { get; set; }
 
         /// <summary>
-        /// Derived from the test input. The actual source and destination endpoint where the probing was run.
+        /// The source and destination endpoints derived from the test input and used for active probing.
         /// </summary>
         [Input("endpointInfo")]
         public Input<Inputs.EndpointInfoArgs>? EndpointInfo { get; set; }
 
         /// <summary>
-        /// The details of an internal failure or a cancellation of reachability analysis.
+        /// Details about an internal failure or the cancellation of active probing.
         /// </summary>
         [Input("error")]
         public Input<Inputs.StatusArgs>? Error { get; set; }
 
         /// <summary>
-        /// One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
+        /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
         /// </summary>
         [Input("probingLatency")]
         public Input<Inputs.LatencyDistributionArgs>? ProbingLatency { get; set; }
 
         /// <summary>
-        /// The overall reachability result of the test.
+        /// The overall result of active probing.
         /// </summary>
         [Input("result")]
         public Input<string>? Result { get; set; }
@@ -52,13 +52,13 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1beta1.Inputs
         public Input<int>? SentProbeCount { get; set; }
 
         /// <summary>
-        /// Number of probes that reached destination.
+        /// Number of probes that reached the destination.
         /// </summary>
         [Input("successfulProbeCount")]
         public Input<int>? SuccessfulProbeCount { get; set; }
 
         /// <summary>
-        /// The time the reachability state was verified.
+        /// The time that reachability was assessed through active probing.
         /// </summary>
         [Input("verifyTime")]
         public Input<string>? VerifyTime { get; set; }

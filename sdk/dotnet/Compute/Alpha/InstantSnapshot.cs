@@ -144,6 +144,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>
         [Input("selfLink")]
@@ -157,9 +163,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
 
         /// <summary>
         /// URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        /// - projects/project/zones/zone/disks/disk 
-        /// - zones/zone/disks/disk
+        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+        /// - projects/project/zones/zone/disks/disk  
+        /// - projects/project/regions/region/disks/disk  
+        /// - zones/zone/disks/disk  
+        /// - regions/region/disks/disk
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }

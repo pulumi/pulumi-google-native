@@ -23,6 +23,7 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
                  import_gcs_custom_metadata: Optional[pulumi.Input[bool]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  latest_reload_status: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1DocumentReloadStatusArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,7 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
         :param pulumi.Input[bool] import_gcs_custom_metadata: Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] knowledge_types: Required. The knowledge type of document content.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1DocumentReloadStatusArgs']] latest_reload_status: Output only. The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
         :param pulumi.Input[str] mime_type: Required. The MIME type of this document.
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] parent: Required. The knowledge base to create a document for. Format: `projects//locations//knowledgeBases/`.
@@ -71,6 +73,7 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
             __props__['import_gcs_custom_metadata'] = import_gcs_custom_metadata
             __props__['knowledge_types'] = knowledge_types
             __props__['latest_reload_status'] = latest_reload_status
+            __props__['metadata'] = metadata
             __props__['mime_type'] = mime_type
             __props__['name'] = name
             if parent is None and not opts.urn:

@@ -46,6 +46,12 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Inputs
         public Input<bool>? EnableStreamingEngine { get; set; }
 
         /// <summary>
+        /// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
+        /// </summary>
+        [Input("flexrsGoal")]
+        public Input<string>? FlexrsGoal { get; set; }
+
+        /// <summary>
         /// Configuration for VM IPs.
         /// </summary>
         [Input("ipConfiguration")]

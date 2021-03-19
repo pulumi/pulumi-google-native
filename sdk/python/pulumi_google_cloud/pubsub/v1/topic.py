@@ -21,6 +21,7 @@ class Topic(pulumi.CustomResource):
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
+                 schema_settings: Optional[pulumi.Input[pulumi.InputType['SchemaSettingsArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,6 +35,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         :param pulumi.Input[str] name: Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        :param pulumi.Input[pulumi.InputType['SchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,6 +61,7 @@ class Topic(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['satisfies_pzs'] = satisfies_pzs
+            __props__['schema_settings'] = schema_settings
         super(Topic, __self__).__init__(
             'google-cloud:pubsub/v1:Topic',
             resource_name,

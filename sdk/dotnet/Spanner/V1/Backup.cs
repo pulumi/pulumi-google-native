@@ -66,7 +66,7 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
-        /// Output only. The backup will contain an externally consistent copy of the database at the timestamp specified by `create_time`. `create_time` is approximately the time the CreateBackup request is received.
+        /// Output only. The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -76,6 +76,24 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// Required. The encryption type of the backup.
+        /// </summary>
+        [Input("encryptionConfig_encryptionType")]
+        public Input<string>? EncryptionConfig_encryptionType { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
+        [Input("encryptionConfig_kmsKeyName")]
+        public Input<string>? EncryptionConfig_kmsKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. The encryption information for the backup.
+        /// </summary>
+        [Input("encryptionInfo")]
+        public Input<Inputs.EncryptionInfoArgs>? EncryptionInfo { get; set; }
 
         /// <summary>
         /// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
@@ -118,6 +136,12 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
+        /// </summary>
+        [Input("versionTime")]
+        public Input<string>? VersionTime { get; set; }
 
         public BackupArgs()
         {

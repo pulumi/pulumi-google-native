@@ -17,11 +17,14 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,11 +34,14 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time at which the Secret was created.
+        :param pulumi.Input[str] expire_time: Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
         :param pulumi.Input[str] name: Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
         :param pulumi.Input[str] parent: Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
         :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         :param pulumi.Input[str] secret_id: Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        :param pulumi.Input[str] ttl: Input only. The TTL for the Secret.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -55,6 +61,7 @@ class Secret(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['create_time'] = create_time
+            __props__['expire_time'] = expire_time
             __props__['labels'] = labels
             __props__['name'] = name
             if parent is None and not opts.urn:
@@ -62,6 +69,8 @@ class Secret(pulumi.CustomResource):
             __props__['parent'] = parent
             __props__['replication'] = replication
             __props__['secret_id'] = secret_id
+            __props__['topics'] = topics
+            __props__['ttl'] = ttl
         super(Secret, __self__).__init__(
             'google-cloud:secretmanager/v1:Secret',
             resource_name,

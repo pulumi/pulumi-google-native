@@ -239,6 +239,24 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("serviceAccountScopes")]
+        private InputList<string>? _serviceAccountScopes;
+
+        /// <summary>
+        /// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+        /// </summary>
+        public InputList<string> ServiceAccountScopes
+        {
+            get => _serviceAccountScopes ?? (_serviceAccountScopes = new InputList<string>());
+            set => _serviceAccountScopes = value;
+        }
+
+        /// <summary>
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
         /// <summary>
         /// Output only. The state of this instance.
         /// </summary>
@@ -250,6 +268,18 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Output only. Instance update time.

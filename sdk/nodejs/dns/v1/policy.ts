@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Create a new Policy
+ * Creates a new Policy.
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
@@ -61,12 +62,8 @@ export class Policy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Policy.__pulumiType, name, inputs, opts);
     }
@@ -89,7 +86,7 @@ export interface PolicyArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+     * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
      */
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
     /**
@@ -102,7 +99,7 @@ export interface PolicyArgs {
     readonly id?: pulumi.Input<string>;
     readonly kind?: pulumi.Input<string>;
     /**
-     * User assigned name for this policy.
+     * User-assigned name for this policy.
      */
     readonly name?: pulumi.Input<string>;
     /**

@@ -45,7 +45,8 @@ export class NodePool extends pulumi.CustomResource {
      */
     constructor(name: string, args?: NodePoolArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -53,12 +54,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodePool.__pulumiType, name, inputs, opts);
     }

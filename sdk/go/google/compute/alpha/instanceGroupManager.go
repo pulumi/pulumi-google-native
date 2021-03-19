@@ -85,6 +85,8 @@ type instanceGroupManagerArgs struct {
 	Id *string `pulumi:"id"`
 	// [Output Only] The URL of the Instance Group resource.
 	InstanceGroup *string `pulumi:"instanceGroup"`
+	// Instance lifecycle policy for this Instance Group Manager.
+	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
 	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
@@ -117,6 +119,14 @@ type instanceGroupManagerArgs struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize *int `pulumi:"targetSize"`
+	// The target number of stopped instances for this managed instance group. This number changes when you:
+	// - Stop instance using the stopInstances method or start instances using the startInstances method.
+	// - Manually change the targetStoppedSize using the update method.
+	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
+	// The target number of suspended instances for this managed instance group. This number changes when you:
+	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
+	// - Manually change the targetSuspendedSize using the update method.
+	TargetSuspendedSize *int `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Specifies the instance templates used by this managed instance group to create instances.
@@ -151,6 +161,8 @@ type InstanceGroupManagerArgs struct {
 	Id pulumi.StringPtrInput
 	// [Output Only] The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringPtrInput
+	// Instance lifecycle policy for this Instance Group Manager.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringPtrInput
 	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
@@ -183,6 +195,14 @@ type InstanceGroupManagerArgs struct {
 	TargetPools pulumi.StringArrayInput
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize pulumi.IntPtrInput
+	// The target number of stopped instances for this managed instance group. This number changes when you:
+	// - Stop instance using the stopInstances method or start instances using the startInstances method.
+	// - Manually change the targetStoppedSize using the update method.
+	TargetStoppedSize pulumi.IntPtrInput
+	// The target number of suspended instances for this managed instance group. This number changes when you:
+	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
+	// - Manually change the targetSuspendedSize using the update method.
+	TargetSuspendedSize pulumi.IntPtrInput
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Specifies the instance templates used by this managed instance group to create instances.

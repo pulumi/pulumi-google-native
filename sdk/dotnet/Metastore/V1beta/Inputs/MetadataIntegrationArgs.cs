@@ -15,6 +15,12 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta.Inputs
     /// </summary>
     public sealed class MetadataIntegrationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The integration config for the Data Catalog service.
+        /// </summary>
+        [Input("dataCatalogConfig")]
+        public Input<Inputs.DataCatalogConfigArgs>? DataCatalogConfig { get; set; }
+
         public MetadataIntegrationArgs()
         {
         }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1.Inputs
     public sealed class ImageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+        /// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
         /// </summary>
         [Input("alpha")]
         public Input<double>? Alpha { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1.Inputs
         public Input<Inputs.NormalizedCoordinateArgs>? Resolution { get; set; }
 
         /// <summary>
-        /// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+        /// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

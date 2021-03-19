@@ -142,7 +142,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<string>? NetworkTier { get; set; }
 
         /// <summary>
-        /// The prefix length if the resource reprensents an IP range.
+        /// The prefix length if the resource represents an IP range.
         /// </summary>
         [Input("prefixLength")]
         public Input<int>? PrefixLength { get; set; }
@@ -159,16 +159,16 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork 
         /// - `VPC_PEERING` for addresses that are reserved for VPC peer networks. 
         /// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. 
-        /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec encrypted Interconnect configuration. These addresses are regional resources.
+        /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// [Output Only] The URL of the region where the regional address resides. This field is not applicable to global addresses. You must specify this field as part of the HTTP request URL.
+        /// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.

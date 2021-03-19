@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .connection import *
+from .google_cloud_servicenetworking_v1beta_connection import *
 
 def _register_module():
     import pulumi
@@ -17,8 +17,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:servicenetworking/v1beta:Connection":
-                return Connection(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:servicenetworking/v1beta:GoogleCloudServicenetworkingV1betaConnection":
+                return GoogleCloudServicenetworkingV1betaConnection(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

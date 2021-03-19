@@ -7,6 +7,8 @@ from .policy import *
 from .role import *
 from .service_account import *
 from .service_account_key import *
+from .workload_identity_pool import *
+from .workload_identity_pool_provider import *
 from ._inputs import *
 
 def _register_module():
@@ -29,6 +31,10 @@ def _register_module():
                 return ServiceAccount(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:iam/v1:ServiceAccountKey":
                 return ServiceAccountKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:iam/v1:WorkloadIdentityPool":
+                return WorkloadIdentityPool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:iam/v1:WorkloadIdentityPoolProvider":
+                return WorkloadIdentityPoolProvider(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

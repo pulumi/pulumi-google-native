@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// ///////////// // The core content of the template // ///////////////
+        /// The core content of the template.
         /// </summary>
         [Input("deidentifyConfig")]
         public Input<Inputs.GooglePrivacyDlpV2DeidentifyConfigArgs>? DeidentifyConfig { get; set; }

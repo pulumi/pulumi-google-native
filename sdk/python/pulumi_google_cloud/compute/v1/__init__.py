@@ -11,6 +11,7 @@ from .commitment import *
 from .disk import *
 from .external_vpn_gateway import *
 from .firewall import *
+from .firewall_policy import *
 from .forwarding_rule import *
 from .health_check import *
 from .health_check_service import *
@@ -31,6 +32,8 @@ from .node_template import *
 from .notification_endpoint import *
 from .packet_mirroring import *
 from .policy import *
+from .public_advertised_prefix import *
+from .public_delegated_prefix import *
 from .reservation import *
 from .resource_policy import *
 from .route import *
@@ -80,6 +83,8 @@ def _register_module():
                 return ExternalVpnGateway(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/v1:Firewall":
                 return Firewall(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/v1:FirewallPolicy":
+                return FirewallPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/v1:ForwardingRule":
                 return ForwardingRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/v1:HealthCheck":
@@ -120,6 +125,10 @@ def _register_module():
                 return PacketMirroring(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/v1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/v1:PublicAdvertisedPrefix":
+                return PublicAdvertisedPrefix(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:compute/v1:PublicDelegatedPrefix":
+                return PublicDelegatedPrefix(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/v1:Reservation":
                 return Reservation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:compute/v1:ResourcePolicy":

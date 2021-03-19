@@ -9,12 +9,16 @@ export * from "./policy";
 export * from "./role";
 export * from "./serviceAccount";
 export * from "./serviceAccountKey";
+export * from "./workloadIdentityPool";
+export * from "./workloadIdentityPoolProvider";
 
 // Import resources to register:
 import { Policy } from "./policy";
 import { Role } from "./role";
 import { ServiceAccount } from "./serviceAccount";
 import { ServiceAccountKey } from "./serviceAccountKey";
+import { WorkloadIdentityPool } from "./workloadIdentityPool";
+import { WorkloadIdentityPoolProvider } from "./workloadIdentityPoolProvider";
 
 const _module = {
     version: utilities.getVersion(),
@@ -28,6 +32,10 @@ const _module = {
                 return new ServiceAccount(name, <any>undefined, { urn })
             case "google-cloud:iam/v1:ServiceAccountKey":
                 return new ServiceAccountKey(name, <any>undefined, { urn })
+            case "google-cloud:iam/v1:WorkloadIdentityPool":
+                return new WorkloadIdentityPool(name, <any>undefined, { urn })
+            case "google-cloud:iam/v1:WorkloadIdentityPoolProvider":
+                return new WorkloadIdentityPoolProvider(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

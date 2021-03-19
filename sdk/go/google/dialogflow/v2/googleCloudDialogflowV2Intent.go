@@ -64,6 +64,8 @@ type googleCloudDialogflowV2IntentArgs struct {
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// Required. The name of this intent.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+	EndInteraction *bool `pulumi:"endInteraction"`
 	// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
 	Events []string `pulumi:"events"`
 	// Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
@@ -76,6 +78,8 @@ type googleCloudDialogflowV2IntentArgs struct {
 	IsFallback *bool `pulumi:"isFallback"`
 	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode *string `pulumi:"languageCode"`
+	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+	LiveAgentHandoff *bool `pulumi:"liveAgentHandoff"`
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages []GoogleCloudDialogflowV2IntentMessage `pulumi:"messages"`
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
@@ -110,6 +114,8 @@ type GoogleCloudDialogflowV2IntentArgs struct {
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// Required. The name of this intent.
 	DisplayName pulumi.StringPtrInput
+	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+	EndInteraction pulumi.BoolPtrInput
 	// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
 	Events pulumi.StringArrayInput
 	// Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
@@ -122,6 +128,8 @@ type GoogleCloudDialogflowV2IntentArgs struct {
 	IsFallback pulumi.BoolPtrInput
 	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode pulumi.StringPtrInput
+	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+	LiveAgentHandoff pulumi.BoolPtrInput
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages GoogleCloudDialogflowV2IntentMessageArrayInput
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.

@@ -23,12 +23,12 @@ class Namespace(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a namespace, and returns the new Namespace.
+        Creates a namespace, and returns the new namespace.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels associated with this Namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-        :param pulumi.Input[str] name: Immutable. The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+        :param pulumi.Input[str] name: Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[str] namespace_id: Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] parent: Required. The resource name of the project and location the namespace will be created in.
         """

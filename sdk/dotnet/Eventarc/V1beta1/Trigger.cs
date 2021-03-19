@@ -77,11 +77,23 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. User labels attached to the triggers that can be used to group resources.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("matchingCriteria")]
         private InputList<Inputs.MatchingCriteriaArgs>? _matchingCriteria;
 
         /// <summary>
-        /// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
         public InputList<Inputs.MatchingCriteriaArgs> MatchingCriteria
         {
@@ -108,7 +120,7 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Output only. In order to deliver messages, Eventarc may configure other GCP products as transport intermediary. This field returns a reference to that transport intermediary. This information can be used for debugging purposes.
+        /// Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
         [Input("transport")]
         public Input<Inputs.TransportArgs>? Transport { get; set; }

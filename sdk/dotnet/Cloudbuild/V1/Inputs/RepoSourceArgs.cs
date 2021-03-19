@@ -46,7 +46,7 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1.Inputs
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Required. Name of the Cloud Source Repository.
+        /// Name of the Cloud Source Repository.
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }

@@ -383,7 +383,6 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 
 // Associates `members` with a `role`.
 type Binding struct {
-	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
 	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
@@ -405,7 +404,6 @@ type BindingInput interface {
 
 // Associates `members` with a `role`.
 type BindingArgs struct {
-	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
 	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
@@ -464,10 +462,6 @@ func (o BindingOutput) ToBindingOutput() BindingOutput {
 
 func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
 	return o
-}
-
-func (o BindingOutput) BindingId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Binding) *string { return v.BindingId }).(pulumi.StringPtrOutput)
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1746,23 +1740,27 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// For display only. Metadata associated with a Compute Engine firewall rule.
+// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
 type FirewallInfo struct {
 	// Possible values: ALLOW, DENY
 	Action *string `pulumi:"action"`
 	// Possible values: INGRESS, EGRESS
 	Direction *string `pulumi:"direction"`
-	// Name of a Compute Engine firewall rule.
+	// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 	DisplayName *string `pulumi:"displayName"`
-	// URI of a Compute Engine network.
+	// The firewall rule's type.
+	FirewallRuleType *string `pulumi:"firewallRuleType"`
+	// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
 	NetworkUri *string `pulumi:"networkUri"`
-	// Priority of the firewall rule.
+	// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+	Policy *string `pulumi:"policy"`
+	// The priority of the firewall rule.
 	Priority *int `pulumi:"priority"`
-	// Target service accounts of the firewall rule.
+	// The target service accounts specified by the firewall rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
-	// Target tags of the firewall rule.
+	// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 	TargetTags []string `pulumi:"targetTags"`
-	// URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+	// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -1777,23 +1775,27 @@ type FirewallInfoInput interface {
 	ToFirewallInfoOutputWithContext(context.Context) FirewallInfoOutput
 }
 
-// For display only. Metadata associated with a Compute Engine firewall rule.
+// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
 type FirewallInfoArgs struct {
 	// Possible values: ALLOW, DENY
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Possible values: INGRESS, EGRESS
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Name of a Compute Engine firewall rule.
+	// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// URI of a Compute Engine network.
+	// The firewall rule's type.
+	FirewallRuleType pulumi.StringPtrInput `pulumi:"firewallRuleType"`
+	// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
 	NetworkUri pulumi.StringPtrInput `pulumi:"networkUri"`
-	// Priority of the firewall rule.
+	// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The priority of the firewall rule.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// Target service accounts of the firewall rule.
+	// The target service accounts specified by the firewall rule.
 	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
-	// Target tags of the firewall rule.
+	// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 	TargetTags pulumi.StringArrayInput `pulumi:"targetTags"`
-	// URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+	// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -1850,7 +1852,7 @@ func (i *firewallInfoPtrType) ToFirewallInfoPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallInfoPtrOutput)
 }
 
-// For display only. Metadata associated with a Compute Engine firewall rule.
+// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
 type FirewallInfoOutput struct{ *pulumi.OutputState }
 
 func (FirewallInfoOutput) ElementType() reflect.Type {
@@ -1885,32 +1887,42 @@ func (o FirewallInfoOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallInfo) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Name of a Compute Engine firewall rule.
+// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 func (o FirewallInfoOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallInfo) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// URI of a Compute Engine network.
+// The firewall rule's type.
+func (o FirewallInfoOutput) FirewallRuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallInfo) *string { return v.FirewallRuleType }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
 func (o FirewallInfoOutput) NetworkUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallInfo) *string { return v.NetworkUri }).(pulumi.StringPtrOutput)
 }
 
-// Priority of the firewall rule.
+// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+func (o FirewallInfoOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallInfo) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// The priority of the firewall rule.
 func (o FirewallInfoOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallInfo) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// Target service accounts of the firewall rule.
+// The target service accounts specified by the firewall rule.
 func (o FirewallInfoOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallInfo) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
 }
 
-// Target tags of the firewall rule.
+// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 func (o FirewallInfoOutput) TargetTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallInfo) []string { return v.TargetTags }).(pulumi.StringArrayOutput)
 }
 
-// URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
 func (o FirewallInfoOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallInfo) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1953,7 +1965,7 @@ func (o FirewallInfoPtrOutput) Direction() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of a Compute Engine firewall rule.
+// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 func (o FirewallInfoPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallInfo) *string {
 		if v == nil {
@@ -1963,7 +1975,17 @@ func (o FirewallInfoPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI of a Compute Engine network.
+// The firewall rule's type.
+func (o FirewallInfoPtrOutput) FirewallRuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirewallRuleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
 func (o FirewallInfoPtrOutput) NetworkUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallInfo) *string {
 		if v == nil {
@@ -1973,7 +1995,17 @@ func (o FirewallInfoPtrOutput) NetworkUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Priority of the firewall rule.
+// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+func (o FirewallInfoPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The priority of the firewall rule.
 func (o FirewallInfoPtrOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallInfo) *int {
 		if v == nil {
@@ -1983,7 +2015,7 @@ func (o FirewallInfoPtrOutput) Priority() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Target service accounts of the firewall rule.
+// The target service accounts specified by the firewall rule.
 func (o FirewallInfoPtrOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallInfo) []string {
 		if v == nil {
@@ -1993,7 +2025,7 @@ func (o FirewallInfoPtrOutput) TargetServiceAccounts() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Target tags of the firewall rule.
+// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
 func (o FirewallInfoPtrOutput) TargetTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallInfo) []string {
 		if v == nil {
@@ -2003,7 +2035,7 @@ func (o FirewallInfoPtrOutput) TargetTags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
 func (o FirewallInfoPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallInfo) *string {
 		if v == nil {
@@ -3824,23 +3856,23 @@ func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The details of probing from the latest run.
+// Results of active probing from the last run of the test.
 type ProbingDetails struct {
-	// Causes that the probing was aborted.
+	// The reason probing was aborted.
 	AbortCause *string `pulumi:"abortCause"`
-	// Derived from the test input. The actual source and destination endpoint where the probing was run.
+	// The source and destination endpoints derived from the test input and used for active probing.
 	EndpointInfo *EndpointInfo `pulumi:"endpointInfo"`
-	// The details of an internal failure or a cancellation of reachability analysis.
+	// Details about an internal failure or the cancellation of active probing.
 	Error *Status `pulumi:"error"`
-	// One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
+	// Latency as measured by active probing in one direction: from the source to the destination endpoint.
 	ProbingLatency *LatencyDistribution `pulumi:"probingLatency"`
-	// The overall reachability result of the test.
+	// The overall result of active probing.
 	Result *string `pulumi:"result"`
 	// Number of probes sent.
 	SentProbeCount *int `pulumi:"sentProbeCount"`
-	// Number of probes that reached destination.
+	// Number of probes that reached the destination.
 	SuccessfulProbeCount *int `pulumi:"successfulProbeCount"`
-	// The time the reachability state was verified.
+	// The time that reachability was assessed through active probing.
 	VerifyTime *string `pulumi:"verifyTime"`
 }
 
@@ -3855,23 +3887,23 @@ type ProbingDetailsInput interface {
 	ToProbingDetailsOutputWithContext(context.Context) ProbingDetailsOutput
 }
 
-// The details of probing from the latest run.
+// Results of active probing from the last run of the test.
 type ProbingDetailsArgs struct {
-	// Causes that the probing was aborted.
+	// The reason probing was aborted.
 	AbortCause pulumi.StringPtrInput `pulumi:"abortCause"`
-	// Derived from the test input. The actual source and destination endpoint where the probing was run.
+	// The source and destination endpoints derived from the test input and used for active probing.
 	EndpointInfo EndpointInfoPtrInput `pulumi:"endpointInfo"`
-	// The details of an internal failure or a cancellation of reachability analysis.
+	// Details about an internal failure or the cancellation of active probing.
 	Error StatusPtrInput `pulumi:"error"`
-	// One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
+	// Latency as measured by active probing in one direction: from the source to the destination endpoint.
 	ProbingLatency LatencyDistributionPtrInput `pulumi:"probingLatency"`
-	// The overall reachability result of the test.
+	// The overall result of active probing.
 	Result pulumi.StringPtrInput `pulumi:"result"`
 	// Number of probes sent.
 	SentProbeCount pulumi.IntPtrInput `pulumi:"sentProbeCount"`
-	// Number of probes that reached destination.
+	// Number of probes that reached the destination.
 	SuccessfulProbeCount pulumi.IntPtrInput `pulumi:"successfulProbeCount"`
-	// The time the reachability state was verified.
+	// The time that reachability was assessed through active probing.
 	VerifyTime pulumi.StringPtrInput `pulumi:"verifyTime"`
 }
 
@@ -3928,7 +3960,7 @@ func (i *probingDetailsPtrType) ToProbingDetailsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProbingDetailsPtrOutput)
 }
 
-// The details of probing from the latest run.
+// Results of active probing from the last run of the test.
 type ProbingDetailsOutput struct{ *pulumi.OutputState }
 
 func (ProbingDetailsOutput) ElementType() reflect.Type {
@@ -3953,27 +3985,27 @@ func (o ProbingDetailsOutput) ToProbingDetailsPtrOutputWithContext(ctx context.C
 	}).(ProbingDetailsPtrOutput)
 }
 
-// Causes that the probing was aborted.
+// The reason probing was aborted.
 func (o ProbingDetailsOutput) AbortCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *string { return v.AbortCause }).(pulumi.StringPtrOutput)
 }
 
-// Derived from the test input. The actual source and destination endpoint where the probing was run.
+// The source and destination endpoints derived from the test input and used for active probing.
 func (o ProbingDetailsOutput) EndpointInfo() EndpointInfoPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *EndpointInfo { return v.EndpointInfo }).(EndpointInfoPtrOutput)
 }
 
-// The details of an internal failure or a cancellation of reachability analysis.
+// Details about an internal failure or the cancellation of active probing.
 func (o ProbingDetailsOutput) Error() StatusPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *Status { return v.Error }).(StatusPtrOutput)
 }
 
-// One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
+// Latency as measured by active probing in one direction: from the source to the destination endpoint.
 func (o ProbingDetailsOutput) ProbingLatency() LatencyDistributionPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *LatencyDistribution { return v.ProbingLatency }).(LatencyDistributionPtrOutput)
 }
 
-// The overall reachability result of the test.
+// The overall result of active probing.
 func (o ProbingDetailsOutput) Result() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *string { return v.Result }).(pulumi.StringPtrOutput)
 }
@@ -3983,12 +4015,12 @@ func (o ProbingDetailsOutput) SentProbeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *int { return v.SentProbeCount }).(pulumi.IntPtrOutput)
 }
 
-// Number of probes that reached destination.
+// Number of probes that reached the destination.
 func (o ProbingDetailsOutput) SuccessfulProbeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *int { return v.SuccessfulProbeCount }).(pulumi.IntPtrOutput)
 }
 
-// The time the reachability state was verified.
+// The time that reachability was assessed through active probing.
 func (o ProbingDetailsOutput) VerifyTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProbingDetails) *string { return v.VerifyTime }).(pulumi.StringPtrOutput)
 }
@@ -4011,7 +4043,7 @@ func (o ProbingDetailsPtrOutput) Elem() ProbingDetailsOutput {
 	return o.ApplyT(func(v *ProbingDetails) ProbingDetails { return *v }).(ProbingDetailsOutput)
 }
 
-// Causes that the probing was aborted.
+// The reason probing was aborted.
 func (o ProbingDetailsPtrOutput) AbortCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *string {
 		if v == nil {
@@ -4021,7 +4053,7 @@ func (o ProbingDetailsPtrOutput) AbortCause() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Derived from the test input. The actual source and destination endpoint where the probing was run.
+// The source and destination endpoints derived from the test input and used for active probing.
 func (o ProbingDetailsPtrOutput) EndpointInfo() EndpointInfoPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *EndpointInfo {
 		if v == nil {
@@ -4031,7 +4063,7 @@ func (o ProbingDetailsPtrOutput) EndpointInfo() EndpointInfoPtrOutput {
 	}).(EndpointInfoPtrOutput)
 }
 
-// The details of an internal failure or a cancellation of reachability analysis.
+// Details about an internal failure or the cancellation of active probing.
 func (o ProbingDetailsPtrOutput) Error() StatusPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *Status {
 		if v == nil {
@@ -4041,7 +4073,7 @@ func (o ProbingDetailsPtrOutput) Error() StatusPtrOutput {
 	}).(StatusPtrOutput)
 }
 
-// One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
+// Latency as measured by active probing in one direction: from the source to the destination endpoint.
 func (o ProbingDetailsPtrOutput) ProbingLatency() LatencyDistributionPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *LatencyDistribution {
 		if v == nil {
@@ -4051,7 +4083,7 @@ func (o ProbingDetailsPtrOutput) ProbingLatency() LatencyDistributionPtrOutput {
 	}).(LatencyDistributionPtrOutput)
 }
 
-// The overall reachability result of the test.
+// The overall result of active probing.
 func (o ProbingDetailsPtrOutput) Result() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *string {
 		if v == nil {
@@ -4071,7 +4103,7 @@ func (o ProbingDetailsPtrOutput) SentProbeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Number of probes that reached destination.
+// Number of probes that reached the destination.
 func (o ProbingDetailsPtrOutput) SuccessfulProbeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *int {
 		if v == nil {
@@ -4081,7 +4113,7 @@ func (o ProbingDetailsPtrOutput) SuccessfulProbeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The time the reachability state was verified.
+// The time that reachability was assessed through active probing.
 func (o ProbingDetailsPtrOutput) VerifyTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProbingDetails) *string {
 		if v == nil {
@@ -4091,15 +4123,15 @@ func (o ProbingDetailsPtrOutput) VerifyTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The details of reachability state from the latest run.
+// Results of the configuration analysis from the last run of the test.
 type ReachabilityDetails struct {
 	// The details of a failure or a cancellation of reachability analysis.
 	Error *Status `pulumi:"error"`
-	// The overall reachability result of the test.
+	// The overall result of the test's configuration analysis.
 	Result *string `pulumi:"result"`
 	// Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
 	Traces []Trace `pulumi:"traces"`
-	// The time the reachability state was verified.
+	// The time of the configuration analysis.
 	VerifyTime *string `pulumi:"verifyTime"`
 }
 
@@ -4114,15 +4146,15 @@ type ReachabilityDetailsInput interface {
 	ToReachabilityDetailsOutputWithContext(context.Context) ReachabilityDetailsOutput
 }
 
-// The details of reachability state from the latest run.
+// Results of the configuration analysis from the last run of the test.
 type ReachabilityDetailsArgs struct {
 	// The details of a failure or a cancellation of reachability analysis.
 	Error StatusPtrInput `pulumi:"error"`
-	// The overall reachability result of the test.
+	// The overall result of the test's configuration analysis.
 	Result pulumi.StringPtrInput `pulumi:"result"`
 	// Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
 	Traces TraceArrayInput `pulumi:"traces"`
-	// The time the reachability state was verified.
+	// The time of the configuration analysis.
 	VerifyTime pulumi.StringPtrInput `pulumi:"verifyTime"`
 }
 
@@ -4179,7 +4211,7 @@ func (i *reachabilityDetailsPtrType) ToReachabilityDetailsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ReachabilityDetailsPtrOutput)
 }
 
-// The details of reachability state from the latest run.
+// Results of the configuration analysis from the last run of the test.
 type ReachabilityDetailsOutput struct{ *pulumi.OutputState }
 
 func (ReachabilityDetailsOutput) ElementType() reflect.Type {
@@ -4209,7 +4241,7 @@ func (o ReachabilityDetailsOutput) Error() StatusPtrOutput {
 	return o.ApplyT(func(v ReachabilityDetails) *Status { return v.Error }).(StatusPtrOutput)
 }
 
-// The overall reachability result of the test.
+// The overall result of the test's configuration analysis.
 func (o ReachabilityDetailsOutput) Result() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReachabilityDetails) *string { return v.Result }).(pulumi.StringPtrOutput)
 }
@@ -4219,7 +4251,7 @@ func (o ReachabilityDetailsOutput) Traces() TraceArrayOutput {
 	return o.ApplyT(func(v ReachabilityDetails) []Trace { return v.Traces }).(TraceArrayOutput)
 }
 
-// The time the reachability state was verified.
+// The time of the configuration analysis.
 func (o ReachabilityDetailsOutput) VerifyTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReachabilityDetails) *string { return v.VerifyTime }).(pulumi.StringPtrOutput)
 }
@@ -4252,7 +4284,7 @@ func (o ReachabilityDetailsPtrOutput) Error() StatusPtrOutput {
 	}).(StatusPtrOutput)
 }
 
-// The overall reachability result of the test.
+// The overall result of the test's configuration analysis.
 func (o ReachabilityDetailsPtrOutput) Result() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReachabilityDetails) *string {
 		if v == nil {
@@ -4272,7 +4304,7 @@ func (o ReachabilityDetailsPtrOutput) Traces() TraceArrayOutput {
 	}).(TraceArrayOutput)
 }
 
-// The time the reachability state was verified.
+// The time of the configuration analysis.
 func (o ReachabilityDetailsPtrOutput) VerifyTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReachabilityDetails) *string {
 		if v == nil {
@@ -4754,7 +4786,7 @@ type Step struct {
 	Description *string `pulumi:"description"`
 	// Display info of the final state "drop" and reason.
 	Drop *DropInfo `pulumi:"drop"`
-	// Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+	// Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
 	Endpoint *EndpointInfo `pulumi:"endpoint"`
 	// Display info of a Compute Engine firewall rule.
 	Firewall *FirewallInfo `pulumi:"firewall"`
@@ -4807,7 +4839,7 @@ type StepArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Display info of the final state "drop" and reason.
 	Drop DropInfoPtrInput `pulumi:"drop"`
-	// Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+	// Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
 	Endpoint EndpointInfoPtrInput `pulumi:"endpoint"`
 	// Display info of a Compute Engine firewall rule.
 	Firewall FirewallInfoPtrInput `pulumi:"firewall"`
@@ -4917,7 +4949,7 @@ func (o StepOutput) Drop() DropInfoPtrOutput {
 	return o.ApplyT(func(v Step) *DropInfo { return v.Drop }).(DropInfoPtrOutput)
 }
 
-// Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+// Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
 func (o StepOutput) Endpoint() EndpointInfoPtrOutput {
 	return o.ApplyT(func(v Step) *EndpointInfo { return v.Endpoint }).(EndpointInfoPtrOutput)
 }
@@ -5002,7 +5034,7 @@ func (o StepArrayOutput) Index(i pulumi.IntInput) StepOutput {
 	}).(StepOutput)
 }
 
-// Trace represents one simulated packet forwarding path. - Each trace contains multiple ordered steps. - Each step is in a particular state and has an associated configuration. - State is categorized as a final or non-final state. - Each final state has a reason associated with it. - Each trace must end with a final state (the last step). |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type Trace struct {
 	// Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo *EndpointInfo `pulumi:"endpointInfo"`
@@ -5021,7 +5053,7 @@ type TraceInput interface {
 	ToTraceOutputWithContext(context.Context) TraceOutput
 }
 
-// Trace represents one simulated packet forwarding path. - Each trace contains multiple ordered steps. - Each step is in a particular state and has an associated configuration. - State is categorized as a final or non-final state. - Each final state has a reason associated with it. - Each trace must end with a final state (the last step). |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceArgs struct {
 	// Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo EndpointInfoPtrInput `pulumi:"endpointInfo"`
@@ -5066,7 +5098,7 @@ func (i TraceArray) ToTraceArrayOutputWithContext(ctx context.Context) TraceArra
 	return pulumi.ToOutputWithContext(ctx, i).(TraceArrayOutput)
 }
 
-// Trace represents one simulated packet forwarding path. - Each trace contains multiple ordered steps. - Each step is in a particular state and has an associated configuration. - State is categorized as a final or non-final state. - Each final state has a reason associated with it. - Each trace must end with a final state (the last step). |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceOutput struct{ *pulumi.OutputState }
 
 func (TraceOutput) ElementType() reflect.Type {

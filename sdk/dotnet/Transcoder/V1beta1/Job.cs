@@ -96,7 +96,7 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
         public Input<string>? FailureReason { get; set; }
 
         /// <summary>
-        /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. It must be stored in Cloud Storage. For example, `gs://bucket/inputs/file.mp4`.
+        /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
         /// </summary>
         [Input("inputUri")]
         public Input<string>? InputUri { get; set; }

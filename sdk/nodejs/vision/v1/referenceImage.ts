@@ -45,8 +45,9 @@ export class ReferenceImage extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReferenceImageArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["boundingPolys"] = args ? args.boundingPolys : undefined;
@@ -56,12 +57,8 @@ export class ReferenceImage extends pulumi.CustomResource {
             inputs["uri"] = args ? args.uri : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ReferenceImage.__pulumiType, name, inputs, opts);
     }

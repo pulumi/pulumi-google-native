@@ -81,6 +81,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// Resource policy for scheduling instance operations.
+        /// </summary>
+        [Input("instanceSchedulePolicy")]
+        public Input<Inputs.ResourcePolicyInstanceSchedulePolicyArgs>? InstanceSchedulePolicy { get; set; }
+
+        /// <summary>
         /// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
         /// </summary>
         [Input("kind")]
@@ -110,6 +116,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// [Output Only] The system status of the resource policy.
+        /// </summary>
+        [Input("resourceStatus")]
+        public Input<Inputs.ResourcePolicyResourceStatusArgs>? ResourceStatus { get; set; }
 
         /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.

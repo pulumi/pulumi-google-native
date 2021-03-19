@@ -44,11 +44,12 @@ export class TargetHttpProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetHttpProxyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -66,12 +67,8 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetHttpProxy.__pulumiType, name, inputs, opts);
     }

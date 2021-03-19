@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a namespace, and returns the new Namespace.
+// Creates a namespace, and returns the new namespace.
 type Namespace struct {
 	pulumi.CustomResourceState
 }
@@ -58,9 +58,9 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
-	// Optional. Resource labels associated with this Namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
 	Labels map[string]string `pulumi:"labels"`
-	// Immutable. The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name *string `pulumi:"name"`
 	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	NamespaceId *string `pulumi:"namespaceId"`
@@ -70,9 +70,9 @@ type namespaceArgs struct {
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
-	// Optional. Resource labels associated with this Namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
 	Labels pulumi.StringMapInput
-	// Immutable. The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name pulumi.StringPtrInput
 	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	NamespaceId pulumi.StringPtrInput

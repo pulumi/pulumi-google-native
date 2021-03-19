@@ -26,6 +26,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,8 @@ class InstanceGroupManager(pulumi.CustomResource):
                  status: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_stopped_size: Optional[pulumi.Input[int]] = None,
+                 target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -65,6 +68,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         :param pulumi.Input[str] id: [Output Only] A unique identifier for this resource type. The server generates this identifier.
         :param pulumi.Input[str] instance_group: [Output Only] The URL of the Instance Group resource.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: Instance lifecycle policy for this Instance Group Manager.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
@@ -83,6 +87,12 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']] status: [Output Only] The status of this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you:  
+               - Stop instance using the stopInstances method or start instances using the startInstances method. 
+               - Manually change the targetStoppedSize using the update method.
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you:  
+               - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
+               - Manually change the targetSuspendedSize using the update method.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Specifies the instance templates used by this managed instance group to create instances.
                
@@ -116,6 +126,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['fingerprint'] = fingerprint
             __props__['id'] = id
             __props__['instance_group'] = instance_group
+            __props__['instance_lifecycle_policy'] = instance_lifecycle_policy
             __props__['instance_template'] = instance_template
             __props__['kind'] = kind
             __props__['name'] = name
@@ -134,6 +145,8 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['status'] = status
             __props__['target_pools'] = target_pools
             __props__['target_size'] = target_size
+            __props__['target_stopped_size'] = target_stopped_size
+            __props__['target_suspended_size'] = target_suspended_size
             __props__['update_policy'] = update_policy
             __props__['versions'] = versions
             __props__['zone'] = zone

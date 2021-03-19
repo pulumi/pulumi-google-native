@@ -44,8 +44,9 @@ export class Workflow extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkflowArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -62,12 +63,8 @@ export class Workflow extends pulumi.CustomResource {
             inputs["workflowId"] = args ? args.workflowId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Workflow.__pulumiType, name, inputs, opts);
     }
@@ -110,7 +107,7 @@ export interface WorkflowArgs {
      */
     readonly serviceAccount?: pulumi.Input<string>;
     /**
-     * Workflow code to be executed. The size limit is 32KB.
+     * Workflow code to be executed. The size limit is 128KB.
      */
     readonly sourceContents?: pulumi.Input<string>;
     /**

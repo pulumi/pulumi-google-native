@@ -28,6 +28,12 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Inputs
         public Input<Inputs.AuthenticatorGroupsConfigArgs>? AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>
+        /// Autopilot configuration for the cluster.
+        /// </summary>
+        [Input("autopilot")]
+        public Input<Inputs.AutopilotArgs>? Autopilot { get; set; }
+
+        /// <summary>
         /// Cluster-level autoscaling configuration.
         /// </summary>
         [Input("autoscaling")]

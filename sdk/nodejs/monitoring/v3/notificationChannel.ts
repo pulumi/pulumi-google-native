@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -44,26 +45,25 @@ export class NotificationChannel extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationChannelArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            inputs["creationRecord"] = args ? args.creationRecord : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["mutationRecords"] = args ? args.mutationRecords : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["verificationStatus"] = args ? args.verificationStatus : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NotificationChannel.__pulumiType, name, inputs, opts);
     }
@@ -73,6 +73,10 @@ export class NotificationChannel extends pulumi.CustomResource {
  * The set of arguments for constructing a NotificationChannel resource.
  */
 export interface NotificationChannelArgs {
+    /**
+     * Record of the creation of this channel.
+     */
+    readonly creationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecord>;
     /**
      * An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
      */
@@ -89,6 +93,10 @@ export interface NotificationChannelArgs {
      * Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Records of the modification of this channel.
+     */
+    readonly mutationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.MutationRecord>[]>;
     /**
      * The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
      */

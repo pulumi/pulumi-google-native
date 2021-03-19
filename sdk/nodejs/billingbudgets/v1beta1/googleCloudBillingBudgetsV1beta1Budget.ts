@@ -45,20 +45,17 @@ export class GoogleCloudBillingBudgetsV1beta1Budget extends pulumi.CustomResourc
      */
     constructor(name: string, args: GoogleCloudBillingBudgetsV1beta1BudgetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["budget"] = args ? args.budget : undefined;
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudBillingBudgetsV1beta1Budget.__pulumiType, name, inputs, opts);
     }

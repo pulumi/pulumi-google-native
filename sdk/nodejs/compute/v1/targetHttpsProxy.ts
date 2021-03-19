@@ -44,13 +44,15 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetHttpsProxyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -66,12 +68,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetHttpsProxy.__pulumiType, name, inputs, opts);
     }
@@ -96,6 +94,10 @@ export interface TargetHttpsProxyArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+     */
+    readonly fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -126,7 +128,6 @@ export interface TargetHttpsProxyArgs {
      * - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
      * - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
      * - If the quic-override flag is not specified, NONE is implied.
-     * -
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**

@@ -9,9 +9,22 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 
 __all__ = [
+    'GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs',
     'GoogleCloudDialogflowV2beta1ContextArgs',
+    'GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs',
     'GoogleCloudDialogflowV2beta1DocumentReloadStatusArgs',
     'GoogleCloudDialogflowV2beta1EntityTypeEntityArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs',
     'GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoArgs',
     'GoogleCloudDialogflowV2beta1IntentMessageArgs',
     'GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs',
@@ -58,8 +71,36 @@ __all__ = [
     'GoogleCloudDialogflowV2beta1IntentParameterArgs',
     'GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs',
     'GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs',
+    'GoogleCloudDialogflowV2beta1LoggingConfigArgs',
+    'GoogleCloudDialogflowV2beta1NotificationConfigArgs',
+    'GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs',
+    'GoogleCloudDialogflowV2beta1SuggestionFeatureArgs',
     'GoogleRpcStatusArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs:
+    def __init__(__self__, *,
+                 agent: Optional[pulumi.Input[str]] = None):
+        """
+        Defines the Automated Agent to connect to a conversation.
+        :param pulumi.Input[str] agent: Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent", value)
+
 
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1ContextArgs:
@@ -71,7 +112,7 @@ class GoogleCloudDialogflowV2beta1ContextArgs:
         Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
         :param pulumi.Input[int] lifespan_count: Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
         :param pulumi.Input[str] name: Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
         if lifespan_count is not None:
             pulumi.set(__self__, "lifespan_count", lifespan_count)
@@ -108,13 +149,37 @@ class GoogleCloudDialogflowV2beta1ContextArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
+        Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs:
+    def __init__(__self__, *,
+                 phone_number: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
+        :param pulumi.Input[str] phone_number: Output only. The phone number to connect to this conversation.
+        """
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The phone number to connect to this conversation.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -195,6 +260,510 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntityArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs:
+    def __init__(__self__, *,
+                 human_agent_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
+                 message_analysis_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs']] = None,
+                 notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs']] = None):
+        """
+        Defines the Human Agent Assistant to connect to a conversation.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs'] human_agent_suggestion_config: Configuration for agent assistance of human agent participant.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs'] message_analysis_config: Configuration for message analysis.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
+        """
+        if human_agent_suggestion_config is not None:
+            pulumi.set(__self__, "human_agent_suggestion_config", human_agent_suggestion_config)
+        if message_analysis_config is not None:
+            pulumi.set(__self__, "message_analysis_config", message_analysis_config)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
+
+    @property
+    @pulumi.getter(name="humanAgentSuggestionConfig")
+    def human_agent_suggestion_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']]:
+        """
+        Configuration for agent assistance of human agent participant.
+        """
+        return pulumi.get(self, "human_agent_suggestion_config")
+
+    @human_agent_suggestion_config.setter
+    def human_agent_suggestion_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']]):
+        pulumi.set(self, "human_agent_suggestion_config", value)
+
+    @property
+    @pulumi.getter(name="messageAnalysisConfig")
+    def message_analysis_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs']]:
+        """
+        Configuration for message analysis.
+        """
+        return pulumi.get(self, "message_analysis_config")
+
+    @message_analysis_config.setter
+    def message_analysis_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs']]):
+        pulumi.set(self, "message_analysis_config", value)
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs']]:
+        """
+        Pub/Sub topic on which to publish new agent assistant events.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs:
+    def __init__(__self__, *,
+                 model: Optional[pulumi.Input[str]] = None):
+        """
+        Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+        :param pulumi.Input[str] model: Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs:
+    def __init__(__self__, *,
+                 enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for analyses to run on each conversation message.
+        :param pulumi.Input[bool] enable_sentiment_analysis: Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
+        """
+        if enable_sentiment_analysis is not None:
+            pulumi.set(__self__, "enable_sentiment_analysis", enable_sentiment_analysis)
+
+    @property
+    @pulumi.getter(name="enableSentimentAnalysis")
+    def enable_sentiment_analysis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
+        """
+        return pulumi.get(self, "enable_sentiment_analysis")
+
+    @enable_sentiment_analysis.setter
+    def enable_sentiment_analysis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_sentiment_analysis", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs:
+    def __init__(__self__, *,
+                 feature_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs']]]] = None,
+                 group_suggestion_responses: Optional[pulumi.Input[bool]] = None):
+        """
+        Detail human agent assistant config.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs']]] feature_configs: Configuration of different suggestion features. One feature can have only one config.
+        :param pulumi.Input[bool] group_suggestion_responses: If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+        if feature_configs is not None:
+            pulumi.set(__self__, "feature_configs", feature_configs)
+        if group_suggestion_responses is not None:
+            pulumi.set(__self__, "group_suggestion_responses", group_suggestion_responses)
+
+    @property
+    @pulumi.getter(name="featureConfigs")
+    def feature_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs']]]]:
+        """
+        Configuration of different suggestion features. One feature can have only one config.
+        """
+        return pulumi.get(self, "feature_configs")
+
+    @feature_configs.setter
+    def feature_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs']]]]):
+        pulumi.set(self, "feature_configs", value)
+
+    @property
+    @pulumi.getter(name="groupSuggestionResponses")
+    def group_suggestion_responses(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
+        """
+        return pulumi.get(self, "group_suggestion_responses")
+
+    @group_suggestion_responses.setter
+    def group_suggestion_responses(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "group_suggestion_responses", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs:
+    def __init__(__self__, *,
+                 conversation_model_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs']] = None,
+                 enable_event_based_suggestion: Optional[pulumi.Input[bool]] = None,
+                 query_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs']] = None,
+                 suggestion_feature: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureArgs']] = None,
+                 suggestion_trigger_settings: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs']] = None):
+        """
+        Config for suggestion features.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs'] conversation_model_config: Configs of custom conversation model.
+        :param pulumi.Input[bool] enable_event_based_suggestion: Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs'] query_config: Configs of query.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureArgs'] suggestion_feature: The suggestion feature.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs'] suggestion_trigger_settings: Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
+        """
+        if conversation_model_config is not None:
+            pulumi.set(__self__, "conversation_model_config", conversation_model_config)
+        if enable_event_based_suggestion is not None:
+            pulumi.set(__self__, "enable_event_based_suggestion", enable_event_based_suggestion)
+        if query_config is not None:
+            pulumi.set(__self__, "query_config", query_config)
+        if suggestion_feature is not None:
+            pulumi.set(__self__, "suggestion_feature", suggestion_feature)
+        if suggestion_trigger_settings is not None:
+            pulumi.set(__self__, "suggestion_trigger_settings", suggestion_trigger_settings)
+
+    @property
+    @pulumi.getter(name="conversationModelConfig")
+    def conversation_model_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs']]:
+        """
+        Configs of custom conversation model.
+        """
+        return pulumi.get(self, "conversation_model_config")
+
+    @conversation_model_config.setter
+    def conversation_model_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs']]):
+        pulumi.set(self, "conversation_model_config", value)
+
+    @property
+    @pulumi.getter(name="enableEventBasedSuggestion")
+    def enable_event_based_suggestion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        """
+        return pulumi.get(self, "enable_event_based_suggestion")
+
+    @enable_event_based_suggestion.setter
+    def enable_event_based_suggestion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_event_based_suggestion", value)
+
+    @property
+    @pulumi.getter(name="queryConfig")
+    def query_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs']]:
+        """
+        Configs of query.
+        """
+        return pulumi.get(self, "query_config")
+
+    @query_config.setter
+    def query_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs']]):
+        pulumi.set(self, "query_config", value)
+
+    @property
+    @pulumi.getter(name="suggestionFeature")
+    def suggestion_feature(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureArgs']]:
+        """
+        The suggestion feature.
+        """
+        return pulumi.get(self, "suggestion_feature")
+
+    @suggestion_feature.setter
+    def suggestion_feature(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SuggestionFeatureArgs']]):
+        pulumi.set(self, "suggestion_feature", value)
+
+    @property
+    @pulumi.getter(name="suggestionTriggerSettings")
+    def suggestion_trigger_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs']]:
+        """
+        Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION, FAQ, and DIALOGFLOW_ASSIST will use this field.
+        """
+        return pulumi.get(self, "suggestion_trigger_settings")
+
+    @suggestion_trigger_settings.setter
+    def suggestion_trigger_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs']]):
+        pulumi.set(self, "suggestion_trigger_settings", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs:
+    def __init__(__self__, *,
+                 confidence_threshold: Optional[pulumi.Input[float]] = None,
+                 context_filter_settings: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']] = None,
+                 dialogflow_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']] = None,
+                 document_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']] = None,
+                 knowledge_base_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']] = None,
+                 max_results: Optional[pulumi.Input[int]] = None):
+        """
+        Config for suggestion query.
+        :param pulumi.Input[float] confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs'] context_filter_settings: Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs'] dialogflow_query_source: Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs'] document_query_source: Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs'] knowledge_base_query_source: Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+        :param pulumi.Input[int] max_results: Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+        """
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if context_filter_settings is not None:
+            pulumi.set(__self__, "context_filter_settings", context_filter_settings)
+        if dialogflow_query_source is not None:
+            pulumi.set(__self__, "dialogflow_query_source", dialogflow_query_source)
+        if document_query_source is not None:
+            pulumi.set(__self__, "document_query_source", document_query_source)
+        if knowledge_base_query_source is not None:
+            pulumi.set(__self__, "knowledge_base_query_source", knowledge_base_query_source)
+        if max_results is not None:
+            pulumi.set(__self__, "max_results", max_results)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+        """
+        return pulumi.get(self, "confidence_threshold")
+
+    @confidence_threshold.setter
+    def confidence_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "confidence_threshold", value)
+
+    @property
+    @pulumi.getter(name="contextFilterSettings")
+    def context_filter_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']]:
+        """
+        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        """
+        return pulumi.get(self, "context_filter_settings")
+
+    @context_filter_settings.setter
+    def context_filter_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']]):
+        pulumi.set(self, "context_filter_settings", value)
+
+    @property
+    @pulumi.getter(name="dialogflowQuerySource")
+    def dialogflow_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']]:
+        """
+        Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+        """
+        return pulumi.get(self, "dialogflow_query_source")
+
+    @dialogflow_query_source.setter
+    def dialogflow_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']]):
+        pulumi.set(self, "dialogflow_query_source", value)
+
+    @property
+    @pulumi.getter(name="documentQuerySource")
+    def document_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']]:
+        """
+        Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+        """
+        return pulumi.get(self, "document_query_source")
+
+    @document_query_source.setter
+    def document_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']]):
+        pulumi.set(self, "document_query_source", value)
+
+    @property
+    @pulumi.getter(name="knowledgeBaseQuerySource")
+    def knowledge_base_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']]:
+        """
+        Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+        """
+        return pulumi.get(self, "knowledge_base_query_source")
+
+    @knowledge_base_query_source.setter
+    def knowledge_base_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']]):
+        pulumi.set(self, "knowledge_base_query_source", value)
+
+    @property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+        """
+        return pulumi.get(self, "max_results")
+
+    @max_results.setter
+    def max_results(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_results", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs:
+    def __init__(__self__, *,
+                 drop_handoff_messages: Optional[pulumi.Input[bool]] = None,
+                 drop_ivr_messages: Optional[pulumi.Input[bool]] = None,
+                 drop_virtual_agent_messages: Optional[pulumi.Input[bool]] = None):
+        """
+        Settings that determine how to filter recent conversation context when generating suggestions.
+        :param pulumi.Input[bool] drop_handoff_messages: If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        :param pulumi.Input[bool] drop_ivr_messages: If set to true, all messages from ivr stage are dropped.
+        :param pulumi.Input[bool] drop_virtual_agent_messages: If set to true, all messages from virtual agent are dropped.
+        """
+        if drop_handoff_messages is not None:
+            pulumi.set(__self__, "drop_handoff_messages", drop_handoff_messages)
+        if drop_ivr_messages is not None:
+            pulumi.set(__self__, "drop_ivr_messages", drop_ivr_messages)
+        if drop_virtual_agent_messages is not None:
+            pulumi.set(__self__, "drop_virtual_agent_messages", drop_virtual_agent_messages)
+
+    @property
+    @pulumi.getter(name="dropHandoffMessages")
+    def drop_handoff_messages(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
+        """
+        return pulumi.get(self, "drop_handoff_messages")
+
+    @drop_handoff_messages.setter
+    def drop_handoff_messages(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_handoff_messages", value)
+
+    @property
+    @pulumi.getter(name="dropIvrMessages")
+    def drop_ivr_messages(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, all messages from ivr stage are dropped.
+        """
+        return pulumi.get(self, "drop_ivr_messages")
+
+    @drop_ivr_messages.setter
+    def drop_ivr_messages(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_ivr_messages", value)
+
+    @property
+    @pulumi.getter(name="dropVirtualAgentMessages")
+    def drop_virtual_agent_messages(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, all messages from virtual agent are dropped.
+        """
+        return pulumi.get(self, "drop_virtual_agent_messages")
+
+    @drop_virtual_agent_messages.setter
+    def drop_virtual_agent_messages(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_virtual_agent_messages", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs:
+    def __init__(__self__, *,
+                 agent: Optional[pulumi.Input[str]] = None):
+        """
+        Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
+        :param pulumi.Input[str] agent: Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs:
+    def __init__(__self__, *,
+                 documents: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] documents: Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+        """
+        if documents is not None:
+            pulumi.set(__self__, "documents", documents)
+
+    @property
+    @pulumi.getter
+    def documents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+        """
+        return pulumi.get(self, "documents")
+
+    @documents.setter
+    def documents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "documents", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs:
+    def __init__(__self__, *,
+                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] knowledge_bases: Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+        """
+        if knowledge_bases is not None:
+            pulumi.set(__self__, "knowledge_bases", knowledge_bases)
+
+    @property
+    @pulumi.getter(name="knowledgeBases")
+    def knowledge_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+        """
+        return pulumi.get(self, "knowledge_bases")
+
+    @knowledge_bases.setter
+    def knowledge_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "knowledge_bases", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs:
+    def __init__(__self__, *,
+                 no_small_talk: Optional[pulumi.Input[bool]] = None,
+                 only_end_user: Optional[pulumi.Input[bool]] = None):
+        """
+        Settings of suggestion trigger.
+        :param pulumi.Input[bool] no_small_talk: Do not trigger if last utterance is small talk.
+        :param pulumi.Input[bool] only_end_user: Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+        if no_small_talk is not None:
+            pulumi.set(__self__, "no_small_talk", no_small_talk)
+        if only_end_user is not None:
+            pulumi.set(__self__, "only_end_user", only_end_user)
+
+    @property
+    @pulumi.getter(name="noSmallTalk")
+    def no_small_talk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Do not trigger if last utterance is small talk.
+        """
+        return pulumi.get(self, "no_small_talk")
+
+    @no_small_talk.setter
+    def no_small_talk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_small_talk", value)
+
+    @property
+    @pulumi.getter(name="onlyEndUser")
+    def only_end_user(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Only trigger suggestion if participant role of last utterance is END_USER.
+        """
+        return pulumi.get(self, "only_end_user")
+
+    @only_end_user.setter
+    def only_end_user(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_end_user", value)
 
 
 @pulumi.input_type
@@ -2740,6 +3309,118 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs:
     @user_defined.setter
     def user_defined(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "user_defined", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1LoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None):
+        """
+        Defines logging behavior for conversation lifecycle events.
+        :param pulumi.Input[bool] enable_stackdriver_logging: Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
+        """
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+    @enable_stackdriver_logging.setter
+    def enable_stackdriver_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_stackdriver_logging", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1NotificationConfigArgs:
+    def __init__(__self__, *,
+                 message_format: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Defines notification behavior.
+        :param pulumi.Input[str] message_format: Format of message.
+        :param pulumi.Input[str] topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        """
+        if message_format is not None:
+            pulumi.set(__self__, "message_format", message_format)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Format of message.
+        """
+        return pulumi.get(self, "message_format")
+
+    @message_format.setter
+    def message_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_format", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs:
+    def __init__(__self__, *,
+                 speech_model_variant: Optional[pulumi.Input[str]] = None):
+        """
+        Configures speech transcription for ConversationProfile.
+        :param pulumi.Input[str] speech_model_variant: Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        """
+        if speech_model_variant is not None:
+            pulumi.set(__self__, "speech_model_variant", speech_model_variant)
+
+    @property
+    @pulumi.getter(name="speechModelVariant")
+    def speech_model_variant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        """
+        return pulumi.get(self, "speech_model_variant")
+
+    @speech_model_variant.setter
+    def speech_model_variant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "speech_model_variant", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1SuggestionFeatureArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
+        :param pulumi.Input[str] type: Type of Human Agent Assistant API feature to request.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Human Agent Assistant API feature to request.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

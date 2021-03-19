@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._inputs import *
 
 __all__ = ['Database']
 
@@ -16,6 +17,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_statement: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -27,6 +29,7 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_statement: Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
+        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_statements: Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
         :param pulumi.Input[str] parent: Required. The name of the instance that will serve the new database. Values are of the form `projects//instances/`.
         """
@@ -48,6 +51,7 @@ class Database(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['create_statement'] = create_statement
+            __props__['encryption_config'] = encryption_config
             __props__['extra_statements'] = extra_statements
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

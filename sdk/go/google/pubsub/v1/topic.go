@@ -68,6 +68,8 @@ type topicArgs struct {
 	Name string `pulumi:"name"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
+	// Settings for validating messages published against a schema.
+	SchemaSettings *SchemaSettings `pulumi:"schemaSettings"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -82,6 +84,8 @@ type TopicArgs struct {
 	Name pulumi.StringInput
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolPtrInput
+	// Settings for validating messages published against a schema.
+	SchemaSettings SchemaSettingsPtrInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

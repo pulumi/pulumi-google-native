@@ -58,11 +58,13 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// Output only. The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime *string `pulumi:"createTime"`
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segement length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric.
 	DomainName *string `pulumi:"domainName"`
 	// Output only. Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
@@ -90,11 +92,13 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled pulumi.BoolPtrInput
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
 	// Output only. The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime pulumi.StringPtrInput
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segement length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric.
 	DomainName pulumi.StringPtrInput
 	// Output only. Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn pulumi.StringPtrInput

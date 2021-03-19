@@ -45,8 +45,9 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleLongrunningOperationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["content"] = args ? args.content : undefined;
@@ -56,18 +57,15 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
             inputs["importGcsCustomMetadata"] = args ? args.importGcsCustomMetadata : undefined;
             inputs["knowledgeTypes"] = args ? args.knowledgeTypes : undefined;
             inputs["latestReloadStatus"] = args ? args.latestReloadStatus : undefined;
+            inputs["metadata"] = args ? args.metadata : undefined;
             inputs["mimeType"] = args ? args.mimeType : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["rawContent"] = args ? args.rawContent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleLongrunningOperation.__pulumiType, name, inputs, opts);
     }
@@ -105,6 +103,10 @@ export interface GoogleLongrunningOperationArgs {
      * Output only. The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
      */
     readonly latestReloadStatus?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1DocumentReloadStatus>;
+    /**
+     * Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+     */
+    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. The MIME type of this document.
      */

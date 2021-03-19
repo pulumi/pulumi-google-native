@@ -68,7 +68,7 @@ type logBucketArgs struct {
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
 	Locked *bool `pulumi:"locked"`
-	// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id The supported locations are: "global"For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+	// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
 	Name *string `pulumi:"name"`
 	// Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"
 	Parent string `pulumi:"parent"`
@@ -90,7 +90,7 @@ type LogBucketArgs struct {
 	LifecycleState pulumi.StringPtrInput
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolPtrInput
-	// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id The supported locations are: "global"For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+	// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
 	Name pulumi.StringPtrInput
 	// Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/global"
 	Parent pulumi.StringInput

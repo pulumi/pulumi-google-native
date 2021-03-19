@@ -2397,6 +2397,8 @@ type Detail struct {
 	PackageType *string `pulumi:"packageType"`
 	// The severity (eg: distro assigned severity) for this vulnerability.
 	SeverityName *string `pulumi:"severityName"`
+	// The source from which the information in this Detail was obtained.
+	Source *string `pulumi:"source"`
 }
 
 // DetailInput is an input type that accepts DetailArgs and DetailOutput values.
@@ -2430,6 +2432,8 @@ type DetailArgs struct {
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
 	// The severity (eg: distro assigned severity) for this vulnerability.
 	SeverityName pulumi.StringPtrInput `pulumi:"severityName"`
+	// The source from which the information in this Detail was obtained.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (DetailArgs) ElementType() reflect.Type {
@@ -2527,6 +2531,11 @@ func (o DetailOutput) PackageType() pulumi.StringPtrOutput {
 // The severity (eg: distro assigned severity) for this vulnerability.
 func (o DetailOutput) SeverityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Detail) *string { return v.SeverityName }).(pulumi.StringPtrOutput)
+}
+
+// The source from which the information in this Detail was obtained.
+func (o DetailOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Detail) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 type DetailArrayOutput struct{ *pulumi.OutputState }
@@ -7643,6 +7652,8 @@ func (o UpgradeOccurrencePtrOutput) ParsedVersion() VersionPtrOutput {
 type Version struct {
 	// Used to correct mistakes in the version numbering scheme.
 	Epoch *int `pulumi:"epoch"`
+	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+	Inclusive *bool `pulumi:"inclusive"`
 	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
 	Kind *string `pulumi:"kind"`
 	// The main part of the version name.
@@ -7666,6 +7677,8 @@ type VersionInput interface {
 type VersionArgs struct {
 	// Used to correct mistakes in the version numbering scheme.
 	Epoch pulumi.IntPtrInput `pulumi:"epoch"`
+	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+	Inclusive pulumi.BoolPtrInput `pulumi:"inclusive"`
 	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The main part of the version name.
@@ -7757,6 +7770,11 @@ func (o VersionOutput) Epoch() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Version) *int { return v.Epoch }).(pulumi.IntPtrOutput)
 }
 
+// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+func (o VersionOutput) Inclusive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Version) *bool { return v.Inclusive }).(pulumi.BoolPtrOutput)
+}
+
 // Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
 func (o VersionOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Version) *string { return v.Kind }).(pulumi.StringPtrOutput)
@@ -7798,6 +7816,16 @@ func (o VersionPtrOutput) Epoch() pulumi.IntPtrOutput {
 		}
 		return v.Epoch
 	}).(pulumi.IntPtrOutput)
+}
+
+// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+func (o VersionPtrOutput) Inclusive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Version) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Inclusive
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.

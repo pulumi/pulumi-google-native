@@ -228,6 +228,140 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	}).(AuditLogConfigOutput)
 }
 
+// Represents an Amazon Web Services identity provider.
+type Aws struct {
+	// Required. The AWS account ID.
+	AccountId *string `pulumi:"accountId"`
+}
+
+// AwsInput is an input type that accepts AwsArgs and AwsOutput values.
+// You can construct a concrete instance of `AwsInput` via:
+//
+//          AwsArgs{...}
+type AwsInput interface {
+	pulumi.Input
+
+	ToAwsOutput() AwsOutput
+	ToAwsOutputWithContext(context.Context) AwsOutput
+}
+
+// Represents an Amazon Web Services identity provider.
+type AwsArgs struct {
+	// Required. The AWS account ID.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+}
+
+func (AwsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Aws)(nil)).Elem()
+}
+
+func (i AwsArgs) ToAwsOutput() AwsOutput {
+	return i.ToAwsOutputWithContext(context.Background())
+}
+
+func (i AwsArgs) ToAwsOutputWithContext(ctx context.Context) AwsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsOutput)
+}
+
+func (i AwsArgs) ToAwsPtrOutput() AwsPtrOutput {
+	return i.ToAwsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsArgs) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsOutput).ToAwsPtrOutputWithContext(ctx)
+}
+
+// AwsPtrInput is an input type that accepts AwsArgs, AwsPtr and AwsPtrOutput values.
+// You can construct a concrete instance of `AwsPtrInput` via:
+//
+//          AwsArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsPtrInput interface {
+	pulumi.Input
+
+	ToAwsPtrOutput() AwsPtrOutput
+	ToAwsPtrOutputWithContext(context.Context) AwsPtrOutput
+}
+
+type awsPtrType AwsArgs
+
+func AwsPtr(v *AwsArgs) AwsPtrInput {
+	return (*awsPtrType)(v)
+}
+
+func (*awsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Aws)(nil)).Elem()
+}
+
+func (i *awsPtrType) ToAwsPtrOutput() AwsPtrOutput {
+	return i.ToAwsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsPtrType) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsPtrOutput)
+}
+
+// Represents an Amazon Web Services identity provider.
+type AwsOutput struct{ *pulumi.OutputState }
+
+func (AwsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Aws)(nil)).Elem()
+}
+
+func (o AwsOutput) ToAwsOutput() AwsOutput {
+	return o
+}
+
+func (o AwsOutput) ToAwsOutputWithContext(ctx context.Context) AwsOutput {
+	return o
+}
+
+func (o AwsOutput) ToAwsPtrOutput() AwsPtrOutput {
+	return o.ToAwsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsOutput) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
+	return o.ApplyT(func(v Aws) *Aws {
+		return &v
+	}).(AwsPtrOutput)
+}
+
+// Required. The AWS account ID.
+func (o AwsOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Aws) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+type AwsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Aws)(nil)).Elem()
+}
+
+func (o AwsPtrOutput) ToAwsPtrOutput() AwsPtrOutput {
+	return o
+}
+
+func (o AwsPtrOutput) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
+	return o
+}
+
+func (o AwsPtrOutput) Elem() AwsOutput {
+	return o.ApplyT(func(v *Aws) Aws { return *v }).(AwsOutput)
+}
+
+// Required. The AWS account ID.
+func (o AwsPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Aws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -534,6 +668,159 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type Oidc struct {
+	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+	AllowedAudiences []string `pulumi:"allowedAudiences"`
+	// Required. The OIDC issuer URL.
+	IssuerUri *string `pulumi:"issuerUri"`
+}
+
+// OidcInput is an input type that accepts OidcArgs and OidcOutput values.
+// You can construct a concrete instance of `OidcInput` via:
+//
+//          OidcArgs{...}
+type OidcInput interface {
+	pulumi.Input
+
+	ToOidcOutput() OidcOutput
+	ToOidcOutputWithContext(context.Context) OidcOutput
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type OidcArgs struct {
+	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
+	// Required. The OIDC issuer URL.
+	IssuerUri pulumi.StringPtrInput `pulumi:"issuerUri"`
+}
+
+func (OidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oidc)(nil)).Elem()
+}
+
+func (i OidcArgs) ToOidcOutput() OidcOutput {
+	return i.ToOidcOutputWithContext(context.Background())
+}
+
+func (i OidcArgs) ToOidcOutputWithContext(ctx context.Context) OidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcOutput)
+}
+
+func (i OidcArgs) ToOidcPtrOutput() OidcPtrOutput {
+	return i.ToOidcPtrOutputWithContext(context.Background())
+}
+
+func (i OidcArgs) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcOutput).ToOidcPtrOutputWithContext(ctx)
+}
+
+// OidcPtrInput is an input type that accepts OidcArgs, OidcPtr and OidcPtrOutput values.
+// You can construct a concrete instance of `OidcPtrInput` via:
+//
+//          OidcArgs{...}
+//
+//  or:
+//
+//          nil
+type OidcPtrInput interface {
+	pulumi.Input
+
+	ToOidcPtrOutput() OidcPtrOutput
+	ToOidcPtrOutputWithContext(context.Context) OidcPtrOutput
+}
+
+type oidcPtrType OidcArgs
+
+func OidcPtr(v *OidcArgs) OidcPtrInput {
+	return (*oidcPtrType)(v)
+}
+
+func (*oidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Oidc)(nil)).Elem()
+}
+
+func (i *oidcPtrType) ToOidcPtrOutput() OidcPtrOutput {
+	return i.ToOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *oidcPtrType) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcPtrOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type OidcOutput struct{ *pulumi.OutputState }
+
+func (OidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oidc)(nil)).Elem()
+}
+
+func (o OidcOutput) ToOidcOutput() OidcOutput {
+	return o
+}
+
+func (o OidcOutput) ToOidcOutputWithContext(ctx context.Context) OidcOutput {
+	return o
+}
+
+func (o OidcOutput) ToOidcPtrOutput() OidcPtrOutput {
+	return o.ToOidcPtrOutputWithContext(context.Background())
+}
+
+func (o OidcOutput) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput {
+	return o.ApplyT(func(v Oidc) *Oidc {
+		return &v
+	}).(OidcPtrOutput)
+}
+
+// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+func (o OidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Oidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+}
+
+// Required. The OIDC issuer URL.
+func (o OidcOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oidc) *string { return v.IssuerUri }).(pulumi.StringPtrOutput)
+}
+
+type OidcPtrOutput struct{ *pulumi.OutputState }
+
+func (OidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Oidc)(nil)).Elem()
+}
+
+func (o OidcPtrOutput) ToOidcPtrOutput() OidcPtrOutput {
+	return o
+}
+
+func (o OidcPtrOutput) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput {
+	return o
+}
+
+func (o OidcPtrOutput) Elem() OidcOutput {
+	return o.ApplyT(func(v *Oidc) Oidc { return *v }).(OidcOutput)
+}
+
+// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+func (o OidcPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Oidc) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAudiences
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The OIDC issuer URL.
+func (o OidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Oidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IssuerUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1267,10 +1554,14 @@ func init() {
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AwsOutput{})
+	pulumi.RegisterOutputType(AwsPtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(OidcOutput{})
+	pulumi.RegisterOutputType(OidcPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTypeOutput{})
 	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(RoleTypeOutput{})

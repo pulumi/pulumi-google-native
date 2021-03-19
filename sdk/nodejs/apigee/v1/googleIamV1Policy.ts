@@ -45,8 +45,9 @@ export class GoogleIamV1Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleIamV1PolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.resource === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
             inputs["policy"] = args ? args.policy : undefined;
@@ -54,12 +55,8 @@ export class GoogleIamV1Policy extends pulumi.CustomResource {
             inputs["updateMask"] = args ? args.updateMask : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleIamV1Policy.__pulumiType, name, inputs, opts);
     }

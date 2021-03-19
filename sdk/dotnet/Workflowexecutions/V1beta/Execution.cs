@@ -60,7 +60,7 @@ namespace Pulumi.GoogleCloud.Workflowexecutions.V1beta
     public sealed class ExecutionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Input parameters of the execution represented as a JSON string. The size limit is 32KB.
+        /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }

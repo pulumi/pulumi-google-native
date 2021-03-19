@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2.Inputs
     public sealed class SecurityConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kerberos related configuration.
+        /// Optional. Kerberos related configuration.
         /// </summary>
         [Input("kerberosConfig")]
         public Input<Inputs.KerberosConfigArgs>? KerberosConfig { get; set; }

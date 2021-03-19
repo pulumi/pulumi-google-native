@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Consent in the parent Consent store.
+ * Creates a new Consent in the parent consent store.
  */
 export class Consent extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class Consent extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["consentArtifact"] = args ? args.consentArtifact : undefined;
@@ -62,12 +63,8 @@ export class Consent extends pulumi.CustomResource {
             inputs["userId"] = args ? args.userId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Consent.__pulumiType, name, inputs, opts);
     }
@@ -78,19 +75,19 @@ export class Consent extends pulumi.CustomResource {
  */
 export interface ConsentArgs {
     /**
-     * Required. The resource name of the consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+     * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
     readonly consentArtifact?: pulumi.Input<string>;
     /**
-     * Timestamp in UTC of when this consent is considered expired.
+     * Timestamp in UTC of when this Consent is considered expired.
      */
     readonly expireTime?: pulumi.Input<string>;
     /**
-     * User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+     * Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+     * Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -98,7 +95,7 @@ export interface ConsentArgs {
      */
     readonly parent: pulumi.Input<string>;
     /**
-     * Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+     * Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
      */
     readonly policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicy>[]>;
     /**
@@ -106,15 +103,15 @@ export interface ConsentArgs {
      */
     readonly revisionCreateTime?: pulumi.Input<string>;
     /**
-     * Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+     * Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
      */
     readonly revisionId?: pulumi.Input<string>;
     /**
-     * Indicates the current state of this consent.
+     * Required. Indicates the current state of this Consent.
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * Input only. The time to live for this consent from when it is created.
+     * Input only. The time to live for this Consent from when it is created.
      */
     readonly ttl?: pulumi.Input<string>;
     /**

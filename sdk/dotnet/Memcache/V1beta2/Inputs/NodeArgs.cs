@@ -43,6 +43,12 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2.Inputs
         public Input<string>? State { get; set; }
 
         /// <summary>
+        /// Output only. Returns true if there is an update waiting to be applied
+        /// </summary>
+        [Input("updateAvailable")]
+        public Input<bool>? UpdateAvailable { get; set; }
+
+        /// <summary>
         /// Output only. Location (GCP Zone) for the Memcached node.
         /// </summary>
         [Input("zone")]

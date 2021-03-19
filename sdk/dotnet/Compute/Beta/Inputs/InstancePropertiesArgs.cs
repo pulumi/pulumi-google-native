@@ -108,6 +108,15 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
             set => _networkInterfaces = value;
         }
 
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// PostKeyRevocationActionType of the instance.
+        /// </summary>
+        [Input("postKeyRevocationActionType")]
+        public Input<string>? PostKeyRevocationActionType { get; set; }
+
         /// <summary>
         /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         /// </summary>

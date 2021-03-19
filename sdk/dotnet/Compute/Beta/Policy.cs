@@ -63,7 +63,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         private InputList<Inputs.BindingArgs>? _bindings;
 
         /// <summary>
-        /// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+        /// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
         /// </summary>
         public InputList<Inputs.BindingArgs> Bindings
         {
@@ -88,12 +88,6 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// The name of the region for this request.
-        /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// Name or id of the resource for this request.

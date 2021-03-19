@@ -108,7 +108,7 @@ namespace Pulumi.GoogleCloud.Bigquerydatatransfer.V1
         public Input<Inputs.EmailPreferencesArgs>? EmailPreferences { get; set; }
 
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form of `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated based on the config_id specified in CreateTransferConfigRequest along with project_id and region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required, will be generated for config_id.
+        /// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleCloud.Bigquerydatatransfer.V1
         private InputMap<string>? _params;
 
         /// <summary>
-        /// Data transfer specific parameters.
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         /// </summary>
         public InputMap<string> Params
         {

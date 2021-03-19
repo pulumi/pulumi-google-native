@@ -45,8 +45,9 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
@@ -75,19 +76,18 @@ export class Instance extends pulumi.CustomResource {
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
             inputs["proxyUri"] = args ? args.proxyUri : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
+            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["subnet"] = args ? args.subnet : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["upgradeHistory"] = args ? args.upgradeHistory : undefined;
             inputs["vmImage"] = args ? args.vmImage : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }
@@ -202,6 +202,14 @@ export interface InstanceArgs {
      */
     readonly serviceAccount?: pulumi.Input<string>;
     /**
+     * Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+     */
+    readonly serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.v1.ShieldedInstanceConfig>;
+    /**
      * Output only. The state of this instance.
      */
     readonly state?: pulumi.Input<string>;
@@ -209,6 +217,10 @@ export interface InstanceArgs {
      * The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
      */
     readonly subnet?: pulumi.Input<string>;
+    /**
+     * Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Output only. Instance update time.
      */

@@ -70,12 +70,14 @@ type googleCloudDialogflowCxV3beta1EntityTypeArgs struct {
 	ExcludedPhrases []GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase `pulumi:"excludedPhrases"`
 	// Required. Indicates the kind of entity type.
 	Kind *string `pulumi:"kind"`
-	// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name *string `pulumi:"name"`
 	// Required. The agent to create a entity type for. Format: `projects//locations//agents/`.
 	Parent string `pulumi:"parent"`
+	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
+	Redact *bool `pulumi:"redact"`
 }
 
 // The set of arguments for constructing a GoogleCloudDialogflowCxV3beta1EntityType resource.
@@ -92,12 +94,14 @@ type GoogleCloudDialogflowCxV3beta1EntityTypeArgs struct {
 	ExcludedPhrases GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArrayInput
 	// Required. Indicates the kind of entity type.
 	Kind pulumi.StringPtrInput
-	// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name pulumi.StringPtrInput
 	// Required. The agent to create a entity type for. Format: `projects//locations//agents/`.
 	Parent pulumi.StringInput
+	// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
+	Redact pulumi.BoolPtrInput
 }
 
 func (GoogleCloudDialogflowCxV3beta1EntityTypeArgs) ElementType() reflect.Type {

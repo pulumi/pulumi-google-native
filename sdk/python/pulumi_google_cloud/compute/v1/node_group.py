@@ -23,6 +23,7 @@ class NodeGroup(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 location_hint: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] initial_node_count: Initial count of nodes in the node group.
         :param pulumi.Input[str] kind: [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        :param pulumi.Input[str] location_hint: An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
@@ -86,6 +88,7 @@ class NodeGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'initial_node_count'")
             __props__['initial_node_count'] = initial_node_count
             __props__['kind'] = kind
+            __props__['location_hint'] = location_hint
             __props__['maintenance_policy'] = maintenance_policy
             __props__['maintenance_window'] = maintenance_window
             __props__['name'] = name

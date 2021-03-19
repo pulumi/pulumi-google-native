@@ -101,6 +101,7 @@ class NodeArgs:
                  parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 update_available: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] host: Output only. Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
@@ -108,6 +109,7 @@ class NodeArgs:
         :param pulumi.Input['MemcacheParametersArgs'] parameters: User defined parameters currently applied to the node.
         :param pulumi.Input[int] port: Output only. The port number of the Memcached server on this node.
         :param pulumi.Input[str] state: Output only. Current state of the Memcached node.
+        :param pulumi.Input[bool] update_available: Output only. Returns true if there is an update waiting to be applied
         :param pulumi.Input[str] zone: Output only. Location (GCP Zone) for the Memcached node.
         """
         if host is not None:
@@ -120,6 +122,8 @@ class NodeArgs:
             pulumi.set(__self__, "port", port)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if update_available is not None:
+            pulumi.set(__self__, "update_available", update_available)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -182,6 +186,18 @@ class NodeArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="updateAvailable")
+    def update_available(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Output only. Returns true if there is an update waiting to be applied
+        """
+        return pulumi.get(self, "update_available")
+
+    @update_available.setter
+    def update_available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_available", value)
 
     @property
     @pulumi.getter

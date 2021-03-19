@@ -45,8 +45,9 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlertPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["combiner"] = args ? args.combiner : undefined;
@@ -62,12 +63,8 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["validity"] = args ? args.validity : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlertPolicy.__pulumiType, name, inputs, opts);
     }

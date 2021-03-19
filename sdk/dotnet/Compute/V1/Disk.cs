@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.V1
 {
     /// <summary>
-    /// Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+    /// Creates a persistent regional disk in the specified project using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/v1:Disk")]
     public partial class Disk : Pulumi.CustomResource
@@ -164,6 +164,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         }
 
         /// <summary>
+        /// An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+        /// </summary>
+        [Input("locationHint")]
+        public Input<string>? LocationHint { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
@@ -188,10 +194,16 @@ namespace Pulumi.GoogleCloud.Compute.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// Indicates how many IOPS must be provisioned for the disk.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<string>? ProvisionedIops { get; set; }
+
+        /// <summary>
         /// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         [Input("replicaZones")]
         private InputList<string>? _replicaZones;
@@ -228,6 +240,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Input("selfLink")]
@@ -243,9 +261,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
 
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        /// - projects/project/zones/zone/disks/disk 
-        /// - zones/zone/disks/disk
+        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+        /// - projects/project/zones/zone/disks/disk  
+        /// - projects/project/regions/region/disks/disk  
+        /// - zones/zone/disks/disk  
+        /// - regions/region/disks/disk
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }
@@ -311,7 +332,18 @@ namespace Pulumi.GoogleCloud.Compute.V1
         public Input<string>? SourceSnapshotId { get; set; }
 
         /// <summary>
-        /// [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+        /// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        /// </summary>
+        [Input("sourceStorageObject")]
+        public Input<string>? SourceStorageObject { get; set; }
+
+        /// <summary>
+        /// [Output Only] The status of disk creation.  
+        /// - CREATING: Disk is provisioning. 
+        /// - RESTORING: Source data is being copied into the disk. 
+        /// - FAILED: Disk creation failed. 
+        /// - READY: Disk is ready for use. 
+        /// - DELETING: Disk is deleting.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -337,8 +369,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public DiskArgs()
         {

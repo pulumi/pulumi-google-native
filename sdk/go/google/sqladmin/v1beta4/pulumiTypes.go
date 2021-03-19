@@ -1113,7 +1113,7 @@ func (o DiskEncryptionStatusPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutpu
 type InsightsConfig struct {
 	// Whether Query Insights feature is enabled.
 	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
-	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 	QueryStringLength *int `pulumi:"queryStringLength"`
 	// Whether Query Insights will record application tags from query when enabled.
 	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
@@ -1136,7 +1136,7 @@ type InsightsConfigInput interface {
 type InsightsConfigArgs struct {
 	// Whether Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
-	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
 	// Whether Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
@@ -1227,7 +1227,7 @@ func (o InsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InsightsConfig) *bool { return v.QueryInsightsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 func (o InsightsConfigOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InsightsConfig) *int { return v.QueryStringLength }).(pulumi.IntPtrOutput)
 }
@@ -1270,7 +1270,7 @@ func (o InsightsConfigPtrOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
 func (o InsightsConfigPtrOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InsightsConfig) *int {
 		if v == nil {

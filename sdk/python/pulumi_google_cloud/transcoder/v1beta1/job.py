@@ -45,7 +45,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] end_time: Output only. The time the transcoding finished.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FailureDetailArgs']]]] failure_details: Output only. List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
         :param pulumi.Input[str] failure_reason: Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
-        :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. It must be stored in Cloud Storage. For example, `gs://bucket/inputs/file.mp4`.
+        :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
         :param pulumi.Input[pulumi.InputType['OriginUriArgs']] origin_uri: Output only. The origin URI. *Note*: This feature is not yet available.
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.

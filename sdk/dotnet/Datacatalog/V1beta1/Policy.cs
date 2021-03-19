@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
 {
     /// <summary>
-    /// Sets the IAM policy for a taxonomy or a policy tag.
+    /// Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:datacatalog/v1beta1:Policy")]
     public partial class Policy : Pulumi.CustomResource

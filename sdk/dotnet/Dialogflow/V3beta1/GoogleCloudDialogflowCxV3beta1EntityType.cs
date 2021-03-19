@@ -108,7 +108,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
@@ -124,6 +124,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
+        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
+        /// </summary>
+        [Input("redact")]
+        public Input<bool>? Redact { get; set; }
 
         public GoogleCloudDialogflowCxV3beta1EntityTypeArgs()
         {

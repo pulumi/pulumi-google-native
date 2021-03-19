@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Storagetransfer.V1.Inputs
 {
 
     /// <summary>
-    /// Azure credentials For information on our data retention policy for user credentials, see [User credentials](data-retention#user-credentials).
+    /// Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
     /// </summary>
     public sealed class AzureCredentialsArgs : Pulumi.ResourceArgs
     {

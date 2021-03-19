@@ -44,7 +44,8 @@ export class Lien extends pulumi.CustomResource {
      */
     constructor(name: string, args?: LienArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["origin"] = args ? args.origin : undefined;
@@ -53,12 +54,8 @@ export class Lien extends pulumi.CustomResource {
             inputs["restrictions"] = args ? args.restrictions : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Lien.__pulumiType, name, inputs, opts);
     }

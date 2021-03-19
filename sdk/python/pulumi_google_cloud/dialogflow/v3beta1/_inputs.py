@@ -16,8 +16,14 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1DtmfInputArgs',
     'GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs',
     'GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs',
+    'GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs',
     'GoogleCloudDialogflowCxV3beta1EventHandlerArgs',
     'GoogleCloudDialogflowCxV3beta1EventInputArgs',
+    'GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs',
+    'GoogleCloudDialogflowCxV3beta1ExperimentResultArgs',
+    'GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs',
+    'GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs',
+    'GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs',
     'GoogleCloudDialogflowCxV3beta1FormArgs',
     'GoogleCloudDialogflowCxV3beta1FormParameterArgs',
     'GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs',
@@ -50,6 +56,9 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1TestRunDifferenceArgs',
     'GoogleCloudDialogflowCxV3beta1TextInputArgs',
     'GoogleCloudDialogflowCxV3beta1TransitionRouteArgs',
+    'GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs',
+    'GoogleCloudDialogflowCxV3beta1VersionVariantsArgs',
+    'GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs',
     'GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs',
     'GoogleRpcStatusArgs',
 ]
@@ -202,13 +211,13 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs:
                  triggered_intent: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentArgs']] = None):
         """
         The output from the virtual agent.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1PageArgs'] current_page: The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1PageArgs'] current_page: The Page on which the utterance was spoken. Only name and displayName will be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Required. Input only. The diagnostic info output for the turn.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestRunDifferenceArgs']]] differences: Output only. If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_parameters: The session parameters available to the bot at this point.
         :param pulumi.Input['GoogleRpcStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs']]] text_responses: The text responses from the agent for the turn.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentArgs'] triggered_intent: The Intent that triggered the response. Only some fields such as name and displayname will be set.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentArgs'] triggered_intent: The Intent that triggered the response. Only name and displayName will be set.
         """
         if current_page is not None:
             pulumi.set(__self__, "current_page", current_page)
@@ -229,7 +238,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs:
     @pulumi.getter(name="currentPage")
     def current_page(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1PageArgs']]:
         """
-        The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+        The Page on which the utterance was spoken. Only name and displayName will be set.
         """
         return pulumi.get(self, "current_page")
 
@@ -301,7 +310,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs:
     @pulumi.getter(name="triggeredIntent")
     def triggered_intent(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentArgs']]:
         """
-        The Intent that triggered the response. Only some fields such as name and displayname will be set.
+        The Intent that triggered the response. Only name and displayName will be set.
         """
         return pulumi.get(self, "triggered_intent")
 
@@ -356,7 +365,7 @@ class GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs:
                  synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        An **entity entry** for an associated entity type. Next Id = 8
+        An **entity entry** for an associated entity type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
         :param pulumi.Input[str] value: Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
@@ -412,6 +421,30 @@ class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs:
+    def __init__(__self__, *,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for the version.
+        :param pulumi.Input[str] version: Required. Format: projects//locations//agents//flows//versions/.
+        """
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Format: projects//locations//agents//flows//versions/.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -527,6 +560,302 @@ class GoogleCloudDialogflowCxV3beta1EventInputArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 version_variants: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs']] = None):
+        """
+        Definition of the experiment.
+        :param pulumi.Input[str] condition: The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs'] version_variants: The flow versions as the variants of this experiment.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if version_variants is not None:
+            pulumi.set(__self__, "version_variants", version_variants)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="versionVariants")
+    def version_variants(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs']]:
+        """
+        The flow versions as the variants of this experiment.
+        """
+        return pulumi.get(self, "version_variants")
+
+    @version_variants.setter
+    def version_variants(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs']]):
+        pulumi.set(self, "version_variants", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ExperimentResultArgs:
+    def __init__(__self__, *,
+                 last_update_time: Optional[pulumi.Input[str]] = None,
+                 version_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs']]]] = None):
+        """
+        The inference result which includes an objective metric to optimize and the confidence interval.
+        :param pulumi.Input[str] last_update_time: The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs']]] version_metrics: Version variants and metrics.
+        """
+        if last_update_time is not None:
+            pulumi.set(__self__, "last_update_time", last_update_time)
+        if version_metrics is not None:
+            pulumi.set(__self__, "version_metrics", version_metrics)
+
+    @property
+    @pulumi.getter(name="lastUpdateTime")
+    def last_update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
+        """
+        return pulumi.get(self, "last_update_time")
+
+    @last_update_time.setter
+    def last_update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_update_time", value)
+
+    @property
+    @pulumi.getter(name="versionMetrics")
+    def version_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs']]]]:
+        """
+        Version variants and metrics.
+        """
+        return pulumi.get(self, "version_metrics")
+
+    @version_metrics.setter
+    def version_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs']]]]):
+        pulumi.set(self, "version_metrics", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs:
+    def __init__(__self__, *,
+                 confidence_level: Optional[pulumi.Input[float]] = None,
+                 lower_bound: Optional[pulumi.Input[float]] = None,
+                 ratio: Optional[pulumi.Input[float]] = None,
+                 upper_bound: Optional[pulumi.Input[float]] = None):
+        """
+        A confidence interval is a range of possible values for the experiment objective you are trying to measure.
+        :param pulumi.Input[float] confidence_level: The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
+        :param pulumi.Input[float] lower_bound: Lower bound of the interval.
+        :param pulumi.Input[float] ratio: The percent change between an experiment metric's value and the value for its control.
+        :param pulumi.Input[float] upper_bound: Upper bound of the interval.
+        """
+        if confidence_level is not None:
+            pulumi.set(__self__, "confidence_level", confidence_level)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if ratio is not None:
+            pulumi.set(__self__, "ratio", ratio)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @property
+    @pulumi.getter(name="confidenceLevel")
+    def confidence_level(self) -> Optional[pulumi.Input[float]]:
+        """
+        The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
+        """
+        return pulumi.get(self, "confidence_level")
+
+    @confidence_level.setter
+    def confidence_level(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "confidence_level", value)
+
+    @property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> Optional[pulumi.Input[float]]:
+        """
+        Lower bound of the interval.
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @property
+    @pulumi.getter
+    def ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        The percent change between an experiment metric's value and the value for its control.
+        """
+        return pulumi.get(self, "ratio")
+
+    @ratio.setter
+    def ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "ratio", value)
+
+    @property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[pulumi.Input[float]]:
+        """
+        Upper bound of the interval.
+        """
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs:
+    def __init__(__self__, *,
+                 confidence_interval: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs']] = None,
+                 count: Optional[pulumi.Input[float]] = None,
+                 count_type: Optional[pulumi.Input[str]] = None,
+                 ratio: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Metric and corresponding confidence intervals.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs'] confidence_interval: The probability that the treatment is better than all other treatments in the experiment
+        :param pulumi.Input[float] count: Count value of a metric.
+        :param pulumi.Input[str] count_type: Count-based metric type. Only one of type or count_type is specified in each Metric.
+        :param pulumi.Input[float] ratio: Ratio value of a metric.
+        :param pulumi.Input[str] type: Ratio-based metric type. Only one of type or count_type is specified in each Metric.
+        """
+        if confidence_interval is not None:
+            pulumi.set(__self__, "confidence_interval", confidence_interval)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if count_type is not None:
+            pulumi.set(__self__, "count_type", count_type)
+        if ratio is not None:
+            pulumi.set(__self__, "ratio", ratio)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="confidenceInterval")
+    def confidence_interval(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs']]:
+        """
+        The probability that the treatment is better than all other treatments in the experiment
+        """
+        return pulumi.get(self, "confidence_interval")
+
+    @confidence_interval.setter
+    def confidence_interval(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs']]):
+        pulumi.set(self, "confidence_interval", value)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[float]]:
+        """
+        Count value of a metric.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter(name="countType")
+    def count_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Count-based metric type. Only one of type or count_type is specified in each Metric.
+        """
+        return pulumi.get(self, "count_type")
+
+    @count_type.setter
+    def count_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "count_type", value)
+
+    @property
+    @pulumi.getter
+    def ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        Ratio value of a metric.
+        """
+        return pulumi.get(self, "ratio")
+
+    @ratio.setter
+    def ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "ratio", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ratio-based metric type. Only one of type or count_type is specified in each Metric.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs:
+    def __init__(__self__, *,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs']]]] = None,
+                 session_count: Optional[pulumi.Input[int]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Version variant and associated metrics.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs']]] metrics: The metrics and corresponding confidence intervals in the inference result.
+        :param pulumi.Input[int] session_count: Number of sessions that were allocated to this version.
+        :param pulumi.Input[str] version: The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
+        """
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+        if session_count is not None:
+            pulumi.set(__self__, "session_count", session_count)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs']]]]:
+        """
+        The metrics and corresponding confidence intervals in the inference result.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs']]]]):
+        pulumi.set(self, "metrics", value)
+
+    @property
+    @pulumi.getter(name="sessionCount")
+    def session_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of sessions that were allocated to this version.
+        """
+        return pulumi.get(self, "session_count")
+
+    @session_count.setter
+    def session_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "session_count", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1FormArgs:
     def __init__(__self__, *,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterArgs']]]] = None):
@@ -567,7 +896,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
         :param pulumi.Input[str] entity_type: Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs'] fill_behavior: Required. Defines fill behavior for the parameter.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
-        :param pulumi.Input[bool] redact: Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter name in both request and response. The default value is false.
+        :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         :param pulumi.Input[bool] required: Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required parameters must be filled before form filling concludes.
         """
         if default_value is not None:
@@ -649,7 +978,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameterArgs:
     @pulumi.getter
     def redact(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter name in both request and response. The default value is false.
+        Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         """
         return pulumi.get(self, "redact")
 
@@ -1234,7 +1563,7 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
         :param pulumi.Input[str] entity_type: Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         :param pulumi.Input[str] id: Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
-        :param pulumi.Input[bool] redact: Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter id in both request and response. The default value is false.
+        :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         """
         if entity_type is not None:
             pulumi.set(__self__, "entity_type", entity_type)
@@ -1285,7 +1614,7 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
     @pulumi.getter
     def redact(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter content will be replaced to parameter id in both request and response. The default value is false.
+        Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         """
         return pulumi.get(self, "redact")
 
@@ -1464,7 +1793,7 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
         :param pulumi.Input[str] name: The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -1557,7 +1886,7 @@ class GoogleCloudDialogflowCxV3beta1PageArgs:
     @pulumi.getter(name="transitionRoutes")
     def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]]:
         """
-        A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the page with only condition specified.
+        A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         return pulumi.get(self, "transition_routes")
 
@@ -1581,7 +1910,7 @@ class GoogleCloudDialogflowCxV3beta1QueryInputArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1DtmfInputArgs'] dtmf: The DTMF event to be handled.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1EventInputArgs'] event: The event to be triggered.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentInputArgs'] intent: The intent to be triggered.
-        :param pulumi.Input[str] language_code: Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        :param pulumi.Input[str] language_code: Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1TextInputArgs'] text: The natural language text to be processed.
         """
         if audio is not None:
@@ -1649,7 +1978,7 @@ class GoogleCloudDialogflowCxV3beta1QueryInputArgs:
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
         """
         return pulumi.get(self, "language_code")
 
@@ -1684,7 +2013,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
         """
         Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionArgs'] end_interaction: Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionArgs'] end_interaction: Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs'] live_agent_handoff: Hands off conversation to a human agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioArgs'] mixed_audio: Output only. An audio response message composed of both the synthesized Dialogflow agent responses and responses defined via play_audio. This message is generated by Dialogflow only and not supposed to be defined by the user.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
@@ -1725,7 +2054,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageArgs:
     @pulumi.getter(name="endInteraction")
     def end_interaction(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionArgs']]:
         """
-        Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+        Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
         """
         return pulumi.get(self, "end_interaction")
 
@@ -2114,7 +2443,7 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResultArgs:
         """
         Represents a result from running a test case in an agent environment.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
-        :param pulumi.Input[str] environment: Optional. Environment where the test was run. If not set, it indicates the draft environment.
+        :param pulumi.Input[str] environment: Environment where the test was run. If not set, it indicates the draft environment.
         :param pulumi.Input[str] name: The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
         :param pulumi.Input[str] test_result: Whether the test case passed in the agent environment.
         :param pulumi.Input[str] test_time: The time that the test was run.
@@ -2146,7 +2475,7 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResultArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Environment where the test was run. If not set, it indicates the draft environment.
+        Environment where the test was run. If not set, it indicates the draft environment.
         """
         return pulumi.get(self, "environment")
 
@@ -2397,6 +2726,126 @@ class GoogleCloudDialogflowCxV3beta1TransitionRouteArgs:
     @trigger_fulfillment.setter
     def trigger_fulfillment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs:
+    def __init__(__self__, *,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 version_variants: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs']] = None):
+        """
+        The history of variants update.
+        :param pulumi.Input[str] update_time: Update time of the variants.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs'] version_variants: The flow versions as the variants.
+        """
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if version_variants is not None:
+            pulumi.set(__self__, "version_variants", version_variants)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Update time of the variants.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter(name="versionVariants")
+    def version_variants(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs']]:
+        """
+        The flow versions as the variants.
+        """
+        return pulumi.get(self, "version_variants")
+
+    @version_variants.setter
+    def version_variants(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsArgs']]):
+        pulumi.set(self, "version_variants", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1VersionVariantsArgs:
+    def __init__(__self__, *,
+                 variants: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs']]]] = None):
+        """
+        A list of flow version variants.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs']]] variants: A list of flow version variants.
+        """
+        if variants is not None:
+            pulumi.set(__self__, "variants", variants)
+
+    @property
+    @pulumi.getter
+    def variants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs']]]]:
+        """
+        A list of flow version variants.
+        """
+        return pulumi.get(self, "variants")
+
+    @variants.setter
+    def variants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs']]]]):
+        pulumi.set(self, "variants", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs:
+    def __init__(__self__, *,
+                 is_control_group: Optional[pulumi.Input[bool]] = None,
+                 traffic_allocation: Optional[pulumi.Input[float]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        A single flow version with specified traffic allocation.
+        :param pulumi.Input[bool] is_control_group: Whether the variant is for the control group.
+        :param pulumi.Input[float] traffic_allocation: Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
+        :param pulumi.Input[str] version: The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
+        """
+        if is_control_group is not None:
+            pulumi.set(__self__, "is_control_group", is_control_group)
+        if traffic_allocation is not None:
+            pulumi.set(__self__, "traffic_allocation", traffic_allocation)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="isControlGroup")
+    def is_control_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the variant is for the control group.
+        """
+        return pulumi.get(self, "is_control_group")
+
+    @is_control_group.setter
+    def is_control_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_control_group", value)
+
+    @property
+    @pulumi.getter(name="trafficAllocation")
+    def traffic_allocation(self) -> Optional[pulumi.Input[float]]:
+        """
+        Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
+        """
+        return pulumi.get(self, "traffic_allocation")
+
+    @traffic_allocation.setter
+    def traffic_allocation(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "traffic_allocation", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

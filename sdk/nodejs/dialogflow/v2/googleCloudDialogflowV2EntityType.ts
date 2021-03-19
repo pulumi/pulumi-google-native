@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowV2EntityType extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowV2EntityTypeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
@@ -59,12 +60,8 @@ export class GoogleCloudDialogflowV2EntityType extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowV2EntityType.__pulumiType, name, inputs, opts);
     }

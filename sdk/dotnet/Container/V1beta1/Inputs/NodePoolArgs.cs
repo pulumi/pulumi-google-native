@@ -88,6 +88,12 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         [Input("podIpv4CidrSize")]

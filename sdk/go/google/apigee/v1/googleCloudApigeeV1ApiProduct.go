@@ -71,6 +71,8 @@ type googleCloudApigeeV1ApiProductArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
 	Environments []string `pulumi:"environments"`
+	// Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+	GraphqlOperationGroup *GoogleCloudApigeeV1GraphQLOperationGroup `pulumi:"graphqlOperationGroup"`
 	// Response only. Modified time of this environment as milliseconds since epoch.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
@@ -106,6 +108,8 @@ type GoogleCloudApigeeV1ApiProductArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
 	Environments pulumi.StringArrayInput
+	// Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+	GraphqlOperationGroup GoogleCloudApigeeV1GraphQLOperationGroupPtrInput
 	// Response only. Modified time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringPtrInput
 	// Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.

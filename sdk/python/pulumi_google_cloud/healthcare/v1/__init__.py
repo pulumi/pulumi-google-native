@@ -3,6 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .attribute_definition import *
+from .consent import *
+from .consent_artifact import *
+from .consent_store import *
 from .dataset import *
 from .dicom_store import *
 from .fhir_store import *
@@ -10,6 +14,7 @@ from .hl7_v2_store import *
 from .http_body import *
 from .message import *
 from .policy import *
+from .user_data_mapping import *
 from ._inputs import *
 
 def _register_module():
@@ -24,7 +29,15 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:healthcare/v1:Dataset":
+            if typ == "google-cloud:healthcare/v1:AttributeDefinition":
+                return AttributeDefinition(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:healthcare/v1:Consent":
+                return Consent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:healthcare/v1:ConsentArtifact":
+                return ConsentArtifact(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:healthcare/v1:ConsentStore":
+                return ConsentStore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:healthcare/v1:Dataset":
                 return Dataset(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:healthcare/v1:DicomStore":
                 return DicomStore(name, pulumi.ResourceOptions(urn=urn))
@@ -38,6 +51,8 @@ def _register_module():
                 return Message(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:healthcare/v1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:healthcare/v1:UserDataMapping":
+                return UserDataMapping(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

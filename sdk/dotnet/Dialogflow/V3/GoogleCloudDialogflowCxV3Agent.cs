@@ -66,7 +66,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
         public Input<string>? AvatarUri { get; set; }
 
         /// <summary>
-        /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         /// </summary>
         [Input("defaultLanguageCode")]
         public Input<string>? DefaultLanguageCode { get; set; }
@@ -106,6 +106,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
+        /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        [Input("securitySettings")]
+        public Input<string>? SecuritySettings { get; set; }
 
         /// <summary>
         /// Speech recognition related settings.

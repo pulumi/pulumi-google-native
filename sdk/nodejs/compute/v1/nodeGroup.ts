@@ -45,14 +45,15 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeGroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.initialNodeCount === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
@@ -62,6 +63,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["id"] = args ? args.id : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["locationHint"] = args ? args.locationHint : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -74,12 +76,8 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodeGroup.__pulumiType, name, inputs, opts);
     }
@@ -114,6 +112,10 @@ export interface NodeGroupArgs {
      * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
      */
     readonly kind?: pulumi.Input<string>;
+    /**
+     * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+     */
+    readonly locationHint?: pulumi.Input<string>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
      */

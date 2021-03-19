@@ -16,6 +16,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['ConfidentialInstanceConfigArgs']]] = None,
                  cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -39,11 +40,13 @@ class Instance(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
+                 post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
@@ -63,6 +66,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
         :param pulumi.Input[str] cpu_platform: [Output Only] The CPU platform used by this instance.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
@@ -99,6 +103,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        :param pulumi.Input[str] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -108,6 +113,7 @@ class Instance(pulumi.CustomResource):
                The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
+        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
@@ -142,6 +148,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['advanced_machine_features'] = advanced_machine_features
             __props__['can_ip_forward'] = can_ip_forward
             __props__['confidential_instance_config'] = confidential_instance_config
             __props__['cpu_platform'] = cpu_platform
@@ -165,6 +172,7 @@ class Instance(pulumi.CustomResource):
             __props__['min_cpu_platform'] = min_cpu_platform
             __props__['name'] = name
             __props__['network_interfaces'] = network_interfaces
+            __props__['post_key_revocation_action_type'] = post_key_revocation_action_type
             __props__['private_ipv6_google_access'] = private_ipv6_google_access
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -172,6 +180,7 @@ class Instance(pulumi.CustomResource):
             __props__['request_id'] = request_id
             __props__['reservation_affinity'] = reservation_affinity
             __props__['resource_policies'] = resource_policies
+            __props__['satisfies_pzs'] = satisfies_pzs
             __props__['scheduling'] = scheduling
             __props__['self_link'] = self_link
             __props__['service_accounts'] = service_accounts

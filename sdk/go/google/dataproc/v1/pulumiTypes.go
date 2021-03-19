@@ -738,7 +738,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type ClusterConfig struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig *AutoscalingConfig `pulumi:"autoscalingConfig"`
-	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 	ConfigBucket *string `pulumi:"configBucket"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
@@ -752,13 +752,15 @@ type ClusterConfig struct {
 	LifecycleConfig *LifecycleConfig `pulumi:"lifecycleConfig"`
 	// Optional. The Compute Engine config settings for the master instance in a cluster.
 	MasterConfig *InstanceGroupConfig `pulumi:"masterConfig"`
+	// Optional. Metastore configuration.
+	MetastoreConfig *MetastoreConfig `pulumi:"metastoreConfig"`
 	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
 	SecondaryWorkerConfig *InstanceGroupConfig `pulumi:"secondaryWorkerConfig"`
 	// Optional. Security settings for the cluster.
 	SecurityConfig *SecurityConfig `pulumi:"securityConfig"`
 	// Optional. The config settings for software inside the cluster.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
-	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 	TempBucket *string `pulumi:"tempBucket"`
 	// Optional. The Compute Engine config settings for worker instances in a cluster.
 	WorkerConfig *InstanceGroupConfig `pulumi:"workerConfig"`
@@ -779,7 +781,7 @@ type ClusterConfigInput interface {
 type ClusterConfigArgs struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig AutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
-	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 	ConfigBucket pulumi.StringPtrInput `pulumi:"configBucket"`
 	// Optional. Encryption settings for the cluster.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
@@ -793,13 +795,15 @@ type ClusterConfigArgs struct {
 	LifecycleConfig LifecycleConfigPtrInput `pulumi:"lifecycleConfig"`
 	// Optional. The Compute Engine config settings for the master instance in a cluster.
 	MasterConfig InstanceGroupConfigPtrInput `pulumi:"masterConfig"`
+	// Optional. Metastore configuration.
+	MetastoreConfig MetastoreConfigPtrInput `pulumi:"metastoreConfig"`
 	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
 	SecondaryWorkerConfig InstanceGroupConfigPtrInput `pulumi:"secondaryWorkerConfig"`
 	// Optional. Security settings for the cluster.
 	SecurityConfig SecurityConfigPtrInput `pulumi:"securityConfig"`
 	// Optional. The config settings for software inside the cluster.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
-	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
 	// Optional. The Compute Engine config settings for worker instances in a cluster.
 	WorkerConfig InstanceGroupConfigPtrInput `pulumi:"workerConfig"`
@@ -888,7 +892,7 @@ func (o ClusterConfigOutput) AutoscalingConfig() AutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *AutoscalingConfig { return v.AutoscalingConfig }).(AutoscalingConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 func (o ClusterConfigOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *string { return v.ConfigBucket }).(pulumi.StringPtrOutput)
 }
@@ -923,6 +927,11 @@ func (o ClusterConfigOutput) MasterConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *InstanceGroupConfig { return v.MasterConfig }).(InstanceGroupConfigPtrOutput)
 }
 
+// Optional. Metastore configuration.
+func (o ClusterConfigOutput) MetastoreConfig() MetastoreConfigPtrOutput {
+	return o.ApplyT(func(v ClusterConfig) *MetastoreConfig { return v.MetastoreConfig }).(MetastoreConfigPtrOutput)
+}
+
 // Optional. The Compute Engine config settings for additional worker instances in a cluster.
 func (o ClusterConfigOutput) SecondaryWorkerConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *InstanceGroupConfig { return v.SecondaryWorkerConfig }).(InstanceGroupConfigPtrOutput)
@@ -938,7 +947,7 @@ func (o ClusterConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 func (o ClusterConfigOutput) TempBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *string { return v.TempBucket }).(pulumi.StringPtrOutput)
 }
@@ -976,7 +985,7 @@ func (o ClusterConfigPtrOutput) AutoscalingConfig() AutoscalingConfigPtrOutput {
 	}).(AutoscalingConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 func (o ClusterConfigPtrOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *string {
 		if v == nil {
@@ -1046,6 +1055,16 @@ func (o ClusterConfigPtrOutput) MasterConfig() InstanceGroupConfigPtrOutput {
 	}).(InstanceGroupConfigPtrOutput)
 }
 
+// Optional. Metastore configuration.
+func (o ClusterConfigPtrOutput) MetastoreConfig() MetastoreConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterConfig) *MetastoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreConfig
+	}).(MetastoreConfigPtrOutput)
+}
+
 // Optional. The Compute Engine config settings for additional worker instances in a cluster.
 func (o ClusterConfigPtrOutput) SecondaryWorkerConfig() InstanceGroupConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *InstanceGroupConfig {
@@ -1076,7 +1095,7 @@ func (o ClusterConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	}).(SoftwareConfigPtrOutput)
 }
 
-// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
 func (o ClusterConfigPtrOutput) TempBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *string {
 		if v == nil {
@@ -1642,7 +1661,7 @@ func (o ClusterStatusArrayOutput) Index(i pulumi.IntInput) ClusterStatusOutput {
 type DiskConfig struct {
 	// Optional. Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
@@ -1663,7 +1682,7 @@ type DiskConfigInput interface {
 type DiskConfigArgs struct {
 	// Optional. Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
@@ -1752,7 +1771,7 @@ func (o DiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 func (o DiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
@@ -1790,7 +1809,7 @@ func (o DiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
 func (o DiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskConfig) *string {
 		if v == nil {
@@ -2306,7 +2325,7 @@ type GceClusterConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
-	// Optional. Shielded Instance Config for clusters using shielded VMs.
+	// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
 	SubnetworkUri *string `pulumi:"subnetworkUri"`
@@ -2345,7 +2364,7 @@ type GceClusterConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
-	// Optional. Shielded Instance Config for clusters using shielded VMs.
+	// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
 	SubnetworkUri pulumi.StringPtrInput `pulumi:"subnetworkUri"`
@@ -2473,7 +2492,7 @@ func (o GceClusterConfigOutput) ServiceAccountScopes() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GceClusterConfig) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Shielded Instance Config for clusters using shielded VMs.
+// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 func (o GceClusterConfigOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v GceClusterConfig) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
 }
@@ -2591,7 +2610,7 @@ func (o GceClusterConfigPtrOutput) ServiceAccountScopes() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. Shielded Instance Config for clusters using shielded VMs.
+// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 func (o GceClusterConfigPtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *GceClusterConfig) *ShieldedInstanceConfig {
 		if v == nil {
@@ -3319,7 +3338,7 @@ type InstanceGroupConfig struct {
 	ManagedGroupConfig *ManagedGroupConfig `pulumi:"managedGroupConfig"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 	NumInstances *int `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 	Preemptibility *string `pulumi:"preemptibility"`
@@ -3356,7 +3375,7 @@ type InstanceGroupConfigArgs struct {
 	ManagedGroupConfig ManagedGroupConfigPtrInput `pulumi:"managedGroupConfig"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
@@ -3485,7 +3504,7 @@ func (o InstanceGroupConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 func (o InstanceGroupConfigOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
 }
@@ -3603,7 +3622,7 @@ func (o InstanceGroupConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
 func (o InstanceGroupConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupConfig) *int {
 		if v == nil {
@@ -4300,7 +4319,7 @@ type LifecycleConfig struct {
 	AutoDeleteTime *string `pulumi:"autoDeleteTime"`
 	// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	AutoDeleteTtl *string `pulumi:"autoDeleteTtl"`
-	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
 	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleStartTime *string `pulumi:"idleStartTime"`
@@ -4323,7 +4342,7 @@ type LifecycleConfigArgs struct {
 	AutoDeleteTime pulumi.StringPtrInput `pulumi:"autoDeleteTime"`
 	// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	AutoDeleteTtl pulumi.StringPtrInput `pulumi:"autoDeleteTtl"`
-	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
 	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleStartTime pulumi.StringPtrInput `pulumi:"idleStartTime"`
@@ -4417,7 +4436,7 @@ func (o LifecycleConfigOutput) AutoDeleteTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LifecycleConfig) *string { return v.AutoDeleteTtl }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 func (o LifecycleConfigOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LifecycleConfig) *string { return v.IdleDeleteTtl }).(pulumi.StringPtrOutput)
 }
@@ -4465,7 +4484,7 @@ func (o LifecycleConfigPtrOutput) AutoDeleteTtl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 func (o LifecycleConfigPtrOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LifecycleConfig) *string {
 		if v == nil {
@@ -4941,6 +4960,140 @@ func (o ManagedGroupConfigPtrOutput) InstanceTemplateName() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.InstanceTemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a Metastore configuration.
+type MetastoreConfig struct {
+	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	DataprocMetastoreService *string `pulumi:"dataprocMetastoreService"`
+}
+
+// MetastoreConfigInput is an input type that accepts MetastoreConfigArgs and MetastoreConfigOutput values.
+// You can construct a concrete instance of `MetastoreConfigInput` via:
+//
+//          MetastoreConfigArgs{...}
+type MetastoreConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreConfigOutput() MetastoreConfigOutput
+	ToMetastoreConfigOutputWithContext(context.Context) MetastoreConfigOutput
+}
+
+// Specifies a Metastore configuration.
+type MetastoreConfigArgs struct {
+	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	DataprocMetastoreService pulumi.StringPtrInput `pulumi:"dataprocMetastoreService"`
+}
+
+func (MetastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreConfig)(nil)).Elem()
+}
+
+func (i MetastoreConfigArgs) ToMetastoreConfigOutput() MetastoreConfigOutput {
+	return i.ToMetastoreConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreConfigArgs) ToMetastoreConfigOutputWithContext(ctx context.Context) MetastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreConfigOutput)
+}
+
+func (i MetastoreConfigArgs) ToMetastoreConfigPtrOutput() MetastoreConfigPtrOutput {
+	return i.ToMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreConfigArgs) ToMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreConfigOutput).ToMetastoreConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreConfigPtrInput is an input type that accepts MetastoreConfigArgs, MetastoreConfigPtr and MetastoreConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreConfigPtrInput` via:
+//
+//          MetastoreConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreConfigPtrOutput() MetastoreConfigPtrOutput
+	ToMetastoreConfigPtrOutputWithContext(context.Context) MetastoreConfigPtrOutput
+}
+
+type metastoreConfigPtrType MetastoreConfigArgs
+
+func MetastoreConfigPtr(v *MetastoreConfigArgs) MetastoreConfigPtrInput {
+	return (*metastoreConfigPtrType)(v)
+}
+
+func (*metastoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreConfig)(nil)).Elem()
+}
+
+func (i *metastoreConfigPtrType) ToMetastoreConfigPtrOutput() MetastoreConfigPtrOutput {
+	return i.ToMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreConfigPtrType) ToMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreConfigPtrOutput)
+}
+
+// Specifies a Metastore configuration.
+type MetastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreConfig)(nil)).Elem()
+}
+
+func (o MetastoreConfigOutput) ToMetastoreConfigOutput() MetastoreConfigOutput {
+	return o
+}
+
+func (o MetastoreConfigOutput) ToMetastoreConfigOutputWithContext(ctx context.Context) MetastoreConfigOutput {
+	return o
+}
+
+func (o MetastoreConfigOutput) ToMetastoreConfigPtrOutput() MetastoreConfigPtrOutput {
+	return o.ToMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreConfigOutput) ToMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreConfigPtrOutput {
+	return o.ApplyT(func(v MetastoreConfig) *MetastoreConfig {
+		return &v
+	}).(MetastoreConfigPtrOutput)
+}
+
+// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+func (o MetastoreConfigOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreConfig) *string { return v.DataprocMetastoreService }).(pulumi.StringPtrOutput)
+}
+
+type MetastoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreConfig)(nil)).Elem()
+}
+
+func (o MetastoreConfigPtrOutput) ToMetastoreConfigPtrOutput() MetastoreConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreConfigPtrOutput) ToMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreConfigPtrOutput) Elem() MetastoreConfigOutput {
+	return o.ApplyT(func(v *MetastoreConfig) MetastoreConfig { return *v }).(MetastoreConfigOutput)
+}
+
+// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+func (o MetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocMetastoreService
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6914,9 +7067,9 @@ func (o ReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Security related configuration, including Kerberos.
+// Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfig struct {
-	// Kerberos related configuration.
+	// Optional. Kerberos related configuration.
 	KerberosConfig *KerberosConfig `pulumi:"kerberosConfig"`
 }
 
@@ -6931,9 +7084,9 @@ type SecurityConfigInput interface {
 	ToSecurityConfigOutputWithContext(context.Context) SecurityConfigOutput
 }
 
-// Security related configuration, including Kerberos.
+// Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfigArgs struct {
-	// Kerberos related configuration.
+	// Optional. Kerberos related configuration.
 	KerberosConfig KerberosConfigPtrInput `pulumi:"kerberosConfig"`
 }
 
@@ -6990,7 +7143,7 @@ func (i *securityConfigPtrType) ToSecurityConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigPtrOutput)
 }
 
-// Security related configuration, including Kerberos.
+// Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfigOutput struct{ *pulumi.OutputState }
 
 func (SecurityConfigOutput) ElementType() reflect.Type {
@@ -7015,7 +7168,7 @@ func (o SecurityConfigOutput) ToSecurityConfigPtrOutputWithContext(ctx context.C
 	}).(SecurityConfigPtrOutput)
 }
 
-// Kerberos related configuration.
+// Optional. Kerberos related configuration.
 func (o SecurityConfigOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v SecurityConfig) *KerberosConfig { return v.KerberosConfig }).(KerberosConfigPtrOutput)
 }
@@ -7038,7 +7191,7 @@ func (o SecurityConfigPtrOutput) Elem() SecurityConfigOutput {
 	return o.ApplyT(func(v *SecurityConfig) SecurityConfig { return *v }).(SecurityConfigOutput)
 }
 
-// Kerberos related configuration.
+// Optional. Kerberos related configuration.
 func (o SecurityConfigPtrOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v *SecurityConfig) *KerberosConfig {
 		if v == nil {
@@ -7048,7 +7201,7 @@ func (o SecurityConfigPtrOutput) KerberosConfig() KerberosConfigPtrOutput {
 	}).(KerberosConfigPtrOutput)
 }
 
-// Shielded Instance Config for clusters using shielded VMs.
+// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 type ShieldedInstanceConfig struct {
 	// Optional. Defines whether instances have integrity monitoring enabled.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
@@ -7069,7 +7222,7 @@ type ShieldedInstanceConfigInput interface {
 	ToShieldedInstanceConfigOutputWithContext(context.Context) ShieldedInstanceConfigOutput
 }
 
-// Shielded Instance Config for clusters using shielded VMs.
+// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 type ShieldedInstanceConfigArgs struct {
 	// Optional. Defines whether instances have integrity monitoring enabled.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
@@ -7132,7 +7285,7 @@ func (i *shieldedInstanceConfigPtrType) ToShieldedInstanceConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigPtrOutput)
 }
 
-// Shielded Instance Config for clusters using shielded VMs.
+// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 type ShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -8583,6 +8736,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterPtrOutput{})
 	pulumi.RegisterOutputType(ManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(ManagedGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionOutput{})

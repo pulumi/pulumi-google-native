@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
 {
 
     /// <summary>
-    /// Schedule for triggeredJobs.
+    /// Schedule for inspect job triggers.
     /// </summary>
     public sealed class GooglePrivacyDlpV2ScheduleArgs : Pulumi.ResourceArgs
     {

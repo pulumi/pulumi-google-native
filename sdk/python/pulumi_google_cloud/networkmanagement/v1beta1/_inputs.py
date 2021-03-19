@@ -163,7 +163,6 @@ class AuditLogConfigArgs:
 @pulumi.input_type
 class BindingArgs:
     def __init__(__self__, *,
-                 binding_id: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input['ExprArgs']] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
@@ -173,23 +172,12 @@ class BindingArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param pulumi.Input[str] role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
-        if binding_id is not None:
-            pulumi.set(__self__, "binding_id", binding_id)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if members is not None:
             pulumi.set(__self__, "members", members)
         if role is not None:
             pulumi.set(__self__, "role", role)
-
-    @property
-    @pulumi.getter(name="bindingId")
-    def binding_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "binding_id")
-
-    @binding_id.setter
-    def binding_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "binding_id", value)
 
     @property
     @pulumi.getter
@@ -746,21 +734,25 @@ class FirewallInfoArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 firewall_rule_type: Optional[pulumi.Input[str]] = None,
                  network_uri: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
-        For display only. Metadata associated with a Compute Engine firewall rule.
+        For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
         :param pulumi.Input[str] action: Possible values: ALLOW, DENY
         :param pulumi.Input[str] direction: Possible values: INGRESS, EGRESS
-        :param pulumi.Input[str] display_name: Name of a Compute Engine firewall rule.
-        :param pulumi.Input[str] network_uri: URI of a Compute Engine network.
-        :param pulumi.Input[int] priority: Priority of the firewall rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: Target service accounts of the firewall rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_tags: Target tags of the firewall rule.
-        :param pulumi.Input[str] uri: URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+        :param pulumi.Input[str] display_name: The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
+        :param pulumi.Input[str] firewall_rule_type: The firewall rule's type.
+        :param pulumi.Input[str] network_uri: The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
+        :param pulumi.Input[str] policy: The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+        :param pulumi.Input[int] priority: The priority of the firewall rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: The target service accounts specified by the firewall rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_tags: The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
+        :param pulumi.Input[str] uri: The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -768,8 +760,12 @@ class FirewallInfoArgs:
             pulumi.set(__self__, "direction", direction)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if firewall_rule_type is not None:
+            pulumi.set(__self__, "firewall_rule_type", firewall_rule_type)
         if network_uri is not None:
             pulumi.set(__self__, "network_uri", network_uri)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if target_service_accounts is not None:
@@ -807,7 +803,7 @@ class FirewallInfoArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of a Compute Engine firewall rule.
+        The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
         """
         return pulumi.get(self, "display_name")
 
@@ -816,10 +812,22 @@ class FirewallInfoArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="firewallRuleType")
+    def firewall_rule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The firewall rule's type.
+        """
+        return pulumi.get(self, "firewall_rule_type")
+
+    @firewall_rule_type.setter
+    def firewall_rule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firewall_rule_type", value)
+
+    @property
     @pulumi.getter(name="networkUri")
     def network_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI of a Compute Engine network.
+        The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
         """
         return pulumi.get(self, "network_uri")
 
@@ -829,9 +837,21 @@ class FirewallInfoArgs:
 
     @property
     @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        Priority of the firewall rule.
+        The priority of the firewall rule.
         """
         return pulumi.get(self, "priority")
 
@@ -843,7 +863,7 @@ class FirewallInfoArgs:
     @pulumi.getter(name="targetServiceAccounts")
     def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Target service accounts of the firewall rule.
+        The target service accounts specified by the firewall rule.
         """
         return pulumi.get(self, "target_service_accounts")
 
@@ -855,7 +875,7 @@ class FirewallInfoArgs:
     @pulumi.getter(name="targetTags")
     def target_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Target tags of the firewall rule.
+        The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
         """
         return pulumi.get(self, "target_tags")
 
@@ -867,7 +887,7 @@ class FirewallInfoArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI of a Compute Engine firewall rule. Implied default rule does not have URI.
+        The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
         """
         return pulumi.get(self, "uri")
 
@@ -1624,15 +1644,15 @@ class ProbingDetailsArgs:
                  successful_probe_count: Optional[pulumi.Input[int]] = None,
                  verify_time: Optional[pulumi.Input[str]] = None):
         """
-        The details of probing from the latest run.
-        :param pulumi.Input[str] abort_cause: Causes that the probing was aborted.
-        :param pulumi.Input['EndpointInfoArgs'] endpoint_info: Derived from the test input. The actual source and destination endpoint where the probing was run.
-        :param pulumi.Input['StatusArgs'] error: The details of an internal failure or a cancellation of reachability analysis.
-        :param pulumi.Input['LatencyDistributionArgs'] probing_latency: One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
-        :param pulumi.Input[str] result: The overall reachability result of the test.
+        Results of active probing from the last run of the test.
+        :param pulumi.Input[str] abort_cause: The reason probing was aborted.
+        :param pulumi.Input['EndpointInfoArgs'] endpoint_info: The source and destination endpoints derived from the test input and used for active probing.
+        :param pulumi.Input['StatusArgs'] error: Details about an internal failure or the cancellation of active probing.
+        :param pulumi.Input['LatencyDistributionArgs'] probing_latency: Latency as measured by active probing in one direction: from the source to the destination endpoint.
+        :param pulumi.Input[str] result: The overall result of active probing.
         :param pulumi.Input[int] sent_probe_count: Number of probes sent.
-        :param pulumi.Input[int] successful_probe_count: Number of probes that reached destination.
-        :param pulumi.Input[str] verify_time: The time the reachability state was verified.
+        :param pulumi.Input[int] successful_probe_count: Number of probes that reached the destination.
+        :param pulumi.Input[str] verify_time: The time that reachability was assessed through active probing.
         """
         if abort_cause is not None:
             pulumi.set(__self__, "abort_cause", abort_cause)
@@ -1655,7 +1675,7 @@ class ProbingDetailsArgs:
     @pulumi.getter(name="abortCause")
     def abort_cause(self) -> Optional[pulumi.Input[str]]:
         """
-        Causes that the probing was aborted.
+        The reason probing was aborted.
         """
         return pulumi.get(self, "abort_cause")
 
@@ -1667,7 +1687,7 @@ class ProbingDetailsArgs:
     @pulumi.getter(name="endpointInfo")
     def endpoint_info(self) -> Optional[pulumi.Input['EndpointInfoArgs']]:
         """
-        Derived from the test input. The actual source and destination endpoint where the probing was run.
+        The source and destination endpoints derived from the test input and used for active probing.
         """
         return pulumi.get(self, "endpoint_info")
 
@@ -1679,7 +1699,7 @@ class ProbingDetailsArgs:
     @pulumi.getter
     def error(self) -> Optional[pulumi.Input['StatusArgs']]:
         """
-        The details of an internal failure or a cancellation of reachability analysis.
+        Details about an internal failure or the cancellation of active probing.
         """
         return pulumi.get(self, "error")
 
@@ -1691,7 +1711,7 @@ class ProbingDetailsArgs:
     @pulumi.getter(name="probingLatency")
     def probing_latency(self) -> Optional[pulumi.Input['LatencyDistributionArgs']]:
         """
-        One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.
+        Latency as measured by active probing in one direction: from the source to the destination endpoint.
         """
         return pulumi.get(self, "probing_latency")
 
@@ -1703,7 +1723,7 @@ class ProbingDetailsArgs:
     @pulumi.getter
     def result(self) -> Optional[pulumi.Input[str]]:
         """
-        The overall reachability result of the test.
+        The overall result of active probing.
         """
         return pulumi.get(self, "result")
 
@@ -1727,7 +1747,7 @@ class ProbingDetailsArgs:
     @pulumi.getter(name="successfulProbeCount")
     def successful_probe_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of probes that reached destination.
+        Number of probes that reached the destination.
         """
         return pulumi.get(self, "successful_probe_count")
 
@@ -1739,7 +1759,7 @@ class ProbingDetailsArgs:
     @pulumi.getter(name="verifyTime")
     def verify_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time the reachability state was verified.
+        The time that reachability was assessed through active probing.
         """
         return pulumi.get(self, "verify_time")
 
@@ -1756,11 +1776,11 @@ class ReachabilityDetailsArgs:
                  traces: Optional[pulumi.Input[Sequence[pulumi.Input['TraceArgs']]]] = None,
                  verify_time: Optional[pulumi.Input[str]] = None):
         """
-        The details of reachability state from the latest run.
+        Results of the configuration analysis from the last run of the test.
         :param pulumi.Input['StatusArgs'] error: The details of a failure or a cancellation of reachability analysis.
-        :param pulumi.Input[str] result: The overall reachability result of the test.
+        :param pulumi.Input[str] result: The overall result of the test's configuration analysis.
         :param pulumi.Input[Sequence[pulumi.Input['TraceArgs']]] traces: Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
-        :param pulumi.Input[str] verify_time: The time the reachability state was verified.
+        :param pulumi.Input[str] verify_time: The time of the configuration analysis.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -1787,7 +1807,7 @@ class ReachabilityDetailsArgs:
     @pulumi.getter
     def result(self) -> Optional[pulumi.Input[str]]:
         """
-        The overall reachability result of the test.
+        The overall result of the test's configuration analysis.
         """
         return pulumi.get(self, "result")
 
@@ -1811,7 +1831,7 @@ class ReachabilityDetailsArgs:
     @pulumi.getter(name="verifyTime")
     def verify_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time the reachability state was verified.
+        The time of the configuration analysis.
         """
         return pulumi.get(self, "verify_time")
 
@@ -2058,7 +2078,7 @@ class StepArgs:
         :param pulumi.Input['DeliverInfoArgs'] deliver: Display info of the final state "deliver" and reason.
         :param pulumi.Input[str] description: A description of the step. Usually this is a summary of the state.
         :param pulumi.Input['DropInfoArgs'] drop: Display info of the final state "drop" and reason.
-        :param pulumi.Input['EndpointInfoArgs'] endpoint: Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+        :param pulumi.Input['EndpointInfoArgs'] endpoint: Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
         :param pulumi.Input['FirewallInfoArgs'] firewall: Display info of a Compute Engine firewall rule.
         :param pulumi.Input['ForwardInfoArgs'] forward: Display info of the final state "forward" and reason.
         :param pulumi.Input['ForwardingRuleInfoArgs'] forwarding_rule: Display info of a Compute Engine forwarding rule.
@@ -2187,7 +2207,7 @@ class StepArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input['EndpointInfoArgs']]:
         """
-        Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+        Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
         """
         return pulumi.get(self, "endpoint")
 
@@ -2346,7 +2366,7 @@ class TraceArgs:
                  endpoint_info: Optional[pulumi.Input['EndpointInfoArgs']] = None,
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input['StepArgs']]]] = None):
         """
-        Trace represents one simulated packet forwarding path. - Each trace contains multiple ordered steps. - Each step is in a particular state and has an associated configuration. - State is categorized as a final or non-final state. - Each final state has a reason associated with it. - Each trace must end with a final state (the last step). |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) 
+        Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
         :param pulumi.Input['EndpointInfoArgs'] endpoint_info: Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
         :param pulumi.Input[Sequence[pulumi.Input['StepArgs']]] steps: A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
         """

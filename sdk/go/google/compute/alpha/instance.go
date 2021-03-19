@@ -151,6 +151,8 @@ type instanceArgs struct {
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+	ResourceStatus *ResourceStatus `pulumi:"resourceStatus"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
@@ -182,7 +184,7 @@ type instanceArgs struct {
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// Source machine image
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
-	// Source GMI encryption key when creating an instance from GMI.
+	// Source machine image encryption key when creating an instance from a machine image.
 	SourceMachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted *bool `pulumi:"startRestricted"`
@@ -290,6 +292,8 @@ type InstanceArgs struct {
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
 	ResourcePolicies pulumi.StringArrayInput
+	// [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+	ResourceStatus ResourceStatusPtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// Sets the scheduling options for this instance.
@@ -321,7 +325,7 @@ type InstanceArgs struct {
 	SourceInstanceTemplate pulumi.StringPtrInput
 	// Source machine image
 	SourceMachineImage pulumi.StringPtrInput
-	// Source GMI encryption key when creating an instance from GMI.
+	// Source machine image encryption key when creating an instance from a machine image.
 	SourceMachineImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted pulumi.BoolPtrInput

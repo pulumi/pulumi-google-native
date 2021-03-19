@@ -27,6 +27,18 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha.Inputs
             set => _metadataExports = value;
         }
 
+        [Input("restores")]
+        private InputList<Inputs.RestoreArgs>? _restores;
+
+        /// <summary>
+        /// Output only. The latest restores of the metastore service.
+        /// </summary>
+        public InputList<Inputs.RestoreArgs> Restores
+        {
+            get => _restores ?? (_restores = new InputList<Inputs.RestoreArgs>());
+            set => _restores = value;
+        }
+
         public MetadataManagementActivityArgs()
         {
         }

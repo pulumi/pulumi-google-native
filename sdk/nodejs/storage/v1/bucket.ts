@@ -45,8 +45,9 @@ export class Bucket extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["acl"] = args ? args.acl : undefined;
@@ -74,6 +75,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["projection"] = args ? args.projection : undefined;
             inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            inputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["timeCreated"] = args ? args.timeCreated : undefined;
@@ -84,12 +86,8 @@ export class Bucket extends pulumi.CustomResource {
             inputs["zoneAffinity"] = args ? args.zoneAffinity : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Bucket.__pulumiType, name, inputs, opts);
     }
@@ -199,6 +197,10 @@ export interface BucketArgs {
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
     readonly retentionPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPZS?: pulumi.Input<boolean>;
     /**
      * The URI of this bucket.
      */

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1.Inputs
     public sealed class TransportArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+        /// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         /// </summary>
         [Input("pubsub")]
         public Input<Inputs.PubsubArgs>? Pubsub { get; set; }

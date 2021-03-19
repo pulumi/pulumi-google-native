@@ -45,8 +45,9 @@ export class Queue extends pulumi.CustomResource {
      */
     constructor(name: string, args: QueueArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
@@ -58,14 +59,12 @@ export class Queue extends pulumi.CustomResource {
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["stats"] = args ? args.stats : undefined;
+            inputs["taskTtl"] = args ? args.taskTtl : undefined;
+            inputs["tombstoneTtl"] = args ? args.tombstoneTtl : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Queue.__pulumiType, name, inputs, opts);
     }
@@ -111,4 +110,12 @@ export interface QueueArgs {
      * Output only. The realtime, informational statistics for a queue. In order to receive the statistics the caller should include this field in the FieldMask.
      */
     readonly stats?: pulumi.Input<inputs.cloudtasks.v2beta2.QueueStats>;
+    /**
+     * The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.
+     */
+    readonly taskTtl?: pulumi.Input<string>;
+    /**
+     * The task tombstone time to live (TTL). After a task is deleted or completed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
+     */
+    readonly tombstoneTtl?: pulumi.Input<string>;
 }

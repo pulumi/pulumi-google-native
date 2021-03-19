@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dns.V1.Inputs
 {
 
     /// <summary>
-    /// A unit of data that will be returned by the DNS servers.
+    /// A unit of data that is returned by the DNS servers.
     /// </summary>
     public sealed class ResourceRecordSetArgs : Pulumi.ResourceArgs
     {
@@ -23,12 +23,6 @@ namespace Pulumi.GoogleCloud.Dns.V1.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-        /// </summary>
-        [Input("routingPolicy")]
-        public Input<Inputs.RRSetRoutingPolicyArgs>? RoutingPolicy { get; set; }
 
         [Input("rrdatas")]
         private InputList<string>? _rrdatas;

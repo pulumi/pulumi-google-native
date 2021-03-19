@@ -3468,6 +3468,178 @@ func (o InternalCheckerArrayOutput) Index(i pulumi.IntInput) InternalCheckerOutp
 	}).(InternalCheckerOutput)
 }
 
+// Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+type IstioCanonicalService struct {
+	// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalService *string `pulumi:"canonicalService"`
+	// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalServiceNamespace *string `pulumi:"canonicalServiceNamespace"`
+	// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	MeshUid *string `pulumi:"meshUid"`
+}
+
+// IstioCanonicalServiceInput is an input type that accepts IstioCanonicalServiceArgs and IstioCanonicalServiceOutput values.
+// You can construct a concrete instance of `IstioCanonicalServiceInput` via:
+//
+//          IstioCanonicalServiceArgs{...}
+type IstioCanonicalServiceInput interface {
+	pulumi.Input
+
+	ToIstioCanonicalServiceOutput() IstioCanonicalServiceOutput
+	ToIstioCanonicalServiceOutputWithContext(context.Context) IstioCanonicalServiceOutput
+}
+
+// Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+type IstioCanonicalServiceArgs struct {
+	// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalService pulumi.StringPtrInput `pulumi:"canonicalService"`
+	// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalServiceNamespace pulumi.StringPtrInput `pulumi:"canonicalServiceNamespace"`
+	// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	MeshUid pulumi.StringPtrInput `pulumi:"meshUid"`
+}
+
+func (IstioCanonicalServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioCanonicalService)(nil)).Elem()
+}
+
+func (i IstioCanonicalServiceArgs) ToIstioCanonicalServiceOutput() IstioCanonicalServiceOutput {
+	return i.ToIstioCanonicalServiceOutputWithContext(context.Background())
+}
+
+func (i IstioCanonicalServiceArgs) ToIstioCanonicalServiceOutputWithContext(ctx context.Context) IstioCanonicalServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServiceOutput)
+}
+
+func (i IstioCanonicalServiceArgs) ToIstioCanonicalServicePtrOutput() IstioCanonicalServicePtrOutput {
+	return i.ToIstioCanonicalServicePtrOutputWithContext(context.Background())
+}
+
+func (i IstioCanonicalServiceArgs) ToIstioCanonicalServicePtrOutputWithContext(ctx context.Context) IstioCanonicalServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServiceOutput).ToIstioCanonicalServicePtrOutputWithContext(ctx)
+}
+
+// IstioCanonicalServicePtrInput is an input type that accepts IstioCanonicalServiceArgs, IstioCanonicalServicePtr and IstioCanonicalServicePtrOutput values.
+// You can construct a concrete instance of `IstioCanonicalServicePtrInput` via:
+//
+//          IstioCanonicalServiceArgs{...}
+//
+//  or:
+//
+//          nil
+type IstioCanonicalServicePtrInput interface {
+	pulumi.Input
+
+	ToIstioCanonicalServicePtrOutput() IstioCanonicalServicePtrOutput
+	ToIstioCanonicalServicePtrOutputWithContext(context.Context) IstioCanonicalServicePtrOutput
+}
+
+type istioCanonicalServicePtrType IstioCanonicalServiceArgs
+
+func IstioCanonicalServicePtr(v *IstioCanonicalServiceArgs) IstioCanonicalServicePtrInput {
+	return (*istioCanonicalServicePtrType)(v)
+}
+
+func (*istioCanonicalServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IstioCanonicalService)(nil)).Elem()
+}
+
+func (i *istioCanonicalServicePtrType) ToIstioCanonicalServicePtrOutput() IstioCanonicalServicePtrOutput {
+	return i.ToIstioCanonicalServicePtrOutputWithContext(context.Background())
+}
+
+func (i *istioCanonicalServicePtrType) ToIstioCanonicalServicePtrOutputWithContext(ctx context.Context) IstioCanonicalServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServicePtrOutput)
+}
+
+// Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+type IstioCanonicalServiceOutput struct{ *pulumi.OutputState }
+
+func (IstioCanonicalServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioCanonicalService)(nil)).Elem()
+}
+
+func (o IstioCanonicalServiceOutput) ToIstioCanonicalServiceOutput() IstioCanonicalServiceOutput {
+	return o
+}
+
+func (o IstioCanonicalServiceOutput) ToIstioCanonicalServiceOutputWithContext(ctx context.Context) IstioCanonicalServiceOutput {
+	return o
+}
+
+func (o IstioCanonicalServiceOutput) ToIstioCanonicalServicePtrOutput() IstioCanonicalServicePtrOutput {
+	return o.ToIstioCanonicalServicePtrOutputWithContext(context.Background())
+}
+
+func (o IstioCanonicalServiceOutput) ToIstioCanonicalServicePtrOutputWithContext(ctx context.Context) IstioCanonicalServicePtrOutput {
+	return o.ApplyT(func(v IstioCanonicalService) *IstioCanonicalService {
+		return &v
+	}).(IstioCanonicalServicePtrOutput)
+}
+
+// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceOutput) CanonicalService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IstioCanonicalService) *string { return v.CanonicalService }).(pulumi.StringPtrOutput)
+}
+
+// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceOutput) CanonicalServiceNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IstioCanonicalService) *string { return v.CanonicalServiceNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceOutput) MeshUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IstioCanonicalService) *string { return v.MeshUid }).(pulumi.StringPtrOutput)
+}
+
+type IstioCanonicalServicePtrOutput struct{ *pulumi.OutputState }
+
+func (IstioCanonicalServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IstioCanonicalService)(nil)).Elem()
+}
+
+func (o IstioCanonicalServicePtrOutput) ToIstioCanonicalServicePtrOutput() IstioCanonicalServicePtrOutput {
+	return o
+}
+
+func (o IstioCanonicalServicePtrOutput) ToIstioCanonicalServicePtrOutputWithContext(ctx context.Context) IstioCanonicalServicePtrOutput {
+	return o
+}
+
+func (o IstioCanonicalServicePtrOutput) Elem() IstioCanonicalServiceOutput {
+	return o.ApplyT(func(v *IstioCanonicalService) IstioCanonicalService { return *v }).(IstioCanonicalServiceOutput)
+}
+
+// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServicePtrOutput) CanonicalService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IstioCanonicalService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanonicalService
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServicePtrOutput) CanonicalServiceNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IstioCanonicalService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanonicalServiceNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServicePtrOutput) MeshUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IstioCanonicalService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MeshUid
+	}).(pulumi.StringPtrOutput)
+}
+
 // A description of a label.
 type LabelDescriptor struct {
 	// A human-readable description for the label.
@@ -4221,9 +4393,9 @@ func (o MetricPtrOutput) Type() pulumi.StringPtrOutput {
 type MetricAbsence struct {
 	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
 	Aggregations []Aggregation `pulumi:"aggregations"`
-	// The amount of time that a time series must fail to report new data to be considered failing. Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+	// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
 	Duration *string `pulumi:"duration"`
-	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter *string `pulumi:"filter"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
 	Trigger *Trigger `pulumi:"trigger"`
@@ -4244,9 +4416,9 @@ type MetricAbsenceInput interface {
 type MetricAbsenceArgs struct {
 	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
 	Aggregations AggregationArrayInput `pulumi:"aggregations"`
-	// The amount of time that a time series must fail to report new data to be considered failing. Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+	// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
 	Trigger TriggerPtrInput `pulumi:"trigger"`
@@ -4335,12 +4507,12 @@ func (o MetricAbsenceOutput) Aggregations() AggregationArrayOutput {
 	return o.ApplyT(func(v MetricAbsence) []Aggregation { return v.Aggregations }).(AggregationArrayOutput)
 }
 
-// The amount of time that a time series must fail to report new data to be considered failing. Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
 func (o MetricAbsenceOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAbsence) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricAbsenceOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAbsence) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -4378,7 +4550,7 @@ func (o MetricAbsencePtrOutput) Aggregations() AggregationArrayOutput {
 	}).(AggregationArrayOutput)
 }
 
-// The amount of time that a time series must fail to report new data to be considered failing. Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
 func (o MetricAbsencePtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricAbsence) *string {
 		if v == nil {
@@ -4388,7 +4560,7 @@ func (o MetricAbsencePtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricAbsencePtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricAbsence) *string {
 		if v == nil {
@@ -4745,7 +4917,7 @@ type MetricThreshold struct {
 	DenominatorFilter *string `pulumi:"denominatorFilter"`
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration *string `pulumi:"duration"`
-	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter *string `pulumi:"filter"`
 	// A value against which to compare the time series.
 	ThresholdValue *float64 `pulumi:"thresholdValue"`
@@ -4776,7 +4948,7 @@ type MetricThresholdArgs struct {
 	DenominatorFilter pulumi.StringPtrInput `pulumi:"denominatorFilter"`
 	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// A value against which to compare the time series.
 	ThresholdValue pulumi.Float64PtrInput `pulumi:"thresholdValue"`
@@ -4887,7 +5059,7 @@ func (o MetricThresholdOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricThreshold) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricThresholdOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -4970,7 +5142,7 @@ func (o MetricThresholdPtrOutput) Duration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricThresholdPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricThreshold) *string {
 		if v == nil {
@@ -5558,6 +5730,31 @@ func (i *mutationRecordPtrType) ToMutationRecordPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordPtrOutput)
 }
 
+// MutationRecordArrayInput is an input type that accepts MutationRecordArray and MutationRecordArrayOutput values.
+// You can construct a concrete instance of `MutationRecordArrayInput` via:
+//
+//          MutationRecordArray{ MutationRecordArgs{...} }
+type MutationRecordArrayInput interface {
+	pulumi.Input
+
+	ToMutationRecordArrayOutput() MutationRecordArrayOutput
+	ToMutationRecordArrayOutputWithContext(context.Context) MutationRecordArrayOutput
+}
+
+type MutationRecordArray []MutationRecordInput
+
+func (MutationRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MutationRecord)(nil)).Elem()
+}
+
+func (i MutationRecordArray) ToMutationRecordArrayOutput() MutationRecordArrayOutput {
+	return i.ToMutationRecordArrayOutputWithContext(context.Background())
+}
+
+func (i MutationRecordArray) ToMutationRecordArrayOutputWithContext(ctx context.Context) MutationRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordArrayOutput)
+}
+
 // Describes a change made to a configuration.
 type MutationRecordOutput struct{ *pulumi.OutputState }
 
@@ -5629,6 +5826,26 @@ func (o MutationRecordPtrOutput) MutatedBy() pulumi.StringPtrOutput {
 		}
 		return v.MutatedBy
 	}).(pulumi.StringPtrOutput)
+}
+
+type MutationRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (MutationRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MutationRecord)(nil)).Elem()
+}
+
+func (o MutationRecordArrayOutput) ToMutationRecordArrayOutput() MutationRecordArrayOutput {
+	return o
+}
+
+func (o MutationRecordArrayOutput) ToMutationRecordArrayOutputWithContext(ctx context.Context) MutationRecordArrayOutput {
+	return o
+}
+
+func (o MutationRecordArrayOutput) Index(i pulumi.IntInput) MutationRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MutationRecord {
+		return vs[0].([]MutationRecord)[vs[1].(int)]
+	}).(MutationRecordOutput)
 }
 
 // A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
@@ -8080,6 +8297,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpCheckPtrOutput{})
 	pulumi.RegisterOutputType(InternalCheckerOutput{})
 	pulumi.RegisterOutputType(InternalCheckerArrayOutput{})
+	pulumi.RegisterOutputType(IstioCanonicalServiceOutput{})
+	pulumi.RegisterOutputType(IstioCanonicalServicePtrOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorArrayOutput{})
 	pulumi.RegisterOutputType(LatencyCriteriaOutput{})
@@ -8106,6 +8325,7 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringQueryLanguageConditionPtrOutput{})
 	pulumi.RegisterOutputType(MutationRecordOutput{})
 	pulumi.RegisterOutputType(MutationRecordPtrOutput{})
+	pulumi.RegisterOutputType(MutationRecordArrayOutput{})
 	pulumi.RegisterOutputType(PerformanceThresholdOutput{})
 	pulumi.RegisterOutputType(PerformanceThresholdPtrOutput{})
 	pulumi.RegisterOutputType(PointOutput{})

@@ -24,8 +24,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
         /// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
-        /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. 
-        /// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
         public InputList<string> AdvertisedGroups
         {
@@ -103,6 +102,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
+        /// </summary>
+        [Input("routerApplianceInstance")]
+        public Input<string>? RouterApplianceInstance { get; set; }
 
         public RouterBgpPeerArgs()
         {

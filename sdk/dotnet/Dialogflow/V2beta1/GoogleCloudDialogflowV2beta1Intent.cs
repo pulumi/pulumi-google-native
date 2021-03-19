@@ -143,6 +143,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+        /// </summary>
+        [Input("liveAgentHandoff")]
+        public Input<bool>? LiveAgentHandoff { get; set; }
+
         [Input("messages")]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageArgs>? _messages;
 

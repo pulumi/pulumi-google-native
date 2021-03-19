@@ -150,6 +150,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// </summary>
+        [Input("pscTargetService")]
+        public Input<string>? PscTargetService { get; set; }
+
+        /// <summary>
         /// [Output Only] The URL of the region where the network endpoint group is located.
         /// </summary>
         [Input("region")]
@@ -178,6 +184,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
+        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        /// </summary>
+        [Input("serverlessDeployment")]
+        public Input<Inputs.NetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
+
+        /// <summary>
         /// [Output only] Number of network endpoints in the network endpoint group.
         /// </summary>
         [Input("size")]
@@ -198,8 +210,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] The URL of the zone where the network endpoint group is located.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public NetworkEndpointGroupArgs()
         {

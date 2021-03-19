@@ -26,6 +26,9 @@ func NewHealthCheck(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
 	var resource HealthCheck
 	err := ctx.RegisterResource("google-cloud:compute/v1:HealthCheck", name, args, &resource, opts...)
 	if err != nil {
@@ -76,12 +79,12 @@ type healthCheckArgs struct {
 	Kind *string `pulumi:"kind"`
 	// Configure logging on this health check.
 	LogConfig *HealthCheckLogConfig `pulumi:"logConfig"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name *string `pulumi:"name"`
 	// Project ID for this request.
 	Project string `pulumi:"project"`
 	// [Output Only] Region where the health check resides. Not applicable to global health checks.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -120,12 +123,12 @@ type HealthCheckArgs struct {
 	Kind pulumi.StringPtrInput
 	// Configure logging on this health check.
 	LogConfig HealthCheckLogConfigPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
 	Name pulumi.StringPtrInput
 	// Project ID for this request.
 	Project pulumi.StringInput
 	// [Output Only] Region where the health check resides. Not applicable to global health checks.
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.

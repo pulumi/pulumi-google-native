@@ -24,6 +24,7 @@ export * from "./googleCloudApigeeV1Reference";
 export * from "./googleCloudApigeeV1ResourceFile";
 export * from "./googleCloudApigeeV1SharedFlowRevision";
 export * from "./googleCloudApigeeV1TargetServer";
+export * from "./googleCloudApigeeV1TraceConfigOverride";
 export * from "./googleIamV1Policy";
 export * from "./googleLongrunningOperation";
 
@@ -47,6 +48,7 @@ import { GoogleCloudApigeeV1Reference } from "./googleCloudApigeeV1Reference";
 import { GoogleCloudApigeeV1ResourceFile } from "./googleCloudApigeeV1ResourceFile";
 import { GoogleCloudApigeeV1SharedFlowRevision } from "./googleCloudApigeeV1SharedFlowRevision";
 import { GoogleCloudApigeeV1TargetServer } from "./googleCloudApigeeV1TargetServer";
+import { GoogleCloudApigeeV1TraceConfigOverride } from "./googleCloudApigeeV1TraceConfigOverride";
 import { GoogleIamV1Policy } from "./googleIamV1Policy";
 import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
 
@@ -92,6 +94,8 @@ const _module = {
                 return new GoogleCloudApigeeV1SharedFlowRevision(name, <any>undefined, { urn })
             case "google-cloud:apigee/v1:GoogleCloudApigeeV1TargetServer":
                 return new GoogleCloudApigeeV1TargetServer(name, <any>undefined, { urn })
+            case "google-cloud:apigee/v1:GoogleCloudApigeeV1TraceConfigOverride":
+                return new GoogleCloudApigeeV1TraceConfigOverride(name, <any>undefined, { urn })
             case "google-cloud:apigee/v1:GoogleIamV1Policy":
                 return new GoogleIamV1Policy(name, <any>undefined, { urn })
             case "google-cloud:apigee/v1:GoogleLongrunningOperation":

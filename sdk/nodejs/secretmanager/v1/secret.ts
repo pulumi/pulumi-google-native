@@ -45,24 +45,24 @@ export class Secret extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["replication"] = args ? args.replication : undefined;
             inputs["secretId"] = args ? args.secretId : undefined;
+            inputs["topics"] = args ? args.topics : undefined;
+            inputs["ttl"] = args ? args.ttl : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Secret.__pulumiType, name, inputs, opts);
     }
@@ -76,6 +76,10 @@ export interface SecretArgs {
      * Output only. The time at which the Secret was created.
      */
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+     */
+    readonly expireTime?: pulumi.Input<string>;
     /**
      * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
      */
@@ -96,4 +100,12 @@ export interface SecretArgs {
      * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
      */
     readonly secretId?: pulumi.Input<string>;
+    /**
+     * Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+     */
+    readonly topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.v1.Topic>[]>;
+    /**
+     * Input only. The TTL for the Secret.
+     */
+    readonly ttl?: pulumi.Input<string>;
 }

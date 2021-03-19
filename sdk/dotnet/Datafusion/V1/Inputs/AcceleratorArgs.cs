@@ -21,6 +21,12 @@ namespace Pulumi.GoogleCloud.Datafusion.V1.Inputs
         [Input("acceleratorType")]
         public Input<string>? AcceleratorType { get; set; }
 
+        /// <summary>
+        /// The state of the accelerator
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
         public AcceleratorArgs()
         {
         }

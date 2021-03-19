@@ -30,7 +30,7 @@ class Change(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Atomically update the ResourceRecordSet collection.
+        Atomically updates the ResourceRecordSet collection.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -42,7 +42,7 @@ class Change(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
         :param pulumi.Input[str] project: Identifies the project addressed by this request.
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        :param pulumi.Input[str] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+        :param pulumi.Input[str] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

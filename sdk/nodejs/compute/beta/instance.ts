@@ -45,11 +45,12 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
@@ -77,11 +78,14 @@ export class Instance extends pulumi.CustomResource {
             inputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            inputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            inputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAccounts"] = args ? args.serviceAccounts : undefined;
@@ -99,12 +103,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }
@@ -225,6 +225,11 @@ export interface InstanceArgs {
      * An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
      */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.beta.NetworkInterface>[]>;
+    readonly networkPerformanceConfig?: pulumi.Input<inputs.compute.beta.NetworkPerformanceConfig>;
+    /**
+     * PostKeyRevocationActionType of the instance.
+     */
+    readonly postKeyRevocationActionType?: pulumi.Input<string>;
     /**
      * The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
      */
@@ -249,6 +254,10 @@ export interface InstanceArgs {
      * Resource policies applied to this instance.
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
     /**
      * Sets the scheduling options for this instance.
      */
@@ -287,7 +296,7 @@ export interface InstanceArgs {
      */
     readonly sourceMachineImage?: pulumi.Input<string>;
     /**
-     * Source GMI encryption key when creating an instance from GMI.
+     * Source machine image encryption key when creating an instance from a machine image.
      */
     readonly sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKey>;
     /**

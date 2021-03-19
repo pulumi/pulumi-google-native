@@ -150,7 +150,7 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

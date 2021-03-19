@@ -549,7 +549,7 @@ type CloudSqlSettings struct {
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
-	// The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+	// The database engine type and version.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig *SqlIpConfig `pulumi:"ipConfig"`
@@ -561,7 +561,7 @@ type CloudSqlSettings struct {
 	SourceId *string `pulumi:"sourceId"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit *string `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+	// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
 	Tier *string `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -592,7 +592,7 @@ type CloudSqlSettingsArgs struct {
 	DataDiskType pulumi.StringPtrInput `pulumi:"dataDiskType"`
 	// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
-	// The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+	// The database engine type and version.
 	DatabaseVersion pulumi.StringPtrInput `pulumi:"databaseVersion"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig SqlIpConfigPtrInput `pulumi:"ipConfig"`
@@ -604,7 +604,7 @@ type CloudSqlSettingsArgs struct {
 	SourceId pulumi.StringPtrInput `pulumi:"sourceId"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit pulumi.StringPtrInput `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+	// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -715,7 +715,7 @@ func (o CloudSqlSettingsOutput) DatabaseFlags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CloudSqlSettings) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
 }
 
-// The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+// The database engine type and version.
 func (o CloudSqlSettingsOutput) DatabaseVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.DatabaseVersion }).(pulumi.StringPtrOutput)
 }
@@ -745,7 +745,7 @@ func (o CloudSqlSettingsOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.StorageAutoResizeLimit }).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
 func (o CloudSqlSettingsOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -828,7 +828,7 @@ func (o CloudSqlSettingsPtrOutput) DatabaseFlags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).
+// The database engine type and version.
 func (o CloudSqlSettingsPtrOutput) DatabaseVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudSqlSettings) *string {
 		if v == nil {
@@ -888,7 +888,7 @@ func (o CloudSqlSettingsPtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
 func (o CloudSqlSettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudSqlSettings) *string {
 		if v == nil {

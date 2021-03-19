@@ -20,7 +20,6 @@ class Policy(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[pulumi.InputType['PolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -30,11 +29,10 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]] bindings: Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]] bindings: Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
         :param pulumi.Input[str] etag: Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
         :param pulumi.Input[pulumi.InputType['PolicyArgs']] policy: REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them.
         :param pulumi.Input[str] project: Project ID for this request.
-        :param pulumi.Input[str] region: The name of the region for this request.
         :param pulumi.Input[str] resource: Name or id of the resource for this request.
         """
         if __name__ is not None:
@@ -60,9 +58,6 @@ class Policy(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
             if resource is None and not opts.urn:
                 raise TypeError("Missing required property 'resource'")
             __props__['resource'] = resource

@@ -20,6 +20,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  consumer_forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerForwardingRuleArgs']]]] consumer_forwarding_rules: [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource type. The server generates this identifier.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -76,6 +78,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__['consumer_forwarding_rules'] = consumer_forwarding_rules
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
+            __props__['enable_proxy_protocol'] = enable_proxy_protocol
             __props__['id'] = id
             __props__['kind'] = kind
             __props__['name'] = name

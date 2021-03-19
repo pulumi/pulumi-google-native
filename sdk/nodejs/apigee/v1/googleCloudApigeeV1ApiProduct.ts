@@ -45,8 +45,9 @@ export class GoogleCloudApigeeV1ApiProduct extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudApigeeV1ApiProductArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["apiResources"] = args ? args.apiResources : undefined;
@@ -56,6 +57,7 @@ export class GoogleCloudApigeeV1ApiProduct extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["environments"] = args ? args.environments : undefined;
+            inputs["graphqlOperationGroup"] = args ? args.graphqlOperationGroup : undefined;
             inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["operationGroup"] = args ? args.operationGroup : undefined;
@@ -67,12 +69,8 @@ export class GoogleCloudApigeeV1ApiProduct extends pulumi.CustomResource {
             inputs["scopes"] = args ? args.scopes : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1ApiProduct.__pulumiType, name, inputs, opts);
     }
@@ -107,6 +105,10 @@ export interface GoogleCloudApigeeV1ApiProductArgs {
      * Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
      */
     readonly environments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+     */
+    readonly graphqlOperationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationGroup>;
     /**
      * Response only. Modified time of this environment as milliseconds since epoch.
      */

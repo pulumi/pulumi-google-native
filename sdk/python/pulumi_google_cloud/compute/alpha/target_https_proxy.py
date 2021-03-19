@@ -41,7 +41,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
+        Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -71,7 +71,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
                - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
                - If the quic-override flag is not specified, NONE is implied.
-               -
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
                
@@ -124,8 +123,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__['project'] = project
             __props__['proxy_bind'] = proxy_bind
             __props__['quic_override'] = quic_override
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['self_link'] = self_link

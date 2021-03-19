@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
+ * Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
  */
 export class PublicDelegatedPrefix extends pulumi.CustomResource {
     /**
@@ -45,12 +45,10 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     constructor(name: string, args: PublicDelegatedPrefixArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -70,12 +68,8 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PublicDelegatedPrefix.__pulumiType, name, inputs, opts);
     }
@@ -134,7 +128,7 @@ export interface PublicDelegatedPrefixArgs {
     /**
      * [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

@@ -44,11 +44,12 @@ export class HmacKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: HmacKeyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.serviceAccountEmail === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
             inputs["projectId"] = args ? args.projectId : undefined;
@@ -56,12 +57,8 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HmacKey.__pulumiType, name, inputs, opts);
     }

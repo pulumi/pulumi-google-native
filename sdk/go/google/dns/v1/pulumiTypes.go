@@ -16,7 +16,7 @@ type DnsKeySpec struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// Length of the keys in bits.
 	KeyLength *int `pulumi:"keyLength"`
-	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets.
+	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
 	KeyType *string `pulumi:"keyType"`
 	Kind    *string `pulumi:"kind"`
 }
@@ -38,7 +38,7 @@ type DnsKeySpecArgs struct {
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Length of the keys in bits.
 	KeyLength pulumi.IntPtrInput `pulumi:"keyLength"`
-	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets.
+	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
 	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
 	Kind    pulumi.StringPtrInput `pulumi:"kind"`
 }
@@ -105,7 +105,7 @@ func (o DnsKeySpecOutput) KeyLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DnsKeySpec) *int { return v.KeyLength }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets.
+// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
 func (o DnsKeySpecOutput) KeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsKeySpec) *string { return v.KeyType }).(pulumi.StringPtrOutput)
 }
@@ -320,7 +320,7 @@ func (o ManagedZoneDnsSecConfigPtrOutput) State() pulumi.StringPtrOutput {
 
 type ManagedZoneForwardingConfig struct {
 	Kind *string `pulumi:"kind"`
-	// List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+	// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
 	TargetNameServers []ManagedZoneForwardingConfigNameServerTarget `pulumi:"targetNameServers"`
 }
 
@@ -337,7 +337,7 @@ type ManagedZoneForwardingConfigInput interface {
 
 type ManagedZoneForwardingConfigArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+	// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
 	TargetNameServers ManagedZoneForwardingConfigNameServerTargetArrayInput `pulumi:"targetNameServers"`
 }
 
@@ -421,7 +421,7 @@ func (o ManagedZoneForwardingConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
 func (o ManagedZoneForwardingConfigOutput) TargetNameServers() ManagedZoneForwardingConfigNameServerTargetArrayOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigNameServerTarget {
 		return v.TargetNameServers
@@ -455,7 +455,7 @@ func (o ManagedZoneForwardingConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
 func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneForwardingConfigNameServerTargetArrayOutput {
 	return o.ApplyT(func(v *ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigNameServerTarget {
 		if v == nil {
@@ -466,7 +466,7 @@ func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneFor
 }
 
 type ManagedZoneForwardingConfigNameServerTarget struct {
-	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address *string `pulumi:"ipv4Address"`
@@ -485,7 +485,7 @@ type ManagedZoneForwardingConfigNameServerTargetInput interface {
 }
 
 type ManagedZoneForwardingConfigNameServerTargetArgs struct {
-	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
@@ -543,7 +543,7 @@ func (o ManagedZoneForwardingConfigNameServerTargetOutput) ToManagedZoneForwardi
 	return o
 }
 
-// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 func (o ManagedZoneForwardingConfigNameServerTargetOutput) ForwardingPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfigNameServerTarget) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
@@ -1036,7 +1036,7 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePriva
 
 type ManagedZonePrivateVisibilityConfigNetwork struct {
 	Kind *string `pulumi:"kind"`
-	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 	NetworkUrl *string `pulumi:"networkUrl"`
 }
 
@@ -1053,7 +1053,7 @@ type ManagedZonePrivateVisibilityConfigNetworkInput interface {
 
 type ManagedZonePrivateVisibilityConfigNetworkArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
 }
 
@@ -1112,7 +1112,7 @@ func (o ManagedZonePrivateVisibilityConfigNetworkOutput) Kind() pulumi.StringPtr
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigNetwork) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 func (o ManagedZonePrivateVisibilityConfigNetworkOutput) NetworkUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigNetwork) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
 }
@@ -1414,7 +1414,7 @@ func (o ManagedZoneServiceDirectoryConfigPtrOutput) Namespace() ManagedZoneServi
 }
 
 type ManagedZoneServiceDirectoryConfigNamespace struct {
-	// The time that the namespace backing this zone was deleted, empty string if it still exists. This is in RFC3339 text format. Output only.
+	// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
 	DeletionTime *string `pulumi:"deletionTime"`
 	Kind         *string `pulumi:"kind"`
 	// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
@@ -1433,7 +1433,7 @@ type ManagedZoneServiceDirectoryConfigNamespaceInput interface {
 }
 
 type ManagedZoneServiceDirectoryConfigNamespaceArgs struct {
-	// The time that the namespace backing this zone was deleted, empty string if it still exists. This is in RFC3339 text format. Output only.
+	// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
 	DeletionTime pulumi.StringPtrInput `pulumi:"deletionTime"`
 	Kind         pulumi.StringPtrInput `pulumi:"kind"`
 	// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
@@ -1517,7 +1517,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDi
 	}).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
 }
 
-// The time that the namespace backing this zone was deleted, empty string if it still exists. This is in RFC3339 text format. Output only.
+// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
 func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) DeletionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) *string { return v.DeletionTime }).(pulumi.StringPtrOutput)
 }
@@ -1551,7 +1551,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) Elem() ManagedZoneS
 	}).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
 }
 
-// The time that the namespace backing this zone was deleted, empty string if it still exists. This is in RFC3339 text format. Output only.
+// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
 func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) DeletionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespace) *string {
 		if v == nil {
@@ -1728,7 +1728,7 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) TargetNameServers() PolicyAl
 }
 
 type PolicyAlternativeNameServerConfigTargetNameServer struct {
-	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address *string `pulumi:"ipv4Address"`
@@ -1747,7 +1747,7 @@ type PolicyAlternativeNameServerConfigTargetNameServerInput interface {
 }
 
 type PolicyAlternativeNameServerConfigTargetNameServerArgs struct {
-	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
@@ -1805,7 +1805,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlterna
 	return o
 }
 
-// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
@@ -1942,714 +1942,11 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 	}).(PolicyNetworkOutput)
 }
 
-// A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
-type RRSetRoutingPolicy struct {
-	GeoPolicy *RRSetRoutingPolicyGeoPolicy `pulumi:"geoPolicy"`
-	Kind      *string                      `pulumi:"kind"`
-	WrrPolicy *RRSetRoutingPolicyWrrPolicy `pulumi:"wrrPolicy"`
-}
-
-// RRSetRoutingPolicyInput is an input type that accepts RRSetRoutingPolicyArgs and RRSetRoutingPolicyOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyInput` via:
-//
-//          RRSetRoutingPolicyArgs{...}
-type RRSetRoutingPolicyInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyOutput() RRSetRoutingPolicyOutput
-	ToRRSetRoutingPolicyOutputWithContext(context.Context) RRSetRoutingPolicyOutput
-}
-
-// A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
-type RRSetRoutingPolicyArgs struct {
-	GeoPolicy RRSetRoutingPolicyGeoPolicyPtrInput `pulumi:"geoPolicy"`
-	Kind      pulumi.StringPtrInput               `pulumi:"kind"`
-	WrrPolicy RRSetRoutingPolicyWrrPolicyPtrInput `pulumi:"wrrPolicy"`
-}
-
-func (RRSetRoutingPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicy)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyArgs) ToRRSetRoutingPolicyOutput() RRSetRoutingPolicyOutput {
-	return i.ToRRSetRoutingPolicyOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyArgs) ToRRSetRoutingPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyOutput)
-}
-
-func (i RRSetRoutingPolicyArgs) ToRRSetRoutingPolicyPtrOutput() RRSetRoutingPolicyPtrOutput {
-	return i.ToRRSetRoutingPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyArgs) ToRRSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyOutput).ToRRSetRoutingPolicyPtrOutputWithContext(ctx)
-}
-
-// RRSetRoutingPolicyPtrInput is an input type that accepts RRSetRoutingPolicyArgs, RRSetRoutingPolicyPtr and RRSetRoutingPolicyPtrOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyPtrInput` via:
-//
-//          RRSetRoutingPolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type RRSetRoutingPolicyPtrInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyPtrOutput() RRSetRoutingPolicyPtrOutput
-	ToRRSetRoutingPolicyPtrOutputWithContext(context.Context) RRSetRoutingPolicyPtrOutput
-}
-
-type rrsetRoutingPolicyPtrType RRSetRoutingPolicyArgs
-
-func RRSetRoutingPolicyPtr(v *RRSetRoutingPolicyArgs) RRSetRoutingPolicyPtrInput {
-	return (*rrsetRoutingPolicyPtrType)(v)
-}
-
-func (*rrsetRoutingPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RRSetRoutingPolicy)(nil)).Elem()
-}
-
-func (i *rrsetRoutingPolicyPtrType) ToRRSetRoutingPolicyPtrOutput() RRSetRoutingPolicyPtrOutput {
-	return i.ToRRSetRoutingPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *rrsetRoutingPolicyPtrType) ToRRSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyPtrOutput)
-}
-
-// A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
-type RRSetRoutingPolicyOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicy)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyOutput) ToRRSetRoutingPolicyOutput() RRSetRoutingPolicyOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyOutput) ToRRSetRoutingPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyOutput) ToRRSetRoutingPolicyPtrOutput() RRSetRoutingPolicyPtrOutput {
-	return o.ToRRSetRoutingPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o RRSetRoutingPolicyOutput) ToRRSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicy) *RRSetRoutingPolicy {
-		return &v
-	}).(RRSetRoutingPolicyPtrOutput)
-}
-func (o RRSetRoutingPolicyOutput) GeoPolicy() RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicy) *RRSetRoutingPolicyGeoPolicy { return v.GeoPolicy }).(RRSetRoutingPolicyGeoPolicyPtrOutput)
-}
-
-func (o RRSetRoutingPolicyOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicy) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-func (o RRSetRoutingPolicyOutput) WrrPolicy() RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicy) *RRSetRoutingPolicyWrrPolicy { return v.WrrPolicy }).(RRSetRoutingPolicyWrrPolicyPtrOutput)
-}
-
-type RRSetRoutingPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RRSetRoutingPolicy)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyPtrOutput) ToRRSetRoutingPolicyPtrOutput() RRSetRoutingPolicyPtrOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyPtrOutput) ToRRSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPtrOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyPtrOutput) Elem() RRSetRoutingPolicyOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicy) RRSetRoutingPolicy { return *v }).(RRSetRoutingPolicyOutput)
-}
-
-func (o RRSetRoutingPolicyPtrOutput) GeoPolicy() RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicy) *RRSetRoutingPolicyGeoPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.GeoPolicy
-	}).(RRSetRoutingPolicyGeoPolicyPtrOutput)
-}
-
-func (o RRSetRoutingPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RRSetRoutingPolicyPtrOutput) WrrPolicy() RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicy) *RRSetRoutingPolicyWrrPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.WrrPolicy
-	}).(RRSetRoutingPolicyWrrPolicyPtrOutput)
-}
-
-type RRSetRoutingPolicyGeoPolicy struct {
-	// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether it is healthy or not.
-	Failovers []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"failovers"`
-	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
-	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"items"`
-	Kind  *string                                    `pulumi:"kind"`
-}
-
-// RRSetRoutingPolicyGeoPolicyInput is an input type that accepts RRSetRoutingPolicyGeoPolicyArgs and RRSetRoutingPolicyGeoPolicyOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyGeoPolicyInput` via:
-//
-//          RRSetRoutingPolicyGeoPolicyArgs{...}
-type RRSetRoutingPolicyGeoPolicyInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyGeoPolicyOutput() RRSetRoutingPolicyGeoPolicyOutput
-	ToRRSetRoutingPolicyGeoPolicyOutputWithContext(context.Context) RRSetRoutingPolicyGeoPolicyOutput
-}
-
-type RRSetRoutingPolicyGeoPolicyArgs struct {
-	// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether it is healthy or not.
-	Failovers RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"failovers"`
-	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
-	Items RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"items"`
-	Kind  pulumi.StringPtrInput                              `pulumi:"kind"`
-}
-
-func (RRSetRoutingPolicyGeoPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyGeoPolicy)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyGeoPolicyArgs) ToRRSetRoutingPolicyGeoPolicyOutput() RRSetRoutingPolicyGeoPolicyOutput {
-	return i.ToRRSetRoutingPolicyGeoPolicyOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyGeoPolicyArgs) ToRRSetRoutingPolicyGeoPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyOutput)
-}
-
-func (i RRSetRoutingPolicyGeoPolicyArgs) ToRRSetRoutingPolicyGeoPolicyPtrOutput() RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return i.ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyGeoPolicyArgs) ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyOutput).ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(ctx)
-}
-
-// RRSetRoutingPolicyGeoPolicyPtrInput is an input type that accepts RRSetRoutingPolicyGeoPolicyArgs, RRSetRoutingPolicyGeoPolicyPtr and RRSetRoutingPolicyGeoPolicyPtrOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyGeoPolicyPtrInput` via:
-//
-//          RRSetRoutingPolicyGeoPolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type RRSetRoutingPolicyGeoPolicyPtrInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyGeoPolicyPtrOutput() RRSetRoutingPolicyGeoPolicyPtrOutput
-	ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(context.Context) RRSetRoutingPolicyGeoPolicyPtrOutput
-}
-
-type rrsetRoutingPolicyGeoPolicyPtrType RRSetRoutingPolicyGeoPolicyArgs
-
-func RRSetRoutingPolicyGeoPolicyPtr(v *RRSetRoutingPolicyGeoPolicyArgs) RRSetRoutingPolicyGeoPolicyPtrInput {
-	return (*rrsetRoutingPolicyGeoPolicyPtrType)(v)
-}
-
-func (*rrsetRoutingPolicyGeoPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RRSetRoutingPolicyGeoPolicy)(nil)).Elem()
-}
-
-func (i *rrsetRoutingPolicyGeoPolicyPtrType) ToRRSetRoutingPolicyGeoPolicyPtrOutput() RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return i.ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *rrsetRoutingPolicyGeoPolicyPtrType) ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyPtrOutput)
-}
-
-type RRSetRoutingPolicyGeoPolicyOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyGeoPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyGeoPolicy)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyGeoPolicyOutput) ToRRSetRoutingPolicyGeoPolicyOutput() RRSetRoutingPolicyGeoPolicyOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyOutput) ToRRSetRoutingPolicyGeoPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyOutput) ToRRSetRoutingPolicyGeoPolicyPtrOutput() RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return o.ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o RRSetRoutingPolicyGeoPolicyOutput) ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) *RRSetRoutingPolicyGeoPolicy {
-		return &v
-	}).(RRSetRoutingPolicyGeoPolicyPtrOutput)
-}
-
-// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether it is healthy or not.
-func (o RRSetRoutingPolicyGeoPolicyOutput) Failovers() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem { return v.Failovers }).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
-}
-
-// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
-func (o RRSetRoutingPolicyGeoPolicyOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem { return v.Items }).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
-}
-
-func (o RRSetRoutingPolicyGeoPolicyOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-type RRSetRoutingPolicyGeoPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyGeoPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RRSetRoutingPolicyGeoPolicy)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) ToRRSetRoutingPolicyGeoPolicyPtrOutput() RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) ToRRSetRoutingPolicyGeoPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyPtrOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Elem() RRSetRoutingPolicyGeoPolicyOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) RRSetRoutingPolicyGeoPolicy { return *v }).(RRSetRoutingPolicyGeoPolicyOutput)
-}
-
-// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether it is healthy or not.
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Failovers() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-		if v == nil {
-			return nil
-		}
-		return v.Failovers
-	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
-}
-
-// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-		if v == nil {
-			return nil
-		}
-		return v.Items
-	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
-}
-
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItem struct {
-	Kind *string `pulumi:"kind"`
-	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g "us-east1", "southamerica-east1", "asia-east1", etc.
-	Location *string  `pulumi:"location"`
-	Rrdatas  []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above geo_rrdata.
-	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
-}
-
-// RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput is an input type that accepts RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs and RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput` via:
-//
-//          RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs{...}
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput() RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput
-	ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutputWithContext(context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput
-}
-
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs struct {
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g "us-east1", "southamerica-east1", "asia-east1", etc.
-	Location pulumi.StringPtrInput   `pulumi:"location"`
-	Rrdatas  pulumi.StringArrayInput `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above geo_rrdata.
-	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
-}
-
-func (RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyGeoPolicyGeoPolicyItem)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput() RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput {
-	return i.ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput)
-}
-
-// RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput is an input type that accepts RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray and RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput` via:
-//
-//          RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray{ RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs{...} }
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput
-	ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutputWithContext(context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput
-}
-
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray []RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput
-
-func (RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RRSetRoutingPolicyGeoPolicyGeoPolicyItem)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return i.ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
-}
-
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyGeoPolicyGeoPolicyItem)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput() RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g "us-east1", "southamerica-east1", "asia-east1", etc.
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) Rrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
-}
-
-// DNSSEC generated signatures for the above geo_rrdata.
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) SignatureRrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
-}
-
-type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RRSetRoutingPolicyGeoPolicyGeoPolicyItem)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput) Index(i pulumi.IntInput) RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-		return vs[0].([]RRSetRoutingPolicyGeoPolicyGeoPolicyItem)[vs[1].(int)]
-	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput)
-}
-
-type RRSetRoutingPolicyWrrPolicy struct {
-	Items []RRSetRoutingPolicyWrrPolicyWrrPolicyItem `pulumi:"items"`
-	Kind  *string                                    `pulumi:"kind"`
-}
-
-// RRSetRoutingPolicyWrrPolicyInput is an input type that accepts RRSetRoutingPolicyWrrPolicyArgs and RRSetRoutingPolicyWrrPolicyOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyWrrPolicyInput` via:
-//
-//          RRSetRoutingPolicyWrrPolicyArgs{...}
-type RRSetRoutingPolicyWrrPolicyInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyWrrPolicyOutput() RRSetRoutingPolicyWrrPolicyOutput
-	ToRRSetRoutingPolicyWrrPolicyOutputWithContext(context.Context) RRSetRoutingPolicyWrrPolicyOutput
-}
-
-type RRSetRoutingPolicyWrrPolicyArgs struct {
-	Items RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayInput `pulumi:"items"`
-	Kind  pulumi.StringPtrInput                              `pulumi:"kind"`
-}
-
-func (RRSetRoutingPolicyWrrPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyWrrPolicy)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyWrrPolicyArgs) ToRRSetRoutingPolicyWrrPolicyOutput() RRSetRoutingPolicyWrrPolicyOutput {
-	return i.ToRRSetRoutingPolicyWrrPolicyOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyWrrPolicyArgs) ToRRSetRoutingPolicyWrrPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyOutput)
-}
-
-func (i RRSetRoutingPolicyWrrPolicyArgs) ToRRSetRoutingPolicyWrrPolicyPtrOutput() RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return i.ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyWrrPolicyArgs) ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyOutput).ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(ctx)
-}
-
-// RRSetRoutingPolicyWrrPolicyPtrInput is an input type that accepts RRSetRoutingPolicyWrrPolicyArgs, RRSetRoutingPolicyWrrPolicyPtr and RRSetRoutingPolicyWrrPolicyPtrOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyWrrPolicyPtrInput` via:
-//
-//          RRSetRoutingPolicyWrrPolicyArgs{...}
-//
-//  or:
-//
-//          nil
-type RRSetRoutingPolicyWrrPolicyPtrInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyWrrPolicyPtrOutput() RRSetRoutingPolicyWrrPolicyPtrOutput
-	ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(context.Context) RRSetRoutingPolicyWrrPolicyPtrOutput
-}
-
-type rrsetRoutingPolicyWrrPolicyPtrType RRSetRoutingPolicyWrrPolicyArgs
-
-func RRSetRoutingPolicyWrrPolicyPtr(v *RRSetRoutingPolicyWrrPolicyArgs) RRSetRoutingPolicyWrrPolicyPtrInput {
-	return (*rrsetRoutingPolicyWrrPolicyPtrType)(v)
-}
-
-func (*rrsetRoutingPolicyWrrPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RRSetRoutingPolicyWrrPolicy)(nil)).Elem()
-}
-
-func (i *rrsetRoutingPolicyWrrPolicyPtrType) ToRRSetRoutingPolicyWrrPolicyPtrOutput() RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return i.ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *rrsetRoutingPolicyWrrPolicyPtrType) ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyPtrOutput)
-}
-
-type RRSetRoutingPolicyWrrPolicyOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyWrrPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyWrrPolicy)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyWrrPolicyOutput) ToRRSetRoutingPolicyWrrPolicyOutput() RRSetRoutingPolicyWrrPolicyOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyOutput) ToRRSetRoutingPolicyWrrPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyOutput) ToRRSetRoutingPolicyWrrPolicyPtrOutput() RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return o.ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o RRSetRoutingPolicyWrrPolicyOutput) ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicy) *RRSetRoutingPolicyWrrPolicy {
-		return &v
-	}).(RRSetRoutingPolicyWrrPolicyPtrOutput)
-}
-func (o RRSetRoutingPolicyWrrPolicyOutput) Items() RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicy) []RRSetRoutingPolicyWrrPolicyWrrPolicyItem { return v.Items }).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput)
-}
-
-func (o RRSetRoutingPolicyWrrPolicyOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicy) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-type RRSetRoutingPolicyWrrPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyWrrPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RRSetRoutingPolicyWrrPolicy)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyWrrPolicyPtrOutput) ToRRSetRoutingPolicyWrrPolicyPtrOutput() RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyPtrOutput) ToRRSetRoutingPolicyWrrPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyPtrOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyPtrOutput) Elem() RRSetRoutingPolicyWrrPolicyOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyWrrPolicy) RRSetRoutingPolicyWrrPolicy { return *v }).(RRSetRoutingPolicyWrrPolicyOutput)
-}
-
-func (o RRSetRoutingPolicyWrrPolicyPtrOutput) Items() RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyWrrPolicy) []RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-		if v == nil {
-			return nil
-		}
-		return v.Items
-	}).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput)
-}
-
-func (o RRSetRoutingPolicyWrrPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyWrrPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItem struct {
-	Kind    *string  `pulumi:"kind"`
-	Rrdatas []string `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above wrr_rrdata.
-	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
-	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be a decimal in the range [0,1].
-	Weight *float64 `pulumi:"weight"`
-}
-
-// RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput is an input type that accepts RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs and RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput` via:
-//
-//          RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs{...}
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput() RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput
-	ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutputWithContext(context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput
-}
-
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs struct {
-	Kind    pulumi.StringPtrInput   `pulumi:"kind"`
-	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
-	// DNSSEC generated signatures for the above wrr_rrdata.
-	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
-	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be a decimal in the range [0,1].
-	Weight pulumi.Float64PtrInput `pulumi:"weight"`
-}
-
-func (RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyWrrPolicyWrrPolicyItem)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput() RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput {
-	return i.ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput)
-}
-
-// RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayInput is an input type that accepts RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray and RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput values.
-// You can construct a concrete instance of `RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayInput` via:
-//
-//          RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray{ RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs{...} }
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayInput interface {
-	pulumi.Input
-
-	ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput() RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput
-	ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutputWithContext(context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput
-}
-
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray []RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput
-
-func (RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RRSetRoutingPolicyWrrPolicyWrrPolicyItem)(nil)).Elem()
-}
-
-func (i RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput() RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput {
-	return i.ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutputWithContext(context.Background())
-}
-
-func (i RRSetRoutingPolicyWrrPolicyWrrPolicyItemArray) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput)
-}
-
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RRSetRoutingPolicyWrrPolicyWrrPolicyItem)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput() RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Rrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
-}
-
-// DNSSEC generated signatures for the above wrr_rrdata.
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) SignatureRrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
-}
-
-// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be a decimal in the range [0,1].
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Weight() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
-}
-
-type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput struct{ *pulumi.OutputState }
-
-func (RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RRSetRoutingPolicyWrrPolicyWrrPolicyItem)(nil)).Elem()
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput() RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput {
-	return o
-}
-
-func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) Index(i pulumi.IntInput) RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-		return vs[0].([]RRSetRoutingPolicyWrrPolicyWrrPolicyItem)[vs[1].(int)]
-	}).(RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput)
-}
-
-// A unit of data that will be returned by the DNS servers.
-type ResourceRecordSet struct {
+// A unit of data that is returned by the DNS servers.
+type ResourceRecordSetType struct {
 	Kind *string `pulumi:"kind"`
 	// For example, www.example.com.
 	Name *string `pulumi:"name"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-	RoutingPolicy *RRSetRoutingPolicy `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -2660,24 +1957,22 @@ type ResourceRecordSet struct {
 	Type *string `pulumi:"type"`
 }
 
-// ResourceRecordSetInput is an input type that accepts ResourceRecordSetArgs and ResourceRecordSetOutput values.
-// You can construct a concrete instance of `ResourceRecordSetInput` via:
+// ResourceRecordSetTypeInput is an input type that accepts ResourceRecordSetTypeArgs and ResourceRecordSetTypeOutput values.
+// You can construct a concrete instance of `ResourceRecordSetTypeInput` via:
 //
-//          ResourceRecordSetArgs{...}
-type ResourceRecordSetInput interface {
+//          ResourceRecordSetTypeArgs{...}
+type ResourceRecordSetTypeInput interface {
 	pulumi.Input
 
-	ToResourceRecordSetOutput() ResourceRecordSetOutput
-	ToResourceRecordSetOutputWithContext(context.Context) ResourceRecordSetOutput
+	ToResourceRecordSetTypeOutput() ResourceRecordSetTypeOutput
+	ToResourceRecordSetTypeOutputWithContext(context.Context) ResourceRecordSetTypeOutput
 }
 
-// A unit of data that will be returned by the DNS servers.
-type ResourceRecordSetArgs struct {
+// A unit of data that is returned by the DNS servers.
+type ResourceRecordSetTypeArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// For example, www.example.com.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-	RoutingPolicy RRSetRoutingPolicyPtrInput `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -2688,110 +1983,105 @@ type ResourceRecordSetArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (ResourceRecordSetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSetType)(nil)).Elem()
 }
 
-func (i ResourceRecordSetArgs) ToResourceRecordSetOutput() ResourceRecordSetOutput {
-	return i.ToResourceRecordSetOutputWithContext(context.Background())
+func (i ResourceRecordSetTypeArgs) ToResourceRecordSetTypeOutput() ResourceRecordSetTypeOutput {
+	return i.ToResourceRecordSetTypeOutputWithContext(context.Background())
 }
 
-func (i ResourceRecordSetArgs) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetOutput)
+func (i ResourceRecordSetTypeArgs) ToResourceRecordSetTypeOutputWithContext(ctx context.Context) ResourceRecordSetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetTypeOutput)
 }
 
-// ResourceRecordSetArrayInput is an input type that accepts ResourceRecordSetArray and ResourceRecordSetArrayOutput values.
-// You can construct a concrete instance of `ResourceRecordSetArrayInput` via:
+// ResourceRecordSetTypeArrayInput is an input type that accepts ResourceRecordSetTypeArray and ResourceRecordSetTypeArrayOutput values.
+// You can construct a concrete instance of `ResourceRecordSetTypeArrayInput` via:
 //
-//          ResourceRecordSetArray{ ResourceRecordSetArgs{...} }
-type ResourceRecordSetArrayInput interface {
+//          ResourceRecordSetTypeArray{ ResourceRecordSetTypeArgs{...} }
+type ResourceRecordSetTypeArrayInput interface {
 	pulumi.Input
 
-	ToResourceRecordSetArrayOutput() ResourceRecordSetArrayOutput
-	ToResourceRecordSetArrayOutputWithContext(context.Context) ResourceRecordSetArrayOutput
+	ToResourceRecordSetTypeArrayOutput() ResourceRecordSetTypeArrayOutput
+	ToResourceRecordSetTypeArrayOutputWithContext(context.Context) ResourceRecordSetTypeArrayOutput
 }
 
-type ResourceRecordSetArray []ResourceRecordSetInput
+type ResourceRecordSetTypeArray []ResourceRecordSetTypeInput
 
-func (ResourceRecordSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordSetType)(nil)).Elem()
 }
 
-func (i ResourceRecordSetArray) ToResourceRecordSetArrayOutput() ResourceRecordSetArrayOutput {
-	return i.ToResourceRecordSetArrayOutputWithContext(context.Background())
+func (i ResourceRecordSetTypeArray) ToResourceRecordSetTypeArrayOutput() ResourceRecordSetTypeArrayOutput {
+	return i.ToResourceRecordSetTypeArrayOutputWithContext(context.Background())
 }
 
-func (i ResourceRecordSetArray) ToResourceRecordSetArrayOutputWithContext(ctx context.Context) ResourceRecordSetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetArrayOutput)
+func (i ResourceRecordSetTypeArray) ToResourceRecordSetTypeArrayOutputWithContext(ctx context.Context) ResourceRecordSetTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetTypeArrayOutput)
 }
 
-// A unit of data that will be returned by the DNS servers.
-type ResourceRecordSetOutput struct{ *pulumi.OutputState }
+// A unit of data that is returned by the DNS servers.
+type ResourceRecordSetTypeOutput struct{ *pulumi.OutputState }
 
-func (ResourceRecordSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSetType)(nil)).Elem()
 }
 
-func (o ResourceRecordSetOutput) ToResourceRecordSetOutput() ResourceRecordSetOutput {
+func (o ResourceRecordSetTypeOutput) ToResourceRecordSetTypeOutput() ResourceRecordSetTypeOutput {
 	return o
 }
 
-func (o ResourceRecordSetOutput) ToResourceRecordSetOutputWithContext(ctx context.Context) ResourceRecordSetOutput {
+func (o ResourceRecordSetTypeOutput) ToResourceRecordSetTypeOutputWithContext(ctx context.Context) ResourceRecordSetTypeOutput {
 	return o
 }
 
-func (o ResourceRecordSetOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o ResourceRecordSetTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // For example, www.example.com.
-func (o ResourceRecordSetOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-func (o ResourceRecordSetOutput) RoutingPolicy() RRSetRoutingPolicyPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *RRSetRoutingPolicy { return v.RoutingPolicy }).(RRSetRoutingPolicyPtrOutput)
+func (o ResourceRecordSetTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
-func (o ResourceRecordSetOutput) Rrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ResourceRecordSet) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+func (o ResourceRecordSetTypeOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
 
 // As defined in RFC 4034 (section 3.2).
-func (o ResourceRecordSetOutput) SignatureRrdatas() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ResourceRecordSet) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
+func (o ResourceRecordSetTypeOutput) SignatureRrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
 }
 
 // Number of seconds that this ResourceRecordSet can be cached by resolvers.
-func (o ResourceRecordSetOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+func (o ResourceRecordSetTypeOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
 // The identifier of a supported record type. See the list of Supported DNS record types.
-func (o ResourceRecordSetOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecordSet) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o ResourceRecordSetTypeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRecordSetType) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type ResourceRecordSetArrayOutput struct{ *pulumi.OutputState }
+type ResourceRecordSetTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (ResourceRecordSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecordSet)(nil)).Elem()
+func (ResourceRecordSetTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordSetType)(nil)).Elem()
 }
 
-func (o ResourceRecordSetArrayOutput) ToResourceRecordSetArrayOutput() ResourceRecordSetArrayOutput {
+func (o ResourceRecordSetTypeArrayOutput) ToResourceRecordSetTypeArrayOutput() ResourceRecordSetTypeArrayOutput {
 	return o
 }
 
-func (o ResourceRecordSetArrayOutput) ToResourceRecordSetArrayOutputWithContext(ctx context.Context) ResourceRecordSetArrayOutput {
+func (o ResourceRecordSetTypeArrayOutput) ToResourceRecordSetTypeArrayOutputWithContext(ctx context.Context) ResourceRecordSetTypeArrayOutput {
 	return o
 }
 
-func (o ResourceRecordSetArrayOutput) Index(i pulumi.IntInput) ResourceRecordSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordSet {
-		return vs[0].([]ResourceRecordSet)[vs[1].(int)]
-	}).(ResourceRecordSetOutput)
+func (o ResourceRecordSetTypeArrayOutput) Index(i pulumi.IntInput) ResourceRecordSetTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordSetType {
+		return vs[0].([]ResourceRecordSetType)[vs[1].(int)]
+	}).(ResourceRecordSetTypeOutput)
 }
 
 func init() {
@@ -2823,16 +2113,6 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyPtrOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyPtrOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyWrrPolicyOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyWrrPolicyPtrOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput{})
-	pulumi.RegisterOutputType(RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput{})
-	pulumi.RegisterOutputType(ResourceRecordSetOutput{})
-	pulumi.RegisterOutputType(ResourceRecordSetArrayOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetTypeOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetTypeArrayOutput{})
 }

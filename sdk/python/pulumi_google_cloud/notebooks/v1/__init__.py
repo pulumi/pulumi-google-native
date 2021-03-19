@@ -4,8 +4,10 @@
 
 # Export this package's modules as members:
 from .environment import *
+from .execution import *
 from .instance import *
 from .policy import *
+from .schedule import *
 from ._inputs import *
 
 def _register_module():
@@ -22,10 +24,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:notebooks/v1:Environment":
                 return Environment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:notebooks/v1:Execution":
+                return Execution(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:notebooks/v1:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:notebooks/v1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:notebooks/v1:Schedule":
+                return Schedule(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

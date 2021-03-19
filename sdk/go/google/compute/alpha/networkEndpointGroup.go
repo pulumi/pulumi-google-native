@@ -26,6 +26,9 @@ func NewNetworkEndpointGroup(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
+	}
 	var resource NetworkEndpointGroup
 	err := ctx.RegisterResource("google-cloud:compute/alpha:NetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -86,6 +89,8 @@ type networkEndpointGroupArgs struct {
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// Project ID for this request.
 	Project string `pulumi:"project"`
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService *string `pulumi:"pscTargetService"`
 	// [Output Only] The URL of the region where the network endpoint group is located.
 	Region *string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -98,6 +103,8 @@ type networkEndpointGroupArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	ServerlessDeployment *NetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size *int `pulumi:"size"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -105,7 +112,7 @@ type networkEndpointGroupArgs struct {
 	// Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
 	Type *string `pulumi:"type"`
 	// [Output Only] The URL of the zone where the network endpoint group is located.
-	Zone *string `pulumi:"zone"`
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NetworkEndpointGroup resource.
@@ -138,6 +145,8 @@ type NetworkEndpointGroupArgs struct {
 	NetworkEndpointType pulumi.StringPtrInput
 	// Project ID for this request.
 	Project pulumi.StringInput
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService pulumi.StringPtrInput
 	// [Output Only] The URL of the region where the network endpoint group is located.
 	Region pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -150,6 +159,8 @@ type NetworkEndpointGroupArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
+	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+	ServerlessDeployment NetworkEndpointGroupServerlessDeploymentPtrInput
 	// [Output only] Number of network endpoints in the network endpoint group.
 	Size pulumi.IntPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -157,7 +168,7 @@ type NetworkEndpointGroupArgs struct {
 	// Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
 	Type pulumi.StringPtrInput
 	// [Output Only] The URL of the zone where the network endpoint group is located.
-	Zone pulumi.StringPtrInput
+	Zone pulumi.StringInput
 }
 
 func (NetworkEndpointGroupArgs) ElementType() reflect.Type {

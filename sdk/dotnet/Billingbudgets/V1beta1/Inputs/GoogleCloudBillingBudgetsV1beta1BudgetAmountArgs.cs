@@ -16,13 +16,13 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1beta1.Inputs
     public sealed class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use the last period's actual spend as the budget for the present period.
+        /// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
         /// </summary>
         [Input("lastPeriodAmount")]
         public Input<Inputs.GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs>? LastPeriodAmount { get; set; }
 
         /// <summary>
-        /// A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+        /// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
         /// </summary>
         [Input("specifiedAmount")]
         public Input<Inputs.GoogleTypeMoneyArgs>? SpecifiedAmount { get; set; }

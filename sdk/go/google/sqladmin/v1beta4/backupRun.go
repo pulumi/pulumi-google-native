@@ -91,7 +91,7 @@ type backupRunArgs struct {
 	StartTime *string `pulumi:"startTime"`
 	// The status of this run.
 	Status *string `pulumi:"status"`
-	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type *string `pulumi:"type"`
 	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	WindowStartTime *string `pulumi:"windowStartTime"`
@@ -129,7 +129,7 @@ type BackupRunArgs struct {
 	StartTime pulumi.StringPtrInput
 	// The status of this run.
 	Status pulumi.StringPtrInput
-	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type pulumi.StringPtrInput
 	// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
 	WindowStartTime pulumi.StringPtrInput

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Beta
 {
     /// <summary>
-    /// Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+    /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/beta:BackendService")]
     public partial class BackendService : Pulumi.CustomResource
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         }
 
         /// <summary>
-        /// Cloud CDN configuration for this BackendService. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        /// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
         /// </summary>
         [Input("cdnPolicy")]
         public Input<Inputs.BackendServiceCdnPolicyArgs>? CdnPolicy { get; set; }
@@ -236,6 +236,14 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<Inputs.BackendServiceLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
+        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+        /// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("maxStreamDuration")]
+        public Input<Inputs.DurationArgs>? MaxStreamDuration { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
@@ -262,7 +270,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
         /// 
-        /// This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+        /// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -296,8 +304,8 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -343,8 +351,11 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
+        [Input("subsetting")]
+        public Input<Inputs.SubsettingArgs>? Subsetting { get; set; }
+
         /// <summary>
-        /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds.
+        /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }

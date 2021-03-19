@@ -44,8 +44,9 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
      */
     constructor(name: string, args: IdentityAwareProxyClientArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -54,12 +55,8 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
             inputs["secret"] = args ? args.secret : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IdentityAwareProxyClient.__pulumiType, name, inputs, opts);
     }

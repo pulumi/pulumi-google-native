@@ -22,7 +22,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1.Inputs
         public Input<bool>? AllowNullHeader { get; set; }
 
         /// <summary>
-        /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator.
+        /// Schemas used to parse messages in this store, if schematized parsing is desired.
+        /// </summary>
+        [Input("schema")]
+        public Input<Inputs.SchemaPackageArgs>? Schema { get; set; }
+
+        /// <summary>
+        /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
         /// </summary>
         [Input("segmentTerminator")]
         public Input<string>? SegmentTerminator { get; set; }

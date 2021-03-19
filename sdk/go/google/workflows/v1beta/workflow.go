@@ -74,7 +74,7 @@ type workflowArgs struct {
 	RevisionId *string `pulumi:"revisionId"`
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
 	// Output only. State of the workflow deployment.
 	State *string `pulumi:"state"`
@@ -102,7 +102,7 @@ type WorkflowArgs struct {
 	RevisionId pulumi.StringPtrInput
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
 	// Output only. State of the workflow deployment.
 	State pulumi.StringPtrInput

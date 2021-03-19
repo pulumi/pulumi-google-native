@@ -45,8 +45,9 @@ export class GooglePrivacyDlpV2JobTrigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: GooglePrivacyDlpV2JobTriggerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["jobTrigger"] = args ? args.jobTrigger : undefined;
@@ -55,12 +56,8 @@ export class GooglePrivacyDlpV2JobTrigger extends pulumi.CustomResource {
             inputs["triggerId"] = args ? args.triggerId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GooglePrivacyDlpV2JobTrigger.__pulumiType, name, inputs, opts);
     }

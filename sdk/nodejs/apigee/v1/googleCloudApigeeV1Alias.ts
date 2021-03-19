@@ -44,8 +44,9 @@ export class GoogleCloudApigeeV1Alias extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudApigeeV1AliasArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["_password"] = args ? args._password : undefined;
@@ -59,12 +60,8 @@ export class GoogleCloudApigeeV1Alias extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1Alias.__pulumiType, name, inputs, opts);
     }

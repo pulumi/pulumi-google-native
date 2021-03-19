@@ -504,7 +504,7 @@ type AnimationFade struct {
 	FadeType *string `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
-	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 	Xy *NormalizedCoordinate `pulumi:"xy"`
 }
 
@@ -527,7 +527,7 @@ type AnimationFadeArgs struct {
 	FadeType pulumi.StringPtrInput `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
-	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 	Xy NormalizedCoordinatePtrInput `pulumi:"xy"`
 }
 
@@ -624,7 +624,7 @@ func (o AnimationFadeOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnimationFade) *string { return v.StartTimeOffset }).(pulumi.StringPtrOutput)
 }
 
-// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 func (o AnimationFadeOutput) Xy() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v AnimationFade) *NormalizedCoordinate { return v.Xy }).(NormalizedCoordinatePtrOutput)
 }
@@ -677,7 +677,7 @@ func (o AnimationFadePtrOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 func (o AnimationFadePtrOutput) Xy() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v *AnimationFade) *NormalizedCoordinate {
 		if v == nil {
@@ -691,7 +691,7 @@ func (o AnimationFadePtrOutput) Xy() NormalizedCoordinatePtrOutput {
 type AnimationStatic struct {
 	// The time to start displaying the overlay object, in seconds. Default: 0
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
-	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 	Xy *NormalizedCoordinate `pulumi:"xy"`
 }
 
@@ -710,7 +710,7 @@ type AnimationStaticInput interface {
 type AnimationStaticArgs struct {
 	// The time to start displaying the overlay object, in seconds. Default: 0
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
-	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 	Xy NormalizedCoordinatePtrInput `pulumi:"xy"`
 }
 
@@ -797,7 +797,7 @@ func (o AnimationStaticOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnimationStatic) *string { return v.StartTimeOffset }).(pulumi.StringPtrOutput)
 }
 
-// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 func (o AnimationStaticOutput) Xy() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v AnimationStatic) *NormalizedCoordinate { return v.Xy }).(NormalizedCoordinatePtrOutput)
 }
@@ -830,7 +830,7 @@ func (o AnimationStaticPtrOutput) StartTimeOffset() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
 func (o AnimationStaticPtrOutput) Xy() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v *AnimationStatic) *NormalizedCoordinate {
 		if v == nil {
@@ -846,7 +846,7 @@ type Audio struct {
 	HighBoost *bool `pulumi:"highBoost"`
 	// Enable boosting low frequency components. The default is `false`.
 	LowBoost *bool `pulumi:"lowBoost"`
-	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo, and 0 disables normalization. The default is 0.
+	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 	Lufs *float64 `pulumi:"lufs"`
 }
 
@@ -867,7 +867,7 @@ type AudioArgs struct {
 	HighBoost pulumi.BoolPtrInput `pulumi:"highBoost"`
 	// Enable boosting low frequency components. The default is `false`.
 	LowBoost pulumi.BoolPtrInput `pulumi:"lowBoost"`
-	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo, and 0 disables normalization. The default is 0.
+	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 	Lufs pulumi.Float64PtrInput `pulumi:"lufs"`
 }
 
@@ -959,7 +959,7 @@ func (o AudioOutput) LowBoost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Audio) *bool { return v.LowBoost }).(pulumi.BoolPtrOutput)
 }
 
-// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo, and 0 disables normalization. The default is 0.
+// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 func (o AudioOutput) Lufs() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Audio) *float64 { return v.Lufs }).(pulumi.Float64PtrOutput)
 }
@@ -1002,7 +1002,7 @@ func (o AudioPtrOutput) LowBoost() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo, and 0 disables normalization. The default is 0.
+// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 func (o AudioPtrOutput) Lufs() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Audio) *float64 {
 		if v == nil {
@@ -2812,11 +2812,11 @@ func (o FailureDetailArrayOutput) Index(i pulumi.IntInput) FailureDetailOutput {
 
 // Overlaid jpeg image.
 type Image struct {
-	// Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+	// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
 	Alpha *float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution *NormalizedCoordinate `pulumi:"resolution"`
-	// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+	// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -2833,11 +2833,11 @@ type ImageInput interface {
 
 // Overlaid jpeg image.
 type ImageArgs struct {
-	// Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+	// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
 	Alpha pulumi.Float64PtrInput `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinatePtrInput `pulumi:"resolution"`
-	// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+	// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -2919,7 +2919,7 @@ func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOu
 	}).(ImagePtrOutput)
 }
 
-// Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
 func (o ImageOutput) Alpha() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Image) *float64 { return v.Alpha }).(pulumi.Float64PtrOutput)
 }
@@ -2929,7 +2929,7 @@ func (o ImageOutput) Resolution() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v Image) *NormalizedCoordinate { return v.Resolution }).(NormalizedCoordinatePtrOutput)
 }
 
-// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 func (o ImageOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Image) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -2952,7 +2952,7 @@ func (o ImagePtrOutput) Elem() ImageOutput {
 	return o.ApplyT(func(v *Image) Image { return *v }).(ImageOutput)
 }
 
-// Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
 func (o ImagePtrOutput) Alpha() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Image) *float64 {
 		if v == nil {
@@ -2972,7 +2972,7 @@ func (o ImagePtrOutput) Resolution() NormalizedCoordinatePtrOutput {
 	}).(NormalizedCoordinatePtrOutput)
 }
 
-// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 func (o ImagePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) *string {
 		if v == nil {
@@ -2988,7 +2988,7 @@ type Input struct {
 	Key *string `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig *PreprocessingConfig `pulumi:"preprocessingConfig"`
-	// URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/inputs/file.mp4`. If empty the value will be populated from `Job.input_uri`.
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -3009,7 +3009,7 @@ type InputArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig PreprocessingConfigPtrInput `pulumi:"preprocessingConfig"`
-	// URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/inputs/file.mp4`. If empty the value will be populated from `Job.input_uri`.
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -3075,7 +3075,7 @@ func (o InputOutput) PreprocessingConfig() PreprocessingConfigPtrOutput {
 	return o.ApplyT(func(v Input) *PreprocessingConfig { return v.PreprocessingConfig }).(PreprocessingConfigPtrOutput)
 }
 
-// URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/inputs/file.mp4`. If empty the value will be populated from `Job.input_uri`.
+// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
 func (o InputOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Input) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -4370,6 +4370,197 @@ func (o OverlayArrayOutput) Index(i pulumi.IntInput) OverlayOutput {
 	}).(OverlayOutput)
 }
 
+// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
+type Pad struct {
+	// The number of pixels to add to the bottom. The default is 0.
+	BottomPixels *int `pulumi:"bottomPixels"`
+	// The number of pixels to add to the left. The default is 0.
+	LeftPixels *int `pulumi:"leftPixels"`
+	// The number of pixels to add to the right. The default is 0.
+	RightPixels *int `pulumi:"rightPixels"`
+	// The number of pixels to add to the top. The default is 0.
+	TopPixels *int `pulumi:"topPixels"`
+}
+
+// PadInput is an input type that accepts PadArgs and PadOutput values.
+// You can construct a concrete instance of `PadInput` via:
+//
+//          PadArgs{...}
+type PadInput interface {
+	pulumi.Input
+
+	ToPadOutput() PadOutput
+	ToPadOutputWithContext(context.Context) PadOutput
+}
+
+// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
+type PadArgs struct {
+	// The number of pixels to add to the bottom. The default is 0.
+	BottomPixels pulumi.IntPtrInput `pulumi:"bottomPixels"`
+	// The number of pixels to add to the left. The default is 0.
+	LeftPixels pulumi.IntPtrInput `pulumi:"leftPixels"`
+	// The number of pixels to add to the right. The default is 0.
+	RightPixels pulumi.IntPtrInput `pulumi:"rightPixels"`
+	// The number of pixels to add to the top. The default is 0.
+	TopPixels pulumi.IntPtrInput `pulumi:"topPixels"`
+}
+
+func (PadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pad)(nil)).Elem()
+}
+
+func (i PadArgs) ToPadOutput() PadOutput {
+	return i.ToPadOutputWithContext(context.Background())
+}
+
+func (i PadArgs) ToPadOutputWithContext(ctx context.Context) PadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PadOutput)
+}
+
+func (i PadArgs) ToPadPtrOutput() PadPtrOutput {
+	return i.ToPadPtrOutputWithContext(context.Background())
+}
+
+func (i PadArgs) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PadOutput).ToPadPtrOutputWithContext(ctx)
+}
+
+// PadPtrInput is an input type that accepts PadArgs, PadPtr and PadPtrOutput values.
+// You can construct a concrete instance of `PadPtrInput` via:
+//
+//          PadArgs{...}
+//
+//  or:
+//
+//          nil
+type PadPtrInput interface {
+	pulumi.Input
+
+	ToPadPtrOutput() PadPtrOutput
+	ToPadPtrOutputWithContext(context.Context) PadPtrOutput
+}
+
+type padPtrType PadArgs
+
+func PadPtr(v *PadArgs) PadPtrInput {
+	return (*padPtrType)(v)
+}
+
+func (*padPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pad)(nil)).Elem()
+}
+
+func (i *padPtrType) ToPadPtrOutput() PadPtrOutput {
+	return i.ToPadPtrOutputWithContext(context.Background())
+}
+
+func (i *padPtrType) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PadPtrOutput)
+}
+
+// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
+type PadOutput struct{ *pulumi.OutputState }
+
+func (PadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pad)(nil)).Elem()
+}
+
+func (o PadOutput) ToPadOutput() PadOutput {
+	return o
+}
+
+func (o PadOutput) ToPadOutputWithContext(ctx context.Context) PadOutput {
+	return o
+}
+
+func (o PadOutput) ToPadPtrOutput() PadPtrOutput {
+	return o.ToPadPtrOutputWithContext(context.Background())
+}
+
+func (o PadOutput) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
+	return o.ApplyT(func(v Pad) *Pad {
+		return &v
+	}).(PadPtrOutput)
+}
+
+// The number of pixels to add to the bottom. The default is 0.
+func (o PadOutput) BottomPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Pad) *int { return v.BottomPixels }).(pulumi.IntPtrOutput)
+}
+
+// The number of pixels to add to the left. The default is 0.
+func (o PadOutput) LeftPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Pad) *int { return v.LeftPixels }).(pulumi.IntPtrOutput)
+}
+
+// The number of pixels to add to the right. The default is 0.
+func (o PadOutput) RightPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Pad) *int { return v.RightPixels }).(pulumi.IntPtrOutput)
+}
+
+// The number of pixels to add to the top. The default is 0.
+func (o PadOutput) TopPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Pad) *int { return v.TopPixels }).(pulumi.IntPtrOutput)
+}
+
+type PadPtrOutput struct{ *pulumi.OutputState }
+
+func (PadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pad)(nil)).Elem()
+}
+
+func (o PadPtrOutput) ToPadPtrOutput() PadPtrOutput {
+	return o
+}
+
+func (o PadPtrOutput) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
+	return o
+}
+
+func (o PadPtrOutput) Elem() PadOutput {
+	return o.ApplyT(func(v *Pad) Pad { return *v }).(PadOutput)
+}
+
+// The number of pixels to add to the bottom. The default is 0.
+func (o PadPtrOutput) BottomPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Pad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BottomPixels
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of pixels to add to the left. The default is 0.
+func (o PadPtrOutput) LeftPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Pad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LeftPixels
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of pixels to add to the right. The default is 0.
+func (o PadPtrOutput) RightPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Pad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RightPixels
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of pixels to add to the top. The default is 0.
+func (o PadPtrOutput) TopPixels() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Pad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopPixels
+	}).(pulumi.IntPtrOutput)
+}
+
 // Preprocessing configurations.
 type PreprocessingConfig struct {
 	// Audio preprocessing configuration.
@@ -4382,6 +4573,8 @@ type PreprocessingConfig struct {
 	Deblock *Deblock `pulumi:"deblock"`
 	// Denoise preprocessing configuration.
 	Denoise *Denoise `pulumi:"denoise"`
+	// Specify the video pad filter configuration.
+	Pad *Pad `pulumi:"pad"`
 }
 
 // PreprocessingConfigInput is an input type that accepts PreprocessingConfigArgs and PreprocessingConfigOutput values.
@@ -4407,6 +4600,8 @@ type PreprocessingConfigArgs struct {
 	Deblock DeblockPtrInput `pulumi:"deblock"`
 	// Denoise preprocessing configuration.
 	Denoise DenoisePtrInput `pulumi:"denoise"`
+	// Specify the video pad filter configuration.
+	Pad PadPtrInput `pulumi:"pad"`
 }
 
 func (PreprocessingConfigArgs) ElementType() reflect.Type {
@@ -4512,6 +4707,11 @@ func (o PreprocessingConfigOutput) Denoise() DenoisePtrOutput {
 	return o.ApplyT(func(v PreprocessingConfig) *Denoise { return v.Denoise }).(DenoisePtrOutput)
 }
 
+// Specify the video pad filter configuration.
+func (o PreprocessingConfigOutput) Pad() PadPtrOutput {
+	return o.ApplyT(func(v PreprocessingConfig) *Pad { return v.Pad }).(PadPtrOutput)
+}
+
 type PreprocessingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PreprocessingConfigPtrOutput) ElementType() reflect.Type {
@@ -4578,6 +4778,16 @@ func (o PreprocessingConfigPtrOutput) Denoise() DenoisePtrOutput {
 		}
 		return v.Denoise
 	}).(DenoisePtrOutput)
+}
+
+// Specify the video pad filter configuration.
+func (o PreprocessingConfigPtrOutput) Pad() PadPtrOutput {
+	return o.ApplyT(func(v *PreprocessingConfig) *Pad {
+		if v == nil {
+			return nil
+		}
+		return v.Pad
+	}).(PadPtrOutput)
 }
 
 // Estimated fractional progress for each step, from `0` to `1`.
@@ -5043,7 +5253,7 @@ func (o SampleAesEncryptionPtrOutput) KeyUri() pulumi.StringPtrOutput {
 type SegmentSettings struct {
 	// Required. Create an individual segment file. The default is `false`.
 	IndividualSegments *bool `pulumi:"individualSegments"`
-	// Duration of the segments in seconds. The default is `"6.0s"`.
+	// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration *string `pulumi:"segmentDuration"`
 }
 
@@ -5062,7 +5272,7 @@ type SegmentSettingsInput interface {
 type SegmentSettingsArgs struct {
 	// Required. Create an individual segment file. The default is `false`.
 	IndividualSegments pulumi.BoolPtrInput `pulumi:"individualSegments"`
-	// Duration of the segments in seconds. The default is `"6.0s"`.
+	// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration pulumi.StringPtrInput `pulumi:"segmentDuration"`
 }
 
@@ -5149,7 +5359,7 @@ func (o SegmentSettingsOutput) IndividualSegments() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SegmentSettings) *bool { return v.IndividualSegments }).(pulumi.BoolPtrOutput)
 }
 
-// Duration of the segments in seconds. The default is `"6.0s"`.
+// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 func (o SegmentSettingsOutput) SegmentDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SegmentSettings) *string { return v.SegmentDuration }).(pulumi.StringPtrOutput)
 }
@@ -5182,7 +5392,7 @@ func (o SegmentSettingsPtrOutput) IndividualSegments() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Duration of the segments in seconds. The default is `"6.0s"`.
+// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 func (o SegmentSettingsPtrOutput) SegmentDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SegmentSettings) *string {
 		if v == nil {
@@ -5204,6 +5414,8 @@ type SpriteSheet struct {
 	Format *string `pulumi:"format"`
 	// Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
 	Interval *string `pulumi:"interval"`
+	// The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
+	Quality *int `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount *int `pulumi:"rowCount"`
 	// Required. The height of sprite in pixels. Must be an even integer.
@@ -5239,6 +5451,8 @@ type SpriteSheetArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
 	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
+	Quality pulumi.IntPtrInput `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount pulumi.IntPtrInput `pulumi:"rowCount"`
 	// Required. The height of sprite in pixels. Must be an even integer.
@@ -5326,6 +5540,11 @@ func (o SpriteSheetOutput) Format() pulumi.StringPtrOutput {
 // Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
 func (o SpriteSheetOutput) Interval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
+func (o SpriteSheetOutput) Quality() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpriteSheet) *int { return v.Quality }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
@@ -5783,9 +6002,9 @@ type VideoStream struct {
 	EnableTwoPass *bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
 	EntropyCoder *string `pulumi:"entropyCoder"`
-	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
+	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ```| | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |```
 	FrameRate *float64 `pulumi:"frameRate"`
-	// Select the GOP size based on the specified duration. The default is `"3s"`.
+	// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
@@ -5840,9 +6059,9 @@ type VideoStreamArgs struct {
 	EnableTwoPass pulumi.BoolPtrInput `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
 	EntropyCoder pulumi.StringPtrInput `pulumi:"entropyCoder"`
-	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
+	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ```| | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |```
 	FrameRate pulumi.Float64PtrInput `pulumi:"frameRate"`
-	// Select the GOP size based on the specified duration. The default is `"3s"`.
+	// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
@@ -5989,12 +6208,12 @@ func (o VideoStreamOutput) EntropyCoder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VideoStream) *string { return v.EntropyCoder }).(pulumi.StringPtrOutput)
 }
 
-// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
+// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ```| | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |```
 func (o VideoStreamOutput) FrameRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VideoStream) *float64 { return v.FrameRate }).(pulumi.Float64PtrOutput)
 }
 
-// Select the GOP size based on the specified duration. The default is `"3s"`.
+// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 func (o VideoStreamOutput) GopDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VideoStream) *string { return v.GopDuration }).(pulumi.StringPtrOutput)
 }
@@ -6157,7 +6376,7 @@ func (o VideoStreamPtrOutput) EntropyCoder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
+// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ```| | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |```
 func (o VideoStreamPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VideoStream) *float64 {
 		if v == nil {
@@ -6167,7 +6386,7 @@ func (o VideoStreamPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Select the GOP size based on the specified duration. The default is `"3s"`.
+// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 func (o VideoStreamPtrOutput) GopDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VideoStream) *string {
 		if v == nil {
@@ -6336,6 +6555,8 @@ func init() {
 	pulumi.RegisterOutputType(OutputPtrOutput{})
 	pulumi.RegisterOutputType(OverlayOutput{})
 	pulumi.RegisterOutputType(OverlayArrayOutput{})
+	pulumi.RegisterOutputType(PadOutput{})
+	pulumi.RegisterOutputType(PadPtrOutput{})
 	pulumi.RegisterOutputType(PreprocessingConfigOutput{})
 	pulumi.RegisterOutputType(PreprocessingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProgressOutput{})

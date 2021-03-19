@@ -45,8 +45,9 @@ export class CreateCollectdTimeSeriesResponse extends pulumi.CustomResource {
      */
     constructor(name: string, args: CreateCollectdTimeSeriesResponseArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["collectdPayloads"] = args ? args.collectdPayloads : undefined;
@@ -55,12 +56,8 @@ export class CreateCollectdTimeSeriesResponse extends pulumi.CustomResource {
             inputs["resource"] = args ? args.resource : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CreateCollectdTimeSeriesResponse.__pulumiType, name, inputs, opts);
     }

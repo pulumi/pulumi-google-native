@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1.Inputs
         public Input<string>? PubsubTopic { get; set; }
 
         /// <summary>
-        /// Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+        /// Optional. Required when NotificationsRule.pubsub_topic is set. The schema version of the notification sent to NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
         /// </summary>
         [Input("schemaVersion")]
         public Input<string>? SchemaVersion { get; set; }

@@ -12,9 +12,11 @@ __all__ = [
     'GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs',
     'GoogleCloudBillingBudgetsV1beta1BudgetArgs',
     'GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs',
+    'GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs',
     'GoogleCloudBillingBudgetsV1beta1FilterArgs',
     'GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs',
     'GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs',
+    'GoogleTypeDateArgs',
     'GoogleTypeMoneyArgs',
 ]
 
@@ -29,8 +31,8 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs:
         AllUpdatesRule defines notifications that are sent based on budget spend and thresholds.
         :param pulumi.Input[bool] disable_default_iam_recipients: Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitoring_notification_channels: Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details.
-        :param pulumi.Input[str] pubsub_topic: Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details on Pub/Sub roles and permissions.
-        :param pulumi.Input[str] schema_version: Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+        :param pulumi.Input[str] pubsub_topic: Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
+        :param pulumi.Input[str] schema_version: Optional. Required when AllUpdatesRule.pubsub_topic is set. The schema version of the notification sent to AllUpdatesRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
         """
         if disable_default_iam_recipients is not None:
             pulumi.set(__self__, "disable_default_iam_recipients", disable_default_iam_recipients)
@@ -69,7 +71,7 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs:
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details on Pub/Sub roles and permissions.
+        Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -81,7 +83,7 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs:
     @pulumi.getter(name="schemaVersion")
     def schema_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+        Optional. Required when AllUpdatesRule.pubsub_topic is set. The schema version of the notification sent to AllUpdatesRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
         """
         return pulumi.get(self, "schema_version")
 
@@ -101,7 +103,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]] = None):
         """
-        A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). Currently all plans are monthly budgets so the usage period(s) tracked are implied (calendar months of usage back-to-back).
+        A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time period is configurable, with options such as month (default), quarter, year, or custom time period.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs'] all_updates_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs'] amount: Required. Budgeted amount.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
@@ -217,8 +219,8 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs:
                  specified_amount: Optional[pulumi.Input['GoogleTypeMoneyArgs']] = None):
         """
         The budgeted amount for each usage period.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs'] last_period_amount: Use the last period's actual spend as the budget for the present period.
-        :param pulumi.Input['GoogleTypeMoneyArgs'] specified_amount: A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs'] last_period_amount: Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
+        :param pulumi.Input['GoogleTypeMoneyArgs'] specified_amount: A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
         """
         if last_period_amount is not None:
             pulumi.set(__self__, "last_period_amount", last_period_amount)
@@ -229,7 +231,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs:
     @pulumi.getter(name="lastPeriodAmount")
     def last_period_amount(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs']]:
         """
-        Use the last period's actual spend as the budget for the present period.
+        Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
         """
         return pulumi.get(self, "last_period_amount")
 
@@ -241,7 +243,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs:
     @pulumi.getter(name="specifiedAmount")
     def specified_amount(self) -> Optional[pulumi.Input['GoogleTypeMoneyArgs']]:
         """
-        A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+        A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
         """
         return pulumi.get(self, "specified_amount")
 
@@ -251,27 +253,75 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs:
 
 
 @pulumi.input_type
+class GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs:
+    def __init__(__self__, *,
+                 end_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None,
+                 start_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None):
+        """
+        All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+        :param pulumi.Input['GoogleTypeDateArgs'] end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
+        :param pulumi.Input['GoogleTypeDateArgs'] start_date: Required. The start date must be after January 1, 2017.
+        """
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input['GoogleTypeDateArgs']]:
+        """
+        Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input['GoogleTypeDateArgs']]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input['GoogleTypeDateArgs']]:
+        """
+        Required. The start date must be after January 1, 2017.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input['GoogleTypeDateArgs']]):
+        pulumi.set(self, "start_date", value)
+
+
+@pulumi.input_type
 class GoogleCloudBillingBudgetsV1beta1FilterArgs:
     def __init__(__self__, *,
+                 calendar_period: Optional[pulumi.Input[str]] = None,
                  credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  credit_types_treatment: Optional[pulumi.Input[str]] = None,
+                 custom_period: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A filter for a budget, limiting the scope of the cost to calculate.
+        :param pulumi.Input[str] calendar_period: Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
         :param pulumi.Input[str] credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs'] custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subaccounts: Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist.
         """
+        if calendar_period is not None:
+            pulumi.set(__self__, "calendar_period", calendar_period)
         if credit_types is not None:
             pulumi.set(__self__, "credit_types", credit_types)
         if credit_types_treatment is not None:
             pulumi.set(__self__, "credit_types_treatment", credit_types_treatment)
+        if custom_period is not None:
+            pulumi.set(__self__, "custom_period", custom_period)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if projects is not None:
@@ -280,6 +330,18 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
             pulumi.set(__self__, "services", services)
         if subaccounts is not None:
             pulumi.set(__self__, "subaccounts", subaccounts)
+
+    @property
+    @pulumi.getter(name="calendarPeriod")
+    def calendar_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+        """
+        return pulumi.get(self, "calendar_period")
+
+    @calendar_period.setter
+    def calendar_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "calendar_period", value)
 
     @property
     @pulumi.getter(name="creditTypes")
@@ -304,6 +366,18 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
     @credit_types_treatment.setter
     def credit_types_treatment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "credit_types_treatment", value)
+
+    @property
+    @pulumi.getter(name="customPeriod")
+    def custom_period(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs']]:
+        """
+        Optional. Specifies to track usage from any start date (required) to any end date (optional).
+        """
+        return pulumi.get(self, "custom_period")
+
+    @custom_period.setter
+    def custom_period(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs']]):
+        pulumi.set(self, "custom_period", value)
 
     @property
     @pulumi.getter
@@ -401,6 +475,62 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs:
     @threshold_percent.setter
     def threshold_percent(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "threshold_percent", value)
+
+
+@pulumi.input_type
+class GoogleTypeDateArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[int]] = None,
+                 month: Optional[pulumi.Input[int]] = None,
+                 year: Optional[pulumi.Input[int]] = None):
+        """
+        Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[int]]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[pulumi.Input[int]]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[pulumi.Input[int]]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "year", value)
 
 
 @pulumi.input_type

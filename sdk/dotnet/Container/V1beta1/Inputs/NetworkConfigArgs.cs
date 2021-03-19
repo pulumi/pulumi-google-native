@@ -34,6 +34,12 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Inputs
         public Input<bool>? EnableIntraNodeVisibility { get; set; }
 
         /// <summary>
+        /// Whether L4ILB Subsetting is enabled for this cluster.
+        /// </summary>
+        [Input("enableL4ilbSubsetting")]
+        public Input<bool>? EnableL4ilbSubsetting { get; set; }
+
+        /// <summary>
         /// Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
         [Input("network")]

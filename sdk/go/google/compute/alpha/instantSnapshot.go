@@ -91,14 +91,19 @@ type instantSnapshotArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource's resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk
 	// - projects/project/zones/zone/disks/disk
+	// - projects/project/regions/region/disks/disk
 	// - zones/zone/disks/disk
+	// - regions/region/disks/disk
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// [Output Only] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId *string `pulumi:"sourceDiskId"`
@@ -140,14 +145,19 @@ type InstantSnapshotArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource's resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+	// - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk
 	// - projects/project/zones/zone/disks/disk
+	// - projects/project/regions/region/disks/disk
 	// - zones/zone/disks/disk
+	// - regions/region/disks/disk
 	SourceDisk pulumi.StringPtrInput
 	// [Output Only] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringPtrInput

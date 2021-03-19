@@ -45,8 +45,9 @@ export class ImportJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImportJobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;
@@ -63,12 +64,8 @@ export class ImportJob extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImportJob.__pulumiType, name, inputs, opts);
     }

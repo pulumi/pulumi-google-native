@@ -29,19 +29,19 @@ class ConsentArtifact(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Consent artifact in the parent Consent store.
+        Creates a new Consent artifact in the parent consent store.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]] consent_content_screenshots: Screenshots of the consent content.
-        :param pulumi.Input[str] consent_content_version: An string indicating the version of the consent content.
-        :param pulumi.Input[pulumi.InputType['SignatureArgs']] guardian_signature: A signature from guardian.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the consent artifact. For example, the consent locale or user agent version.
-        :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-        :param pulumi.Input[str] parent: Required. The name of the Consent store this consent artifact belongs to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]] consent_content_screenshots: Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
+        :param pulumi.Input[str] consent_content_version: Optional. An string indicating the version of the consent information shown to the user.
+        :param pulumi.Input[pulumi.InputType['SignatureArgs']] guardian_signature: Optional. A signature from a guardian.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+        :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+        :param pulumi.Input[str] parent: Required. The name of the consent store this Consent artifact belongs to.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
-        :param pulumi.Input[pulumi.InputType['SignatureArgs']] user_signature: User's signature.
-        :param pulumi.Input[pulumi.InputType['SignatureArgs']] witness_signature: A signature from a witness.
+        :param pulumi.Input[pulumi.InputType['SignatureArgs']] user_signature: Optional. User's signature.
+        :param pulumi.Input[pulumi.InputType['SignatureArgs']] witness_signature: Optional. A signature from a witness.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

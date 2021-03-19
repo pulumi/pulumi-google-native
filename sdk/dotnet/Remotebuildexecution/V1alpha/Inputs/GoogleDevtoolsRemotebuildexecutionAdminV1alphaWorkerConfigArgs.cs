@@ -46,7 +46,7 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha.Inputs
         }
 
         /// <summary>
-        /// Required. Machine type of the worker, such as `n1-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+        /// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

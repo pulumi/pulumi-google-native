@@ -45,11 +45,12 @@ export class Commitment extends pulumi.CustomResource {
      */
     constructor(name: string, args: CommitmentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["category"] = args ? args.category : undefined;
@@ -72,12 +73,8 @@ export class Commitment extends pulumi.CustomResource {
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Commitment.__pulumiType, name, inputs, opts);
     }

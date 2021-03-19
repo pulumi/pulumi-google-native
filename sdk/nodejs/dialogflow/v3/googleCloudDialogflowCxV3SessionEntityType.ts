@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a session entity type. If the specified session entity type already exists, overrides the session entity type.
+ * Creates a session entity type.
  */
 export class GoogleCloudDialogflowCxV3SessionEntityType extends pulumi.CustomResource {
     /**
@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowCxV3SessionEntityType extends pulumi.CustomRes
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3SessionEntityTypeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["entities"] = args ? args.entities : undefined;
@@ -55,12 +56,8 @@ export class GoogleCloudDialogflowCxV3SessionEntityType extends pulumi.CustomRes
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3SessionEntityType.__pulumiType, name, inputs, opts);
     }

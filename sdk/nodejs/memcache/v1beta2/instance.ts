@@ -45,8 +45,9 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
@@ -65,16 +66,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["updateAvailable"] = args ? args.updateAvailable : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["zones"] = args ? args.zones : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }
@@ -148,6 +146,10 @@ export interface InstanceArgs {
      * Output only. The state of this Memcached instance.
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * Output only. Returns true if there is an update waiting to be applied
+     */
+    readonly updateAvailable?: pulumi.Input<boolean>;
     /**
      * Output only. The time the instance was updated.
      */

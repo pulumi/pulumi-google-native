@@ -95,7 +95,7 @@ namespace Pulumi.GoogleCloud.Compute.V1
         private InputList<string>? _healthChecks;
 
         /// <summary>
-        /// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. An empty list means all member instances will be considered healthy at all times. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
+        /// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
         /// </summary>
         public InputList<string> HealthChecks
         {

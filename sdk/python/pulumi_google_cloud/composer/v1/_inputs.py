@@ -10,12 +10,15 @@ from ... import _utilities, _tables
 
 __all__ = [
     'AllowedIpRangeArgs',
+    'DatabaseConfigArgs',
+    'EncryptionConfigArgs',
     'EnvironmentConfigArgs',
     'IPAllocationPolicyArgs',
     'NodeConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateEnvironmentConfigArgs',
     'SoftwareConfigArgs',
+    'WebServerConfigArgs',
     'WebServerNetworkAccessControlArgs',
 ]
 
@@ -60,31 +63,89 @@ class AllowedIpRangeArgs:
 
 
 @pulumi.input_type
+class DatabaseConfigArgs:
+    def __init__(__self__, *,
+                 machine_type: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration of Cloud SQL instance that is used by the Apache Airflow software.
+        :param pulumi.Input[str] machine_type: Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+
+@pulumi.input_type
+class EncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        The encryption options for the Cloud Composer environment and its dependencies.
+        :param pulumi.Input[str] kms_key_name: Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
 class EnvironmentConfigArgs:
     def __init__(__self__, *,
                  airflow_uri: Optional[pulumi.Input[str]] = None,
                  dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
+                 database_config: Optional[pulumi.Input['DatabaseConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['SoftwareConfigArgs']] = None,
+                 web_server_config: Optional[pulumi.Input['WebServerConfigArgs']] = None,
                  web_server_network_access_control: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']] = None):
         """
         Configuration information for an environment.
         :param pulumi.Input[str] airflow_uri: Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         :param pulumi.Input[str] dag_gcs_prefix: Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
+        :param pulumi.Input['DatabaseConfigArgs'] database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param pulumi.Input[str] gke_cluster: Output only. The Kubernetes Engine cluster used to run this environment.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
         :param pulumi.Input['SoftwareConfigArgs'] software_config: The configuration settings for software inside the environment.
+        :param pulumi.Input['WebServerConfigArgs'] web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance.
         :param pulumi.Input['WebServerNetworkAccessControlArgs'] web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         """
         if airflow_uri is not None:
             pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
+        if database_config is not None:
+            pulumi.set(__self__, "database_config", database_config)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if node_config is not None:
@@ -95,6 +156,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "private_environment_config", private_environment_config)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
+        if web_server_config is not None:
+            pulumi.set(__self__, "web_server_config", web_server_config)
         if web_server_network_access_control is not None:
             pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
 
@@ -121,6 +184,30 @@ class EnvironmentConfigArgs:
     @dag_gcs_prefix.setter
     def dag_gcs_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dag_gcs_prefix", value)
+
+    @property
+    @pulumi.getter(name="databaseConfig")
+    def database_config(self) -> Optional[pulumi.Input['DatabaseConfigArgs']]:
+        """
+        Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        """
+        return pulumi.get(self, "database_config")
+
+    @database_config.setter
+    def database_config(self, value: Optional[pulumi.Input['DatabaseConfigArgs']]):
+        pulumi.set(self, "database_config", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['EncryptionConfigArgs']]:
+        """
+        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -181,6 +268,18 @@ class EnvironmentConfigArgs:
     @software_config.setter
     def software_config(self, value: Optional[pulumi.Input['SoftwareConfigArgs']]):
         pulumi.set(self, "software_config", value)
+
+    @property
+    @pulumi.getter(name="webServerConfig")
+    def web_server_config(self) -> Optional[pulumi.Input['WebServerConfigArgs']]:
+        """
+        Optional. The configuration settings for the Airflow web server App Engine instance.
+        """
+        return pulumi.get(self, "web_server_config")
+
+    @web_server_config.setter
+    def web_server_config(self, value: Optional[pulumi.Input['WebServerConfigArgs']]):
+        pulumi.set(self, "web_server_config", value)
 
     @property
     @pulumi.getter(name="webServerNetworkAccessControl")
@@ -301,7 +400,7 @@ class NodeConfigArgs:
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
         :param pulumi.Input[str] location: Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field.
         :param pulumi.Input[str] machine_type: Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
-        :param pulumi.Input[str] network: Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided.
+        :param pulumi.Input[str] network: Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
         :param pulumi.Input[str] service_account: Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
         :param pulumi.Input[str] subnetwork: Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
@@ -378,7 +477,7 @@ class NodeConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided.
+        Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
         """
         return pulumi.get(self, "network")
 
@@ -665,6 +764,30 @@ class SoftwareConfigArgs:
     @python_version.setter
     def python_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "python_version", value)
+
+
+@pulumi.input_type
+class WebServerConfigArgs:
+    def __init__(__self__, *,
+                 machine_type: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration settings for the Airflow web server App Engine instance.
+        :param pulumi.Input[str] machine_type: Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
 
 
 @pulumi.input_type

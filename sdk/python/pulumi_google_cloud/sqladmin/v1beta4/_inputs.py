@@ -483,7 +483,7 @@ class InsightsConfigArgs:
         """
         Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
         :param pulumi.Input[bool] query_insights_enabled: Whether Query Insights feature is enabled.
-        :param pulumi.Input[int] query_string_length: Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+        :param pulumi.Input[int] query_string_length: Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
         :param pulumi.Input[bool] record_application_tags: Whether Query Insights will record application tags from query when enabled.
         :param pulumi.Input[bool] record_client_address: Whether Query Insights will record client address when enabled.
         """
@@ -512,7 +512,7 @@ class InsightsConfigArgs:
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+        Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
         """
         return pulumi.get(self, "query_string_length")
 

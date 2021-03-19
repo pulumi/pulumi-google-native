@@ -110,7 +110,7 @@ type instanceArgs struct {
 	UpdateTime *string `pulumi:"updateTime"`
 	// Current version of Data Fusion.
 	Version *string `pulumi:"version"`
-	// Name of the zone in which the Data Fusion instance will be created.
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -168,7 +168,7 @@ type InstanceArgs struct {
 	UpdateTime pulumi.StringPtrInput
 	// Current version of Data Fusion.
 	Version pulumi.StringPtrInput
-	// Name of the zone in which the Data Fusion instance will be created.
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
 	Zone pulumi.StringPtrInput
 }
 

@@ -45,26 +45,27 @@ export class Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.resource === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
+            }
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["bindings"] = args ? args.bindings : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["policy"] = args ? args.policy : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["resource"] = args ? args.resource : undefined;
+            inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Policy.__pulumiType, name, inputs, opts);
     }
@@ -75,7 +76,7 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyArgs {
     /**
-     * Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+     * Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
      */
     readonly bindings?: pulumi.Input<pulumi.Input<inputs.compute.alpha.Binding>[]>;
     /**
@@ -94,4 +95,8 @@ export interface PolicyArgs {
      * Name or id of the resource for this request.
      */
     readonly resource: pulumi.Input<string>;
+    /**
+     * The name of the zone for this request.
+     */
+    readonly zone: pulumi.Input<string>;
 }

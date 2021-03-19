@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Dns.V1beta2
 {
     /// <summary>
-    /// Create a new Policy
+    /// Creates a new Policy.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:dns/v1beta2:Policy")]
     public partial class Policy : Pulumi.CustomResource
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
         /// </summary>
         [Input("enableInboundForwarding")]
         public Input<bool>? EnableInboundForwarding { get; set; }
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// User assigned name for this policy.
+        /// User-assigned name for this policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

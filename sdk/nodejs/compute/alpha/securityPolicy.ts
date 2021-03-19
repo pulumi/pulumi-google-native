@@ -45,7 +45,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
             inputs["associations"] = args ? args.associations : undefined;
             inputs["cloudArmorConfig"] = args ? args.cloudArmorConfig : undefined;
@@ -68,12 +69,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecurityPolicy.__pulumiType, name, inputs, opts);
     }

@@ -17,6 +17,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 max_concurrency: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_time: Output only. Creation time of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        :param pulumi.Input[str] max_concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
         :param pulumi.Input[str] parent: Required. Project, location. E.g., `projects/myproject/locations/US`
         :param pulumi.Input[str] reservation_id: The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max length is 64 characters.
@@ -57,6 +59,7 @@ class Reservation(pulumi.CustomResource):
 
             __props__['creation_time'] = creation_time
             __props__['ignore_idle_slots'] = ignore_idle_slots
+            __props__['max_concurrency'] = max_concurrency
             __props__['name'] = name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

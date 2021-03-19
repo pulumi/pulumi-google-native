@@ -276,6 +276,12 @@ namespace Pulumi.GoogleCloud.Storage.V1
         }
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPZS")]
+        public Input<bool>? SatisfiesPZS { get; set; }
+
+        /// <summary>
         /// The URI of this bucket.
         /// </summary>
         [Input("selfLink")]

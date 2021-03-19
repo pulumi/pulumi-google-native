@@ -84,7 +84,7 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template.
+        /// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }

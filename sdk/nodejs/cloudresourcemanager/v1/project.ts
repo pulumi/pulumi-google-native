@@ -45,7 +45,8 @@ export class Project extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
@@ -55,12 +56,8 @@ export class Project extends pulumi.CustomResource {
             inputs["projectNumber"] = args ? args.projectNumber : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Project.__pulumiType, name, inputs, opts);
     }

@@ -32,7 +32,7 @@ class GoogleCloudApigeeV1AsyncQuery(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
+        Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -45,7 +45,7 @@ class GoogleCloudApigeeV1AsyncQuery(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1QueryMetricArgs']]]] metrics: A list of Metrics.
         :param pulumi.Input[str] name: Asynchronous Query Name.
         :param pulumi.Input[str] output_format: Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
-        :param pulumi.Input[str] parent: Required. The parent resource name. Must be of the form `organizations/{org}`.
+        :param pulumi.Input[str] parent: Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`.
         :param pulumi.Input[str] report_definition_id: Asynchronous Report ID.
         :param Any time_range: Required. Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
         """

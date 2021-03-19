@@ -24,8 +24,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
         /// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
-        /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. 
-        /// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
         public InputList<string> AdvertisedGroups
         {

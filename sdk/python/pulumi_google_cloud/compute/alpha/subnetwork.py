@@ -21,6 +21,7 @@ class Subnetwork(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
+                 enable_l2: Optional[pulumi.Input[bool]] = None,
                  enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class Subnetwork(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -67,6 +69,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[bool] enable_private_v6_access: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[str] external_ipv6_prefix: [Output Only] The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
@@ -75,7 +78,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
         :param pulumi.Input[str] gateway_address: [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. This may be a RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging to Google. The range can be expanded after creation using expandIpCidrRange.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
         :param pulumi.Input[str] ipv6_cidr_range: [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
@@ -104,6 +107,7 @@ class Subnetwork(pulumi.CustomResource):
                
                This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[str] state: [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,6 +131,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
             __props__['enable_flow_logs'] = enable_flow_logs
+            __props__['enable_l2'] = enable_l2
             __props__['enable_private_v6_access'] = enable_private_v6_access
             __props__['external_ipv6_prefix'] = external_ipv6_prefix
             __props__['fingerprint'] = fingerprint
@@ -158,6 +163,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__['self_link_with_id'] = self_link_with_id
             __props__['stack_type'] = stack_type
             __props__['state'] = state
+            __props__['vlans'] = vlans
         super(Subnetwork, __self__).__init__(
             'google-cloud:compute/alpha:Subnetwork',
             resource_name,

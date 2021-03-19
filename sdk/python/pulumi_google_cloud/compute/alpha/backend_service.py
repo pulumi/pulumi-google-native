@@ -38,6 +38,7 @@ class BackendService(pulumi.CustomResource):
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
+                 max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
@@ -58,7 +59,7 @@ class BackendService(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+        Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -68,7 +69,7 @@ class BackendService(pulumi.CustomResource):
                
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]] backends: The list of backends that serve this BackendService.
-        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
         :param pulumi.Input[pulumi.InputType['CircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
                
                This field is applicable to either:  
@@ -114,6 +115,9 @@ class BackendService(pulumi.CustomResource):
                
                Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
+        :param pulumi.Input[pulumi.InputType['DurationArgs']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['OutlierDetectionArgs']] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
@@ -125,7 +129,7 @@ class BackendService(pulumi.CustomResource):
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[int] port: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
                
-               This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+               Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
                
                
@@ -158,7 +162,7 @@ class BackendService(pulumi.CustomResource):
                When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
                
                Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds.
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -199,6 +203,7 @@ class BackendService(pulumi.CustomResource):
             __props__['load_balancing_scheme'] = load_balancing_scheme
             __props__['locality_lb_policy'] = locality_lb_policy
             __props__['log_config'] = log_config
+            __props__['max_stream_duration'] = max_stream_duration
             __props__['name'] = name
             __props__['network'] = network
             __props__['outlier_detection'] = outlier_detection
@@ -208,8 +213,6 @@ class BackendService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['protocol'] = protocol
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['security_policy'] = security_policy

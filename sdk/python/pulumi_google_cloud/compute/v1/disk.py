@@ -28,14 +28,17 @@ class Disk(pulumi.CustomResource):
                  last_detach_timestamp: Optional[pulumi.Input[str]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location_hint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size_gb: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
@@ -46,6 +49,7 @@ class Disk(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
+                 source_storage_object: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -54,7 +58,7 @@ class Disk(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+        Creates a persistent regional disk in the specified project using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -78,10 +82,12 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] last_detach_timestamp: [Output Only] Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of publicly visible licenses. Reserved for Google's use.
+        :param pulumi.Input[str] location_hint: An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] options: Internal use only.
         :param pulumi.Input[str] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
         :param pulumi.Input[str] project: Project ID for this request.
+        :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -90,14 +96,18 @@ class Disk(pulumi.CustomResource):
                
                The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
                
                If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-               - projects/project/zones/zone/disks/disk 
-               - zones/zone/disks/disk
+               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+               - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+               - projects/project/zones/zone/disks/disk  
+               - projects/project/regions/region/disks/disk  
+               - zones/zone/disks/disk  
+               - regions/region/disks/disk
         :param pulumi.Input[str] source_disk_id: [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
         :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set.
                
@@ -123,7 +133,13 @@ class Disk(pulumi.CustomResource):
                - global/snapshots/snapshot
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_snapshot_id: [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
-        :param pulumi.Input[str] status: [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+        :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        :param pulumi.Input[str] status: [Output Only] The status of disk creation.  
+               - CREATING: Disk is provisioning. 
+               - RESTORING: Source data is being copied into the disk. 
+               - FAILED: Disk creation failed. 
+               - READY: Disk is ready for use. 
+               - DELETING: Disk is deleting.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -157,16 +173,21 @@ class Disk(pulumi.CustomResource):
             __props__['last_detach_timestamp'] = last_detach_timestamp
             __props__['license_codes'] = license_codes
             __props__['licenses'] = licenses
+            __props__['location_hint'] = location_hint
             __props__['name'] = name
             __props__['options'] = options
             __props__['physical_block_size_bytes'] = physical_block_size_bytes
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
+            __props__['provisioned_iops'] = provisioned_iops
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['replica_zones'] = replica_zones
             __props__['request_id'] = request_id
             __props__['resource_policies'] = resource_policies
+            __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link
             __props__['size_gb'] = size_gb
             __props__['source_disk'] = source_disk
@@ -177,11 +198,10 @@ class Disk(pulumi.CustomResource):
             __props__['source_snapshot'] = source_snapshot
             __props__['source_snapshot_encryption_key'] = source_snapshot_encryption_key
             __props__['source_snapshot_id'] = source_snapshot_id
+            __props__['source_storage_object'] = source_storage_object
             __props__['status'] = status
             __props__['type'] = type
             __props__['users'] = users
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(Disk, __self__).__init__(
             'google-cloud:compute/v1:Disk',

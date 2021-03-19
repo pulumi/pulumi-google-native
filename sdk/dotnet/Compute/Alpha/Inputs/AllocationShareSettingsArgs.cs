@@ -12,6 +12,18 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
 
     public sealed class AllocationShareSettingsArgs : Pulumi.ResourceArgs
     {
+        [Input("projects")]
+        private InputList<string>? _projects;
+
+        /// <summary>
+        /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        /// </summary>
+        public InputList<string> Projects
+        {
+            get => _projects ?? (_projects = new InputList<string>());
+            set => _projects = value;
+        }
+
         /// <summary>
         /// Type of sharing for this shared-reservation
         /// </summary>

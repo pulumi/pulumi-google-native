@@ -45,11 +45,12 @@ export class Disk extends pulumi.CustomResource {
      */
     constructor(name: string, args: DiskArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -66,15 +67,18 @@ export class Disk extends pulumi.CustomResource {
             inputs["lastDetachTimestamp"] = args ? args.lastDetachTimestamp : undefined;
             inputs["licenseCodes"] = args ? args.licenseCodes : undefined;
             inputs["licenses"] = args ? args.licenses : undefined;
+            inputs["locationHint"] = args ? args.locationHint : undefined;
             inputs["multiWriter"] = args ? args.multiWriter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["options"] = args ? args.options : undefined;
             inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaZones"] = args ? args.replicaZones : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sizeGb"] = args ? args.sizeGb : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
@@ -93,12 +97,8 @@ export class Disk extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Disk.__pulumiType, name, inputs, opts);
     }
@@ -173,6 +173,10 @@ export interface DiskArgs {
      */
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+     */
+    readonly locationHint?: pulumi.Input<string>;
+    /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
     readonly multiWriter?: pulumi.Input<boolean>;
@@ -192,6 +196,10 @@ export interface DiskArgs {
      * Project ID for this request.
      */
     readonly project: pulumi.Input<string>;
+    /**
+     * Indicates how many IOPS must be provisioned for the disk.
+     */
+    readonly provisionedIops?: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
@@ -213,6 +221,10 @@ export interface DiskArgs {
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink?: pulumi.Input<string>;
@@ -224,9 +236,12 @@ export interface DiskArgs {
     readonly sizeGb?: pulumi.Input<string>;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-     * - projects/project/zones/zone/disks/disk 
-     * - zones/zone/disks/disk
+     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+     * - projects/project/zones/zone/disks/disk  
+     * - projects/project/regions/region/disks/disk  
+     * - zones/zone/disks/disk  
+     * - regions/region/disks/disk
      */
     readonly sourceDisk?: pulumi.Input<string>;
     /**
@@ -276,11 +291,16 @@ export interface DiskArgs {
      */
     readonly sourceSnapshotId?: pulumi.Input<string>;
     /**
-     * The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/.
+     * The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
      */
     readonly sourceStorageObject?: pulumi.Input<string>;
     /**
-     * [Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is deleting.
+     * [Output Only] The status of disk creation.  
+     * - CREATING: Disk is provisioning. 
+     * - RESTORING: Source data is being copied into the disk. 
+     * - FAILED: Disk creation failed. 
+     * - READY: Disk is ready for use. 
+     * - DELETING: Disk is deleting.
      */
     readonly status?: pulumi.Input<string>;
     /**

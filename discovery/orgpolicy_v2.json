@@ -1,0 +1,984 @@
+{
+  "ownerName": "Google",
+  "id": "orgpolicy:v2",
+  "basePath": "",
+  "batchPath": "batch",
+  "parameters": {
+    "key": {
+      "location": "query",
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query",
+      "type": "string"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "alt": {
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "location": "query",
+      "type": "string"
+    }
+  },
+  "title": "Organization Policy API",
+  "resources": {
+    "projects": {
+      "resources": {
+        "constraints": {
+          "methods": {
+            "list": {
+              "id": "orgpolicy.projects.constraints.list",
+              "description": "Lists `Constraints` that could be applied on the specified resource.",
+              "path": "v2/{+parent}/constraints",
+              "parameters": {
+                "parent": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "required": true,
+                  "description": "Required. The Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "format": "int32",
+                  "location": "query",
+                  "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size."
+                },
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field."
+                }
+              },
+              "flatPath": "v2/projects/{projectsId}/constraints",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "httpMethod": "GET"
+            }
+          }
+        },
+        "policies": {
+          "methods": {
+            "getEffectivePolicy": {
+              "parameterOrder": [
+                "name"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "location": "path",
+                  "pattern": "^projects/[^/]+/policies/[^/]+$",
+                  "description": "Required. The effective policy to compute. See `Policy` for naming rules.",
+                  "required": true
+                }
+              },
+              "flatPath": "v2/projects/{projectsId}/policies/{policiesId}:getEffectivePolicy",
+              "id": "orgpolicy.projects.policies.getEffectivePolicy",
+              "httpMethod": "GET",
+              "path": "v2/{+name}:getEffectivePolicy"
+            },
+            "list": {
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "flatPath": "v2/projects/{projectsId}/policies",
+              "path": "v2/{+parent}/policies",
+              "description": "Retrieves all of the `Policies` that exist on a particular resource.",
+              "parameters": {
+                "pageToken": {
+                  "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "parent": {
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "description": "Required. The target Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`"
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                  "location": "query"
+                }
+              },
+              "id": "orgpolicy.projects.policies.list",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
+              }
+            },
+            "patch": {
+              "id": "orgpolicy.projects.policies.patch",
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PATCH",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "path": "v2/{+name}",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "request": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "description": "Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/policies/[^/]+$"
+                }
+              },
+              "description": "Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the policy Note: the supplied policy will perform a full overwrite of all fields.",
+              "flatPath": "v2/projects/{projectsId}/policies/{policiesId}"
+            },
+            "delete": {
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/policies/[^/]+$",
+                  "required": true,
+                  "description": "Required. Name of the policy to delete. See `Policy` for naming rules.",
+                  "type": "string",
+                  "location": "path"
+                }
+              },
+              "description": "Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or Org Policy does not exist.",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "path": "v2/{+name}",
+              "id": "orgpolicy.projects.policies.delete",
+              "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
+              "httpMethod": "DELETE",
+              "parameterOrder": [
+                "name"
+              ]
+            },
+            "create": {
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameters": {
+                "parent": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "location": "path",
+                  "pattern": "^projects/[^/]+$"
+                }
+              },
+              "id": "orgpolicy.projects.policies.create",
+              "path": "v2/{+parent}/policies",
+              "description": "Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.",
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "flatPath": "v2/projects/{projectsId}/policies",
+              "request": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "get": {
+              "path": "v2/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.",
+              "id": "orgpolicy.projects.policies.get",
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/policies/[^/]+$",
+                  "required": true,
+                  "type": "string",
+                  "location": "path",
+                  "description": "Required. Resource name of the policy. See `Policy` for naming requirements."
+                }
+              },
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
+              "parameterOrder": [
+                "name"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "organizations": {
+      "resources": {
+        "constraints": {
+          "methods": {
+            "list": {
+              "path": "v2/{+parent}/constraints",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "id": "orgpolicy.organizations.constraints.list",
+              "description": "Lists `Constraints` that could be applied on the specified resource.",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+$",
+                  "description": "Required. The Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "required": true
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                  "location": "query",
+                  "format": "int32"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "type": "string",
+                  "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field."
+                }
+              },
+              "flatPath": "v2/organizations/{organizationsId}/constraints"
+            }
+          }
+        },
+        "policies": {
+          "methods": {
+            "get": {
+              "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.",
+              "httpMethod": "GET",
+              "path": "v2/{+name}",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "id": "orgpolicy.organizations.policies.get",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "Required. Resource name of the policy. See `Policy` for naming requirements.",
+                  "pattern": "^organizations/[^/]+/policies/[^/]+$",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}"
+            },
+            "delete": {
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "location": "path",
+                  "description": "Required. Name of the policy to delete. See `Policy` for naming rules.",
+                  "pattern": "^organizations/[^/]+/policies/[^/]+$"
+                }
+              },
+              "httpMethod": "DELETE",
+              "path": "v2/{+name}",
+              "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
+              "description": "Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or Org Policy does not exist.",
+              "id": "orgpolicy.organizations.policies.delete",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "parameterOrder": [
+                "name"
+              ]
+            },
+            "patch": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "location": "path",
+                  "required": true,
+                  "description": "Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                  "pattern": "^organizations/[^/]+/policies/[^/]+$"
+                }
+              },
+              "id": "orgpolicy.organizations.policies.patch",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "httpMethod": "PATCH",
+              "request": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "description": "Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the policy Note: the supplied policy will perform a full overwrite of all fields.",
+              "path": "v2/{+name}",
+              "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
+              "parameterOrder": [
+                "name"
+              ]
+            },
+            "list": {
+              "path": "v2/{+parent}/policies",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "pattern": "^organizations/[^/]+$",
+                  "description": "Required. The target Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "type": "string",
+                  "location": "path",
+                  "required": true
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "location": "query",
+                  "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                  "format": "int32"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "type": "string",
+                  "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field."
+                }
+              },
+              "flatPath": "v2/organizations/{organizationsId}/policies",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
+              },
+              "id": "orgpolicy.organizations.policies.list",
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "description": "Retrieves all of the `Policies` that exist on a particular resource."
+            },
+            "getEffectivePolicy": {
+              "httpMethod": "GET",
+              "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+              "id": "orgpolicy.organizations.policies.getEffectivePolicy",
+              "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}:getEffectivePolicy",
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Required. The effective policy to compute. See `Policy` for naming rules.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/policies/[^/]+$"
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "path": "v2/{+name}:getEffectivePolicy",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "create": {
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "id": "orgpolicy.organizations.policies.create",
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "required": true,
+                  "pattern": "^organizations/[^/]+$",
+                  "type": "string",
+                  "description": "Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`"
+                }
+              },
+              "flatPath": "v2/organizations/{organizationsId}/policies",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "description": "Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.",
+              "path": "v2/{+parent}/policies",
+              "httpMethod": "POST",
+              "request": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameterOrder": [
+                "parent"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "folders": {
+      "resources": {
+        "constraints": {
+          "methods": {
+            "list": {
+              "flatPath": "v2/folders/{foldersId}/constraints",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "type": "string",
+                  "description": "Required. The Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "pattern": "^folders/[^/]+$",
+                  "required": true
+                },
+                "pageSize": {
+                  "location": "query",
+                  "type": "integer",
+                  "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size.",
+                  "format": "int32"
+                },
+                "pageToken": {
+                  "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                  "type": "string",
+                  "location": "query"
+                }
+              },
+              "description": "Lists `Constraints` that could be applied on the specified resource.",
+              "parameterOrder": [
+                "parent"
+              ],
+              "path": "v2/{+parent}/constraints",
+              "id": "orgpolicy.folders.constraints.list",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
+              }
+            }
+          }
+        },
+        "policies": {
+          "methods": {
+            "getEffectivePolicy": {
+              "id": "orgpolicy.folders.policies.getEffectivePolicy",
+              "parameters": {
+                "name": {
+                  "pattern": "^folders/[^/]+/policies/[^/]+$",
+                  "required": true,
+                  "type": "string",
+                  "description": "Required. The effective policy to compute. See `Policy` for naming rules.",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v2/folders/{foldersId}/policies/{policiesId}:getEffectivePolicy",
+              "parameterOrder": [
+                "name"
+              ],
+              "path": "v2/{+name}:getEffectivePolicy",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy and evaluating conditions. The returned `Policy` will not have an `etag` or `condition` set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded."
+            },
+            "patch": {
+              "description": "Updates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request does not match the persisted etag of the policy Note: the supplied policy will perform a full overwrite of all fields.",
+              "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "httpMethod": "PATCH",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "id": "orgpolicy.folders.policies.patch",
+              "path": "v2/{+name}",
+              "request": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "pattern": "^folders/[^/]+/policies/[^/]+$",
+                  "type": "string",
+                  "location": "path",
+                  "description": "Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                  "required": true
+                }
+              }
+            },
+            "list": {
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
+              },
+              "parameters": {
+                "parent": {
+                  "pattern": "^folders/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The target Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "type": "string",
+                  "required": true
+                },
+                "pageToken": {
+                  "description": "Page token used to retrieve the next page. This is currently unsupported and will be ignored. The server may at any point start using this field.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "format": "int32",
+                  "location": "query",
+                  "type": "integer",
+                  "description": "Size of the pages to be returned. This is currently unsupported and will be ignored. The server may at any point start using this field to limit page size."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v2/folders/{foldersId}/policies",
+              "description": "Retrieves all of the `Policies` that exist on a particular resource.",
+              "path": "v2/{+parent}/policies",
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "id": "orgpolicy.folders.policies.list"
+            },
+            "delete": {
+              "path": "v2/{+name}",
+              "id": "orgpolicy.folders.policies.delete",
+              "parameterOrder": [
+                "name"
+              ],
+              "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^folders/[^/]+/policies/[^/]+$",
+                  "required": true,
+                  "description": "Required. Name of the policy to delete. See `Policy` for naming rules."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "httpMethod": "DELETE",
+              "description": "Deletes a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or Org Policy does not exist."
+            },
+            "create": {
+              "parameters": {
+                "parent": {
+                  "description": "Required. The Cloud resource that will parent the new Policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}`",
+                  "location": "path",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^folders/[^/]+$"
+                }
+              },
+              "flatPath": "v2/folders/{foldersId}/policies",
+              "parameterOrder": [
+                "parent"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "description": "Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "id": "orgpolicy.folders.policies.create",
+              "request": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "path": "v2/{+parent}/policies",
+              "httpMethod": "POST"
+            },
+            "get": {
+              "id": "orgpolicy.folders.policies.get",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "GoogleCloudOrgpolicyV2Policy"
+              },
+              "parameters": {
+                "name": {
+                  "pattern": "^folders/[^/]+/policies/[^/]+$",
+                  "required": true,
+                  "type": "string",
+                  "description": "Required. Resource name of the policy. See `Policy` for naming requirements.",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
+              "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.",
+              "path": "v2/{+name}",
+              "parameterOrder": [
+                "name"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "mtlsRootUrl": "https://orgpolicy.mtls.googleapis.com/",
+  "name": "orgpolicy",
+  "revision": "20210317",
+  "ownerDomain": "google.com",
+  "rootUrl": "https://orgpolicy.googleapis.com/",
+  "version_module": true,
+  "canonicalName": "OrgPolicy API",
+  "documentationLink": "https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints",
+  "discoveryVersion": "v1",
+  "kind": "discovery#restDescription",
+  "fullyEncodeReservedExpansion": true,
+  "version": "v2",
+  "schemas": {
+    "GoogleProtobufEmpty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "GoogleProtobufEmpty"
+    },
+    "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues": {
+      "type": "object",
+      "properties": {
+        "deniedValues": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "List of values denied at this resource."
+        },
+        "allowedValues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of values allowed at this resource."
+        }
+      },
+      "id": "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
+      "description": "A message that holds specific allowed and denied values. This message can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a \":\". Values prefixed with \"is:\" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - \"projects/\", e.g. \"projects/tokyo-rain-123\" - \"folders/\", e.g. \"folders/1234\" - \"organizations/\", e.g. \"organizations/1234\" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used."
+    },
+    "GoogleCloudOrgpolicyV2PolicySpecPolicyRule": {
+      "properties": {
+        "condition": {
+          "$ref": "GoogleTypeExpr",
+          "description": "A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the \"||\" or \"&&\" operators. Each subexpression must be of the form \"resource.matchTag('/tag_key_short_name, 'tag_value_short_name')\". or \"resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')\". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: \"resource.matchTag('123456789/environment, 'prod')\". or \"resource.matchTagId('tagKeys/123', 'tagValues/456')\"."
+        },
+        "denyAll": {
+          "description": "Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.",
+          "type": "boolean"
+        },
+        "values": {
+          "$ref": "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
+          "description": "List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints."
+        },
+        "enforce": {
+          "description": "If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.",
+          "type": "boolean"
+        },
+        "allowAll": {
+          "description": "Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.",
+          "type": "boolean"
+        }
+      },
+      "type": "object",
+      "id": "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
+      "description": "A rule used to express this policy."
+    },
+    "GoogleCloudOrgpolicyV2PolicySpec": {
+      "type": "object",
+      "id": "GoogleCloudOrgpolicyV2PolicySpec",
+      "description": "Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.",
+      "properties": {
+        "updateTime": {
+          "description": "Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.",
+          "type": "string",
+          "format": "google-datetime",
+          "readOnly": true
+        },
+        "reset": {
+          "type": "boolean",
+          "description": "Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false."
+        },
+        "rules": {
+          "items": {
+            "$ref": "GoogleCloudOrgpolicyV2PolicySpecPolicyRule"
+          },
+          "type": "array",
+          "description": "Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence."
+        },
+        "etag": {
+          "type": "string",
+          "description": "An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset."
+        },
+        "inheritFromParent": {
+          "description": "Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.",
+          "type": "boolean"
+        }
+      }
+    },
+    "GoogleCloudOrgpolicyV2Policy": {
+      "type": "object",
+      "properties": {
+        "spec": {
+          "description": "Basic information about the Organization Policy.",
+          "$ref": "GoogleCloudOrgpolicyV2PolicySpec"
+        },
+        "name": {
+          "type": "string",
+          "description": "Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number."
+        }
+      },
+      "id": "GoogleCloudOrgpolicyV2Policy",
+      "description": "Defines a Cloud Organization `Policy` which is used to specify `Constraints` for configurations of Cloud Platform resources."
+    },
+    "GoogleCloudOrgpolicyV2ListPoliciesResponse": {
+      "type": "object",
+      "id": "GoogleCloudOrgpolicyV2ListPoliciesResponse",
+      "description": "The response returned from the ListPolicies method. It will be empty if no `Policies` are set on the resource.",
+      "properties": {
+        "nextPageToken": {
+          "description": "Page token used to retrieve the next page. This is currently not used, but the server may at any point start supplying a valid token.",
+          "type": "string"
+        },
+        "policies": {
+          "description": "All `Policies` that exist on the resource. It will be empty if no `Policies` are set.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleCloudOrgpolicyV2Policy"
+          }
+        }
+      }
+    },
+    "GoogleCloudOrgpolicyV2ConstraintListConstraint": {
+      "id": "GoogleCloudOrgpolicyV2ConstraintListConstraint",
+      "properties": {
+        "supportsIn": {
+          "type": "boolean",
+          "description": "Indicates whether values grouped into categories can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `\"in:Python\"` would match any value in the 'Python' group."
+        },
+        "supportsUnder": {
+          "description": "Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `\"under:folders/123\"` would match any resource under the 'folders/123' folder.",
+          "type": "boolean"
+        }
+      },
+      "type": "object",
+      "description": "A `Constraint` that allows or disallows a list of string values, which are configured by an Organization's policy administrator with a `Policy`."
+    },
+    "GoogleCloudOrgpolicyV2Constraint": {
+      "id": "GoogleCloudOrgpolicyV2Constraint",
+      "properties": {
+        "constraintDefault": {
+          "type": "string",
+          "enumDescriptions": [
+            "This is only used for distinguishing unset values and should never be used.",
+            "Indicate that all values are allowed for list constraints. Indicate that enforcement is off for boolean constraints.",
+            "Indicate that all values are denied for list constraints. Indicate that enforcement is on for boolean constraints."
+          ],
+          "description": "The evaluation behavior of this constraint in the absence of 'Policy'.",
+          "enum": [
+            "CONSTRAINT_DEFAULT_UNSPECIFIED",
+            "ALLOW",
+            "DENY"
+          ]
+        },
+        "listConstraint": {
+          "$ref": "GoogleCloudOrgpolicyV2ConstraintListConstraint",
+          "description": "Defines this constraint as being a ListConstraint."
+        },
+        "name": {
+          "description": "Immutable. The resource name of the Constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, \"/projects/123/constraints/compute.disableSerialPortAccess\".",
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of what this `Constraint` controls as well as how and where it is enforced. Mutable."
+        },
+        "booleanConstraint": {
+          "description": "Defines this constraint as being a BooleanConstraint.",
+          "$ref": "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The human readable name. Mutable."
+        }
+      },
+      "description": "A `constraint` describes a way to restrict resource's configuration. For example, you could enforce a constraint that controls which cloud services can be activated across an organization, or whether a Compute Engine instance can have serial port connections established. `Constraints` can be configured by the organization's policy adminstrator to fit the needs of the organzation by setting a `policy` that includes `constraints` at different locations in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from higher levels, but can also be overridden. For details about the inheritance rules please read about `policies`. `Constraints` have a default behavior determined by the `constraint_default` field, which is the enforcement behavior that is used in the absence of a `policy` being defined or inherited for the resource in question.",
+      "type": "object"
+    },
+    "GoogleCloudOrgpolicyV2ListConstraintsResponse": {
+      "properties": {
+        "constraints": {
+          "type": "array",
+          "description": "The collection of constraints that are available on the targeted resource.",
+          "items": {
+            "$ref": "GoogleCloudOrgpolicyV2Constraint"
+          }
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "Page token used to retrieve the next page. This is currently not used."
+        }
+      },
+      "type": "object",
+      "id": "GoogleCloudOrgpolicyV2ListConstraintsResponse",
+      "description": "The response returned from the ListConstraints method."
+    },
+    "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint": {
+      "description": "A `Constraint` that is either enforced or not. For example a constraint `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will not be opened to that instance.",
+      "type": "object",
+      "properties": {},
+      "id": "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint"
+    },
+    "GoogleTypeExpr": {
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."
+        },
+        "title": {
+          "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+          "type": "string"
+        },
+        "expression": {
+          "type": "string",
+          "description": "Textual representation of an expression in Common Expression Language syntax."
+        },
+        "description": {
+          "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "id": "GoogleTypeExpr",
+      "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() \u003c 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information."
+    }
+  },
+  "servicePath": "",
+  "protocol": "rest",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  },
+  "baseUrl": "https://orgpolicy.googleapis.com/",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "description": "The Org Policy API allows users to configure governance ruleson their GCP resources across the Cloud Resource Hierarchy."
+}

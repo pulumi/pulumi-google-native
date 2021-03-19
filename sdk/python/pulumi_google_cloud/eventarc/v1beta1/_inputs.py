@@ -428,8 +428,8 @@ class PubsubArgs:
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Represents a Pub/Sub transport.
-        :param pulumi.Input[str] subscription: The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-        :param pulumi.Input[str] topic: The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+        :param pulumi.Input[str] subscription: Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         if subscription is not None:
             pulumi.set(__self__, "subscription", subscription)
@@ -440,7 +440,7 @@ class PubsubArgs:
     @pulumi.getter
     def subscription(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         """
         return pulumi.get(self, "subscription")
 
@@ -452,7 +452,7 @@ class PubsubArgs:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
 
@@ -467,7 +467,7 @@ class TransportArgs:
                  pubsub: Optional[pulumi.Input['PubsubArgs']] = None):
         """
         Represents the transport intermediaries created for the trigger in order to deliver events.
-        :param pulumi.Input['PubsubArgs'] pubsub: The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+        :param pulumi.Input['PubsubArgs'] pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         if pubsub is not None:
             pulumi.set(__self__, "pubsub", pubsub)
@@ -476,7 +476,7 @@ class TransportArgs:
     @pulumi.getter
     def pubsub(self) -> Optional[pulumi.Input['PubsubArgs']]:
         """
-        The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+        The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         return pulumi.get(self, "pubsub")
 

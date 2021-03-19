@@ -45,8 +45,9 @@ export class TypeProvider extends pulumi.CustomResource {
      */
     constructor(name: string, args: TypeProviderArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["collectionOverrides"] = args ? args.collectionOverrides : undefined;
@@ -64,12 +65,8 @@ export class TypeProvider extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TypeProvider.__pulumiType, name, inputs, opts);
     }

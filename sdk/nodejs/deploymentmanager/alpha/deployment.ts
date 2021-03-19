@@ -45,8 +45,9 @@ export class Deployment extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeploymentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["createPolicy"] = args ? args.createPolicy : undefined;
@@ -68,12 +69,8 @@ export class Deployment extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Deployment.__pulumiType, name, inputs, opts);
     }

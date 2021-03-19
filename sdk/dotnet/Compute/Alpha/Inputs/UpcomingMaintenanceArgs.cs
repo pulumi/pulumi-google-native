@@ -22,6 +22,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         public Input<string>? Date { get; set; }
 
         /// <summary>
+        /// [Output Only] The start time window of the maintenance disruption.
+        /// </summary>
+        [Input("startTimeWindow")]
+        public Input<Inputs.UpcomingMaintenanceTimeWindowArgs>? StartTimeWindow { get; set; }
+
+        /// <summary>
         /// [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
         /// </summary>
         [Input("time")]

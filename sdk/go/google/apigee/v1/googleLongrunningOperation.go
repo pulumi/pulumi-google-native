@@ -72,6 +72,8 @@ type googleLongrunningOperationArgs struct {
 	Parent string `pulumi:"parent"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
+	// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
+	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a GoogleLongrunningOperation resource.
@@ -90,6 +92,8 @@ type GoogleLongrunningOperationArgs struct {
 	Parent pulumi.StringInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
+	// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
+	State pulumi.StringPtrInput
 }
 
 func (GoogleLongrunningOperationArgs) ElementType() reflect.Type {

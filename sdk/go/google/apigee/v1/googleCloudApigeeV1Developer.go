@@ -72,7 +72,7 @@ type googleCloudApigeeV1DeveloperArgs struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
 	DeveloperId *string `pulumi:"developerId"`
-	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid.
+	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
 	Email *string `pulumi:"email"`
 	// Required. First name of the developer.
 	FirstName *string `pulumi:"firstName"`
@@ -106,7 +106,7 @@ type GoogleCloudApigeeV1DeveloperArgs struct {
 	CreatedAt pulumi.StringPtrInput
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
 	DeveloperId pulumi.StringPtrInput
-	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid.
+	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
 	Email pulumi.StringPtrInput
 	// Required. First name of the developer.
 	FirstName pulumi.StringPtrInput

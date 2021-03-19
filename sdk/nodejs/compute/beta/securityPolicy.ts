@@ -43,12 +43,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'project'");
-            }
+        opts = opts || {};
+        if (!opts.id) {
             inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
             inputs["associations"] = args ? args.associations : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -61,22 +59,17 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            inputs["parentId"] = args ? args.parentId : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["type"] = args ? args.type : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecurityPolicy.__pulumiType, name, inputs, opts);
     }
@@ -136,9 +129,9 @@ export interface SecurityPolicyArgs {
      */
     readonly parent?: pulumi.Input<string>;
     /**
-     * Project ID for this request.
+     * Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
      */
-    readonly project: pulumi.Input<string>;
+    readonly parentId?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *
@@ -167,8 +160,4 @@ export interface SecurityPolicyArgs {
      * The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
      */
     readonly type?: pulumi.Input<string>;
-    /**
-     * If true, the request will not be committed.
-     */
-    readonly validateOnly?: pulumi.Input<boolean>;
 }

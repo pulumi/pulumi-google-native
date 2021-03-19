@@ -285,6 +285,140 @@ func (o AccessConfigArrayOutput) Index(i pulumi.IntInput) AccessConfigOutput {
 	}).(AccessConfigOutput)
 }
 
+// Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
+type AdvancedMachineFeatures struct {
+	// Whether to enable nested virtualization or not (default is false).
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+}
+
+// AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesInput` via:
+//
+//          AdvancedMachineFeaturesArgs{...}
+type AdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput
+	ToAdvancedMachineFeaturesOutputWithContext(context.Context) AdvancedMachineFeaturesOutput
+}
+
+// Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
+type AdvancedMachineFeaturesArgs struct {
+	// Whether to enable nested virtualization or not (default is false).
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+}
+
+func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return i.ToAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput)
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput).ToAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// AdvancedMachineFeaturesPtrInput is an input type that accepts AdvancedMachineFeaturesArgs, AdvancedMachineFeaturesPtr and AdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesPtrInput` via:
+//
+//          AdvancedMachineFeaturesArgs{...}
+//
+//  or:
+//
+//          nil
+type AdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput
+	ToAdvancedMachineFeaturesPtrOutputWithContext(context.Context) AdvancedMachineFeaturesPtrOutput
+}
+
+type advancedMachineFeaturesPtrType AdvancedMachineFeaturesArgs
+
+func AdvancedMachineFeaturesPtr(v *AdvancedMachineFeaturesArgs) AdvancedMachineFeaturesPtrInput {
+	return (*advancedMachineFeaturesPtrType)(v)
+}
+
+func (*advancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
+type AdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *AdvancedMachineFeatures {
+		return &v
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Whether to enable nested virtualization or not (default is false).
+func (o AdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
+type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) Elem() AdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) AdvancedMachineFeatures { return *v }).(AdvancedMachineFeaturesOutput)
+}
+
+// Whether to enable nested virtualization or not (default is false).
+func (o AdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
 // An alias IP range attached to an instance's network interface.
 type AliasIpRange struct {
 	// The IP alias ranges to allocate for this interface. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. This range may be a single IP address (such as 10.2.3.4), a netmask (such as /24) or a CIDR-formatted string (such as 10.1.2.0/24).
@@ -510,6 +644,8 @@ type AllocationSpecificSKUAllocationReservedInstanceProperties struct {
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
 	// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
 	LocalSsds []AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk `pulumi:"localSsds"`
+	// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint *string `pulumi:"locationHint"`
 	// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
 	MachineType *string `pulumi:"machineType"`
 	// Minimum cpu platform the reservation.
@@ -533,6 +669,8 @@ type AllocationSpecificSKUAllocationReservedInstancePropertiesArgs struct {
 	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
 	// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
 	LocalSsds AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArrayInput `pulumi:"localSsds"`
+	// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+	LocationHint pulumi.StringPtrInput `pulumi:"locationHint"`
 	// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Minimum cpu platform the reservation.
@@ -631,6 +769,11 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesOutput) LocalSs
 	}).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArrayOutput)
 }
 
+// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+func (o AllocationSpecificSKUAllocationReservedInstancePropertiesOutput) LocationHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUAllocationReservedInstanceProperties) *string { return v.LocationHint }).(pulumi.StringPtrOutput)
+}
+
 // Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUAllocationReservedInstanceProperties) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -679,6 +822,16 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput) Loca
 		}
 		return v.LocalSsds
 	}).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArrayOutput)
+}
+
+// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+func (o AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput) LocationHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AllocationSpecificSKUAllocationReservedInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationHint
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
@@ -1171,6 +1324,8 @@ type AttachedDiskInitializeParams struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 	OnUpdateAction *string `pulumi:"onUpdateAction"`
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
@@ -1237,6 +1392,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 	OnUpdateAction pulumi.StringPtrInput `pulumi:"onUpdateAction"`
+	// Indicates how many IOPS must be provisioned for the disk.
+	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
@@ -1386,6 +1543,11 @@ func (o AttachedDiskInitializeParamsOutput) OnUpdateAction() pulumi.StringPtrOut
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.OnUpdateAction }).(pulumi.StringPtrOutput)
 }
 
+// Indicates how many IOPS must be provisioned for the disk.
+func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedIops }).(pulumi.StringPtrOutput)
+}
+
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 func (o AttachedDiskInitializeParamsOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
@@ -1513,6 +1675,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) OnUpdateAction() pulumi.StringPtr
 			return nil
 		}
 		return v.OnUpdateAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS must be provisioned for the disk.
+func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedIops
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2160,6 +2332,8 @@ type AutoscalingPolicy struct {
 	// Defines operating mode for this policy.
 	Mode           *string                          `pulumi:"mode"`
 	ScaleInControl *AutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+	ScalingSchedules map[string]string `pulumi:"scalingSchedules"`
 }
 
 // AutoscalingPolicyInput is an input type that accepts AutoscalingPolicyArgs and AutoscalingPolicyOutput values.
@@ -2192,6 +2366,8 @@ type AutoscalingPolicyArgs struct {
 	// Defines operating mode for this policy.
 	Mode           pulumi.StringPtrInput                   `pulumi:"mode"`
 	ScaleInControl AutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+	ScalingSchedules pulumi.StringMapInput `pulumi:"scalingSchedules"`
 }
 
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -2317,6 +2493,11 @@ func (o AutoscalingPolicyOutput) ScaleInControl() AutoscalingPolicyScaleInContro
 	return o.ApplyT(func(v AutoscalingPolicy) *AutoscalingPolicyScaleInControl { return v.ScaleInControl }).(AutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+func (o AutoscalingPolicyOutput) ScalingSchedules() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicy) map[string]string { return v.ScalingSchedules }).(pulumi.StringMapOutput)
+}
+
 type AutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyPtrOutput) ElementType() reflect.Type {
@@ -2414,6 +2595,16 @@ func (o AutoscalingPolicyPtrOutput) ScaleInControl() AutoscalingPolicyScaleInCon
 		}
 		return v.ScaleInControl
 	}).(AutoscalingPolicyScaleInControlPtrOutput)
+}
+
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+func (o AutoscalingPolicyPtrOutput) ScalingSchedules() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingSchedules
+	}).(pulumi.StringMapOutput)
 }
 
 // CPU utilization policy.
@@ -3050,26 +3241,13 @@ func (o AutoscalingPolicyScaleInControlPtrOutput) TimeWindowSec() pulumi.IntPtrO
 
 // Message containing information of one individual backend.
 type Backend struct {
-	// Specifies the balancing mode for the backend.
-	//
-	// When choosing a balancing mode, you need to consider the loadBalancingScheme, and protocol for the backend service, as well as the type of backend (instance group or NEG).
-	//
-	// - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections the backend can handle.
-	//   You can use the CONNECTION balancing mode if the protocol for the backend service is SSL, TCP, or UDP.
-	//
-	// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you must also specify exactly one of the following parameters: maxConnections (except for regional managed instance groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-	//
-	// If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify any additional parameters.
-	//
-	// - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second (RPS).
-	// You can use the RATE balancing mode if the protocol for the backend service is HTTP, HTTP2, or HTTPS. You must specify exactly one of the following parameters: maxRate (except for regional managed instance groups), maxRatePerInstance, or maxRatePerEndpoint.
-	//
-	// - If the load balancing mode is UTILIZATION, the load is spread based on the backend utilization of instances in an instance group.
-	// You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend service is EXTERNAL (except Network Load Balancing), INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There are no restrictions on the backend service protocol.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
 	BalancingMode *string `pulumi:"balancingMode"`
-	// A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	//
-	// This cannot be used for Internal TCP/UDP Load Balancing and Network Load Balancing.
+	// Not supported by:
+	//
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing
 	CapacityScaler *float64 `pulumi:"capacityScaler"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -3085,40 +3263,35 @@ type Backend struct {
 	//
 	// You must use the fully-qualified URL (starting with https://www.googleapis.com/) to specify the instance group or NEG. Partial URLs are not supported.
 	Group *string `pulumi:"group"`
-	// Defines a target maximum number of simultaneous connections that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
+	// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is RATE. Not supported by:
 	//
-	// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing
 	MaxConnections *int `pulumi:"maxConnections"`
-	// Defines a target maximum number of simultaneous connections for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a maximum number of target maximum simultaneous connections for the NEG. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnections, or maxConnectionsPerInstance.
+	// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 	//
-	// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+	// Not available if the backend's balancingMode is RATE. Not supported by:
+	//
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing.
 	MaxConnectionsPerEndpoint *int `pulumi:"maxConnectionsPerEndpoint"`
-	// Defines a target maximum number of simultaneous connections for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum number of simultaneous connections for the whole instance group. If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
+	// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 	//
-	// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+	// Not available if the backend's balancingMode is RATE. Not supported by:
+	//
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing.
 	MaxConnectionsPerInstance *int `pulumi:"maxConnectionsPerInstance"`
-	// Defines a maximum number of HTTP requests per second (RPS) that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). Must not be defined if the backend is a managed instance group that uses autoscaling based on load balancing.
-	//
-	// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+	// Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 	//
 	// Not available if the backend's balancingMode is CONNECTION.
 	MaxRate *int `pulumi:"maxRate"`
-	// Defines a maximum target for requests per second (RPS) for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a target maximum rate for the NEG.
-	//
-	// If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerInstance.
+	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 	//
 	// Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerEndpoint *float64 `pulumi:"maxRatePerEndpoint"`
-	// Defines a maximum target for requests per second (RPS) for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum rate for the whole instance group.
-	//
-	// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 	//
 	// Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance *float64 `pulumi:"maxRatePerInstance"`
-	// Defines the maximum average backend utilization of a backend VM in an instance group. The valid range is [0.0, 1.0]. This is an optional parameter if the backend's balancingMode is UTILIZATION.
-	//
-	// This parameter can be used in conjunction with maxRate, maxRatePerInstance, maxConnections (except for regional managed instance groups), or maxConnectionsPerInstance.
-	MaxUtilization *float64 `pulumi:"maxUtilization"`
+	MaxUtilization     *float64 `pulumi:"maxUtilization"`
 }
 
 // BackendInput is an input type that accepts BackendArgs and BackendOutput values.
@@ -3134,26 +3307,13 @@ type BackendInput interface {
 
 // Message containing information of one individual backend.
 type BackendArgs struct {
-	// Specifies the balancing mode for the backend.
-	//
-	// When choosing a balancing mode, you need to consider the loadBalancingScheme, and protocol for the backend service, as well as the type of backend (instance group or NEG).
-	//
-	// - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections the backend can handle.
-	//   You can use the CONNECTION balancing mode if the protocol for the backend service is SSL, TCP, or UDP.
-	//
-	// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you must also specify exactly one of the following parameters: maxConnections (except for regional managed instance groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-	//
-	// If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify any additional parameters.
-	//
-	// - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second (RPS).
-	// You can use the RATE balancing mode if the protocol for the backend service is HTTP, HTTP2, or HTTPS. You must specify exactly one of the following parameters: maxRate (except for regional managed instance groups), maxRatePerInstance, or maxRatePerEndpoint.
-	//
-	// - If the load balancing mode is UTILIZATION, the load is spread based on the backend utilization of instances in an instance group.
-	// You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend service is EXTERNAL (except Network Load Balancing), INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There are no restrictions on the backend service protocol.
+	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
 	BalancingMode pulumi.StringPtrInput `pulumi:"balancingMode"`
-	// A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 	//
-	// This cannot be used for Internal TCP/UDP Load Balancing and Network Load Balancing.
+	// Not supported by:
+	//
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing
 	CapacityScaler pulumi.Float64PtrInput `pulumi:"capacityScaler"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -3169,40 +3329,35 @@ type BackendArgs struct {
 	//
 	// You must use the fully-qualified URL (starting with https://www.googleapis.com/) to specify the instance group or NEG. Partial URLs are not supported.
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Defines a target maximum number of simultaneous connections that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
+	// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is RATE. Not supported by:
 	//
-	// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
-	// Defines a target maximum number of simultaneous connections for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a maximum number of target maximum simultaneous connections for the NEG. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnections, or maxConnectionsPerInstance.
+	// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 	//
-	// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+	// Not available if the backend's balancingMode is RATE. Not supported by:
+	//
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing.
 	MaxConnectionsPerEndpoint pulumi.IntPtrInput `pulumi:"maxConnectionsPerEndpoint"`
-	// Defines a target maximum number of simultaneous connections for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum number of simultaneous connections for the whole instance group. If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
+	// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 	//
-	// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+	// Not available if the backend's balancingMode is RATE. Not supported by:
+	//
+	// - Internal TCP/UDP Load Balancing - Network Load Balancing.
 	MaxConnectionsPerInstance pulumi.IntPtrInput `pulumi:"maxConnectionsPerInstance"`
-	// Defines a maximum number of HTTP requests per second (RPS) that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). Must not be defined if the backend is a managed instance group that uses autoscaling based on load balancing.
-	//
-	// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+	// Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 	//
 	// Not available if the backend's balancingMode is CONNECTION.
 	MaxRate pulumi.IntPtrInput `pulumi:"maxRate"`
-	// Defines a maximum target for requests per second (RPS) for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a target maximum rate for the NEG.
-	//
-	// If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerInstance.
+	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 	//
 	// Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerEndpoint pulumi.Float64PtrInput `pulumi:"maxRatePerEndpoint"`
-	// Defines a maximum target for requests per second (RPS) for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum rate for the whole instance group.
-	//
-	// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+	// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 	//
 	// Not available if the backend's balancingMode is CONNECTION.
 	MaxRatePerInstance pulumi.Float64PtrInput `pulumi:"maxRatePerInstance"`
-	// Defines the maximum average backend utilization of a backend VM in an instance group. The valid range is [0.0, 1.0]. This is an optional parameter if the backend's balancingMode is UTILIZATION.
-	//
-	// This parameter can be used in conjunction with maxRate, maxRatePerInstance, maxConnections (except for regional managed instance groups), or maxConnectionsPerInstance.
-	MaxUtilization pulumi.Float64PtrInput `pulumi:"maxUtilization"`
+	MaxUtilization     pulumi.Float64PtrInput `pulumi:"maxUtilization"`
 }
 
 func (BackendArgs) ElementType() reflect.Type {
@@ -3257,29 +3412,16 @@ func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOu
 	return o
 }
 
-// Specifies the balancing mode for the backend.
-//
-// When choosing a balancing mode, you need to consider the loadBalancingScheme, and protocol for the backend service, as well as the type of backend (instance group or NEG).
-//
-// - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections the backend can handle.
-//   You can use the CONNECTION balancing mode if the protocol for the backend service is SSL, TCP, or UDP.
-//
-// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you must also specify exactly one of the following parameters: maxConnections (except for regional managed instance groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-//
-// If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify any additional parameters.
-//
-// - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second (RPS).
-// You can use the RATE balancing mode if the protocol for the backend service is HTTP, HTTP2, or HTTPS. You must specify exactly one of the following parameters: maxRate (except for regional managed instance groups), maxRatePerInstance, or maxRatePerEndpoint.
-//
-// - If the load balancing mode is UTILIZATION, the load is spread based on the backend utilization of instances in an instance group.
-// You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend service is EXTERNAL (except Network Load Balancing), INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There are no restrictions on the backend service protocol.
+// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
 func (o BackendOutput) BalancingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Backend) *string { return v.BalancingMode }).(pulumi.StringPtrOutput)
 }
 
-// A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 //
-// This cannot be used for Internal TCP/UDP Load Balancing and Network Load Balancing.
+// Not supported by:
+//
+// - Internal TCP/UDP Load Balancing - Network Load Balancing
 func (o BackendOutput) CapacityScaler() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.CapacityScaler }).(pulumi.Float64PtrOutput)
 }
@@ -3307,57 +3449,52 @@ func (o BackendOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Backend) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Defines a target maximum number of simultaneous connections that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
+// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is RATE. Not supported by:
 //
-// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+// - Internal TCP/UDP Load Balancing - Network Load Balancing
 func (o BackendOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Backend) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
 }
 
-// Defines a target maximum number of simultaneous connections for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a maximum number of target maximum simultaneous connections for the NEG. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnections, or maxConnectionsPerInstance.
+// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 //
-// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+// Not available if the backend's balancingMode is RATE. Not supported by:
+//
+// - Internal TCP/UDP Load Balancing - Network Load Balancing.
 func (o BackendOutput) MaxConnectionsPerEndpoint() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Backend) *int { return v.MaxConnectionsPerEndpoint }).(pulumi.IntPtrOutput)
 }
 
-// Defines a target maximum number of simultaneous connections for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum number of simultaneous connections for the whole instance group. If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
+// Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 //
-// Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+// Not available if the backend's balancingMode is RATE. Not supported by:
+//
+// - Internal TCP/UDP Load Balancing - Network Load Balancing.
 func (o BackendOutput) MaxConnectionsPerInstance() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Backend) *int { return v.MaxConnectionsPerInstance }).(pulumi.IntPtrOutput)
 }
 
-// Defines a maximum number of HTTP requests per second (RPS) that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). Must not be defined if the backend is a managed instance group that uses autoscaling based on load balancing.
-//
-// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+// Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 //
 // Not available if the backend's balancingMode is CONNECTION.
 func (o BackendOutput) MaxRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Backend) *int { return v.MaxRate }).(pulumi.IntPtrOutput)
 }
 
-// Defines a maximum target for requests per second (RPS) for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a target maximum rate for the NEG.
-//
-// If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerInstance.
+// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 //
 // Not available if the backend's balancingMode is CONNECTION.
 func (o BackendOutput) MaxRatePerEndpoint() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxRatePerEndpoint }).(pulumi.Float64PtrOutput)
 }
 
-// Defines a maximum target for requests per second (RPS) for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum rate for the whole instance group.
-//
-// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+// Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 //
 // Not available if the backend's balancingMode is CONNECTION.
 func (o BackendOutput) MaxRatePerInstance() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxRatePerInstance }).(pulumi.Float64PtrOutput)
 }
 
-// Defines the maximum average backend utilization of a backend VM in an instance group. The valid range is [0.0, 1.0]. This is an optional parameter if the backend's balancingMode is UTILIZATION.
-//
-// This parameter can be used in conjunction with maxRate, maxRatePerInstance, maxConnections (except for regional managed instance groups), or maxConnectionsPerInstance.
 func (o BackendOutput) MaxUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.MaxUtilization }).(pulumi.Float64PtrOutput)
 }
@@ -3384,6 +3521,8 @@ func (o BackendArrayOutput) Index(i pulumi.IntInput) BackendOutput {
 
 // Message containing Cloud CDN configuration for a backend bucket.
 type BackendBucketCdnPolicy struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+	BypassCacheOnRequestHeaders []BackendBucketCdnPolicyBypassCacheOnRequestHeader `pulumi:"bypassCacheOnRequestHeaders"`
 	// Specifies the cache setting for all responses from this backend. The possible values are:
 	//
 	// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
@@ -3392,12 +3531,18 @@ type BackendBucketCdnPolicy struct {
 	//
 	// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode *string `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 	ClientTtl *int `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	MaxTtl *int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+	NegativeCaching *bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+	NegativeCachingPolicy []BackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicy"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec *string `pulumi:"signedUrlCacheMaxAgeSec"`
 	// [Output Only] Names of the keys for signing request URLs.
@@ -3417,6 +3562,8 @@ type BackendBucketCdnPolicyInput interface {
 
 // Message containing Cloud CDN configuration for a backend bucket.
 type BackendBucketCdnPolicyArgs struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+	BypassCacheOnRequestHeaders BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput `pulumi:"bypassCacheOnRequestHeaders"`
 	// Specifies the cache setting for all responses from this backend. The possible values are:
 	//
 	// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
@@ -3425,12 +3572,18 @@ type BackendBucketCdnPolicyArgs struct {
 	//
 	// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
 	// Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+	NegativeCachingPolicy BackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicy"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.StringPtrInput `pulumi:"signedUrlCacheMaxAgeSec"`
 	// [Output Only] Names of the keys for signing request URLs.
@@ -3515,6 +3668,13 @@ func (o BackendBucketCdnPolicyOutput) ToBackendBucketCdnPolicyPtrOutputWithConte
 	}).(BackendBucketCdnPolicyPtrOutput)
 }
 
+// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+func (o BackendBucketCdnPolicyOutput) BypassCacheOnRequestHeaders() BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) []BackendBucketCdnPolicyBypassCacheOnRequestHeader {
+		return v.BypassCacheOnRequestHeaders
+	}).(BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
 // Specifies the cache setting for all responses from this backend. The possible values are:
 //
 // USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
@@ -3526,7 +3686,7 @@ func (o BackendBucketCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 func (o BackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
@@ -3539,6 +3699,23 @@ func (o BackendBucketCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
 // Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o BackendBucketCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+func (o BackendBucketCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
+}
+
+// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+func (o BackendBucketCdnPolicyOutput) NegativeCachingPolicy() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) []BackendBucketCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicy
+	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+func (o BackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
@@ -3569,6 +3746,16 @@ func (o BackendBucketCdnPolicyPtrOutput) Elem() BackendBucketCdnPolicyOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) BackendBucketCdnPolicy { return *v }).(BackendBucketCdnPolicyOutput)
 }
 
+// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+func (o BackendBucketCdnPolicyPtrOutput) BypassCacheOnRequestHeaders() BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) []BackendBucketCdnPolicyBypassCacheOnRequestHeader {
+		if v == nil {
+			return nil
+		}
+		return v.BypassCacheOnRequestHeaders
+	}).(BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
 // Specifies the cache setting for all responses from this backend. The possible values are:
 //
 // USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
@@ -3585,7 +3772,7 @@ func (o BackendBucketCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 func (o BackendBucketCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
 		if v == nil {
@@ -3615,6 +3802,36 @@ func (o BackendBucketCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+func (o BackendBucketCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCaching
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+func (o BackendBucketCdnPolicyPtrOutput) NegativeCachingPolicy() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) []BackendBucketCdnPolicyNegativeCachingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCachingPolicy
+	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+func (o BackendBucketCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServeWhileStale
+	}).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 func (o BackendBucketCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *string {
@@ -3635,8 +3852,219 @@ func (o BackendBucketCdnPolicyPtrOutput) SignedUrlKeyNames() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+type BackendBucketCdnPolicyBypassCacheOnRequestHeader struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
+	HeaderName *string `pulumi:"headerName"`
+}
+
+// BackendBucketCdnPolicyBypassCacheOnRequestHeaderInput is an input type that accepts BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs and BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput values.
+// You can construct a concrete instance of `BackendBucketCdnPolicyBypassCacheOnRequestHeaderInput` via:
+//
+//          BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs{...}
+type BackendBucketCdnPolicyBypassCacheOnRequestHeaderInput interface {
+	pulumi.Input
+
+	ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput() BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput
+	ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(context.Context) BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput
+}
+
+// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+type BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+}
+
+func (BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (i BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput() BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return i.ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(ctx context.Context) BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput)
+}
+
+// BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput is an input type that accepts BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray and BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput` via:
+//
+//          BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray{ BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs{...} }
+type BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput() BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput
+	ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(context.Context) BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput
+}
+
+type BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray []BackendBucketCdnPolicyBypassCacheOnRequestHeaderInput
+
+func (BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucketCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (i BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput() BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return i.ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i BackendBucketCdnPolicyBypassCacheOnRequestHeaderArray) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(ctx context.Context) BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
+// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+type BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput() BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(ctx context.Context) BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return o
+}
+
+// The header field name to match on when bypassing cache. Values are case-insensitive.
+func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicyBypassCacheOnRequestHeader) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
+}
+
+type BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucketCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput() BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ToBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(ctx context.Context) BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput) Index(i pulumi.IntInput) BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendBucketCdnPolicyBypassCacheOnRequestHeader {
+		return vs[0].([]BackendBucketCdnPolicyBypassCacheOnRequestHeader)[vs[1].(int)]
+	}).(BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput)
+}
+
+// Specify CDN TTLs for response error codes.
+type BackendBucketCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+	Code *int `pulumi:"code"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *int `pulumi:"ttl"`
+}
+
+// BackendBucketCdnPolicyNegativeCachingPolicyInput is an input type that accepts BackendBucketCdnPolicyNegativeCachingPolicyArgs and BackendBucketCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `BackendBucketCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          BackendBucketCdnPolicyNegativeCachingPolicyArgs{...}
+type BackendBucketCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToBackendBucketCdnPolicyNegativeCachingPolicyOutput() BackendBucketCdnPolicyNegativeCachingPolicyOutput
+	ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) BackendBucketCdnPolicyNegativeCachingPolicyOutput
+}
+
+// Specify CDN TTLs for response error codes.
+type BackendBucketCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArgs) ToBackendBucketCdnPolicyNegativeCachingPolicyOutput() BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArgs) ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// BackendBucketCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts BackendBucketCdnPolicyNegativeCachingPolicyArray and BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `BackendBucketCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          BackendBucketCdnPolicyNegativeCachingPolicyArray{ BackendBucketCdnPolicyNegativeCachingPolicyArgs{...} }
+type BackendBucketCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput
+	ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicyArray []BackendBucketCdnPolicyNegativeCachingPolicyInput
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArray) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArray) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Specify CDN TTLs for response error codes.
+type BackendBucketCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyOutput() BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendBucketCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]BackendBucketCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(BackendBucketCdnPolicyNegativeCachingPolicyOutput)
+}
+
 // Message containing Cloud CDN configuration for a backend service.
 type BackendServiceCdnPolicy struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+	BypassCacheOnRequestHeaders []BackendServiceCdnPolicyBypassCacheOnRequestHeader `pulumi:"bypassCacheOnRequestHeaders"`
 	// The CacheKeyPolicy for this CdnPolicy.
 	CacheKeyPolicy *CacheKeyPolicy `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are:
@@ -3647,12 +4075,18 @@ type BackendServiceCdnPolicy struct {
 	//
 	// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode *string `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 	ClientTtl *int `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	MaxTtl *int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+	NegativeCaching *bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+	NegativeCachingPolicy []BackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicy"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec *string `pulumi:"signedUrlCacheMaxAgeSec"`
 	// [Output Only] Names of the keys for signing request URLs.
@@ -3672,6 +4106,8 @@ type BackendServiceCdnPolicyInput interface {
 
 // Message containing Cloud CDN configuration for a backend service.
 type BackendServiceCdnPolicyArgs struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+	BypassCacheOnRequestHeaders BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput `pulumi:"bypassCacheOnRequestHeaders"`
 	// The CacheKeyPolicy for this CdnPolicy.
 	CacheKeyPolicy CacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are:
@@ -3682,12 +4118,18 @@ type BackendServiceCdnPolicyArgs struct {
 	//
 	// CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
 	// Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+	NegativeCachingPolicy BackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicy"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.StringPtrInput `pulumi:"signedUrlCacheMaxAgeSec"`
 	// [Output Only] Names of the keys for signing request URLs.
@@ -3772,6 +4214,13 @@ func (o BackendServiceCdnPolicyOutput) ToBackendServiceCdnPolicyPtrOutputWithCon
 	}).(BackendServiceCdnPolicyPtrOutput)
 }
 
+// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+func (o BackendServiceCdnPolicyOutput) BypassCacheOnRequestHeaders() BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) []BackendServiceCdnPolicyBypassCacheOnRequestHeader {
+		return v.BypassCacheOnRequestHeaders
+	}).(BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
 // The CacheKeyPolicy for this CdnPolicy.
 func (o BackendServiceCdnPolicyOutput) CacheKeyPolicy() CacheKeyPolicyPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *CacheKeyPolicy { return v.CacheKeyPolicy }).(CacheKeyPolicyPtrOutput)
@@ -3788,7 +4237,7 @@ func (o BackendServiceCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 func (o BackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
@@ -3801,6 +4250,23 @@ func (o BackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
 // Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o BackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+func (o BackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
+}
+
+// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+func (o BackendServiceCdnPolicyOutput) NegativeCachingPolicy() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) []BackendServiceCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicy
+	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+func (o BackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
@@ -3831,6 +4297,16 @@ func (o BackendServiceCdnPolicyPtrOutput) Elem() BackendServiceCdnPolicyOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) BackendServiceCdnPolicy { return *v }).(BackendServiceCdnPolicyOutput)
 }
 
+// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+func (o BackendServiceCdnPolicyPtrOutput) BypassCacheOnRequestHeaders() BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) []BackendServiceCdnPolicyBypassCacheOnRequestHeader {
+		if v == nil {
+			return nil
+		}
+		return v.BypassCacheOnRequestHeaders
+	}).(BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
 // The CacheKeyPolicy for this CdnPolicy.
 func (o BackendServiceCdnPolicyPtrOutput) CacheKeyPolicy() CacheKeyPolicyPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *CacheKeyPolicy {
@@ -3857,7 +4333,7 @@ func (o BackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
 func (o BackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -3887,6 +4363,36 @@ func (o BackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+func (o BackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCaching
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+func (o BackendServiceCdnPolicyPtrOutput) NegativeCachingPolicy() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) []BackendServiceCdnPolicyNegativeCachingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCachingPolicy
+	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+func (o BackendServiceCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServeWhileStale
+	}).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 func (o BackendServiceCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *string {
@@ -3905,6 +4411,215 @@ func (o BackendServiceCdnPolicyPtrOutput) SignedUrlKeyNames() pulumi.StringArray
 		}
 		return v.SignedUrlKeyNames
 	}).(pulumi.StringArrayOutput)
+}
+
+// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+type BackendServiceCdnPolicyBypassCacheOnRequestHeader struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
+	HeaderName *string `pulumi:"headerName"`
+}
+
+// BackendServiceCdnPolicyBypassCacheOnRequestHeaderInput is an input type that accepts BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs and BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput values.
+// You can construct a concrete instance of `BackendServiceCdnPolicyBypassCacheOnRequestHeaderInput` via:
+//
+//          BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{...}
+type BackendServiceCdnPolicyBypassCacheOnRequestHeaderInput interface {
+	pulumi.Input
+
+	ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput() BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput
+	ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(context.Context) BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput
+}
+
+// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+type BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+}
+
+func (BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (i BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput() BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return i.ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(ctx context.Context) BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput)
+}
+
+// BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput is an input type that accepts BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray and BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput` via:
+//
+//          BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray{ BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{...} }
+type BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput() BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput
+	ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(context.Context) BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput
+}
+
+type BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray []BackendServiceCdnPolicyBypassCacheOnRequestHeaderInput
+
+func (BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (i BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput() BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return i.ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceCdnPolicyBypassCacheOnRequestHeaderArray) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(ctx context.Context) BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
+// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+type BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (o BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput() BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(ctx context.Context) BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return o
+}
+
+// The header field name to match on when bypassing cache. Values are case-insensitive.
+func (o BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicyBypassCacheOnRequestHeader) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (o BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput() BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ToBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(ctx context.Context) BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) Index(i pulumi.IntInput) BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceCdnPolicyBypassCacheOnRequestHeader {
+		return vs[0].([]BackendServiceCdnPolicyBypassCacheOnRequestHeader)[vs[1].(int)]
+	}).(BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput)
+}
+
+// Specify CDN TTLs for response error codes.
+type BackendServiceCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+	Code *int `pulumi:"code"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *int `pulumi:"ttl"`
+}
+
+// BackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts BackendServiceCdnPolicyNegativeCachingPolicyArgs and BackendServiceCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `BackendServiceCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          BackendServiceCdnPolicyNegativeCachingPolicyArgs{...}
+type BackendServiceCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToBackendServiceCdnPolicyNegativeCachingPolicyOutput() BackendServiceCdnPolicyNegativeCachingPolicyOutput
+	ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) BackendServiceCdnPolicyNegativeCachingPolicyOutput
+}
+
+// Specify CDN TTLs for response error codes.
+type BackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArgs) ToBackendServiceCdnPolicyNegativeCachingPolicyOutput() BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArgs) ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// BackendServiceCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts BackendServiceCdnPolicyNegativeCachingPolicyArray and BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `BackendServiceCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          BackendServiceCdnPolicyNegativeCachingPolicyArray{ BackendServiceCdnPolicyNegativeCachingPolicyArgs{...} }
+type BackendServiceCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+	ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicyArray []BackendServiceCdnPolicyNegativeCachingPolicyInput
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArray) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArray) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// Specify CDN TTLs for response error codes.
+type BackendServiceCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyOutput() BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]BackendServiceCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(BackendServiceCdnPolicyNegativeCachingPolicyOutput)
 }
 
 // Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. On failover or failback, this field indicates whether connection draining will be honored. GCP has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
@@ -5319,7 +6034,7 @@ func (o ConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.
 
 // Message containing connection draining configuration.
 type ConnectionDraining struct {
-	// The amount of time in seconds to allow existing connections to persist while on unhealthy backend VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+	// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
 	DrainingTimeoutSec *int `pulumi:"drainingTimeoutSec"`
 }
 
@@ -5336,7 +6051,7 @@ type ConnectionDrainingInput interface {
 
 // Message containing connection draining configuration.
 type ConnectionDrainingArgs struct {
-	// The amount of time in seconds to allow existing connections to persist while on unhealthy backend VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+	// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
 	DrainingTimeoutSec pulumi.IntPtrInput `pulumi:"drainingTimeoutSec"`
 }
 
@@ -5418,7 +6133,7 @@ func (o ConnectionDrainingOutput) ToConnectionDrainingPtrOutputWithContext(ctx c
 	}).(ConnectionDrainingPtrOutput)
 }
 
-// The amount of time in seconds to allow existing connections to persist while on unhealthy backend VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
 func (o ConnectionDrainingOutput) DrainingTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionDraining) *int { return v.DrainingTimeoutSec }).(pulumi.IntPtrOutput)
 }
@@ -5441,7 +6156,7 @@ func (o ConnectionDrainingPtrOutput) Elem() ConnectionDrainingOutput {
 	return o.ApplyT(func(v *ConnectionDraining) ConnectionDraining { return *v }).(ConnectionDrainingOutput)
 }
 
-// The amount of time in seconds to allow existing connections to persist while on unhealthy backend VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
 func (o ConnectionDrainingPtrOutput) DrainingTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionDraining) *int {
 		if v == nil {
@@ -5808,7 +6523,7 @@ type CorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that will be allowed to do CORS requests.
@@ -5842,7 +6557,7 @@ type CorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that will be allowed to do CORS requests.
@@ -5950,7 +6665,7 @@ func (o CorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
@@ -6026,7 +6741,7 @@ func (o CorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
@@ -7835,6 +8550,641 @@ func (o FirewallLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type FirewallPolicyAssociation struct {
+	// The target that the firewall policy is attached to.
+	AttachmentTarget *string `pulumi:"attachmentTarget"`
+	// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+	DisplayName *string `pulumi:"displayName"`
+	// [Output Only] The firewall policy ID of the association.
+	FirewallPolicyId *string `pulumi:"firewallPolicyId"`
+	// The name for an association.
+	Name *string `pulumi:"name"`
+	// [Output Only] The short name of the firewall policy of the association.
+	ShortName *string `pulumi:"shortName"`
+}
+
+// FirewallPolicyAssociationInput is an input type that accepts FirewallPolicyAssociationArgs and FirewallPolicyAssociationOutput values.
+// You can construct a concrete instance of `FirewallPolicyAssociationInput` via:
+//
+//          FirewallPolicyAssociationArgs{...}
+type FirewallPolicyAssociationInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyAssociationOutput() FirewallPolicyAssociationOutput
+	ToFirewallPolicyAssociationOutputWithContext(context.Context) FirewallPolicyAssociationOutput
+}
+
+type FirewallPolicyAssociationArgs struct {
+	// The target that the firewall policy is attached to.
+	AttachmentTarget pulumi.StringPtrInput `pulumi:"attachmentTarget"`
+	// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// [Output Only] The firewall policy ID of the association.
+	FirewallPolicyId pulumi.StringPtrInput `pulumi:"firewallPolicyId"`
+	// The name for an association.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Output Only] The short name of the firewall policy of the association.
+	ShortName pulumi.StringPtrInput `pulumi:"shortName"`
+}
+
+func (FirewallPolicyAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyAssociation)(nil)).Elem()
+}
+
+func (i FirewallPolicyAssociationArgs) ToFirewallPolicyAssociationOutput() FirewallPolicyAssociationOutput {
+	return i.ToFirewallPolicyAssociationOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyAssociationArgs) ToFirewallPolicyAssociationOutputWithContext(ctx context.Context) FirewallPolicyAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationOutput)
+}
+
+// FirewallPolicyAssociationArrayInput is an input type that accepts FirewallPolicyAssociationArray and FirewallPolicyAssociationArrayOutput values.
+// You can construct a concrete instance of `FirewallPolicyAssociationArrayInput` via:
+//
+//          FirewallPolicyAssociationArray{ FirewallPolicyAssociationArgs{...} }
+type FirewallPolicyAssociationArrayInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyAssociationArrayOutput() FirewallPolicyAssociationArrayOutput
+	ToFirewallPolicyAssociationArrayOutputWithContext(context.Context) FirewallPolicyAssociationArrayOutput
+}
+
+type FirewallPolicyAssociationArray []FirewallPolicyAssociationInput
+
+func (FirewallPolicyAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallPolicyAssociation)(nil)).Elem()
+}
+
+func (i FirewallPolicyAssociationArray) ToFirewallPolicyAssociationArrayOutput() FirewallPolicyAssociationArrayOutput {
+	return i.ToFirewallPolicyAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyAssociationArray) ToFirewallPolicyAssociationArrayOutputWithContext(ctx context.Context) FirewallPolicyAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyAssociationArrayOutput)
+}
+
+type FirewallPolicyAssociationOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyAssociation)(nil)).Elem()
+}
+
+func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutput() FirewallPolicyAssociationOutput {
+	return o
+}
+
+func (o FirewallPolicyAssociationOutput) ToFirewallPolicyAssociationOutputWithContext(ctx context.Context) FirewallPolicyAssociationOutput {
+	return o
+}
+
+// The target that the firewall policy is attached to.
+func (o FirewallPolicyAssociationOutput) AttachmentTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.AttachmentTarget }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+func (o FirewallPolicyAssociationOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] The firewall policy ID of the association.
+func (o FirewallPolicyAssociationOutput) FirewallPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.FirewallPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The name for an association.
+func (o FirewallPolicyAssociationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] The short name of the firewall policy of the association.
+func (o FirewallPolicyAssociationOutput) ShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.ShortName }).(pulumi.StringPtrOutput)
+}
+
+type FirewallPolicyAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallPolicyAssociation)(nil)).Elem()
+}
+
+func (o FirewallPolicyAssociationArrayOutput) ToFirewallPolicyAssociationArrayOutput() FirewallPolicyAssociationArrayOutput {
+	return o
+}
+
+func (o FirewallPolicyAssociationArrayOutput) ToFirewallPolicyAssociationArrayOutputWithContext(ctx context.Context) FirewallPolicyAssociationArrayOutput {
+	return o
+}
+
+func (o FirewallPolicyAssociationArrayOutput) Index(i pulumi.IntInput) FirewallPolicyAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPolicyAssociation {
+		return vs[0].([]FirewallPolicyAssociation)[vs[1].(int)]
+	}).(FirewallPolicyAssociationOutput)
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type FirewallPolicyRule struct {
+	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	Action *string `pulumi:"action"`
+	// An optional description for this resource.
+	Description *string `pulumi:"description"`
+	// The direction in which this rule applies.
+	Direction *string `pulumi:"direction"`
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	Disabled *bool `pulumi:"disabled"`
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+	EnableLogging *bool `pulumi:"enableLogging"`
+	// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
+	Kind *string `pulumi:"kind"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	Match *FirewallPolicyRuleMatcher `pulumi:"match"`
+	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	Priority *int `pulumi:"priority"`
+	// [Output Only] Calculation of the complexity of a single firewall policy rule.
+	RuleTupleCount *int `pulumi:"ruleTupleCount"`
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	TargetResources []string `pulumi:"targetResources"`
+	// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
+	TargetSecureLabels []string `pulumi:"targetSecureLabels"`
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
+	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+}
+
+// FirewallPolicyRuleInput is an input type that accepts FirewallPolicyRuleArgs and FirewallPolicyRuleOutput values.
+// You can construct a concrete instance of `FirewallPolicyRuleInput` via:
+//
+//          FirewallPolicyRuleArgs{...}
+type FirewallPolicyRuleInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleOutput() FirewallPolicyRuleOutput
+	ToFirewallPolicyRuleOutputWithContext(context.Context) FirewallPolicyRuleOutput
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type FirewallPolicyRuleArgs struct {
+	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// An optional description for this resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The direction in which this rule applies.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+	EnableLogging pulumi.BoolPtrInput `pulumi:"enableLogging"`
+	// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	Match FirewallPolicyRuleMatcherPtrInput `pulumi:"match"`
+	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// [Output Only] Calculation of the complexity of a single firewall policy rule.
+	RuleTupleCount pulumi.IntPtrInput `pulumi:"ruleTupleCount"`
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
+	// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
+	TargetSecureLabels pulumi.StringArrayInput `pulumi:"targetSecureLabels"`
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
+	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
+}
+
+func (FirewallPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRule)(nil)).Elem()
+}
+
+func (i FirewallPolicyRuleArgs) ToFirewallPolicyRuleOutput() FirewallPolicyRuleOutput {
+	return i.ToFirewallPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleArgs) ToFirewallPolicyRuleOutputWithContext(ctx context.Context) FirewallPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleOutput)
+}
+
+// FirewallPolicyRuleArrayInput is an input type that accepts FirewallPolicyRuleArray and FirewallPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `FirewallPolicyRuleArrayInput` via:
+//
+//          FirewallPolicyRuleArray{ FirewallPolicyRuleArgs{...} }
+type FirewallPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleArrayOutput() FirewallPolicyRuleArrayOutput
+	ToFirewallPolicyRuleArrayOutputWithContext(context.Context) FirewallPolicyRuleArrayOutput
+}
+
+type FirewallPolicyRuleArray []FirewallPolicyRuleInput
+
+func (FirewallPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallPolicyRule)(nil)).Elem()
+}
+
+func (i FirewallPolicyRuleArray) ToFirewallPolicyRuleArrayOutput() FirewallPolicyRuleArrayOutput {
+	return i.ToFirewallPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleArray) ToFirewallPolicyRuleArrayOutputWithContext(ctx context.Context) FirewallPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleArrayOutput)
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type FirewallPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRule)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutput() FirewallPolicyRuleOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutputWithContext(ctx context.Context) FirewallPolicyRuleOutput {
+	return o
+}
+
+// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+func (o FirewallPolicyRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// An optional description for this resource.
+func (o FirewallPolicyRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The direction in which this rule applies.
+func (o FirewallPolicyRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+func (o FirewallPolicyRuleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+func (o FirewallPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
+}
+
+// [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
+func (o FirewallPolicyRuleOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+func (o FirewallPolicyRuleOutput) Match() FirewallPolicyRuleMatcherPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *FirewallPolicyRuleMatcher { return v.Match }).(FirewallPolicyRuleMatcherPtrOutput)
+}
+
+// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+func (o FirewallPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// [Output Only] Calculation of the complexity of a single firewall policy rule.
+func (o FirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *int { return v.RuleTupleCount }).(pulumi.IntPtrOutput)
+}
+
+// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
+}
+
+// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
+func (o FirewallPolicyRuleOutput) TargetSecureLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetSecureLabels }).(pulumi.StringArrayOutput)
+}
+
+// A list of service accounts indicating the sets of instances that are applied with this rule.
+func (o FirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+type FirewallPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallPolicyRule)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleArrayOutput) ToFirewallPolicyRuleArrayOutput() FirewallPolicyRuleArrayOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleArrayOutput) ToFirewallPolicyRuleArrayOutputWithContext(ctx context.Context) FirewallPolicyRuleArrayOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPolicyRule {
+		return vs[0].([]FirewallPolicyRule)[vs[1].(int)]
+	}).(FirewallPolicyRuleOutput)
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type FirewallPolicyRuleMatcher struct {
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match.
+	Layer4Configs []FirewallPolicyRuleMatcherLayer4Config `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
+	SrcSecureLabels []string `pulumi:"srcSecureLabels"`
+}
+
+// FirewallPolicyRuleMatcherInput is an input type that accepts FirewallPolicyRuleMatcherArgs and FirewallPolicyRuleMatcherOutput values.
+// You can construct a concrete instance of `FirewallPolicyRuleMatcherInput` via:
+//
+//          FirewallPolicyRuleMatcherArgs{...}
+type FirewallPolicyRuleMatcherInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleMatcherOutput() FirewallPolicyRuleMatcherOutput
+	ToFirewallPolicyRuleMatcherOutputWithContext(context.Context) FirewallPolicyRuleMatcherOutput
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type FirewallPolicyRuleMatcherArgs struct {
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match.
+	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigArrayInput `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+	// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
+	SrcSecureLabels pulumi.StringArrayInput `pulumi:"srcSecureLabels"`
+}
+
+func (FirewallPolicyRuleMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (i FirewallPolicyRuleMatcherArgs) ToFirewallPolicyRuleMatcherOutput() FirewallPolicyRuleMatcherOutput {
+	return i.ToFirewallPolicyRuleMatcherOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleMatcherArgs) ToFirewallPolicyRuleMatcherOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMatcherOutput)
+}
+
+func (i FirewallPolicyRuleMatcherArgs) ToFirewallPolicyRuleMatcherPtrOutput() FirewallPolicyRuleMatcherPtrOutput {
+	return i.ToFirewallPolicyRuleMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleMatcherArgs) ToFirewallPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMatcherOutput).ToFirewallPolicyRuleMatcherPtrOutputWithContext(ctx)
+}
+
+// FirewallPolicyRuleMatcherPtrInput is an input type that accepts FirewallPolicyRuleMatcherArgs, FirewallPolicyRuleMatcherPtr and FirewallPolicyRuleMatcherPtrOutput values.
+// You can construct a concrete instance of `FirewallPolicyRuleMatcherPtrInput` via:
+//
+//          FirewallPolicyRuleMatcherArgs{...}
+//
+//  or:
+//
+//          nil
+type FirewallPolicyRuleMatcherPtrInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleMatcherPtrOutput() FirewallPolicyRuleMatcherPtrOutput
+	ToFirewallPolicyRuleMatcherPtrOutputWithContext(context.Context) FirewallPolicyRuleMatcherPtrOutput
+}
+
+type firewallPolicyRuleMatcherPtrType FirewallPolicyRuleMatcherArgs
+
+func FirewallPolicyRuleMatcherPtr(v *FirewallPolicyRuleMatcherArgs) FirewallPolicyRuleMatcherPtrInput {
+	return (*firewallPolicyRuleMatcherPtrType)(v)
+}
+
+func (*firewallPolicyRuleMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (i *firewallPolicyRuleMatcherPtrType) ToFirewallPolicyRuleMatcherPtrOutput() FirewallPolicyRuleMatcherPtrOutput {
+	return i.ToFirewallPolicyRuleMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallPolicyRuleMatcherPtrType) ToFirewallPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMatcherPtrOutput)
+}
+
+// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+type FirewallPolicyRuleMatcherOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyRuleMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherOutput() FirewallPolicyRuleMatcherOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherPtrOutput() FirewallPolicyRuleMatcherPtrOutput {
+	return o.ToFirewallPolicyRuleMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyRuleMatcherOutput) ToFirewallPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) *FirewallPolicyRuleMatcher {
+		return &v
+	}).(FirewallPolicyRuleMatcherPtrOutput)
+}
+
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+func (o FirewallPolicyRuleMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match.
+func (o FirewallPolicyRuleMatcherOutput) Layer4Configs() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config { return v.Layer4Configs }).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+func (o FirewallPolicyRuleMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
+func (o FirewallPolicyRuleMatcherOutput) SrcSecureLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcSecureLabels }).(pulumi.StringArrayOutput)
+}
+
+type FirewallPolicyRuleMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyRuleMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallPolicyRuleMatcher)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleMatcherPtrOutput) ToFirewallPolicyRuleMatcherPtrOutput() FirewallPolicyRuleMatcherPtrOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherPtrOutput) ToFirewallPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherPtrOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherPtrOutput) Elem() FirewallPolicyRuleMatcherOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) FirewallPolicyRuleMatcher { return *v }).(FirewallPolicyRuleMatcherOutput)
+}
+
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+func (o FirewallPolicyRuleMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match.
+func (o FirewallPolicyRuleMatcherPtrOutput) Layer4Configs() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config {
+		if v == nil {
+			return nil
+		}
+		return v.Layer4Configs
+	}).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+func (o FirewallPolicyRuleMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
+func (o FirewallPolicyRuleMatcherPtrOutput) SrcSecureLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcSecureLabels
+	}).(pulumi.StringArrayOutput)
+}
+
+type FirewallPolicyRuleMatcherLayer4Config struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol *string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	//
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports []string `pulumi:"ports"`
+}
+
+// FirewallPolicyRuleMatcherLayer4ConfigInput is an input type that accepts FirewallPolicyRuleMatcherLayer4ConfigArgs and FirewallPolicyRuleMatcherLayer4ConfigOutput values.
+// You can construct a concrete instance of `FirewallPolicyRuleMatcherLayer4ConfigInput` via:
+//
+//          FirewallPolicyRuleMatcherLayer4ConfigArgs{...}
+type FirewallPolicyRuleMatcherLayer4ConfigInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleMatcherLayer4ConfigOutput() FirewallPolicyRuleMatcherLayer4ConfigOutput
+	ToFirewallPolicyRuleMatcherLayer4ConfigOutputWithContext(context.Context) FirewallPolicyRuleMatcherLayer4ConfigOutput
+}
+
+type FirewallPolicyRuleMatcherLayer4ConfigArgs struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	//
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (FirewallPolicyRuleMatcherLayer4ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleMatcherLayer4Config)(nil)).Elem()
+}
+
+func (i FirewallPolicyRuleMatcherLayer4ConfigArgs) ToFirewallPolicyRuleMatcherLayer4ConfigOutput() FirewallPolicyRuleMatcherLayer4ConfigOutput {
+	return i.ToFirewallPolicyRuleMatcherLayer4ConfigOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleMatcherLayer4ConfigArgs) ToFirewallPolicyRuleMatcherLayer4ConfigOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherLayer4ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMatcherLayer4ConfigOutput)
+}
+
+// FirewallPolicyRuleMatcherLayer4ConfigArrayInput is an input type that accepts FirewallPolicyRuleMatcherLayer4ConfigArray and FirewallPolicyRuleMatcherLayer4ConfigArrayOutput values.
+// You can construct a concrete instance of `FirewallPolicyRuleMatcherLayer4ConfigArrayInput` via:
+//
+//          FirewallPolicyRuleMatcherLayer4ConfigArray{ FirewallPolicyRuleMatcherLayer4ConfigArgs{...} }
+type FirewallPolicyRuleMatcherLayer4ConfigArrayInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutput() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput
+	ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutputWithContext(context.Context) FirewallPolicyRuleMatcherLayer4ConfigArrayOutput
+}
+
+type FirewallPolicyRuleMatcherLayer4ConfigArray []FirewallPolicyRuleMatcherLayer4ConfigInput
+
+func (FirewallPolicyRuleMatcherLayer4ConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallPolicyRuleMatcherLayer4Config)(nil)).Elem()
+}
+
+func (i FirewallPolicyRuleMatcherLayer4ConfigArray) ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutput() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
+	return i.ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicyRuleMatcherLayer4ConfigArray) ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
+}
+
+type FirewallPolicyRuleMatcherLayer4ConfigOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyRuleMatcherLayer4ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyRuleMatcherLayer4Config)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleMatcherLayer4ConfigOutput) ToFirewallPolicyRuleMatcherLayer4ConfigOutput() FirewallPolicyRuleMatcherLayer4ConfigOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherLayer4ConfigOutput) ToFirewallPolicyRuleMatcherLayer4ConfigOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherLayer4ConfigOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+func (o FirewallPolicyRuleMatcherLayer4ConfigOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherLayer4Config) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+//
+// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+func (o FirewallPolicyRuleMatcherLayer4ConfigOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherLayer4Config) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type FirewallPolicyRuleMatcherLayer4ConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyRuleMatcherLayer4ConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallPolicyRuleMatcherLayer4Config)(nil)).Elem()
+}
+
+func (o FirewallPolicyRuleMatcherLayer4ConfigArrayOutput) ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutput() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherLayer4ConfigArrayOutput) ToFirewallPolicyRuleMatcherLayer4ConfigArrayOutputWithContext(ctx context.Context) FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o FirewallPolicyRuleMatcherLayer4ConfigArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRuleMatcherLayer4ConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPolicyRuleMatcherLayer4Config {
+		return vs[0].([]FirewallPolicyRuleMatcherLayer4Config)[vs[1].(int)]
+	}).(FirewallPolicyRuleMatcherLayer4ConfigOutput)
+}
+
 // Encapsulates numeric value that can be either absolute or relative.
 type FixedOrPercent struct {
 	// [Output Only] Absolute value of VM instances calculated based on the specific mode.
@@ -8017,6 +9367,124 @@ func (o FixedOrPercentPtrOutput) Percent() pulumi.IntPtrOutput {
 		}
 		return v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+type ForwardingRuleServiceDirectoryRegistration struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace *string `pulumi:"namespace"`
+	// Service Directory service to register the forwarding rule under.
+	Service *string `pulumi:"service"`
+	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+	ServiceDirectoryRegion *string `pulumi:"serviceDirectoryRegion"`
+}
+
+// ForwardingRuleServiceDirectoryRegistrationInput is an input type that accepts ForwardingRuleServiceDirectoryRegistrationArgs and ForwardingRuleServiceDirectoryRegistrationOutput values.
+// You can construct a concrete instance of `ForwardingRuleServiceDirectoryRegistrationInput` via:
+//
+//          ForwardingRuleServiceDirectoryRegistrationArgs{...}
+type ForwardingRuleServiceDirectoryRegistrationInput interface {
+	pulumi.Input
+
+	ToForwardingRuleServiceDirectoryRegistrationOutput() ForwardingRuleServiceDirectoryRegistrationOutput
+	ToForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Context) ForwardingRuleServiceDirectoryRegistrationOutput
+}
+
+// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+type ForwardingRuleServiceDirectoryRegistrationArgs struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Service Directory service to register the forwarding rule under.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+	ServiceDirectoryRegion pulumi.StringPtrInput `pulumi:"serviceDirectoryRegion"`
+}
+
+func (ForwardingRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i ForwardingRuleServiceDirectoryRegistrationArgs) ToForwardingRuleServiceDirectoryRegistrationOutput() ForwardingRuleServiceDirectoryRegistrationOutput {
+	return i.ToForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleServiceDirectoryRegistrationArgs) ToForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) ForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleServiceDirectoryRegistrationOutput)
+}
+
+// ForwardingRuleServiceDirectoryRegistrationArrayInput is an input type that accepts ForwardingRuleServiceDirectoryRegistrationArray and ForwardingRuleServiceDirectoryRegistrationArrayOutput values.
+// You can construct a concrete instance of `ForwardingRuleServiceDirectoryRegistrationArrayInput` via:
+//
+//          ForwardingRuleServiceDirectoryRegistrationArray{ ForwardingRuleServiceDirectoryRegistrationArgs{...} }
+type ForwardingRuleServiceDirectoryRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToForwardingRuleServiceDirectoryRegistrationArrayOutput() ForwardingRuleServiceDirectoryRegistrationArrayOutput
+	ToForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) ForwardingRuleServiceDirectoryRegistrationArrayOutput
+}
+
+type ForwardingRuleServiceDirectoryRegistrationArray []ForwardingRuleServiceDirectoryRegistrationInput
+
+func (ForwardingRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i ForwardingRuleServiceDirectoryRegistrationArray) ToForwardingRuleServiceDirectoryRegistrationArrayOutput() ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return i.ToForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleServiceDirectoryRegistrationArray) ToForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+type ForwardingRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o ForwardingRuleServiceDirectoryRegistrationOutput) ToForwardingRuleServiceDirectoryRegistrationOutput() ForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o ForwardingRuleServiceDirectoryRegistrationOutput) ToForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) ForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+// Service Directory namespace to register the forwarding rule under.
+func (o ForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistration) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Service Directory service to register the forwarding rule under.
+func (o ForwardingRuleServiceDirectoryRegistrationOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistration) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+func (o ForwardingRuleServiceDirectoryRegistrationOutput) ServiceDirectoryRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistration) *string { return v.ServiceDirectoryRegion }).(pulumi.StringPtrOutput)
+}
+
+type ForwardingRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o ForwardingRuleServiceDirectoryRegistrationArrayOutput) ToForwardingRuleServiceDirectoryRegistrationArrayOutput() ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleServiceDirectoryRegistrationArrayOutput) ToForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) ForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRuleServiceDirectoryRegistration {
+		return vs[0].([]ForwardingRuleServiceDirectoryRegistration)[vs[1].(int)]
+	}).(ForwardingRuleServiceDirectoryRegistrationOutput)
 }
 
 type GRPCHealthCheck struct {
@@ -10079,7 +11547,7 @@ type HttpHeaderMatch struct {
 	//   Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	//   Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
 	RangeMatch *Int64RangeMatch `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript
+	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  github.com/google/re2/wiki/Syntax
 	// For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier.
 	// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	// Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -10128,7 +11596,7 @@ type HttpHeaderMatchArgs struct {
 	//   Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	//   Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
 	RangeMatch Int64RangeMatchPtrInput `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript
+	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  github.com/google/re2/wiki/Syntax
 	// For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier.
 	// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	// Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -10234,7 +11702,7 @@ func (o HttpHeaderMatchOutput) RangeMatch() Int64RangeMatchPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *Int64RangeMatch { return v.RangeMatch }).(Int64RangeMatchPtrOutput)
 }
 
-// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript
+// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  github.com/google/re2/wiki/Syntax
 // For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier.
 // Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 // Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -10399,7 +11867,7 @@ type HttpQueryParameterMatch struct {
 	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
 	// Only one of presentMatch, exactMatch or regexMatch must be set.
 	PresentMatch *bool `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see en.cppreference.com/w/cpp/regex/ecmascript
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax
 	// Only one of presentMatch, exactMatch or regexMatch must be set.
 	// Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
@@ -10426,7 +11894,7 @@ type HttpQueryParameterMatchArgs struct {
 	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
 	// Only one of presentMatch, exactMatch or regexMatch must be set.
 	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see en.cppreference.com/w/cpp/regex/ecmascript
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax
 	// Only one of presentMatch, exactMatch or regexMatch must be set.
 	// Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
@@ -10501,7 +11969,7 @@ func (o HttpQueryParameterMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
 }
 
-// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see en.cppreference.com/w/cpp/regex/ecmascript
+// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax
 // Only one of presentMatch, exactMatch or regexMatch must be set.
 // Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpQueryParameterMatchOutput) RegexMatch() pulumi.StringPtrOutput {
@@ -11037,6 +12505,10 @@ type HttpRouteAction struct {
 	// timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	FaultInjectionPolicy *HttpFaultInjection `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+	// If not specified, will use the largest maxStreamDuration among all backend services associated with the route.
+	// This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	MaxStreamDuration *Duration `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	RequestMirrorPolicy *RequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
@@ -11075,6 +12547,10 @@ type HttpRouteActionArgs struct {
 	// timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	FaultInjectionPolicy HttpFaultInjectionPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+	// If not specified, will use the largest maxStreamDuration among all backend services associated with the route.
+	// This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	MaxStreamDuration DurationPtrInput `pulumi:"maxStreamDuration"`
 	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 	RequestMirrorPolicy RequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
@@ -11184,6 +12660,13 @@ func (o HttpRouteActionOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutpu
 	return o.ApplyT(func(v HttpRouteAction) *HttpFaultInjection { return v.FaultInjectionPolicy }).(HttpFaultInjectionPtrOutput)
 }
 
+// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+// If not specified, will use the largest maxStreamDuration among all backend services associated with the route.
+// This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+func (o HttpRouteActionOutput) MaxStreamDuration() DurationPtrOutput {
+	return o.ApplyT(func(v HttpRouteAction) *Duration { return v.MaxStreamDuration }).(DurationPtrOutput)
+}
+
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 // Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteActionOutput) RequestMirrorPolicy() RequestMirrorPolicyPtrOutput {
@@ -11255,6 +12738,18 @@ func (o HttpRouteActionPtrOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOu
 		}
 		return v.FaultInjectionPolicy
 	}).(HttpFaultInjectionPtrOutput)
+}
+
+// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+// If not specified, will use the largest maxStreamDuration among all backend services associated with the route.
+// This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+func (o HttpRouteActionPtrOutput) MaxStreamDuration() DurationPtrOutput {
+	return o.ApplyT(func(v *HttpRouteAction) *Duration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStreamDuration
+	}).(DurationPtrOutput)
 }
 
 // Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
@@ -11527,7 +13022,7 @@ type HttpRouteRuleMatch struct {
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
 	// Not supported when the URL map is bound to target gRPC proxy.
 	QueryParameterMatches []HttpQueryParameterMatch `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 	// Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	// Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
@@ -11570,7 +13065,7 @@ type HttpRouteRuleMatchArgs struct {
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
 	// Not supported when the URL map is bound to target gRPC proxy.
 	QueryParameterMatches HttpQueryParameterMatchArrayInput `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 	// Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	// Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
@@ -11670,7 +13165,7 @@ func (o HttpRouteRuleMatchOutput) QueryParameterMatches() HttpQueryParameterMatc
 	return o.ApplyT(func(v HttpRouteRuleMatch) []HttpQueryParameterMatch { return v.QueryParameterMatches }).(HttpQueryParameterMatchArrayOutput)
 }
 
-// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax
 // Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 // Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteRuleMatchOutput) RegexMatch() pulumi.StringPtrOutput {
@@ -12894,14 +14389,14 @@ type InstanceGroupManagerUpdatePolicy struct {
 	// - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region.
 	// - NONE: For non-autoscaled groups, proactive redistribution is disabled.
 	InstanceRedistributionType *string `pulumi:"instanceRedistributionType"`
-	// The maximum number of instances that can be created above the specified targetSize during the update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+	// The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
 	//
 	// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
 	MaxSurge *FixedOrPercent `pulumi:"maxSurge"`
 	// The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied:
 	//
 	// - The instance's status is RUNNING.
-	// - If there is a health check on the instance group, the instance's liveness health check result must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+	// - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates.
 	//
 	// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
 	MaxUnavailable *FixedOrPercent `pulumi:"maxUnavailable"`
@@ -12929,14 +14424,14 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	// - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region.
 	// - NONE: For non-autoscaled groups, proactive redistribution is disabled.
 	InstanceRedistributionType pulumi.StringPtrInput `pulumi:"instanceRedistributionType"`
-	// The maximum number of instances that can be created above the specified targetSize during the update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+	// The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
 	//
 	// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
 	MaxSurge FixedOrPercentPtrInput `pulumi:"maxSurge"`
 	// The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied:
 	//
 	// - The instance's status is RUNNING.
-	// - If there is a health check on the instance group, the instance's liveness health check result must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+	// - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates.
 	//
 	// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
 	MaxUnavailable FixedOrPercentPtrInput `pulumi:"maxUnavailable"`
@@ -13032,7 +14527,7 @@ func (o InstanceGroupManagerUpdatePolicyOutput) InstanceRedistributionType() pul
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *string { return v.InstanceRedistributionType }).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of instances that can be created above the specified targetSize during the update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+// The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
 //
 // At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
 func (o InstanceGroupManagerUpdatePolicyOutput) MaxSurge() FixedOrPercentPtrOutput {
@@ -13042,7 +14537,7 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MaxSurge() FixedOrPercentPtrOutp
 // The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied:
 //
 // - The instance's status is RUNNING.
-// - If there is a health check on the instance group, the instance's liveness health check result must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+// - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates.
 //
 // At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
 func (o InstanceGroupManagerUpdatePolicyOutput) MaxUnavailable() FixedOrPercentPtrOutput {
@@ -13094,7 +14589,7 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) InstanceRedistributionType() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of instances that can be created above the specified targetSize during the update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+// The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
 //
 // At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) MaxSurge() FixedOrPercentPtrOutput {
@@ -13109,7 +14604,7 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MaxSurge() FixedOrPercentPtrO
 // The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied:
 //
 // - The instance's status is RUNNING.
-// - If there is a health check on the instance group, the instance's liveness health check result must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+// - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates.
 //
 // At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) MaxUnavailable() FixedOrPercentPtrOutput {
@@ -13273,6 +14768,8 @@ func (o InstanceGroupManagerVersionArrayOutput) Index(i pulumi.IntInput) Instanc
 }
 
 type InstanceProperties struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// Specifies the Confidential Instance options.
@@ -13293,6 +14790,8 @@ type InstanceProperties struct {
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType *string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from.
@@ -13320,6 +14819,8 @@ type InstancePropertiesInput interface {
 }
 
 type InstancePropertiesArgs struct {
+	// Controls for advanced machine-related behavior features.
+	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward pulumi.BoolPtrInput `pulumi:"canIpForward"`
 	// Specifies the Confidential Instance options.
@@ -13340,6 +14841,8 @@ type InstancePropertiesArgs struct {
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType pulumi.StringPtrInput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from.
@@ -13432,6 +14935,11 @@ func (o InstancePropertiesOutput) ToInstancePropertiesPtrOutputWithContext(ctx c
 	}).(InstancePropertiesPtrOutput)
 }
 
+// Controls for advanced machine-related behavior features.
+func (o InstancePropertiesOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v InstanceProperties) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
+}
+
 // Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 func (o InstancePropertiesOutput) CanIpForward() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
@@ -13480,6 +14988,11 @@ func (o InstancePropertiesOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 // An array of network access configurations for this interface.
 func (o InstancePropertiesOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
+}
+
+// PostKeyRevocationActionType of the instance.
+func (o InstancePropertiesOutput) PostKeyRevocationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceProperties) *string { return v.PostKeyRevocationActionType }).(pulumi.StringPtrOutput)
 }
 
 // The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
@@ -13532,6 +15045,16 @@ func (o InstancePropertiesPtrOutput) ToInstancePropertiesPtrOutputWithContext(ct
 
 func (o InstancePropertiesPtrOutput) Elem() InstancePropertiesOutput {
 	return o.ApplyT(func(v *InstanceProperties) InstanceProperties { return *v }).(InstancePropertiesOutput)
+}
+
+// Controls for advanced machine-related behavior features.
+func (o InstancePropertiesPtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *InstanceProperties) *AdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesPtrOutput)
 }
 
 // Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
@@ -13632,6 +15155,16 @@ func (o InstancePropertiesPtrOutput) NetworkInterfaces() NetworkInterfaceArrayOu
 		}
 		return v.NetworkInterfaces
 	}).(NetworkInterfaceArrayOutput)
+}
+
+// PostKeyRevocationActionType of the instance.
+func (o InstancePropertiesPtrOutput) PostKeyRevocationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostKeyRevocationActionType
+	}).(pulumi.StringPtrOutput)
 }
 
 // The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
@@ -16756,7 +18289,7 @@ type NetworkInterface struct {
 	AccessConfigs []AccessConfig `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
 	AliasIpRanges []AliasIpRange `pulumi:"aliasIpRanges"`
-	// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.
+	// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] An IPv6 internal network address for this network interface.
 	Ipv6Address *string `pulumi:"ipv6Address"`
@@ -16798,7 +18331,7 @@ type NetworkInterfaceArgs struct {
 	AccessConfigs AccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
 	AliasIpRanges AliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
-	// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.
+	// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
 	// [Output Only] An IPv6 internal network address for this network interface.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
@@ -16885,7 +18418,7 @@ func (o NetworkInterfaceOutput) AliasIpRanges() AliasIpRangeArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AliasIpRange { return v.AliasIpRanges }).(AliasIpRangeArrayOutput)
 }
 
-// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.
+// Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
 func (o NetworkInterfaceOutput) Fingerprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
 }
@@ -19845,6 +21378,296 @@ func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents a CIDR range which can be used to assign addresses.
+type PublicAdvertisedPrefixPublicDelegatedPrefix struct {
+	// The IP address range of the public delegated prefix
+	IpRange *string `pulumi:"ipRange"`
+	// The name of the public delegated prefix
+	Name *string `pulumi:"name"`
+	// The project number of the public delegated prefix
+	Project *string `pulumi:"project"`
+	// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
+	Region *string `pulumi:"region"`
+	// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
+	Status *string `pulumi:"status"`
+}
+
+// PublicAdvertisedPrefixPublicDelegatedPrefixInput is an input type that accepts PublicAdvertisedPrefixPublicDelegatedPrefixArgs and PublicAdvertisedPrefixPublicDelegatedPrefixOutput values.
+// You can construct a concrete instance of `PublicAdvertisedPrefixPublicDelegatedPrefixInput` via:
+//
+//          PublicAdvertisedPrefixPublicDelegatedPrefixArgs{...}
+type PublicAdvertisedPrefixPublicDelegatedPrefixInput interface {
+	pulumi.Input
+
+	ToPublicAdvertisedPrefixPublicDelegatedPrefixOutput() PublicAdvertisedPrefixPublicDelegatedPrefixOutput
+	ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixOutput
+}
+
+// Represents a CIDR range which can be used to assign addresses.
+type PublicAdvertisedPrefixPublicDelegatedPrefixArgs struct {
+	// The IP address range of the public delegated prefix
+	IpRange pulumi.StringPtrInput `pulumi:"ipRange"`
+	// The name of the public delegated prefix
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The project number of the public delegated prefix
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PublicAdvertisedPrefixPublicDelegatedPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
+}
+
+func (i PublicAdvertisedPrefixPublicDelegatedPrefixArgs) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutput() PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
+	return i.ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(context.Background())
+}
+
+func (i PublicAdvertisedPrefixPublicDelegatedPrefixArgs) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixPublicDelegatedPrefixOutput)
+}
+
+// PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput is an input type that accepts PublicAdvertisedPrefixPublicDelegatedPrefixArray and PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput values.
+// You can construct a concrete instance of `PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput` via:
+//
+//          PublicAdvertisedPrefixPublicDelegatedPrefixArray{ PublicAdvertisedPrefixPublicDelegatedPrefixArgs{...} }
+type PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput interface {
+	pulumi.Input
+
+	ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput() PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput
+	ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput
+}
+
+type PublicAdvertisedPrefixPublicDelegatedPrefixArray []PublicAdvertisedPrefixPublicDelegatedPrefixInput
+
+func (PublicAdvertisedPrefixPublicDelegatedPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
+}
+
+func (i PublicAdvertisedPrefixPublicDelegatedPrefixArray) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput() PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
+	return i.ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i PublicAdvertisedPrefixPublicDelegatedPrefixArray) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput)
+}
+
+// Represents a CIDR range which can be used to assign addresses.
+type PublicAdvertisedPrefixPublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
+
+func (PublicAdvertisedPrefixPublicDelegatedPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
+}
+
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutput() PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
+	return o
+}
+
+// The IP address range of the public delegated prefix
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) IpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.IpRange }).(pulumi.StringPtrOutput)
+}
+
+// The name of the public delegated prefix
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The project number of the public delegated prefix
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The region of the public delegated prefix if it is regional. If absent, the prefix is global.
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicAdvertisedPrefixPublicDelegatedPrefix) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicAdvertisedPrefixPublicDelegatedPrefix)(nil)).Elem()
+}
+
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput() PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) ToPublicAdvertisedPrefixPublicDelegatedPrefixArrayOutputWithContext(ctx context.Context) PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput) Index(i pulumi.IntInput) PublicAdvertisedPrefixPublicDelegatedPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicAdvertisedPrefixPublicDelegatedPrefix {
+		return vs[0].([]PublicAdvertisedPrefixPublicDelegatedPrefix)[vs[1].(int)]
+	}).(PublicAdvertisedPrefixPublicDelegatedPrefixOutput)
+}
+
+// Represents a sub PublicDelegatedPrefix.
+type PublicDelegatedPrefixPublicDelegatedSubPrefix struct {
+	// Name of the project scoping this PublicDelegatedSubPrefix.
+	DelegateeProject *string `pulumi:"delegateeProject"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description *string `pulumi:"description"`
+	// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// Whether the sub prefix is delegated to create Address resources in the delegatee project.
+	IsAddress *bool `pulumi:"isAddress"`
+	// The name of the sub public delegated prefix.
+	Name *string `pulumi:"name"`
+	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+	Region *string `pulumi:"region"`
+	// [Output Only] The status of the sub public delegated prefix.
+	Status *string `pulumi:"status"`
+}
+
+// PublicDelegatedPrefixPublicDelegatedSubPrefixInput is an input type that accepts PublicDelegatedPrefixPublicDelegatedSubPrefixArgs and PublicDelegatedPrefixPublicDelegatedSubPrefixOutput values.
+// You can construct a concrete instance of `PublicDelegatedPrefixPublicDelegatedSubPrefixInput` via:
+//
+//          PublicDelegatedPrefixPublicDelegatedSubPrefixArgs{...}
+type PublicDelegatedPrefixPublicDelegatedSubPrefixInput interface {
+	pulumi.Input
+
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixOutput
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutputWithContext(context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixOutput
+}
+
+// Represents a sub PublicDelegatedPrefix.
+type PublicDelegatedPrefixPublicDelegatedSubPrefixArgs struct {
+	// Name of the project scoping this PublicDelegatedSubPrefix.
+	DelegateeProject pulumi.StringPtrInput `pulumi:"delegateeProject"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
+	// Whether the sub prefix is delegated to create Address resources in the delegatee project.
+	IsAddress pulumi.BoolPtrInput `pulumi:"isAddress"`
+	// The name of the sub public delegated prefix.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// [Output Only] The status of the sub public delegated prefix.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefix)(nil)).Elem()
+}
+
+func (i PublicDelegatedPrefixPublicDelegatedSubPrefixArgs) ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixOutput {
+	return i.ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutputWithContext(context.Background())
+}
+
+func (i PublicDelegatedPrefixPublicDelegatedSubPrefixArgs) ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicDelegatedPrefixPublicDelegatedSubPrefixOutput)
+}
+
+// PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput is an input type that accepts PublicDelegatedPrefixPublicDelegatedSubPrefixArray and PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput values.
+// You can construct a concrete instance of `PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput` via:
+//
+//          PublicDelegatedPrefixPublicDelegatedSubPrefixArray{ PublicDelegatedPrefixPublicDelegatedSubPrefixArgs{...} }
+type PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput interface {
+	pulumi.Input
+
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput
+	ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutputWithContext(context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput
+}
+
+type PublicDelegatedPrefixPublicDelegatedSubPrefixArray []PublicDelegatedPrefixPublicDelegatedSubPrefixInput
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicDelegatedPrefixPublicDelegatedSubPrefix)(nil)).Elem()
+}
+
+func (i PublicDelegatedPrefixPublicDelegatedSubPrefixArray) ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput {
+	return i.ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i PublicDelegatedPrefixPublicDelegatedSubPrefixArray) ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput)
+}
+
+// Represents a sub PublicDelegatedPrefix.
+type PublicDelegatedPrefixPublicDelegatedSubPrefixOutput struct{ *pulumi.OutputState }
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefix)(nil)).Elem()
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixOutput {
+	return o
+}
+
+// Name of the project scoping this PublicDelegatedSubPrefix.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) DelegateeProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.DelegateeProject }).(pulumi.StringPtrOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) IpCidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.IpCidrRange }).(pulumi.StringPtrOutput)
+}
+
+// Whether the sub prefix is delegated to create Address resources in the delegatee project.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) IsAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *bool { return v.IsAddress }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the sub public delegated prefix.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] The status of the sub public delegated prefix.
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicDelegatedPrefixPublicDelegatedSubPrefix) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PublicDelegatedPrefixPublicDelegatedSubPrefix)(nil)).Elem()
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput() PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput) ToPublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutputWithContext(ctx context.Context) PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput {
+	return o
+}
+
+func (o PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput) Index(i pulumi.IntInput) PublicDelegatedPrefixPublicDelegatedSubPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicDelegatedPrefixPublicDelegatedSubPrefix {
+		return vs[0].([]PublicDelegatedPrefixPublicDelegatedSubPrefix)[vs[1].(int)]
+	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixOutput)
+}
+
 // A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 type RequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
@@ -19993,6 +21816,8 @@ type ReservationType struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
@@ -20030,6 +21855,8 @@ type ReservationTypeArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 	// Reservation for instances with specific machine shapes.
@@ -20122,6 +21949,11 @@ func (o ReservationTypeOutput) Kind() pulumi.StringPtrOutput {
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ReservationTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] Reserved for future use.
+func (o ReservationTypeOutput) SatisfiesPzs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReservationType) *bool { return v.SatisfiesPzs }).(pulumi.BoolPtrOutput)
 }
 
 // [Output Only] Server-defined fully-qualified URL for this resource.
@@ -20972,6 +22804,644 @@ func (o ResourcePolicyHourlyCyclePtrOutput) StartTime() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
+type ResourcePolicyInstanceSchedulePolicy struct {
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime *string `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone *string `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
+	VmStartSchedule *ResourcePolicyInstanceSchedulePolicySchedule `pulumi:"vmStartSchedule"`
+	// Specifies the schedule for stopping instances.
+	VmStopSchedule *ResourcePolicyInstanceSchedulePolicySchedule `pulumi:"vmStopSchedule"`
+}
+
+// ResourcePolicyInstanceSchedulePolicyInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyArgs and ResourcePolicyInstanceSchedulePolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyArgs{...}
+type ResourcePolicyInstanceSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyOutput() ResourcePolicyInstanceSchedulePolicyOutput
+	ToResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyOutput
+}
+
+// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
+type ResourcePolicyInstanceSchedulePolicyArgs struct {
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
+	VmStartSchedule ResourcePolicyInstanceSchedulePolicySchedulePtrInput `pulumi:"vmStartSchedule"`
+	// Specifies the schedule for stopping instances.
+	VmStopSchedule ResourcePolicyInstanceSchedulePolicySchedulePtrInput `pulumi:"vmStopSchedule"`
+}
+
+func (ResourcePolicyInstanceSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyOutput() ResourcePolicyInstanceSchedulePolicyOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyArgs) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyOutput).ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyInstanceSchedulePolicyPtrInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyArgs, ResourcePolicyInstanceSchedulePolicyPtr and ResourcePolicyInstanceSchedulePolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyPtrInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyInstanceSchedulePolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput
+	ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput
+}
+
+type resourcePolicyInstanceSchedulePolicyPtrType ResourcePolicyInstanceSchedulePolicyArgs
+
+func ResourcePolicyInstanceSchedulePolicyPtr(v *ResourcePolicyInstanceSchedulePolicyArgs) ResourcePolicyInstanceSchedulePolicyPtrInput {
+	return (*resourcePolicyInstanceSchedulePolicyPtrType)(v)
+}
+
+func (*resourcePolicyInstanceSchedulePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyPtrType) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyInstanceSchedulePolicyPtrType) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyPtrOutput)
+}
+
+// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
+type ResourcePolicyInstanceSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyOutput() ResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o.ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicy {
+		return &v
+	}).(ResourcePolicyInstanceSchedulePolicyPtrOutput)
+}
+
+// The expiration time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the schedule for starting instances.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) VmStartSchedule() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicySchedule {
+		return v.VmStartSchedule
+	}).(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput)
+}
+
+// Specifies the schedule for stopping instances.
+func (o ResourcePolicyInstanceSchedulePolicyOutput) VmStopSchedule() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicySchedule {
+		return v.VmStopSchedule
+	}).(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutput() ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) ToResourcePolicyInstanceSchedulePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) Elem() ResourcePolicyInstanceSchedulePolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) ResourcePolicyInstanceSchedulePolicy { return *v }).(ResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+// The expiration time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start time of the schedule. The timestamp is an RFC3339 string.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the schedule for starting instances.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) VmStartSchedule() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.VmStartSchedule
+	}).(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput)
+}
+
+// Specifies the schedule for stopping instances.
+func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) VmStopSchedule() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *ResourcePolicyInstanceSchedulePolicySchedule {
+		if v == nil {
+			return nil
+		}
+		return v.VmStopSchedule
+	}).(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput)
+}
+
+// Schedule for an instance operation.
+type ResourcePolicyInstanceSchedulePolicySchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule *string `pulumi:"schedule"`
+}
+
+// ResourcePolicyInstanceSchedulePolicyScheduleInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyScheduleArgs and ResourcePolicyInstanceSchedulePolicyScheduleOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicyScheduleInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyScheduleArgs{...}
+type ResourcePolicyInstanceSchedulePolicyScheduleInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicyScheduleOutput() ResourcePolicyInstanceSchedulePolicyScheduleOutput
+	ToResourcePolicyInstanceSchedulePolicyScheduleOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicyScheduleOutput
+}
+
+// Schedule for an instance operation.
+type ResourcePolicyInstanceSchedulePolicyScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+}
+
+func (ResourcePolicyInstanceSchedulePolicyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyScheduleArgs) ToResourcePolicyInstanceSchedulePolicyScheduleOutput() ResourcePolicyInstanceSchedulePolicyScheduleOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicyScheduleOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyScheduleArgs) ToResourcePolicyInstanceSchedulePolicyScheduleOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyScheduleOutput)
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyScheduleArgs) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutput() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyInstanceSchedulePolicyScheduleArgs) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicyScheduleOutput).ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyInstanceSchedulePolicySchedulePtrInput is an input type that accepts ResourcePolicyInstanceSchedulePolicyScheduleArgs, ResourcePolicyInstanceSchedulePolicySchedulePtr and ResourcePolicyInstanceSchedulePolicySchedulePtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyInstanceSchedulePolicySchedulePtrInput` via:
+//
+//          ResourcePolicyInstanceSchedulePolicyScheduleArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyInstanceSchedulePolicySchedulePtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyInstanceSchedulePolicySchedulePtrOutput() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput
+	ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(context.Context) ResourcePolicyInstanceSchedulePolicySchedulePtrOutput
+}
+
+type resourcePolicyInstanceSchedulePolicySchedulePtrType ResourcePolicyInstanceSchedulePolicyScheduleArgs
+
+func ResourcePolicyInstanceSchedulePolicySchedulePtr(v *ResourcePolicyInstanceSchedulePolicyScheduleArgs) ResourcePolicyInstanceSchedulePolicySchedulePtrInput {
+	return (*resourcePolicyInstanceSchedulePolicySchedulePtrType)(v)
+}
+
+func (*resourcePolicyInstanceSchedulePolicySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i *resourcePolicyInstanceSchedulePolicySchedulePtrType) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutput() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return i.ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyInstanceSchedulePolicySchedulePtrType) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput)
+}
+
+// Schedule for an instance operation.
+type ResourcePolicyInstanceSchedulePolicyScheduleOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyInstanceSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyScheduleOutput) ToResourcePolicyInstanceSchedulePolicyScheduleOutput() ResourcePolicyInstanceSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyScheduleOutput) ToResourcePolicyInstanceSchedulePolicyScheduleOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyScheduleOutput) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutput() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o.ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyInstanceSchedulePolicyScheduleOutput) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicySchedule) *ResourcePolicyInstanceSchedulePolicySchedule {
+		return &v
+	}).(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput)
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o ResourcePolicyInstanceSchedulePolicyScheduleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicySchedule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicyInstanceSchedulePolicySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyInstanceSchedulePolicySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyInstanceSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o ResourcePolicyInstanceSchedulePolicySchedulePtrOutput) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutput() ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicySchedulePtrOutput) ToResourcePolicyInstanceSchedulePolicySchedulePtrOutputWithContext(ctx context.Context) ResourcePolicyInstanceSchedulePolicySchedulePtrOutput {
+	return o
+}
+
+func (o ResourcePolicyInstanceSchedulePolicySchedulePtrOutput) Elem() ResourcePolicyInstanceSchedulePolicyScheduleOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicySchedule) ResourcePolicyInstanceSchedulePolicySchedule {
+		return *v
+	}).(ResourcePolicyInstanceSchedulePolicyScheduleOutput)
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o ResourcePolicyInstanceSchedulePolicySchedulePtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicySchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
+type ResourcePolicyResourceStatus struct {
+	// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+	InstanceSchedulePolicy *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus `pulumi:"instanceSchedulePolicy"`
+}
+
+// ResourcePolicyResourceStatusInput is an input type that accepts ResourcePolicyResourceStatusArgs and ResourcePolicyResourceStatusOutput values.
+// You can construct a concrete instance of `ResourcePolicyResourceStatusInput` via:
+//
+//          ResourcePolicyResourceStatusArgs{...}
+type ResourcePolicyResourceStatusInput interface {
+	pulumi.Input
+
+	ToResourcePolicyResourceStatusOutput() ResourcePolicyResourceStatusOutput
+	ToResourcePolicyResourceStatusOutputWithContext(context.Context) ResourcePolicyResourceStatusOutput
+}
+
+// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
+type ResourcePolicyResourceStatusArgs struct {
+	// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+	InstanceSchedulePolicy ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput `pulumi:"instanceSchedulePolicy"`
+}
+
+func (ResourcePolicyResourceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyResourceStatus)(nil)).Elem()
+}
+
+func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusOutput() ResourcePolicyResourceStatusOutput {
+	return i.ToResourcePolicyResourceStatusOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusOutput)
+}
+
+func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
+	return i.ToResourcePolicyResourceStatusPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyResourceStatusArgs) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusOutput).ToResourcePolicyResourceStatusPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyResourceStatusPtrInput is an input type that accepts ResourcePolicyResourceStatusArgs, ResourcePolicyResourceStatusPtr and ResourcePolicyResourceStatusPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyResourceStatusPtrInput` via:
+//
+//          ResourcePolicyResourceStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyResourceStatusPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput
+	ToResourcePolicyResourceStatusPtrOutputWithContext(context.Context) ResourcePolicyResourceStatusPtrOutput
+}
+
+type resourcePolicyResourceStatusPtrType ResourcePolicyResourceStatusArgs
+
+func ResourcePolicyResourceStatusPtr(v *ResourcePolicyResourceStatusArgs) ResourcePolicyResourceStatusPtrInput {
+	return (*resourcePolicyResourceStatusPtrType)(v)
+}
+
+func (*resourcePolicyResourceStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyResourceStatus)(nil)).Elem()
+}
+
+func (i *resourcePolicyResourceStatusPtrType) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
+	return i.ToResourcePolicyResourceStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyResourceStatusPtrType) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusPtrOutput)
+}
+
+// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
+type ResourcePolicyResourceStatusOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyResourceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyResourceStatus)(nil)).Elem()
+}
+
+func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusOutput() ResourcePolicyResourceStatusOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
+	return o.ToResourcePolicyResourceStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyResourceStatusOutput) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResourceStatus) *ResourcePolicyResourceStatus {
+		return &v
+	}).(ResourcePolicyResourceStatusPtrOutput)
+}
+
+// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+func (o ResourcePolicyResourceStatusOutput) InstanceSchedulePolicy() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResourceStatus) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
+		return v.InstanceSchedulePolicy
+	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
+}
+
+type ResourcePolicyResourceStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyResourceStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyResourceStatus)(nil)).Elem()
+}
+
+func (o ResourcePolicyResourceStatusPtrOutput) ToResourcePolicyResourceStatusPtrOutput() ResourcePolicyResourceStatusPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusPtrOutput) ToResourcePolicyResourceStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusPtrOutput) Elem() ResourcePolicyResourceStatusOutput {
+	return o.ApplyT(func(v *ResourcePolicyResourceStatus) ResourcePolicyResourceStatus { return *v }).(ResourcePolicyResourceStatusOutput)
+}
+
+// [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+func (o ResourcePolicyResourceStatusPtrOutput) InstanceSchedulePolicy() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyResourceStatus) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSchedulePolicy
+	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
+}
+
+type ResourcePolicyResourceStatusInstanceSchedulePolicyStatus struct {
+	// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+	LastRunStartTime *string `pulumi:"lastRunStartTime"`
+	// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+	NextRunStartTime *string `pulumi:"nextRunStartTime"`
+}
+
+// ResourcePolicyResourceStatusInstanceSchedulePolicyStatusInput is an input type that accepts ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs and ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput values.
+// You can construct a concrete instance of `ResourcePolicyResourceStatusInstanceSchedulePolicyStatusInput` via:
+//
+//          ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs{...}
+type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusInput interface {
+	pulumi.Input
+
+	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput
+	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput
+}
+
+type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs struct {
+	// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+	LastRunStartTime pulumi.StringPtrInput `pulumi:"lastRunStartTime"`
+	// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+	NextRunStartTime pulumi.StringPtrInput `pulumi:"nextRunStartTime"`
+}
+
+func (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
+}
+
+func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
+	return i.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput)
+}
+
+func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return i.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput).ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput is an input type that accepts ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs, ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtr and ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput` via:
+//
+//          ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput
+	ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput
+}
+
+type resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs
+
+func ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtr(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrInput {
+	return (*resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType)(v)
+}
+
+func (*resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
+}
+
+func (i *resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return i.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrType) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
+}
+
+type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return o.ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
+		return &v
+	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput)
+}
+
+// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) LastRunStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string { return v.LastRunStartTime }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput) NextRunStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string { return v.NextRunStartTime }).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyResourceStatusInstanceSchedulePolicyStatus)(nil)).Elem()
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) ToResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutputWithContext(ctx context.Context) ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) Elem() ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput {
+	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
+		return *v
+	}).(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput)
+}
+
+// [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) LastRunStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRunStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+func (o ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput) NextRunStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyResourceStatusInstanceSchedulePolicyStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextRunStartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22217,8 +24687,7 @@ type RouterBgpPeer struct {
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options:
 	// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
-	// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-	// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges []RouterAdvertisedIpRange `pulumi:"advertisedIpRanges"`
@@ -22256,8 +24725,7 @@ type RouterBgpPeerArgs struct {
 	AdvertiseMode pulumi.StringPtrInput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options:
 	// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
-	// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-	// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups pulumi.StringArrayInput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
@@ -22337,8 +24805,7 @@ func (o RouterBgpPeerOutput) AdvertiseMode() pulumi.StringPtrOutput {
 
 // User-specified list of prefix groups to advertise in custom mode, which can take one of the following options:
 // - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets.
-// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
-// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 func (o RouterBgpPeerOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterBgpPeer) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
 }
@@ -23447,7 +25914,7 @@ func (o SSLHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 13
+// Sets the scheduling options for an Instance. NextID: 20
 type Scheduling struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
 	//
@@ -23476,7 +25943,7 @@ type SchedulingInput interface {
 	ToSchedulingOutputWithContext(context.Context) SchedulingOutput
 }
 
-// Sets the scheduling options for an Instance. NextID: 13
+// Sets the scheduling options for an Instance. NextID: 20
 type SchedulingArgs struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
 	//
@@ -23547,7 +26014,7 @@ func (i *schedulingPtrType) ToSchedulingPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPtrOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 13
+// Sets the scheduling options for an Instance. NextID: 20
 type SchedulingOutput struct{ *pulumi.OutputState }
 
 func (SchedulingOutput) ElementType() reflect.Type {
@@ -25106,7 +27573,7 @@ func (o SourceInstanceParamsPtrOutput) DiskConfigs() DiskInstantiationConfigArra
 type SslCertificateManagedSslCertificate struct {
 	// [Output only] Detailed statuses of the domains specified for managed certificate resource.
 	DomainStatus map[string]string `pulumi:"domainStatus"`
-	// The domains for which a managed SSL certificate will be generated. Currently only single-domain certs are supported.
+	// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 	Domains []string `pulumi:"domains"`
 	// [Output only] Status of the managed certificate resource.
 	Status *string `pulumi:"status"`
@@ -25127,7 +27594,7 @@ type SslCertificateManagedSslCertificateInput interface {
 type SslCertificateManagedSslCertificateArgs struct {
 	// [Output only] Detailed statuses of the domains specified for managed certificate resource.
 	DomainStatus pulumi.StringMapInput `pulumi:"domainStatus"`
-	// The domains for which a managed SSL certificate will be generated. Currently only single-domain certs are supported.
+	// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// [Output only] Status of the managed certificate resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -25216,7 +27683,7 @@ func (o SslCertificateManagedSslCertificateOutput) DomainStatus() pulumi.StringM
 	return o.ApplyT(func(v SslCertificateManagedSslCertificate) map[string]string { return v.DomainStatus }).(pulumi.StringMapOutput)
 }
 
-// The domains for which a managed SSL certificate will be generated. Currently only single-domain certs are supported.
+// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 func (o SslCertificateManagedSslCertificateOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SslCertificateManagedSslCertificate) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
@@ -25254,7 +27721,7 @@ func (o SslCertificateManagedSslCertificatePtrOutput) DomainStatus() pulumi.Stri
 	}).(pulumi.StringMapOutput)
 }
 
-// The domains for which a managed SSL certificate will be generated. Currently only single-domain certs are supported.
+// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
 func (o SslCertificateManagedSslCertificatePtrOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SslCertificateManagedSslCertificate) []string {
 		if v == nil {
@@ -25918,7 +28385,7 @@ func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput 
 
 // Represents a secondary IP range of a subnetwork.
 type SubnetworkSecondaryRange struct {
-	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-RFC 1918 IP range, not belonging to Google.
+	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
 	RangeName *string `pulumi:"rangeName"`
@@ -25937,7 +28404,7 @@ type SubnetworkSecondaryRangeInput interface {
 
 // Represents a secondary IP range of a subnetwork.
 type SubnetworkSecondaryRangeArgs struct {
-	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-RFC 1918 IP range, not belonging to Google.
+	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
 	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
 	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
 	RangeName pulumi.StringPtrInput `pulumi:"rangeName"`
@@ -25995,7 +28462,7 @@ func (o SubnetworkSecondaryRangeOutput) ToSubnetworkSecondaryRangeOutputWithCont
 	return o
 }
 
-// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-RFC 1918 IP range, not belonging to Google.
+// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
 func (o SubnetworkSecondaryRangeOutput) IpCidrRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.IpCidrRange }).(pulumi.StringPtrOutput)
 }
@@ -26436,6 +28903,16 @@ func (o TagsPtrOutput) Items() pulumi.StringArrayOutput {
 type UrlMapTest struct {
 	// Description of this test case.
 	Description *string `pulumi:"description"`
+	// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters.
+	// For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+	// For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters.
+	// expectedOutputUrl is optional when service is specified.
+	ExpectedOutputUrl *string `pulumi:"expectedOutputUrl"`
+	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+	// expectedRedirectResponseCode cannot be set when service is set.
+	ExpectedRedirectResponseCode *int `pulumi:"expectedRedirectResponseCode"`
+	// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
+	Headers []UrlMapTestHeader `pulumi:"headers"`
 	// Host portion of the URL. If headers contains a host header, then host must also match the header value.
 	Host *string `pulumi:"host"`
 	// Path portion of the URL.
@@ -26460,6 +28937,16 @@ type UrlMapTestInput interface {
 type UrlMapTestArgs struct {
 	// Description of this test case.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters.
+	// For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+	// For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters.
+	// expectedOutputUrl is optional when service is specified.
+	ExpectedOutputUrl pulumi.StringPtrInput `pulumi:"expectedOutputUrl"`
+	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+	// expectedRedirectResponseCode cannot be set when service is set.
+	ExpectedRedirectResponseCode pulumi.IntPtrInput `pulumi:"expectedRedirectResponseCode"`
+	// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
+	Headers UrlMapTestHeaderArrayInput `pulumi:"headers"`
 	// Host portion of the URL. If headers contains a host header, then host must also match the header value.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Path portion of the URL.
@@ -26526,6 +29013,25 @@ func (o UrlMapTestOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters.
+// For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+// For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters.
+// expectedOutputUrl is optional when service is specified.
+func (o UrlMapTestOutput) ExpectedOutputUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlMapTest) *string { return v.ExpectedOutputUrl }).(pulumi.StringPtrOutput)
+}
+
+// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+// expectedRedirectResponseCode cannot be set when service is set.
+func (o UrlMapTestOutput) ExpectedRedirectResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UrlMapTest) *int { return v.ExpectedRedirectResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
+func (o UrlMapTestOutput) Headers() UrlMapTestHeaderArrayOutput {
+	return o.ApplyT(func(v UrlMapTest) []UrlMapTestHeader { return v.Headers }).(UrlMapTestHeaderArrayOutput)
+}
+
 // Host portion of the URL. If headers contains a host header, then host must also match the header value.
 func (o UrlMapTestOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *string { return v.Host }).(pulumi.StringPtrOutput)
@@ -26560,6 +29066,115 @@ func (o UrlMapTestArrayOutput) Index(i pulumi.IntInput) UrlMapTestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UrlMapTest {
 		return vs[0].([]UrlMapTest)[vs[1].(int)]
 	}).(UrlMapTestOutput)
+}
+
+// HTTP headers used in UrlMapTests.
+type UrlMapTestHeader struct {
+	// Header name.
+	Name *string `pulumi:"name"`
+	// Header value.
+	Value *string `pulumi:"value"`
+}
+
+// UrlMapTestHeaderInput is an input type that accepts UrlMapTestHeaderArgs and UrlMapTestHeaderOutput values.
+// You can construct a concrete instance of `UrlMapTestHeaderInput` via:
+//
+//          UrlMapTestHeaderArgs{...}
+type UrlMapTestHeaderInput interface {
+	pulumi.Input
+
+	ToUrlMapTestHeaderOutput() UrlMapTestHeaderOutput
+	ToUrlMapTestHeaderOutputWithContext(context.Context) UrlMapTestHeaderOutput
+}
+
+// HTTP headers used in UrlMapTests.
+type UrlMapTestHeaderArgs struct {
+	// Header name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Header value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (UrlMapTestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UrlMapTestHeader)(nil)).Elem()
+}
+
+func (i UrlMapTestHeaderArgs) ToUrlMapTestHeaderOutput() UrlMapTestHeaderOutput {
+	return i.ToUrlMapTestHeaderOutputWithContext(context.Background())
+}
+
+func (i UrlMapTestHeaderArgs) ToUrlMapTestHeaderOutputWithContext(ctx context.Context) UrlMapTestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UrlMapTestHeaderOutput)
+}
+
+// UrlMapTestHeaderArrayInput is an input type that accepts UrlMapTestHeaderArray and UrlMapTestHeaderArrayOutput values.
+// You can construct a concrete instance of `UrlMapTestHeaderArrayInput` via:
+//
+//          UrlMapTestHeaderArray{ UrlMapTestHeaderArgs{...} }
+type UrlMapTestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToUrlMapTestHeaderArrayOutput() UrlMapTestHeaderArrayOutput
+	ToUrlMapTestHeaderArrayOutputWithContext(context.Context) UrlMapTestHeaderArrayOutput
+}
+
+type UrlMapTestHeaderArray []UrlMapTestHeaderInput
+
+func (UrlMapTestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UrlMapTestHeader)(nil)).Elem()
+}
+
+func (i UrlMapTestHeaderArray) ToUrlMapTestHeaderArrayOutput() UrlMapTestHeaderArrayOutput {
+	return i.ToUrlMapTestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i UrlMapTestHeaderArray) ToUrlMapTestHeaderArrayOutputWithContext(ctx context.Context) UrlMapTestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UrlMapTestHeaderArrayOutput)
+}
+
+// HTTP headers used in UrlMapTests.
+type UrlMapTestHeaderOutput struct{ *pulumi.OutputState }
+
+func (UrlMapTestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UrlMapTestHeader)(nil)).Elem()
+}
+
+func (o UrlMapTestHeaderOutput) ToUrlMapTestHeaderOutput() UrlMapTestHeaderOutput {
+	return o
+}
+
+func (o UrlMapTestHeaderOutput) ToUrlMapTestHeaderOutputWithContext(ctx context.Context) UrlMapTestHeaderOutput {
+	return o
+}
+
+// Header name.
+func (o UrlMapTestHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlMapTestHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Header value.
+func (o UrlMapTestHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlMapTestHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type UrlMapTestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (UrlMapTestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UrlMapTestHeader)(nil)).Elem()
+}
+
+func (o UrlMapTestHeaderArrayOutput) ToUrlMapTestHeaderArrayOutput() UrlMapTestHeaderArrayOutput {
+	return o
+}
+
+func (o UrlMapTestHeaderArrayOutput) ToUrlMapTestHeaderArrayOutputWithContext(ctx context.Context) UrlMapTestHeaderArrayOutput {
+	return o
+}
+
+func (o UrlMapTestHeaderArrayOutput) Index(i pulumi.IntInput) UrlMapTestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UrlMapTestHeader {
+		return vs[0].([]UrlMapTestHeader)[vs[1].(int)]
+	}).(UrlMapTestHeaderOutput)
 }
 
 // The spec for modifying the path before sending the request to the matched backend service.
@@ -26727,6 +29342,8 @@ func (o UrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 type VpnGatewayVpnGatewayInterface struct {
 	// The numeric ID of this VPN gateway interface.
 	Id *int `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+	InterconnectAttachment *string `pulumi:"interconnectAttachment"`
 	// [Output Only] The external IP address for this VPN gateway interface.
 	IpAddress *string `pulumi:"ipAddress"`
 }
@@ -26746,6 +29363,8 @@ type VpnGatewayVpnGatewayInterfaceInput interface {
 type VpnGatewayVpnGatewayInterfaceArgs struct {
 	// The numeric ID of this VPN gateway interface.
 	Id pulumi.IntPtrInput `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+	InterconnectAttachment pulumi.StringPtrInput `pulumi:"interconnectAttachment"`
 	// [Output Only] The external IP address for this VPN gateway interface.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
@@ -26805,6 +29424,11 @@ func (o VpnGatewayVpnGatewayInterfaceOutput) ToVpnGatewayVpnGatewayInterfaceOutp
 // The numeric ID of this VPN gateway interface.
 func (o VpnGatewayVpnGatewayInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+func (o VpnGatewayVpnGatewayInterfaceOutput) InterconnectAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnGatewayVpnGatewayInterface) *string { return v.InterconnectAttachment }).(pulumi.StringPtrOutput)
 }
 
 // [Output Only] The external IP address for this VPN gateway interface.
@@ -26970,6 +29594,8 @@ func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessConfigOutput{})
 	pulumi.RegisterOutputType(AccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(AliasIpRangeOutput{})
 	pulumi.RegisterOutputType(AliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskOutput{})
@@ -27004,8 +29630,16 @@ func init() {
 	pulumi.RegisterOutputType(BackendArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput{})
+	pulumi.RegisterOutputType(BackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(BackendBucketCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput{})
+	pulumi.RegisterOutputType(BackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(BackendServiceCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceFailoverPolicyOutput{})
 	pulumi.RegisterOutputType(BackendServiceFailoverPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceIAPOutput{})
@@ -27053,8 +29687,18 @@ func init() {
 	pulumi.RegisterOutputType(FileContentBufferArrayOutput{})
 	pulumi.RegisterOutputType(FirewallLogConfigOutput{})
 	pulumi.RegisterOutputType(FirewallLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyAssociationOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyAssociationArrayOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleMatcherOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleMatcherPtrOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleMatcherLayer4ConfigOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentPtrOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleServiceDirectoryRegistrationOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleServiceDirectoryRegistrationArrayOutput{})
 	pulumi.RegisterOutputType(GRPCHealthCheckOutput{})
 	pulumi.RegisterOutputType(GRPCHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureOutput{})
@@ -27187,6 +29831,10 @@ func init() {
 	pulumi.RegisterOutputType(PathRuleArrayOutput{})
 	pulumi.RegisterOutputType(PolicyTypeOutput{})
 	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixOutput{})
+	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixArrayOutput{})
+	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixOutput{})
+	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput{})
 	pulumi.RegisterOutputType(RequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(RequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ReservationTypeOutput{})
@@ -27201,6 +29849,14 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyHourlyCycleOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyHourlyCyclePtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicyScheduleOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyInstanceSchedulePolicySchedulePtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyResourceStatusOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyResourceStatusPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyResourceStatusInstanceSchedulePolicyStatusPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})
@@ -27271,6 +29927,8 @@ func init() {
 	pulumi.RegisterOutputType(TagsPtrOutput{})
 	pulumi.RegisterOutputType(UrlMapTestOutput{})
 	pulumi.RegisterOutputType(UrlMapTestArrayOutput{})
+	pulumi.RegisterOutputType(UrlMapTestHeaderOutput{})
+	pulumi.RegisterOutputType(UrlMapTestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(UrlRewriteOutput{})
 	pulumi.RegisterOutputType(UrlRewritePtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayVpnGatewayInterfaceOutput{})

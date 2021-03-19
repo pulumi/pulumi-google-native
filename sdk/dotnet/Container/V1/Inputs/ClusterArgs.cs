@@ -28,6 +28,12 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
         public Input<Inputs.AuthenticatorGroupsConfigArgs>? AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>
+        /// Autopilot configuration for the cluster.
+        /// </summary>
+        [Input("autopilot")]
+        public Input<Inputs.AutopilotArgs>? Autopilot { get; set; }
+
+        /// <summary>
         /// Cluster-level autoscaling configuration.
         /// </summary>
         [Input("autoscaling")]
@@ -260,6 +266,12 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
             get => _nodePools ?? (_nodePools = new InputList<Inputs.NodePoolArgs>());
             set => _nodePools = value;
         }
+
+        /// <summary>
+        /// Notification configuration of the cluster.
+        /// </summary>
+        [Input("notificationConfig")]
+        public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
 
         /// <summary>
         /// Configuration for private cluster.

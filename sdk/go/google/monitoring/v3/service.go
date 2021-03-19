@@ -68,6 +68,8 @@ type serviceArgs struct {
 	Custom *Custom `pulumi:"custom"`
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
+	// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+	IstioCanonicalService *IstioCanonicalService `pulumi:"istioCanonicalService"`
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio *MeshIstio `pulumi:"meshIstio"`
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
@@ -92,6 +94,8 @@ type ServiceArgs struct {
 	Custom CustomPtrInput
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
+	// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+	IstioCanonicalService IstioCanonicalServicePtrInput
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioPtrInput
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]

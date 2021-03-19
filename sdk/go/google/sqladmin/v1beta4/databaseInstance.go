@@ -102,7 +102,7 @@ type databaseInstanceArgs struct {
 	ReplicaNames []string `pulumi:"replicaNames"`
 	// Initial root password. Use only on creation.
 	RootPassword *string `pulumi:"rootPassword"`
-	// The status indicating if instance satisfies physical zone separation. Reserved for future use.
+	// The status indicating if instance satisfiesPzs. Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	ScheduledMaintenance *SqlScheduledMaintenance `pulumi:"scheduledMaintenance"`
@@ -116,7 +116,7 @@ type databaseInstanceArgs struct {
 	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
 	// The user settings.
 	Settings *Settings `pulumi:"settings"`
-	// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+	// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
 	State *string `pulumi:"state"`
 	// If the instance state is SUSPENDED, the reason for the suspension.
 	SuspensionReason []string `pulumi:"suspensionReason"`
@@ -168,7 +168,7 @@ type DatabaseInstanceArgs struct {
 	ReplicaNames pulumi.StringArrayInput
 	// Initial root password. Use only on creation.
 	RootPassword pulumi.StringPtrInput
-	// The status indicating if instance satisfies physical zone separation. Reserved for future use.
+	// The status indicating if instance satisfiesPzs. Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// The start time of any upcoming scheduled maintenance for this instance.
 	ScheduledMaintenance SqlScheduledMaintenancePtrInput
@@ -182,7 +182,7 @@ type DatabaseInstanceArgs struct {
 	ServiceAccountEmailAddress pulumi.StringPtrInput
 	// The user settings.
 	Settings SettingsPtrInput
-	// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+	// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
 	State pulumi.StringPtrInput
 	// If the instance state is SUSPENDED, the reason for the suspension.
 	SuspensionReason pulumi.StringArrayInput

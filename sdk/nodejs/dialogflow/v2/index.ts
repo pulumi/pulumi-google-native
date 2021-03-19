@@ -6,15 +6,25 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./googleCloudDialogflowV2Context";
+export * from "./googleCloudDialogflowV2Conversation";
+export * from "./googleCloudDialogflowV2ConversationProfile";
 export * from "./googleCloudDialogflowV2EntityType";
 export * from "./googleCloudDialogflowV2Intent";
+export * from "./googleCloudDialogflowV2KnowledgeBase";
+export * from "./googleCloudDialogflowV2Participant";
 export * from "./googleCloudDialogflowV2SessionEntityType";
+export * from "./googleLongrunningOperation";
 
 // Import resources to register:
 import { GoogleCloudDialogflowV2Context } from "./googleCloudDialogflowV2Context";
+import { GoogleCloudDialogflowV2Conversation } from "./googleCloudDialogflowV2Conversation";
+import { GoogleCloudDialogflowV2ConversationProfile } from "./googleCloudDialogflowV2ConversationProfile";
 import { GoogleCloudDialogflowV2EntityType } from "./googleCloudDialogflowV2EntityType";
 import { GoogleCloudDialogflowV2Intent } from "./googleCloudDialogflowV2Intent";
+import { GoogleCloudDialogflowV2KnowledgeBase } from "./googleCloudDialogflowV2KnowledgeBase";
+import { GoogleCloudDialogflowV2Participant } from "./googleCloudDialogflowV2Participant";
 import { GoogleCloudDialogflowV2SessionEntityType } from "./googleCloudDialogflowV2SessionEntityType";
+import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,12 +32,22 @@ const _module = {
         switch (type) {
             case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Context":
                 return new GoogleCloudDialogflowV2Context(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Conversation":
+                return new GoogleCloudDialogflowV2Conversation(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2ConversationProfile":
+                return new GoogleCloudDialogflowV2ConversationProfile(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2EntityType":
                 return new GoogleCloudDialogflowV2EntityType(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Intent":
                 return new GoogleCloudDialogflowV2Intent(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2KnowledgeBase":
+                return new GoogleCloudDialogflowV2KnowledgeBase(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Participant":
+                return new GoogleCloudDialogflowV2Participant(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2SessionEntityType":
                 return new GoogleCloudDialogflowV2SessionEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2:GoogleLongrunningOperation":
+                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

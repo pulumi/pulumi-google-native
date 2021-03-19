@@ -45,7 +45,8 @@ export class SearchApplication extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SearchApplicationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["dataSourceRestrictions"] = args ? args.dataSourceRestrictions : undefined;
             inputs["defaultFacetOptions"] = args ? args.defaultFacetOptions : undefined;
             inputs["defaultSortOptions"] = args ? args.defaultSortOptions : undefined;
@@ -56,12 +57,8 @@ export class SearchApplication extends pulumi.CustomResource {
             inputs["sourceConfig"] = args ? args.sourceConfig : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SearchApplication.__pulumiType, name, inputs, opts);
     }

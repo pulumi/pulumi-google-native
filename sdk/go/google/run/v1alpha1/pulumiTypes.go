@@ -648,2060 +648,6 @@ func (o CapabilitiesPtrOutput) Drop() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The desired state of the CloudAuditLogsSource.
-type CloudAuditLogsSourceSpec struct {
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-	CeOverrides *CloudEventOverrides `pulumi:"ceOverrides"`
-	// Required. The method name at the service API. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "google.cloud.bigquery.job.create".
-	MethodName *string `pulumi:"methodName"`
-	// Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".
-	ResourceName *string `pulumi:"resourceName"`
-	// Optional. Email address of the IAM service account associated with the source. The service account represents the identity of the source, and determines what permissions the source has. If not provided, the source will use the project's default service account.
-	ServiceAccountName *string `pulumi:"serviceAccountName"`
-	// Required. The GCP service name. This must match "serviceName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "bigquery.googleapis.com".
-	ServiceName *string `pulumi:"serviceName"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink *Destination `pulumi:"sink"`
-}
-
-// CloudAuditLogsSourceSpecInput is an input type that accepts CloudAuditLogsSourceSpecArgs and CloudAuditLogsSourceSpecOutput values.
-// You can construct a concrete instance of `CloudAuditLogsSourceSpecInput` via:
-//
-//          CloudAuditLogsSourceSpecArgs{...}
-type CloudAuditLogsSourceSpecInput interface {
-	pulumi.Input
-
-	ToCloudAuditLogsSourceSpecOutput() CloudAuditLogsSourceSpecOutput
-	ToCloudAuditLogsSourceSpecOutputWithContext(context.Context) CloudAuditLogsSourceSpecOutput
-}
-
-// The desired state of the CloudAuditLogsSource.
-type CloudAuditLogsSourceSpecArgs struct {
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-	CeOverrides CloudEventOverridesPtrInput `pulumi:"ceOverrides"`
-	// Required. The method name at the service API. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "google.cloud.bigquery.job.create".
-	MethodName pulumi.StringPtrInput `pulumi:"methodName"`
-	// Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".
-	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
-	// Optional. Email address of the IAM service account associated with the source. The service account represents the identity of the source, and determines what permissions the source has. If not provided, the source will use the project's default service account.
-	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
-	// Required. The GCP service name. This must match "serviceName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "bigquery.googleapis.com".
-	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink DestinationPtrInput `pulumi:"sink"`
-}
-
-func (CloudAuditLogsSourceSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudAuditLogsSourceSpec)(nil)).Elem()
-}
-
-func (i CloudAuditLogsSourceSpecArgs) ToCloudAuditLogsSourceSpecOutput() CloudAuditLogsSourceSpecOutput {
-	return i.ToCloudAuditLogsSourceSpecOutputWithContext(context.Background())
-}
-
-func (i CloudAuditLogsSourceSpecArgs) ToCloudAuditLogsSourceSpecOutputWithContext(ctx context.Context) CloudAuditLogsSourceSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLogsSourceSpecOutput)
-}
-
-func (i CloudAuditLogsSourceSpecArgs) ToCloudAuditLogsSourceSpecPtrOutput() CloudAuditLogsSourceSpecPtrOutput {
-	return i.ToCloudAuditLogsSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i CloudAuditLogsSourceSpecArgs) ToCloudAuditLogsSourceSpecPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLogsSourceSpecOutput).ToCloudAuditLogsSourceSpecPtrOutputWithContext(ctx)
-}
-
-// CloudAuditLogsSourceSpecPtrInput is an input type that accepts CloudAuditLogsSourceSpecArgs, CloudAuditLogsSourceSpecPtr and CloudAuditLogsSourceSpecPtrOutput values.
-// You can construct a concrete instance of `CloudAuditLogsSourceSpecPtrInput` via:
-//
-//          CloudAuditLogsSourceSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudAuditLogsSourceSpecPtrInput interface {
-	pulumi.Input
-
-	ToCloudAuditLogsSourceSpecPtrOutput() CloudAuditLogsSourceSpecPtrOutput
-	ToCloudAuditLogsSourceSpecPtrOutputWithContext(context.Context) CloudAuditLogsSourceSpecPtrOutput
-}
-
-type cloudAuditLogsSourceSpecPtrType CloudAuditLogsSourceSpecArgs
-
-func CloudAuditLogsSourceSpecPtr(v *CloudAuditLogsSourceSpecArgs) CloudAuditLogsSourceSpecPtrInput {
-	return (*cloudAuditLogsSourceSpecPtrType)(v)
-}
-
-func (*cloudAuditLogsSourceSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudAuditLogsSourceSpec)(nil)).Elem()
-}
-
-func (i *cloudAuditLogsSourceSpecPtrType) ToCloudAuditLogsSourceSpecPtrOutput() CloudAuditLogsSourceSpecPtrOutput {
-	return i.ToCloudAuditLogsSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudAuditLogsSourceSpecPtrType) ToCloudAuditLogsSourceSpecPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLogsSourceSpecPtrOutput)
-}
-
-// The desired state of the CloudAuditLogsSource.
-type CloudAuditLogsSourceSpecOutput struct{ *pulumi.OutputState }
-
-func (CloudAuditLogsSourceSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudAuditLogsSourceSpec)(nil)).Elem()
-}
-
-func (o CloudAuditLogsSourceSpecOutput) ToCloudAuditLogsSourceSpecOutput() CloudAuditLogsSourceSpecOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceSpecOutput) ToCloudAuditLogsSourceSpecOutputWithContext(ctx context.Context) CloudAuditLogsSourceSpecOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceSpecOutput) ToCloudAuditLogsSourceSpecPtrOutput() CloudAuditLogsSourceSpecPtrOutput {
-	return o.ToCloudAuditLogsSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (o CloudAuditLogsSourceSpecOutput) ToCloudAuditLogsSourceSpecPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceSpecPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *CloudAuditLogsSourceSpec {
-		return &v
-	}).(CloudAuditLogsSourceSpecPtrOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-func (o CloudAuditLogsSourceSpecOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *CloudEventOverrides { return v.CeOverrides }).(CloudEventOverridesPtrOutput)
-}
-
-// Required. The method name at the service API. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "google.cloud.bigquery.job.create".
-func (o CloudAuditLogsSourceSpecOutput) MethodName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *string { return v.MethodName }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".
-func (o CloudAuditLogsSourceSpecOutput) ResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Email address of the IAM service account associated with the source. The service account represents the identity of the source, and determines what permissions the source has. If not provided, the source will use the project's default service account.
-func (o CloudAuditLogsSourceSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
-}
-
-// Required. The GCP service name. This must match "serviceName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "bigquery.googleapis.com".
-func (o CloudAuditLogsSourceSpecOutput) ServiceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudAuditLogsSourceSpecOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceSpec) *Destination { return v.Sink }).(DestinationPtrOutput)
-}
-
-type CloudAuditLogsSourceSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudAuditLogsSourceSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudAuditLogsSourceSpec)(nil)).Elem()
-}
-
-func (o CloudAuditLogsSourceSpecPtrOutput) ToCloudAuditLogsSourceSpecPtrOutput() CloudAuditLogsSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceSpecPtrOutput) ToCloudAuditLogsSourceSpecPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceSpecPtrOutput) Elem() CloudAuditLogsSourceSpecOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) CloudAuditLogsSourceSpec { return *v }).(CloudAuditLogsSourceSpecOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-func (o CloudAuditLogsSourceSpecPtrOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) *CloudEventOverrides {
-		if v == nil {
-			return nil
-		}
-		return v.CeOverrides
-	}).(CloudEventOverridesPtrOutput)
-}
-
-// Required. The method name at the service API. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "google.cloud.bigquery.job.create".
-func (o CloudAuditLogsSourceSpecPtrOutput) MethodName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MethodName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".
-func (o CloudAuditLogsSourceSpecPtrOutput) ResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Email address of the IAM service account associated with the source. The service account represents the identity of the source, and determines what permissions the source has. If not provided, the source will use the project's default service account.
-func (o CloudAuditLogsSourceSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required. The GCP service name. This must match "serviceName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "bigquery.googleapis.com".
-func (o CloudAuditLogsSourceSpecPtrOutput) ServiceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudAuditLogsSourceSpecPtrOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceSpec) *Destination {
-		if v == nil {
-			return nil
-		}
-		return v.Sink
-	}).(DestinationPtrOutput)
-}
-
-// CloudAuditLogsSourceStatus represents the current state of a CloudAuditLogsSource.
-type CloudAuditLogsSourceStatus struct {
-	// Array of observed CloudAuditLogsSourceConditions, indicating the current state of the CloudAuditLogsSource.
-	Conditions []Condition `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the controller.
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source. +optional
-	SinkUri *string `pulumi:"sinkUri"`
-}
-
-// CloudAuditLogsSourceStatusInput is an input type that accepts CloudAuditLogsSourceStatusArgs and CloudAuditLogsSourceStatusOutput values.
-// You can construct a concrete instance of `CloudAuditLogsSourceStatusInput` via:
-//
-//          CloudAuditLogsSourceStatusArgs{...}
-type CloudAuditLogsSourceStatusInput interface {
-	pulumi.Input
-
-	ToCloudAuditLogsSourceStatusOutput() CloudAuditLogsSourceStatusOutput
-	ToCloudAuditLogsSourceStatusOutputWithContext(context.Context) CloudAuditLogsSourceStatusOutput
-}
-
-// CloudAuditLogsSourceStatus represents the current state of a CloudAuditLogsSource.
-type CloudAuditLogsSourceStatusArgs struct {
-	// Array of observed CloudAuditLogsSourceConditions, indicating the current state of the CloudAuditLogsSource.
-	Conditions ConditionArrayInput `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the controller.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source. +optional
-	SinkUri pulumi.StringPtrInput `pulumi:"sinkUri"`
-}
-
-func (CloudAuditLogsSourceStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudAuditLogsSourceStatus)(nil)).Elem()
-}
-
-func (i CloudAuditLogsSourceStatusArgs) ToCloudAuditLogsSourceStatusOutput() CloudAuditLogsSourceStatusOutput {
-	return i.ToCloudAuditLogsSourceStatusOutputWithContext(context.Background())
-}
-
-func (i CloudAuditLogsSourceStatusArgs) ToCloudAuditLogsSourceStatusOutputWithContext(ctx context.Context) CloudAuditLogsSourceStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLogsSourceStatusOutput)
-}
-
-func (i CloudAuditLogsSourceStatusArgs) ToCloudAuditLogsSourceStatusPtrOutput() CloudAuditLogsSourceStatusPtrOutput {
-	return i.ToCloudAuditLogsSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i CloudAuditLogsSourceStatusArgs) ToCloudAuditLogsSourceStatusPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLogsSourceStatusOutput).ToCloudAuditLogsSourceStatusPtrOutputWithContext(ctx)
-}
-
-// CloudAuditLogsSourceStatusPtrInput is an input type that accepts CloudAuditLogsSourceStatusArgs, CloudAuditLogsSourceStatusPtr and CloudAuditLogsSourceStatusPtrOutput values.
-// You can construct a concrete instance of `CloudAuditLogsSourceStatusPtrInput` via:
-//
-//          CloudAuditLogsSourceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudAuditLogsSourceStatusPtrInput interface {
-	pulumi.Input
-
-	ToCloudAuditLogsSourceStatusPtrOutput() CloudAuditLogsSourceStatusPtrOutput
-	ToCloudAuditLogsSourceStatusPtrOutputWithContext(context.Context) CloudAuditLogsSourceStatusPtrOutput
-}
-
-type cloudAuditLogsSourceStatusPtrType CloudAuditLogsSourceStatusArgs
-
-func CloudAuditLogsSourceStatusPtr(v *CloudAuditLogsSourceStatusArgs) CloudAuditLogsSourceStatusPtrInput {
-	return (*cloudAuditLogsSourceStatusPtrType)(v)
-}
-
-func (*cloudAuditLogsSourceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudAuditLogsSourceStatus)(nil)).Elem()
-}
-
-func (i *cloudAuditLogsSourceStatusPtrType) ToCloudAuditLogsSourceStatusPtrOutput() CloudAuditLogsSourceStatusPtrOutput {
-	return i.ToCloudAuditLogsSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudAuditLogsSourceStatusPtrType) ToCloudAuditLogsSourceStatusPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLogsSourceStatusPtrOutput)
-}
-
-// CloudAuditLogsSourceStatus represents the current state of a CloudAuditLogsSource.
-type CloudAuditLogsSourceStatusOutput struct{ *pulumi.OutputState }
-
-func (CloudAuditLogsSourceStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudAuditLogsSourceStatus)(nil)).Elem()
-}
-
-func (o CloudAuditLogsSourceStatusOutput) ToCloudAuditLogsSourceStatusOutput() CloudAuditLogsSourceStatusOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceStatusOutput) ToCloudAuditLogsSourceStatusOutputWithContext(ctx context.Context) CloudAuditLogsSourceStatusOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceStatusOutput) ToCloudAuditLogsSourceStatusPtrOutput() CloudAuditLogsSourceStatusPtrOutput {
-	return o.ToCloudAuditLogsSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o CloudAuditLogsSourceStatusOutput) ToCloudAuditLogsSourceStatusPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceStatusPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceStatus) *CloudAuditLogsSourceStatus {
-		return &v
-	}).(CloudAuditLogsSourceStatusPtrOutput)
-}
-
-// Array of observed CloudAuditLogsSourceConditions, indicating the current state of the CloudAuditLogsSource.
-func (o CloudAuditLogsSourceStatusOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceStatus) []Condition { return v.Conditions }).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the controller.
-func (o CloudAuditLogsSourceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source. +optional
-func (o CloudAuditLogsSourceStatusOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudAuditLogsSourceStatus) *string { return v.SinkUri }).(pulumi.StringPtrOutput)
-}
-
-type CloudAuditLogsSourceStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudAuditLogsSourceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudAuditLogsSourceStatus)(nil)).Elem()
-}
-
-func (o CloudAuditLogsSourceStatusPtrOutput) ToCloudAuditLogsSourceStatusPtrOutput() CloudAuditLogsSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceStatusPtrOutput) ToCloudAuditLogsSourceStatusPtrOutputWithContext(ctx context.Context) CloudAuditLogsSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudAuditLogsSourceStatusPtrOutput) Elem() CloudAuditLogsSourceStatusOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceStatus) CloudAuditLogsSourceStatus { return *v }).(CloudAuditLogsSourceStatusOutput)
-}
-
-// Array of observed CloudAuditLogsSourceConditions, indicating the current state of the CloudAuditLogsSource.
-func (o CloudAuditLogsSourceStatusPtrOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceStatus) []Condition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the controller.
-func (o CloudAuditLogsSourceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source. +optional
-func (o CloudAuditLogsSourceStatusPtrOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudAuditLogsSourceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SinkUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// CloudEventOverrides defines arguments for a Source that control the output format of the CloudEvents produced by the Source.
-type CloudEventOverrides struct {
-	// Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently. +optional
-	Extensions map[string]string `pulumi:"extensions"`
-}
-
-// CloudEventOverridesInput is an input type that accepts CloudEventOverridesArgs and CloudEventOverridesOutput values.
-// You can construct a concrete instance of `CloudEventOverridesInput` via:
-//
-//          CloudEventOverridesArgs{...}
-type CloudEventOverridesInput interface {
-	pulumi.Input
-
-	ToCloudEventOverridesOutput() CloudEventOverridesOutput
-	ToCloudEventOverridesOutputWithContext(context.Context) CloudEventOverridesOutput
-}
-
-// CloudEventOverrides defines arguments for a Source that control the output format of the CloudEvents produced by the Source.
-type CloudEventOverridesArgs struct {
-	// Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently. +optional
-	Extensions pulumi.StringMapInput `pulumi:"extensions"`
-}
-
-func (CloudEventOverridesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudEventOverrides)(nil)).Elem()
-}
-
-func (i CloudEventOverridesArgs) ToCloudEventOverridesOutput() CloudEventOverridesOutput {
-	return i.ToCloudEventOverridesOutputWithContext(context.Background())
-}
-
-func (i CloudEventOverridesArgs) ToCloudEventOverridesOutputWithContext(ctx context.Context) CloudEventOverridesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudEventOverridesOutput)
-}
-
-func (i CloudEventOverridesArgs) ToCloudEventOverridesPtrOutput() CloudEventOverridesPtrOutput {
-	return i.ToCloudEventOverridesPtrOutputWithContext(context.Background())
-}
-
-func (i CloudEventOverridesArgs) ToCloudEventOverridesPtrOutputWithContext(ctx context.Context) CloudEventOverridesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudEventOverridesOutput).ToCloudEventOverridesPtrOutputWithContext(ctx)
-}
-
-// CloudEventOverridesPtrInput is an input type that accepts CloudEventOverridesArgs, CloudEventOverridesPtr and CloudEventOverridesPtrOutput values.
-// You can construct a concrete instance of `CloudEventOverridesPtrInput` via:
-//
-//          CloudEventOverridesArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudEventOverridesPtrInput interface {
-	pulumi.Input
-
-	ToCloudEventOverridesPtrOutput() CloudEventOverridesPtrOutput
-	ToCloudEventOverridesPtrOutputWithContext(context.Context) CloudEventOverridesPtrOutput
-}
-
-type cloudEventOverridesPtrType CloudEventOverridesArgs
-
-func CloudEventOverridesPtr(v *CloudEventOverridesArgs) CloudEventOverridesPtrInput {
-	return (*cloudEventOverridesPtrType)(v)
-}
-
-func (*cloudEventOverridesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudEventOverrides)(nil)).Elem()
-}
-
-func (i *cloudEventOverridesPtrType) ToCloudEventOverridesPtrOutput() CloudEventOverridesPtrOutput {
-	return i.ToCloudEventOverridesPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudEventOverridesPtrType) ToCloudEventOverridesPtrOutputWithContext(ctx context.Context) CloudEventOverridesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudEventOverridesPtrOutput)
-}
-
-// CloudEventOverrides defines arguments for a Source that control the output format of the CloudEvents produced by the Source.
-type CloudEventOverridesOutput struct{ *pulumi.OutputState }
-
-func (CloudEventOverridesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudEventOverrides)(nil)).Elem()
-}
-
-func (o CloudEventOverridesOutput) ToCloudEventOverridesOutput() CloudEventOverridesOutput {
-	return o
-}
-
-func (o CloudEventOverridesOutput) ToCloudEventOverridesOutputWithContext(ctx context.Context) CloudEventOverridesOutput {
-	return o
-}
-
-func (o CloudEventOverridesOutput) ToCloudEventOverridesPtrOutput() CloudEventOverridesPtrOutput {
-	return o.ToCloudEventOverridesPtrOutputWithContext(context.Background())
-}
-
-func (o CloudEventOverridesOutput) ToCloudEventOverridesPtrOutputWithContext(ctx context.Context) CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v CloudEventOverrides) *CloudEventOverrides {
-		return &v
-	}).(CloudEventOverridesPtrOutput)
-}
-
-// Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently. +optional
-func (o CloudEventOverridesOutput) Extensions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v CloudEventOverrides) map[string]string { return v.Extensions }).(pulumi.StringMapOutput)
-}
-
-type CloudEventOverridesPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudEventOverridesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudEventOverrides)(nil)).Elem()
-}
-
-func (o CloudEventOverridesPtrOutput) ToCloudEventOverridesPtrOutput() CloudEventOverridesPtrOutput {
-	return o
-}
-
-func (o CloudEventOverridesPtrOutput) ToCloudEventOverridesPtrOutputWithContext(ctx context.Context) CloudEventOverridesPtrOutput {
-	return o
-}
-
-func (o CloudEventOverridesPtrOutput) Elem() CloudEventOverridesOutput {
-	return o.ApplyT(func(v *CloudEventOverrides) CloudEventOverrides { return *v }).(CloudEventOverridesOutput)
-}
-
-// Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently. +optional
-func (o CloudEventOverridesPtrOutput) Extensions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CloudEventOverrides) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Extensions
-	}).(pulumi.StringMapOutput)
-}
-
-// The desired state of the CloudPubSubSource.
-type CloudPubSubSourceSpec struct {
-	// AckDeadline is the default maximum time after a subscriber receives a message before the subscriber should acknowledge the message. Defaults to 30 seconds ('30s'). +optional
-	AckDeadline *string `pulumi:"ackDeadline"`
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-	CeOverrides *CloudEventOverrides `pulumi:"ceOverrides"`
-	// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster. +optional
-	Project *string `pulumi:"project"`
-	// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-	PubsubSecret *SecretKeySelector `pulumi:"pubsubSecret"`
-	// RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages will not be expunged until they fall out of the RetentionDuration window.
-	RetainAckedMessages *bool `pulumi:"retainAckedMessages"`
-	// RetentionDuration defines how long to retain messages in backlog, from the time of publish. If RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7 days ('7d'). +optional
-	RetentionDuration *string `pulumi:"retentionDuration"`
-	// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json +optional
-	Secret *SecretKeySelector `pulumi:"secret"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink *Destination `pulumi:"sink"`
-	// Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-proj/topics/laconia'.
-	Topic *string `pulumi:"topic"`
-}
-
-// CloudPubSubSourceSpecInput is an input type that accepts CloudPubSubSourceSpecArgs and CloudPubSubSourceSpecOutput values.
-// You can construct a concrete instance of `CloudPubSubSourceSpecInput` via:
-//
-//          CloudPubSubSourceSpecArgs{...}
-type CloudPubSubSourceSpecInput interface {
-	pulumi.Input
-
-	ToCloudPubSubSourceSpecOutput() CloudPubSubSourceSpecOutput
-	ToCloudPubSubSourceSpecOutputWithContext(context.Context) CloudPubSubSourceSpecOutput
-}
-
-// The desired state of the CloudPubSubSource.
-type CloudPubSubSourceSpecArgs struct {
-	// AckDeadline is the default maximum time after a subscriber receives a message before the subscriber should acknowledge the message. Defaults to 30 seconds ('30s'). +optional
-	AckDeadline pulumi.StringPtrInput `pulumi:"ackDeadline"`
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-	CeOverrides CloudEventOverridesPtrInput `pulumi:"ceOverrides"`
-	// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster. +optional
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-	PubsubSecret SecretKeySelectorPtrInput `pulumi:"pubsubSecret"`
-	// RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages will not be expunged until they fall out of the RetentionDuration window.
-	RetainAckedMessages pulumi.BoolPtrInput `pulumi:"retainAckedMessages"`
-	// RetentionDuration defines how long to retain messages in backlog, from the time of publish. If RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7 days ('7d'). +optional
-	RetentionDuration pulumi.StringPtrInput `pulumi:"retentionDuration"`
-	// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json +optional
-	Secret SecretKeySelectorPtrInput `pulumi:"secret"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink DestinationPtrInput `pulumi:"sink"`
-	// Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-proj/topics/laconia'.
-	Topic pulumi.StringPtrInput `pulumi:"topic"`
-}
-
-func (CloudPubSubSourceSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudPubSubSourceSpec)(nil)).Elem()
-}
-
-func (i CloudPubSubSourceSpecArgs) ToCloudPubSubSourceSpecOutput() CloudPubSubSourceSpecOutput {
-	return i.ToCloudPubSubSourceSpecOutputWithContext(context.Background())
-}
-
-func (i CloudPubSubSourceSpecArgs) ToCloudPubSubSourceSpecOutputWithContext(ctx context.Context) CloudPubSubSourceSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudPubSubSourceSpecOutput)
-}
-
-func (i CloudPubSubSourceSpecArgs) ToCloudPubSubSourceSpecPtrOutput() CloudPubSubSourceSpecPtrOutput {
-	return i.ToCloudPubSubSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i CloudPubSubSourceSpecArgs) ToCloudPubSubSourceSpecPtrOutputWithContext(ctx context.Context) CloudPubSubSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudPubSubSourceSpecOutput).ToCloudPubSubSourceSpecPtrOutputWithContext(ctx)
-}
-
-// CloudPubSubSourceSpecPtrInput is an input type that accepts CloudPubSubSourceSpecArgs, CloudPubSubSourceSpecPtr and CloudPubSubSourceSpecPtrOutput values.
-// You can construct a concrete instance of `CloudPubSubSourceSpecPtrInput` via:
-//
-//          CloudPubSubSourceSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudPubSubSourceSpecPtrInput interface {
-	pulumi.Input
-
-	ToCloudPubSubSourceSpecPtrOutput() CloudPubSubSourceSpecPtrOutput
-	ToCloudPubSubSourceSpecPtrOutputWithContext(context.Context) CloudPubSubSourceSpecPtrOutput
-}
-
-type cloudPubSubSourceSpecPtrType CloudPubSubSourceSpecArgs
-
-func CloudPubSubSourceSpecPtr(v *CloudPubSubSourceSpecArgs) CloudPubSubSourceSpecPtrInput {
-	return (*cloudPubSubSourceSpecPtrType)(v)
-}
-
-func (*cloudPubSubSourceSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudPubSubSourceSpec)(nil)).Elem()
-}
-
-func (i *cloudPubSubSourceSpecPtrType) ToCloudPubSubSourceSpecPtrOutput() CloudPubSubSourceSpecPtrOutput {
-	return i.ToCloudPubSubSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudPubSubSourceSpecPtrType) ToCloudPubSubSourceSpecPtrOutputWithContext(ctx context.Context) CloudPubSubSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudPubSubSourceSpecPtrOutput)
-}
-
-// The desired state of the CloudPubSubSource.
-type CloudPubSubSourceSpecOutput struct{ *pulumi.OutputState }
-
-func (CloudPubSubSourceSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudPubSubSourceSpec)(nil)).Elem()
-}
-
-func (o CloudPubSubSourceSpecOutput) ToCloudPubSubSourceSpecOutput() CloudPubSubSourceSpecOutput {
-	return o
-}
-
-func (o CloudPubSubSourceSpecOutput) ToCloudPubSubSourceSpecOutputWithContext(ctx context.Context) CloudPubSubSourceSpecOutput {
-	return o
-}
-
-func (o CloudPubSubSourceSpecOutput) ToCloudPubSubSourceSpecPtrOutput() CloudPubSubSourceSpecPtrOutput {
-	return o.ToCloudPubSubSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (o CloudPubSubSourceSpecOutput) ToCloudPubSubSourceSpecPtrOutputWithContext(ctx context.Context) CloudPubSubSourceSpecPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *CloudPubSubSourceSpec {
-		return &v
-	}).(CloudPubSubSourceSpecPtrOutput)
-}
-
-// AckDeadline is the default maximum time after a subscriber receives a message before the subscriber should acknowledge the message. Defaults to 30 seconds ('30s'). +optional
-func (o CloudPubSubSourceSpecOutput) AckDeadline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *string { return v.AckDeadline }).(pulumi.StringPtrOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-func (o CloudPubSubSourceSpecOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *CloudEventOverrides { return v.CeOverrides }).(CloudEventOverridesPtrOutput)
-}
-
-// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster. +optional
-func (o CloudPubSubSourceSpecOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-func (o CloudPubSubSourceSpecOutput) PubsubSecret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *SecretKeySelector { return v.PubsubSecret }).(SecretKeySelectorPtrOutput)
-}
-
-// RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages will not be expunged until they fall out of the RetentionDuration window.
-func (o CloudPubSubSourceSpecOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *bool { return v.RetainAckedMessages }).(pulumi.BoolPtrOutput)
-}
-
-// RetentionDuration defines how long to retain messages in backlog, from the time of publish. If RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7 days ('7d'). +optional
-func (o CloudPubSubSourceSpecOutput) RetentionDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *string { return v.RetentionDuration }).(pulumi.StringPtrOutput)
-}
-
-// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json +optional
-func (o CloudPubSubSourceSpecOutput) Secret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *SecretKeySelector { return v.Secret }).(SecretKeySelectorPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudPubSubSourceSpecOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *Destination { return v.Sink }).(DestinationPtrOutput)
-}
-
-// Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-proj/topics/laconia'.
-func (o CloudPubSubSourceSpecOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceSpec) *string { return v.Topic }).(pulumi.StringPtrOutput)
-}
-
-type CloudPubSubSourceSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudPubSubSourceSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudPubSubSourceSpec)(nil)).Elem()
-}
-
-func (o CloudPubSubSourceSpecPtrOutput) ToCloudPubSubSourceSpecPtrOutput() CloudPubSubSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudPubSubSourceSpecPtrOutput) ToCloudPubSubSourceSpecPtrOutputWithContext(ctx context.Context) CloudPubSubSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudPubSubSourceSpecPtrOutput) Elem() CloudPubSubSourceSpecOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) CloudPubSubSourceSpec { return *v }).(CloudPubSubSourceSpecOutput)
-}
-
-// AckDeadline is the default maximum time after a subscriber receives a message before the subscriber should acknowledge the message. Defaults to 30 seconds ('30s'). +optional
-func (o CloudPubSubSourceSpecPtrOutput) AckDeadline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AckDeadline
-	}).(pulumi.StringPtrOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-func (o CloudPubSubSourceSpecPtrOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *CloudEventOverrides {
-		if v == nil {
-			return nil
-		}
-		return v.CeOverrides
-	}).(CloudEventOverridesPtrOutput)
-}
-
-// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster. +optional
-func (o CloudPubSubSourceSpecPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-func (o CloudPubSubSourceSpecPtrOutput) PubsubSecret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *SecretKeySelector {
-		if v == nil {
-			return nil
-		}
-		return v.PubsubSecret
-	}).(SecretKeySelectorPtrOutput)
-}
-
-// RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages will not be expunged until they fall out of the RetentionDuration window.
-func (o CloudPubSubSourceSpecPtrOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RetainAckedMessages
-	}).(pulumi.BoolPtrOutput)
-}
-
-// RetentionDuration defines how long to retain messages in backlog, from the time of publish. If RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7 days ('7d'). +optional
-func (o CloudPubSubSourceSpecPtrOutput) RetentionDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RetentionDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json +optional
-func (o CloudPubSubSourceSpecPtrOutput) Secret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *SecretKeySelector {
-		if v == nil {
-			return nil
-		}
-		return v.Secret
-	}).(SecretKeySelectorPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudPubSubSourceSpecPtrOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *Destination {
-		if v == nil {
-			return nil
-		}
-		return v.Sink
-	}).(DestinationPtrOutput)
-}
-
-// Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-proj/topics/laconia'.
-func (o CloudPubSubSourceSpecPtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Topic
-	}).(pulumi.StringPtrOutput)
-}
-
-// CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.
-type CloudPubSubSourceStatus struct {
-	// Array of observed CloudPubSubSourceConditions, indicating the current state of the CloudPubSubSource.
-	Conditions []Condition `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the controller.
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source. +optional
-	SinkUri *string `pulumi:"sinkUri"`
-}
-
-// CloudPubSubSourceStatusInput is an input type that accepts CloudPubSubSourceStatusArgs and CloudPubSubSourceStatusOutput values.
-// You can construct a concrete instance of `CloudPubSubSourceStatusInput` via:
-//
-//          CloudPubSubSourceStatusArgs{...}
-type CloudPubSubSourceStatusInput interface {
-	pulumi.Input
-
-	ToCloudPubSubSourceStatusOutput() CloudPubSubSourceStatusOutput
-	ToCloudPubSubSourceStatusOutputWithContext(context.Context) CloudPubSubSourceStatusOutput
-}
-
-// CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.
-type CloudPubSubSourceStatusArgs struct {
-	// Array of observed CloudPubSubSourceConditions, indicating the current state of the CloudPubSubSource.
-	Conditions ConditionArrayInput `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the controller.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source. +optional
-	SinkUri pulumi.StringPtrInput `pulumi:"sinkUri"`
-}
-
-func (CloudPubSubSourceStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudPubSubSourceStatus)(nil)).Elem()
-}
-
-func (i CloudPubSubSourceStatusArgs) ToCloudPubSubSourceStatusOutput() CloudPubSubSourceStatusOutput {
-	return i.ToCloudPubSubSourceStatusOutputWithContext(context.Background())
-}
-
-func (i CloudPubSubSourceStatusArgs) ToCloudPubSubSourceStatusOutputWithContext(ctx context.Context) CloudPubSubSourceStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudPubSubSourceStatusOutput)
-}
-
-func (i CloudPubSubSourceStatusArgs) ToCloudPubSubSourceStatusPtrOutput() CloudPubSubSourceStatusPtrOutput {
-	return i.ToCloudPubSubSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i CloudPubSubSourceStatusArgs) ToCloudPubSubSourceStatusPtrOutputWithContext(ctx context.Context) CloudPubSubSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudPubSubSourceStatusOutput).ToCloudPubSubSourceStatusPtrOutputWithContext(ctx)
-}
-
-// CloudPubSubSourceStatusPtrInput is an input type that accepts CloudPubSubSourceStatusArgs, CloudPubSubSourceStatusPtr and CloudPubSubSourceStatusPtrOutput values.
-// You can construct a concrete instance of `CloudPubSubSourceStatusPtrInput` via:
-//
-//          CloudPubSubSourceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudPubSubSourceStatusPtrInput interface {
-	pulumi.Input
-
-	ToCloudPubSubSourceStatusPtrOutput() CloudPubSubSourceStatusPtrOutput
-	ToCloudPubSubSourceStatusPtrOutputWithContext(context.Context) CloudPubSubSourceStatusPtrOutput
-}
-
-type cloudPubSubSourceStatusPtrType CloudPubSubSourceStatusArgs
-
-func CloudPubSubSourceStatusPtr(v *CloudPubSubSourceStatusArgs) CloudPubSubSourceStatusPtrInput {
-	return (*cloudPubSubSourceStatusPtrType)(v)
-}
-
-func (*cloudPubSubSourceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudPubSubSourceStatus)(nil)).Elem()
-}
-
-func (i *cloudPubSubSourceStatusPtrType) ToCloudPubSubSourceStatusPtrOutput() CloudPubSubSourceStatusPtrOutput {
-	return i.ToCloudPubSubSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudPubSubSourceStatusPtrType) ToCloudPubSubSourceStatusPtrOutputWithContext(ctx context.Context) CloudPubSubSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudPubSubSourceStatusPtrOutput)
-}
-
-// CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.
-type CloudPubSubSourceStatusOutput struct{ *pulumi.OutputState }
-
-func (CloudPubSubSourceStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudPubSubSourceStatus)(nil)).Elem()
-}
-
-func (o CloudPubSubSourceStatusOutput) ToCloudPubSubSourceStatusOutput() CloudPubSubSourceStatusOutput {
-	return o
-}
-
-func (o CloudPubSubSourceStatusOutput) ToCloudPubSubSourceStatusOutputWithContext(ctx context.Context) CloudPubSubSourceStatusOutput {
-	return o
-}
-
-func (o CloudPubSubSourceStatusOutput) ToCloudPubSubSourceStatusPtrOutput() CloudPubSubSourceStatusPtrOutput {
-	return o.ToCloudPubSubSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o CloudPubSubSourceStatusOutput) ToCloudPubSubSourceStatusPtrOutputWithContext(ctx context.Context) CloudPubSubSourceStatusPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceStatus) *CloudPubSubSourceStatus {
-		return &v
-	}).(CloudPubSubSourceStatusPtrOutput)
-}
-
-// Array of observed CloudPubSubSourceConditions, indicating the current state of the CloudPubSubSource.
-func (o CloudPubSubSourceStatusOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v CloudPubSubSourceStatus) []Condition { return v.Conditions }).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the controller.
-func (o CloudPubSubSourceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source. +optional
-func (o CloudPubSubSourceStatusOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudPubSubSourceStatus) *string { return v.SinkUri }).(pulumi.StringPtrOutput)
-}
-
-type CloudPubSubSourceStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudPubSubSourceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudPubSubSourceStatus)(nil)).Elem()
-}
-
-func (o CloudPubSubSourceStatusPtrOutput) ToCloudPubSubSourceStatusPtrOutput() CloudPubSubSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudPubSubSourceStatusPtrOutput) ToCloudPubSubSourceStatusPtrOutputWithContext(ctx context.Context) CloudPubSubSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudPubSubSourceStatusPtrOutput) Elem() CloudPubSubSourceStatusOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceStatus) CloudPubSubSourceStatus { return *v }).(CloudPubSubSourceStatusOutput)
-}
-
-// Array of observed CloudPubSubSourceConditions, indicating the current state of the CloudPubSubSource.
-func (o CloudPubSubSourceStatusPtrOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceStatus) []Condition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the controller.
-func (o CloudPubSubSourceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source. +optional
-func (o CloudPubSubSourceStatusPtrOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudPubSubSourceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SinkUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The desired state of the CloudSchedulerSource.
-type CloudSchedulerSourceSpec struct {
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-	CeOverrides *CloudEventOverrides `pulumi:"ceOverrides"`
-	// Data to send in the payload of the Event.
-	Data *string `pulumi:"data"`
-	// Location to create the Scheduler job in.
-	Location *string `pulumi:"location"`
-	// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster.
-	Project *string `pulumi:"project"`
-	// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-	PubsubSecret *SecretKeySelector `pulumi:"pubsubSecret"`
-	// Schedule in cron format, for example: "* * * * *" would be run every minute.
-	Schedule *string `pulumi:"schedule"`
-	// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-	Secret *SecretKeySelector `pulumi:"secret"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink *Destination `pulumi:"sink"`
-}
-
-// CloudSchedulerSourceSpecInput is an input type that accepts CloudSchedulerSourceSpecArgs and CloudSchedulerSourceSpecOutput values.
-// You can construct a concrete instance of `CloudSchedulerSourceSpecInput` via:
-//
-//          CloudSchedulerSourceSpecArgs{...}
-type CloudSchedulerSourceSpecInput interface {
-	pulumi.Input
-
-	ToCloudSchedulerSourceSpecOutput() CloudSchedulerSourceSpecOutput
-	ToCloudSchedulerSourceSpecOutputWithContext(context.Context) CloudSchedulerSourceSpecOutput
-}
-
-// The desired state of the CloudSchedulerSource.
-type CloudSchedulerSourceSpecArgs struct {
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-	CeOverrides CloudEventOverridesPtrInput `pulumi:"ceOverrides"`
-	// Data to send in the payload of the Event.
-	Data pulumi.StringPtrInput `pulumi:"data"`
-	// Location to create the Scheduler job in.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-	PubsubSecret SecretKeySelectorPtrInput `pulumi:"pubsubSecret"`
-	// Schedule in cron format, for example: "* * * * *" would be run every minute.
-	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
-	// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-	Secret SecretKeySelectorPtrInput `pulumi:"secret"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink DestinationPtrInput `pulumi:"sink"`
-}
-
-func (CloudSchedulerSourceSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSchedulerSourceSpec)(nil)).Elem()
-}
-
-func (i CloudSchedulerSourceSpecArgs) ToCloudSchedulerSourceSpecOutput() CloudSchedulerSourceSpecOutput {
-	return i.ToCloudSchedulerSourceSpecOutputWithContext(context.Background())
-}
-
-func (i CloudSchedulerSourceSpecArgs) ToCloudSchedulerSourceSpecOutputWithContext(ctx context.Context) CloudSchedulerSourceSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSchedulerSourceSpecOutput)
-}
-
-func (i CloudSchedulerSourceSpecArgs) ToCloudSchedulerSourceSpecPtrOutput() CloudSchedulerSourceSpecPtrOutput {
-	return i.ToCloudSchedulerSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i CloudSchedulerSourceSpecArgs) ToCloudSchedulerSourceSpecPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSchedulerSourceSpecOutput).ToCloudSchedulerSourceSpecPtrOutputWithContext(ctx)
-}
-
-// CloudSchedulerSourceSpecPtrInput is an input type that accepts CloudSchedulerSourceSpecArgs, CloudSchedulerSourceSpecPtr and CloudSchedulerSourceSpecPtrOutput values.
-// You can construct a concrete instance of `CloudSchedulerSourceSpecPtrInput` via:
-//
-//          CloudSchedulerSourceSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudSchedulerSourceSpecPtrInput interface {
-	pulumi.Input
-
-	ToCloudSchedulerSourceSpecPtrOutput() CloudSchedulerSourceSpecPtrOutput
-	ToCloudSchedulerSourceSpecPtrOutputWithContext(context.Context) CloudSchedulerSourceSpecPtrOutput
-}
-
-type cloudSchedulerSourceSpecPtrType CloudSchedulerSourceSpecArgs
-
-func CloudSchedulerSourceSpecPtr(v *CloudSchedulerSourceSpecArgs) CloudSchedulerSourceSpecPtrInput {
-	return (*cloudSchedulerSourceSpecPtrType)(v)
-}
-
-func (*cloudSchedulerSourceSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSchedulerSourceSpec)(nil)).Elem()
-}
-
-func (i *cloudSchedulerSourceSpecPtrType) ToCloudSchedulerSourceSpecPtrOutput() CloudSchedulerSourceSpecPtrOutput {
-	return i.ToCloudSchedulerSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSchedulerSourceSpecPtrType) ToCloudSchedulerSourceSpecPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSchedulerSourceSpecPtrOutput)
-}
-
-// The desired state of the CloudSchedulerSource.
-type CloudSchedulerSourceSpecOutput struct{ *pulumi.OutputState }
-
-func (CloudSchedulerSourceSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSchedulerSourceSpec)(nil)).Elem()
-}
-
-func (o CloudSchedulerSourceSpecOutput) ToCloudSchedulerSourceSpecOutput() CloudSchedulerSourceSpecOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceSpecOutput) ToCloudSchedulerSourceSpecOutputWithContext(ctx context.Context) CloudSchedulerSourceSpecOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceSpecOutput) ToCloudSchedulerSourceSpecPtrOutput() CloudSchedulerSourceSpecPtrOutput {
-	return o.ToCloudSchedulerSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (o CloudSchedulerSourceSpecOutput) ToCloudSchedulerSourceSpecPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceSpecPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *CloudSchedulerSourceSpec {
-		return &v
-	}).(CloudSchedulerSourceSpecPtrOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-func (o CloudSchedulerSourceSpecOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *CloudEventOverrides { return v.CeOverrides }).(CloudEventOverridesPtrOutput)
-}
-
-// Data to send in the payload of the Event.
-func (o CloudSchedulerSourceSpecOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *string { return v.Data }).(pulumi.StringPtrOutput)
-}
-
-// Location to create the Scheduler job in.
-func (o CloudSchedulerSourceSpecOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster.
-func (o CloudSchedulerSourceSpecOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-func (o CloudSchedulerSourceSpecOutput) PubsubSecret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *SecretKeySelector { return v.PubsubSecret }).(SecretKeySelectorPtrOutput)
-}
-
-// Schedule in cron format, for example: "* * * * *" would be run every minute.
-func (o CloudSchedulerSourceSpecOutput) Schedule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
-}
-
-// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-func (o CloudSchedulerSourceSpecOutput) Secret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *SecretKeySelector { return v.Secret }).(SecretKeySelectorPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudSchedulerSourceSpecOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceSpec) *Destination { return v.Sink }).(DestinationPtrOutput)
-}
-
-type CloudSchedulerSourceSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSchedulerSourceSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSchedulerSourceSpec)(nil)).Elem()
-}
-
-func (o CloudSchedulerSourceSpecPtrOutput) ToCloudSchedulerSourceSpecPtrOutput() CloudSchedulerSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceSpecPtrOutput) ToCloudSchedulerSourceSpecPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceSpecPtrOutput) Elem() CloudSchedulerSourceSpecOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) CloudSchedulerSourceSpec { return *v }).(CloudSchedulerSourceSpecOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-func (o CloudSchedulerSourceSpecPtrOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *CloudEventOverrides {
-		if v == nil {
-			return nil
-		}
-		return v.CeOverrides
-	}).(CloudEventOverridesPtrOutput)
-}
-
-// Data to send in the payload of the Event.
-func (o CloudSchedulerSourceSpecPtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Data
-	}).(pulumi.StringPtrOutput)
-}
-
-// Location to create the Scheduler job in.
-func (o CloudSchedulerSourceSpecPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster.
-func (o CloudSchedulerSourceSpecPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-func (o CloudSchedulerSourceSpecPtrOutput) PubsubSecret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *SecretKeySelector {
-		if v == nil {
-			return nil
-		}
-		return v.PubsubSecret
-	}).(SecretKeySelectorPtrOutput)
-}
-
-// Schedule in cron format, for example: "* * * * *" would be run every minute.
-func (o CloudSchedulerSourceSpecPtrOutput) Schedule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-func (o CloudSchedulerSourceSpecPtrOutput) Secret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *SecretKeySelector {
-		if v == nil {
-			return nil
-		}
-		return v.Secret
-	}).(SecretKeySelectorPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudSchedulerSourceSpecPtrOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceSpec) *Destination {
-		if v == nil {
-			return nil
-		}
-		return v.Sink
-	}).(DestinationPtrOutput)
-}
-
-// CloudSchedulerSourceStatus represents the current state of a CloudSchedulerSource.
-type CloudSchedulerSourceStatus struct {
-	// Array of observed CloudSchedulerSourceConditions, indicating the current state of the CloudSchedulerSource.
-	Conditions []Condition `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudSchedulerSource that was last processed by the controller.
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source.
-	SinkUri *string `pulumi:"sinkUri"`
-}
-
-// CloudSchedulerSourceStatusInput is an input type that accepts CloudSchedulerSourceStatusArgs and CloudSchedulerSourceStatusOutput values.
-// You can construct a concrete instance of `CloudSchedulerSourceStatusInput` via:
-//
-//          CloudSchedulerSourceStatusArgs{...}
-type CloudSchedulerSourceStatusInput interface {
-	pulumi.Input
-
-	ToCloudSchedulerSourceStatusOutput() CloudSchedulerSourceStatusOutput
-	ToCloudSchedulerSourceStatusOutputWithContext(context.Context) CloudSchedulerSourceStatusOutput
-}
-
-// CloudSchedulerSourceStatus represents the current state of a CloudSchedulerSource.
-type CloudSchedulerSourceStatusArgs struct {
-	// Array of observed CloudSchedulerSourceConditions, indicating the current state of the CloudSchedulerSource.
-	Conditions ConditionArrayInput `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudSchedulerSource that was last processed by the controller.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source.
-	SinkUri pulumi.StringPtrInput `pulumi:"sinkUri"`
-}
-
-func (CloudSchedulerSourceStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSchedulerSourceStatus)(nil)).Elem()
-}
-
-func (i CloudSchedulerSourceStatusArgs) ToCloudSchedulerSourceStatusOutput() CloudSchedulerSourceStatusOutput {
-	return i.ToCloudSchedulerSourceStatusOutputWithContext(context.Background())
-}
-
-func (i CloudSchedulerSourceStatusArgs) ToCloudSchedulerSourceStatusOutputWithContext(ctx context.Context) CloudSchedulerSourceStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSchedulerSourceStatusOutput)
-}
-
-func (i CloudSchedulerSourceStatusArgs) ToCloudSchedulerSourceStatusPtrOutput() CloudSchedulerSourceStatusPtrOutput {
-	return i.ToCloudSchedulerSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i CloudSchedulerSourceStatusArgs) ToCloudSchedulerSourceStatusPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSchedulerSourceStatusOutput).ToCloudSchedulerSourceStatusPtrOutputWithContext(ctx)
-}
-
-// CloudSchedulerSourceStatusPtrInput is an input type that accepts CloudSchedulerSourceStatusArgs, CloudSchedulerSourceStatusPtr and CloudSchedulerSourceStatusPtrOutput values.
-// You can construct a concrete instance of `CloudSchedulerSourceStatusPtrInput` via:
-//
-//          CloudSchedulerSourceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudSchedulerSourceStatusPtrInput interface {
-	pulumi.Input
-
-	ToCloudSchedulerSourceStatusPtrOutput() CloudSchedulerSourceStatusPtrOutput
-	ToCloudSchedulerSourceStatusPtrOutputWithContext(context.Context) CloudSchedulerSourceStatusPtrOutput
-}
-
-type cloudSchedulerSourceStatusPtrType CloudSchedulerSourceStatusArgs
-
-func CloudSchedulerSourceStatusPtr(v *CloudSchedulerSourceStatusArgs) CloudSchedulerSourceStatusPtrInput {
-	return (*cloudSchedulerSourceStatusPtrType)(v)
-}
-
-func (*cloudSchedulerSourceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSchedulerSourceStatus)(nil)).Elem()
-}
-
-func (i *cloudSchedulerSourceStatusPtrType) ToCloudSchedulerSourceStatusPtrOutput() CloudSchedulerSourceStatusPtrOutput {
-	return i.ToCloudSchedulerSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSchedulerSourceStatusPtrType) ToCloudSchedulerSourceStatusPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSchedulerSourceStatusPtrOutput)
-}
-
-// CloudSchedulerSourceStatus represents the current state of a CloudSchedulerSource.
-type CloudSchedulerSourceStatusOutput struct{ *pulumi.OutputState }
-
-func (CloudSchedulerSourceStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSchedulerSourceStatus)(nil)).Elem()
-}
-
-func (o CloudSchedulerSourceStatusOutput) ToCloudSchedulerSourceStatusOutput() CloudSchedulerSourceStatusOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceStatusOutput) ToCloudSchedulerSourceStatusOutputWithContext(ctx context.Context) CloudSchedulerSourceStatusOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceStatusOutput) ToCloudSchedulerSourceStatusPtrOutput() CloudSchedulerSourceStatusPtrOutput {
-	return o.ToCloudSchedulerSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o CloudSchedulerSourceStatusOutput) ToCloudSchedulerSourceStatusPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceStatusPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceStatus) *CloudSchedulerSourceStatus {
-		return &v
-	}).(CloudSchedulerSourceStatusPtrOutput)
-}
-
-// Array of observed CloudSchedulerSourceConditions, indicating the current state of the CloudSchedulerSource.
-func (o CloudSchedulerSourceStatusOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceStatus) []Condition { return v.Conditions }).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudSchedulerSource that was last processed by the controller.
-func (o CloudSchedulerSourceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source.
-func (o CloudSchedulerSourceStatusOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSchedulerSourceStatus) *string { return v.SinkUri }).(pulumi.StringPtrOutput)
-}
-
-type CloudSchedulerSourceStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSchedulerSourceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSchedulerSourceStatus)(nil)).Elem()
-}
-
-func (o CloudSchedulerSourceStatusPtrOutput) ToCloudSchedulerSourceStatusPtrOutput() CloudSchedulerSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceStatusPtrOutput) ToCloudSchedulerSourceStatusPtrOutputWithContext(ctx context.Context) CloudSchedulerSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudSchedulerSourceStatusPtrOutput) Elem() CloudSchedulerSourceStatusOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceStatus) CloudSchedulerSourceStatus { return *v }).(CloudSchedulerSourceStatusOutput)
-}
-
-// Array of observed CloudSchedulerSourceConditions, indicating the current state of the CloudSchedulerSource.
-func (o CloudSchedulerSourceStatusPtrOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceStatus) []Condition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudSchedulerSource that was last processed by the controller.
-func (o CloudSchedulerSourceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source.
-func (o CloudSchedulerSourceStatusPtrOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSchedulerSourceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SinkUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The desired state of the CloudStorageSource.
-type CloudStorageSourceSpec struct {
-	// Bucket to subscribe to.
-	Bucket *string `pulumi:"bucket"`
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-	CeOverrides *CloudEventOverrides `pulumi:"ceOverrides"`
-	// EventTypes to subscribe to. If unspecified, then subscribe to all events.
-	EventTypes []string `pulumi:"eventTypes"`
-	// ObjectNamePrefix limits the notifications to objects with this prefix.
-	ObjectNamePrefix *string `pulumi:"objectNamePrefix"`
-	// PayloadFormat specifies the contents of the message payload. See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
-	PayloadFormat *string `pulumi:"payloadFormat"`
-	// Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults to same as the cluster.
-	Project *string `pulumi:"project"`
-	// PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-	PubsubSecret *SecretKeySelector `pulumi:"pubsubSecret"`
-	// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-	Secret *SecretKeySelector `pulumi:"secret"`
-	// ServiceAccountName holds the name of the Kubernetes service account as which the underlying K8s resources should be run. If unspecified this will default to the "default" service account for the namespace in which the GCS exists.
-	ServiceAccountName *string `pulumi:"serviceAccountName"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink *Destination `pulumi:"sink"`
-}
-
-// CloudStorageSourceSpecInput is an input type that accepts CloudStorageSourceSpecArgs and CloudStorageSourceSpecOutput values.
-// You can construct a concrete instance of `CloudStorageSourceSpecInput` via:
-//
-//          CloudStorageSourceSpecArgs{...}
-type CloudStorageSourceSpecInput interface {
-	pulumi.Input
-
-	ToCloudStorageSourceSpecOutput() CloudStorageSourceSpecOutput
-	ToCloudStorageSourceSpecOutputWithContext(context.Context) CloudStorageSourceSpecOutput
-}
-
-// The desired state of the CloudStorageSource.
-type CloudStorageSourceSpecArgs struct {
-	// Bucket to subscribe to.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-	CeOverrides CloudEventOverridesPtrInput `pulumi:"ceOverrides"`
-	// EventTypes to subscribe to. If unspecified, then subscribe to all events.
-	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
-	// ObjectNamePrefix limits the notifications to objects with this prefix.
-	ObjectNamePrefix pulumi.StringPtrInput `pulumi:"objectNamePrefix"`
-	// PayloadFormat specifies the contents of the message payload. See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
-	PayloadFormat pulumi.StringPtrInput `pulumi:"payloadFormat"`
-	// Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults to same as the cluster.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-	PubsubSecret SecretKeySelectorPtrInput `pulumi:"pubsubSecret"`
-	// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-	Secret SecretKeySelectorPtrInput `pulumi:"secret"`
-	// ServiceAccountName holds the name of the Kubernetes service account as which the underlying K8s resources should be run. If unspecified this will default to the "default" service account for the namespace in which the GCS exists.
-	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
-	// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-	Sink DestinationPtrInput `pulumi:"sink"`
-}
-
-func (CloudStorageSourceSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageSourceSpec)(nil)).Elem()
-}
-
-func (i CloudStorageSourceSpecArgs) ToCloudStorageSourceSpecOutput() CloudStorageSourceSpecOutput {
-	return i.ToCloudStorageSourceSpecOutputWithContext(context.Background())
-}
-
-func (i CloudStorageSourceSpecArgs) ToCloudStorageSourceSpecOutputWithContext(ctx context.Context) CloudStorageSourceSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageSourceSpecOutput)
-}
-
-func (i CloudStorageSourceSpecArgs) ToCloudStorageSourceSpecPtrOutput() CloudStorageSourceSpecPtrOutput {
-	return i.ToCloudStorageSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i CloudStorageSourceSpecArgs) ToCloudStorageSourceSpecPtrOutputWithContext(ctx context.Context) CloudStorageSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageSourceSpecOutput).ToCloudStorageSourceSpecPtrOutputWithContext(ctx)
-}
-
-// CloudStorageSourceSpecPtrInput is an input type that accepts CloudStorageSourceSpecArgs, CloudStorageSourceSpecPtr and CloudStorageSourceSpecPtrOutput values.
-// You can construct a concrete instance of `CloudStorageSourceSpecPtrInput` via:
-//
-//          CloudStorageSourceSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudStorageSourceSpecPtrInput interface {
-	pulumi.Input
-
-	ToCloudStorageSourceSpecPtrOutput() CloudStorageSourceSpecPtrOutput
-	ToCloudStorageSourceSpecPtrOutputWithContext(context.Context) CloudStorageSourceSpecPtrOutput
-}
-
-type cloudStorageSourceSpecPtrType CloudStorageSourceSpecArgs
-
-func CloudStorageSourceSpecPtr(v *CloudStorageSourceSpecArgs) CloudStorageSourceSpecPtrInput {
-	return (*cloudStorageSourceSpecPtrType)(v)
-}
-
-func (*cloudStorageSourceSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudStorageSourceSpec)(nil)).Elem()
-}
-
-func (i *cloudStorageSourceSpecPtrType) ToCloudStorageSourceSpecPtrOutput() CloudStorageSourceSpecPtrOutput {
-	return i.ToCloudStorageSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudStorageSourceSpecPtrType) ToCloudStorageSourceSpecPtrOutputWithContext(ctx context.Context) CloudStorageSourceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageSourceSpecPtrOutput)
-}
-
-// The desired state of the CloudStorageSource.
-type CloudStorageSourceSpecOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageSourceSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageSourceSpec)(nil)).Elem()
-}
-
-func (o CloudStorageSourceSpecOutput) ToCloudStorageSourceSpecOutput() CloudStorageSourceSpecOutput {
-	return o
-}
-
-func (o CloudStorageSourceSpecOutput) ToCloudStorageSourceSpecOutputWithContext(ctx context.Context) CloudStorageSourceSpecOutput {
-	return o
-}
-
-func (o CloudStorageSourceSpecOutput) ToCloudStorageSourceSpecPtrOutput() CloudStorageSourceSpecPtrOutput {
-	return o.ToCloudStorageSourceSpecPtrOutputWithContext(context.Background())
-}
-
-func (o CloudStorageSourceSpecOutput) ToCloudStorageSourceSpecPtrOutputWithContext(ctx context.Context) CloudStorageSourceSpecPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *CloudStorageSourceSpec {
-		return &v
-	}).(CloudStorageSourceSpecPtrOutput)
-}
-
-// Bucket to subscribe to.
-func (o CloudStorageSourceSpecOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *string { return v.Bucket }).(pulumi.StringPtrOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-func (o CloudStorageSourceSpecOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *CloudEventOverrides { return v.CeOverrides }).(CloudEventOverridesPtrOutput)
-}
-
-// EventTypes to subscribe to. If unspecified, then subscribe to all events.
-func (o CloudStorageSourceSpecOutput) EventTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
-}
-
-// ObjectNamePrefix limits the notifications to objects with this prefix.
-func (o CloudStorageSourceSpecOutput) ObjectNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *string { return v.ObjectNamePrefix }).(pulumi.StringPtrOutput)
-}
-
-// PayloadFormat specifies the contents of the message payload. See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
-func (o CloudStorageSourceSpecOutput) PayloadFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *string { return v.PayloadFormat }).(pulumi.StringPtrOutput)
-}
-
-// Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults to same as the cluster.
-func (o CloudStorageSourceSpecOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-func (o CloudStorageSourceSpecOutput) PubsubSecret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *SecretKeySelector { return v.PubsubSecret }).(SecretKeySelectorPtrOutput)
-}
-
-// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-func (o CloudStorageSourceSpecOutput) Secret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *SecretKeySelector { return v.Secret }).(SecretKeySelectorPtrOutput)
-}
-
-// ServiceAccountName holds the name of the Kubernetes service account as which the underlying K8s resources should be run. If unspecified this will default to the "default" service account for the namespace in which the GCS exists.
-func (o CloudStorageSourceSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudStorageSourceSpecOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceSpec) *Destination { return v.Sink }).(DestinationPtrOutput)
-}
-
-type CloudStorageSourceSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageSourceSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudStorageSourceSpec)(nil)).Elem()
-}
-
-func (o CloudStorageSourceSpecPtrOutput) ToCloudStorageSourceSpecPtrOutput() CloudStorageSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudStorageSourceSpecPtrOutput) ToCloudStorageSourceSpecPtrOutputWithContext(ctx context.Context) CloudStorageSourceSpecPtrOutput {
-	return o
-}
-
-func (o CloudStorageSourceSpecPtrOutput) Elem() CloudStorageSourceSpecOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) CloudStorageSourceSpec { return *v }).(CloudStorageSourceSpecOutput)
-}
-
-// Bucket to subscribe to.
-func (o CloudStorageSourceSpecPtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-func (o CloudStorageSourceSpecPtrOutput) CeOverrides() CloudEventOverridesPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *CloudEventOverrides {
-		if v == nil {
-			return nil
-		}
-		return v.CeOverrides
-	}).(CloudEventOverridesPtrOutput)
-}
-
-// EventTypes to subscribe to. If unspecified, then subscribe to all events.
-func (o CloudStorageSourceSpecPtrOutput) EventTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EventTypes
-	}).(pulumi.StringArrayOutput)
-}
-
-// ObjectNamePrefix limits the notifications to objects with this prefix.
-func (o CloudStorageSourceSpecPtrOutput) ObjectNamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ObjectNamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// PayloadFormat specifies the contents of the message payload. See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
-func (o CloudStorageSourceSpecPtrOutput) PayloadFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PayloadFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults to same as the cluster.
-func (o CloudStorageSourceSpecPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-func (o CloudStorageSourceSpecPtrOutput) PubsubSecret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *SecretKeySelector {
-		if v == nil {
-			return nil
-		}
-		return v.PubsubSecret
-	}).(SecretKeySelectorPtrOutput)
-}
-
-// Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-func (o CloudStorageSourceSpecPtrOutput) Secret() SecretKeySelectorPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *SecretKeySelector {
-		if v == nil {
-			return nil
-		}
-		return v.Secret
-	}).(SecretKeySelectorPtrOutput)
-}
-
-// ServiceAccountName holds the name of the Kubernetes service account as which the underlying K8s resources should be run. If unspecified this will default to the "default" service account for the namespace in which the GCS exists.
-func (o CloudStorageSourceSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-func (o CloudStorageSourceSpecPtrOutput) Sink() DestinationPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceSpec) *Destination {
-		if v == nil {
-			return nil
-		}
-		return v.Sink
-	}).(DestinationPtrOutput)
-}
-
-// CloudStorageSourceStatus represents the current state of a CloudStorageSource.
-type CloudStorageSourceStatus struct {
-	// Array of observed CloudStorageSourceConditions, indicating the current state of the CloudStorageSource.
-	Conditions []Condition `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudStorageSource that was last processed by the controller.
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source.
-	SinkUri *string `pulumi:"sinkUri"`
-}
-
-// CloudStorageSourceStatusInput is an input type that accepts CloudStorageSourceStatusArgs and CloudStorageSourceStatusOutput values.
-// You can construct a concrete instance of `CloudStorageSourceStatusInput` via:
-//
-//          CloudStorageSourceStatusArgs{...}
-type CloudStorageSourceStatusInput interface {
-	pulumi.Input
-
-	ToCloudStorageSourceStatusOutput() CloudStorageSourceStatusOutput
-	ToCloudStorageSourceStatusOutputWithContext(context.Context) CloudStorageSourceStatusOutput
-}
-
-// CloudStorageSourceStatus represents the current state of a CloudStorageSource.
-type CloudStorageSourceStatusArgs struct {
-	// Array of observed CloudStorageSourceConditions, indicating the current state of the CloudStorageSource.
-	Conditions ConditionArrayInput `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the CloudStorageSource that was last processed by the controller.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// SinkURI is the current active sink URI that has been configured for the Source.
-	SinkUri pulumi.StringPtrInput `pulumi:"sinkUri"`
-}
-
-func (CloudStorageSourceStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageSourceStatus)(nil)).Elem()
-}
-
-func (i CloudStorageSourceStatusArgs) ToCloudStorageSourceStatusOutput() CloudStorageSourceStatusOutput {
-	return i.ToCloudStorageSourceStatusOutputWithContext(context.Background())
-}
-
-func (i CloudStorageSourceStatusArgs) ToCloudStorageSourceStatusOutputWithContext(ctx context.Context) CloudStorageSourceStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageSourceStatusOutput)
-}
-
-func (i CloudStorageSourceStatusArgs) ToCloudStorageSourceStatusPtrOutput() CloudStorageSourceStatusPtrOutput {
-	return i.ToCloudStorageSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i CloudStorageSourceStatusArgs) ToCloudStorageSourceStatusPtrOutputWithContext(ctx context.Context) CloudStorageSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageSourceStatusOutput).ToCloudStorageSourceStatusPtrOutputWithContext(ctx)
-}
-
-// CloudStorageSourceStatusPtrInput is an input type that accepts CloudStorageSourceStatusArgs, CloudStorageSourceStatusPtr and CloudStorageSourceStatusPtrOutput values.
-// You can construct a concrete instance of `CloudStorageSourceStatusPtrInput` via:
-//
-//          CloudStorageSourceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudStorageSourceStatusPtrInput interface {
-	pulumi.Input
-
-	ToCloudStorageSourceStatusPtrOutput() CloudStorageSourceStatusPtrOutput
-	ToCloudStorageSourceStatusPtrOutputWithContext(context.Context) CloudStorageSourceStatusPtrOutput
-}
-
-type cloudStorageSourceStatusPtrType CloudStorageSourceStatusArgs
-
-func CloudStorageSourceStatusPtr(v *CloudStorageSourceStatusArgs) CloudStorageSourceStatusPtrInput {
-	return (*cloudStorageSourceStatusPtrType)(v)
-}
-
-func (*cloudStorageSourceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudStorageSourceStatus)(nil)).Elem()
-}
-
-func (i *cloudStorageSourceStatusPtrType) ToCloudStorageSourceStatusPtrOutput() CloudStorageSourceStatusPtrOutput {
-	return i.ToCloudStorageSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudStorageSourceStatusPtrType) ToCloudStorageSourceStatusPtrOutputWithContext(ctx context.Context) CloudStorageSourceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageSourceStatusPtrOutput)
-}
-
-// CloudStorageSourceStatus represents the current state of a CloudStorageSource.
-type CloudStorageSourceStatusOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageSourceStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageSourceStatus)(nil)).Elem()
-}
-
-func (o CloudStorageSourceStatusOutput) ToCloudStorageSourceStatusOutput() CloudStorageSourceStatusOutput {
-	return o
-}
-
-func (o CloudStorageSourceStatusOutput) ToCloudStorageSourceStatusOutputWithContext(ctx context.Context) CloudStorageSourceStatusOutput {
-	return o
-}
-
-func (o CloudStorageSourceStatusOutput) ToCloudStorageSourceStatusPtrOutput() CloudStorageSourceStatusPtrOutput {
-	return o.ToCloudStorageSourceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o CloudStorageSourceStatusOutput) ToCloudStorageSourceStatusPtrOutputWithContext(ctx context.Context) CloudStorageSourceStatusPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceStatus) *CloudStorageSourceStatus {
-		return &v
-	}).(CloudStorageSourceStatusPtrOutput)
-}
-
-// Array of observed CloudStorageSourceConditions, indicating the current state of the CloudStorageSource.
-func (o CloudStorageSourceStatusOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v CloudStorageSourceStatus) []Condition { return v.Conditions }).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudStorageSource that was last processed by the controller.
-func (o CloudStorageSourceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source.
-func (o CloudStorageSourceStatusOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageSourceStatus) *string { return v.SinkUri }).(pulumi.StringPtrOutput)
-}
-
-type CloudStorageSourceStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageSourceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudStorageSourceStatus)(nil)).Elem()
-}
-
-func (o CloudStorageSourceStatusPtrOutput) ToCloudStorageSourceStatusPtrOutput() CloudStorageSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudStorageSourceStatusPtrOutput) ToCloudStorageSourceStatusPtrOutputWithContext(ctx context.Context) CloudStorageSourceStatusPtrOutput {
-	return o
-}
-
-func (o CloudStorageSourceStatusPtrOutput) Elem() CloudStorageSourceStatusOutput {
-	return o.ApplyT(func(v *CloudStorageSourceStatus) CloudStorageSourceStatus { return *v }).(CloudStorageSourceStatusOutput)
-}
-
-// Array of observed CloudStorageSourceConditions, indicating the current state of the CloudStorageSource.
-func (o CloudStorageSourceStatusPtrOutput) Conditions() ConditionArrayOutput {
-	return o.ApplyT(func(v *CloudStorageSourceStatus) []Condition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(ConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the CloudStorageSource that was last processed by the controller.
-func (o CloudStorageSourceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// SinkURI is the current active sink URI that has been configured for the Source.
-func (o CloudStorageSourceStatusPtrOutput) SinkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageSourceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SinkUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Condition defines a generic condition for a Resource
-type Condition struct {
-	// Optional. Last time the condition transitioned from one status to another.
-	LastTransitionTime *string `pulumi:"lastTransitionTime"`
-	// Optional. Human readable message indicating details about the current status.
-	Message *string `pulumi:"message"`
-	// Optional. One-word CamelCase reason for the condition's last transition.
-	Reason *string `pulumi:"reason"`
-	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-	Severity *string `pulumi:"severity"`
-	// Status of the condition, one of True, False, Unknown.
-	Status *string `pulumi:"status"`
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-	Type *string `pulumi:"type"`
-}
-
-// ConditionInput is an input type that accepts ConditionArgs and ConditionOutput values.
-// You can construct a concrete instance of `ConditionInput` via:
-//
-//          ConditionArgs{...}
-type ConditionInput interface {
-	pulumi.Input
-
-	ToConditionOutput() ConditionOutput
-	ToConditionOutputWithContext(context.Context) ConditionOutput
-}
-
-// Condition defines a generic condition for a Resource
-type ConditionArgs struct {
-	// Optional. Last time the condition transitioned from one status to another.
-	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	// Optional. Human readable message indicating details about the current status.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// Optional. One-word CamelCase reason for the condition's last transition.
-	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-	Severity pulumi.StringPtrInput `pulumi:"severity"`
-	// Status of the condition, one of True, False, Unknown.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (ConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Condition)(nil)).Elem()
-}
-
-func (i ConditionArgs) ToConditionOutput() ConditionOutput {
-	return i.ToConditionOutputWithContext(context.Background())
-}
-
-func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
-}
-
-// ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
-// You can construct a concrete instance of `ConditionArrayInput` via:
-//
-//          ConditionArray{ ConditionArgs{...} }
-type ConditionArrayInput interface {
-	pulumi.Input
-
-	ToConditionArrayOutput() ConditionArrayOutput
-	ToConditionArrayOutputWithContext(context.Context) ConditionArrayOutput
-}
-
-type ConditionArray []ConditionInput
-
-func (ConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Condition)(nil)).Elem()
-}
-
-func (i ConditionArray) ToConditionArrayOutput() ConditionArrayOutput {
-	return i.ToConditionArrayOutputWithContext(context.Background())
-}
-
-func (i ConditionArray) ToConditionArrayOutputWithContext(ctx context.Context) ConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionArrayOutput)
-}
-
-// Condition defines a generic condition for a Resource
-type ConditionOutput struct{ *pulumi.OutputState }
-
-func (ConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Condition)(nil)).Elem()
-}
-
-func (o ConditionOutput) ToConditionOutput() ConditionOutput {
-	return o
-}
-
-func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
-	return o
-}
-
-// Optional. Last time the condition transitioned from one status to another.
-func (o ConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Human readable message indicating details about the current status.
-func (o ConditionOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// Optional. One-word CamelCase reason for the condition's last transition.
-func (o ConditionOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Reason }).(pulumi.StringPtrOutput)
-}
-
-// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-func (o ConditionOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Severity }).(pulumi.StringPtrOutput)
-}
-
-// Status of the condition, one of True, False, Unknown.
-func (o ConditionOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-func (o ConditionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type ConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (ConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Condition)(nil)).Elem()
-}
-
-func (o ConditionArrayOutput) ToConditionArrayOutput() ConditionArrayOutput {
-	return o
-}
-
-func (o ConditionArrayOutput) ToConditionArrayOutputWithContext(ctx context.Context) ConditionArrayOutput {
-	return o
-}
-
-func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Condition {
-		return vs[0].([]Condition)[vs[1].(int)]
-	}).(ConditionOutput)
-}
-
 // ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 type ConfigMapEnvSource struct {
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -4121,156 +2067,6 @@ func (o ContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerPortOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerPort {
 		return vs[0].([]ContainerPort)[vs[1].(int)]
 	}).(ContainerPortOutput)
-}
-
-type Destination struct {
-	// ObjectReference points to an Addressable. + optional
-	Ref *ObjectReference `pulumi:"ref"`
-	// URI is for direct URI Designations or used with the resulting URL from Addressable ObjectReference. If used with an ObjectReference, will be appended to the path of the resulting URL from the Addressable. + optional
-	Uri *string `pulumi:"uri"`
-}
-
-// DestinationInput is an input type that accepts DestinationArgs and DestinationOutput values.
-// You can construct a concrete instance of `DestinationInput` via:
-//
-//          DestinationArgs{...}
-type DestinationInput interface {
-	pulumi.Input
-
-	ToDestinationOutput() DestinationOutput
-	ToDestinationOutputWithContext(context.Context) DestinationOutput
-}
-
-type DestinationArgs struct {
-	// ObjectReference points to an Addressable. + optional
-	Ref ObjectReferencePtrInput `pulumi:"ref"`
-	// URI is for direct URI Designations or used with the resulting URL from Addressable ObjectReference. If used with an ObjectReference, will be appended to the path of the resulting URL from the Addressable. + optional
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
-}
-
-func (DestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Destination)(nil)).Elem()
-}
-
-func (i DestinationArgs) ToDestinationOutput() DestinationOutput {
-	return i.ToDestinationOutputWithContext(context.Background())
-}
-
-func (i DestinationArgs) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationOutput)
-}
-
-func (i DestinationArgs) ToDestinationPtrOutput() DestinationPtrOutput {
-	return i.ToDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i DestinationArgs) ToDestinationPtrOutputWithContext(ctx context.Context) DestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationOutput).ToDestinationPtrOutputWithContext(ctx)
-}
-
-// DestinationPtrInput is an input type that accepts DestinationArgs, DestinationPtr and DestinationPtrOutput values.
-// You can construct a concrete instance of `DestinationPtrInput` via:
-//
-//          DestinationArgs{...}
-//
-//  or:
-//
-//          nil
-type DestinationPtrInput interface {
-	pulumi.Input
-
-	ToDestinationPtrOutput() DestinationPtrOutput
-	ToDestinationPtrOutputWithContext(context.Context) DestinationPtrOutput
-}
-
-type destinationPtrType DestinationArgs
-
-func DestinationPtr(v *DestinationArgs) DestinationPtrInput {
-	return (*destinationPtrType)(v)
-}
-
-func (*destinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Destination)(nil)).Elem()
-}
-
-func (i *destinationPtrType) ToDestinationPtrOutput() DestinationPtrOutput {
-	return i.ToDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *destinationPtrType) ToDestinationPtrOutputWithContext(ctx context.Context) DestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationPtrOutput)
-}
-
-type DestinationOutput struct{ *pulumi.OutputState }
-
-func (DestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Destination)(nil)).Elem()
-}
-
-func (o DestinationOutput) ToDestinationOutput() DestinationOutput {
-	return o
-}
-
-func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
-	return o
-}
-
-func (o DestinationOutput) ToDestinationPtrOutput() DestinationPtrOutput {
-	return o.ToDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o DestinationOutput) ToDestinationPtrOutputWithContext(ctx context.Context) DestinationPtrOutput {
-	return o.ApplyT(func(v Destination) *Destination {
-		return &v
-	}).(DestinationPtrOutput)
-}
-
-// ObjectReference points to an Addressable. + optional
-func (o DestinationOutput) Ref() ObjectReferencePtrOutput {
-	return o.ApplyT(func(v Destination) *ObjectReference { return v.Ref }).(ObjectReferencePtrOutput)
-}
-
-// URI is for direct URI Designations or used with the resulting URL from Addressable ObjectReference. If used with an ObjectReference, will be appended to the path of the resulting URL from the Addressable. + optional
-func (o DestinationOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Destination) *string { return v.Uri }).(pulumi.StringPtrOutput)
-}
-
-type DestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (DestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Destination)(nil)).Elem()
-}
-
-func (o DestinationPtrOutput) ToDestinationPtrOutput() DestinationPtrOutput {
-	return o
-}
-
-func (o DestinationPtrOutput) ToDestinationPtrOutputWithContext(ctx context.Context) DestinationPtrOutput {
-	return o
-}
-
-func (o DestinationPtrOutput) Elem() DestinationOutput {
-	return o.ApplyT(func(v *Destination) Destination { return *v }).(DestinationOutput)
-}
-
-// ObjectReference points to an Addressable. + optional
-func (o DestinationPtrOutput) Ref() ObjectReferencePtrOutput {
-	return o.ApplyT(func(v *Destination) *ObjectReference {
-		if v == nil {
-			return nil
-		}
-		return v.Ref
-	}).(ObjectReferencePtrOutput)
-}
-
-// URI is for direct URI Designations or used with the resulting URL from Addressable ObjectReference. If used with an ObjectReference, will be appended to the path of the resulting URL from the Addressable. + optional
-func (o DestinationPtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Destination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Uri
-	}).(pulumi.StringPtrOutput)
 }
 
 // DomainMappingCondition contains state information for a DomainMapping.
@@ -6005,6 +3801,523 @@ func (o HandlerPtrOutput) TcpSocket() TCPSocketActionPtrOutput {
 	}).(TCPSocketActionPtrOutput)
 }
 
+// InstanceSpec is a description of an instance.
+type InstanceSpec struct {
+	// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+	ActiveDeadlineSeconds *string `pulumi:"activeDeadlineSeconds"`
+	// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+	Containers []Container `pulumi:"containers"`
+	// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+	RestartPolicy *string `pulumi:"restartPolicy"`
+	// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+	ServiceAccountName *string `pulumi:"serviceAccountName"`
+	// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+	TerminationGracePeriodSeconds *string `pulumi:"terminationGracePeriodSeconds"`
+	// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+	Volumes []Volume `pulumi:"volumes"`
+}
+
+// InstanceSpecInput is an input type that accepts InstanceSpecArgs and InstanceSpecOutput values.
+// You can construct a concrete instance of `InstanceSpecInput` via:
+//
+//          InstanceSpecArgs{...}
+type InstanceSpecInput interface {
+	pulumi.Input
+
+	ToInstanceSpecOutput() InstanceSpecOutput
+	ToInstanceSpecOutputWithContext(context.Context) InstanceSpecOutput
+}
+
+// InstanceSpec is a description of an instance.
+type InstanceSpecArgs struct {
+	// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+	ActiveDeadlineSeconds pulumi.StringPtrInput `pulumi:"activeDeadlineSeconds"`
+	// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+	Containers ContainerArrayInput `pulumi:"containers"`
+	// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+	RestartPolicy pulumi.StringPtrInput `pulumi:"restartPolicy"`
+	// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
+	// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+	TerminationGracePeriodSeconds pulumi.StringPtrInput `pulumi:"terminationGracePeriodSeconds"`
+	// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+	Volumes VolumeArrayInput `pulumi:"volumes"`
+}
+
+func (InstanceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSpec)(nil)).Elem()
+}
+
+func (i InstanceSpecArgs) ToInstanceSpecOutput() InstanceSpecOutput {
+	return i.ToInstanceSpecOutputWithContext(context.Background())
+}
+
+func (i InstanceSpecArgs) ToInstanceSpecOutputWithContext(ctx context.Context) InstanceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecOutput)
+}
+
+func (i InstanceSpecArgs) ToInstanceSpecPtrOutput() InstanceSpecPtrOutput {
+	return i.ToInstanceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSpecArgs) ToInstanceSpecPtrOutputWithContext(ctx context.Context) InstanceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecOutput).ToInstanceSpecPtrOutputWithContext(ctx)
+}
+
+// InstanceSpecPtrInput is an input type that accepts InstanceSpecArgs, InstanceSpecPtr and InstanceSpecPtrOutput values.
+// You can construct a concrete instance of `InstanceSpecPtrInput` via:
+//
+//          InstanceSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceSpecPtrInput interface {
+	pulumi.Input
+
+	ToInstanceSpecPtrOutput() InstanceSpecPtrOutput
+	ToInstanceSpecPtrOutputWithContext(context.Context) InstanceSpecPtrOutput
+}
+
+type instanceSpecPtrType InstanceSpecArgs
+
+func InstanceSpecPtr(v *InstanceSpecArgs) InstanceSpecPtrInput {
+	return (*instanceSpecPtrType)(v)
+}
+
+func (*instanceSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSpec)(nil)).Elem()
+}
+
+func (i *instanceSpecPtrType) ToInstanceSpecPtrOutput() InstanceSpecPtrOutput {
+	return i.ToInstanceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSpecPtrType) ToInstanceSpecPtrOutputWithContext(ctx context.Context) InstanceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecPtrOutput)
+}
+
+// InstanceSpec is a description of an instance.
+type InstanceSpecOutput struct{ *pulumi.OutputState }
+
+func (InstanceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSpec)(nil)).Elem()
+}
+
+func (o InstanceSpecOutput) ToInstanceSpecOutput() InstanceSpecOutput {
+	return o
+}
+
+func (o InstanceSpecOutput) ToInstanceSpecOutputWithContext(ctx context.Context) InstanceSpecOutput {
+	return o
+}
+
+func (o InstanceSpecOutput) ToInstanceSpecPtrOutput() InstanceSpecPtrOutput {
+	return o.ToInstanceSpecPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSpecOutput) ToInstanceSpecPtrOutputWithContext(ctx context.Context) InstanceSpecPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *InstanceSpec {
+		return &v
+	}).(InstanceSpecPtrOutput)
+}
+
+// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+func (o InstanceSpecOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *string { return v.ActiveDeadlineSeconds }).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+func (o InstanceSpecOutput) Containers() ContainerArrayOutput {
+	return o.ApplyT(func(v InstanceSpec) []Container { return v.Containers }).(ContainerArrayOutput)
+}
+
+// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+func (o InstanceSpecOutput) RestartPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *string { return v.RestartPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+func (o InstanceSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+func (o InstanceSpecOutput) TerminationGracePeriodSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *string { return v.TerminationGracePeriodSeconds }).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+func (o InstanceSpecOutput) Volumes() VolumeArrayOutput {
+	return o.ApplyT(func(v InstanceSpec) []Volume { return v.Volumes }).(VolumeArrayOutput)
+}
+
+type InstanceSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSpec)(nil)).Elem()
+}
+
+func (o InstanceSpecPtrOutput) ToInstanceSpecPtrOutput() InstanceSpecPtrOutput {
+	return o
+}
+
+func (o InstanceSpecPtrOutput) ToInstanceSpecPtrOutputWithContext(ctx context.Context) InstanceSpecPtrOutput {
+	return o
+}
+
+func (o InstanceSpecPtrOutput) Elem() InstanceSpecOutput {
+	return o.ApplyT(func(v *InstanceSpec) InstanceSpec { return *v }).(InstanceSpecOutput)
+}
+
+// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+func (o InstanceSpecPtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDeadlineSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+func (o InstanceSpecPtrOutput) Containers() ContainerArrayOutput {
+	return o.ApplyT(func(v *InstanceSpec) []Container {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(ContainerArrayOutput)
+}
+
+// Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+func (o InstanceSpecPtrOutput) RestartPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RestartPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+func (o InstanceSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+func (o InstanceSpecPtrOutput) TerminationGracePeriodSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TerminationGracePeriodSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+func (o InstanceSpecPtrOutput) Volumes() VolumeArrayOutput {
+	return o.ApplyT(func(v *InstanceSpec) []Volume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(VolumeArrayOutput)
+}
+
+// Instance represents the status of an instance of a Job.
+type InstanceStatus struct {
+	// Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	CompletionTime *string `pulumi:"completionTime"`
+	// Optional. The number of times this instance exited with code > 0; +optional
+	Failed *int `pulumi:"failed"`
+	// Required. Index of the instance, unique per Job, and beginning at 0.
+	Index *int `pulumi:"index"`
+	// Optional. Last exit code seen for this instance. +optional
+	LastExitCode *int `pulumi:"lastExitCode"`
+	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
+	Restarted *int `pulumi:"restarted"`
+	// Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	StartTime *string `pulumi:"startTime"`
+	// Optional. The number of times this instance exited with code == 0. +optional
+	Succeeded *int `pulumi:"succeeded"`
+}
+
+// InstanceStatusInput is an input type that accepts InstanceStatusArgs and InstanceStatusOutput values.
+// You can construct a concrete instance of `InstanceStatusInput` via:
+//
+//          InstanceStatusArgs{...}
+type InstanceStatusInput interface {
+	pulumi.Input
+
+	ToInstanceStatusOutput() InstanceStatusOutput
+	ToInstanceStatusOutputWithContext(context.Context) InstanceStatusOutput
+}
+
+// Instance represents the status of an instance of a Job.
+type InstanceStatusArgs struct {
+	// Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	CompletionTime pulumi.StringPtrInput `pulumi:"completionTime"`
+	// Optional. The number of times this instance exited with code > 0; +optional
+	Failed pulumi.IntPtrInput `pulumi:"failed"`
+	// Required. Index of the instance, unique per Job, and beginning at 0.
+	Index pulumi.IntPtrInput `pulumi:"index"`
+	// Optional. Last exit code seen for this instance. +optional
+	LastExitCode pulumi.IntPtrInput `pulumi:"lastExitCode"`
+	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
+	Restarted pulumi.IntPtrInput `pulumi:"restarted"`
+	// Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Optional. The number of times this instance exited with code == 0. +optional
+	Succeeded pulumi.IntPtrInput `pulumi:"succeeded"`
+}
+
+func (InstanceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceStatus)(nil)).Elem()
+}
+
+func (i InstanceStatusArgs) ToInstanceStatusOutput() InstanceStatusOutput {
+	return i.ToInstanceStatusOutputWithContext(context.Background())
+}
+
+func (i InstanceStatusArgs) ToInstanceStatusOutputWithContext(ctx context.Context) InstanceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusOutput)
+}
+
+// InstanceStatusArrayInput is an input type that accepts InstanceStatusArray and InstanceStatusArrayOutput values.
+// You can construct a concrete instance of `InstanceStatusArrayInput` via:
+//
+//          InstanceStatusArray{ InstanceStatusArgs{...} }
+type InstanceStatusArrayInput interface {
+	pulumi.Input
+
+	ToInstanceStatusArrayOutput() InstanceStatusArrayOutput
+	ToInstanceStatusArrayOutputWithContext(context.Context) InstanceStatusArrayOutput
+}
+
+type InstanceStatusArray []InstanceStatusInput
+
+func (InstanceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceStatus)(nil)).Elem()
+}
+
+func (i InstanceStatusArray) ToInstanceStatusArrayOutput() InstanceStatusArrayOutput {
+	return i.ToInstanceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceStatusArray) ToInstanceStatusArrayOutputWithContext(ctx context.Context) InstanceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceStatusArrayOutput)
+}
+
+// Instance represents the status of an instance of a Job.
+type InstanceStatusOutput struct{ *pulumi.OutputState }
+
+func (InstanceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceStatus)(nil)).Elem()
+}
+
+func (o InstanceStatusOutput) ToInstanceStatusOutput() InstanceStatusOutput {
+	return o
+}
+
+func (o InstanceStatusOutput) ToInstanceStatusOutputWithContext(ctx context.Context) InstanceStatusOutput {
+	return o
+}
+
+// Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o InstanceStatusOutput) CompletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *string { return v.CompletionTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of times this instance exited with code > 0; +optional
+func (o InstanceStatusOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *int { return v.Failed }).(pulumi.IntPtrOutput)
+}
+
+// Required. Index of the instance, unique per Job, and beginning at 0.
+func (o InstanceStatusOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *int { return v.Index }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Last exit code seen for this instance. +optional
+func (o InstanceStatusOutput) LastExitCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *int { return v.LastExitCode }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
+func (o InstanceStatusOutput) Restarted() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *int { return v.Restarted }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o InstanceStatusOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of times this instance exited with code == 0. +optional
+func (o InstanceStatusOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceStatus) *int { return v.Succeeded }).(pulumi.IntPtrOutput)
+}
+
+type InstanceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceStatus)(nil)).Elem()
+}
+
+func (o InstanceStatusArrayOutput) ToInstanceStatusArrayOutput() InstanceStatusArrayOutput {
+	return o
+}
+
+func (o InstanceStatusArrayOutput) ToInstanceStatusArrayOutputWithContext(ctx context.Context) InstanceStatusArrayOutput {
+	return o
+}
+
+func (o InstanceStatusArrayOutput) Index(i pulumi.IntInput) InstanceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceStatus {
+		return vs[0].([]InstanceStatus)[vs[1].(int)]
+	}).(InstanceStatusOutput)
+}
+
+// InstanceTemplateSpec describes the data an instance should have when created from a template.
+type InstanceTemplateSpec struct {
+	// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+	Spec *InstanceSpec `pulumi:"spec"`
+}
+
+// InstanceTemplateSpecInput is an input type that accepts InstanceTemplateSpecArgs and InstanceTemplateSpecOutput values.
+// You can construct a concrete instance of `InstanceTemplateSpecInput` via:
+//
+//          InstanceTemplateSpecArgs{...}
+type InstanceTemplateSpecInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateSpecOutput() InstanceTemplateSpecOutput
+	ToInstanceTemplateSpecOutputWithContext(context.Context) InstanceTemplateSpecOutput
+}
+
+// InstanceTemplateSpec describes the data an instance should have when created from a template.
+type InstanceTemplateSpecArgs struct {
+	// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+	Spec InstanceSpecPtrInput `pulumi:"spec"`
+}
+
+func (InstanceTemplateSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateSpec)(nil)).Elem()
+}
+
+func (i InstanceTemplateSpecArgs) ToInstanceTemplateSpecOutput() InstanceTemplateSpecOutput {
+	return i.ToInstanceTemplateSpecOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateSpecArgs) ToInstanceTemplateSpecOutputWithContext(ctx context.Context) InstanceTemplateSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecOutput)
+}
+
+func (i InstanceTemplateSpecArgs) ToInstanceTemplateSpecPtrOutput() InstanceTemplateSpecPtrOutput {
+	return i.ToInstanceTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplateSpecArgs) ToInstanceTemplateSpecPtrOutputWithContext(ctx context.Context) InstanceTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecOutput).ToInstanceTemplateSpecPtrOutputWithContext(ctx)
+}
+
+// InstanceTemplateSpecPtrInput is an input type that accepts InstanceTemplateSpecArgs, InstanceTemplateSpecPtr and InstanceTemplateSpecPtrOutput values.
+// You can construct a concrete instance of `InstanceTemplateSpecPtrInput` via:
+//
+//          InstanceTemplateSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceTemplateSpecPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateSpecPtrOutput() InstanceTemplateSpecPtrOutput
+	ToInstanceTemplateSpecPtrOutputWithContext(context.Context) InstanceTemplateSpecPtrOutput
+}
+
+type instanceTemplateSpecPtrType InstanceTemplateSpecArgs
+
+func InstanceTemplateSpecPtr(v *InstanceTemplateSpecArgs) InstanceTemplateSpecPtrInput {
+	return (*instanceTemplateSpecPtrType)(v)
+}
+
+func (*instanceTemplateSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateSpec)(nil)).Elem()
+}
+
+func (i *instanceTemplateSpecPtrType) ToInstanceTemplateSpecPtrOutput() InstanceTemplateSpecPtrOutput {
+	return i.ToInstanceTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceTemplateSpecPtrType) ToInstanceTemplateSpecPtrOutputWithContext(ctx context.Context) InstanceTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateSpecPtrOutput)
+}
+
+// InstanceTemplateSpec describes the data an instance should have when created from a template.
+type InstanceTemplateSpecOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateSpec)(nil)).Elem()
+}
+
+func (o InstanceTemplateSpecOutput) ToInstanceTemplateSpecOutput() InstanceTemplateSpecOutput {
+	return o
+}
+
+func (o InstanceTemplateSpecOutput) ToInstanceTemplateSpecOutputWithContext(ctx context.Context) InstanceTemplateSpecOutput {
+	return o
+}
+
+func (o InstanceTemplateSpecOutput) ToInstanceTemplateSpecPtrOutput() InstanceTemplateSpecPtrOutput {
+	return o.ToInstanceTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTemplateSpecOutput) ToInstanceTemplateSpecPtrOutputWithContext(ctx context.Context) InstanceTemplateSpecPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateSpec) *InstanceTemplateSpec {
+		return &v
+	}).(InstanceTemplateSpecPtrOutput)
+}
+
+// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+func (o InstanceTemplateSpecOutput) Spec() InstanceSpecPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateSpec) *InstanceSpec { return v.Spec }).(InstanceSpecPtrOutput)
+}
+
+type InstanceTemplateSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTemplateSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceTemplateSpec)(nil)).Elem()
+}
+
+func (o InstanceTemplateSpecPtrOutput) ToInstanceTemplateSpecPtrOutput() InstanceTemplateSpecPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateSpecPtrOutput) ToInstanceTemplateSpecPtrOutputWithContext(ctx context.Context) InstanceTemplateSpecPtrOutput {
+	return o
+}
+
+func (o InstanceTemplateSpecPtrOutput) Elem() InstanceTemplateSpecOutput {
+	return o.ApplyT(func(v *InstanceTemplateSpec) InstanceTemplateSpec { return *v }).(InstanceTemplateSpecOutput)
+}
+
+// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+func (o InstanceTemplateSpecPtrOutput) Spec() InstanceSpecPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateSpec) *InstanceSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(InstanceSpecPtrOutput)
+}
+
 // IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that can accept a name or number.
 type IntOrString struct {
 	// The int value.
@@ -6174,6 +4487,666 @@ func (o IntOrStringPtrOutput) Type() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.Type
+	}).(pulumi.IntPtrOutput)
+}
+
+// JobCondition defines a readiness condition for a Revision.
+type JobCondition struct {
+	// Optional. Last time the condition transitioned from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// Optional. Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// Optional. One-word CamelCase reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// Required. Status of the condition, one of True, False, Unknown.
+	Status *string `pulumi:"status"`
+	// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	Type *string `pulumi:"type"`
+}
+
+// JobConditionInput is an input type that accepts JobConditionArgs and JobConditionOutput values.
+// You can construct a concrete instance of `JobConditionInput` via:
+//
+//          JobConditionArgs{...}
+type JobConditionInput interface {
+	pulumi.Input
+
+	ToJobConditionOutput() JobConditionOutput
+	ToJobConditionOutputWithContext(context.Context) JobConditionOutput
+}
+
+// JobCondition defines a readiness condition for a Revision.
+type JobConditionArgs struct {
+	// Optional. Last time the condition transitioned from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// Optional. Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Optional. One-word CamelCase reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Required. Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (JobConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCondition)(nil)).Elem()
+}
+
+func (i JobConditionArgs) ToJobConditionOutput() JobConditionOutput {
+	return i.ToJobConditionOutputWithContext(context.Background())
+}
+
+func (i JobConditionArgs) ToJobConditionOutputWithContext(ctx context.Context) JobConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobConditionOutput)
+}
+
+// JobConditionArrayInput is an input type that accepts JobConditionArray and JobConditionArrayOutput values.
+// You can construct a concrete instance of `JobConditionArrayInput` via:
+//
+//          JobConditionArray{ JobConditionArgs{...} }
+type JobConditionArrayInput interface {
+	pulumi.Input
+
+	ToJobConditionArrayOutput() JobConditionArrayOutput
+	ToJobConditionArrayOutputWithContext(context.Context) JobConditionArrayOutput
+}
+
+type JobConditionArray []JobConditionInput
+
+func (JobConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobCondition)(nil)).Elem()
+}
+
+func (i JobConditionArray) ToJobConditionArrayOutput() JobConditionArrayOutput {
+	return i.ToJobConditionArrayOutputWithContext(context.Background())
+}
+
+func (i JobConditionArray) ToJobConditionArrayOutputWithContext(ctx context.Context) JobConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobConditionArrayOutput)
+}
+
+// JobCondition defines a readiness condition for a Revision.
+type JobConditionOutput struct{ *pulumi.OutputState }
+
+func (JobConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCondition)(nil)).Elem()
+}
+
+func (o JobConditionOutput) ToJobConditionOutput() JobConditionOutput {
+	return o
+}
+
+func (o JobConditionOutput) ToJobConditionOutputWithContext(ctx context.Context) JobConditionOutput {
+	return o
+}
+
+// Optional. Last time the condition transitioned from one status to another.
+func (o JobConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Human readable message indicating details about the current status.
+func (o JobConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Optional. One-word CamelCase reason for the condition's last transition.
+func (o JobConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+func (o JobConditionOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Required. Status of the condition, one of True, False, Unknown.
+func (o JobConditionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+func (o JobConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type JobConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (JobConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobCondition)(nil)).Elem()
+}
+
+func (o JobConditionArrayOutput) ToJobConditionArrayOutput() JobConditionArrayOutput {
+	return o
+}
+
+func (o JobConditionArrayOutput) ToJobConditionArrayOutputWithContext(ctx context.Context) JobConditionArrayOutput {
+	return o
+}
+
+func (o JobConditionArrayOutput) Index(i pulumi.IntInput) JobConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobCondition {
+		return vs[0].([]JobCondition)[vs[1].(int)]
+	}).(JobConditionOutput)
+}
+
+// JobSpec describes how the job execution will look like.
+type JobSpec struct {
+	// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+	ActiveDeadlineSeconds *string `pulumi:"activeDeadlineSeconds"`
+	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+	BackoffLimit *int `pulumi:"backoffLimit"`
+	// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	Completions *int `pulumi:"completions"`
+	// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	Parallelism *int `pulumi:"parallelism"`
+	// Optional. Describes the instance that will be created when executing a job.
+	Template *InstanceTemplateSpec `pulumi:"template"`
+	// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+	TtlSecondsAfterFinished *int `pulumi:"ttlSecondsAfterFinished"`
+}
+
+// JobSpecInput is an input type that accepts JobSpecArgs and JobSpecOutput values.
+// You can construct a concrete instance of `JobSpecInput` via:
+//
+//          JobSpecArgs{...}
+type JobSpecInput interface {
+	pulumi.Input
+
+	ToJobSpecOutput() JobSpecOutput
+	ToJobSpecOutputWithContext(context.Context) JobSpecOutput
+}
+
+// JobSpec describes how the job execution will look like.
+type JobSpecArgs struct {
+	// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+	ActiveDeadlineSeconds pulumi.StringPtrInput `pulumi:"activeDeadlineSeconds"`
+	// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+	BackoffLimit pulumi.IntPtrInput `pulumi:"backoffLimit"`
+	// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	Completions pulumi.IntPtrInput `pulumi:"completions"`
+	// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
+	// Optional. Describes the instance that will be created when executing a job.
+	Template InstanceTemplateSpecPtrInput `pulumi:"template"`
+	// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+	TtlSecondsAfterFinished pulumi.IntPtrInput `pulumi:"ttlSecondsAfterFinished"`
+}
+
+func (JobSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSpec)(nil)).Elem()
+}
+
+func (i JobSpecArgs) ToJobSpecOutput() JobSpecOutput {
+	return i.ToJobSpecOutputWithContext(context.Background())
+}
+
+func (i JobSpecArgs) ToJobSpecOutputWithContext(ctx context.Context) JobSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecOutput)
+}
+
+func (i JobSpecArgs) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return i.ToJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (i JobSpecArgs) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecOutput).ToJobSpecPtrOutputWithContext(ctx)
+}
+
+// JobSpecPtrInput is an input type that accepts JobSpecArgs, JobSpecPtr and JobSpecPtrOutput values.
+// You can construct a concrete instance of `JobSpecPtrInput` via:
+//
+//          JobSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type JobSpecPtrInput interface {
+	pulumi.Input
+
+	ToJobSpecPtrOutput() JobSpecPtrOutput
+	ToJobSpecPtrOutputWithContext(context.Context) JobSpecPtrOutput
+}
+
+type jobSpecPtrType JobSpecArgs
+
+func JobSpecPtr(v *JobSpecArgs) JobSpecPtrInput {
+	return (*jobSpecPtrType)(v)
+}
+
+func (*jobSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSpec)(nil)).Elem()
+}
+
+func (i *jobSpecPtrType) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return i.ToJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *jobSpecPtrType) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecPtrOutput)
+}
+
+// JobSpec describes how the job execution will look like.
+type JobSpecOutput struct{ *pulumi.OutputState }
+
+func (JobSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSpec)(nil)).Elem()
+}
+
+func (o JobSpecOutput) ToJobSpecOutput() JobSpecOutput {
+	return o
+}
+
+func (o JobSpecOutput) ToJobSpecOutputWithContext(ctx context.Context) JobSpecOutput {
+	return o
+}
+
+func (o JobSpecOutput) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return o.ToJobSpecPtrOutputWithContext(context.Background())
+}
+
+func (o JobSpecOutput) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return o.ApplyT(func(v JobSpec) *JobSpec {
+		return &v
+	}).(JobSpecPtrOutput)
+}
+
+// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+func (o JobSpecOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobSpec) *string { return v.ActiveDeadlineSeconds }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+func (o JobSpecOutput) BackoffLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpec) *int { return v.BackoffLimit }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecOutput) Completions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpec) *int { return v.Completions }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpec) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Describes the instance that will be created when executing a job.
+func (o JobSpecOutput) Template() InstanceTemplateSpecPtrOutput {
+	return o.ApplyT(func(v JobSpec) *InstanceTemplateSpec { return v.Template }).(InstanceTemplateSpecPtrOutput)
+}
+
+// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+func (o JobSpecOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpec) *int { return v.TtlSecondsAfterFinished }).(pulumi.IntPtrOutput)
+}
+
+type JobSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (JobSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSpec)(nil)).Elem()
+}
+
+func (o JobSpecPtrOutput) ToJobSpecPtrOutput() JobSpecPtrOutput {
+	return o
+}
+
+func (o JobSpecPtrOutput) ToJobSpecPtrOutputWithContext(ctx context.Context) JobSpecPtrOutput {
+	return o
+}
+
+func (o JobSpecPtrOutput) Elem() JobSpecOutput {
+	return o.ApplyT(func(v *JobSpec) JobSpec { return *v }).(JobSpecOutput)
+}
+
+// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+func (o JobSpecPtrOutput) ActiveDeadlineSeconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDeadlineSeconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+func (o JobSpecPtrOutput) BackoffLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackoffLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecPtrOutput) Completions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Completions
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobSpecPtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Describes the instance that will be created when executing a job.
+func (o JobSpecPtrOutput) Template() InstanceTemplateSpecPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *InstanceTemplateSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(InstanceTemplateSpecPtrOutput)
+}
+
+// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+func (o JobSpecPtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TtlSecondsAfterFinished
+	}).(pulumi.IntPtrOutput)
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatus struct {
+	// Optional. The number of actively running instances. +optional
+	Active *int `pulumi:"active"`
+	// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	CompletionTime *string `pulumi:"completionTime"`
+	// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	Conditions []JobCondition `pulumi:"conditions"`
+	// Optional. The number of instances which reached phase Failed. +optional
+	Failed *int `pulumi:"failed"`
+	// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+	ImageDigest *string `pulumi:"imageDigest"`
+	// Optional. Status of completed, failed, and running instances. +optional
+	Instances []InstanceStatus `pulumi:"instances"`
+	// Optional. The 'generation' of the job that was last processed by the controller.
+	ObservedGeneration *int `pulumi:"observedGeneration"`
+	// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	StartTime *string `pulumi:"startTime"`
+	// Optional. The number of instances which reached phase Succeeded. +optional
+	Succeeded *int `pulumi:"succeeded"`
+}
+
+// JobStatusInput is an input type that accepts JobStatusArgs and JobStatusOutput values.
+// You can construct a concrete instance of `JobStatusInput` via:
+//
+//          JobStatusArgs{...}
+type JobStatusInput interface {
+	pulumi.Input
+
+	ToJobStatusOutput() JobStatusOutput
+	ToJobStatusOutputWithContext(context.Context) JobStatusOutput
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatusArgs struct {
+	// Optional. The number of actively running instances. +optional
+	Active pulumi.IntPtrInput `pulumi:"active"`
+	// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	CompletionTime pulumi.StringPtrInput `pulumi:"completionTime"`
+	// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+	Conditions JobConditionArrayInput `pulumi:"conditions"`
+	// Optional. The number of instances which reached phase Failed. +optional
+	Failed pulumi.IntPtrInput `pulumi:"failed"`
+	// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+	ImageDigest pulumi.StringPtrInput `pulumi:"imageDigest"`
+	// Optional. Status of completed, failed, and running instances. +optional
+	Instances InstanceStatusArrayInput `pulumi:"instances"`
+	// Optional. The 'generation' of the job that was last processed by the controller.
+	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
+	// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Optional. The number of instances which reached phase Succeeded. +optional
+	Succeeded pulumi.IntPtrInput `pulumi:"succeeded"`
+}
+
+func (JobStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatus)(nil)).Elem()
+}
+
+func (i JobStatusArgs) ToJobStatusOutput() JobStatusOutput {
+	return i.ToJobStatusOutputWithContext(context.Background())
+}
+
+func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
+}
+
+func (i JobStatusArgs) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return i.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusArgs) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput).ToJobStatusPtrOutputWithContext(ctx)
+}
+
+// JobStatusPtrInput is an input type that accepts JobStatusArgs, JobStatusPtr and JobStatusPtrOutput values.
+// You can construct a concrete instance of `JobStatusPtrInput` via:
+//
+//          JobStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type JobStatusPtrInput interface {
+	pulumi.Input
+
+	ToJobStatusPtrOutput() JobStatusPtrOutput
+	ToJobStatusPtrOutputWithContext(context.Context) JobStatusPtrOutput
+}
+
+type jobStatusPtrType JobStatusArgs
+
+func JobStatusPtr(v *JobStatusArgs) JobStatusPtrInput {
+	return (*jobStatusPtrType)(v)
+}
+
+func (*jobStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+}
+
+func (i *jobStatusPtrType) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return i.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusPtrType) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusPtrOutput)
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatusOutput struct{ *pulumi.OutputState }
+
+func (JobStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusOutput) ToJobStatusOutput() JobStatusOutput {
+	return o
+}
+
+func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
+	return o
+}
+
+func (o JobStatusOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return o.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return o.ApplyT(func(v JobStatus) *JobStatus {
+		return &v
+	}).(JobStatusPtrOutput)
+}
+
+// Optional. The number of actively running instances. +optional
+func (o JobStatusOutput) Active() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatus) *int { return v.Active }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusOutput) CompletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatus) *string { return v.CompletionTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobStatusOutput) Conditions() JobConditionArrayOutput {
+	return o.ApplyT(func(v JobStatus) []JobCondition { return v.Conditions }).(JobConditionArrayOutput)
+}
+
+// Optional. The number of instances which reached phase Failed. +optional
+func (o JobStatusOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatus) *int { return v.Failed }).(pulumi.IntPtrOutput)
+}
+
+// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+func (o JobStatusOutput) ImageDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatus) *string { return v.ImageDigest }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Status of completed, failed, and running instances. +optional
+func (o JobStatusOutput) Instances() InstanceStatusArrayOutput {
+	return o.ApplyT(func(v JobStatus) []InstanceStatus { return v.Instances }).(InstanceStatusArrayOutput)
+}
+
+// Optional. The 'generation' of the job that was last processed by the controller.
+func (o JobStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatus) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of instances which reached phase Succeeded. +optional
+func (o JobStatusOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatus) *int { return v.Succeeded }).(pulumi.IntPtrOutput)
+}
+
+type JobStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusPtrOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return o
+}
+
+func (o JobStatusPtrOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return o
+}
+
+func (o JobStatusPtrOutput) Elem() JobStatusOutput {
+	return o.ApplyT(func(v *JobStatus) JobStatus { return *v }).(JobStatusOutput)
+}
+
+// Optional. The number of actively running instances. +optional
+func (o JobStatusPtrOutput) Active() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Active
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusPtrOutput) CompletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompletionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+func (o JobStatusPtrOutput) Conditions() JobConditionArrayOutput {
+	return o.ApplyT(func(v *JobStatus) []JobCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(JobConditionArrayOutput)
+}
+
+// Optional. The number of instances which reached phase Failed. +optional
+func (o JobStatusPtrOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Failed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+func (o JobStatusPtrOutput) ImageDigest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageDigest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Status of completed, failed, and running instances. +optional
+func (o JobStatusPtrOutput) Instances() InstanceStatusArrayOutput {
+	return o.ApplyT(func(v *JobStatus) []InstanceStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(InstanceStatusArrayOutput)
+}
+
+// Optional. The 'generation' of the job that was last processed by the controller.
+func (o JobStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+func (o JobStatusPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of instances which reached phase Succeeded. +optional
+func (o JobStatusPtrOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Succeeded
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -6975,254 +5948,6 @@ func (o ObjectMetaPtrOutput) SelfLink() pulumi.StringPtrOutput {
 // UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
 func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Uid
-	}).(pulumi.StringPtrOutput)
-}
-
-// ObjectReference contains enough information to let you inspect or modify the referred object.
-type ObjectReference struct {
-	// API version of the referent. +optional
-	ApiVersion *string `pulumi:"apiVersion"`
-	// If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
-	FieldPath *string `pulumi:"fieldPath"`
-	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
-	Kind *string `pulumi:"kind"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names +optional
-	Name *string `pulumi:"name"`
-	// Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ +optional
-	Namespace *string `pulumi:"namespace"`
-	// Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-	ResourceVersion *string `pulumi:"resourceVersion"`
-	// UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids +optional
-	Uid *string `pulumi:"uid"`
-}
-
-// ObjectReferenceInput is an input type that accepts ObjectReferenceArgs and ObjectReferenceOutput values.
-// You can construct a concrete instance of `ObjectReferenceInput` via:
-//
-//          ObjectReferenceArgs{...}
-type ObjectReferenceInput interface {
-	pulumi.Input
-
-	ToObjectReferenceOutput() ObjectReferenceOutput
-	ToObjectReferenceOutputWithContext(context.Context) ObjectReferenceOutput
-}
-
-// ObjectReference contains enough information to let you inspect or modify the referred object.
-type ObjectReferenceArgs struct {
-	// API version of the referent. +optional
-	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
-	// If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
-	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
-	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names +optional
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ +optional
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	// UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids +optional
-	Uid pulumi.StringPtrInput `pulumi:"uid"`
-}
-
-func (ObjectReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectReference)(nil)).Elem()
-}
-
-func (i ObjectReferenceArgs) ToObjectReferenceOutput() ObjectReferenceOutput {
-	return i.ToObjectReferenceOutputWithContext(context.Background())
-}
-
-func (i ObjectReferenceArgs) ToObjectReferenceOutputWithContext(ctx context.Context) ObjectReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectReferenceOutput)
-}
-
-func (i ObjectReferenceArgs) ToObjectReferencePtrOutput() ObjectReferencePtrOutput {
-	return i.ToObjectReferencePtrOutputWithContext(context.Background())
-}
-
-func (i ObjectReferenceArgs) ToObjectReferencePtrOutputWithContext(ctx context.Context) ObjectReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectReferenceOutput).ToObjectReferencePtrOutputWithContext(ctx)
-}
-
-// ObjectReferencePtrInput is an input type that accepts ObjectReferenceArgs, ObjectReferencePtr and ObjectReferencePtrOutput values.
-// You can construct a concrete instance of `ObjectReferencePtrInput` via:
-//
-//          ObjectReferenceArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectReferencePtrInput interface {
-	pulumi.Input
-
-	ToObjectReferencePtrOutput() ObjectReferencePtrOutput
-	ToObjectReferencePtrOutputWithContext(context.Context) ObjectReferencePtrOutput
-}
-
-type objectReferencePtrType ObjectReferenceArgs
-
-func ObjectReferencePtr(v *ObjectReferenceArgs) ObjectReferencePtrInput {
-	return (*objectReferencePtrType)(v)
-}
-
-func (*objectReferencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectReference)(nil)).Elem()
-}
-
-func (i *objectReferencePtrType) ToObjectReferencePtrOutput() ObjectReferencePtrOutput {
-	return i.ToObjectReferencePtrOutputWithContext(context.Background())
-}
-
-func (i *objectReferencePtrType) ToObjectReferencePtrOutputWithContext(ctx context.Context) ObjectReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectReferencePtrOutput)
-}
-
-// ObjectReference contains enough information to let you inspect or modify the referred object.
-type ObjectReferenceOutput struct{ *pulumi.OutputState }
-
-func (ObjectReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectReference)(nil)).Elem()
-}
-
-func (o ObjectReferenceOutput) ToObjectReferenceOutput() ObjectReferenceOutput {
-	return o
-}
-
-func (o ObjectReferenceOutput) ToObjectReferenceOutputWithContext(ctx context.Context) ObjectReferenceOutput {
-	return o
-}
-
-func (o ObjectReferenceOutput) ToObjectReferencePtrOutput() ObjectReferencePtrOutput {
-	return o.ToObjectReferencePtrOutputWithContext(context.Background())
-}
-
-func (o ObjectReferenceOutput) ToObjectReferencePtrOutputWithContext(ctx context.Context) ObjectReferencePtrOutput {
-	return o.ApplyT(func(v ObjectReference) *ObjectReference {
-		return &v
-	}).(ObjectReferencePtrOutput)
-}
-
-// API version of the referent. +optional
-func (o ObjectReferenceOutput) ApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
-}
-
-// If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
-func (o ObjectReferenceOutput) FieldPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
-}
-
-// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
-func (o ObjectReferenceOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names +optional
-func (o ObjectReferenceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ +optional
-func (o ObjectReferenceOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.Namespace }).(pulumi.StringPtrOutput)
-}
-
-// Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-func (o ObjectReferenceOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
-}
-
-// UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids +optional
-func (o ObjectReferenceOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectReference) *string { return v.Uid }).(pulumi.StringPtrOutput)
-}
-
-type ObjectReferencePtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectReferencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectReference)(nil)).Elem()
-}
-
-func (o ObjectReferencePtrOutput) ToObjectReferencePtrOutput() ObjectReferencePtrOutput {
-	return o
-}
-
-func (o ObjectReferencePtrOutput) ToObjectReferencePtrOutputWithContext(ctx context.Context) ObjectReferencePtrOutput {
-	return o
-}
-
-func (o ObjectReferencePtrOutput) Elem() ObjectReferenceOutput {
-	return o.ApplyT(func(v *ObjectReference) ObjectReference { return *v }).(ObjectReferenceOutput)
-}
-
-// API version of the referent. +optional
-func (o ObjectReferencePtrOutput) ApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
-func (o ObjectReferencePtrOutput) FieldPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FieldPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
-func (o ObjectReferencePtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names +optional
-func (o ObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ +optional
-func (o ObjectReferencePtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Namespace
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-func (o ObjectReferencePtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids +optional
-func (o ObjectReferencePtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectReference) *string {
 		if v == nil {
 			return nil
 		}
@@ -11092,626 +9817,6 @@ func (o TrafficTargetArrayOutput) Index(i pulumi.IntInput) TrafficTargetOutput {
 	}).(TrafficTargetOutput)
 }
 
-// TriggerCondition contains state information for an Trigger.
-type TriggerCondition struct {
-	// Optional. Last time the condition transitioned from one status to another.
-	LastTransitionTime *string `pulumi:"lastTransitionTime"`
-	// Optional. Human readable message indicating details about the current status.
-	Message *string `pulumi:"message"`
-	// Optional. One-word CamelCase reason for the condition's current status.
-	Reason *string `pulumi:"reason"`
-	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-	Severity *string `pulumi:"severity"`
-	// Status of the condition, one of True, False, Unknown.
-	Status *string `pulumi:"status"`
-	// Type of Trigger condition.
-	Type *string `pulumi:"type"`
-}
-
-// TriggerConditionInput is an input type that accepts TriggerConditionArgs and TriggerConditionOutput values.
-// You can construct a concrete instance of `TriggerConditionInput` via:
-//
-//          TriggerConditionArgs{...}
-type TriggerConditionInput interface {
-	pulumi.Input
-
-	ToTriggerConditionOutput() TriggerConditionOutput
-	ToTriggerConditionOutputWithContext(context.Context) TriggerConditionOutput
-}
-
-// TriggerCondition contains state information for an Trigger.
-type TriggerConditionArgs struct {
-	// Optional. Last time the condition transitioned from one status to another.
-	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	// Optional. Human readable message indicating details about the current status.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// Optional. One-word CamelCase reason for the condition's current status.
-	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-	Severity pulumi.StringPtrInput `pulumi:"severity"`
-	// Status of the condition, one of True, False, Unknown.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Type of Trigger condition.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (TriggerConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerCondition)(nil)).Elem()
-}
-
-func (i TriggerConditionArgs) ToTriggerConditionOutput() TriggerConditionOutput {
-	return i.ToTriggerConditionOutputWithContext(context.Background())
-}
-
-func (i TriggerConditionArgs) ToTriggerConditionOutputWithContext(ctx context.Context) TriggerConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerConditionOutput)
-}
-
-// TriggerConditionArrayInput is an input type that accepts TriggerConditionArray and TriggerConditionArrayOutput values.
-// You can construct a concrete instance of `TriggerConditionArrayInput` via:
-//
-//          TriggerConditionArray{ TriggerConditionArgs{...} }
-type TriggerConditionArrayInput interface {
-	pulumi.Input
-
-	ToTriggerConditionArrayOutput() TriggerConditionArrayOutput
-	ToTriggerConditionArrayOutputWithContext(context.Context) TriggerConditionArrayOutput
-}
-
-type TriggerConditionArray []TriggerConditionInput
-
-func (TriggerConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerCondition)(nil)).Elem()
-}
-
-func (i TriggerConditionArray) ToTriggerConditionArrayOutput() TriggerConditionArrayOutput {
-	return i.ToTriggerConditionArrayOutputWithContext(context.Background())
-}
-
-func (i TriggerConditionArray) ToTriggerConditionArrayOutputWithContext(ctx context.Context) TriggerConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerConditionArrayOutput)
-}
-
-// TriggerCondition contains state information for an Trigger.
-type TriggerConditionOutput struct{ *pulumi.OutputState }
-
-func (TriggerConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerCondition)(nil)).Elem()
-}
-
-func (o TriggerConditionOutput) ToTriggerConditionOutput() TriggerConditionOutput {
-	return o
-}
-
-func (o TriggerConditionOutput) ToTriggerConditionOutputWithContext(ctx context.Context) TriggerConditionOutput {
-	return o
-}
-
-// Optional. Last time the condition transitioned from one status to another.
-func (o TriggerConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Human readable message indicating details about the current status.
-func (o TriggerConditionOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// Optional. One-word CamelCase reason for the condition's current status.
-func (o TriggerConditionOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
-}
-
-// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-func (o TriggerConditionOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
-}
-
-// Status of the condition, one of True, False, Unknown.
-func (o TriggerConditionOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Type of Trigger condition.
-func (o TriggerConditionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type TriggerConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (TriggerConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerCondition)(nil)).Elem()
-}
-
-func (o TriggerConditionArrayOutput) ToTriggerConditionArrayOutput() TriggerConditionArrayOutput {
-	return o
-}
-
-func (o TriggerConditionArrayOutput) ToTriggerConditionArrayOutputWithContext(ctx context.Context) TriggerConditionArrayOutput {
-	return o
-}
-
-func (o TriggerConditionArrayOutput) Index(i pulumi.IntInput) TriggerConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerCondition {
-		return vs[0].([]TriggerCondition)[vs[1].(int)]
-	}).(TriggerConditionOutput)
-}
-
-type TriggerFilter struct {
-	// Optional. Attributes filters events by exact match on event context attributes. Each key in the map is compared with the equivalent key in the event context. An event passes the filter if all values are equal to the specified values. Nested context attributes are not supported as keys. Only string values are supported. Note that this field is optional in knative. In fully managed, 'type' attribute is required due to different broker implementation.
-	Attributes map[string]string `pulumi:"attributes"`
-}
-
-// TriggerFilterInput is an input type that accepts TriggerFilterArgs and TriggerFilterOutput values.
-// You can construct a concrete instance of `TriggerFilterInput` via:
-//
-//          TriggerFilterArgs{...}
-type TriggerFilterInput interface {
-	pulumi.Input
-
-	ToTriggerFilterOutput() TriggerFilterOutput
-	ToTriggerFilterOutputWithContext(context.Context) TriggerFilterOutput
-}
-
-type TriggerFilterArgs struct {
-	// Optional. Attributes filters events by exact match on event context attributes. Each key in the map is compared with the equivalent key in the event context. An event passes the filter if all values are equal to the specified values. Nested context attributes are not supported as keys. Only string values are supported. Note that this field is optional in knative. In fully managed, 'type' attribute is required due to different broker implementation.
-	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-}
-
-func (TriggerFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerFilter)(nil)).Elem()
-}
-
-func (i TriggerFilterArgs) ToTriggerFilterOutput() TriggerFilterOutput {
-	return i.ToTriggerFilterOutputWithContext(context.Background())
-}
-
-func (i TriggerFilterArgs) ToTriggerFilterOutputWithContext(ctx context.Context) TriggerFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerFilterOutput)
-}
-
-func (i TriggerFilterArgs) ToTriggerFilterPtrOutput() TriggerFilterPtrOutput {
-	return i.ToTriggerFilterPtrOutputWithContext(context.Background())
-}
-
-func (i TriggerFilterArgs) ToTriggerFilterPtrOutputWithContext(ctx context.Context) TriggerFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerFilterOutput).ToTriggerFilterPtrOutputWithContext(ctx)
-}
-
-// TriggerFilterPtrInput is an input type that accepts TriggerFilterArgs, TriggerFilterPtr and TriggerFilterPtrOutput values.
-// You can construct a concrete instance of `TriggerFilterPtrInput` via:
-//
-//          TriggerFilterArgs{...}
-//
-//  or:
-//
-//          nil
-type TriggerFilterPtrInput interface {
-	pulumi.Input
-
-	ToTriggerFilterPtrOutput() TriggerFilterPtrOutput
-	ToTriggerFilterPtrOutputWithContext(context.Context) TriggerFilterPtrOutput
-}
-
-type triggerFilterPtrType TriggerFilterArgs
-
-func TriggerFilterPtr(v *TriggerFilterArgs) TriggerFilterPtrInput {
-	return (*triggerFilterPtrType)(v)
-}
-
-func (*triggerFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerFilter)(nil)).Elem()
-}
-
-func (i *triggerFilterPtrType) ToTriggerFilterPtrOutput() TriggerFilterPtrOutput {
-	return i.ToTriggerFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *triggerFilterPtrType) ToTriggerFilterPtrOutputWithContext(ctx context.Context) TriggerFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerFilterPtrOutput)
-}
-
-type TriggerFilterOutput struct{ *pulumi.OutputState }
-
-func (TriggerFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerFilter)(nil)).Elem()
-}
-
-func (o TriggerFilterOutput) ToTriggerFilterOutput() TriggerFilterOutput {
-	return o
-}
-
-func (o TriggerFilterOutput) ToTriggerFilterOutputWithContext(ctx context.Context) TriggerFilterOutput {
-	return o
-}
-
-func (o TriggerFilterOutput) ToTriggerFilterPtrOutput() TriggerFilterPtrOutput {
-	return o.ToTriggerFilterPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerFilterOutput) ToTriggerFilterPtrOutputWithContext(ctx context.Context) TriggerFilterPtrOutput {
-	return o.ApplyT(func(v TriggerFilter) *TriggerFilter {
-		return &v
-	}).(TriggerFilterPtrOutput)
-}
-
-// Optional. Attributes filters events by exact match on event context attributes. Each key in the map is compared with the equivalent key in the event context. An event passes the filter if all values are equal to the specified values. Nested context attributes are not supported as keys. Only string values are supported. Note that this field is optional in knative. In fully managed, 'type' attribute is required due to different broker implementation.
-func (o TriggerFilterOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TriggerFilter) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
-}
-
-type TriggerFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerFilter)(nil)).Elem()
-}
-
-func (o TriggerFilterPtrOutput) ToTriggerFilterPtrOutput() TriggerFilterPtrOutput {
-	return o
-}
-
-func (o TriggerFilterPtrOutput) ToTriggerFilterPtrOutputWithContext(ctx context.Context) TriggerFilterPtrOutput {
-	return o
-}
-
-func (o TriggerFilterPtrOutput) Elem() TriggerFilterOutput {
-	return o.ApplyT(func(v *TriggerFilter) TriggerFilter { return *v }).(TriggerFilterOutput)
-}
-
-// Optional. Attributes filters events by exact match on event context attributes. Each key in the map is compared with the equivalent key in the event context. An event passes the filter if all values are equal to the specified values. Nested context attributes are not supported as keys. Only string values are supported. Note that this field is optional in knative. In fully managed, 'type' attribute is required due to different broker implementation.
-func (o TriggerFilterPtrOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TriggerFilter) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Attributes
-	}).(pulumi.StringMapOutput)
-}
-
-// The desired state of the Trigger.
-type TriggerSpec struct {
-	// Broker is the broker that this trigger receives events from. If not specified, will default to 'default'. Not currently supported by Cloud Run.
-	Broker *string `pulumi:"broker"`
-	// Optional. Filter is the filter to apply against all events from the Broker. Only events that pass this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in fully managed due to different broker implementation.
-	Filter *TriggerFilter `pulumi:"filter"`
-	// Sink is the addressable that will receive events.
-	Subscriber *Destination `pulumi:"subscriber"`
-}
-
-// TriggerSpecInput is an input type that accepts TriggerSpecArgs and TriggerSpecOutput values.
-// You can construct a concrete instance of `TriggerSpecInput` via:
-//
-//          TriggerSpecArgs{...}
-type TriggerSpecInput interface {
-	pulumi.Input
-
-	ToTriggerSpecOutput() TriggerSpecOutput
-	ToTriggerSpecOutputWithContext(context.Context) TriggerSpecOutput
-}
-
-// The desired state of the Trigger.
-type TriggerSpecArgs struct {
-	// Broker is the broker that this trigger receives events from. If not specified, will default to 'default'. Not currently supported by Cloud Run.
-	Broker pulumi.StringPtrInput `pulumi:"broker"`
-	// Optional. Filter is the filter to apply against all events from the Broker. Only events that pass this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in fully managed due to different broker implementation.
-	Filter TriggerFilterPtrInput `pulumi:"filter"`
-	// Sink is the addressable that will receive events.
-	Subscriber DestinationPtrInput `pulumi:"subscriber"`
-}
-
-func (TriggerSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerSpec)(nil)).Elem()
-}
-
-func (i TriggerSpecArgs) ToTriggerSpecOutput() TriggerSpecOutput {
-	return i.ToTriggerSpecOutputWithContext(context.Background())
-}
-
-func (i TriggerSpecArgs) ToTriggerSpecOutputWithContext(ctx context.Context) TriggerSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerSpecOutput)
-}
-
-func (i TriggerSpecArgs) ToTriggerSpecPtrOutput() TriggerSpecPtrOutput {
-	return i.ToTriggerSpecPtrOutputWithContext(context.Background())
-}
-
-func (i TriggerSpecArgs) ToTriggerSpecPtrOutputWithContext(ctx context.Context) TriggerSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerSpecOutput).ToTriggerSpecPtrOutputWithContext(ctx)
-}
-
-// TriggerSpecPtrInput is an input type that accepts TriggerSpecArgs, TriggerSpecPtr and TriggerSpecPtrOutput values.
-// You can construct a concrete instance of `TriggerSpecPtrInput` via:
-//
-//          TriggerSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type TriggerSpecPtrInput interface {
-	pulumi.Input
-
-	ToTriggerSpecPtrOutput() TriggerSpecPtrOutput
-	ToTriggerSpecPtrOutputWithContext(context.Context) TriggerSpecPtrOutput
-}
-
-type triggerSpecPtrType TriggerSpecArgs
-
-func TriggerSpecPtr(v *TriggerSpecArgs) TriggerSpecPtrInput {
-	return (*triggerSpecPtrType)(v)
-}
-
-func (*triggerSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerSpec)(nil)).Elem()
-}
-
-func (i *triggerSpecPtrType) ToTriggerSpecPtrOutput() TriggerSpecPtrOutput {
-	return i.ToTriggerSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *triggerSpecPtrType) ToTriggerSpecPtrOutputWithContext(ctx context.Context) TriggerSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerSpecPtrOutput)
-}
-
-// The desired state of the Trigger.
-type TriggerSpecOutput struct{ *pulumi.OutputState }
-
-func (TriggerSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerSpec)(nil)).Elem()
-}
-
-func (o TriggerSpecOutput) ToTriggerSpecOutput() TriggerSpecOutput {
-	return o
-}
-
-func (o TriggerSpecOutput) ToTriggerSpecOutputWithContext(ctx context.Context) TriggerSpecOutput {
-	return o
-}
-
-func (o TriggerSpecOutput) ToTriggerSpecPtrOutput() TriggerSpecPtrOutput {
-	return o.ToTriggerSpecPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerSpecOutput) ToTriggerSpecPtrOutputWithContext(ctx context.Context) TriggerSpecPtrOutput {
-	return o.ApplyT(func(v TriggerSpec) *TriggerSpec {
-		return &v
-	}).(TriggerSpecPtrOutput)
-}
-
-// Broker is the broker that this trigger receives events from. If not specified, will default to 'default'. Not currently supported by Cloud Run.
-func (o TriggerSpecOutput) Broker() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerSpec) *string { return v.Broker }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Filter is the filter to apply against all events from the Broker. Only events that pass this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in fully managed due to different broker implementation.
-func (o TriggerSpecOutput) Filter() TriggerFilterPtrOutput {
-	return o.ApplyT(func(v TriggerSpec) *TriggerFilter { return v.Filter }).(TriggerFilterPtrOutput)
-}
-
-// Sink is the addressable that will receive events.
-func (o TriggerSpecOutput) Subscriber() DestinationPtrOutput {
-	return o.ApplyT(func(v TriggerSpec) *Destination { return v.Subscriber }).(DestinationPtrOutput)
-}
-
-type TriggerSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerSpec)(nil)).Elem()
-}
-
-func (o TriggerSpecPtrOutput) ToTriggerSpecPtrOutput() TriggerSpecPtrOutput {
-	return o
-}
-
-func (o TriggerSpecPtrOutput) ToTriggerSpecPtrOutputWithContext(ctx context.Context) TriggerSpecPtrOutput {
-	return o
-}
-
-func (o TriggerSpecPtrOutput) Elem() TriggerSpecOutput {
-	return o.ApplyT(func(v *TriggerSpec) TriggerSpec { return *v }).(TriggerSpecOutput)
-}
-
-// Broker is the broker that this trigger receives events from. If not specified, will default to 'default'. Not currently supported by Cloud Run.
-func (o TriggerSpecPtrOutput) Broker() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TriggerSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Broker
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Filter is the filter to apply against all events from the Broker. Only events that pass this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in fully managed due to different broker implementation.
-func (o TriggerSpecPtrOutput) Filter() TriggerFilterPtrOutput {
-	return o.ApplyT(func(v *TriggerSpec) *TriggerFilter {
-		if v == nil {
-			return nil
-		}
-		return v.Filter
-	}).(TriggerFilterPtrOutput)
-}
-
-// Sink is the addressable that will receive events.
-func (o TriggerSpecPtrOutput) Subscriber() DestinationPtrOutput {
-	return o.ApplyT(func(v *TriggerSpec) *Destination {
-		if v == nil {
-			return nil
-		}
-		return v.Subscriber
-	}).(DestinationPtrOutput)
-}
-
-// TriggerStatus represents the current state of a Trigger.
-type TriggerStatus struct {
-	// Array of observed TriggerConditions, indicating the current state of the Trigger.
-	Conditions []TriggerCondition `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the Trigger that was last processed by the controller.
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// SubscriberURI is the resolved URI of the receiver for this Trigger.
-	SubscriberUri *string `pulumi:"subscriberUri"`
-}
-
-// TriggerStatusInput is an input type that accepts TriggerStatusArgs and TriggerStatusOutput values.
-// You can construct a concrete instance of `TriggerStatusInput` via:
-//
-//          TriggerStatusArgs{...}
-type TriggerStatusInput interface {
-	pulumi.Input
-
-	ToTriggerStatusOutput() TriggerStatusOutput
-	ToTriggerStatusOutputWithContext(context.Context) TriggerStatusOutput
-}
-
-// TriggerStatus represents the current state of a Trigger.
-type TriggerStatusArgs struct {
-	// Array of observed TriggerConditions, indicating the current state of the Trigger.
-	Conditions TriggerConditionArrayInput `pulumi:"conditions"`
-	// ObservedGeneration is the 'Generation' of the Trigger that was last processed by the controller.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// SubscriberURI is the resolved URI of the receiver for this Trigger.
-	SubscriberUri pulumi.StringPtrInput `pulumi:"subscriberUri"`
-}
-
-func (TriggerStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerStatus)(nil)).Elem()
-}
-
-func (i TriggerStatusArgs) ToTriggerStatusOutput() TriggerStatusOutput {
-	return i.ToTriggerStatusOutputWithContext(context.Background())
-}
-
-func (i TriggerStatusArgs) ToTriggerStatusOutputWithContext(ctx context.Context) TriggerStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerStatusOutput)
-}
-
-func (i TriggerStatusArgs) ToTriggerStatusPtrOutput() TriggerStatusPtrOutput {
-	return i.ToTriggerStatusPtrOutputWithContext(context.Background())
-}
-
-func (i TriggerStatusArgs) ToTriggerStatusPtrOutputWithContext(ctx context.Context) TriggerStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerStatusOutput).ToTriggerStatusPtrOutputWithContext(ctx)
-}
-
-// TriggerStatusPtrInput is an input type that accepts TriggerStatusArgs, TriggerStatusPtr and TriggerStatusPtrOutput values.
-// You can construct a concrete instance of `TriggerStatusPtrInput` via:
-//
-//          TriggerStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type TriggerStatusPtrInput interface {
-	pulumi.Input
-
-	ToTriggerStatusPtrOutput() TriggerStatusPtrOutput
-	ToTriggerStatusPtrOutputWithContext(context.Context) TriggerStatusPtrOutput
-}
-
-type triggerStatusPtrType TriggerStatusArgs
-
-func TriggerStatusPtr(v *TriggerStatusArgs) TriggerStatusPtrInput {
-	return (*triggerStatusPtrType)(v)
-}
-
-func (*triggerStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerStatus)(nil)).Elem()
-}
-
-func (i *triggerStatusPtrType) ToTriggerStatusPtrOutput() TriggerStatusPtrOutput {
-	return i.ToTriggerStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *triggerStatusPtrType) ToTriggerStatusPtrOutputWithContext(ctx context.Context) TriggerStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerStatusPtrOutput)
-}
-
-// TriggerStatus represents the current state of a Trigger.
-type TriggerStatusOutput struct{ *pulumi.OutputState }
-
-func (TriggerStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerStatus)(nil)).Elem()
-}
-
-func (o TriggerStatusOutput) ToTriggerStatusOutput() TriggerStatusOutput {
-	return o
-}
-
-func (o TriggerStatusOutput) ToTriggerStatusOutputWithContext(ctx context.Context) TriggerStatusOutput {
-	return o
-}
-
-func (o TriggerStatusOutput) ToTriggerStatusPtrOutput() TriggerStatusPtrOutput {
-	return o.ToTriggerStatusPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerStatusOutput) ToTriggerStatusPtrOutputWithContext(ctx context.Context) TriggerStatusPtrOutput {
-	return o.ApplyT(func(v TriggerStatus) *TriggerStatus {
-		return &v
-	}).(TriggerStatusPtrOutput)
-}
-
-// Array of observed TriggerConditions, indicating the current state of the Trigger.
-func (o TriggerStatusOutput) Conditions() TriggerConditionArrayOutput {
-	return o.ApplyT(func(v TriggerStatus) []TriggerCondition { return v.Conditions }).(TriggerConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the Trigger that was last processed by the controller.
-func (o TriggerStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TriggerStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// SubscriberURI is the resolved URI of the receiver for this Trigger.
-func (o TriggerStatusOutput) SubscriberUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TriggerStatus) *string { return v.SubscriberUri }).(pulumi.StringPtrOutput)
-}
-
-type TriggerStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerStatus)(nil)).Elem()
-}
-
-func (o TriggerStatusPtrOutput) ToTriggerStatusPtrOutput() TriggerStatusPtrOutput {
-	return o
-}
-
-func (o TriggerStatusPtrOutput) ToTriggerStatusPtrOutputWithContext(ctx context.Context) TriggerStatusPtrOutput {
-	return o
-}
-
-func (o TriggerStatusPtrOutput) Elem() TriggerStatusOutput {
-	return o.ApplyT(func(v *TriggerStatus) TriggerStatus { return *v }).(TriggerStatusOutput)
-}
-
-// Array of observed TriggerConditions, indicating the current state of the Trigger.
-func (o TriggerStatusPtrOutput) Conditions() TriggerConditionArrayOutput {
-	return o.ApplyT(func(v *TriggerStatus) []TriggerCondition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(TriggerConditionArrayOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the Trigger that was last processed by the controller.
-func (o TriggerStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TriggerStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// SubscriberURI is the resolved URI of the receiver for this Trigger.
-func (o TriggerStatusPtrOutput) SubscriberUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TriggerStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriberUri
-	}).(pulumi.StringPtrOutput)
-}
-
 // Volume represents a named volume in a container.
 type Volume struct {
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
@@ -12080,26 +10185,6 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(CapabilitiesOutput{})
 	pulumi.RegisterOutputType(CapabilitiesPtrOutput{})
-	pulumi.RegisterOutputType(CloudAuditLogsSourceSpecOutput{})
-	pulumi.RegisterOutputType(CloudAuditLogsSourceSpecPtrOutput{})
-	pulumi.RegisterOutputType(CloudAuditLogsSourceStatusOutput{})
-	pulumi.RegisterOutputType(CloudAuditLogsSourceStatusPtrOutput{})
-	pulumi.RegisterOutputType(CloudEventOverridesOutput{})
-	pulumi.RegisterOutputType(CloudEventOverridesPtrOutput{})
-	pulumi.RegisterOutputType(CloudPubSubSourceSpecOutput{})
-	pulumi.RegisterOutputType(CloudPubSubSourceSpecPtrOutput{})
-	pulumi.RegisterOutputType(CloudPubSubSourceStatusOutput{})
-	pulumi.RegisterOutputType(CloudPubSubSourceStatusPtrOutput{})
-	pulumi.RegisterOutputType(CloudSchedulerSourceSpecOutput{})
-	pulumi.RegisterOutputType(CloudSchedulerSourceSpecPtrOutput{})
-	pulumi.RegisterOutputType(CloudSchedulerSourceStatusOutput{})
-	pulumi.RegisterOutputType(CloudSchedulerSourceStatusPtrOutput{})
-	pulumi.RegisterOutputType(CloudStorageSourceSpecOutput{})
-	pulumi.RegisterOutputType(CloudStorageSourceSpecPtrOutput{})
-	pulumi.RegisterOutputType(CloudStorageSourceStatusOutput{})
-	pulumi.RegisterOutputType(CloudStorageSourceStatusPtrOutput{})
-	pulumi.RegisterOutputType(ConditionOutput{})
-	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourcePtrOutput{})
 	pulumi.RegisterOutputType(ConfigMapKeySelectorOutput{})
@@ -12113,8 +10198,6 @@ func init() {
 	pulumi.RegisterOutputType(ContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerPortOutput{})
 	pulumi.RegisterOutputType(ContainerPortArrayOutput{})
-	pulumi.RegisterOutputType(DestinationOutput{})
-	pulumi.RegisterOutputType(DestinationPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingConditionOutput{})
 	pulumi.RegisterOutputType(DomainMappingConditionArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecOutput{})
@@ -12137,8 +10220,20 @@ func init() {
 	pulumi.RegisterOutputType(HTTPHeaderArrayOutput{})
 	pulumi.RegisterOutputType(HandlerOutput{})
 	pulumi.RegisterOutputType(HandlerPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSpecOutput{})
+	pulumi.RegisterOutputType(InstanceSpecPtrOutput{})
+	pulumi.RegisterOutputType(InstanceStatusOutput{})
+	pulumi.RegisterOutputType(InstanceStatusArrayOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateSpecOutput{})
+	pulumi.RegisterOutputType(InstanceTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(IntOrStringOutput{})
 	pulumi.RegisterOutputType(IntOrStringPtrOutput{})
+	pulumi.RegisterOutputType(JobConditionOutput{})
+	pulumi.RegisterOutputType(JobConditionArrayOutput{})
+	pulumi.RegisterOutputType(JobSpecOutput{})
+	pulumi.RegisterOutputType(JobSpecPtrOutput{})
+	pulumi.RegisterOutputType(JobStatusOutput{})
+	pulumi.RegisterOutputType(JobStatusPtrOutput{})
 	pulumi.RegisterOutputType(KeyToPathOutput{})
 	pulumi.RegisterOutputType(KeyToPathArrayOutput{})
 	pulumi.RegisterOutputType(LifecycleOutput{})
@@ -12147,8 +10242,6 @@ func init() {
 	pulumi.RegisterOutputType(LocalObjectReferencePtrOutput{})
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
-	pulumi.RegisterOutputType(ObjectReferenceOutput{})
-	pulumi.RegisterOutputType(ObjectReferencePtrOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceArrayOutput{})
 	pulumi.RegisterOutputType(PolicyTypeOutput{})
@@ -12191,14 +10284,6 @@ func init() {
 	pulumi.RegisterOutputType(TCPSocketActionPtrOutput{})
 	pulumi.RegisterOutputType(TrafficTargetOutput{})
 	pulumi.RegisterOutputType(TrafficTargetArrayOutput{})
-	pulumi.RegisterOutputType(TriggerConditionOutput{})
-	pulumi.RegisterOutputType(TriggerConditionArrayOutput{})
-	pulumi.RegisterOutputType(TriggerFilterOutput{})
-	pulumi.RegisterOutputType(TriggerFilterPtrOutput{})
-	pulumi.RegisterOutputType(TriggerSpecOutput{})
-	pulumi.RegisterOutputType(TriggerSpecPtrOutput{})
-	pulumi.RegisterOutputType(TriggerStatusOutput{})
-	pulumi.RegisterOutputType(TriggerStatusPtrOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeDeviceOutput{})

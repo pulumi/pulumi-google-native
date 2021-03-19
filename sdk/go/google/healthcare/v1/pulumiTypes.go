@@ -10,6 +10,115 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
+type Attribute struct {
+	// Indicates the name of an attribute defined in the consent store.
+	AttributeDefinitionId *string `pulumi:"attributeDefinitionId"`
+	// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+	Values []string `pulumi:"values"`
+}
+
+// AttributeInput is an input type that accepts AttributeArgs and AttributeOutput values.
+// You can construct a concrete instance of `AttributeInput` via:
+//
+//          AttributeArgs{...}
+type AttributeInput interface {
+	pulumi.Input
+
+	ToAttributeOutput() AttributeOutput
+	ToAttributeOutputWithContext(context.Context) AttributeOutput
+}
+
+// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
+type AttributeArgs struct {
+	// Indicates the name of an attribute defined in the consent store.
+	AttributeDefinitionId pulumi.StringPtrInput `pulumi:"attributeDefinitionId"`
+	// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Attribute)(nil)).Elem()
+}
+
+func (i AttributeArgs) ToAttributeOutput() AttributeOutput {
+	return i.ToAttributeOutputWithContext(context.Background())
+}
+
+func (i AttributeArgs) ToAttributeOutputWithContext(ctx context.Context) AttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttributeOutput)
+}
+
+// AttributeArrayInput is an input type that accepts AttributeArray and AttributeArrayOutput values.
+// You can construct a concrete instance of `AttributeArrayInput` via:
+//
+//          AttributeArray{ AttributeArgs{...} }
+type AttributeArrayInput interface {
+	pulumi.Input
+
+	ToAttributeArrayOutput() AttributeArrayOutput
+	ToAttributeArrayOutputWithContext(context.Context) AttributeArrayOutput
+}
+
+type AttributeArray []AttributeInput
+
+func (AttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Attribute)(nil)).Elem()
+}
+
+func (i AttributeArray) ToAttributeArrayOutput() AttributeArrayOutput {
+	return i.ToAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i AttributeArray) ToAttributeArrayOutputWithContext(ctx context.Context) AttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttributeArrayOutput)
+}
+
+// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
+type AttributeOutput struct{ *pulumi.OutputState }
+
+func (AttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Attribute)(nil)).Elem()
+}
+
+func (o AttributeOutput) ToAttributeOutput() AttributeOutput {
+	return o
+}
+
+func (o AttributeOutput) ToAttributeOutputWithContext(ctx context.Context) AttributeOutput {
+	return o
+}
+
+// Indicates the name of an attribute defined in the consent store.
+func (o AttributeOutput) AttributeDefinitionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Attribute) *string { return v.AttributeDefinitionId }).(pulumi.StringPtrOutput)
+}
+
+// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+func (o AttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Attribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type AttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (AttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Attribute)(nil)).Elem()
+}
+
+func (o AttributeArrayOutput) ToAttributeArrayOutput() AttributeArrayOutput {
+	return o
+}
+
+func (o AttributeArrayOutput) ToAttributeArrayOutputWithContext(ctx context.Context) AttributeArrayOutput {
+	return o
+}
+
+func (o AttributeArrayOutput) Index(i pulumi.IntInput) AttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Attribute {
+		return vs[0].([]Attribute)[vs[1].(int)]
+	}).(AttributeOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -537,14 +646,261 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A (sub) field of a type.
+type Field struct {
+	// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
+	MaxOccurs *int `pulumi:"maxOccurs"`
+	// The minimum number of times this field must be present/repeated.
+	MinOccurs *int `pulumi:"minOccurs"`
+	// The name of the field. For example, "PID-1" or just "1".
+	Name *string `pulumi:"name"`
+	// The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
+	Table *string `pulumi:"table"`
+	// The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
+	Type *string `pulumi:"type"`
+}
+
+// FieldInput is an input type that accepts FieldArgs and FieldOutput values.
+// You can construct a concrete instance of `FieldInput` via:
+//
+//          FieldArgs{...}
+type FieldInput interface {
+	pulumi.Input
+
+	ToFieldOutput() FieldOutput
+	ToFieldOutputWithContext(context.Context) FieldOutput
+}
+
+// A (sub) field of a type.
+type FieldArgs struct {
+	// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
+	MaxOccurs pulumi.IntPtrInput `pulumi:"maxOccurs"`
+	// The minimum number of times this field must be present/repeated.
+	MinOccurs pulumi.IntPtrInput `pulumi:"minOccurs"`
+	// The name of the field. For example, "PID-1" or just "1".
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
+	Table pulumi.StringPtrInput `pulumi:"table"`
+	// The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (FieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Field)(nil)).Elem()
+}
+
+func (i FieldArgs) ToFieldOutput() FieldOutput {
+	return i.ToFieldOutputWithContext(context.Background())
+}
+
+func (i FieldArgs) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldOutput)
+}
+
+// FieldArrayInput is an input type that accepts FieldArray and FieldArrayOutput values.
+// You can construct a concrete instance of `FieldArrayInput` via:
+//
+//          FieldArray{ FieldArgs{...} }
+type FieldArrayInput interface {
+	pulumi.Input
+
+	ToFieldArrayOutput() FieldArrayOutput
+	ToFieldArrayOutputWithContext(context.Context) FieldArrayOutput
+}
+
+type FieldArray []FieldInput
+
+func (FieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Field)(nil)).Elem()
+}
+
+func (i FieldArray) ToFieldArrayOutput() FieldArrayOutput {
+	return i.ToFieldArrayOutputWithContext(context.Background())
+}
+
+func (i FieldArray) ToFieldArrayOutputWithContext(ctx context.Context) FieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldArrayOutput)
+}
+
+// A (sub) field of a type.
+type FieldOutput struct{ *pulumi.OutputState }
+
+func (FieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Field)(nil)).Elem()
+}
+
+func (o FieldOutput) ToFieldOutput() FieldOutput {
+	return o
+}
+
+func (o FieldOutput) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
+	return o
+}
+
+// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
+func (o FieldOutput) MaxOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Field) *int { return v.MaxOccurs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of times this field must be present/repeated.
+func (o FieldOutput) MinOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Field) *int { return v.MinOccurs }).(pulumi.IntPtrOutput)
+}
+
+// The name of the field. For example, "PID-1" or just "1".
+func (o FieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Field) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
+func (o FieldOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Field) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+// The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
+func (o FieldOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Field) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type FieldArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Field)(nil)).Elem()
+}
+
+func (o FieldArrayOutput) ToFieldArrayOutput() FieldArrayOutput {
+	return o
+}
+
+func (o FieldArrayOutput) ToFieldArrayOutputWithContext(ctx context.Context) FieldArrayOutput {
+	return o
+}
+
+func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Field {
+		return vs[0].([]Field)[vs[1].(int)]
+	}).(FieldOutput)
+}
+
+// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+type GoogleCloudHealthcareV1ConsentPolicy struct {
+	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	AuthorizationRule *Expr `pulumi:"authorizationRule"`
+	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
+	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
+}
+
+// GoogleCloudHealthcareV1ConsentPolicyInput is an input type that accepts GoogleCloudHealthcareV1ConsentPolicyArgs and GoogleCloudHealthcareV1ConsentPolicyOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1ConsentPolicyInput` via:
+//
+//          GoogleCloudHealthcareV1ConsentPolicyArgs{...}
+type GoogleCloudHealthcareV1ConsentPolicyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1ConsentPolicyOutput() GoogleCloudHealthcareV1ConsentPolicyOutput
+	ToGoogleCloudHealthcareV1ConsentPolicyOutputWithContext(context.Context) GoogleCloudHealthcareV1ConsentPolicyOutput
+}
+
+// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+type GoogleCloudHealthcareV1ConsentPolicyArgs struct {
+	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	AuthorizationRule ExprPtrInput `pulumi:"authorizationRule"`
+	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
+	ResourceAttributes AttributeArrayInput `pulumi:"resourceAttributes"`
+}
+
+func (GoogleCloudHealthcareV1ConsentPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicy)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1ConsentPolicyArgs) ToGoogleCloudHealthcareV1ConsentPolicyOutput() GoogleCloudHealthcareV1ConsentPolicyOutput {
+	return i.ToGoogleCloudHealthcareV1ConsentPolicyOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1ConsentPolicyArgs) ToGoogleCloudHealthcareV1ConsentPolicyOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1ConsentPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1ConsentPolicyOutput)
+}
+
+// GoogleCloudHealthcareV1ConsentPolicyArrayInput is an input type that accepts GoogleCloudHealthcareV1ConsentPolicyArray and GoogleCloudHealthcareV1ConsentPolicyArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1ConsentPolicyArrayInput` via:
+//
+//          GoogleCloudHealthcareV1ConsentPolicyArray{ GoogleCloudHealthcareV1ConsentPolicyArgs{...} }
+type GoogleCloudHealthcareV1ConsentPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1ConsentPolicyArrayOutput() GoogleCloudHealthcareV1ConsentPolicyArrayOutput
+	ToGoogleCloudHealthcareV1ConsentPolicyArrayOutputWithContext(context.Context) GoogleCloudHealthcareV1ConsentPolicyArrayOutput
+}
+
+type GoogleCloudHealthcareV1ConsentPolicyArray []GoogleCloudHealthcareV1ConsentPolicyInput
+
+func (GoogleCloudHealthcareV1ConsentPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1ConsentPolicy)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1ConsentPolicyArray) ToGoogleCloudHealthcareV1ConsentPolicyArrayOutput() GoogleCloudHealthcareV1ConsentPolicyArrayOutput {
+	return i.ToGoogleCloudHealthcareV1ConsentPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1ConsentPolicyArray) ToGoogleCloudHealthcareV1ConsentPolicyArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1ConsentPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1ConsentPolicyArrayOutput)
+}
+
+// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+type GoogleCloudHealthcareV1ConsentPolicyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1ConsentPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicy)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1ConsentPolicyOutput) ToGoogleCloudHealthcareV1ConsentPolicyOutput() GoogleCloudHealthcareV1ConsentPolicyOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1ConsentPolicyOutput) ToGoogleCloudHealthcareV1ConsentPolicyOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1ConsentPolicyOutput {
+	return o
+}
+
+// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+func (o GoogleCloudHealthcareV1ConsentPolicyOutput) AuthorizationRule() ExprPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1ConsentPolicy) *Expr { return v.AuthorizationRule }).(ExprPtrOutput)
+}
+
+// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
+func (o GoogleCloudHealthcareV1ConsentPolicyOutput) ResourceAttributes() AttributeArrayOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1ConsentPolicy) []Attribute { return v.ResourceAttributes }).(AttributeArrayOutput)
+}
+
+type GoogleCloudHealthcareV1ConsentPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1ConsentPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1ConsentPolicy)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1ConsentPolicyArrayOutput) ToGoogleCloudHealthcareV1ConsentPolicyArrayOutput() GoogleCloudHealthcareV1ConsentPolicyArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1ConsentPolicyArrayOutput) ToGoogleCloudHealthcareV1ConsentPolicyArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1ConsentPolicyArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1ConsentPolicyArrayOutput) Index(i pulumi.IntInput) GoogleCloudHealthcareV1ConsentPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1ConsentPolicy {
+		return vs[0].([]GoogleCloudHealthcareV1ConsentPolicy)[vs[1].(int)]
+	}).(GoogleCloudHealthcareV1ConsentPolicyOutput)
+}
+
 // The configuration for exporting to BigQuery.
 type GoogleCloudHealthcareV1FhirBigQueryDestination struct {
 	// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
 	DatasetUri *string `pulumi:"datasetUri"`
-	// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error.
+	// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
 	Force *bool `pulumi:"force"`
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig *SchemaConfig `pulumi:"schemaConfig"`
+	// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
 // GoogleCloudHealthcareV1FhirBigQueryDestinationInput is an input type that accepts GoogleCloudHealthcareV1FhirBigQueryDestinationArgs and GoogleCloudHealthcareV1FhirBigQueryDestinationOutput values.
@@ -562,10 +918,12 @@ type GoogleCloudHealthcareV1FhirBigQueryDestinationInput interface {
 type GoogleCloudHealthcareV1FhirBigQueryDestinationArgs struct {
 	// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
 	DatasetUri pulumi.StringPtrInput `pulumi:"datasetUri"`
-	// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error.
+	// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
 	Force pulumi.BoolPtrInput `pulumi:"force"`
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig SchemaConfigPtrInput `pulumi:"schemaConfig"`
+	// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
 func (GoogleCloudHealthcareV1FhirBigQueryDestinationArgs) ElementType() reflect.Type {
@@ -651,7 +1009,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) DatasetUri() pulum
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *string { return v.DatasetUri }).(pulumi.StringPtrOutput)
 }
 
-// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error.
+// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *bool { return v.Force }).(pulumi.BoolPtrOutput)
 }
@@ -659,6 +1017,11 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) Force() pulumi.Boo
 // The configuration for the exported BigQuery schema.
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) SchemaConfig() SchemaConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *SchemaConfig { return v.SchemaConfig }).(SchemaConfigPtrOutput)
+}
+
+// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput struct{ *pulumi.OutputState }
@@ -691,7 +1054,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) DatasetUri() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error.
+// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestination) *bool {
 		if v == nil {
@@ -711,9 +1074,237 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) SchemaConfig() 
 	}).(SchemaConfigPtrOutput)
 }
 
+// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WriteDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
+type Hl7SchemaConfig struct {
+	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+	MessageSchemaConfigs map[string]string `pulumi:"messageSchemaConfigs"`
+	// Each VersionSource is tested and only if they all match is the schema used for the message.
+	Version []VersionSource `pulumi:"version"`
+}
+
+// Hl7SchemaConfigInput is an input type that accepts Hl7SchemaConfigArgs and Hl7SchemaConfigOutput values.
+// You can construct a concrete instance of `Hl7SchemaConfigInput` via:
+//
+//          Hl7SchemaConfigArgs{...}
+type Hl7SchemaConfigInput interface {
+	pulumi.Input
+
+	ToHl7SchemaConfigOutput() Hl7SchemaConfigOutput
+	ToHl7SchemaConfigOutputWithContext(context.Context) Hl7SchemaConfigOutput
+}
+
+// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
+type Hl7SchemaConfigArgs struct {
+	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+	MessageSchemaConfigs pulumi.StringMapInput `pulumi:"messageSchemaConfigs"`
+	// Each VersionSource is tested and only if they all match is the schema used for the message.
+	Version VersionSourceArrayInput `pulumi:"version"`
+}
+
+func (Hl7SchemaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7SchemaConfig)(nil)).Elem()
+}
+
+func (i Hl7SchemaConfigArgs) ToHl7SchemaConfigOutput() Hl7SchemaConfigOutput {
+	return i.ToHl7SchemaConfigOutputWithContext(context.Background())
+}
+
+func (i Hl7SchemaConfigArgs) ToHl7SchemaConfigOutputWithContext(ctx context.Context) Hl7SchemaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7SchemaConfigOutput)
+}
+
+// Hl7SchemaConfigArrayInput is an input type that accepts Hl7SchemaConfigArray and Hl7SchemaConfigArrayOutput values.
+// You can construct a concrete instance of `Hl7SchemaConfigArrayInput` via:
+//
+//          Hl7SchemaConfigArray{ Hl7SchemaConfigArgs{...} }
+type Hl7SchemaConfigArrayInput interface {
+	pulumi.Input
+
+	ToHl7SchemaConfigArrayOutput() Hl7SchemaConfigArrayOutput
+	ToHl7SchemaConfigArrayOutputWithContext(context.Context) Hl7SchemaConfigArrayOutput
+}
+
+type Hl7SchemaConfigArray []Hl7SchemaConfigInput
+
+func (Hl7SchemaConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7SchemaConfig)(nil)).Elem()
+}
+
+func (i Hl7SchemaConfigArray) ToHl7SchemaConfigArrayOutput() Hl7SchemaConfigArrayOutput {
+	return i.ToHl7SchemaConfigArrayOutputWithContext(context.Background())
+}
+
+func (i Hl7SchemaConfigArray) ToHl7SchemaConfigArrayOutputWithContext(ctx context.Context) Hl7SchemaConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7SchemaConfigArrayOutput)
+}
+
+// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
+type Hl7SchemaConfigOutput struct{ *pulumi.OutputState }
+
+func (Hl7SchemaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7SchemaConfig)(nil)).Elem()
+}
+
+func (o Hl7SchemaConfigOutput) ToHl7SchemaConfigOutput() Hl7SchemaConfigOutput {
+	return o
+}
+
+func (o Hl7SchemaConfigOutput) ToHl7SchemaConfigOutputWithContext(ctx context.Context) Hl7SchemaConfigOutput {
+	return o
+}
+
+// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+func (o Hl7SchemaConfigOutput) MessageSchemaConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Hl7SchemaConfig) map[string]string { return v.MessageSchemaConfigs }).(pulumi.StringMapOutput)
+}
+
+// Each VersionSource is tested and only if they all match is the schema used for the message.
+func (o Hl7SchemaConfigOutput) Version() VersionSourceArrayOutput {
+	return o.ApplyT(func(v Hl7SchemaConfig) []VersionSource { return v.Version }).(VersionSourceArrayOutput)
+}
+
+type Hl7SchemaConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (Hl7SchemaConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7SchemaConfig)(nil)).Elem()
+}
+
+func (o Hl7SchemaConfigArrayOutput) ToHl7SchemaConfigArrayOutput() Hl7SchemaConfigArrayOutput {
+	return o
+}
+
+func (o Hl7SchemaConfigArrayOutput) ToHl7SchemaConfigArrayOutputWithContext(ctx context.Context) Hl7SchemaConfigArrayOutput {
+	return o
+}
+
+func (o Hl7SchemaConfigArrayOutput) Index(i pulumi.IntInput) Hl7SchemaConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7SchemaConfig {
+		return vs[0].([]Hl7SchemaConfig)[vs[1].(int)]
+	}).(Hl7SchemaConfigOutput)
+}
+
+// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
+type Hl7TypesConfig struct {
+	// The HL7v2 type definitions.
+	Type []Type `pulumi:"type"`
+	// The version selectors that this config applies to. A message must match ALL version sources to apply.
+	Version []VersionSource `pulumi:"version"`
+}
+
+// Hl7TypesConfigInput is an input type that accepts Hl7TypesConfigArgs and Hl7TypesConfigOutput values.
+// You can construct a concrete instance of `Hl7TypesConfigInput` via:
+//
+//          Hl7TypesConfigArgs{...}
+type Hl7TypesConfigInput interface {
+	pulumi.Input
+
+	ToHl7TypesConfigOutput() Hl7TypesConfigOutput
+	ToHl7TypesConfigOutputWithContext(context.Context) Hl7TypesConfigOutput
+}
+
+// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
+type Hl7TypesConfigArgs struct {
+	// The HL7v2 type definitions.
+	Type TypeArrayInput `pulumi:"type"`
+	// The version selectors that this config applies to. A message must match ALL version sources to apply.
+	Version VersionSourceArrayInput `pulumi:"version"`
+}
+
+func (Hl7TypesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7TypesConfig)(nil)).Elem()
+}
+
+func (i Hl7TypesConfigArgs) ToHl7TypesConfigOutput() Hl7TypesConfigOutput {
+	return i.ToHl7TypesConfigOutputWithContext(context.Background())
+}
+
+func (i Hl7TypesConfigArgs) ToHl7TypesConfigOutputWithContext(ctx context.Context) Hl7TypesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7TypesConfigOutput)
+}
+
+// Hl7TypesConfigArrayInput is an input type that accepts Hl7TypesConfigArray and Hl7TypesConfigArrayOutput values.
+// You can construct a concrete instance of `Hl7TypesConfigArrayInput` via:
+//
+//          Hl7TypesConfigArray{ Hl7TypesConfigArgs{...} }
+type Hl7TypesConfigArrayInput interface {
+	pulumi.Input
+
+	ToHl7TypesConfigArrayOutput() Hl7TypesConfigArrayOutput
+	ToHl7TypesConfigArrayOutputWithContext(context.Context) Hl7TypesConfigArrayOutput
+}
+
+type Hl7TypesConfigArray []Hl7TypesConfigInput
+
+func (Hl7TypesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7TypesConfig)(nil)).Elem()
+}
+
+func (i Hl7TypesConfigArray) ToHl7TypesConfigArrayOutput() Hl7TypesConfigArrayOutput {
+	return i.ToHl7TypesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i Hl7TypesConfigArray) ToHl7TypesConfigArrayOutputWithContext(ctx context.Context) Hl7TypesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7TypesConfigArrayOutput)
+}
+
+// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
+type Hl7TypesConfigOutput struct{ *pulumi.OutputState }
+
+func (Hl7TypesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7TypesConfig)(nil)).Elem()
+}
+
+func (o Hl7TypesConfigOutput) ToHl7TypesConfigOutput() Hl7TypesConfigOutput {
+	return o
+}
+
+func (o Hl7TypesConfigOutput) ToHl7TypesConfigOutputWithContext(ctx context.Context) Hl7TypesConfigOutput {
+	return o
+}
+
+// The HL7v2 type definitions.
+func (o Hl7TypesConfigOutput) Type() TypeArrayOutput {
+	return o.ApplyT(func(v Hl7TypesConfig) []Type { return v.Type }).(TypeArrayOutput)
+}
+
+// The version selectors that this config applies to. A message must match ALL version sources to apply.
+func (o Hl7TypesConfigOutput) Version() VersionSourceArrayOutput {
+	return o.ApplyT(func(v Hl7TypesConfig) []VersionSource { return v.Version }).(VersionSourceArrayOutput)
+}
+
+type Hl7TypesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (Hl7TypesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7TypesConfig)(nil)).Elem()
+}
+
+func (o Hl7TypesConfigArrayOutput) ToHl7TypesConfigArrayOutput() Hl7TypesConfigArrayOutput {
+	return o
+}
+
+func (o Hl7TypesConfigArrayOutput) ToHl7TypesConfigArrayOutputWithContext(ctx context.Context) Hl7TypesConfigArrayOutput {
+	return o
+}
+
+func (o Hl7TypesConfigArrayOutput) Index(i pulumi.IntInput) Hl7TypesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7TypesConfig {
+		return vs[0].([]Hl7TypesConfig)[vs[1].(int)]
+	}).(Hl7TypesConfigOutput)
+}
+
 // Specifies where and whether to send notifications upon changes to a data store.
 type Hl7V2NotificationConfig struct {
-	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
+	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
 	Filter *string `pulumi:"filter"`
 	// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It's guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification cannot be published to Cloud Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).
 	PubsubTopic *string `pulumi:"pubsubTopic"`
@@ -732,7 +1323,7 @@ type Hl7V2NotificationConfigInput interface {
 
 // Specifies where and whether to send notifications upon changes to a data store.
 type Hl7V2NotificationConfigArgs struct {
-	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
+	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It's guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification cannot be published to Cloud Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
@@ -790,7 +1381,7 @@ func (o Hl7V2NotificationConfigOutput) ToHl7V2NotificationConfigOutputWithContex
 	return o
 }
 
-// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
+// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
 func (o Hl7V2NotificationConfigOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7V2NotificationConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -820,6 +1411,204 @@ func (o Hl7V2NotificationConfigArrayOutput) Index(i pulumi.IntInput) Hl7V2Notifi
 	}).(Hl7V2NotificationConfigOutput)
 }
 
+// Raw bytes representing consent artifact content.
+type Image struct {
+	// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+	GcsUri *string `pulumi:"gcsUri"`
+	// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+	RawBytes *string `pulumi:"rawBytes"`
+}
+
+// ImageInput is an input type that accepts ImageArgs and ImageOutput values.
+// You can construct a concrete instance of `ImageInput` via:
+//
+//          ImageArgs{...}
+type ImageInput interface {
+	pulumi.Input
+
+	ToImageOutput() ImageOutput
+	ToImageOutputWithContext(context.Context) ImageOutput
+}
+
+// Raw bytes representing consent artifact content.
+type ImageArgs struct {
+	// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+	GcsUri pulumi.StringPtrInput `pulumi:"gcsUri"`
+	// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+	RawBytes pulumi.StringPtrInput `pulumi:"rawBytes"`
+}
+
+func (ImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Image)(nil)).Elem()
+}
+
+func (i ImageArgs) ToImageOutput() ImageOutput {
+	return i.ToImageOutputWithContext(context.Background())
+}
+
+func (i ImageArgs) ToImageOutputWithContext(ctx context.Context) ImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageOutput)
+}
+
+func (i ImageArgs) ToImagePtrOutput() ImagePtrOutput {
+	return i.ToImagePtrOutputWithContext(context.Background())
+}
+
+func (i ImageArgs) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageOutput).ToImagePtrOutputWithContext(ctx)
+}
+
+// ImagePtrInput is an input type that accepts ImageArgs, ImagePtr and ImagePtrOutput values.
+// You can construct a concrete instance of `ImagePtrInput` via:
+//
+//          ImageArgs{...}
+//
+//  or:
+//
+//          nil
+type ImagePtrInput interface {
+	pulumi.Input
+
+	ToImagePtrOutput() ImagePtrOutput
+	ToImagePtrOutputWithContext(context.Context) ImagePtrOutput
+}
+
+type imagePtrType ImageArgs
+
+func ImagePtr(v *ImageArgs) ImagePtrInput {
+	return (*imagePtrType)(v)
+}
+
+func (*imagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Image)(nil)).Elem()
+}
+
+func (i *imagePtrType) ToImagePtrOutput() ImagePtrOutput {
+	return i.ToImagePtrOutputWithContext(context.Background())
+}
+
+func (i *imagePtrType) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImagePtrOutput)
+}
+
+// ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
+// You can construct a concrete instance of `ImageArrayInput` via:
+//
+//          ImageArray{ ImageArgs{...} }
+type ImageArrayInput interface {
+	pulumi.Input
+
+	ToImageArrayOutput() ImageArrayOutput
+	ToImageArrayOutputWithContext(context.Context) ImageArrayOutput
+}
+
+type ImageArray []ImageInput
+
+func (ImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Image)(nil)).Elem()
+}
+
+func (i ImageArray) ToImageArrayOutput() ImageArrayOutput {
+	return i.ToImageArrayOutputWithContext(context.Background())
+}
+
+func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageArrayOutput)
+}
+
+// Raw bytes representing consent artifact content.
+type ImageOutput struct{ *pulumi.OutputState }
+
+func (ImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Image)(nil)).Elem()
+}
+
+func (o ImageOutput) ToImageOutput() ImageOutput {
+	return o
+}
+
+func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
+	return o
+}
+
+func (o ImageOutput) ToImagePtrOutput() ImagePtrOutput {
+	return o.ToImagePtrOutputWithContext(context.Background())
+}
+
+func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
+	return o.ApplyT(func(v Image) *Image {
+		return &v
+	}).(ImagePtrOutput)
+}
+
+// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+func (o ImageOutput) GcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Image) *string { return v.GcsUri }).(pulumi.StringPtrOutput)
+}
+
+// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+func (o ImageOutput) RawBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Image) *string { return v.RawBytes }).(pulumi.StringPtrOutput)
+}
+
+type ImagePtrOutput struct{ *pulumi.OutputState }
+
+func (ImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Image)(nil)).Elem()
+}
+
+func (o ImagePtrOutput) ToImagePtrOutput() ImagePtrOutput {
+	return o
+}
+
+func (o ImagePtrOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutput {
+	return o
+}
+
+func (o ImagePtrOutput) Elem() ImageOutput {
+	return o.ApplyT(func(v *Image) Image { return *v }).(ImageOutput)
+}
+
+// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+func (o ImagePtrOutput) GcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+func (o ImagePtrOutput) RawBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Image)(nil)).Elem()
+}
+
+func (o ImageArrayOutput) ToImageArrayOutput() ImageArrayOutput {
+	return o
+}
+
+func (o ImageArrayOutput) ToImageArrayOutputWithContext(ctx context.Context) ImageArrayOutput {
+	return o
+}
+
+func (o ImageArrayOutput) Index(i pulumi.IntInput) ImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Image {
+		return vs[0].([]Image)[vs[1].(int)]
+	}).(ImageOutput)
+}
+
 // A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.
 type MessageType struct {
 	// Output only. The datetime when the message was created. Set by the server.
@@ -836,6 +1625,8 @@ type MessageType struct {
 	ParsedData *ParsedData `pulumi:"parsedData"`
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds []PatientId `pulumi:"patientIds"`
+	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+	SchematizedData *SchematizedData `pulumi:"schematizedData"`
 	// The hospital that this message came from. MSH-4.
 	SendFacility *string `pulumi:"sendFacility"`
 	// The datetime the sending application sent this message. MSH-7.
@@ -869,6 +1660,8 @@ type MessageTypeArgs struct {
 	ParsedData ParsedDataPtrInput `pulumi:"parsedData"`
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds PatientIdArrayInput `pulumi:"patientIds"`
+	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+	SchematizedData SchematizedDataPtrInput `pulumi:"schematizedData"`
 	// The hospital that this message came from. MSH-4.
 	SendFacility pulumi.StringPtrInput `pulumi:"sendFacility"`
 	// The datetime the sending application sent this message. MSH-7.
@@ -988,6 +1781,11 @@ func (o MessageTypeOutput) PatientIds() PatientIdArrayOutput {
 	return o.ApplyT(func(v MessageType) []PatientId { return v.PatientIds }).(PatientIdArrayOutput)
 }
 
+// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+func (o MessageTypeOutput) SchematizedData() SchematizedDataPtrOutput {
+	return o.ApplyT(func(v MessageType) *SchematizedData { return v.SchematizedData }).(SchematizedDataPtrOutput)
+}
+
 // The hospital that this message came from. MSH-4.
 func (o MessageTypeOutput) SendFacility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MessageType) *string { return v.SendFacility }).(pulumi.StringPtrOutput)
@@ -1084,6 +1882,16 @@ func (o MessageTypePtrOutput) PatientIds() PatientIdArrayOutput {
 		}
 		return v.PatientIds
 	}).(PatientIdArrayOutput)
+}
+
+// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+func (o MessageTypePtrOutput) SchematizedData() SchematizedDataPtrOutput {
+	return o.ApplyT(func(v *MessageType) *SchematizedData {
+		if v == nil {
+			return nil
+		}
+		return v.SchematizedData
+	}).(SchematizedDataPtrOutput)
 }
 
 // The hospital that this message came from. MSH-4.
@@ -1373,7 +2181,9 @@ func (o ParsedDataPtrOutput) Segments() SegmentArrayOutput {
 type ParserConfig struct {
 	// Determines whether messages with no header are allowed.
 	AllowNullHeader *bool `pulumi:"allowNullHeader"`
-	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator.
+	// Schemas used to parse messages in this store, if schematized parsing is desired.
+	Schema *SchemaPackage `pulumi:"schema"`
+	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
 }
 
@@ -1392,7 +2202,9 @@ type ParserConfigInput interface {
 type ParserConfigArgs struct {
 	// Determines whether messages with no header are allowed.
 	AllowNullHeader pulumi.BoolPtrInput `pulumi:"allowNullHeader"`
-	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator.
+	// Schemas used to parse messages in this store, if schematized parsing is desired.
+	Schema SchemaPackagePtrInput `pulumi:"schema"`
+	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
 }
 
@@ -1479,7 +2291,12 @@ func (o ParserConfigOutput) AllowNullHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *bool { return v.AllowNullHeader }).(pulumi.BoolPtrOutput)
 }
 
-// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator.
+// Schemas used to parse messages in this store, if schematized parsing is desired.
+func (o ParserConfigOutput) Schema() SchemaPackagePtrOutput {
+	return o.ApplyT(func(v ParserConfig) *SchemaPackage { return v.Schema }).(SchemaPackagePtrOutput)
+}
+
+// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 func (o ParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
@@ -1512,7 +2329,17 @@ func (o ParserConfigPtrOutput) AllowNullHeader() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator.
+// Schemas used to parse messages in this store, if schematized parsing is desired.
+func (o ParserConfigPtrOutput) Schema() SchemaPackagePtrOutput {
+	return o.ApplyT(func(v *ParserConfig) *SchemaPackage {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(SchemaPackagePtrOutput)
+}
+
+// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
 func (o ParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ParserConfig) *string {
 		if v == nil {
@@ -1975,6 +2802,350 @@ func (o SchemaConfigPtrOutput) SchemaType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A schema package contains a set of schemas and type definitions.
+type SchemaPackage struct {
+	// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
+	IgnoreMinOccurs *bool `pulumi:"ignoreMinOccurs"`
+	// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
+	Schemas []Hl7SchemaConfig `pulumi:"schemas"`
+	// Determines how messages that fail to parse are handled.
+	SchematizedParsingType *string `pulumi:"schematizedParsingType"`
+	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
+	Types []Hl7TypesConfig `pulumi:"types"`
+}
+
+// SchemaPackageInput is an input type that accepts SchemaPackageArgs and SchemaPackageOutput values.
+// You can construct a concrete instance of `SchemaPackageInput` via:
+//
+//          SchemaPackageArgs{...}
+type SchemaPackageInput interface {
+	pulumi.Input
+
+	ToSchemaPackageOutput() SchemaPackageOutput
+	ToSchemaPackageOutputWithContext(context.Context) SchemaPackageOutput
+}
+
+// A schema package contains a set of schemas and type definitions.
+type SchemaPackageArgs struct {
+	// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
+	IgnoreMinOccurs pulumi.BoolPtrInput `pulumi:"ignoreMinOccurs"`
+	// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
+	Schemas Hl7SchemaConfigArrayInput `pulumi:"schemas"`
+	// Determines how messages that fail to parse are handled.
+	SchematizedParsingType pulumi.StringPtrInput `pulumi:"schematizedParsingType"`
+	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
+	Types Hl7TypesConfigArrayInput `pulumi:"types"`
+}
+
+func (SchemaPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPackage)(nil)).Elem()
+}
+
+func (i SchemaPackageArgs) ToSchemaPackageOutput() SchemaPackageOutput {
+	return i.ToSchemaPackageOutputWithContext(context.Background())
+}
+
+func (i SchemaPackageArgs) ToSchemaPackageOutputWithContext(ctx context.Context) SchemaPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaPackageOutput)
+}
+
+func (i SchemaPackageArgs) ToSchemaPackagePtrOutput() SchemaPackagePtrOutput {
+	return i.ToSchemaPackagePtrOutputWithContext(context.Background())
+}
+
+func (i SchemaPackageArgs) ToSchemaPackagePtrOutputWithContext(ctx context.Context) SchemaPackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaPackageOutput).ToSchemaPackagePtrOutputWithContext(ctx)
+}
+
+// SchemaPackagePtrInput is an input type that accepts SchemaPackageArgs, SchemaPackagePtr and SchemaPackagePtrOutput values.
+// You can construct a concrete instance of `SchemaPackagePtrInput` via:
+//
+//          SchemaPackageArgs{...}
+//
+//  or:
+//
+//          nil
+type SchemaPackagePtrInput interface {
+	pulumi.Input
+
+	ToSchemaPackagePtrOutput() SchemaPackagePtrOutput
+	ToSchemaPackagePtrOutputWithContext(context.Context) SchemaPackagePtrOutput
+}
+
+type schemaPackagePtrType SchemaPackageArgs
+
+func SchemaPackagePtr(v *SchemaPackageArgs) SchemaPackagePtrInput {
+	return (*schemaPackagePtrType)(v)
+}
+
+func (*schemaPackagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaPackage)(nil)).Elem()
+}
+
+func (i *schemaPackagePtrType) ToSchemaPackagePtrOutput() SchemaPackagePtrOutput {
+	return i.ToSchemaPackagePtrOutputWithContext(context.Background())
+}
+
+func (i *schemaPackagePtrType) ToSchemaPackagePtrOutputWithContext(ctx context.Context) SchemaPackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaPackagePtrOutput)
+}
+
+// A schema package contains a set of schemas and type definitions.
+type SchemaPackageOutput struct{ *pulumi.OutputState }
+
+func (SchemaPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPackage)(nil)).Elem()
+}
+
+func (o SchemaPackageOutput) ToSchemaPackageOutput() SchemaPackageOutput {
+	return o
+}
+
+func (o SchemaPackageOutput) ToSchemaPackageOutputWithContext(ctx context.Context) SchemaPackageOutput {
+	return o
+}
+
+func (o SchemaPackageOutput) ToSchemaPackagePtrOutput() SchemaPackagePtrOutput {
+	return o.ToSchemaPackagePtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageOutput) ToSchemaPackagePtrOutputWithContext(ctx context.Context) SchemaPackagePtrOutput {
+	return o.ApplyT(func(v SchemaPackage) *SchemaPackage {
+		return &v
+	}).(SchemaPackagePtrOutput)
+}
+
+// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
+func (o SchemaPackageOutput) IgnoreMinOccurs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchemaPackage) *bool { return v.IgnoreMinOccurs }).(pulumi.BoolPtrOutput)
+}
+
+// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
+func (o SchemaPackageOutput) Schemas() Hl7SchemaConfigArrayOutput {
+	return o.ApplyT(func(v SchemaPackage) []Hl7SchemaConfig { return v.Schemas }).(Hl7SchemaConfigArrayOutput)
+}
+
+// Determines how messages that fail to parse are handled.
+func (o SchemaPackageOutput) SchematizedParsingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaPackage) *string { return v.SchematizedParsingType }).(pulumi.StringPtrOutput)
+}
+
+// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
+func (o SchemaPackageOutput) Types() Hl7TypesConfigArrayOutput {
+	return o.ApplyT(func(v SchemaPackage) []Hl7TypesConfig { return v.Types }).(Hl7TypesConfigArrayOutput)
+}
+
+type SchemaPackagePtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaPackagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaPackage)(nil)).Elem()
+}
+
+func (o SchemaPackagePtrOutput) ToSchemaPackagePtrOutput() SchemaPackagePtrOutput {
+	return o
+}
+
+func (o SchemaPackagePtrOutput) ToSchemaPackagePtrOutputWithContext(ctx context.Context) SchemaPackagePtrOutput {
+	return o
+}
+
+func (o SchemaPackagePtrOutput) Elem() SchemaPackageOutput {
+	return o.ApplyT(func(v *SchemaPackage) SchemaPackage { return *v }).(SchemaPackageOutput)
+}
+
+// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
+func (o SchemaPackagePtrOutput) IgnoreMinOccurs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchemaPackage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreMinOccurs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
+func (o SchemaPackagePtrOutput) Schemas() Hl7SchemaConfigArrayOutput {
+	return o.ApplyT(func(v *SchemaPackage) []Hl7SchemaConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(Hl7SchemaConfigArrayOutput)
+}
+
+// Determines how messages that fail to parse are handled.
+func (o SchemaPackagePtrOutput) SchematizedParsingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaPackage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchematizedParsingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
+func (o SchemaPackagePtrOutput) Types() Hl7TypesConfigArrayOutput {
+	return o.ApplyT(func(v *SchemaPackage) []Hl7TypesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(Hl7TypesConfigArrayOutput)
+}
+
+// The content of an HL7v2 message in a structured format as specified by a schema.
+type SchematizedData struct {
+	// JSON output of the parser.
+	Data *string `pulumi:"data"`
+	// The error output of the parser.
+	Error *string `pulumi:"error"`
+}
+
+// SchematizedDataInput is an input type that accepts SchematizedDataArgs and SchematizedDataOutput values.
+// You can construct a concrete instance of `SchematizedDataInput` via:
+//
+//          SchematizedDataArgs{...}
+type SchematizedDataInput interface {
+	pulumi.Input
+
+	ToSchematizedDataOutput() SchematizedDataOutput
+	ToSchematizedDataOutputWithContext(context.Context) SchematizedDataOutput
+}
+
+// The content of an HL7v2 message in a structured format as specified by a schema.
+type SchematizedDataArgs struct {
+	// JSON output of the parser.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The error output of the parser.
+	Error pulumi.StringPtrInput `pulumi:"error"`
+}
+
+func (SchematizedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchematizedData)(nil)).Elem()
+}
+
+func (i SchematizedDataArgs) ToSchematizedDataOutput() SchematizedDataOutput {
+	return i.ToSchematizedDataOutputWithContext(context.Background())
+}
+
+func (i SchematizedDataArgs) ToSchematizedDataOutputWithContext(ctx context.Context) SchematizedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchematizedDataOutput)
+}
+
+func (i SchematizedDataArgs) ToSchematizedDataPtrOutput() SchematizedDataPtrOutput {
+	return i.ToSchematizedDataPtrOutputWithContext(context.Background())
+}
+
+func (i SchematizedDataArgs) ToSchematizedDataPtrOutputWithContext(ctx context.Context) SchematizedDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchematizedDataOutput).ToSchematizedDataPtrOutputWithContext(ctx)
+}
+
+// SchematizedDataPtrInput is an input type that accepts SchematizedDataArgs, SchematizedDataPtr and SchematizedDataPtrOutput values.
+// You can construct a concrete instance of `SchematizedDataPtrInput` via:
+//
+//          SchematizedDataArgs{...}
+//
+//  or:
+//
+//          nil
+type SchematizedDataPtrInput interface {
+	pulumi.Input
+
+	ToSchematizedDataPtrOutput() SchematizedDataPtrOutput
+	ToSchematizedDataPtrOutputWithContext(context.Context) SchematizedDataPtrOutput
+}
+
+type schematizedDataPtrType SchematizedDataArgs
+
+func SchematizedDataPtr(v *SchematizedDataArgs) SchematizedDataPtrInput {
+	return (*schematizedDataPtrType)(v)
+}
+
+func (*schematizedDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchematizedData)(nil)).Elem()
+}
+
+func (i *schematizedDataPtrType) ToSchematizedDataPtrOutput() SchematizedDataPtrOutput {
+	return i.ToSchematizedDataPtrOutputWithContext(context.Background())
+}
+
+func (i *schematizedDataPtrType) ToSchematizedDataPtrOutputWithContext(ctx context.Context) SchematizedDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchematizedDataPtrOutput)
+}
+
+// The content of an HL7v2 message in a structured format as specified by a schema.
+type SchematizedDataOutput struct{ *pulumi.OutputState }
+
+func (SchematizedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchematizedData)(nil)).Elem()
+}
+
+func (o SchematizedDataOutput) ToSchematizedDataOutput() SchematizedDataOutput {
+	return o
+}
+
+func (o SchematizedDataOutput) ToSchematizedDataOutputWithContext(ctx context.Context) SchematizedDataOutput {
+	return o
+}
+
+func (o SchematizedDataOutput) ToSchematizedDataPtrOutput() SchematizedDataPtrOutput {
+	return o.ToSchematizedDataPtrOutputWithContext(context.Background())
+}
+
+func (o SchematizedDataOutput) ToSchematizedDataPtrOutputWithContext(ctx context.Context) SchematizedDataPtrOutput {
+	return o.ApplyT(func(v SchematizedData) *SchematizedData {
+		return &v
+	}).(SchematizedDataPtrOutput)
+}
+
+// JSON output of the parser.
+func (o SchematizedDataOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchematizedData) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The error output of the parser.
+func (o SchematizedDataOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchematizedData) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+type SchematizedDataPtrOutput struct{ *pulumi.OutputState }
+
+func (SchematizedDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchematizedData)(nil)).Elem()
+}
+
+func (o SchematizedDataPtrOutput) ToSchematizedDataPtrOutput() SchematizedDataPtrOutput {
+	return o
+}
+
+func (o SchematizedDataPtrOutput) ToSchematizedDataPtrOutputWithContext(ctx context.Context) SchematizedDataPtrOutput {
+	return o
+}
+
+func (o SchematizedDataPtrOutput) Elem() SchematizedDataOutput {
+	return o.ApplyT(func(v *SchematizedData) SchematizedData { return *v }).(SchematizedDataOutput)
+}
+
+// JSON output of the parser.
+func (o SchematizedDataPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchematizedData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error output of the parser.
+func (o SchematizedDataPtrOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchematizedData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Error
+	}).(pulumi.StringPtrOutput)
+}
+
 // A segment in a structured format.
 type Segment struct {
 	// A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
@@ -2093,6 +3264,197 @@ func (o SegmentArrayOutput) Index(i pulumi.IntInput) SegmentOutput {
 	}).(SegmentOutput)
 }
 
+// User signature.
+type Signature struct {
+	// Optional. An image of the user's signature.
+	Image *Image `pulumi:"image"`
+	// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Optional. Timestamp of the signature.
+	SignatureTime *string `pulumi:"signatureTime"`
+	// Required. User's UUID provided by the client.
+	UserId *string `pulumi:"userId"`
+}
+
+// SignatureInput is an input type that accepts SignatureArgs and SignatureOutput values.
+// You can construct a concrete instance of `SignatureInput` via:
+//
+//          SignatureArgs{...}
+type SignatureInput interface {
+	pulumi.Input
+
+	ToSignatureOutput() SignatureOutput
+	ToSignatureOutputWithContext(context.Context) SignatureOutput
+}
+
+// User signature.
+type SignatureArgs struct {
+	// Optional. An image of the user's signature.
+	Image ImagePtrInput `pulumi:"image"`
+	// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Optional. Timestamp of the signature.
+	SignatureTime pulumi.StringPtrInput `pulumi:"signatureTime"`
+	// Required. User's UUID provided by the client.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (SignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Signature)(nil)).Elem()
+}
+
+func (i SignatureArgs) ToSignatureOutput() SignatureOutput {
+	return i.ToSignatureOutputWithContext(context.Background())
+}
+
+func (i SignatureArgs) ToSignatureOutputWithContext(ctx context.Context) SignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignatureOutput)
+}
+
+func (i SignatureArgs) ToSignaturePtrOutput() SignaturePtrOutput {
+	return i.ToSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i SignatureArgs) ToSignaturePtrOutputWithContext(ctx context.Context) SignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignatureOutput).ToSignaturePtrOutputWithContext(ctx)
+}
+
+// SignaturePtrInput is an input type that accepts SignatureArgs, SignaturePtr and SignaturePtrOutput values.
+// You can construct a concrete instance of `SignaturePtrInput` via:
+//
+//          SignatureArgs{...}
+//
+//  or:
+//
+//          nil
+type SignaturePtrInput interface {
+	pulumi.Input
+
+	ToSignaturePtrOutput() SignaturePtrOutput
+	ToSignaturePtrOutputWithContext(context.Context) SignaturePtrOutput
+}
+
+type signaturePtrType SignatureArgs
+
+func SignaturePtr(v *SignatureArgs) SignaturePtrInput {
+	return (*signaturePtrType)(v)
+}
+
+func (*signaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Signature)(nil)).Elem()
+}
+
+func (i *signaturePtrType) ToSignaturePtrOutput() SignaturePtrOutput {
+	return i.ToSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i *signaturePtrType) ToSignaturePtrOutputWithContext(ctx context.Context) SignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignaturePtrOutput)
+}
+
+// User signature.
+type SignatureOutput struct{ *pulumi.OutputState }
+
+func (SignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Signature)(nil)).Elem()
+}
+
+func (o SignatureOutput) ToSignatureOutput() SignatureOutput {
+	return o
+}
+
+func (o SignatureOutput) ToSignatureOutputWithContext(ctx context.Context) SignatureOutput {
+	return o
+}
+
+func (o SignatureOutput) ToSignaturePtrOutput() SignaturePtrOutput {
+	return o.ToSignaturePtrOutputWithContext(context.Background())
+}
+
+func (o SignatureOutput) ToSignaturePtrOutputWithContext(ctx context.Context) SignaturePtrOutput {
+	return o.ApplyT(func(v Signature) *Signature {
+		return &v
+	}).(SignaturePtrOutput)
+}
+
+// Optional. An image of the user's signature.
+func (o SignatureOutput) Image() ImagePtrOutput {
+	return o.ApplyT(func(v Signature) *Image { return v.Image }).(ImagePtrOutput)
+}
+
+// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
+func (o SignatureOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Signature) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. Timestamp of the signature.
+func (o SignatureOutput) SignatureTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Signature) *string { return v.SignatureTime }).(pulumi.StringPtrOutput)
+}
+
+// Required. User's UUID provided by the client.
+func (o SignatureOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Signature) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type SignaturePtrOutput struct{ *pulumi.OutputState }
+
+func (SignaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Signature)(nil)).Elem()
+}
+
+func (o SignaturePtrOutput) ToSignaturePtrOutput() SignaturePtrOutput {
+	return o
+}
+
+func (o SignaturePtrOutput) ToSignaturePtrOutputWithContext(ctx context.Context) SignaturePtrOutput {
+	return o
+}
+
+func (o SignaturePtrOutput) Elem() SignatureOutput {
+	return o.ApplyT(func(v *Signature) Signature { return *v }).(SignatureOutput)
+}
+
+// Optional. An image of the user's signature.
+func (o SignaturePtrOutput) Image() ImagePtrOutput {
+	return o.ApplyT(func(v *Signature) *Image {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(ImagePtrOutput)
+}
+
+// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
+func (o SignaturePtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Signature) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Timestamp of the signature.
+func (o SignaturePtrOutput) SignatureTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Signature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. User's UUID provided by the client.
+func (o SignaturePtrOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Signature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Contains configuration for streaming FHIR export.
 type StreamConfig struct {
 	// The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are appended to the corresponding BigQuery tables. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).
@@ -2202,7 +3564,236 @@ func (o StreamConfigArrayOutput) Index(i pulumi.IntInput) StreamConfigOutput {
 	}).(StreamConfigOutput)
 }
 
+// A type definition for some HL7v2 type (incl. Segments and Datatypes).
+type Type struct {
+	// The (sub) fields this type has (if not primitive).
+	Fields []Field `pulumi:"fields"`
+	// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
+	Name *string `pulumi:"name"`
+	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
+	Primitive *string `pulumi:"primitive"`
+}
+
+// TypeInput is an input type that accepts TypeArgs and TypeOutput values.
+// You can construct a concrete instance of `TypeInput` via:
+//
+//          TypeArgs{...}
+type TypeInput interface {
+	pulumi.Input
+
+	ToTypeOutput() TypeOutput
+	ToTypeOutputWithContext(context.Context) TypeOutput
+}
+
+// A type definition for some HL7v2 type (incl. Segments and Datatypes).
+type TypeArgs struct {
+	// The (sub) fields this type has (if not primitive).
+	Fields FieldArrayInput `pulumi:"fields"`
+	// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
+	Primitive pulumi.StringPtrInput `pulumi:"primitive"`
+}
+
+func (TypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Type)(nil)).Elem()
+}
+
+func (i TypeArgs) ToTypeOutput() TypeOutput {
+	return i.ToTypeOutputWithContext(context.Background())
+}
+
+func (i TypeArgs) ToTypeOutputWithContext(ctx context.Context) TypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TypeOutput)
+}
+
+// TypeArrayInput is an input type that accepts TypeArray and TypeArrayOutput values.
+// You can construct a concrete instance of `TypeArrayInput` via:
+//
+//          TypeArray{ TypeArgs{...} }
+type TypeArrayInput interface {
+	pulumi.Input
+
+	ToTypeArrayOutput() TypeArrayOutput
+	ToTypeArrayOutputWithContext(context.Context) TypeArrayOutput
+}
+
+type TypeArray []TypeInput
+
+func (TypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Type)(nil)).Elem()
+}
+
+func (i TypeArray) ToTypeArrayOutput() TypeArrayOutput {
+	return i.ToTypeArrayOutputWithContext(context.Background())
+}
+
+func (i TypeArray) ToTypeArrayOutputWithContext(ctx context.Context) TypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TypeArrayOutput)
+}
+
+// A type definition for some HL7v2 type (incl. Segments and Datatypes).
+type TypeOutput struct{ *pulumi.OutputState }
+
+func (TypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Type)(nil)).Elem()
+}
+
+func (o TypeOutput) ToTypeOutput() TypeOutput {
+	return o
+}
+
+func (o TypeOutput) ToTypeOutputWithContext(ctx context.Context) TypeOutput {
+	return o
+}
+
+// The (sub) fields this type has (if not primitive).
+func (o TypeOutput) Fields() FieldArrayOutput {
+	return o.ApplyT(func(v Type) []Field { return v.Fields }).(FieldArrayOutput)
+}
+
+// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
+func (o TypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Type) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
+func (o TypeOutput) Primitive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Type) *string { return v.Primitive }).(pulumi.StringPtrOutput)
+}
+
+type TypeArrayOutput struct{ *pulumi.OutputState }
+
+func (TypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Type)(nil)).Elem()
+}
+
+func (o TypeArrayOutput) ToTypeArrayOutput() TypeArrayOutput {
+	return o
+}
+
+func (o TypeArrayOutput) ToTypeArrayOutputWithContext(ctx context.Context) TypeArrayOutput {
+	return o
+}
+
+func (o TypeArrayOutput) Index(i pulumi.IntInput) TypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Type {
+		return vs[0].([]Type)[vs[1].(int)]
+	}).(TypeOutput)
+}
+
+// Describes a selector for extracting and matching an MSH field to a value.
+type VersionSource struct {
+	// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
+	MshField *string `pulumi:"mshField"`
+	// The value to match with the field. For example, "My Application Name" or "2.3".
+	Value *string `pulumi:"value"`
+}
+
+// VersionSourceInput is an input type that accepts VersionSourceArgs and VersionSourceOutput values.
+// You can construct a concrete instance of `VersionSourceInput` via:
+//
+//          VersionSourceArgs{...}
+type VersionSourceInput interface {
+	pulumi.Input
+
+	ToVersionSourceOutput() VersionSourceOutput
+	ToVersionSourceOutputWithContext(context.Context) VersionSourceOutput
+}
+
+// Describes a selector for extracting and matching an MSH field to a value.
+type VersionSourceArgs struct {
+	// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
+	MshField pulumi.StringPtrInput `pulumi:"mshField"`
+	// The value to match with the field. For example, "My Application Name" or "2.3".
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (VersionSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionSource)(nil)).Elem()
+}
+
+func (i VersionSourceArgs) ToVersionSourceOutput() VersionSourceOutput {
+	return i.ToVersionSourceOutputWithContext(context.Background())
+}
+
+func (i VersionSourceArgs) ToVersionSourceOutputWithContext(ctx context.Context) VersionSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionSourceOutput)
+}
+
+// VersionSourceArrayInput is an input type that accepts VersionSourceArray and VersionSourceArrayOutput values.
+// You can construct a concrete instance of `VersionSourceArrayInput` via:
+//
+//          VersionSourceArray{ VersionSourceArgs{...} }
+type VersionSourceArrayInput interface {
+	pulumi.Input
+
+	ToVersionSourceArrayOutput() VersionSourceArrayOutput
+	ToVersionSourceArrayOutputWithContext(context.Context) VersionSourceArrayOutput
+}
+
+type VersionSourceArray []VersionSourceInput
+
+func (VersionSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VersionSource)(nil)).Elem()
+}
+
+func (i VersionSourceArray) ToVersionSourceArrayOutput() VersionSourceArrayOutput {
+	return i.ToVersionSourceArrayOutputWithContext(context.Background())
+}
+
+func (i VersionSourceArray) ToVersionSourceArrayOutputWithContext(ctx context.Context) VersionSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionSourceArrayOutput)
+}
+
+// Describes a selector for extracting and matching an MSH field to a value.
+type VersionSourceOutput struct{ *pulumi.OutputState }
+
+func (VersionSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionSource)(nil)).Elem()
+}
+
+func (o VersionSourceOutput) ToVersionSourceOutput() VersionSourceOutput {
+	return o
+}
+
+func (o VersionSourceOutput) ToVersionSourceOutputWithContext(ctx context.Context) VersionSourceOutput {
+	return o
+}
+
+// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
+func (o VersionSourceOutput) MshField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionSource) *string { return v.MshField }).(pulumi.StringPtrOutput)
+}
+
+// The value to match with the field. For example, "My Application Name" or "2.3".
+func (o VersionSourceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VersionSource) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type VersionSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (VersionSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VersionSource)(nil)).Elem()
+}
+
+func (o VersionSourceArrayOutput) ToVersionSourceArrayOutput() VersionSourceArrayOutput {
+	return o
+}
+
+func (o VersionSourceArrayOutput) ToVersionSourceArrayOutputWithContext(ctx context.Context) VersionSourceArrayOutput {
+	return o
+}
+
+func (o VersionSourceArrayOutput) Index(i pulumi.IntInput) VersionSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VersionSource {
+		return vs[0].([]VersionSource)[vs[1].(int)]
+	}).(VersionSourceOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AttributeOutput{})
+	pulumi.RegisterOutputType(AttributeArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
@@ -2211,10 +3802,21 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(FieldOutput{})
+	pulumi.RegisterOutputType(FieldArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1ConsentPolicyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1ConsentPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(Hl7SchemaConfigOutput{})
+	pulumi.RegisterOutputType(Hl7SchemaConfigArrayOutput{})
+	pulumi.RegisterOutputType(Hl7TypesConfigOutput{})
+	pulumi.RegisterOutputType(Hl7TypesConfigArrayOutput{})
 	pulumi.RegisterOutputType(Hl7V2NotificationConfigOutput{})
 	pulumi.RegisterOutputType(Hl7V2NotificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(ImageOutput{})
+	pulumi.RegisterOutputType(ImagePtrOutput{})
+	pulumi.RegisterOutputType(ImageArrayOutput{})
 	pulumi.RegisterOutputType(MessageTypeOutput{})
 	pulumi.RegisterOutputType(MessageTypePtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
@@ -2229,8 +3831,18 @@ func init() {
 	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigOutput{})
 	pulumi.RegisterOutputType(SchemaConfigPtrOutput{})
+	pulumi.RegisterOutputType(SchemaPackageOutput{})
+	pulumi.RegisterOutputType(SchemaPackagePtrOutput{})
+	pulumi.RegisterOutputType(SchematizedDataOutput{})
+	pulumi.RegisterOutputType(SchematizedDataPtrOutput{})
 	pulumi.RegisterOutputType(SegmentOutput{})
 	pulumi.RegisterOutputType(SegmentArrayOutput{})
+	pulumi.RegisterOutputType(SignatureOutput{})
+	pulumi.RegisterOutputType(SignaturePtrOutput{})
 	pulumi.RegisterOutputType(StreamConfigOutput{})
 	pulumi.RegisterOutputType(StreamConfigArrayOutput{})
+	pulumi.RegisterOutputType(TypeOutput{})
+	pulumi.RegisterOutputType(TypeArrayOutput{})
+	pulumi.RegisterOutputType(VersionSourceOutput{})
+	pulumi.RegisterOutputType(VersionSourceArrayOutput{})
 }

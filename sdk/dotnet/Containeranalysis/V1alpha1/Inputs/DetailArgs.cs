@@ -69,6 +69,12 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1.Inputs
         [Input("severityName")]
         public Input<string>? SeverityName { get; set; }
 
+        /// <summary>
+        /// The source from which the information in this Detail was obtained.
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
         public DetailArgs()
         {
         }

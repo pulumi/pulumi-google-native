@@ -45,11 +45,12 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetworkArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
@@ -57,6 +58,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
+            inputs["enableL2"] = args ? args.enableL2 : undefined;
             inputs["enablePrivateV6Access"] = args ? args.enablePrivateV6Access : undefined;
             inputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
@@ -84,14 +86,11 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["stackType"] = args ? args.stackType : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["vlans"] = args ? args.vlans : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Subnetwork.__pulumiType, name, inputs, opts);
     }
@@ -128,6 +127,10 @@ export interface SubnetworkArgs {
      */
     readonly enableFlowLogs?: pulumi.Input<boolean>;
     /**
+     * Enables Layer2 communication on the subnetwork.
+     */
+    readonly enableL2?: pulumi.Input<boolean>;
+    /**
      * Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
      */
     readonly enablePrivateV6Access?: pulumi.Input<boolean>;
@@ -154,7 +157,7 @@ export interface SubnetworkArgs {
      */
     readonly id?: pulumi.Input<string>;
     /**
-     * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. This may be a RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging to Google. The range can be expanded after creation using expandIpCidrRange.
+     * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     readonly ipCidrRange?: pulumi.Input<string>;
     /**
@@ -245,4 +248,8 @@ export interface SubnetworkArgs {
      * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
+     */
+    readonly vlans?: pulumi.Input<pulumi.Input<number>[]>;
 }

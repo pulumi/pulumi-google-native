@@ -45,8 +45,9 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: CryptoKeyVersionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["algorithm"] = args ? args.algorithm : undefined;
@@ -65,12 +66,8 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CryptoKeyVersion.__pulumiType, name, inputs, opts);
     }

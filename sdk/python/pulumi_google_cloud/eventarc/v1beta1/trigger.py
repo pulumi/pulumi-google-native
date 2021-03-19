@@ -19,6 +19,7 @@ class Trigger(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -38,11 +39,12 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[pulumi.InputType['DestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] parent: Required. The parent collection in which to add this trigger.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
-        :param pulumi.Input[pulumi.InputType['TransportArgs']] transport: Output only. In order to deliver messages, Eventarc may configure other GCP products as transport intermediary. This field returns a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[pulumi.InputType['TransportArgs']] transport: Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not actually post it.
@@ -67,6 +69,7 @@ class Trigger(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['destination'] = destination
             __props__['etag'] = etag
+            __props__['labels'] = labels
             __props__['matching_criteria'] = matching_criteria
             __props__['name'] = name
             if parent is None and not opts.urn:

@@ -70,6 +70,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1.Inputs
         }
 
         /// <summary>
+        /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+        /// </summary>
+        [Input("schematizedData")]
+        public Input<Inputs.SchematizedDataArgs>? SchematizedData { get; set; }
+
+        /// <summary>
         /// The hospital that this message came from. MSH-4.
         /// </summary>
         [Input("sendFacility")]

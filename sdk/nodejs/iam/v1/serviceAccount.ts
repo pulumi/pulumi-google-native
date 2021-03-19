@@ -45,8 +45,9 @@ export class ServiceAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceAccountArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -54,12 +55,8 @@ export class ServiceAccount extends pulumi.CustomResource {
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceAccount.__pulumiType, name, inputs, opts);
     }

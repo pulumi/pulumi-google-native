@@ -18,6 +18,7 @@ __all__ = [
     'PolicyArgs',
     'PushConfigArgs',
     'RetryPolicyArgs',
+    'SchemaSettingsArgs',
 ]
 
 @pulumi.input_type
@@ -426,5 +427,45 @@ class RetryPolicyArgs:
     @minimum_backoff.setter
     def minimum_backoff(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "minimum_backoff", value)
+
+
+@pulumi.input_type
+class SchemaSettingsArgs:
+    def __init__(__self__, *,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None):
+        """
+        Settings for validating messages published against a schema.
+        :param pulumi.Input[str] encoding: The encoding of messages validated against `schema`.
+        :param pulumi.Input[str] schema: Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        """
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encoding of messages validated against `schema`.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
 
 

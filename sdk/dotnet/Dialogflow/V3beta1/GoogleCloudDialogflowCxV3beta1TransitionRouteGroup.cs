@@ -66,7 +66,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The language to list transition route groups for. The field `messages` in TransitionRoute is language dependent. If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// The language to list transition route groups for. The field `messages` in TransitionRoute is language dependent. If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1TransitionRouteArgs>? _transitionRoutes;
 
         /// <summary>
-        /// Transition routes associated with the TransitionRouteGroup. Duplicate transition routes (i.e. using the same `intent`) are not allowed. Note that the `name` field is not used in the transition route group scope.
+        /// Transition routes associated with the TransitionRouteGroup.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowCxV3beta1TransitionRouteArgs> TransitionRoutes
         {

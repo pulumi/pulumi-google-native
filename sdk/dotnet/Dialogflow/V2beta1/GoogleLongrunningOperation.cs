@@ -107,6 +107,18 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
         [Input("latestReloadStatus")]
         public Input<Inputs.GoogleCloudDialogflowV2beta1DocumentReloadStatusArgs>? LatestReloadStatus { get; set; }
 
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
         /// <summary>
         /// Required. The MIME type of this document.
         /// </summary>

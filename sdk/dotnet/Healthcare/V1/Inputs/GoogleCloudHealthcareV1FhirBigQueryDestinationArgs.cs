@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1.Inputs
         public Input<string>? DatasetUri { get; set; }
 
         /// <summary>
-        /// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error.
+        /// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1.Inputs
         /// </summary>
         [Input("schemaConfig")]
         public Input<Inputs.SchemaConfigArgs>? SchemaConfig { get; set; }
+
+        /// <summary>
+        /// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+        /// </summary>
+        [Input("writeDisposition")]
+        public Input<string>? WriteDisposition { get; set; }
 
         public GoogleCloudHealthcareV1FhirBigQueryDestinationArgs()
         {

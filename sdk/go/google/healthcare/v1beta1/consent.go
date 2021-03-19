@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new Consent in the parent Consent store.
+// Creates a new Consent in the parent consent store.
 type Consent struct {
 	pulumi.CustomResourceState
 }
@@ -58,25 +58,25 @@ func (ConsentState) ElementType() reflect.Type {
 }
 
 type consentArgs struct {
-	// Required. The resource name of the consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact *string `pulumi:"consentArtifact"`
-	// Timestamp in UTC of when this consent is considered expired.
+	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime *string `pulumi:"expireTime"`
-	// User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name *string `pulumi:"name"`
 	// Required. Name of the consent store.
 	Parent string `pulumi:"parent"`
-	// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies []GoogleCloudHealthcareV1beta1ConsentPolicy `pulumi:"policies"`
 	// Output only. The timestamp that the revision was created.
 	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
-	// Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+	// Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
 	RevisionId *string `pulumi:"revisionId"`
-	// Indicates the current state of this consent.
+	// Required. Indicates the current state of this Consent.
 	State *string `pulumi:"state"`
-	// Input only. The time to live for this consent from when it is created.
+	// Input only. The time to live for this Consent from when it is created.
 	Ttl *string `pulumi:"ttl"`
 	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
@@ -84,25 +84,25 @@ type consentArgs struct {
 
 // The set of arguments for constructing a Consent resource.
 type ConsentArgs struct {
-	// Required. The resource name of the consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact pulumi.StringPtrInput
-	// Timestamp in UTC of when this consent is considered expired.
+	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime pulumi.StringPtrInput
-	// User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata pulumi.StringMapInput
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name pulumi.StringPtrInput
 	// Required. Name of the consent store.
 	Parent pulumi.StringInput
-	// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput
 	// Output only. The timestamp that the revision was created.
 	RevisionCreateTime pulumi.StringPtrInput
-	// Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+	// Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
 	RevisionId pulumi.StringPtrInput
-	// Indicates the current state of this consent.
+	// Required. Indicates the current state of this Consent.
 	State pulumi.StringPtrInput
-	// Input only. The time to live for this consent from when it is created.
+	// Input only. The time to live for this Consent from when it is created.
 	Ttl pulumi.StringPtrInput
 	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput

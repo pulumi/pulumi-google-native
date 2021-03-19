@@ -1655,9 +1655,9 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetPtrOutput) Url() pulumi.StringPtrOu
 
 // Options defining a file or a set of files within a Google Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptions struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFile *string `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFilePercent *int `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet *GooglePrivacyDlpV2FileSet `pulumi:"fileSet"`
@@ -1681,9 +1681,9 @@ type GooglePrivacyDlpV2CloudStorageOptionsInput interface {
 
 // Options defining a file or a set of files within a Google Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsArgs struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFile pulumi.StringPtrInput `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFilePercent pulumi.IntPtrInput `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet GooglePrivacyDlpV2FileSetPtrInput `pulumi:"fileSet"`
@@ -1772,12 +1772,12 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) ToGooglePrivacyDlpV2CloudSt
 	}).(GooglePrivacyDlpV2CloudStorageOptionsPtrOutput)
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *string { return v.BytesLimitPerFile }).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *int { return v.BytesLimitPerFilePercent }).(pulumi.IntPtrOutput)
 }
@@ -1819,7 +1819,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) Elem() GooglePrivacyDlpV
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) GooglePrivacyDlpV2CloudStorageOptions { return *v }).(GooglePrivacyDlpV2CloudStorageOptionsOutput)
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *string {
 		if v == nil {
@@ -1829,7 +1829,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFile() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *int {
 		if v == nil {
@@ -3842,7 +3842,7 @@ func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) TransformationErrorHandling
 type GooglePrivacyDlpV2DeidentifyTemplateType struct {
 	// Output only. The creation timestamp of an inspectTemplate.
 	CreateTime *string `pulumi:"createTime"`
-	// ///////////// // The core content of the template // ///////////////
+	// The core content of the template.
 	DeidentifyConfig *GooglePrivacyDlpV2DeidentifyConfig `pulumi:"deidentifyConfig"`
 	// Short description (max 256 chars).
 	Description *string `pulumi:"description"`
@@ -3869,7 +3869,7 @@ type GooglePrivacyDlpV2DeidentifyTemplateTypeInput interface {
 type GooglePrivacyDlpV2DeidentifyTemplateTypeArgs struct {
 	// Output only. The creation timestamp of an inspectTemplate.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// ///////////// // The core content of the template // ///////////////
+	// The core content of the template.
 	DeidentifyConfig GooglePrivacyDlpV2DeidentifyConfigPtrInput `pulumi:"deidentifyConfig"`
 	// Short description (max 256 chars).
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -3964,7 +3964,7 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) CreateTime() pulumi.Stri
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// ///////////// // The core content of the template // ///////////////
+// The core content of the template.
 func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *GooglePrivacyDlpV2DeidentifyConfig {
 		return v.DeidentifyConfig
@@ -4019,7 +4019,7 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) CreateTime() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// ///////////// // The core content of the template // ///////////////
+// The core content of the template.
 func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *GooglePrivacyDlpV2DeidentifyConfig {
 		if v == nil {
@@ -5682,7 +5682,7 @@ func (o GooglePrivacyDlpV2FileSetPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration to control the number of findings returned.
+// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
 type GooglePrivacyDlpV2FindingLimits struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType []GooglePrivacyDlpV2InfoTypeLimit `pulumi:"maxFindingsPerInfoType"`
@@ -5703,7 +5703,7 @@ type GooglePrivacyDlpV2FindingLimitsInput interface {
 	ToGooglePrivacyDlpV2FindingLimitsOutputWithContext(context.Context) GooglePrivacyDlpV2FindingLimitsOutput
 }
 
-// Configuration to control the number of findings returned.
+// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
 type GooglePrivacyDlpV2FindingLimitsArgs struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType GooglePrivacyDlpV2InfoTypeLimitArrayInput `pulumi:"maxFindingsPerInfoType"`
@@ -5766,7 +5766,7 @@ func (i *googlePrivacyDlpV2FindingLimitsPtrType) ToGooglePrivacyDlpV2FindingLimi
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Configuration to control the number of findings returned.
+// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
 type GooglePrivacyDlpV2FindingLimitsOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FindingLimitsOutput) ElementType() reflect.Type {
@@ -12809,7 +12809,7 @@ func (o GooglePrivacyDlpV2SaveFindingsPtrOutput) OutputConfig() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2OutputStorageConfigPtrOutput)
 }
 
-// Schedule for triggeredJobs.
+// Schedule for inspect job triggers.
 type GooglePrivacyDlpV2Schedule struct {
 	// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	RecurrencePeriodDuration *string `pulumi:"recurrencePeriodDuration"`
@@ -12826,7 +12826,7 @@ type GooglePrivacyDlpV2ScheduleInput interface {
 	ToGooglePrivacyDlpV2ScheduleOutputWithContext(context.Context) GooglePrivacyDlpV2ScheduleOutput
 }
 
-// Schedule for triggeredJobs.
+// Schedule for inspect job triggers.
 type GooglePrivacyDlpV2ScheduleArgs struct {
 	// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	RecurrencePeriodDuration pulumi.StringPtrInput `pulumi:"recurrencePeriodDuration"`
@@ -12885,7 +12885,7 @@ func (i *googlePrivacyDlpV2SchedulePtrType) ToGooglePrivacyDlpV2SchedulePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SchedulePtrOutput)
 }
 
-// Schedule for triggeredJobs.
+// Schedule for inspect job triggers.
 type GooglePrivacyDlpV2ScheduleOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ScheduleOutput) ElementType() reflect.Type {

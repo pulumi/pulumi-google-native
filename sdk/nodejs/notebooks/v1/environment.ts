@@ -45,8 +45,9 @@ export class Environment extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnvironmentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["containerImage"] = args ? args.containerImage : undefined;
@@ -60,12 +61,8 @@ export class Environment extends pulumi.CustomResource {
             inputs["vmImage"] = args ? args.vmImage : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Environment.__pulumiType, name, inputs, opts);
     }

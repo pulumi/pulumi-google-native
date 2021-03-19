@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowCxV3beta1Webhook extends pulumi.CustomResource
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3beta1WebhookArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["disabled"] = args ? args.disabled : undefined;
@@ -57,12 +58,8 @@ export class GoogleCloudDialogflowCxV3beta1Webhook extends pulumi.CustomResource
             inputs["timeout"] = args ? args.timeout : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3beta1Webhook.__pulumiType, name, inputs, opts);
     }

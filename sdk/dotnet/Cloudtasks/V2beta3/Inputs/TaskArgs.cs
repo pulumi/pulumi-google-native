@@ -64,7 +64,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.
+        /// Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
         /// </summary>
         [Input("pullMessage")]
         public Input<Inputs.PullMessageArgs>? PullMessage { get; set; }

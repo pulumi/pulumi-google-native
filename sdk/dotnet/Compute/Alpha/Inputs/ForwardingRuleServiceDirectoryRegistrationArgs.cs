@@ -27,6 +27,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         [Input("service")]
         public Input<string>? Service { get; set; }
 
+        /// <summary>
+        /// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        /// </summary>
+        [Input("serviceDirectoryRegion")]
+        public Input<string>? ServiceDirectoryRegion { get; set; }
+
         public ForwardingRuleServiceDirectoryRegistrationArgs()
         {
         }

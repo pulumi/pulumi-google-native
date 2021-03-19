@@ -45,8 +45,9 @@ export class Note extends pulumi.CustomResource {
      */
     constructor(name: string, args: NoteArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
@@ -69,12 +70,8 @@ export class Note extends pulumi.CustomResource {
             inputs["vulnerabilityType"] = args ? args.vulnerabilityType : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Note.__pulumiType, name, inputs, opts);
     }

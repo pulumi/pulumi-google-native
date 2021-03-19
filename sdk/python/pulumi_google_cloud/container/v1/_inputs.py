@@ -13,6 +13,7 @@ __all__ = [
     'AddonsConfigArgs',
     'AuthenticatorGroupsConfigArgs',
     'AutoUpgradeOptionsArgs',
+    'AutopilotArgs',
     'AutoprovisioningNodePoolDefaultsArgs',
     'BigQueryDestinationArgs',
     'BinaryAuthorizationArgs',
@@ -33,6 +34,7 @@ __all__ = [
     'IPAllocationPolicyArgs',
     'KubernetesDashboardArgs',
     'LegacyAbacArgs',
+    'LinuxNodeConfigArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
     'MasterAuthArgs',
@@ -42,12 +44,15 @@ __all__ = [
     'NetworkPolicyArgs',
     'NetworkPolicyConfigArgs',
     'NodeConfigArgs',
+    'NodeKubeletConfigArgs',
     'NodeManagementArgs',
     'NodePoolArgs',
     'NodePoolAutoscalingArgs',
     'NodeTaintArgs',
+    'NotificationConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateClusterMasterGlobalAccessConfigArgs',
+    'PubSubArgs',
     'RecurringTimeWindowArgs',
     'ReleaseChannelArgs',
     'ReservationAffinityArgs',
@@ -318,6 +323,30 @@ class AutoUpgradeOptionsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AutopilotArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Autopilot is the configuration for Autopilot settings on the cluster.
+        :param pulumi.Input[bool] enabled: Enable Autopilot
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Autopilot
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -629,6 +658,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
+                 autopilot: Optional[pulumi.Input['AutopilotArgs']] = None,
                  autoscaling: Optional[pulumi.Input['ClusterAutoscalingArgs']] = None,
                  binary_authorization: Optional[pulumi.Input['BinaryAuthorizationArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
@@ -664,6 +694,7 @@ class ClusterArgs:
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]] = None,
+                 notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  release_channel: Optional[pulumi.Input['ReleaseChannelArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -682,6 +713,7 @@ class ClusterArgs:
         A Google Kubernetes Engine cluster.
         :param pulumi.Input['AddonsConfigArgs'] addons_config: Configurations for the various addons available to run in the cluster.
         :param pulumi.Input['AuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration controlling RBAC group membership information.
+        :param pulumi.Input['AutopilotArgs'] autopilot: Autopilot configuration for the cluster.
         :param pulumi.Input['ClusterAutoscalingArgs'] autoscaling: Cluster-level autoscaling configuration.
         :param pulumi.Input['BinaryAuthorizationArgs'] binary_authorization: Configuration for Binary Authorization.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
@@ -717,6 +749,7 @@ class ClusterArgs:
         :param pulumi.Input['NodeConfigArgs'] node_config: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
         :param pulumi.Input[int] node_ipv4_cidr_size: [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
+        :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration of the cluster.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -736,6 +769,8 @@ class ClusterArgs:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if autopilot is not None:
+            pulumi.set(__self__, "autopilot", autopilot)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if binary_authorization is not None:
@@ -806,6 +841,8 @@ class ClusterArgs:
             pulumi.set(__self__, "node_ipv4_cidr_size", node_ipv4_cidr_size)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
         if private_cluster_config is not None:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if release_channel is not None:
@@ -858,6 +895,18 @@ class ClusterArgs:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @property
+    @pulumi.getter
+    def autopilot(self) -> Optional[pulumi.Input['AutopilotArgs']]:
+        """
+        Autopilot configuration for the cluster.
+        """
+        return pulumi.get(self, "autopilot")
+
+    @autopilot.setter
+    def autopilot(self, value: Optional[pulumi.Input['AutopilotArgs']]):
+        pulumi.set(self, "autopilot", value)
 
     @property
     @pulumi.getter
@@ -1278,6 +1327,18 @@ class ClusterArgs:
     @node_pools.setter
     def node_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]]):
         pulumi.set(self, "node_pools", value)
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['NotificationConfigArgs']]:
+        """
+        Notification configuration of the cluster.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['NotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
 
     @property
     @pulumi.getter(name="privateClusterConfig")
@@ -2033,6 +2094,30 @@ class LegacyAbacArgs:
 
 
 @pulumi.input_type
+class LinuxNodeConfigArgs:
+    def __init__(__self__, *,
+                 sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Parameters that can be configured on Linux nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        """
+        if sysctls is not None:
+            pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter
+    def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        """
+        return pulumi.get(self, "sysctls")
+
+    @sysctls.setter
+    def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "sysctls", value)
+
+
+@pulumi.input_type
 class MaintenancePolicyArgs:
     def __init__(__self__, *,
                  resource_version: Optional[pulumi.Input[str]] = None,
@@ -2456,7 +2541,9 @@ class NodeConfigArgs:
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
+                 kubelet_config: Optional[pulumi.Input['NodeKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linux_node_config: Optional[pulumi.Input['LinuxNodeConfigArgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2478,7 +2565,9 @@ class NodeConfigArgs:
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        :param pulumi.Input['NodeKubeletConfigArgs'] kubelet_config: Node kubelet configs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        :param pulumi.Input['LinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes.
         :param pulumi.Input[int] local_ssd_count: The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-os-login" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved for Windows nodes: - "serial-port-logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
@@ -2504,8 +2593,12 @@ class NodeConfigArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if machine_type is not None:
@@ -2596,6 +2689,18 @@ class NodeConfigArgs:
         pulumi.set(self, "image_type", value)
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['NodeKubeletConfigArgs']]:
+        """
+        Node kubelet configs.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['NodeKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -2606,6 +2711,18 @@ class NodeConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional[pulumi.Input['LinuxNodeConfigArgs']]:
+        """
+        Parameters that can be configured on Linux nodes.
+        """
+        return pulumi.get(self, "linux_node_config")
+
+    @linux_node_config.setter
+    def linux_node_config(self, value: Optional[pulumi.Input['LinuxNodeConfigArgs']]):
+        pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -2774,6 +2891,62 @@ class NodeConfigArgs:
     @workload_metadata_config.setter
     def workload_metadata_config(self, value: Optional[pulumi.Input['WorkloadMetadataConfigArgs']]):
         pulumi.set(self, "workload_metadata_config", value)
+
+
+@pulumi.input_type
+class NodeKubeletConfigArgs:
+    def __init__(__self__, *,
+                 cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
+                 cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None):
+        """
+        Node kubelet configs.
+        :param pulumi.Input[bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
+        :param pulumi.Input[str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        """
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @cpu_cfs_quota.setter
+    def cpu_cfs_quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_cfs_quota", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @cpu_cfs_quota_period.setter
+    def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_manager_policy", value)
 
 
 @pulumi.input_type
@@ -3209,6 +3382,30 @@ class NodeTaintArgs:
 
 
 @pulumi.input_type
+class NotificationConfigArgs:
+    def __init__(__self__, *,
+                 pubsub: Optional[pulumi.Input['PubSubArgs']] = None):
+        """
+        NotificationConfig is the configuration of notifications.
+        :param pulumi.Input['PubSubArgs'] pubsub: Notification config for Pub/Sub.
+        """
+        if pubsub is not None:
+            pulumi.set(__self__, "pubsub", pubsub)
+
+    @property
+    @pulumi.getter
+    def pubsub(self) -> Optional[pulumi.Input['PubSubArgs']]:
+        """
+        Notification config for Pub/Sub.
+        """
+        return pulumi.get(self, "pubsub")
+
+    @pubsub.setter
+    def pubsub(self, value: Optional[pulumi.Input['PubSubArgs']]):
+        pulumi.set(self, "pubsub", value)
+
+
+@pulumi.input_type
 class PrivateClusterConfigArgs:
     def __init__(__self__, *,
                  enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
@@ -3350,6 +3547,46 @@ class PrivateClusterMasterGlobalAccessConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class PubSubArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Pub/Sub specific notification config.
+        :param pulumi.Input[bool] enabled: Enable notifications for Pub/Sub.
+        :param pulumi.Input[str] topic: The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable notifications for Pub/Sub.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type

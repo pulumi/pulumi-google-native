@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowV2beta1SessionEntityType extends pulumi.Custom
      */
     constructor(name: string, args: GoogleCloudDialogflowV2beta1SessionEntityTypeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["entities"] = args ? args.entities : undefined;
@@ -55,12 +56,8 @@ export class GoogleCloudDialogflowV2beta1SessionEntityType extends pulumi.Custom
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowV2beta1SessionEntityType.__pulumiType, name, inputs, opts);
     }

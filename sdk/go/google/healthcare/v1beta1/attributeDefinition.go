@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new Attribute definition in the parent Consent store.
+// Creates a new Attribute definition in the parent consent store.
 type AttributeDefinition struct {
 	pulumi.CustomResourceState
 }
@@ -64,13 +64,13 @@ type attributeDefinitionArgs struct {
 	AttributeDefinitionId *string `pulumi:"attributeDefinitionId"`
 	// Required. The category of the attribute. The value of this field cannot be changed after creation.
 	Category *string `pulumi:"category"`
-	// Default values of the attribute in consents. If no default values are specified, it defaults to an empty value.
+	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`
-	// Default value of the attribute in user data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
 	DataMappingDefaultValue *string `pulumi:"dataMappingDefaultValue"`
-	// A description of the attribute.
+	// Optional. A description of the attribute.
 	Description *string `pulumi:"description"`
-	// Resource name of the attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name *string `pulumi:"name"`
 	// Required. The name of the consent store that this Attribute definition belongs to.
 	Parent string `pulumi:"parent"`
@@ -84,13 +84,13 @@ type AttributeDefinitionArgs struct {
 	AttributeDefinitionId pulumi.StringPtrInput
 	// Required. The category of the attribute. The value of this field cannot be changed after creation.
 	Category pulumi.StringPtrInput
-	// Default values of the attribute in consents. If no default values are specified, it defaults to an empty value.
+	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayInput
-	// Default value of the attribute in user data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
 	DataMappingDefaultValue pulumi.StringPtrInput
-	// A description of the attribute.
+	// Optional. A description of the attribute.
 	Description pulumi.StringPtrInput
-	// Resource name of the attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name pulumi.StringPtrInput
 	// Required. The name of the consent store that this Attribute definition belongs to.
 	Parent pulumi.StringInput

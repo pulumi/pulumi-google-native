@@ -45,11 +45,12 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["advancedMachineFeatures"] = args ? args.advancedMachineFeatures : undefined;
@@ -86,6 +87,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
+            inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["secureLabels"] = args ? args.secureLabels : undefined;
@@ -108,12 +110,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }
@@ -280,6 +278,10 @@ export interface InstanceArgs {
      */
     readonly resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+     */
+    readonly resourceStatus?: pulumi.Input<inputs.compute.alpha.ResourceStatus>;
+    /**
      * [Output Only] Reserved for future use.
      */
     readonly satisfiesPzs?: pulumi.Input<boolean>;
@@ -333,7 +335,7 @@ export interface InstanceArgs {
      */
     readonly sourceMachineImage?: pulumi.Input<string>;
     /**
-     * Source GMI encryption key when creating an instance from GMI.
+     * Source machine image encryption key when creating an instance from a machine image.
      */
     readonly sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
     /**

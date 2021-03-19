@@ -108,7 +108,7 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
         public Input<string>? LinkedResource { get; set; }
 
         /// <summary>
-        /// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+        /// Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

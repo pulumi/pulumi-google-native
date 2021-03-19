@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Sets the scheduling options for an Instance. NextID: 13
+    /// Sets the scheduling options for an Instance. NextID: 20
     /// </summary>
     public sealed class SchedulingArgs : Pulumi.ResourceArgs
     {

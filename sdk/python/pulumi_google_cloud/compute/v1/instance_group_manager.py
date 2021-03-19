@@ -46,7 +46,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         """
         Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
 
-        A regional managed instance group can contain up to 2000 instances.
+        A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,8 +116,6 @@ class InstanceGroupManager(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['self_link'] = self_link
@@ -127,6 +125,8 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['target_size'] = target_size
             __props__['update_policy'] = update_policy
             __props__['versions'] = versions
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(InstanceGroupManager, __self__).__init__(
             'google-cloud:compute/v1:InstanceGroupManager',

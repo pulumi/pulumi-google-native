@@ -60,6 +60,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.AdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
+        /// <summary>
         /// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
         /// </summary>
         [Input("canIpForward")]
@@ -233,6 +239,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         }
 
         /// <summary>
+        /// PostKeyRevocationActionType of the instance.
+        /// </summary>
+        [Input("postKeyRevocationActionType")]
+        public Input<string>? PostKeyRevocationActionType { get; set; }
+
+        /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
@@ -271,6 +283,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
             get => _resourcePolicies ?? (_resourcePolicies = new InputList<string>());
             set => _resourcePolicies = value;
         }
+
+        /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Sets the scheduling options for this instance.

@@ -174,6 +174,8 @@ type forwardingRuleArgs struct {
 	Ports []string `pulumi:"ports"`
 	// Project ID for this request.
 	Project string `pulumi:"project"`
+	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -206,13 +208,7 @@ type forwardingRuleArgs struct {
 	//
 	// If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle. Currently, the supported Google API bundles include:
-	//
-	// - vpc-sc - GCP APIs that support VPC Service Controls. For more information about which APIs support VPC Service Controls, refer to VPC-SC supported products and limitations.
-	// - all-apis - All GCP APIs. For more information about which APIs are supported with this bundle, refer to Private Google Access-specific domains and VIPs.
-	Target *string `pulumi:"target"`
+	Target     *string `pulumi:"target"`
 }
 
 // The set of arguments for constructing a ForwardingRule resource.
@@ -333,6 +329,8 @@ type ForwardingRuleArgs struct {
 	Ports pulumi.StringArrayInput
 	// Project ID for this request.
 	Project pulumi.StringInput
+	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -365,13 +363,7 @@ type ForwardingRuleArgs struct {
 	//
 	// If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
 	Subnetwork pulumi.StringPtrInput
-	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle. Currently, the supported Google API bundles include:
-	//
-	// - vpc-sc - GCP APIs that support VPC Service Controls. For more information about which APIs support VPC Service Controls, refer to VPC-SC supported products and limitations.
-	// - all-apis - All GCP APIs. For more information about which APIs are supported with this bundle, refer to Private Google Access-specific domains and VIPs.
-	Target pulumi.StringPtrInput
+	Target     pulumi.StringPtrInput
 }
 
 func (ForwardingRuleArgs) ElementType() reflect.Type {

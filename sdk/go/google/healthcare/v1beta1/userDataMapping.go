@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new User data mapping in the parent Consent store.
+// Creates a new User data mapping in the parent consent store.
 type UserDataMapping struct {
 	pulumi.CustomResourceState
 }
@@ -58,17 +58,17 @@ func (UserDataMappingState) ElementType() reflect.Type {
 }
 
 type userDataMappingArgs struct {
-	// Output only. Indicates the time when this data mapping was archived.
+	// Output only. Indicates the time when this mapping was archived.
 	ArchiveTime *string `pulumi:"archiveTime"`
-	// Output only. Indicates whether this data mapping is archived.
+	// Output only. Indicates whether this mapping is archived.
 	Archived *bool `pulumi:"archived"`
-	// Required. A unique identifier for the mapped data.
+	// Required. A unique identifier for the mapped resource.
 	DataId *string `pulumi:"dataId"`
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
 	Name *string `pulumi:"name"`
 	// Required. Name of the consent store.
 	Parent string `pulumi:"parent"`
-	// Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
 	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
@@ -76,17 +76,17 @@ type userDataMappingArgs struct {
 
 // The set of arguments for constructing a UserDataMapping resource.
 type UserDataMappingArgs struct {
-	// Output only. Indicates the time when this data mapping was archived.
+	// Output only. Indicates the time when this mapping was archived.
 	ArchiveTime pulumi.StringPtrInput
-	// Output only. Indicates whether this data mapping is archived.
+	// Output only. Indicates whether this mapping is archived.
 	Archived pulumi.BoolPtrInput
-	// Required. A unique identifier for the mapped data.
+	// Required. A unique identifier for the mapped resource.
 	DataId pulumi.StringPtrInput
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
 	Name pulumi.StringPtrInput
 	// Required. Name of the consent store.
 	Parent pulumi.StringInput
-	// Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes AttributeArrayInput
 	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput

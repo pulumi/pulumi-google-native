@@ -121,7 +121,10 @@ type instanceArgs struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	NetworkInterfaces        []NetworkInterface        `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType *string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// Project ID for this request.
@@ -136,6 +139,8 @@ type instanceArgs struct {
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
 	Scheduling *Scheduling `pulumi:"scheduling"`
 	// [Output Only] Server-defined URL for this resource.
@@ -159,7 +164,7 @@ type instanceArgs struct {
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// Source machine image
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
-	// Source GMI encryption key when creating an instance from GMI.
+	// Source machine image encryption key when creating an instance from a machine image.
 	SourceMachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted *bool `pulumi:"startRestricted"`
@@ -235,7 +240,10 @@ type InstanceArgs struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces NetworkInterfaceArrayInput
+	NetworkInterfaces        NetworkInterfaceArrayInput
+	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput
+	// PostKeyRevocationActionType of the instance.
+	PostKeyRevocationActionType pulumi.StringPtrInput
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// Project ID for this request.
@@ -250,6 +258,8 @@ type InstanceArgs struct {
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
 	ResourcePolicies pulumi.StringArrayInput
+	// [Output Only] Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// Sets the scheduling options for this instance.
 	Scheduling SchedulingPtrInput
 	// [Output Only] Server-defined URL for this resource.
@@ -273,7 +283,7 @@ type InstanceArgs struct {
 	SourceInstanceTemplate pulumi.StringPtrInput
 	// Source machine image
 	SourceMachineImage pulumi.StringPtrInput
-	// Source GMI encryption key when creating an instance from GMI.
+	// Source machine image encryption key when creating an instance from a machine image.
 	SourceMachineImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted pulumi.BoolPtrInput

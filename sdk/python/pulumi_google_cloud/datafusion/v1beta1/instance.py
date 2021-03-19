@@ -77,7 +77,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] type: Required. Instance type.
         :param pulumi.Input[str] update_time: Output only. The time the instance was last updated.
         :param pulumi.Input[str] version: Current version of Data Fusion.
-        :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created.
+        :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

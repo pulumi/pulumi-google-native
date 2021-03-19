@@ -44,8 +44,9 @@ export class TargetTcpProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetTcpProxyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -54,18 +55,15 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["service"] = args ? args.service : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetTcpProxy.__pulumiType, name, inputs, opts);
     }
@@ -99,6 +97,14 @@ export interface TargetTcpProxyArgs {
      * Project ID for this request.
      */
     readonly project: pulumi.Input<string>;
+    /**
+     * This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     *
+     * When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
+     *
+     * The default is false.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
     /**
      * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
      */

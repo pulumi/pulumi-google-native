@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
+        /// The Page on which the utterance was spoken. Only name and displayName will be set.
         /// </summary>
         [Input("currentPage")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1PageArgs>? CurrentPage { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1.Inputs
         }
 
         /// <summary>
-        /// The Intent that triggered the response. Only some fields such as name and displayname will be set.
+        /// The Intent that triggered the response. Only name and displayName will be set.
         /// </summary>
         [Input("triggeredIntent")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1IntentArgs>? TriggeredIntent { get; set; }

@@ -45,13 +45,15 @@ export class Trigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: TriggerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["matchingCriteria"] = args ? args.matchingCriteria : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -62,12 +64,8 @@ export class Trigger extends pulumi.CustomResource {
             inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Trigger.__pulumiType, name, inputs, opts);
     }
@@ -90,7 +88,11 @@ export interface TriggerArgs {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * Required. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Optional. User labels attached to the triggers that can be used to group resources.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
     readonly matchingCriteria?: pulumi.Input<pulumi.Input<inputs.eventarc.v1beta1.MatchingCriteria>[]>;
     /**
@@ -106,7 +108,7 @@ export interface TriggerArgs {
      */
     readonly serviceAccount?: pulumi.Input<string>;
     /**
-     * Output only. In order to deliver messages, Eventarc may configure other GCP products as transport intermediary. This field returns a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     readonly transport?: pulumi.Input<inputs.eventarc.v1beta1.Transport>;
     /**

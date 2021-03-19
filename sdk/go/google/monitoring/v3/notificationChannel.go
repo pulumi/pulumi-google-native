@@ -58,6 +58,8 @@ func (NotificationChannelState) ElementType() reflect.Type {
 }
 
 type notificationChannelArgs struct {
+	// Record of the creation of this channel.
+	CreationRecord *MutationRecord `pulumi:"creationRecord"`
 	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description *string `pulumi:"description"`
 	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
@@ -66,6 +68,8 @@ type notificationChannelArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field.
 	Labels map[string]string `pulumi:"labels"`
+	// Records of the modification of this channel.
+	MutationRecords []MutationRecord `pulumi:"mutationRecords"`
 	// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
 	Name string `pulumi:"name"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
@@ -78,6 +82,8 @@ type notificationChannelArgs struct {
 
 // The set of arguments for constructing a NotificationChannel resource.
 type NotificationChannelArgs struct {
+	// Record of the creation of this channel.
+	CreationRecord MutationRecordPtrInput
 	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description pulumi.StringPtrInput
 	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
@@ -86,6 +92,8 @@ type NotificationChannelArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field.
 	Labels pulumi.StringMapInput
+	// Records of the modification of this channel.
+	MutationRecords MutationRecordArrayInput
 	// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
 	Name pulumi.StringInput
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.

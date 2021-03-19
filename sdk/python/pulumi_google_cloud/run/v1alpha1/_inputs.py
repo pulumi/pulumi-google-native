@@ -14,23 +14,12 @@ __all__ = [
     'AuditLogConfigArgs',
     'BindingArgs',
     'CapabilitiesArgs',
-    'CloudAuditLogsSourceSpecArgs',
-    'CloudAuditLogsSourceStatusArgs',
-    'CloudEventOverridesArgs',
-    'CloudPubSubSourceSpecArgs',
-    'CloudPubSubSourceStatusArgs',
-    'CloudSchedulerSourceSpecArgs',
-    'CloudSchedulerSourceStatusArgs',
-    'CloudStorageSourceSpecArgs',
-    'CloudStorageSourceStatusArgs',
-    'ConditionArgs',
     'ConfigMapEnvSourceArgs',
     'ConfigMapKeySelectorArgs',
     'ConfigMapVolumeSourceArgs',
     'ConfigurationSpecArgs',
     'ContainerArgs',
     'ContainerPortArgs',
-    'DestinationArgs',
     'DomainMappingConditionArgs',
     'DomainMappingSpecArgs',
     'DomainMappingStatusArgs',
@@ -42,12 +31,17 @@ __all__ = [
     'HTTPGetActionArgs',
     'HTTPHeaderArgs',
     'HandlerArgs',
+    'InstanceSpecArgs',
+    'InstanceStatusArgs',
+    'InstanceTemplateSpecArgs',
     'IntOrStringArgs',
+    'JobConditionArgs',
+    'JobSpecArgs',
+    'JobStatusArgs',
     'KeyToPathArgs',
     'LifecycleArgs',
     'LocalObjectReferenceArgs',
     'ObjectMetaArgs',
-    'ObjectReferenceArgs',
     'OwnerReferenceArgs',
     'PolicyArgs',
     'ProbeArgs',
@@ -69,10 +63,6 @@ __all__ = [
     'ServiceStatusArgs',
     'TCPSocketActionArgs',
     'TrafficTargetArgs',
-    'TriggerConditionArgs',
-    'TriggerFilterArgs',
-    'TriggerSpecArgs',
-    'TriggerStatusArgs',
     'VolumeArgs',
     'VolumeDeviceArgs',
     'VolumeMountArgs',
@@ -288,918 +278,6 @@ class CapabilitiesArgs:
     @drop.setter
     def drop(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "drop", value)
-
-
-@pulumi.input_type
-class CloudAuditLogsSourceSpecArgs:
-    def __init__(__self__, *,
-                 ce_overrides: Optional[pulumi.Input['CloudEventOverridesArgs']] = None,
-                 method_name: Optional[pulumi.Input[str]] = None,
-                 resource_name: Optional[pulumi.Input[str]] = None,
-                 service_account_name: Optional[pulumi.Input[str]] = None,
-                 service_name: Optional[pulumi.Input[str]] = None,
-                 sink: Optional[pulumi.Input['DestinationArgs']] = None):
-        """
-        The desired state of the CloudAuditLogsSource.
-        :param pulumi.Input['CloudEventOverridesArgs'] ce_overrides: CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-        :param pulumi.Input[str] method_name: Required. The method name at the service API. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "google.cloud.bigquery.job.create".
-        :param pulumi.Input[str] resource_name: Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".
-        :param pulumi.Input[str] service_account_name: Optional. Email address of the IAM service account associated with the source. The service account represents the identity of the source, and determines what permissions the source has. If not provided, the source will use the project's default service account.
-        :param pulumi.Input[str] service_name: Required. The GCP service name. This must match "serviceName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "bigquery.googleapis.com".
-        :param pulumi.Input['DestinationArgs'] sink: Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        if ce_overrides is not None:
-            pulumi.set(__self__, "ce_overrides", ce_overrides)
-        if method_name is not None:
-            pulumi.set(__self__, "method_name", method_name)
-        if resource_name is not None:
-            pulumi.set(__self__, "resource_name", resource_name)
-        if service_account_name is not None:
-            pulumi.set(__self__, "service_account_name", service_account_name)
-        if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
-        if sink is not None:
-            pulumi.set(__self__, "sink", sink)
-
-    @property
-    @pulumi.getter(name="ceOverrides")
-    def ce_overrides(self) -> Optional[pulumi.Input['CloudEventOverridesArgs']]:
-        """
-        CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-        """
-        return pulumi.get(self, "ce_overrides")
-
-    @ce_overrides.setter
-    def ce_overrides(self, value: Optional[pulumi.Input['CloudEventOverridesArgs']]):
-        pulumi.set(self, "ce_overrides", value)
-
-    @property
-    @pulumi.getter(name="methodName")
-    def method_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The method name at the service API. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "google.cloud.bigquery.job.create".
-        """
-        return pulumi.get(self, "method_name")
-
-    @method_name.setter
-    def method_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "method_name", value)
-
-    @property
-    @pulumi.getter(name="resourceName")
-    def resource_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".
-        """
-        return pulumi.get(self, "resource_name")
-
-    @resource_name.setter
-    def resource_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_name", value)
-
-    @property
-    @pulumi.getter(name="serviceAccountName")
-    def service_account_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Email address of the IAM service account associated with the source. The service account represents the identity of the source, and determines what permissions the source has. If not provided, the source will use the project's default service account.
-        """
-        return pulumi.get(self, "service_account_name")
-
-    @service_account_name.setter
-    def service_account_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "service_account_name", value)
-
-    @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The GCP service name. This must match "serviceName" in Cloud Audit Logs. Regex or Wildcards (*) are not supported. Example: "bigquery.googleapis.com".
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "service_name", value)
-
-    @property
-    @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input['DestinationArgs']]:
-        """
-        Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        return pulumi.get(self, "sink")
-
-    @sink.setter
-    def sink(self, value: Optional[pulumi.Input['DestinationArgs']]):
-        pulumi.set(self, "sink", value)
-
-
-@pulumi.input_type
-class CloudAuditLogsSourceStatusArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 sink_uri: Optional[pulumi.Input[str]] = None):
-        """
-        CloudAuditLogsSourceStatus represents the current state of a CloudAuditLogsSource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Array of observed CloudAuditLogsSourceConditions, indicating the current state of the CloudAuditLogsSource.
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the controller.
-        :param pulumi.Input[str] sink_uri: SinkURI is the current active sink URI that has been configured for the Source. +optional
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if sink_uri is not None:
-            pulumi.set(__self__, "sink_uri", sink_uri)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]:
-        """
-        Array of observed CloudAuditLogsSourceConditions, indicating the current state of the CloudAuditLogsSource.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the controller.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter(name="sinkUri")
-    def sink_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        SinkURI is the current active sink URI that has been configured for the Source. +optional
-        """
-        return pulumi.get(self, "sink_uri")
-
-    @sink_uri.setter
-    def sink_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sink_uri", value)
-
-
-@pulumi.input_type
-class CloudEventOverridesArgs:
-    def __init__(__self__, *,
-                 extensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        CloudEventOverrides defines arguments for a Source that control the output format of the CloudEvents produced by the Source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extensions: Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently. +optional
-        """
-        if extensions is not None:
-            pulumi.set(__self__, "extensions", extensions)
-
-    @property
-    @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently. +optional
-        """
-        return pulumi.get(self, "extensions")
-
-    @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "extensions", value)
-
-
-@pulumi.input_type
-class CloudPubSubSourceSpecArgs:
-    def __init__(__self__, *,
-                 ack_deadline: Optional[pulumi.Input[str]] = None,
-                 ce_overrides: Optional[pulumi.Input['CloudEventOverridesArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 pubsub_secret: Optional[pulumi.Input['SecretKeySelectorArgs']] = None,
-                 retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-                 retention_duration: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input['SecretKeySelectorArgs']] = None,
-                 sink: Optional[pulumi.Input['DestinationArgs']] = None,
-                 topic: Optional[pulumi.Input[str]] = None):
-        """
-        The desired state of the CloudPubSubSource.
-        :param pulumi.Input[str] ack_deadline: AckDeadline is the default maximum time after a subscriber receives a message before the subscriber should acknowledge the message. Defaults to 30 seconds ('30s'). +optional
-        :param pulumi.Input['CloudEventOverridesArgs'] ce_overrides: CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-        :param pulumi.Input[str] project: Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster. +optional
-        :param pulumi.Input['SecretKeySelectorArgs'] pubsub_secret: CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-        :param pulumi.Input[bool] retain_acked_messages: RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages will not be expunged until they fall out of the RetentionDuration window.
-        :param pulumi.Input[str] retention_duration: RetentionDuration defines how long to retain messages in backlog, from the time of publish. If RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7 days ('7d'). +optional
-        :param pulumi.Input['SecretKeySelectorArgs'] secret: Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json +optional
-        :param pulumi.Input['DestinationArgs'] sink: Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        :param pulumi.Input[str] topic: Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-proj/topics/laconia'.
-        """
-        if ack_deadline is not None:
-            pulumi.set(__self__, "ack_deadline", ack_deadline)
-        if ce_overrides is not None:
-            pulumi.set(__self__, "ce_overrides", ce_overrides)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if pubsub_secret is not None:
-            pulumi.set(__self__, "pubsub_secret", pubsub_secret)
-        if retain_acked_messages is not None:
-            pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
-        if retention_duration is not None:
-            pulumi.set(__self__, "retention_duration", retention_duration)
-        if secret is not None:
-            pulumi.set(__self__, "secret", secret)
-        if sink is not None:
-            pulumi.set(__self__, "sink", sink)
-        if topic is not None:
-            pulumi.set(__self__, "topic", topic)
-
-    @property
-    @pulumi.getter(name="ackDeadline")
-    def ack_deadline(self) -> Optional[pulumi.Input[str]]:
-        """
-        AckDeadline is the default maximum time after a subscriber receives a message before the subscriber should acknowledge the message. Defaults to 30 seconds ('30s'). +optional
-        """
-        return pulumi.get(self, "ack_deadline")
-
-    @ack_deadline.setter
-    def ack_deadline(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ack_deadline", value)
-
-    @property
-    @pulumi.getter(name="ceOverrides")
-    def ce_overrides(self) -> Optional[pulumi.Input['CloudEventOverridesArgs']]:
-        """
-        CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink. +optional
-        """
-        return pulumi.get(self, "ce_overrides")
-
-    @ce_overrides.setter
-    def ce_overrides(self, value: Optional[pulumi.Input['CloudEventOverridesArgs']]):
-        pulumi.set(self, "ce_overrides", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster. +optional
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="pubsubSecret")
-    def pubsub_secret(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-        """
-        return pulumi.get(self, "pubsub_secret")
-
-    @pubsub_secret.setter
-    def pubsub_secret(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "pubsub_secret", value)
-
-    @property
-    @pulumi.getter(name="retainAckedMessages")
-    def retain_acked_messages(self) -> Optional[pulumi.Input[bool]]:
-        """
-        RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages will not be expunged until they fall out of the RetentionDuration window.
-        """
-        return pulumi.get(self, "retain_acked_messages")
-
-    @retain_acked_messages.setter
-    def retain_acked_messages(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "retain_acked_messages", value)
-
-    @property
-    @pulumi.getter(name="retentionDuration")
-    def retention_duration(self) -> Optional[pulumi.Input[str]]:
-        """
-        RetentionDuration defines how long to retain messages in backlog, from the time of publish. If RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7 days ('7d'). +optional
-        """
-        return pulumi.get(self, "retention_duration")
-
-    @retention_duration.setter
-    def retention_duration(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "retention_duration", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json +optional
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "secret", value)
-
-    @property
-    @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input['DestinationArgs']]:
-        """
-        Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        return pulumi.get(self, "sink")
-
-    @sink.setter
-    def sink(self, value: Optional[pulumi.Input['DestinationArgs']]):
-        pulumi.set(self, "sink", value)
-
-    @property
-    @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[str]]:
-        """
-        Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-proj/topics/laconia'.
-        """
-        return pulumi.get(self, "topic")
-
-    @topic.setter
-    def topic(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "topic", value)
-
-
-@pulumi.input_type
-class CloudPubSubSourceStatusArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 sink_uri: Optional[pulumi.Input[str]] = None):
-        """
-        CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Array of observed CloudPubSubSourceConditions, indicating the current state of the CloudPubSubSource.
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the controller.
-        :param pulumi.Input[str] sink_uri: SinkURI is the current active sink URI that has been configured for the Source. +optional
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if sink_uri is not None:
-            pulumi.set(__self__, "sink_uri", sink_uri)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]:
-        """
-        Array of observed CloudPubSubSourceConditions, indicating the current state of the CloudPubSubSource.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the controller.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter(name="sinkUri")
-    def sink_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        SinkURI is the current active sink URI that has been configured for the Source. +optional
-        """
-        return pulumi.get(self, "sink_uri")
-
-    @sink_uri.setter
-    def sink_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sink_uri", value)
-
-
-@pulumi.input_type
-class CloudSchedulerSourceSpecArgs:
-    def __init__(__self__, *,
-                 ce_overrides: Optional[pulumi.Input['CloudEventOverridesArgs']] = None,
-                 data: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 pubsub_secret: Optional[pulumi.Input['SecretKeySelectorArgs']] = None,
-                 schedule: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input['SecretKeySelectorArgs']] = None,
-                 sink: Optional[pulumi.Input['DestinationArgs']] = None):
-        """
-        The desired state of the CloudSchedulerSource.
-        :param pulumi.Input['CloudEventOverridesArgs'] ce_overrides: CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-        :param pulumi.Input[str] data: Data to send in the payload of the Event.
-        :param pulumi.Input[str] location: Location to create the Scheduler job in.
-        :param pulumi.Input[str] project: Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster.
-        :param pulumi.Input['SecretKeySelectorArgs'] pubsub_secret: CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-        :param pulumi.Input[str] schedule: Schedule in cron format, for example: "* * * * *" would be run every minute.
-        :param pulumi.Input['SecretKeySelectorArgs'] secret: Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-        :param pulumi.Input['DestinationArgs'] sink: Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        if ce_overrides is not None:
-            pulumi.set(__self__, "ce_overrides", ce_overrides)
-        if data is not None:
-            pulumi.set(__self__, "data", data)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if pubsub_secret is not None:
-            pulumi.set(__self__, "pubsub_secret", pubsub_secret)
-        if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
-        if secret is not None:
-            pulumi.set(__self__, "secret", secret)
-        if sink is not None:
-            pulumi.set(__self__, "sink", sink)
-
-    @property
-    @pulumi.getter(name="ceOverrides")
-    def ce_overrides(self) -> Optional[pulumi.Input['CloudEventOverridesArgs']]:
-        """
-        CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-        """
-        return pulumi.get(self, "ce_overrides")
-
-    @ce_overrides.setter
-    def ce_overrides(self, value: Optional[pulumi.Input['CloudEventOverridesArgs']]):
-        pulumi.set(self, "ce_overrides", value)
-
-    @property
-    @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data to send in the payload of the Event.
-        """
-        return pulumi.get(self, "data")
-
-    @data.setter
-    def data(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "data", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        Location to create the Scheduler job in.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If omitted, defaults to same as the cluster.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="pubsubSecret")
-    def pubsub_secret(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-        """
-        return pulumi.get(self, "pubsub_secret")
-
-    @pubsub_secret.setter
-    def pubsub_secret(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "pubsub_secret", value)
-
-    @property
-    @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[str]]:
-        """
-        Schedule in cron format, for example: "* * * * *" would be run every minute.
-        """
-        return pulumi.get(self, "schedule")
-
-    @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "schedule", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "secret", value)
-
-    @property
-    @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input['DestinationArgs']]:
-        """
-        Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        return pulumi.get(self, "sink")
-
-    @sink.setter
-    def sink(self, value: Optional[pulumi.Input['DestinationArgs']]):
-        pulumi.set(self, "sink", value)
-
-
-@pulumi.input_type
-class CloudSchedulerSourceStatusArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 sink_uri: Optional[pulumi.Input[str]] = None):
-        """
-        CloudSchedulerSourceStatus represents the current state of a CloudSchedulerSource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Array of observed CloudSchedulerSourceConditions, indicating the current state of the CloudSchedulerSource.
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the CloudSchedulerSource that was last processed by the controller.
-        :param pulumi.Input[str] sink_uri: SinkURI is the current active sink URI that has been configured for the Source.
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if sink_uri is not None:
-            pulumi.set(__self__, "sink_uri", sink_uri)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]:
-        """
-        Array of observed CloudSchedulerSourceConditions, indicating the current state of the CloudSchedulerSource.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the CloudSchedulerSource that was last processed by the controller.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter(name="sinkUri")
-    def sink_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        SinkURI is the current active sink URI that has been configured for the Source.
-        """
-        return pulumi.get(self, "sink_uri")
-
-    @sink_uri.setter
-    def sink_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sink_uri", value)
-
-
-@pulumi.input_type
-class CloudStorageSourceSpecArgs:
-    def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[str]] = None,
-                 ce_overrides: Optional[pulumi.Input['CloudEventOverridesArgs']] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 object_name_prefix: Optional[pulumi.Input[str]] = None,
-                 payload_format: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 pubsub_secret: Optional[pulumi.Input['SecretKeySelectorArgs']] = None,
-                 secret: Optional[pulumi.Input['SecretKeySelectorArgs']] = None,
-                 service_account_name: Optional[pulumi.Input[str]] = None,
-                 sink: Optional[pulumi.Input['DestinationArgs']] = None):
-        """
-        The desired state of the CloudStorageSource.
-        :param pulumi.Input[str] bucket: Bucket to subscribe to.
-        :param pulumi.Input['CloudEventOverridesArgs'] ce_overrides: CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: EventTypes to subscribe to. If unspecified, then subscribe to all events.
-        :param pulumi.Input[str] object_name_prefix: ObjectNamePrefix limits the notifications to objects with this prefix.
-        :param pulumi.Input[str] payload_format: PayloadFormat specifies the contents of the message payload. See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
-        :param pulumi.Input[str] project: Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults to same as the cluster.
-        :param pulumi.Input['SecretKeySelectorArgs'] pubsub_secret: PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-        :param pulumi.Input['SecretKeySelectorArgs'] secret: Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-        :param pulumi.Input[str] service_account_name: ServiceAccountName holds the name of the Kubernetes service account as which the underlying K8s resources should be run. If unspecified this will default to the "default" service account for the namespace in which the GCS exists.
-        :param pulumi.Input['DestinationArgs'] sink: Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
-        if ce_overrides is not None:
-            pulumi.set(__self__, "ce_overrides", ce_overrides)
-        if event_types is not None:
-            pulumi.set(__self__, "event_types", event_types)
-        if object_name_prefix is not None:
-            pulumi.set(__self__, "object_name_prefix", object_name_prefix)
-        if payload_format is not None:
-            pulumi.set(__self__, "payload_format", payload_format)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if pubsub_secret is not None:
-            pulumi.set(__self__, "pubsub_secret", pubsub_secret)
-        if secret is not None:
-            pulumi.set(__self__, "secret", secret)
-        if service_account_name is not None:
-            pulumi.set(__self__, "service_account_name", service_account_name)
-        if sink is not None:
-            pulumi.set(__self__, "sink", sink)
-
-    @property
-    @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[str]]:
-        """
-        Bucket to subscribe to.
-        """
-        return pulumi.get(self, "bucket")
-
-    @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "bucket", value)
-
-    @property
-    @pulumi.getter(name="ceOverrides")
-    def ce_overrides(self) -> Optional[pulumi.Input['CloudEventOverridesArgs']]:
-        """
-        CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
-        """
-        return pulumi.get(self, "ce_overrides")
-
-    @ce_overrides.setter
-    def ce_overrides(self, value: Optional[pulumi.Input['CloudEventOverridesArgs']]):
-        pulumi.set(self, "ce_overrides", value)
-
-    @property
-    @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        EventTypes to subscribe to. If unspecified, then subscribe to all events.
-        """
-        return pulumi.get(self, "event_types")
-
-    @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "event_types", value)
-
-    @property
-    @pulumi.getter(name="objectNamePrefix")
-    def object_name_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        ObjectNamePrefix limits the notifications to objects with this prefix.
-        """
-        return pulumi.get(self, "object_name_prefix")
-
-    @object_name_prefix.setter
-    def object_name_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "object_name_prefix", value)
-
-    @property
-    @pulumi.getter(name="payloadFormat")
-    def payload_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        PayloadFormat specifies the contents of the message payload. See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
-        """
-        return pulumi.get(self, "payload_format")
-
-    @payload_format.setter
-    def payload_format(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "payload_format", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults to same as the cluster.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="pubsubSecret")
-    def pubsub_secret(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted, uses Secret.
-        """
-        return pulumi.get(self, "pubsub_secret")
-
-    @pubsub_secret.setter
-    def pubsub_secret(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "pubsub_secret", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name: google-cloud-key Key: key.json
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "secret", value)
-
-    @property
-    @pulumi.getter(name="serviceAccountName")
-    def service_account_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        ServiceAccountName holds the name of the Kubernetes service account as which the underlying K8s resources should be run. If unspecified this will default to the "default" service account for the namespace in which the GCS exists.
-        """
-        return pulumi.get(self, "service_account_name")
-
-    @service_account_name.setter
-    def service_account_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "service_account_name", value)
-
-    @property
-    @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input['DestinationArgs']]:
-        """
-        Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the sink.
-        """
-        return pulumi.get(self, "sink")
-
-    @sink.setter
-    def sink(self, value: Optional[pulumi.Input['DestinationArgs']]):
-        pulumi.set(self, "sink", value)
-
-
-@pulumi.input_type
-class CloudStorageSourceStatusArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 sink_uri: Optional[pulumi.Input[str]] = None):
-        """
-        CloudStorageSourceStatus represents the current state of a CloudStorageSource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Array of observed CloudStorageSourceConditions, indicating the current state of the CloudStorageSource.
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the CloudStorageSource that was last processed by the controller.
-        :param pulumi.Input[str] sink_uri: SinkURI is the current active sink URI that has been configured for the Source.
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if sink_uri is not None:
-            pulumi.set(__self__, "sink_uri", sink_uri)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]:
-        """
-        Array of observed CloudStorageSourceConditions, indicating the current state of the CloudStorageSource.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the CloudStorageSource that was last processed by the controller.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter(name="sinkUri")
-    def sink_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        SinkURI is the current active sink URI that has been configured for the Source.
-        """
-        return pulumi.get(self, "sink_uri")
-
-    @sink_uri.setter
-    def sink_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sink_uri", value)
-
-
-@pulumi.input_type
-class ConditionArgs:
-    def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[str]] = None,
-                 message: Optional[pulumi.Input[str]] = None,
-                 reason: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        Condition defines a generic condition for a Resource
-        :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
-        :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
-        :param pulumi.Input[str] severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] status: Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-        """
-        if last_transition_time is not None:
-            pulumi.set(__self__, "last_transition_time", last_transition_time)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if reason is not None:
-            pulumi.set(__self__, "reason", reason)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Last time the condition transitioned from one status to another.
-        """
-        return pulumi.get(self, "last_transition_time")
-
-    @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_transition_time", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Human readable message indicating details about the current status.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. One-word CamelCase reason for the condition's last transition.
-        """
-        return pulumi.get(self, "reason")
-
-    @reason.setter
-    def reason(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "reason", value)
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        """
-        return pulumi.get(self, "severity")
-
-    @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "severity", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the condition, one of True, False, Unknown.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -1891,45 +969,6 @@ class ContainerPortArgs:
 
 
 @pulumi.input_type
-class DestinationArgs:
-    def __init__(__self__, *,
-                 ref: Optional[pulumi.Input['ObjectReferenceArgs']] = None,
-                 uri: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input['ObjectReferenceArgs'] ref: ObjectReference points to an Addressable. + optional
-        :param pulumi.Input[str] uri: URI is for direct URI Designations or used with the resulting URL from Addressable ObjectReference. If used with an ObjectReference, will be appended to the path of the resulting URL from the Addressable. + optional
-        """
-        if ref is not None:
-            pulumi.set(__self__, "ref", ref)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
-
-    @property
-    @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input['ObjectReferenceArgs']]:
-        """
-        ObjectReference points to an Addressable. + optional
-        """
-        return pulumi.get(self, "ref")
-
-    @ref.setter
-    def ref(self, value: Optional[pulumi.Input['ObjectReferenceArgs']]):
-        pulumi.set(self, "ref", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        URI is for direct URI Designations or used with the resulting URL from Addressable ObjectReference. If used with an ObjectReference, will be appended to the path of the resulting URL from the Addressable. + optional
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
-
-
-@pulumi.input_type
 class DomainMappingConditionArgs:
     def __init__(__self__, *,
                  last_transition_time: Optional[pulumi.Input[str]] = None,
@@ -2610,6 +1649,254 @@ class HandlerArgs:
 
 
 @pulumi.input_type
+class InstanceSpecArgs:
+    def __init__(__self__, *,
+                 active_deadline_seconds: Optional[pulumi.Input[str]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]]] = None,
+                 restart_policy: Optional[pulumi.Input[str]] = None,
+                 service_account_name: Optional[pulumi.Input[str]] = None,
+                 termination_grace_period_seconds: Optional[pulumi.Input[str]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None):
+        """
+        InstanceSpec is a description of an instance.
+        :param pulumi.Input[str] active_deadline_seconds: Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]] containers: Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+        :param pulumi.Input[str] restart_policy: Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+        :param pulumi.Input[str] service_account_name: Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+        :param pulumi.Input[str] termination_grace_period_seconds: Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        """
+        if active_deadline_seconds is not None:
+            pulumi.set(__self__, "active_deadline_seconds", active_deadline_seconds)
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if restart_policy is not None:
+            pulumi.set(__self__, "restart_policy", restart_policy)
+        if service_account_name is not None:
+            pulumi.set(__self__, "service_account_name", service_account_name)
+        if termination_grace_period_seconds is not None:
+            pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter(name="activeDeadlineSeconds")
+    def active_deadline_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
+        """
+        return pulumi.get(self, "active_deadline_seconds")
+
+    @active_deadline_seconds.setter
+    def active_deadline_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "active_deadline_seconds", value)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]]]:
+        """
+        Optional. List of containers belonging to the instance. We disallow a number of fields on this Container. Only a single container may be provided.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]]]):
+        pulumi.set(self, "containers", value)
+
+    @property
+    @pulumi.getter(name="restartPolicy")
+    def restart_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Restart policy for all containers within the instance. Allowed values are: - OnFailure: Instances will always be restarted on failure if the backoffLimit has not been reached. - Never: Instances are never restarted and all failures are permanent. Cannot be used if backoffLimit is set. +optional
+        """
+        return pulumi.get(self, "restart_policy")
+
+    @restart_policy.setter
+    def restart_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restart_policy", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountName")
+    def service_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Email address of the IAM service account associated with the instance of a Job. The service account represents the identity of the running instance, and determines what permissions the instance has. If not provided, the instance will use the project's default service account. +optional
+        """
+        return pulumi.get(self, "service_account_name")
+
+    @service_account_name.setter
+    def service_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_name", value)
+
+    @property
+    @pulumi.getter(name="terminationGracePeriodSeconds")
+    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Optional duration in seconds the instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates delete immediately. The grace period is the duration in seconds after the processes running in the instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. +optional
+        """
+        return pulumi.get(self, "termination_grace_period_seconds")
+
+    @termination_grace_period_seconds.setter
+    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_grace_period_seconds", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]]:
+        """
+        Optional. List of volumes that can be mounted by containers belonging to the instance. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
+
+@pulumi.input_type
+class InstanceStatusArgs:
+    def __init__(__self__, *,
+                 completion_time: Optional[pulumi.Input[str]] = None,
+                 failed: Optional[pulumi.Input[int]] = None,
+                 index: Optional[pulumi.Input[int]] = None,
+                 last_exit_code: Optional[pulumi.Input[int]] = None,
+                 restarted: Optional[pulumi.Input[int]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 succeeded: Optional[pulumi.Input[int]] = None):
+        """
+        Instance represents the status of an instance of a Job.
+        :param pulumi.Input[str] completion_time: Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        :param pulumi.Input[int] failed: Optional. The number of times this instance exited with code > 0; +optional
+        :param pulumi.Input[int] index: Required. Index of the instance, unique per Job, and beginning at 0.
+        :param pulumi.Input[int] last_exit_code: Optional. Last exit code seen for this instance. +optional
+        :param pulumi.Input[int] restarted: Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
+        :param pulumi.Input[str] start_time: Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        :param pulumi.Input[int] succeeded: Optional. The number of times this instance exited with code == 0. +optional
+        """
+        if completion_time is not None:
+            pulumi.set(__self__, "completion_time", completion_time)
+        if failed is not None:
+            pulumi.set(__self__, "failed", failed)
+        if index is not None:
+            pulumi.set(__self__, "index", index)
+        if last_exit_code is not None:
+            pulumi.set(__self__, "last_exit_code", last_exit_code)
+        if restarted is not None:
+            pulumi.set(__self__, "restarted", restarted)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if succeeded is not None:
+            pulumi.set(__self__, "succeeded", succeeded)
+
+    @property
+    @pulumi.getter(name="completionTime")
+    def completion_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Represents time when the instance was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        """
+        return pulumi.get(self, "completion_time")
+
+    @completion_time.setter
+    def completion_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "completion_time", value)
+
+    @property
+    @pulumi.getter
+    def failed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of times this instance exited with code > 0; +optional
+        """
+        return pulumi.get(self, "failed")
+
+    @failed.setter
+    def failed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failed", value)
+
+    @property
+    @pulumi.getter
+    def index(self) -> Optional[pulumi.Input[int]]:
+        """
+        Required. Index of the instance, unique per Job, and beginning at 0.
+        """
+        return pulumi.get(self, "index")
+
+    @index.setter
+    def index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "index", value)
+
+    @property
+    @pulumi.getter(name="lastExitCode")
+    def last_exit_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Last exit code seen for this instance. +optional
+        """
+        return pulumi.get(self, "last_exit_code")
+
+    @last_exit_code.setter
+    def last_exit_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "last_exit_code", value)
+
+    @property
+    @pulumi.getter
+    def restarted(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
+        """
+        return pulumi.get(self, "restarted")
+
+    @restarted.setter
+    def restarted(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "restarted", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Represents time when the instance was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def succeeded(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of times this instance exited with code == 0. +optional
+        """
+        return pulumi.get(self, "succeeded")
+
+    @succeeded.setter
+    def succeeded(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "succeeded", value)
+
+
+@pulumi.input_type
+class InstanceTemplateSpecArgs:
+    def __init__(__self__, *,
+                 spec: Optional[pulumi.Input['InstanceSpecArgs']] = None):
+        """
+        InstanceTemplateSpec describes the data an instance should have when created from a template.
+        :param pulumi.Input['InstanceSpecArgs'] spec: Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+        """
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['InstanceSpecArgs']]:
+        """
+        Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['InstanceSpecArgs']]):
+        pulumi.set(self, "spec", value)
+
+
+@pulumi.input_type
 class IntOrStringArgs:
     def __init__(__self__, *,
                  int_val: Optional[pulumi.Input[int]] = None,
@@ -2663,6 +1950,366 @@ class IntOrStringArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class JobConditionArgs:
+    def __init__(__self__, *,
+                 last_transition_time: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        JobCondition defines a readiness condition for a Revision.
+        :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
+        :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
+        :param pulumi.Input[str] severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] status: Required. Status of the condition, one of True, False, Unknown.
+        :param pulumi.Input[str] type: Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Last time the condition transitioned from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @last_transition_time.setter
+    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_transition_time", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Human readable message indicating details about the current status.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. One-word CamelCase reason for the condition's last transition.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "severity", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Status of the condition, one of True, False, Unknown.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class JobSpecArgs:
+    def __init__(__self__, *,
+                 active_deadline_seconds: Optional[pulumi.Input[str]] = None,
+                 backoff_limit: Optional[pulumi.Input[int]] = None,
+                 completions: Optional[pulumi.Input[int]] = None,
+                 parallelism: Optional[pulumi.Input[int]] = None,
+                 template: Optional[pulumi.Input['InstanceTemplateSpecArgs']] = None,
+                 ttl_seconds_after_finished: Optional[pulumi.Input[int]] = None):
+        """
+        JobSpec describes how the job execution will look like.
+        :param pulumi.Input[str] active_deadline_seconds: Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+        :param pulumi.Input[int] backoff_limit: Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+        :param pulumi.Input[int] completions: Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        :param pulumi.Input[int] parallelism: Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        :param pulumi.Input['InstanceTemplateSpecArgs'] template: Optional. Describes the instance that will be created when executing a job.
+        :param pulumi.Input[int] ttl_seconds_after_finished: Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+        """
+        if active_deadline_seconds is not None:
+            pulumi.set(__self__, "active_deadline_seconds", active_deadline_seconds)
+        if backoff_limit is not None:
+            pulumi.set(__self__, "backoff_limit", backoff_limit)
+        if completions is not None:
+            pulumi.set(__self__, "completions", completions)
+        if parallelism is not None:
+            pulumi.set(__self__, "parallelism", parallelism)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+        if ttl_seconds_after_finished is not None:
+            pulumi.set(__self__, "ttl_seconds_after_finished", ttl_seconds_after_finished)
+
+    @property
+    @pulumi.getter(name="activeDeadlineSeconds")
+    def active_deadline_seconds(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+        """
+        return pulumi.get(self, "active_deadline_seconds")
+
+    @active_deadline_seconds.setter
+    def active_deadline_seconds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "active_deadline_seconds", value)
+
+    @property
+    @pulumi.getter(name="backoffLimit")
+    def backoff_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
+        """
+        return pulumi.get(self, "backoff_limit")
+
+    @backoff_limit.setter
+    def backoff_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backoff_limit", value)
+
+    @property
+    @pulumi.getter
+    def completions(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        """
+        return pulumi.get(self, "completions")
+
+    @completions.setter
+    def completions(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "completions", value)
+
+    @property
+    @pulumi.getter
+    def parallelism(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        """
+        return pulumi.get(self, "parallelism")
+
+    @parallelism.setter
+    def parallelism(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "parallelism", value)
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional[pulumi.Input['InstanceTemplateSpecArgs']]:
+        """
+        Optional. Describes the instance that will be created when executing a job.
+        """
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: Optional[pulumi.Input['InstanceTemplateSpecArgs']]):
+        pulumi.set(self, "template", value)
+
+    @property
+    @pulumi.getter(name="ttlSecondsAfterFinished")
+    def ttl_seconds_after_finished(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+        """
+        return pulumi.get(self, "ttl_seconds_after_finished")
+
+    @ttl_seconds_after_finished.setter
+    def ttl_seconds_after_finished(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl_seconds_after_finished", value)
+
+
+@pulumi.input_type
+class JobStatusArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[int]] = None,
+                 completion_time: Optional[pulumi.Input[str]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]] = None,
+                 failed: Optional[pulumi.Input[int]] = None,
+                 image_digest: Optional[pulumi.Input[str]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStatusArgs']]]] = None,
+                 observed_generation: Optional[pulumi.Input[int]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 succeeded: Optional[pulumi.Input[int]] = None):
+        """
+        JobStatus represents the current state of a Job.
+        :param pulumi.Input[int] active: Optional. The number of actively running instances. +optional
+        :param pulumi.Input[str] completion_time: Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        :param pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]] conditions: Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        :param pulumi.Input[int] failed: Optional. The number of instances which reached phase Failed. +optional
+        :param pulumi.Input[str] image_digest: Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceStatusArgs']]] instances: Optional. Status of completed, failed, and running instances. +optional
+        :param pulumi.Input[int] observed_generation: Optional. The 'generation' of the job that was last processed by the controller.
+        :param pulumi.Input[str] start_time: Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        :param pulumi.Input[int] succeeded: Optional. The number of instances which reached phase Succeeded. +optional
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if completion_time is not None:
+            pulumi.set(__self__, "completion_time", completion_time)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if failed is not None:
+            pulumi.set(__self__, "failed", failed)
+        if image_digest is not None:
+            pulumi.set(__self__, "image_digest", image_digest)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+        if observed_generation is not None:
+            pulumi.set(__self__, "observed_generation", observed_generation)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if succeeded is not None:
+            pulumi.set(__self__, "succeeded", succeeded)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of actively running instances. +optional
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "active", value)
+
+    @property
+    @pulumi.getter(name="completionTime")
+    def completion_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        """
+        return pulumi.get(self, "completion_time")
+
+    @completion_time.setter
+    def completion_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "completion_time", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]:
+        """
+        Optional. The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter
+    def failed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of instances which reached phase Failed. +optional
+        """
+        return pulumi.get(self, "failed")
+
+    @failed.setter
+    def failed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failed", value)
+
+    @property
+    @pulumi.getter(name="imageDigest")
+    def image_digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. ImageDigest holds the resolved digest for the image specified within .Spec.Template.Spec.Container.Image. The digest is resolved during the creation of the Job. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object.
+        """
+        return pulumi.get(self, "image_digest")
+
+    @image_digest.setter
+    def image_digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_digest", value)
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStatusArgs']]]]:
+        """
+        Optional. Status of completed, failed, and running instances. +optional
+        """
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStatusArgs']]]]):
+        pulumi.set(self, "instances", value)
+
+    @property
+    @pulumi.getter(name="observedGeneration")
+    def observed_generation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The 'generation' of the job that was last processed by the controller.
+        """
+        return pulumi.get(self, "observed_generation")
+
+    @observed_generation.setter
+    def observed_generation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "observed_generation", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def succeeded(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of instances which reached phase Succeeded. +optional
+        """
+        return pulumi.get(self, "succeeded")
+
+    @succeeded.setter
+    def succeeded(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "succeeded", value)
 
 
 @pulumi.input_type
@@ -3025,126 +2672,6 @@ class ObjectMetaArgs:
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
         UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
-        """
-        return pulumi.get(self, "uid")
-
-    @uid.setter
-    def uid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uid", value)
-
-
-@pulumi.input_type
-class ObjectReferenceArgs:
-    def __init__(__self__, *,
-                 api_version: Optional[pulumi.Input[str]] = None,
-                 field_path: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[str]] = None,
-                 resource_version: Optional[pulumi.Input[str]] = None,
-                 uid: Optional[pulumi.Input[str]] = None):
-        """
-        ObjectReference contains enough information to let you inspect or modify the referred object.
-        :param pulumi.Input[str] api_version: API version of the referent. +optional
-        :param pulumi.Input[str] field_path: If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
-        :param pulumi.Input[str] kind: Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
-        :param pulumi.Input[str] name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names +optional
-        :param pulumi.Input[str] namespace: Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ +optional
-        :param pulumi.Input[str] resource_version: Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-        :param pulumi.Input[str] uid: UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids +optional
-        """
-        if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
-        if field_path is not None:
-            pulumi.set(__self__, "field_path", field_path)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-        if resource_version is not None:
-            pulumi.set(__self__, "resource_version", resource_version)
-        if uid is not None:
-            pulumi.set(__self__, "uid", uid)
-
-    @property
-    @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        API version of the referent. +optional
-        """
-        return pulumi.get(self, "api_version")
-
-    @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "api_version", value)
-
-    @property
-    @pulumi.getter(name="fieldPath")
-    def field_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
-        """
-        return pulumi.get(self, "field_path")
-
-    @field_path.setter
-    def field_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "field_path", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        """
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names +optional
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ +optional
-        """
-        return pulumi.get(self, "namespace")
-
-    @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "namespace", value)
-
-    @property
-    @pulumi.getter(name="resourceVersion")
-    def resource_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency +optional
-        """
-        return pulumi.get(self, "resource_version")
-
-    @resource_version.setter
-    def resource_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_version", value)
-
-    @property
-    @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[str]]:
-        """
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids +optional
         """
         return pulumi.get(self, "uid")
 
@@ -4804,245 +4331,6 @@ class TrafficTargetArgs:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
-
-
-@pulumi.input_type
-class TriggerConditionArgs:
-    def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[str]] = None,
-                 message: Optional[pulumi.Input[str]] = None,
-                 reason: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        TriggerCondition contains state information for an Trigger.
-        :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
-        :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's current status.
-        :param pulumi.Input[str] severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] status: Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[str] type: Type of Trigger condition.
-        """
-        if last_transition_time is not None:
-            pulumi.set(__self__, "last_transition_time", last_transition_time)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if reason is not None:
-            pulumi.set(__self__, "reason", reason)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Last time the condition transitioned from one status to another.
-        """
-        return pulumi.get(self, "last_transition_time")
-
-    @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_transition_time", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Human readable message indicating details about the current status.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. One-word CamelCase reason for the condition's current status.
-        """
-        return pulumi.get(self, "reason")
-
-    @reason.setter
-    def reason(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "reason", value)
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        """
-        return pulumi.get(self, "severity")
-
-    @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "severity", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the condition, one of True, False, Unknown.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of Trigger condition.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class TriggerFilterArgs:
-    def __init__(__self__, *,
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Optional. Attributes filters events by exact match on event context attributes. Each key in the map is compared with the equivalent key in the event context. An event passes the filter if all values are equal to the specified values. Nested context attributes are not supported as keys. Only string values are supported. Note that this field is optional in knative. In fully managed, 'type' attribute is required due to different broker implementation.
-        """
-        if attributes is not None:
-            pulumi.set(__self__, "attributes", attributes)
-
-    @property
-    @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Optional. Attributes filters events by exact match on event context attributes. Each key in the map is compared with the equivalent key in the event context. An event passes the filter if all values are equal to the specified values. Nested context attributes are not supported as keys. Only string values are supported. Note that this field is optional in knative. In fully managed, 'type' attribute is required due to different broker implementation.
-        """
-        return pulumi.get(self, "attributes")
-
-    @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "attributes", value)
-
-
-@pulumi.input_type
-class TriggerSpecArgs:
-    def __init__(__self__, *,
-                 broker: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input['TriggerFilterArgs']] = None,
-                 subscriber: Optional[pulumi.Input['DestinationArgs']] = None):
-        """
-        The desired state of the Trigger.
-        :param pulumi.Input[str] broker: Broker is the broker that this trigger receives events from. If not specified, will default to 'default'. Not currently supported by Cloud Run.
-        :param pulumi.Input['TriggerFilterArgs'] filter: Optional. Filter is the filter to apply against all events from the Broker. Only events that pass this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in fully managed due to different broker implementation.
-        :param pulumi.Input['DestinationArgs'] subscriber: Sink is the addressable that will receive events.
-        """
-        if broker is not None:
-            pulumi.set(__self__, "broker", broker)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
-        if subscriber is not None:
-            pulumi.set(__self__, "subscriber", subscriber)
-
-    @property
-    @pulumi.getter
-    def broker(self) -> Optional[pulumi.Input[str]]:
-        """
-        Broker is the broker that this trigger receives events from. If not specified, will default to 'default'. Not currently supported by Cloud Run.
-        """
-        return pulumi.get(self, "broker")
-
-    @broker.setter
-    def broker(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "broker", value)
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['TriggerFilterArgs']]:
-        """
-        Optional. Filter is the filter to apply against all events from the Broker. Only events that pass this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in fully managed due to different broker implementation.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input['TriggerFilterArgs']]):
-        pulumi.set(self, "filter", value)
-
-    @property
-    @pulumi.getter
-    def subscriber(self) -> Optional[pulumi.Input['DestinationArgs']]:
-        """
-        Sink is the addressable that will receive events.
-        """
-        return pulumi.get(self, "subscriber")
-
-    @subscriber.setter
-    def subscriber(self, value: Optional[pulumi.Input['DestinationArgs']]):
-        pulumi.set(self, "subscriber", value)
-
-
-@pulumi.input_type
-class TriggerStatusArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerConditionArgs']]]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 subscriber_uri: Optional[pulumi.Input[str]] = None):
-        """
-        TriggerStatus represents the current state of a Trigger.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerConditionArgs']]] conditions: Array of observed TriggerConditions, indicating the current state of the Trigger.
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the Trigger that was last processed by the controller.
-        :param pulumi.Input[str] subscriber_uri: SubscriberURI is the resolved URI of the receiver for this Trigger.
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if subscriber_uri is not None:
-            pulumi.set(__self__, "subscriber_uri", subscriber_uri)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerConditionArgs']]]]:
-        """
-        Array of observed TriggerConditions, indicating the current state of the Trigger.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the Trigger that was last processed by the controller.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter(name="subscriberUri")
-    def subscriber_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        SubscriberURI is the resolved URI of the receiver for this Trigger.
-        """
-        return pulumi.get(self, "subscriber_uri")
-
-    @subscriber_uri.setter
-    def subscriber_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subscriber_uri", value)
 
 
 @pulumi.input_type

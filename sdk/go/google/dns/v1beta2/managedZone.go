@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Create a new ManagedZone.
+// Creates a new ManagedZone.
 type ManagedZone struct {
 	pulumi.CustomResourceState
 }
@@ -77,7 +77,7 @@ type managedZoneArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name *string `pulumi:"name"`
-	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.
+	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
 	NameServerSet *string `pulumi:"nameServerSet"`
 	// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
 	NameServers []string `pulumi:"nameServers"`
@@ -87,9 +87,9 @@ type managedZoneArgs struct {
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
 	// Identifies the project addressed by this request.
 	Project string `pulumi:"project"`
-	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig *ManagedZoneReverseLookupConfig `pulumi:"reverseLookupConfig"`
-	// This field links to the associated service directory namespace. This field should not be set for public zones or forwarding zones.
+	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 	Visibility *string `pulumi:"visibility"`
@@ -116,7 +116,7 @@ type ManagedZoneArgs struct {
 	Labels pulumi.StringMapInput
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name pulumi.StringPtrInput
-	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.
+	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
 	NameServerSet pulumi.StringPtrInput
 	// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
 	NameServers pulumi.StringArrayInput
@@ -126,9 +126,9 @@ type ManagedZoneArgs struct {
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
 	// Identifies the project addressed by this request.
 	Project pulumi.StringInput
-	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig ManagedZoneReverseLookupConfigPtrInput
-	// This field links to the associated service directory namespace. This field should not be set for public zones or forwarding zones.
+	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 	Visibility pulumi.StringPtrInput

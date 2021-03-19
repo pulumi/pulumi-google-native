@@ -864,6 +864,8 @@ func (o FailurePolicyPtrOutput) Retry() RetryPtrOutput {
 
 // Describes HttpsTrigger, could be used to connect web hooks to function.
 type HttpsTrigger struct {
+	// The security level for the function.
+	SecurityLevel *string `pulumi:"securityLevel"`
 	// Output only. The deployed url for the function.
 	Url *string `pulumi:"url"`
 }
@@ -881,6 +883,8 @@ type HttpsTriggerInput interface {
 
 // Describes HttpsTrigger, could be used to connect web hooks to function.
 type HttpsTriggerArgs struct {
+	// The security level for the function.
+	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// Output only. The deployed url for the function.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -963,6 +967,11 @@ func (o HttpsTriggerOutput) ToHttpsTriggerPtrOutputWithContext(ctx context.Conte
 	}).(HttpsTriggerPtrOutput)
 }
 
+// The security level for the function.
+func (o HttpsTriggerOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpsTrigger) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
 // Output only. The deployed url for the function.
 func (o HttpsTriggerOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpsTrigger) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -984,6 +993,16 @@ func (o HttpsTriggerPtrOutput) ToHttpsTriggerPtrOutputWithContext(ctx context.Co
 
 func (o HttpsTriggerPtrOutput) Elem() HttpsTriggerOutput {
 	return o.ApplyT(func(v *HttpsTrigger) HttpsTrigger { return *v }).(HttpsTriggerOutput)
+}
+
+// The security level for the function.
+func (o HttpsTriggerPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpsTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Output only. The deployed url for the function.

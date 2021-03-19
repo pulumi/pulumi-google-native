@@ -60,6 +60,8 @@ func (SecretState) ElementType() reflect.Type {
 type secretArgs struct {
 	// Output only. The time at which the Secret was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
@@ -70,12 +72,18 @@ type secretArgs struct {
 	Replication *Replication `pulumi:"replication"`
 	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
 	SecretId *string `pulumi:"secretId"`
+	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	Topics []Topic `pulumi:"topics"`
+	// Input only. The TTL for the Secret.
+	Ttl *string `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
 	// Output only. The time at which the Secret was created.
 	CreateTime pulumi.StringPtrInput
+	// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels pulumi.StringMapInput
 	// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
@@ -86,6 +94,10 @@ type SecretArgs struct {
 	Replication ReplicationPtrInput
 	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
 	SecretId pulumi.StringPtrInput
+	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+	Topics TopicArrayInput
+	// Input only. The TTL for the Secret.
+	Ttl pulumi.StringPtrInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {

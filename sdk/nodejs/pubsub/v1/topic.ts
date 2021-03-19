@@ -45,8 +45,9 @@ export class Topic extends pulumi.CustomResource {
      */
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -54,14 +55,11 @@ export class Topic extends pulumi.CustomResource {
             inputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
+            inputs["schemaSettings"] = args ? args.schemaSettings : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Topic.__pulumiType, name, inputs, opts);
     }
@@ -91,4 +89,8 @@ export interface TopicArgs {
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
     readonly satisfiesPzs?: pulumi.Input<boolean>;
+    /**
+     * Settings for validating messages published against a schema.
+     */
+    readonly schemaSettings?: pulumi.Input<inputs.pubsub.v1.SchemaSettings>;
 }

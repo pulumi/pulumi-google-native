@@ -44,7 +44,8 @@ export class Folder extends pulumi.CustomResource {
      */
     constructor(name: string, args?: FolderArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
@@ -52,12 +53,8 @@ export class Folder extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Folder.__pulumiType, name, inputs, opts);
     }

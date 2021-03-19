@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
     public sealed class BackendServiceCdnPolicyNegativeCachingPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+        /// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
         /// </summary>
         [Input("code")]
         public Input<int>? Code { get; set; }

@@ -18,6 +18,7 @@ class V1Beta1QuotaOverride(pulumi.CustomResource):
                  admin_override_ancestor: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 force_only: Optional[pulumi.Input[str]] = None,
                  metric: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  override_value: Optional[pulumi.Input[str]] = None,
@@ -33,7 +34,8 @@ class V1Beta1QuotaOverride(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin_override_ancestor: The resource name of the ancestor that requested the override. For example: "organizations/12345" or "folders/67890". Used by admin overrides only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions:  If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit. For example, an override on a limit with the unit 1/{project}/{region} could contain an entry with the key "region" and the value "us-east-1"; the override is only applied to quota consumed in that region. This map has the following restrictions: * Keys that are not defined in the limit's unit are not valid keys. Any string appearing in {brackets} in the unit (besides {project} or {user}) is a defined key. * "project" is not a valid key; the project is already specified in the parent resource name. * "user" is not a valid key; the API does not support quota overrides that apply only to a specific user. * If "region" appears as a key, its value must be a valid Cloud region. * If "zone" appears as a key, its value must be a valid Cloud zone. * If any valid key other than "region" or "zone" appears in the map, then all valid keys other than "region" or "zone" must also appear in the map.
-        :param pulumi.Input[bool] force: Whether to force the creation of the quota override. If creating an override would cause the effective quota for the consumer to decrease by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+        :param pulumi.Input[bool] force: Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
+        :param pulumi.Input[str] force_only: The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set.
         :param pulumi.Input[str] metric: The name of the metric to which this override applies. An example name would be: `compute.googleapis.com/cpus`
         :param pulumi.Input[str] name: The resource name of the producer override. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
@@ -60,6 +62,7 @@ class V1Beta1QuotaOverride(pulumi.CustomResource):
             __props__['admin_override_ancestor'] = admin_override_ancestor
             __props__['dimensions'] = dimensions
             __props__['force'] = force
+            __props__['force_only'] = force_only
             __props__['metric'] = metric
             __props__['name'] = name
             __props__['override_value'] = override_value

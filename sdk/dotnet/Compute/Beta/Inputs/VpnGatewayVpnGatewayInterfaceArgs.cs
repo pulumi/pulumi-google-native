@@ -22,6 +22,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
         public Input<int>? Id { get; set; }
 
         /// <summary>
+        /// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+        /// </summary>
+        [Input("interconnectAttachment")]
+        public Input<string>? InterconnectAttachment { get; set; }
+
+        /// <summary>
         /// [Output Only] The external IP address for this VPN gateway interface.
         /// </summary>
         [Input("ipAddress")]

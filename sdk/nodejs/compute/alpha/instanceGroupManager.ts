@@ -47,11 +47,12 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
@@ -64,6 +65,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
+            inputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -78,17 +80,15 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["targetPools"] = args ? args.targetPools : undefined;
             inputs["targetSize"] = args ? args.targetSize : undefined;
+            inputs["targetStoppedSize"] = args ? args.targetStoppedSize : undefined;
+            inputs["targetSuspendedSize"] = args ? args.targetSuspendedSize : undefined;
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["versions"] = args ? args.versions : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceGroupManager.__pulumiType, name, inputs, opts);
     }
@@ -140,6 +140,10 @@ export interface InstanceGroupManagerArgs {
      * [Output Only] The URL of the Instance Group resource.
      */
     readonly instanceGroup?: pulumi.Input<string>;
+    /**
+     * Instance lifecycle policy for this Instance Group Manager.
+     */
+    readonly instanceLifecyclePolicy?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerInstanceLifecyclePolicy>;
     /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
@@ -200,6 +204,18 @@ export interface InstanceGroupManagerArgs {
      * The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
      */
     readonly targetSize?: pulumi.Input<number>;
+    /**
+     * The target number of stopped instances for this managed instance group. This number changes when you:  
+     * - Stop instance using the stopInstances method or start instances using the startInstances method. 
+     * - Manually change the targetStoppedSize using the update method.
+     */
+    readonly targetStoppedSize?: pulumi.Input<number>;
+    /**
+     * The target number of suspended instances for this managed instance group. This number changes when you:  
+     * - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
+     * - Manually change the targetSuspendedSize using the update method.
+     */
+    readonly targetSuspendedSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group.
      */

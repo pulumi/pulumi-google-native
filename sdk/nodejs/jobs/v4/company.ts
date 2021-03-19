@@ -45,8 +45,9 @@ export class Company extends pulumi.CustomResource {
      */
     constructor(name: string, args: CompanyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["careerSiteUri"] = args ? args.careerSiteUri : undefined;
@@ -65,12 +66,8 @@ export class Company extends pulumi.CustomResource {
             inputs["websiteUri"] = args ? args.websiteUri : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Company.__pulumiType, name, inputs, opts);
     }

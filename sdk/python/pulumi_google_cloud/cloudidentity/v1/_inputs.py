@@ -9,10 +9,134 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 
 __all__ = [
+    'DynamicGroupMetadataArgs',
+    'DynamicGroupQueryArgs',
+    'DynamicGroupStatusArgs',
     'EntityKeyArgs',
+    'ExpiryDetailArgs',
     'GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs',
     'MembershipRoleArgs',
 ]
+
+@pulumi.input_type
+class DynamicGroupMetadataArgs:
+    def __init__(__self__, *,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]] = None,
+                 status: Optional[pulumi.Input['DynamicGroupStatusArgs']] = None):
+        """
+        Dynamic group metadata like queries and status.
+        :param pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        :param pulumi.Input['DynamicGroupStatusArgs'] status: Output only. Status of the dynamic group.
+        """
+        if queries is not None:
+            pulumi.set(__self__, "queries", queries)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]]:
+        """
+        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        """
+        return pulumi.get(self, "queries")
+
+    @queries.setter
+    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]]):
+        pulumi.set(self, "queries", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['DynamicGroupStatusArgs']]:
+        """
+        Output only. Status of the dynamic group.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['DynamicGroupStatusArgs']]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class DynamicGroupQueryArgs:
+    def __init__(__self__, *,
+                 query: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        Defines a query on a resource.
+        :param pulumi.Input[str] query: Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+        :param pulumi.Input[str] resource_type: Resource type for the Dynamic Group Query
+        """
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input[str]]:
+        """
+        Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource type for the Dynamic Group Query
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class DynamicGroupStatusArgs:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[str]] = None,
+                 status_time: Optional[pulumi.Input[str]] = None):
+        """
+        The current status of a dynamic group along with timestamp.
+        :param pulumi.Input[str] status: Status of the dynamic group.
+        :param pulumi.Input[str] status_time: The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if status_time is not None:
+            pulumi.set(__self__, "status_time", status_time)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the dynamic group.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="statusTime")
+    def status_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+        """
+        return pulumi.get(self, "status_time")
+
+    @status_time.setter
+    def status_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status_time", value)
+
 
 @pulumi.input_type
 class EntityKeyArgs:
@@ -52,6 +176,30 @@ class EntityKeyArgs:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+
+@pulumi.input_type
+class ExpiryDetailArgs:
+    def __init__(__self__, *,
+                 expire_time: Optional[pulumi.Input[str]] = None):
+        """
+        The `MembershipRole` expiry details.
+        :param pulumi.Input[str] expire_time: The time at which the `MembershipRole` will expire.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which the `MembershipRole` will expire.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
 
 
 @pulumi.input_type
@@ -129,13 +277,29 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs:
 @pulumi.input_type
 class MembershipRoleArgs:
     def __init__(__self__, *,
+                 expiry_detail: Optional[pulumi.Input['ExpiryDetailArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
+        :param pulumi.Input['ExpiryDetailArgs'] expiry_detail: The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
         :param pulumi.Input[str] name: The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         """
+        if expiry_detail is not None:
+            pulumi.set(__self__, "expiry_detail", expiry_detail)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="expiryDetail")
+    def expiry_detail(self) -> Optional[pulumi.Input['ExpiryDetailArgs']]:
+        """
+        The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+        """
+        return pulumi.get(self, "expiry_detail")
+
+    @expiry_detail.setter
+    def expiry_detail(self, value: Optional[pulumi.Input['ExpiryDetailArgs']]):
+        pulumi.set(self, "expiry_detail", value)
 
     @property
     @pulumi.getter

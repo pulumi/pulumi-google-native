@@ -77,14 +77,14 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ReplicaConfigurationArgs']] replica_configuration: Configuration specific to failover replicas and read replicas.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: The replicas of the instance.
         :param pulumi.Input[str] root_password: Initial root password. Use only on creation.
-        :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfies physical zone separation. Reserved for future use.
+        :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfiesPzs. Reserved for future use.
         :param pulumi.Input[pulumi.InputType['SqlScheduledMaintenanceArgs']] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
         :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[pulumi.InputType['SslCertArgs']] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['SettingsArgs']] settings: The user settings.
-        :param pulumi.Input[str] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        :param pulumi.Input[str] state: The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
         if __name__ is not None:

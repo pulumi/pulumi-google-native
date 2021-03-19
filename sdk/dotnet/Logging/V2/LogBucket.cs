@@ -90,7 +90,7 @@ namespace Pulumi.GoogleCloud.Logging.V2
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id The supported locations are: "global"For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+        /// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -692,6 +692,140 @@ func (o AutoUpgradeOptionsPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Autopilot is the configuration for Autopilot settings on the cluster.
+type Autopilot struct {
+	// Enable Autopilot
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AutopilotInput is an input type that accepts AutopilotArgs and AutopilotOutput values.
+// You can construct a concrete instance of `AutopilotInput` via:
+//
+//          AutopilotArgs{...}
+type AutopilotInput interface {
+	pulumi.Input
+
+	ToAutopilotOutput() AutopilotOutput
+	ToAutopilotOutputWithContext(context.Context) AutopilotOutput
+}
+
+// Autopilot is the configuration for Autopilot settings on the cluster.
+type AutopilotArgs struct {
+	// Enable Autopilot
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AutopilotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Autopilot)(nil)).Elem()
+}
+
+func (i AutopilotArgs) ToAutopilotOutput() AutopilotOutput {
+	return i.ToAutopilotOutputWithContext(context.Background())
+}
+
+func (i AutopilotArgs) ToAutopilotOutputWithContext(ctx context.Context) AutopilotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotOutput)
+}
+
+func (i AutopilotArgs) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return i.ToAutopilotPtrOutputWithContext(context.Background())
+}
+
+func (i AutopilotArgs) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotOutput).ToAutopilotPtrOutputWithContext(ctx)
+}
+
+// AutopilotPtrInput is an input type that accepts AutopilotArgs, AutopilotPtr and AutopilotPtrOutput values.
+// You can construct a concrete instance of `AutopilotPtrInput` via:
+//
+//          AutopilotArgs{...}
+//
+//  or:
+//
+//          nil
+type AutopilotPtrInput interface {
+	pulumi.Input
+
+	ToAutopilotPtrOutput() AutopilotPtrOutput
+	ToAutopilotPtrOutputWithContext(context.Context) AutopilotPtrOutput
+}
+
+type autopilotPtrType AutopilotArgs
+
+func AutopilotPtr(v *AutopilotArgs) AutopilotPtrInput {
+	return (*autopilotPtrType)(v)
+}
+
+func (*autopilotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Autopilot)(nil)).Elem()
+}
+
+func (i *autopilotPtrType) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return i.ToAutopilotPtrOutputWithContext(context.Background())
+}
+
+func (i *autopilotPtrType) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotPtrOutput)
+}
+
+// Autopilot is the configuration for Autopilot settings on the cluster.
+type AutopilotOutput struct{ *pulumi.OutputState }
+
+func (AutopilotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Autopilot)(nil)).Elem()
+}
+
+func (o AutopilotOutput) ToAutopilotOutput() AutopilotOutput {
+	return o
+}
+
+func (o AutopilotOutput) ToAutopilotOutputWithContext(ctx context.Context) AutopilotOutput {
+	return o
+}
+
+func (o AutopilotOutput) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return o.ToAutopilotPtrOutputWithContext(context.Background())
+}
+
+func (o AutopilotOutput) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return o.ApplyT(func(v Autopilot) *Autopilot {
+		return &v
+	}).(AutopilotPtrOutput)
+}
+
+// Enable Autopilot
+func (o AutopilotOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Autopilot) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AutopilotPtrOutput struct{ *pulumi.OutputState }
+
+func (AutopilotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Autopilot)(nil)).Elem()
+}
+
+func (o AutopilotPtrOutput) ToAutopilotPtrOutput() AutopilotPtrOutput {
+	return o
+}
+
+func (o AutopilotPtrOutput) ToAutopilotPtrOutputWithContext(ctx context.Context) AutopilotPtrOutput {
+	return o
+}
+
+func (o AutopilotPtrOutput) Elem() AutopilotOutput {
+	return o.ApplyT(func(v *Autopilot) Autopilot { return *v }).(AutopilotOutput)
+}
+
+// Enable Autopilot
+func (o AutopilotPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Autopilot) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
 type AutoprovisioningNodePoolDefaults struct {
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -1648,6 +1782,8 @@ type ClusterType struct {
 	AddonsConfig *AddonsConfig `pulumi:"addonsConfig"`
 	// Configuration controlling RBAC group membership information.
 	AuthenticatorGroupsConfig *AuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfig"`
+	// Autopilot configuration for the cluster.
+	Autopilot *Autopilot `pulumi:"autopilot"`
 	// Cluster-level autoscaling configuration.
 	Autoscaling *ClusterAutoscaling `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
@@ -1718,6 +1854,8 @@ type ClusterType struct {
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools []NodePoolType `pulumi:"nodePools"`
+	// Notification configuration of the cluster.
+	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
 	// Release channel configuration.
@@ -1765,6 +1903,8 @@ type ClusterTypeArgs struct {
 	AddonsConfig AddonsConfigPtrInput `pulumi:"addonsConfig"`
 	// Configuration controlling RBAC group membership information.
 	AuthenticatorGroupsConfig AuthenticatorGroupsConfigPtrInput `pulumi:"authenticatorGroupsConfig"`
+	// Autopilot configuration for the cluster.
+	Autopilot AutopilotPtrInput `pulumi:"autopilot"`
 	// Cluster-level autoscaling configuration.
 	Autoscaling ClusterAutoscalingPtrInput `pulumi:"autoscaling"`
 	// Configuration for Binary Authorization.
@@ -1835,6 +1975,8 @@ type ClusterTypeArgs struct {
 	NodeIpv4CidrSize pulumi.IntPtrInput `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools NodePoolTypeArrayInput `pulumi:"nodePools"`
+	// Notification configuration of the cluster.
+	NotificationConfig NotificationConfigPtrInput `pulumi:"notificationConfig"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"privateClusterConfig"`
 	// Release channel configuration.
@@ -1951,6 +2093,11 @@ func (o ClusterTypeOutput) AddonsConfig() AddonsConfigPtrOutput {
 // Configuration controlling RBAC group membership information.
 func (o ClusterTypeOutput) AuthenticatorGroupsConfig() AuthenticatorGroupsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterType) *AuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfig }).(AuthenticatorGroupsConfigPtrOutput)
+}
+
+// Autopilot configuration for the cluster.
+func (o ClusterTypeOutput) Autopilot() AutopilotPtrOutput {
+	return o.ApplyT(func(v ClusterType) *Autopilot { return v.Autopilot }).(AutopilotPtrOutput)
 }
 
 // Cluster-level autoscaling configuration.
@@ -2128,6 +2275,11 @@ func (o ClusterTypeOutput) NodePools() NodePoolTypeArrayOutput {
 	return o.ApplyT(func(v ClusterType) []NodePoolType { return v.NodePools }).(NodePoolTypeArrayOutput)
 }
 
+// Notification configuration of the cluster.
+func (o ClusterTypeOutput) NotificationConfig() NotificationConfigPtrOutput {
+	return o.ApplyT(func(v ClusterType) *NotificationConfig { return v.NotificationConfig }).(NotificationConfigPtrOutput)
+}
+
 // Configuration for private cluster.
 func (o ClusterTypeOutput) PrivateClusterConfig() PrivateClusterConfigPtrOutput {
 	return o.ApplyT(func(v ClusterType) *PrivateClusterConfig { return v.PrivateClusterConfig }).(PrivateClusterConfigPtrOutput)
@@ -2234,6 +2386,16 @@ func (o ClusterTypePtrOutput) AuthenticatorGroupsConfig() AuthenticatorGroupsCon
 		}
 		return v.AuthenticatorGroupsConfig
 	}).(AuthenticatorGroupsConfigPtrOutput)
+}
+
+// Autopilot configuration for the cluster.
+func (o ClusterTypePtrOutput) Autopilot() AutopilotPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *Autopilot {
+		if v == nil {
+			return nil
+		}
+		return v.Autopilot
+	}).(AutopilotPtrOutput)
 }
 
 // Cluster-level autoscaling configuration.
@@ -2584,6 +2746,16 @@ func (o ClusterTypePtrOutput) NodePools() NodePoolTypeArrayOutput {
 		}
 		return v.NodePools
 	}).(NodePoolTypeArrayOutput)
+}
+
+// Notification configuration of the cluster.
+func (o ClusterTypePtrOutput) NotificationConfig() NotificationConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterType) *NotificationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationConfig
+	}).(NotificationConfigPtrOutput)
 }
 
 // Configuration for private cluster.
@@ -4793,6 +4965,140 @@ func (o LegacyAbacPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Parameters that can be configured on Linux nodes.
+type LinuxNodeConfig struct {
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+	Sysctls map[string]string `pulumi:"sysctls"`
+}
+
+// LinuxNodeConfigInput is an input type that accepts LinuxNodeConfigArgs and LinuxNodeConfigOutput values.
+// You can construct a concrete instance of `LinuxNodeConfigInput` via:
+//
+//          LinuxNodeConfigArgs{...}
+type LinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToLinuxNodeConfigOutput() LinuxNodeConfigOutput
+	ToLinuxNodeConfigOutputWithContext(context.Context) LinuxNodeConfigOutput
+}
+
+// Parameters that can be configured on Linux nodes.
+type LinuxNodeConfigArgs struct {
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+}
+
+func (LinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxNodeConfig)(nil)).Elem()
+}
+
+func (i LinuxNodeConfigArgs) ToLinuxNodeConfigOutput() LinuxNodeConfigOutput {
+	return i.ToLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i LinuxNodeConfigArgs) ToLinuxNodeConfigOutputWithContext(ctx context.Context) LinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxNodeConfigOutput)
+}
+
+func (i LinuxNodeConfigArgs) ToLinuxNodeConfigPtrOutput() LinuxNodeConfigPtrOutput {
+	return i.ToLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LinuxNodeConfigArgs) ToLinuxNodeConfigPtrOutputWithContext(ctx context.Context) LinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxNodeConfigOutput).ToLinuxNodeConfigPtrOutputWithContext(ctx)
+}
+
+// LinuxNodeConfigPtrInput is an input type that accepts LinuxNodeConfigArgs, LinuxNodeConfigPtr and LinuxNodeConfigPtrOutput values.
+// You can construct a concrete instance of `LinuxNodeConfigPtrInput` via:
+//
+//          LinuxNodeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LinuxNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToLinuxNodeConfigPtrOutput() LinuxNodeConfigPtrOutput
+	ToLinuxNodeConfigPtrOutputWithContext(context.Context) LinuxNodeConfigPtrOutput
+}
+
+type linuxNodeConfigPtrType LinuxNodeConfigArgs
+
+func LinuxNodeConfigPtr(v *LinuxNodeConfigArgs) LinuxNodeConfigPtrInput {
+	return (*linuxNodeConfigPtrType)(v)
+}
+
+func (*linuxNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxNodeConfig)(nil)).Elem()
+}
+
+func (i *linuxNodeConfigPtrType) ToLinuxNodeConfigPtrOutput() LinuxNodeConfigPtrOutput {
+	return i.ToLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *linuxNodeConfigPtrType) ToLinuxNodeConfigPtrOutputWithContext(ctx context.Context) LinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxNodeConfigPtrOutput)
+}
+
+// Parameters that can be configured on Linux nodes.
+type LinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (LinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxNodeConfig)(nil)).Elem()
+}
+
+func (o LinuxNodeConfigOutput) ToLinuxNodeConfigOutput() LinuxNodeConfigOutput {
+	return o
+}
+
+func (o LinuxNodeConfigOutput) ToLinuxNodeConfigOutputWithContext(ctx context.Context) LinuxNodeConfigOutput {
+	return o
+}
+
+func (o LinuxNodeConfigOutput) ToLinuxNodeConfigPtrOutput() LinuxNodeConfigPtrOutput {
+	return o.ToLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigOutput) ToLinuxNodeConfigPtrOutputWithContext(ctx context.Context) LinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v LinuxNodeConfig) *LinuxNodeConfig {
+		return &v
+	}).(LinuxNodeConfigPtrOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+func (o LinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+type LinuxNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxNodeConfig)(nil)).Elem()
+}
+
+func (o LinuxNodeConfigPtrOutput) ToLinuxNodeConfigPtrOutput() LinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o LinuxNodeConfigPtrOutput) ToLinuxNodeConfigPtrOutputWithContext(ctx context.Context) LinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o LinuxNodeConfigPtrOutput) Elem() LinuxNodeConfigOutput {
+	return o.ApplyT(func(v *LinuxNodeConfig) LinuxNodeConfig { return *v }).(LinuxNodeConfigOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+func (o LinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LinuxNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Sysctls
+	}).(pulumi.StringMapOutput)
+}
+
 // MaintenancePolicy defines the maintenance policy to be used for the cluster.
 type MaintenancePolicy struct {
 	// A hash identifying the version of this policy, so that updates to fields of the policy won't accidentally undo intermediate changes (and so that users of the API unaware of some fields won't accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version and include it with requests to set the policy.
@@ -6143,8 +6449,12 @@ type NodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType *string `pulumi:"imageType"`
+	// Node kubelet configs.
+	KubeletConfig *NodeKubeletConfig `pulumi:"kubeletConfig"`
 	// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 	Labels map[string]string `pulumi:"labels"`
+	// Parameters that can be configured on Linux nodes.
+	LinuxNodeConfig *LinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
@@ -6198,8 +6508,12 @@ type NodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// Node kubelet configs.
+	KubeletConfig NodeKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Parameters that can be configured on Linux nodes.
+	LinuxNodeConfig LinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
@@ -6333,9 +6647,19 @@ func (o NodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// Node kubelet configs.
+func (o NodeConfigOutput) KubeletConfig() NodeKubeletConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *NodeKubeletConfig { return v.KubeletConfig }).(NodeKubeletConfigPtrOutput)
+}
+
 // The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 func (o NodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Parameters that can be configured on Linux nodes.
+func (o NodeConfigOutput) LinuxNodeConfig() LinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *LinuxNodeConfig { return v.LinuxNodeConfig }).(LinuxNodeConfigPtrOutput)
 }
 
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
@@ -6476,6 +6800,16 @@ func (o NodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Node kubelet configs.
+func (o NodeConfigPtrOutput) KubeletConfig() NodeKubeletConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *NodeKubeletConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubeletConfig
+	}).(NodeKubeletConfigPtrOutput)
+}
+
 // The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 func (o NodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeConfig) map[string]string {
@@ -6484,6 +6818,16 @@ func (o NodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 		}
 		return v.Labels
 	}).(pulumi.StringMapOutput)
+}
+
+// Parameters that can be configured on Linux nodes.
+func (o NodeConfigPtrOutput) LinuxNodeConfig() LinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *LinuxNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxNodeConfig
+	}).(LinuxNodeConfigPtrOutput)
 }
 
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
@@ -6624,6 +6968,178 @@ func (o NodeConfigPtrOutput) WorkloadMetadataConfig() WorkloadMetadataConfigPtrO
 		}
 		return v.WorkloadMetadataConfig
 	}).(WorkloadMetadataConfigPtrOutput)
+}
+
+// Node kubelet configs.
+type NodeKubeletConfig struct {
+	// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
+	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
+	// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
+	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+}
+
+// NodeKubeletConfigInput is an input type that accepts NodeKubeletConfigArgs and NodeKubeletConfigOutput values.
+// You can construct a concrete instance of `NodeKubeletConfigInput` via:
+//
+//          NodeKubeletConfigArgs{...}
+type NodeKubeletConfigInput interface {
+	pulumi.Input
+
+	ToNodeKubeletConfigOutput() NodeKubeletConfigOutput
+	ToNodeKubeletConfigOutputWithContext(context.Context) NodeKubeletConfigOutput
+}
+
+// Node kubelet configs.
+type NodeKubeletConfigArgs struct {
+	// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
+	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
+	// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
+	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+}
+
+func (NodeKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeKubeletConfig)(nil)).Elem()
+}
+
+func (i NodeKubeletConfigArgs) ToNodeKubeletConfigOutput() NodeKubeletConfigOutput {
+	return i.ToNodeKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i NodeKubeletConfigArgs) ToNodeKubeletConfigOutputWithContext(ctx context.Context) NodeKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeKubeletConfigOutput)
+}
+
+func (i NodeKubeletConfigArgs) ToNodeKubeletConfigPtrOutput() NodeKubeletConfigPtrOutput {
+	return i.ToNodeKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodeKubeletConfigArgs) ToNodeKubeletConfigPtrOutputWithContext(ctx context.Context) NodeKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeKubeletConfigOutput).ToNodeKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// NodeKubeletConfigPtrInput is an input type that accepts NodeKubeletConfigArgs, NodeKubeletConfigPtr and NodeKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `NodeKubeletConfigPtrInput` via:
+//
+//          NodeKubeletConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodeKubeletConfigPtrOutput() NodeKubeletConfigPtrOutput
+	ToNodeKubeletConfigPtrOutputWithContext(context.Context) NodeKubeletConfigPtrOutput
+}
+
+type nodeKubeletConfigPtrType NodeKubeletConfigArgs
+
+func NodeKubeletConfigPtr(v *NodeKubeletConfigArgs) NodeKubeletConfigPtrInput {
+	return (*nodeKubeletConfigPtrType)(v)
+}
+
+func (*nodeKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeKubeletConfig)(nil)).Elem()
+}
+
+func (i *nodeKubeletConfigPtrType) ToNodeKubeletConfigPtrOutput() NodeKubeletConfigPtrOutput {
+	return i.ToNodeKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeKubeletConfigPtrType) ToNodeKubeletConfigPtrOutputWithContext(ctx context.Context) NodeKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeKubeletConfigPtrOutput)
+}
+
+// Node kubelet configs.
+type NodeKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (NodeKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeKubeletConfig)(nil)).Elem()
+}
+
+func (o NodeKubeletConfigOutput) ToNodeKubeletConfigOutput() NodeKubeletConfigOutput {
+	return o
+}
+
+func (o NodeKubeletConfigOutput) ToNodeKubeletConfigOutputWithContext(ctx context.Context) NodeKubeletConfigOutput {
+	return o
+}
+
+func (o NodeKubeletConfigOutput) ToNodeKubeletConfigPtrOutput() NodeKubeletConfigPtrOutput {
+	return o.ToNodeKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodeKubeletConfigOutput) ToNodeKubeletConfigPtrOutputWithContext(ctx context.Context) NodeKubeletConfigPtrOutput {
+	return o.ApplyT(func(v NodeKubeletConfig) *NodeKubeletConfig {
+		return &v
+	}).(NodeKubeletConfigPtrOutput)
+}
+
+// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
+func (o NodeKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeKubeletConfig) *bool { return v.CpuCfsQuota }).(pulumi.BoolPtrOutput)
+}
+
+// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+func (o NodeKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+func (o NodeKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+type NodeKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeKubeletConfig)(nil)).Elem()
+}
+
+func (o NodeKubeletConfigPtrOutput) ToNodeKubeletConfigPtrOutput() NodeKubeletConfigPtrOutput {
+	return o
+}
+
+func (o NodeKubeletConfigPtrOutput) ToNodeKubeletConfigPtrOutputWithContext(ctx context.Context) NodeKubeletConfigPtrOutput {
+	return o
+}
+
+func (o NodeKubeletConfigPtrOutput) Elem() NodeKubeletConfigOutput {
+	return o.ApplyT(func(v *NodeKubeletConfig) NodeKubeletConfig { return *v }).(NodeKubeletConfigOutput)
+}
+
+// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
+func (o NodeKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+func (o NodeKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuotaPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+func (o NodeKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 // NodeManagement defines the set of node management services turned on for the node pool.
@@ -7552,6 +8068,140 @@ func (o NodeTaintArrayOutput) Index(i pulumi.IntInput) NodeTaintOutput {
 	}).(NodeTaintOutput)
 }
 
+// NotificationConfig is the configuration of notifications.
+type NotificationConfig struct {
+	// Notification config for Pub/Sub.
+	Pubsub *PubSub `pulumi:"pubsub"`
+}
+
+// NotificationConfigInput is an input type that accepts NotificationConfigArgs and NotificationConfigOutput values.
+// You can construct a concrete instance of `NotificationConfigInput` via:
+//
+//          NotificationConfigArgs{...}
+type NotificationConfigInput interface {
+	pulumi.Input
+
+	ToNotificationConfigOutput() NotificationConfigOutput
+	ToNotificationConfigOutputWithContext(context.Context) NotificationConfigOutput
+}
+
+// NotificationConfig is the configuration of notifications.
+type NotificationConfigArgs struct {
+	// Notification config for Pub/Sub.
+	Pubsub PubSubPtrInput `pulumi:"pubsub"`
+}
+
+func (NotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationConfig)(nil)).Elem()
+}
+
+func (i NotificationConfigArgs) ToNotificationConfigOutput() NotificationConfigOutput {
+	return i.ToNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i NotificationConfigArgs) ToNotificationConfigOutputWithContext(ctx context.Context) NotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigOutput)
+}
+
+func (i NotificationConfigArgs) ToNotificationConfigPtrOutput() NotificationConfigPtrOutput {
+	return i.ToNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationConfigArgs) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigOutput).ToNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// NotificationConfigPtrInput is an input type that accepts NotificationConfigArgs, NotificationConfigPtr and NotificationConfigPtrOutput values.
+// You can construct a concrete instance of `NotificationConfigPtrInput` via:
+//
+//          NotificationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToNotificationConfigPtrOutput() NotificationConfigPtrOutput
+	ToNotificationConfigPtrOutputWithContext(context.Context) NotificationConfigPtrOutput
+}
+
+type notificationConfigPtrType NotificationConfigArgs
+
+func NotificationConfigPtr(v *NotificationConfigArgs) NotificationConfigPtrInput {
+	return (*notificationConfigPtrType)(v)
+}
+
+func (*notificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationConfig)(nil)).Elem()
+}
+
+func (i *notificationConfigPtrType) ToNotificationConfigPtrOutput() NotificationConfigPtrOutput {
+	return i.ToNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationConfigPtrType) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigPtrOutput)
+}
+
+// NotificationConfig is the configuration of notifications.
+type NotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationConfig)(nil)).Elem()
+}
+
+func (o NotificationConfigOutput) ToNotificationConfigOutput() NotificationConfigOutput {
+	return o
+}
+
+func (o NotificationConfigOutput) ToNotificationConfigOutputWithContext(ctx context.Context) NotificationConfigOutput {
+	return o
+}
+
+func (o NotificationConfigOutput) ToNotificationConfigPtrOutput() NotificationConfigPtrOutput {
+	return o.ToNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
+	return o.ApplyT(func(v NotificationConfig) *NotificationConfig {
+		return &v
+	}).(NotificationConfigPtrOutput)
+}
+
+// Notification config for Pub/Sub.
+func (o NotificationConfigOutput) Pubsub() PubSubPtrOutput {
+	return o.ApplyT(func(v NotificationConfig) *PubSub { return v.Pubsub }).(PubSubPtrOutput)
+}
+
+type NotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationConfig)(nil)).Elem()
+}
+
+func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutput() NotificationConfigPtrOutput {
+	return o
+}
+
+func (o NotificationConfigPtrOutput) ToNotificationConfigPtrOutputWithContext(ctx context.Context) NotificationConfigPtrOutput {
+	return o
+}
+
+func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
+	return o.ApplyT(func(v *NotificationConfig) NotificationConfig { return *v }).(NotificationConfigOutput)
+}
+
+// Notification config for Pub/Sub.
+func (o NotificationConfigPtrOutput) Pubsub() PubSubPtrOutput {
+	return o.ApplyT(func(v *NotificationConfig) *PubSub {
+		if v == nil {
+			return nil
+		}
+		return v.Pubsub
+	}).(PubSubPtrOutput)
+}
+
 // Configuration options for private clusters.
 type PrivateClusterConfig struct {
 	// Whether the master's internal IP address is used as the cluster endpoint.
@@ -7934,6 +8584,159 @@ func (o PrivateClusterMasterGlobalAccessConfigPtrOutput) Enabled() pulumi.BoolPt
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Pub/Sub specific notification config.
+type PubSub struct {
+	// Enable notifications for Pub/Sub.
+	Enabled *bool `pulumi:"enabled"`
+	// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
+	Topic *string `pulumi:"topic"`
+}
+
+// PubSubInput is an input type that accepts PubSubArgs and PubSubOutput values.
+// You can construct a concrete instance of `PubSubInput` via:
+//
+//          PubSubArgs{...}
+type PubSubInput interface {
+	pulumi.Input
+
+	ToPubSubOutput() PubSubOutput
+	ToPubSubOutputWithContext(context.Context) PubSubOutput
+}
+
+// Pub/Sub specific notification config.
+type PubSubArgs struct {
+	// Enable notifications for Pub/Sub.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (PubSubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubSub)(nil)).Elem()
+}
+
+func (i PubSubArgs) ToPubSubOutput() PubSubOutput {
+	return i.ToPubSubOutputWithContext(context.Background())
+}
+
+func (i PubSubArgs) ToPubSubOutputWithContext(ctx context.Context) PubSubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubSubOutput)
+}
+
+func (i PubSubArgs) ToPubSubPtrOutput() PubSubPtrOutput {
+	return i.ToPubSubPtrOutputWithContext(context.Background())
+}
+
+func (i PubSubArgs) ToPubSubPtrOutputWithContext(ctx context.Context) PubSubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubSubOutput).ToPubSubPtrOutputWithContext(ctx)
+}
+
+// PubSubPtrInput is an input type that accepts PubSubArgs, PubSubPtr and PubSubPtrOutput values.
+// You can construct a concrete instance of `PubSubPtrInput` via:
+//
+//          PubSubArgs{...}
+//
+//  or:
+//
+//          nil
+type PubSubPtrInput interface {
+	pulumi.Input
+
+	ToPubSubPtrOutput() PubSubPtrOutput
+	ToPubSubPtrOutputWithContext(context.Context) PubSubPtrOutput
+}
+
+type pubSubPtrType PubSubArgs
+
+func PubSubPtr(v *PubSubArgs) PubSubPtrInput {
+	return (*pubSubPtrType)(v)
+}
+
+func (*pubSubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubSub)(nil)).Elem()
+}
+
+func (i *pubSubPtrType) ToPubSubPtrOutput() PubSubPtrOutput {
+	return i.ToPubSubPtrOutputWithContext(context.Background())
+}
+
+func (i *pubSubPtrType) ToPubSubPtrOutputWithContext(ctx context.Context) PubSubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubSubPtrOutput)
+}
+
+// Pub/Sub specific notification config.
+type PubSubOutput struct{ *pulumi.OutputState }
+
+func (PubSubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubSub)(nil)).Elem()
+}
+
+func (o PubSubOutput) ToPubSubOutput() PubSubOutput {
+	return o
+}
+
+func (o PubSubOutput) ToPubSubOutputWithContext(ctx context.Context) PubSubOutput {
+	return o
+}
+
+func (o PubSubOutput) ToPubSubPtrOutput() PubSubPtrOutput {
+	return o.ToPubSubPtrOutputWithContext(context.Background())
+}
+
+func (o PubSubOutput) ToPubSubPtrOutputWithContext(ctx context.Context) PubSubPtrOutput {
+	return o.ApplyT(func(v PubSub) *PubSub {
+		return &v
+	}).(PubSubPtrOutput)
+}
+
+// Enable notifications for Pub/Sub.
+func (o PubSubOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PubSub) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
+func (o PubSubOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubSub) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type PubSubPtrOutput struct{ *pulumi.OutputState }
+
+func (PubSubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubSub)(nil)).Elem()
+}
+
+func (o PubSubPtrOutput) ToPubSubPtrOutput() PubSubPtrOutput {
+	return o
+}
+
+func (o PubSubPtrOutput) ToPubSubPtrOutputWithContext(ctx context.Context) PubSubPtrOutput {
+	return o
+}
+
+func (o PubSubPtrOutput) Elem() PubSubOutput {
+	return o.ApplyT(func(v *PubSub) PubSub { return *v }).(PubSubOutput)
+}
+
+// Enable notifications for Pub/Sub.
+func (o PubSubPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PubSub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
+func (o PubSubPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubSub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
 }
 
 // Represents an arbitrary window of time that recurs.
@@ -9932,6 +10735,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeOptionsOutput{})
 	pulumi.RegisterOutputType(AutoUpgradeOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AutopilotOutput{})
+	pulumi.RegisterOutputType(AutopilotPtrOutput{})
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsOutput{})
 	pulumi.RegisterOutputType(AutoprovisioningNodePoolDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryDestinationOutput{})
@@ -9972,6 +10777,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesDashboardPtrOutput{})
 	pulumi.RegisterOutputType(LegacyAbacOutput{})
 	pulumi.RegisterOutputType(LegacyAbacPtrOutput{})
+	pulumi.RegisterOutputType(LinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(LinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
@@ -9990,6 +10797,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeKubeletConfigOutput{})
+	pulumi.RegisterOutputType(NodeKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeManagementOutput{})
 	pulumi.RegisterOutputType(NodeManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeOutput{})
@@ -9999,10 +10808,14 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintOutput{})
 	pulumi.RegisterOutputType(NodeTaintArrayOutput{})
+	pulumi.RegisterOutputType(NotificationConfigOutput{})
+	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterMasterGlobalAccessConfigOutput{})
 	pulumi.RegisterOutputType(PrivateClusterMasterGlobalAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(PubSubOutput{})
+	pulumi.RegisterOutputType(PubSubPtrOutput{})
 	pulumi.RegisterOutputType(RecurringTimeWindowOutput{})
 	pulumi.RegisterOutputType(RecurringTimeWindowPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelOutput{})

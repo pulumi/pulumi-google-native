@@ -45,17 +45,19 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceAttachmentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
             inputs["consumerForwardingRules"] = args ? args.consumerForwardingRules : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -67,12 +69,8 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceAttachment.__pulumiType, name, inputs, opts);
     }
@@ -98,6 +96,10 @@ export interface ServiceAttachmentArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+     */
+    readonly enableProxyProtocol?: pulumi.Input<boolean>;
     /**
      * [Output Only] The unique identifier for the resource type. The server generates this identifier.
      */

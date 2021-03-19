@@ -15,6 +15,18 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
     /// </summary>
     public sealed class BackendBucketCdnPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("bypassCacheOnRequestHeaders")]
+        private InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>? _bypassCacheOnRequestHeaders;
+
+        /// <summary>
+        /// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        /// </summary>
+        public InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs> BypassCacheOnRequestHeaders
+        {
+            get => _bypassCacheOnRequestHeaders ?? (_bypassCacheOnRequestHeaders = new InputList<Inputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>());
+            set => _bypassCacheOnRequestHeaders = value;
+        }
+
         /// <summary>
         /// Specifies the cache setting for all responses from this backend. The possible values are:
         /// 
@@ -28,7 +40,7 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+        /// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
         /// </summary>
         [Input("clientTtl")]
         public Input<int>? ClientTtl { get; set; }
@@ -44,6 +56,30 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
         /// </summary>
         [Input("maxTtl")]
         public Input<int>? MaxTtl { get; set; }
+
+        /// <summary>
+        /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+        /// </summary>
+        [Input("negativeCaching")]
+        public Input<bool>? NegativeCaching { get; set; }
+
+        [Input("negativeCachingPolicy")]
+        private InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyArgs>? _negativeCachingPolicy;
+
+        /// <summary>
+        /// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        /// </summary>
+        public InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyArgs> NegativeCachingPolicy
+        {
+            get => _negativeCachingPolicy ?? (_negativeCachingPolicy = new InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyArgs>());
+            set => _negativeCachingPolicy = value;
+        }
+
+        /// <summary>
+        /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+        /// </summary>
+        [Input("serveWhileStale")]
+        public Input<int>? ServeWhileStale { get; set; }
 
         /// <summary>
         /// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.

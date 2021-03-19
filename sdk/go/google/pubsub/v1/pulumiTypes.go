@@ -1390,6 +1390,159 @@ func (o RetryPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Settings for validating messages published against a schema.
+type SchemaSettings struct {
+	// The encoding of messages validated against `schema`.
+	Encoding *string `pulumi:"encoding"`
+	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+	Schema *string `pulumi:"schema"`
+}
+
+// SchemaSettingsInput is an input type that accepts SchemaSettingsArgs and SchemaSettingsOutput values.
+// You can construct a concrete instance of `SchemaSettingsInput` via:
+//
+//          SchemaSettingsArgs{...}
+type SchemaSettingsInput interface {
+	pulumi.Input
+
+	ToSchemaSettingsOutput() SchemaSettingsOutput
+	ToSchemaSettingsOutputWithContext(context.Context) SchemaSettingsOutput
+}
+
+// Settings for validating messages published against a schema.
+type SchemaSettingsArgs struct {
+	// The encoding of messages validated against `schema`.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+}
+
+func (SchemaSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaSettings)(nil)).Elem()
+}
+
+func (i SchemaSettingsArgs) ToSchemaSettingsOutput() SchemaSettingsOutput {
+	return i.ToSchemaSettingsOutputWithContext(context.Background())
+}
+
+func (i SchemaSettingsArgs) ToSchemaSettingsOutputWithContext(ctx context.Context) SchemaSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsOutput)
+}
+
+func (i SchemaSettingsArgs) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutput {
+	return i.ToSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SchemaSettingsArgs) ToSchemaSettingsPtrOutputWithContext(ctx context.Context) SchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsOutput).ToSchemaSettingsPtrOutputWithContext(ctx)
+}
+
+// SchemaSettingsPtrInput is an input type that accepts SchemaSettingsArgs, SchemaSettingsPtr and SchemaSettingsPtrOutput values.
+// You can construct a concrete instance of `SchemaSettingsPtrInput` via:
+//
+//          SchemaSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type SchemaSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutput
+	ToSchemaSettingsPtrOutputWithContext(context.Context) SchemaSettingsPtrOutput
+}
+
+type schemaSettingsPtrType SchemaSettingsArgs
+
+func SchemaSettingsPtr(v *SchemaSettingsArgs) SchemaSettingsPtrInput {
+	return (*schemaSettingsPtrType)(v)
+}
+
+func (*schemaSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaSettings)(nil)).Elem()
+}
+
+func (i *schemaSettingsPtrType) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutput {
+	return i.ToSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *schemaSettingsPtrType) ToSchemaSettingsPtrOutputWithContext(ctx context.Context) SchemaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaSettingsPtrOutput)
+}
+
+// Settings for validating messages published against a schema.
+type SchemaSettingsOutput struct{ *pulumi.OutputState }
+
+func (SchemaSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaSettings)(nil)).Elem()
+}
+
+func (o SchemaSettingsOutput) ToSchemaSettingsOutput() SchemaSettingsOutput {
+	return o
+}
+
+func (o SchemaSettingsOutput) ToSchemaSettingsOutputWithContext(ctx context.Context) SchemaSettingsOutput {
+	return o
+}
+
+func (o SchemaSettingsOutput) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutput {
+	return o.ToSchemaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaSettingsOutput) ToSchemaSettingsPtrOutputWithContext(ctx context.Context) SchemaSettingsPtrOutput {
+	return o.ApplyT(func(v SchemaSettings) *SchemaSettings {
+		return &v
+	}).(SchemaSettingsPtrOutput)
+}
+
+// The encoding of messages validated against `schema`.
+func (o SchemaSettingsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaSettings) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+func (o SchemaSettingsOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaSettings) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type SchemaSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaSettings)(nil)).Elem()
+}
+
+func (o SchemaSettingsPtrOutput) ToSchemaSettingsPtrOutput() SchemaSettingsPtrOutput {
+	return o
+}
+
+func (o SchemaSettingsPtrOutput) ToSchemaSettingsPtrOutputWithContext(ctx context.Context) SchemaSettingsPtrOutput {
+	return o
+}
+
+func (o SchemaSettingsPtrOutput) Elem() SchemaSettingsOutput {
+	return o.ApplyT(func(v *SchemaSettings) SchemaSettings { return *v }).(SchemaSettingsOutput)
+}
+
+// The encoding of messages validated against `schema`.
+func (o SchemaSettingsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+func (o SchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
@@ -1409,4 +1562,6 @@ func init() {
 	pulumi.RegisterOutputType(PushConfigPtrOutput{})
 	pulumi.RegisterOutputType(RetryPolicyOutput{})
 	pulumi.RegisterOutputType(RetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SchemaSettingsOutput{})
+	pulumi.RegisterOutputType(SchemaSettingsPtrOutput{})
 }

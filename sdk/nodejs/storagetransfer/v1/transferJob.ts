@@ -45,7 +45,8 @@ export class TransferJob extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TransferJobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["deletionTime"] = args ? args.deletionTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -59,12 +60,8 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["transferSpec"] = args ? args.transferSpec : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TransferJob.__pulumiType, name, inputs, opts);
     }
@@ -107,7 +104,7 @@ export interface TransferJobArgs {
      */
     readonly projectId?: pulumi.Input<string>;
     /**
-     * Schedule specification.
+     * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
     readonly schedule?: pulumi.Input<inputs.storagetransfer.v1.Schedule>;
     /**

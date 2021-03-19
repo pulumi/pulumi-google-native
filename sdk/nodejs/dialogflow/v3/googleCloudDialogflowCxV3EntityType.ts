@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowCxV3EntityType extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowCxV3EntityTypeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
@@ -58,14 +59,11 @@ export class GoogleCloudDialogflowCxV3EntityType extends pulumi.CustomResource {
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["redact"] = args ? args.redact : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowCxV3EntityType.__pulumiType, name, inputs, opts);
     }
@@ -100,7 +98,7 @@ export interface GoogleCloudDialogflowCxV3EntityTypeArgs {
      */
     readonly kind?: pulumi.Input<string>;
     /**
-     * The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     * The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
      */
     readonly languageCode?: pulumi.Input<string>;
     /**
@@ -111,4 +109,8 @@ export interface GoogleCloudDialogflowCxV3EntityTypeArgs {
      * Required. The agent to create a entity type for. Format: `projects//locations//agents/`.
      */
     readonly parent: pulumi.Input<string>;
+    /**
+     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
+     */
+    readonly redact?: pulumi.Input<boolean>;
 }

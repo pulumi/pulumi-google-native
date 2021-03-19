@@ -9,10 +9,12 @@ export * from "./provider";
 
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager";
+import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
+import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
 import * as bigquerydatatransfer from "./bigquerydatatransfer";
 import * as bigqueryreservation from "./bigqueryreservation";
@@ -22,6 +24,7 @@ import * as binaryauthorization from "./binaryauthorization";
 import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
 import * as cloudbuild from "./cloudbuild";
+import * as cloudchannel from "./cloudchannel";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudiot from "./cloudiot";
@@ -54,6 +57,7 @@ import * as file from "./file";
 import * as firestore from "./firestore";
 import * as gameservices from "./gameservices";
 import * as genomics from "./genomics";
+import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
@@ -64,18 +68,23 @@ import * as memcache from "./memcache";
 import * as metastore from "./metastore";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
+import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
 import * as notebooks from "./notebooks";
+import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
+import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
 import * as pubsublite from "./pubsublite";
 import * as recommendationengine from "./recommendationengine";
 import * as redis from "./redis";
 import * as remotebuildexecution from "./remotebuildexecution";
+import * as retail from "./retail";
 import * as run from "./run";
 import * as runtimeconfig from "./runtimeconfig";
 import * as secretmanager from "./secretmanager";
+import * as securitycenter from "./securitycenter";
 import * as serviceconsumermanagement from "./serviceconsumermanagement";
 import * as servicedirectory from "./servicedirectory";
 import * as servicemanagement from "./servicemanagement";
@@ -83,6 +92,7 @@ import * as servicenetworking from "./servicenetworking";
 import * as serviceusage from "./serviceusage";
 import * as sourcerepo from "./sourcerepo";
 import * as spanner from "./spanner";
+import * as speech from "./speech";
 import * as sqladmin from "./sqladmin";
 import * as storage from "./storage";
 import * as storagetransfer from "./storagetransfer";
@@ -93,16 +103,19 @@ import * as transcoder from "./transcoder";
 import * as translate from "./translate";
 import * as types from "./types";
 import * as vision from "./vision";
+import * as webrisk from "./webrisk";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
 import * as workflows from "./workflows";
 
 export {
     accesscontextmanager,
+    apigateway,
     apigee,
     appengine,
     artifactregistry,
     assuredworkloads,
+    bigquery,
     bigqueryconnection,
     bigquerydatatransfer,
     bigqueryreservation,
@@ -112,6 +125,7 @@ export {
     cloudasset,
     cloudbilling,
     cloudbuild,
+    cloudchannel,
     cloudfunctions,
     cloudidentity,
     cloudiot,
@@ -144,6 +158,7 @@ export {
     firestore,
     gameservices,
     genomics,
+    gkehub,
     healthcare,
     iam,
     iap,
@@ -154,18 +169,23 @@ export {
     metastore,
     ml,
     monitoring,
+    networkconnectivity,
     networkmanagement,
     notebooks,
+    orgpolicy,
     osconfig,
+    policysimulator,
     privateca,
     pubsub,
     pubsublite,
     recommendationengine,
     redis,
     remotebuildexecution,
+    retail,
     run,
     runtimeconfig,
     secretmanager,
+    securitycenter,
     serviceconsumermanagement,
     servicedirectory,
     servicemanagement,
@@ -173,6 +193,7 @@ export {
     serviceusage,
     sourcerepo,
     spanner,
+    speech,
     sqladmin,
     storage,
     storagetransfer,
@@ -183,6 +204,7 @@ export {
     translate,
     types,
     vision,
+    webrisk,
     websecurityscanner,
     workflowexecutions,
     workflows,

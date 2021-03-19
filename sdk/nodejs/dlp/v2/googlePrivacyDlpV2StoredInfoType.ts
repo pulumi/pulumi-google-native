@@ -45,8 +45,9 @@ export class GooglePrivacyDlpV2StoredInfoType extends pulumi.CustomResource {
      */
     constructor(name: string, args: GooglePrivacyDlpV2StoredInfoTypeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["config"] = args ? args.config : undefined;
@@ -55,12 +56,8 @@ export class GooglePrivacyDlpV2StoredInfoType extends pulumi.CustomResource {
             inputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GooglePrivacyDlpV2StoredInfoType.__pulumiType, name, inputs, opts);
     }

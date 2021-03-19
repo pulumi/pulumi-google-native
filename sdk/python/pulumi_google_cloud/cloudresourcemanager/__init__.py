@@ -9,4 +9,5 @@ from . import (
     v1beta1,
     v2,
     v2beta1,
+    v3,
 )

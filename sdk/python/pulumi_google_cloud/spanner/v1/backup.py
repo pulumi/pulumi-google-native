@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._inputs import *
 
 __all__ = ['Backup']
 
@@ -18,12 +19,16 @@ class Backup(pulumi.CustomResource):
                  backup_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config_encryption_type: Optional[pulumi.Input[str]] = None,
+                 encryption_config_kms_key_name: Optional[pulumi.Input[str]] = None,
+                 encryption_info: Optional[pulumi.Input[pulumi.InputType['EncryptionInfoArgs']]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  referencing_databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size_bytes: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 version_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,14 +38,18 @@ class Backup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_id: Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
-        :param pulumi.Input[str] create_time: Output only. The backup will contain an externally consistent copy of the database at the timestamp specified by `create_time`. `create_time` is approximately the time the CreateBackup request is received.
+        :param pulumi.Input[str] create_time: Output only. The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
         :param pulumi.Input[str] database: Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+        :param pulumi.Input[str] encryption_config_encryption_type: Required. The encryption type of the backup.
+        :param pulumi.Input[str] encryption_config_kms_key_name: Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        :param pulumi.Input[pulumi.InputType['EncryptionInfoArgs']] encryption_info: Output only. The encryption information for the backup.
         :param pulumi.Input[str] expire_time: Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
         :param pulumi.Input[str] name: Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         :param pulumi.Input[str] parent: Required. The name of the instance in which the backup will be created. This must be the same instance that contains the database the backup will be created from. The backup will be stored in the location(s) specified in the instance configuration of this instance. Values are of the form `projects//instances/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referencing_databases: Output only. The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
         :param pulumi.Input[str] size_bytes: Output only. Size of the backup in bytes.
         :param pulumi.Input[str] state: Output only. The current state of the backup.
+        :param pulumi.Input[str] version_time: The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,6 +71,9 @@ class Backup(pulumi.CustomResource):
             __props__['backup_id'] = backup_id
             __props__['create_time'] = create_time
             __props__['database'] = database
+            __props__['encryption_config_encryption_type'] = encryption_config_encryption_type
+            __props__['encryption_config_kms_key_name'] = encryption_config_kms_key_name
+            __props__['encryption_info'] = encryption_info
             __props__['expire_time'] = expire_time
             __props__['name'] = name
             if parent is None and not opts.urn:
@@ -70,6 +82,7 @@ class Backup(pulumi.CustomResource):
             __props__['referencing_databases'] = referencing_databases
             __props__['size_bytes'] = size_bytes
             __props__['state'] = state
+            __props__['version_time'] = version_time
         super(Backup, __self__).__init__(
             'google-cloud:spanner/v1:Backup',
             resource_name,

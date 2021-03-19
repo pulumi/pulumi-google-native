@@ -33,7 +33,7 @@ class Execution(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB.
+        :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         :param pulumi.Input[str] end_time: Output only. Marks the end of execution, successful or not.
         :param pulumi.Input[pulumi.InputType['ErrorArgs']] error: Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
         :param pulumi.Input[str] name: Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}

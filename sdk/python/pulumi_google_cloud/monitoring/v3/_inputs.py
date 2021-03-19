@@ -31,6 +31,7 @@ __all__ = [
     'GoogleMonitoringV3RangeArgs',
     'HttpCheckArgs',
     'InternalCheckerArgs',
+    'IstioCanonicalServiceArgs',
     'LabelDescriptorArgs',
     'LatencyCriteriaArgs',
     'LinearArgs',
@@ -1424,6 +1425,62 @@ class InternalCheckerArgs:
 
 
 @pulumi.input_type
+class IstioCanonicalServiceArgs:
+    def __init__(__self__, *,
+                 canonical_service: Optional[pulumi.Input[str]] = None,
+                 canonical_service_namespace: Optional[pulumi.Input[str]] = None,
+                 mesh_uid: Optional[pulumi.Input[str]] = None):
+        """
+        Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+        :param pulumi.Input[str] canonical_service: The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        :param pulumi.Input[str] canonical_service_namespace: The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        :param pulumi.Input[str] mesh_uid: Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        """
+        if canonical_service is not None:
+            pulumi.set(__self__, "canonical_service", canonical_service)
+        if canonical_service_namespace is not None:
+            pulumi.set(__self__, "canonical_service_namespace", canonical_service_namespace)
+        if mesh_uid is not None:
+            pulumi.set(__self__, "mesh_uid", mesh_uid)
+
+    @property
+    @pulumi.getter(name="canonicalService")
+    def canonical_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        """
+        return pulumi.get(self, "canonical_service")
+
+    @canonical_service.setter
+    def canonical_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "canonical_service", value)
+
+    @property
+    @pulumi.getter(name="canonicalServiceNamespace")
+    def canonical_service_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        """
+        return pulumi.get(self, "canonical_service_namespace")
+
+    @canonical_service_namespace.setter
+    def canonical_service_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "canonical_service_namespace", value)
+
+    @property
+    @pulumi.getter(name="meshUid")
+    def mesh_uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        """
+        return pulumi.get(self, "mesh_uid")
+
+    @mesh_uid.setter
+    def mesh_uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mesh_uid", value)
+
+
+@pulumi.input_type
 class LabelDescriptorArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1665,8 +1722,8 @@ class MetricAbsenceArgs:
         """
         A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] aggregations: Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
-        :param pulumi.Input[str] duration: The amount of time that a time series must fail to report new data to be considered failing. Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
-        :param pulumi.Input[str] filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+        :param pulumi.Input[str] duration: The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+        :param pulumi.Input[str] filter: Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param pulumi.Input['TriggerArgs'] trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
         """
         if aggregations is not None:
@@ -1694,7 +1751,7 @@ class MetricAbsenceArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of time that a time series must fail to report new data to be considered failing. Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+        The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
         """
         return pulumi.get(self, "duration")
 
@@ -1706,7 +1763,7 @@ class MetricAbsenceArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+        Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         """
         return pulumi.get(self, "filter")
 
@@ -1841,7 +1898,7 @@ class MetricThresholdArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AggregationArgs']]] denominator_aggregations: Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
         :param pulumi.Input[str] denominator_filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
         :param pulumi.Input[str] duration: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
-        :param pulumi.Input[str] filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+        :param pulumi.Input[str] filter: Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         :param pulumi.Input[float] threshold_value: A value against which to compare the time series.
         :param pulumi.Input['TriggerArgs'] trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
         """
@@ -1926,7 +1983,7 @@ class MetricThresholdArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+        Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
         """
         return pulumi.get(self, "filter")
 

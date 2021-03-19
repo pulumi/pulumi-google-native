@@ -101,6 +101,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("properties")]
         public Input<Inputs.GoogleCloudApigeeV1PropertiesArgs>? Properties { get; set; }
 
+        /// <summary>
+        /// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
         public GoogleLongrunningOperationArgs()
         {
         }

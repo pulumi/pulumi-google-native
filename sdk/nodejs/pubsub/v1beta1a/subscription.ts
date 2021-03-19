@@ -45,19 +45,16 @@ export class Subscription extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SubscriptionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pushConfig"] = args ? args.pushConfig : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Subscription.__pulumiType, name, inputs, opts);
     }

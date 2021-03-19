@@ -45,8 +45,9 @@ export class Hl7V2Store extends pulumi.CustomResource {
      */
     constructor(name: string, args: Hl7V2StoreArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
@@ -58,12 +59,8 @@ export class Hl7V2Store extends pulumi.CustomResource {
             inputs["rejectDuplicateMessage"] = args ? args.rejectDuplicateMessage : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Hl7V2Store.__pulumiType, name, inputs, opts);
     }

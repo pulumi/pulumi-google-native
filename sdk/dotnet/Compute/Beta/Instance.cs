@@ -244,6 +244,15 @@ namespace Pulumi.GoogleCloud.Compute.Beta
             set => _networkInterfaces = value;
         }
 
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// PostKeyRevocationActionType of the instance.
+        /// </summary>
+        [Input("postKeyRevocationActionType")]
+        public Input<string>? PostKeyRevocationActionType { get; set; }
+
         /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
@@ -283,6 +292,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
             get => _resourcePolicies ?? (_resourcePolicies = new InputList<string>());
             set => _resourcePolicies = value;
         }
+
+        /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Sets the scheduling options for this instance.
@@ -346,7 +361,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<string>? SourceMachineImage { get; set; }
 
         /// <summary>
-        /// Source GMI encryption key when creating an instance from GMI.
+        /// Source machine image encryption key when creating an instance from a machine image.
         /// </summary>
         [Input("sourceMachineImageEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceMachineImageEncryptionKey { get; set; }

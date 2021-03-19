@@ -6,13 +6,17 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./environment";
+export * from "./execution";
 export * from "./instance";
 export * from "./policy";
+export * from "./schedule";
 
 // Import resources to register:
 import { Environment } from "./environment";
+import { Execution } from "./execution";
 import { Instance } from "./instance";
 import { Policy } from "./policy";
+import { Schedule } from "./schedule";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,10 +24,14 @@ const _module = {
         switch (type) {
             case "google-cloud:notebooks/v1:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "google-cloud:notebooks/v1:Execution":
+                return new Execution(name, <any>undefined, { urn })
             case "google-cloud:notebooks/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "google-cloud:notebooks/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:notebooks/v1:Schedule":
+                return new Schedule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

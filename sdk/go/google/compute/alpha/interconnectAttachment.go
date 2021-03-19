@@ -96,7 +96,7 @@ type interconnectAttachmentArgs struct {
 	EdgeAvailabilityDomain *string `pulumi:"edgeAvailabilityDomain"`
 	// Indicates the user-supplied encryption option of this interconnect attachment:
 	// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment.
-	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec over Interconnect, create the attachment using this option.
+	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
 	Encryption *string `pulumi:"encryption"`
 	// [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
 	GoogleReferenceId *string `pulumi:"googleReferenceId"`
@@ -202,7 +202,7 @@ type InterconnectAttachmentArgs struct {
 	EdgeAvailabilityDomain pulumi.StringPtrInput
 	// Indicates the user-supplied encryption option of this interconnect attachment:
 	// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment.
-	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec over Interconnect, create the attachment using this option.
+	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
 	Encryption pulumi.StringPtrInput
 	// [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
 	GoogleReferenceId pulumi.StringPtrInput

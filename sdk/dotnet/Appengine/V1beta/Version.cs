@@ -66,7 +66,7 @@ namespace Pulumi.GoogleCloud.Appengine.V1beta
         public Input<Inputs.ApiConfigHandlerArgs>? ApiConfig { get; set; }
 
         /// <summary>
-        /// app_engine_apis allows Second Generation runtimes to access the App Engine APIs.
+        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
         /// </summary>
         [Input("appEngineApis")]
         public Input<bool>? AppEngineApis { get; set; }
@@ -304,6 +304,12 @@ namespace Pulumi.GoogleCloud.Appengine.V1beta
         /// </summary>
         [Input("runtimeMainExecutablePath")]
         public Input<string>? RuntimeMainExecutablePath { get; set; }
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Part of `parent`. See documentation of `appsId`.

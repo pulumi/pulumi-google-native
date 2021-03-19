@@ -44,8 +44,9 @@ export class BucketAccessControl extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketAccessControlArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -63,12 +64,8 @@ export class BucketAccessControl extends pulumi.CustomResource {
             inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BucketAccessControl.__pulumiType, name, inputs, opts);
     }

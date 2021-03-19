@@ -930,6 +930,399 @@ func (o GoogleCloudApigeeV1DateRangePtrOutput) Start() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+type GoogleCloudApigeeV1GraphQLOperation struct {
+	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	Operation *string `pulumi:"operation"`
+	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	OperationType []string `pulumi:"operationType"`
+}
+
+// GoogleCloudApigeeV1GraphQLOperationInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationArgs and GoogleCloudApigeeV1GraphQLOperationOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationArgs{...}
+type GoogleCloudApigeeV1GraphQLOperationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationOutput() GoogleCloudApigeeV1GraphQLOperationOutput
+	ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationOutput
+}
+
+// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+type GoogleCloudApigeeV1GraphQLOperationArgs struct {
+	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	OperationType pulumi.StringArrayInput `pulumi:"operationType"`
+}
+
+func (GoogleCloudApigeeV1GraphQLOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperation)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationArgs) ToGoogleCloudApigeeV1GraphQLOperationOutput() GoogleCloudApigeeV1GraphQLOperationOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationArgs) ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationOutput)
+}
+
+// GoogleCloudApigeeV1GraphQLOperationArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationArray and GoogleCloudApigeeV1GraphQLOperationArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationArrayInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationArray{ GoogleCloudApigeeV1GraphQLOperationArgs{...} }
+type GoogleCloudApigeeV1GraphQLOperationArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationArrayOutput() GoogleCloudApigeeV1GraphQLOperationArrayOutput
+	ToGoogleCloudApigeeV1GraphQLOperationArrayOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationArrayOutput
+}
+
+type GoogleCloudApigeeV1GraphQLOperationArray []GoogleCloudApigeeV1GraphQLOperationInput
+
+func (GoogleCloudApigeeV1GraphQLOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperation)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationArray) ToGoogleCloudApigeeV1GraphQLOperationArrayOutput() GoogleCloudApigeeV1GraphQLOperationArrayOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationArray) ToGoogleCloudApigeeV1GraphQLOperationArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationArrayOutput)
+}
+
+// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+type GoogleCloudApigeeV1GraphQLOperationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperation)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationOutput) ToGoogleCloudApigeeV1GraphQLOperationOutput() GoogleCloudApigeeV1GraphQLOperationOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationOutput) ToGoogleCloudApigeeV1GraphQLOperationOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationOutput {
+	return o
+}
+
+// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+func (o GoogleCloudApigeeV1GraphQLOperationOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperation) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+func (o GoogleCloudApigeeV1GraphQLOperationOutput) OperationType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperation) []string { return v.OperationType }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudApigeeV1GraphQLOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperation)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationArrayOutput() GoogleCloudApigeeV1GraphQLOperationArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1GraphQLOperation {
+		return vs[0].([]GoogleCloudApigeeV1GraphQLOperation)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1GraphQLOperationOutput)
+}
+
+// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+type GoogleCloudApigeeV1GraphQLOperationConfig struct {
+	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	ApiSource *string `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
+	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	Operations []GoogleCloudApigeeV1GraphQLOperation `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	Quota *GoogleCloudApigeeV1Quota `pulumi:"quota"`
+}
+
+// GoogleCloudApigeeV1GraphQLOperationConfigInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigArgs and GoogleCloudApigeeV1GraphQLOperationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationConfigArgs{...}
+type GoogleCloudApigeeV1GraphQLOperationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationConfigOutput() GoogleCloudApigeeV1GraphQLOperationConfigOutput
+	ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationConfigOutput
+}
+
+// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+type GoogleCloudApigeeV1GraphQLOperationConfigArgs struct {
+	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	ApiSource pulumi.StringPtrInput `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	Attributes GoogleCloudApigeeV1AttributeArrayInput `pulumi:"attributes"`
+	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	Operations GoogleCloudApigeeV1GraphQLOperationArrayInput `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	Quota GoogleCloudApigeeV1QuotaPtrInput `pulumi:"quota"`
+}
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigArgs) ToGoogleCloudApigeeV1GraphQLOperationConfigOutput() GoogleCloudApigeeV1GraphQLOperationConfigOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigArgs) ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigOutput)
+}
+
+// GoogleCloudApigeeV1GraphQLOperationConfigArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigArray and GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigArrayInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationConfigArray{ GoogleCloudApigeeV1GraphQLOperationConfigArgs{...} }
+type GoogleCloudApigeeV1GraphQLOperationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutput() GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput
+	ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput
+}
+
+type GoogleCloudApigeeV1GraphQLOperationConfigArray []GoogleCloudApigeeV1GraphQLOperationConfigInput
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigArray) ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutput() GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigArray) ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput)
+}
+
+// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+type GoogleCloudApigeeV1GraphQLOperationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigOutput() GoogleCloudApigeeV1GraphQLOperationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigOutput {
+	return o
+}
+
+// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) ApiSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) *string { return v.ApiSource }).(pulumi.StringPtrOutput)
+}
+
+// Custom attributes associated with the operation.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) Attributes() GoogleCloudApigeeV1AttributeArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) []GoogleCloudApigeeV1Attribute { return v.Attributes }).(GoogleCloudApigeeV1AttributeArrayOutput)
+}
+
+// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) Operations() GoogleCloudApigeeV1GraphQLOperationArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) []GoogleCloudApigeeV1GraphQLOperation {
+		return v.Operations
+	}).(GoogleCloudApigeeV1GraphQLOperationArrayOutput)
+}
+
+// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigOutput) Quota() GoogleCloudApigeeV1QuotaPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfig) *GoogleCloudApigeeV1Quota { return v.Quota }).(GoogleCloudApigeeV1QuotaPtrOutput)
+}
+
+type GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutput() GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1GraphQLOperationConfig {
+		return vs[0].([]GoogleCloudApigeeV1GraphQLOperationConfig)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1GraphQLOperationConfigOutput)
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1GraphQLOperationGroup struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	OperationConfigType *string `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	OperationConfigs []GoogleCloudApigeeV1GraphQLOperationConfig `pulumi:"operationConfigs"`
+}
+
+// GoogleCloudApigeeV1GraphQLOperationGroupInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationGroupArgs and GoogleCloudApigeeV1GraphQLOperationGroupOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationGroupInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationGroupArgs{...}
+type GoogleCloudApigeeV1GraphQLOperationGroupInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationGroupOutput() GoogleCloudApigeeV1GraphQLOperationGroupOutput
+	ToGoogleCloudApigeeV1GraphQLOperationGroupOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationGroupOutput
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1GraphQLOperationGroupArgs struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	OperationConfigType pulumi.StringPtrInput `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	OperationConfigs GoogleCloudApigeeV1GraphQLOperationConfigArrayInput `pulumi:"operationConfigs"`
+}
+
+func (GoogleCloudApigeeV1GraphQLOperationGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationGroup)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupOutput() GoogleCloudApigeeV1GraphQLOperationGroupOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupOutput)
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupOutput).ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1GraphQLOperationGroupPtrInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationGroupArgs, GoogleCloudApigeeV1GraphQLOperationGroupPtr and GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationGroupPtrInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1GraphQLOperationGroupPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput
+	ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput
+}
+
+type googleCloudApigeeV1GraphQLOperationGroupPtrType GoogleCloudApigeeV1GraphQLOperationGroupArgs
+
+func GoogleCloudApigeeV1GraphQLOperationGroupPtr(v *GoogleCloudApigeeV1GraphQLOperationGroupArgs) GoogleCloudApigeeV1GraphQLOperationGroupPtrInput {
+	return (*googleCloudApigeeV1GraphQLOperationGroupPtrType)(v)
+}
+
+func (*googleCloudApigeeV1GraphQLOperationGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1GraphQLOperationGroup)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1GraphQLOperationGroupPtrType) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1GraphQLOperationGroupPtrType) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput)
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1GraphQLOperationGroupOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationGroup)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupOutput() GoogleCloudApigeeV1GraphQLOperationGroupOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return o.ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroup) *GoogleCloudApigeeV1GraphQLOperationGroup {
+		return &v
+	}).(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroup) *string { return v.OperationConfigType }).(pulumi.StringPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupOutput) OperationConfigs() GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroup) []GoogleCloudApigeeV1GraphQLOperationConfig {
+		return v.OperationConfigs
+	}).(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput)
+}
+
+type GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1GraphQLOperationGroup)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) Elem() GoogleCloudApigeeV1GraphQLOperationGroupOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) GoogleCloudApigeeV1GraphQLOperationGroup { return *v }).(GoogleCloudApigeeV1GraphQLOperationGroupOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) OperationConfigs() GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroup) []GoogleCloudApigeeV1GraphQLOperationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigs
+	}).(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput)
+}
+
 // Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1Operation struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
@@ -2414,6 +2807,159 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) WildcardMatch() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+type GoogleCloudApigeeV1TraceSamplingConfig struct {
+	// Sampler of distributed tracing. OFF is the default value.
+	Sampler *string `pulumi:"sampler"`
+	// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+	SamplingRate *float64 `pulumi:"samplingRate"`
+}
+
+// GoogleCloudApigeeV1TraceSamplingConfigInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigArgs and GoogleCloudApigeeV1TraceSamplingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigInput` via:
+//
+//          GoogleCloudApigeeV1TraceSamplingConfigArgs{...}
+type GoogleCloudApigeeV1TraceSamplingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TraceSamplingConfigOutput() GoogleCloudApigeeV1TraceSamplingConfigOutput
+	ToGoogleCloudApigeeV1TraceSamplingConfigOutputWithContext(context.Context) GoogleCloudApigeeV1TraceSamplingConfigOutput
+}
+
+// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+type GoogleCloudApigeeV1TraceSamplingConfigArgs struct {
+	// Sampler of distributed tracing. OFF is the default value.
+	Sampler pulumi.StringPtrInput `pulumi:"sampler"`
+	// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
+}
+
+func (GoogleCloudApigeeV1TraceSamplingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSamplingConfigOutput() GoogleCloudApigeeV1TraceSamplingConfigOutput {
+	return i.ToGoogleCloudApigeeV1TraceSamplingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSamplingConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigOutput).ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1TraceSamplingConfigPtrInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigArgs, GoogleCloudApigeeV1TraceSamplingConfigPtr and GoogleCloudApigeeV1TraceSamplingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigPtrInput` via:
+//
+//          GoogleCloudApigeeV1TraceSamplingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1TraceSamplingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigPtrOutput
+	ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput
+}
+
+type googleCloudApigeeV1TraceSamplingConfigPtrType GoogleCloudApigeeV1TraceSamplingConfigArgs
+
+func GoogleCloudApigeeV1TraceSamplingConfigPtr(v *GoogleCloudApigeeV1TraceSamplingConfigArgs) GoogleCloudApigeeV1TraceSamplingConfigPtrInput {
+	return (*googleCloudApigeeV1TraceSamplingConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1TraceSamplingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TraceSamplingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1TraceSamplingConfigPtrType) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1TraceSamplingConfigPtrType) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput)
+}
+
+// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+type GoogleCloudApigeeV1TraceSamplingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TraceSamplingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1TraceSamplingConfigOutput() GoogleCloudApigeeV1TraceSamplingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1TraceSamplingConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfig) *GoogleCloudApigeeV1TraceSamplingConfig {
+		return &v
+	}).(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput)
+}
+
+// Sampler of distributed tracing. OFF is the default value.
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) Sampler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfig) *string { return v.Sampler }).(pulumi.StringPtrOutput)
+}
+
+// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+func (o GoogleCloudApigeeV1TraceSamplingConfigOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfig) *float64 { return v.SamplingRate }).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudApigeeV1TraceSamplingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TraceSamplingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfig) GoogleCloudApigeeV1TraceSamplingConfig { return *v }).(GoogleCloudApigeeV1TraceSamplingConfigOutput)
+}
+
+// Sampler of distributed tracing. OFF is the default value.
+func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) Sampler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sampler
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type GoogleIamV1AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -3146,6 +3692,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DatastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DateRangeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DateRangePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigOutput{})
@@ -3166,6 +3718,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNameOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigOutput{})

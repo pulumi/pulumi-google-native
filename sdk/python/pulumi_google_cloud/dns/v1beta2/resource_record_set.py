@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
 
 __all__ = ['ResourceRecordSet']
 
@@ -21,7 +20,6 @@ class ResourceRecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -30,7 +28,7 @@ class ResourceRecordSet(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a new ResourceRecordSet.
+        Creates a new ResourceRecordSet.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -38,7 +36,6 @@ class ResourceRecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
         :param pulumi.Input[str] name: For example, www.example.com.
         :param pulumi.Input[str] project: Identifies the project addressed by this request.
-        :param pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -70,7 +67,6 @@ class ResourceRecordSet(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            __props__['routing_policy'] = routing_policy
             __props__['rrdatas'] = rrdatas
             __props__['signature_rrdatas'] = signature_rrdatas
             __props__['ttl'] = ttl

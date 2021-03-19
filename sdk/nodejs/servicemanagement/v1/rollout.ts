@@ -45,8 +45,9 @@ export class Rollout extends pulumi.CustomResource {
      */
     constructor(name: string, args: RolloutArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -58,12 +59,8 @@ export class Rollout extends pulumi.CustomResource {
             inputs["trafficPercentStrategy"] = args ? args.trafficPercentStrategy : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Rollout.__pulumiType, name, inputs, opts);
     }

@@ -45,8 +45,9 @@ export class License extends pulumi.CustomResource {
      */
     constructor(name: string, args: LicenseArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["chargesUseFee"] = args ? args.chargesUseFee : undefined;
@@ -63,12 +64,8 @@ export class License extends pulumi.CustomResource {
             inputs["transferable"] = args ? args.transferable : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(License.__pulumiType, name, inputs, opts);
     }

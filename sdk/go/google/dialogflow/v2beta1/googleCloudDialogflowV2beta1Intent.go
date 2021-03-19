@@ -78,6 +78,8 @@ type googleCloudDialogflowV2beta1IntentArgs struct {
 	IsFallback *bool `pulumi:"isFallback"`
 	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode *string `pulumi:"languageCode"`
+	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+	LiveAgentHandoff *bool `pulumi:"liveAgentHandoff"`
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages []GoogleCloudDialogflowV2beta1IntentMessage `pulumi:"messages"`
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
@@ -128,6 +130,8 @@ type GoogleCloudDialogflowV2beta1IntentArgs struct {
 	IsFallback pulumi.BoolPtrInput
 	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode pulumi.StringPtrInput
+	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+	LiveAgentHandoff pulumi.BoolPtrInput
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages GoogleCloudDialogflowV2beta1IntentMessageArrayInput
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.

@@ -6,10 +6,12 @@ import * as v1 from "./v1";
 import * as v1beta1 from "./v1beta1";
 import * as v2 from "./v2";
 import * as v2beta1 from "./v2beta1";
+import * as v3 from "./v3";
 
 export {
     v1,
     v1beta1,
     v2,
     v2beta1,
+    v3,
 };

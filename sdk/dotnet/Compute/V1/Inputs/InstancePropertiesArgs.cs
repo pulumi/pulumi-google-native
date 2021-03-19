@@ -13,6 +13,12 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
     public sealed class InstancePropertiesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Controls for advanced machine-related behavior features.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.AdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
+        /// <summary>
         /// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
         /// </summary>
         [Input("canIpForward")]
@@ -95,6 +101,12 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.NetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
+
+        /// <summary>
+        /// PostKeyRevocationActionType of the instance.
+        /// </summary>
+        [Input("postKeyRevocationActionType")]
+        public Input<string>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
         /// The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.

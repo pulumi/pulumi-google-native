@@ -16,6 +16,7 @@ class GameServerCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocation_priority: Optional[pulumi.Input[str]] = None,
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class GameServerCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allocation_priority: Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         :param pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[str] description: Human readable description of the cluster.
@@ -60,6 +62,7 @@ class GameServerCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['allocation_priority'] = allocation_priority
             __props__['connection_info'] = connection_info
             __props__['create_time'] = create_time
             __props__['description'] = description

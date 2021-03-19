@@ -58,6 +58,8 @@ func (RouteState) ElementType() reflect.Type {
 }
 
 type routeArgs struct {
+	// Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
+	AllowConflictingSubnetworks *bool `pulumi:"allowConflictingSubnetworks"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
@@ -114,6 +116,8 @@ type routeArgs struct {
 
 // The set of arguments for constructing a Route resource.
 type RouteArgs struct {
+	// Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
+	AllowConflictingSubnetworks pulumi.BoolPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this field when you create the resource.

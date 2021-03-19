@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+ * Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
  */
 export class BackendService extends pulumi.CustomResource {
     /**
@@ -45,12 +45,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackendServiceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
@@ -74,6 +72,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
+            inputs["maxStreamDuration"] = args ? args.maxStreamDuration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["outlierDetection"] = args ? args.outlierDetection : undefined;
@@ -92,12 +91,8 @@ export class BackendService extends pulumi.CustomResource {
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackendService.__pulumiType, name, inputs, opts);
     }
@@ -120,7 +115,7 @@ export interface BackendServiceArgs {
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.alpha.Backend>[]>;
     /**
-     * Cloud CDN configuration for this BackendService. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+     * Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceCdnPolicy>;
     /**
@@ -222,6 +217,12 @@ export interface BackendServiceArgs {
      */
     readonly logConfig?: pulumi.Input<inputs.compute.alpha.BackendServiceLogConfig>;
     /**
+     * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     */
+    readonly maxStreamDuration?: pulumi.Input<inputs.compute.alpha.Duration>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
@@ -242,7 +243,7 @@ export interface BackendServiceArgs {
     /**
      * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
      *
-     * This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+     * Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
      */
     readonly port?: pulumi.Input<number>;
     /**
@@ -268,7 +269,7 @@ export interface BackendServiceArgs {
     /**
      * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *
@@ -309,7 +310,7 @@ export interface BackendServiceArgs {
     readonly sessionAffinity?: pulumi.Input<string>;
     readonly subsetting?: pulumi.Input<inputs.compute.alpha.Subsetting>;
     /**
-     * The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds.
+     * The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
      */
     readonly timeoutSec?: pulumi.Input<number>;
 }

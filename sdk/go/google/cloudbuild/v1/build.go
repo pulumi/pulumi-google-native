@@ -23,8 +23,8 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource Build
 	err := ctx.RegisterResource("google-cloud:cloudbuild/v1:Build", name, args, &resource, opts...)
@@ -60,6 +60,8 @@ func (BuildState) ElementType() reflect.Type {
 type buildArgs struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts *Artifacts `pulumi:"artifacts"`
+	// Secrets and secret environment variables.
+	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
 	// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 	BuildTriggerId *string `pulumi:"buildTriggerId"`
 	// Output only. Time at which the request to create the build was received.
@@ -79,14 +81,14 @@ type buildArgs struct {
 	// Special options for this build.
 	Options *BuildOptions `pulumi:"options"`
 	// The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
-	Parent string `pulumi:"parent"`
+	Parent *string `pulumi:"parent"`
 	// Output only. ID of the project.
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId string `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Output only. Results of the build.
 	Results *Results `pulumi:"results"`
-	// Secrets to decrypt using Cloud Key Management Service.
+	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets []Secret `pulumi:"secrets"`
 	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -116,6 +118,8 @@ type buildArgs struct {
 type BuildArgs struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts ArtifactsPtrInput
+	// Secrets and secret environment variables.
+	AvailableSecrets SecretsPtrInput
 	// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 	BuildTriggerId pulumi.StringPtrInput
 	// Output only. Time at which the request to create the build was received.
@@ -135,14 +139,14 @@ type BuildArgs struct {
 	// Special options for this build.
 	Options BuildOptionsPtrInput
 	// The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
-	Parent pulumi.StringInput
+	Parent pulumi.StringPtrInput
 	// Output only. ID of the project.
-	ProjectId pulumi.StringPtrInput
+	ProjectId pulumi.StringInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput
 	// Output only. Results of the build.
 	Results ResultsPtrInput
-	// Secrets to decrypt using Cloud Key Management Service.
+	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets SecretArrayInput
 	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
 	ServiceAccount pulumi.StringPtrInput

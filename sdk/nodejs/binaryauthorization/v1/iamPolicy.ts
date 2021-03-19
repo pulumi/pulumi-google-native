@@ -45,20 +45,17 @@ export class IamPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: IamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.resource === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
             inputs["policy"] = args ? args.policy : undefined;
             inputs["resource"] = args ? args.resource : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IamPolicy.__pulumiType, name, inputs, opts);
     }

@@ -44,8 +44,9 @@ export class GoogleCloudDialogflowV2beta1KnowledgeBase extends pulumi.CustomReso
      */
     constructor(name: string, args: GoogleCloudDialogflowV2beta1KnowledgeBaseArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -54,12 +55,8 @@ export class GoogleCloudDialogflowV2beta1KnowledgeBase extends pulumi.CustomReso
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowV2beta1KnowledgeBase.__pulumiType, name, inputs, opts);
     }

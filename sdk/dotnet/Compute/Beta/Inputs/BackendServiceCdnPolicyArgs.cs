@@ -46,7 +46,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+        /// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
         /// </summary>
         [Input("clientTtl")]
         public Input<int>? ClientTtl { get; set; }
@@ -80,6 +80,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
             get => _negativeCachingPolicy ?? (_negativeCachingPolicy = new InputList<Inputs.BackendServiceCdnPolicyNegativeCachingPolicyArgs>());
             set => _negativeCachingPolicy = value;
         }
+
+        /// <summary>
+        /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        /// </summary>
+        [Input("requestCoalescing")]
+        public Input<bool>? RequestCoalescing { get; set; }
 
         /// <summary>
         /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.

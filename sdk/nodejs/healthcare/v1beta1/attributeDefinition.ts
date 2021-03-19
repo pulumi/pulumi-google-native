@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Attribute definition in the parent Consent store.
+ * Creates a new Attribute definition in the parent consent store.
  */
 export class AttributeDefinition extends pulumi.CustomResource {
     /**
@@ -44,8 +44,9 @@ export class AttributeDefinition extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttributeDefinitionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["allowedValues"] = args ? args.allowedValues : undefined;
@@ -58,12 +59,8 @@ export class AttributeDefinition extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AttributeDefinition.__pulumiType, name, inputs, opts);
     }
@@ -86,19 +83,19 @@ export interface AttributeDefinitionArgs {
      */
     readonly category?: pulumi.Input<string>;
     /**
-     * Default values of the attribute in consents. If no default values are specified, it defaults to an empty value.
+     * Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
      */
     readonly consentDefaultValues?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Default value of the attribute in user data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+     * Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
      */
     readonly dataMappingDefaultValue?: pulumi.Input<string>;
     /**
-     * A description of the attribute.
+     * Optional. A description of the attribute.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Resource name of the attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+     * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
      */
     readonly name?: pulumi.Input<string>;
     /**

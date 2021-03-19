@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Atomically update the ResourceRecordSet collection.
+ * Atomically updates the ResourceRecordSet collection.
  */
 export class Change extends pulumi.CustomResource {
     /**
@@ -45,11 +45,12 @@ export class Change extends pulumi.CustomResource {
      */
     constructor(name: string, args: ChangeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.managedZone === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["additions"] = args ? args.additions : undefined;
@@ -64,12 +65,8 @@ export class Change extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Change.__pulumiType, name, inputs, opts);
     }
@@ -113,7 +110,7 @@ export interface ChangeArgs {
      */
     readonly startTime?: pulumi.Input<string>;
     /**
-     * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+     * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
      */
     readonly status?: pulumi.Input<string>;
 }

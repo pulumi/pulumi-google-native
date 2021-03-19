@@ -18,6 +18,7 @@ __all__ = [
     'PolicyArgs',
     'ReplicaArgs',
     'ReplicationArgs',
+    'TopicArgs',
     'UserManagedArgs',
 ]
 
@@ -427,6 +428,30 @@ class ReplicationArgs:
     @user_managed.setter
     def user_managed(self, value: Optional[pulumi.Input['UserManagedArgs']]):
         pulumi.set(self, "user_managed", value)
+
+
+@pulumi.input_type
+class TopicArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
+        :param pulumi.Input[str] name: Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

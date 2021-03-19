@@ -38,7 +38,7 @@ class ManagedZone(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a new ManagedZone.
+        Creates a new ManagedZone.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -51,13 +51,13 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
         :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
-        :param pulumi.Input[str] name_server_set: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.
+        :param pulumi.Input[str] name_server_set: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server (output only)
         :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
         :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input[str] project: Identifies the project addressed by this request.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: This field links to the associated service directory namespace. This field should not be set for public zones or forwarding zones.
+        :param pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+        :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
         if __name__ is not None:

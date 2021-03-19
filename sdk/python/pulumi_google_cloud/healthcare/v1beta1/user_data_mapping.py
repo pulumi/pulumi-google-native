@@ -27,16 +27,16 @@ class UserDataMapping(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new User data mapping in the parent Consent store.
+        Creates a new User data mapping in the parent consent store.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] archive_time: Output only. Indicates the time when this data mapping was archived.
-        :param pulumi.Input[bool] archived: Output only. Indicates whether this data mapping is archived.
-        :param pulumi.Input[str] data_id: Required. A unique identifier for the mapped data.
+        :param pulumi.Input[str] archive_time: Output only. Indicates the time when this mapping was archived.
+        :param pulumi.Input[bool] archived: Output only. Indicates whether this mapping is archived.
+        :param pulumi.Input[str] data_id: Required. A unique identifier for the mapped resource.
         :param pulumi.Input[str] name: Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
         :param pulumi.Input[str] parent: Required. Name of the consent store.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]] resource_attributes: Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]] resource_attributes: Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
         """
         if __name__ is not None:

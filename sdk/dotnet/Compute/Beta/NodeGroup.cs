@@ -99,6 +99,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         public Input<string>? Kind { get; set; }
 
         /// <summary>
+        /// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        /// </summary>
+        [Input("locationHint")]
+        public Input<string>? LocationHint { get; set; }
+
+        /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
         /// </summary>
         [Input("maintenancePolicy")]

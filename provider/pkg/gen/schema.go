@@ -180,12 +180,14 @@ func (g *packageGenerator) genResource(typeName string, restMethod *discovery.Re
 			continue
 		}
 
-		inputProperties[name] = schema.PropertySpec{
+		// TODO: apply SDK naming consistently and in full.
+		sdkName := makeValidIdentifier(name)
+		inputProperties[sdkName] = schema.PropertySpec{
 			Description: param.Description,
 			TypeSpec:    schema.TypeSpec{Type: param.Type},
 		}
 		if param.Required {
-			requiredProperties.Add(name)
+			requiredProperties.Add(sdkName)
 		}
 	}
 
@@ -237,6 +239,10 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema) (map[
 		}
 	}
 	return result, nil
+}
+
+func makeValidIdentifier(name string) string {
+	return strings.ReplaceAll(name, ".", "_")
 }
 
 func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.TypeSpec, error) {

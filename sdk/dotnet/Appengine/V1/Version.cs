@@ -300,6 +300,12 @@ namespace Pulumi.GoogleCloud.Appengine.V1
         public Input<string>? RuntimeMainExecutablePath { get; set; }
 
         /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// Part of `parent`. See documentation of `appsId`.
         /// </summary>
         [Input("servicesId", required: true)]

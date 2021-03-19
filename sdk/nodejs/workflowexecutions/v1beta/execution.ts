@@ -45,8 +45,9 @@ export class Execution extends pulumi.CustomResource {
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["argument"] = args ? args.argument : undefined;
@@ -60,12 +61,8 @@ export class Execution extends pulumi.CustomResource {
             inputs["workflowRevisionId"] = args ? args.workflowRevisionId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Execution.__pulumiType, name, inputs, opts);
     }
@@ -76,7 +73,7 @@ export class Execution extends pulumi.CustomResource {
  */
 export interface ExecutionArgs {
     /**
-     * Input parameters of the execution represented as a JSON string. The size limit is 32KB.
+     * Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
      */
     readonly argument?: pulumi.Input<string>;
     /**

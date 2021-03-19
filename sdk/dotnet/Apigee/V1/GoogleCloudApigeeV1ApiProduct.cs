@@ -116,6 +116,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         }
 
         /// <summary>
+        /// Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+        /// </summary>
+        [Input("graphqlOperationGroup")]
+        public Input<Inputs.GoogleCloudApigeeV1GraphQLOperationGroupArgs>? GraphqlOperationGroup { get; set; }
+
+        /// <summary>
         /// Response only. Modified time of this environment as milliseconds since epoch.
         /// </summary>
         [Input("lastModifiedAt")]

@@ -44,12 +44,14 @@ export class Reservation extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
+            inputs["maxConcurrency"] = args ? args.maxConcurrency : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["reservationId"] = args ? args.reservationId : undefined;
@@ -57,12 +59,8 @@ export class Reservation extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Reservation.__pulumiType, name, inputs, opts);
     }
@@ -80,6 +78,10 @@ export interface ReservationArgs {
      * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
      */
     readonly ignoreIdleSlots?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+     */
+    readonly maxConcurrency?: pulumi.Input<string>;
     /**
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
      */

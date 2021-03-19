@@ -45,8 +45,9 @@ export class GoogleCloudDatacatalogV1beta1Entry extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDatacatalogV1beta1EntryArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
@@ -66,12 +67,8 @@ export class GoogleCloudDatacatalogV1beta1Entry extends pulumi.CustomResource {
             inputs["userSpecifiedType"] = args ? args.userSpecifiedType : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDatacatalogV1beta1Entry.__pulumiType, name, inputs, opts);
     }
@@ -114,7 +111,7 @@ export interface GoogleCloudDatacatalogV1beta1EntryArgs {
      */
     readonly linkedResource?: pulumi.Input<string>;
     /**
-     * The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+     * Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
      */
     readonly name?: pulumi.Input<string>;
     /**

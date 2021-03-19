@@ -130,6 +130,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? InstanceGroup { get; set; }
 
         /// <summary>
+        /// Instance lifecycle policy for this Instance Group Manager.
+        /// </summary>
+        [Input("instanceLifecyclePolicy")]
+        public Input<Inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs>? InstanceLifecyclePolicy { get; set; }
+
+        /// <summary>
         /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         /// </summary>
         [Input("instanceTemplate")]
@@ -228,6 +234,22 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        /// <summary>
+        /// The target number of stopped instances for this managed instance group. This number changes when you:  
+        /// - Stop instance using the stopInstances method or start instances using the startInstances method. 
+        /// - Manually change the targetStoppedSize using the update method.
+        /// </summary>
+        [Input("targetStoppedSize")]
+        public Input<int>? TargetStoppedSize { get; set; }
+
+        /// <summary>
+        /// The target number of suspended instances for this managed instance group. This number changes when you:  
+        /// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
+        /// - Manually change the targetSuspendedSize using the update method.
+        /// </summary>
+        [Input("targetSuspendedSize")]
+        public Input<int>? TargetSuspendedSize { get; set; }
 
         /// <summary>
         /// The update policy for this managed instance group.

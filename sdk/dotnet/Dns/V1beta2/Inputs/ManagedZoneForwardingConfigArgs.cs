@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2.Inputs
         private InputList<Inputs.ManagedZoneForwardingConfigNameServerTargetArgs>? _targetNameServers;
 
         /// <summary>
-        /// List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+        /// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
         /// </summary>
         public InputList<Inputs.ManagedZoneForwardingConfigNameServerTargetArgs> TargetNameServers
         {

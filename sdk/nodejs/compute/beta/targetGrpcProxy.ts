@@ -44,8 +44,9 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetGrpcProxyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -62,12 +63,8 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             inputs["validateForProxyless"] = args ? args.validateForProxyless : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetGrpcProxy.__pulumiType, name, inputs, opts);
     }

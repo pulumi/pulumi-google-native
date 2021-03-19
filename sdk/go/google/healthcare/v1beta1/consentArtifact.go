@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new Consent artifact in the parent Consent store.
+// Creates a new Consent artifact in the parent consent store.
 type ConsentArtifact struct {
 	pulumi.CustomResourceState
 }
@@ -58,45 +58,45 @@ func (ConsentArtifactState) ElementType() reflect.Type {
 }
 
 type consentArtifactArgs struct {
-	// Screenshots of the consent content.
+	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
 	ConsentContentScreenshots []Image `pulumi:"consentContentScreenshots"`
-	// An string indicating the version of the consent content.
+	// Optional. An string indicating the version of the consent information shown to the user.
 	ConsentContentVersion *string `pulumi:"consentContentVersion"`
-	// A signature from guardian.
+	// Optional. A signature from a guardian.
 	GuardianSignature *Signature `pulumi:"guardianSignature"`
-	// Metadata associated with the consent artifact. For example, the consent locale or user agent version.
+	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name *string `pulumi:"name"`
-	// Required. The name of the Consent store this consent artifact belongs to.
+	// Required. The name of the consent store this Consent artifact belongs to.
 	Parent string `pulumi:"parent"`
 	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
-	// User's signature.
+	// Optional. User's signature.
 	UserSignature *Signature `pulumi:"userSignature"`
-	// A signature from a witness.
+	// Optional. A signature from a witness.
 	WitnessSignature *Signature `pulumi:"witnessSignature"`
 }
 
 // The set of arguments for constructing a ConsentArtifact resource.
 type ConsentArtifactArgs struct {
-	// Screenshots of the consent content.
+	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
 	ConsentContentScreenshots ImageArrayInput
-	// An string indicating the version of the consent content.
+	// Optional. An string indicating the version of the consent information shown to the user.
 	ConsentContentVersion pulumi.StringPtrInput
-	// A signature from guardian.
+	// Optional. A signature from a guardian.
 	GuardianSignature SignaturePtrInput
-	// Metadata associated with the consent artifact. For example, the consent locale or user agent version.
+	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata pulumi.StringMapInput
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name pulumi.StringPtrInput
-	// Required. The name of the Consent store this consent artifact belongs to.
+	// Required. The name of the consent store this Consent artifact belongs to.
 	Parent pulumi.StringInput
 	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput
-	// User's signature.
+	// Optional. User's signature.
 	UserSignature SignaturePtrInput
-	// A signature from a witness.
+	// Optional. A signature from a witness.
 	WitnessSignature SignaturePtrInput
 }
 

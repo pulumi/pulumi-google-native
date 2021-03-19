@@ -45,17 +45,19 @@ export class Router extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["bgp"] = args ? args.bgp : undefined;
             inputs["bgpPeers"] = args ? args.bgpPeers : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["interfaces"] = args ? args.interfaces : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -68,12 +70,8 @@ export class Router extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Router.__pulumiType, name, inputs, opts);
     }
@@ -99,6 +97,10 @@ export interface RouterArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+     */
+    readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */

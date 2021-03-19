@@ -22,7 +22,7 @@ class GoogleFirestoreAdminV1IndexFieldArgs:
         A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
         :param pulumi.Input[str] array_config: Indicates that this field supports operations on `array_value`s.
         :param pulumi.Input[str] field_path: Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
-        :param pulumi.Input[str] order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+        :param pulumi.Input[str] order: Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
         """
         if array_config is not None:
             pulumi.set(__self__, "array_config", array_config)
@@ -59,7 +59,7 @@ class GoogleFirestoreAdminV1IndexFieldArgs:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+        Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
         """
         return pulumi.get(self, "order")
 

@@ -52,6 +52,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined fully-qualified URL for this resource.
         /// </summary>
         [Input("selfLink")]

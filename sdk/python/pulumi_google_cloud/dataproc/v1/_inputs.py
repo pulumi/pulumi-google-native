@@ -34,6 +34,7 @@ __all__ = [
     'LoggingConfigArgs',
     'ManagedClusterArgs',
     'ManagedGroupConfigArgs',
+    'MetastoreConfigArgs',
     'NodeGroupAffinityArgs',
     'NodeInitializationActionArgs',
     'OrderedJobArgs',
@@ -315,6 +316,7 @@ class ClusterConfigArgs:
                  initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['NodeInitializationActionArgs']]]] = None,
                  lifecycle_config: Optional[pulumi.Input['LifecycleConfigArgs']] = None,
                  master_config: Optional[pulumi.Input['InstanceGroupConfigArgs']] = None,
+                 metastore_config: Optional[pulumi.Input['MetastoreConfigArgs']] = None,
                  secondary_worker_config: Optional[pulumi.Input['InstanceGroupConfigArgs']] = None,
                  security_config: Optional[pulumi.Input['SecurityConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['SoftwareConfigArgs']] = None,
@@ -323,17 +325,18 @@ class ClusterConfigArgs:
         """
         The cluster config.
         :param pulumi.Input['AutoscalingConfigArgs'] autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-        :param pulumi.Input[str] config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        :param pulumi.Input[str] config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for the cluster.
         :param pulumi.Input['EndpointConfigArgs'] endpoint_config: Optional. Port/endpoint configuration for this cluster
         :param pulumi.Input['GceClusterConfigArgs'] gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
         :param pulumi.Input[Sequence[pulumi.Input['NodeInitializationActionArgs']]] initialization_actions: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi 
         :param pulumi.Input['LifecycleConfigArgs'] lifecycle_config: Optional. Lifecycle setting for the cluster.
         :param pulumi.Input['InstanceGroupConfigArgs'] master_config: Optional. The Compute Engine config settings for the master instance in a cluster.
+        :param pulumi.Input['MetastoreConfigArgs'] metastore_config: Optional. Metastore configuration.
         :param pulumi.Input['InstanceGroupConfigArgs'] secondary_worker_config: Optional. The Compute Engine config settings for additional worker instances in a cluster.
         :param pulumi.Input['SecurityConfigArgs'] security_config: Optional. Security settings for the cluster.
         :param pulumi.Input['SoftwareConfigArgs'] software_config: Optional. The config settings for software inside the cluster.
-        :param pulumi.Input[str] temp_bucket: Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+        :param pulumi.Input[str] temp_bucket: Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
         :param pulumi.Input['InstanceGroupConfigArgs'] worker_config: Optional. The Compute Engine config settings for worker instances in a cluster.
         """
         if autoscaling_config is not None:
@@ -352,6 +355,8 @@ class ClusterConfigArgs:
             pulumi.set(__self__, "lifecycle_config", lifecycle_config)
         if master_config is not None:
             pulumi.set(__self__, "master_config", master_config)
+        if metastore_config is not None:
+            pulumi.set(__self__, "metastore_config", metastore_config)
         if secondary_worker_config is not None:
             pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
         if security_config is not None:
@@ -379,7 +384,7 @@ class ClusterConfigArgs:
     @pulumi.getter(name="configBucket")
     def config_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
         """
         return pulumi.get(self, "config_bucket")
 
@@ -460,6 +465,18 @@ class ClusterConfigArgs:
         pulumi.set(self, "master_config", value)
 
     @property
+    @pulumi.getter(name="metastoreConfig")
+    def metastore_config(self) -> Optional[pulumi.Input['MetastoreConfigArgs']]:
+        """
+        Optional. Metastore configuration.
+        """
+        return pulumi.get(self, "metastore_config")
+
+    @metastore_config.setter
+    def metastore_config(self, value: Optional[pulumi.Input['MetastoreConfigArgs']]):
+        pulumi.set(self, "metastore_config", value)
+
+    @property
     @pulumi.getter(name="secondaryWorkerConfig")
     def secondary_worker_config(self) -> Optional[pulumi.Input['InstanceGroupConfigArgs']]:
         """
@@ -499,7 +516,7 @@ class ClusterConfigArgs:
     @pulumi.getter(name="tempBucket")
     def temp_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+        Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
         """
         return pulumi.get(self, "temp_bucket")
 
@@ -681,7 +698,7 @@ class DiskConfigArgs:
         """
         Specifies the config of disk options for a group of VM instances.
         :param pulumi.Input[int] boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
-        :param pulumi.Input[str] boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param pulumi.Input[str] boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         :param pulumi.Input[int] num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
@@ -707,7 +724,7 @@ class DiskConfigArgs:
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -889,7 +906,7 @@ class GceClusterConfigArgs:
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Optional. Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
-        :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded Instance Config for clusters using shielded VMs.
+        :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
         :param pulumi.Input[str] subnetwork_uri: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[str] zone_uri: Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
@@ -1019,7 +1036,7 @@ class GceClusterConfigArgs:
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional[pulumi.Input['ShieldedInstanceConfigArgs']]:
         """
-        Optional. Shielded Instance Config for clusters using shielded VMs.
+        Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -1385,7 +1402,7 @@ class InstanceGroupConfigArgs:
         :param pulumi.Input[str] machine_type_uri: Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
         :param pulumi.Input['ManagedGroupConfigArgs'] managed_group_config: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param pulumi.Input[str] min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param pulumi.Input[int] num_instances: Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        :param pulumi.Input[int] num_instances: Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
         :param pulumi.Input[str] preemptibility: Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
         """
         if accelerators is not None:
@@ -1523,7 +1540,7 @@ class InstanceGroupConfigArgs:
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
         """
         return pulumi.get(self, "num_instances")
 
@@ -1899,7 +1916,7 @@ class LifecycleConfigArgs:
         Specifies the cluster auto-delete schedule configuration.
         :param pulumi.Input[str] auto_delete_time: Optional. The time when cluster will be auto-deleted (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         :param pulumi.Input[str] auto_delete_ttl: Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param pulumi.Input[str] idle_delete_ttl: Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        :param pulumi.Input[str] idle_delete_ttl: Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         :param pulumi.Input[str] idle_start_time: Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         if auto_delete_time is not None:
@@ -1939,7 +1956,7 @@ class LifecycleConfigArgs:
     @pulumi.getter(name="idleDeleteTtl")
     def idle_delete_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         return pulumi.get(self, "idle_delete_ttl")
 
@@ -2078,6 +2095,30 @@ class ManagedGroupConfigArgs:
     @instance_template_name.setter
     def instance_template_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_template_name", value)
+
+
+@pulumi.input_type
+class MetastoreConfigArgs:
+    def __init__(__self__, *,
+                 dataproc_metastore_service: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies a Metastore configuration.
+        :param pulumi.Input[str] dataproc_metastore_service: Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        """
+        if dataproc_metastore_service is not None:
+            pulumi.set(__self__, "dataproc_metastore_service", dataproc_metastore_service)
+
+    @property
+    @pulumi.getter(name="dataprocMetastoreService")
+    def dataproc_metastore_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        """
+        return pulumi.get(self, "dataproc_metastore_service")
+
+    @dataproc_metastore_service.setter
+    def dataproc_metastore_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_metastore_service", value)
 
 
 @pulumi.input_type
@@ -2925,8 +2966,8 @@ class SecurityConfigArgs:
     def __init__(__self__, *,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None):
         """
-        Security related configuration, including Kerberos.
-        :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Kerberos related configuration.
+        Security related configuration, including encryption, Kerberos, etc.
+        :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Optional. Kerberos related configuration.
         """
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
@@ -2935,7 +2976,7 @@ class SecurityConfigArgs:
     @pulumi.getter(name="kerberosConfig")
     def kerberos_config(self) -> Optional[pulumi.Input['KerberosConfigArgs']]:
         """
-        Kerberos related configuration.
+        Optional. Kerberos related configuration.
         """
         return pulumi.get(self, "kerberos_config")
 
@@ -2951,7 +2992,7 @@ class ShieldedInstanceConfigArgs:
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
         """
-        Shielded Instance Config for clusters using shielded VMs.
+        Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
         :param pulumi.Input[bool] enable_integrity_monitoring: Optional. Defines whether instances have integrity monitoring enabled.
         :param pulumi.Input[bool] enable_secure_boot: Optional. Defines whether instances have Secure Boot enabled.
         :param pulumi.Input[bool] enable_vtpm: Optional. Defines whether instances have the vTPM enabled.

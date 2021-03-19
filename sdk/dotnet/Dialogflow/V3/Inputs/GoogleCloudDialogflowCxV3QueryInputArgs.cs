@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3IntentInputArgs>? Intent { get; set; }
 
         /// <summary>
-        /// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

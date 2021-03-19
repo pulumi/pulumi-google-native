@@ -22,6 +22,12 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1.Inputs
         public Input<int>? Epoch { get; set; }
 
         /// <summary>
+        /// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+        /// </summary>
+        [Input("inclusive")]
+        public Input<bool>? Inclusive { get; set; }
+
+        /// <summary>
         /// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
         /// </summary>
         [Input("kind")]

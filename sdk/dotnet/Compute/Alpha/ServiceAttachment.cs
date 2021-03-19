@@ -90,6 +90,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+        /// </summary>
+        [Input("enableProxyProtocol")]
+        public Input<bool>? EnableProxyProtocol { get; set; }
+
+        /// <summary>
         /// [Output Only] The unique identifier for the resource type. The server generates this identifier.
         /// </summary>
         [Input("id")]

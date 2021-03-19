@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// Sets the scheduling options for an Instance. NextID: 13
+    /// Sets the scheduling options for an Instance. NextID: 20
     /// </summary>
     public sealed class SchedulingArgs : Pulumi.ResourceArgs
     {
@@ -22,6 +22,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         /// </summary>
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
+
+        /// <summary>
+        /// Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
+        /// </summary>
+        [Input("availabilityDomain")]
+        public Input<int>? AvailabilityDomain { get; set; }
 
         /// <summary>
         /// Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.

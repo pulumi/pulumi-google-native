@@ -23,12 +23,9 @@ __all__ = [
     'PolicyAlternativeNameServerConfigArgs',
     'PolicyAlternativeNameServerConfigTargetNameServerArgs',
     'PolicyNetworkArgs',
-    'RRSetRoutingPolicyArgs',
-    'RRSetRoutingPolicyGeoPolicyArgs',
-    'RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs',
-    'RRSetRoutingPolicyWrrPolicyArgs',
-    'RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs',
     'ResourceRecordSetArgs',
+    'ResponsePolicyNetworkArgs',
+    'ResponsePolicyRuleLocalDataArgs',
 ]
 
 @pulumi.input_type
@@ -42,7 +39,7 @@ class DnsKeySpecArgs:
         Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
         :param pulumi.Input[str] algorithm: String mnemonic specifying the DNSSEC algorithm of this key.
         :param pulumi.Input[int] key_length: Length of the keys in bits.
-        :param pulumi.Input[str] key_type: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets.
+        :param pulumi.Input[str] key_type: Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -81,7 +78,7 @@ class DnsKeySpecArgs:
     @pulumi.getter(name="keyType")
     def key_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets.
+        Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
         """
         return pulumi.get(self, "key_type")
 
@@ -172,7 +169,7 @@ class ManagedZoneForwardingConfigArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -192,7 +189,7 @@ class ManagedZoneForwardingConfigArgs:
     @pulumi.getter(name="targetNameServers")
     def target_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]]:
         """
-        List of target name servers to forward to. Cloud DNS will select the best available name server if more than one target is given.
+        List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
         """
         return pulumi.get(self, "target_name_servers")
 
@@ -206,15 +203,19 @@ class ManagedZoneForwardingConfigNameServerTargetArgs:
     def __init__(__self__, *,
                  forwarding_path: Optional[pulumi.Input[str]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] forwarding_path: Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        :param pulumi.Input[str] forwarding_path: Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         :param pulumi.Input[str] ipv4_address: IPv4 address of a target name server.
+        :param pulumi.Input[str] ipv6_address: IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated.
         """
         if forwarding_path is not None:
             pulumi.set(__self__, "forwarding_path", forwarding_path)
         if ipv4_address is not None:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
 
@@ -222,7 +223,7 @@ class ManagedZoneForwardingConfigNameServerTargetArgs:
     @pulumi.getter(name="forwardingPath")
     def forwarding_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         """
         return pulumi.get(self, "forwarding_path")
 
@@ -241,6 +242,18 @@ class ManagedZoneForwardingConfigNameServerTargetArgs:
     @ipv4_address.setter
     def ipv4_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv4_address", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @property
     @pulumi.getter
@@ -379,7 +392,7 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  network_url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] network_url: The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        :param pulumi.Input[str] network_url: The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -399,7 +412,7 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
     @pulumi.getter(name="networkUrl")
     def network_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         """
         return pulumi.get(self, "network_url")
 
@@ -468,7 +481,7 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  namespace_url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] deletion_time: The time that the namespace backing this zone was deleted, empty string if it still exists. This is in RFC3339 text format. Output only.
+        :param pulumi.Input[str] deletion_time: The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
         :param pulumi.Input[str] namespace_url: The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
         """
         if deletion_time is not None:
@@ -482,7 +495,7 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
     @pulumi.getter(name="deletionTime")
     def deletion_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time that the namespace backing this zone was deleted, empty string if it still exists. This is in RFC3339 text format. Output only.
+        The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
         """
         return pulumi.get(self, "deletion_time")
 
@@ -552,15 +565,19 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     def __init__(__self__, *,
                  forwarding_path: Optional[pulumi.Input[str]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] forwarding_path: Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        :param pulumi.Input[str] forwarding_path: Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         :param pulumi.Input[str] ipv4_address: IPv4 address to forward to.
+        :param pulumi.Input[str] ipv6_address: IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
         """
         if forwarding_path is not None:
             pulumi.set(__self__, "forwarding_path", forwarding_path)
         if ipv4_address is not None:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
 
@@ -568,7 +585,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     @pulumi.getter(name="forwardingPath")
     def forwarding_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         """
         return pulumi.get(self, "forwarding_path")
 
@@ -587,6 +604,18 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     @ipv4_address.setter
     def ipv4_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv4_address", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @property
     @pulumi.getter
@@ -634,269 +663,17 @@ class PolicyNetworkArgs:
 
 
 @pulumi.input_type
-class RRSetRoutingPolicyArgs:
-    def __init__(__self__, *,
-                 geo_policy: Optional[pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs']] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 wrr_policy: Optional[pulumi.Input['RRSetRoutingPolicyWrrPolicyArgs']] = None):
-        """
-        A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
-        """
-        if geo_policy is not None:
-            pulumi.set(__self__, "geo_policy", geo_policy)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if wrr_policy is not None:
-            pulumi.set(__self__, "wrr_policy", wrr_policy)
-
-    @property
-    @pulumi.getter(name="geoPolicy")
-    def geo_policy(self) -> Optional[pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs']]:
-        return pulumi.get(self, "geo_policy")
-
-    @geo_policy.setter
-    def geo_policy(self, value: Optional[pulumi.Input['RRSetRoutingPolicyGeoPolicyArgs']]):
-        pulumi.set(self, "geo_policy", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter(name="wrrPolicy")
-    def wrr_policy(self) -> Optional[pulumi.Input['RRSetRoutingPolicyWrrPolicyArgs']]:
-        return pulumi.get(self, "wrr_policy")
-
-    @wrr_policy.setter
-    def wrr_policy(self, value: Optional[pulumi.Input['RRSetRoutingPolicyWrrPolicyArgs']]):
-        pulumi.set(self, "wrr_policy", value)
-
-
-@pulumi.input_type
-class RRSetRoutingPolicyGeoPolicyArgs:
-    def __init__(__self__, *,
-                 failovers: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] failovers: If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether it is healthy or not.
-        :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
-        """
-        if failovers is not None:
-            pulumi.set(__self__, "failovers", failovers)
-        if items is not None:
-            pulumi.set(__self__, "items", items)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-
-    @property
-    @pulumi.getter
-    def failovers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]:
-        """
-        If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether it is healthy or not.
-        """
-        return pulumi.get(self, "failovers")
-
-    @failovers.setter
-    def failovers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]):
-        pulumi.set(self, "failovers", value)
-
-    @property
-    @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]:
-        """
-        The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]):
-        pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-
-@pulumi.input_type
-class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
-    def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] location: The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g "us-east1", "southamerica-east1", "asia-east1", etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for the above geo_rrdata.
-        """
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
-        if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
-        if signature_rrdatas is not None:
-            pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g "us-east1", "southamerica-east1", "asia-east1", etc.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "rrdatas")
-
-    @rrdatas.setter
-    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "rrdatas", value)
-
-    @property
-    @pulumi.getter(name="signatureRrdatas")
-    def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        DNSSEC generated signatures for the above geo_rrdata.
-        """
-        return pulumi.get(self, "signature_rrdatas")
-
-    @signature_rrdatas.setter
-    def signature_rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "signature_rrdatas", value)
-
-
-@pulumi.input_type
-class RRSetRoutingPolicyWrrPolicyArgs:
-    def __init__(__self__, *,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]] = None,
-                 kind: Optional[pulumi.Input[str]] = None):
-        if items is not None:
-            pulumi.set(__self__, "items", items)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-
-    @property
-    @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]]:
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs']]]]):
-        pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-
-@pulumi.input_type
-class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs:
-    def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 weight: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: DNSSEC generated signatures for the above wrr_rrdata.
-        :param pulumi.Input[float] weight: The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be a decimal in the range [0,1].
-        """
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if rrdatas is not None:
-            pulumi.set(__self__, "rrdatas", rrdatas)
-        if signature_rrdatas is not None:
-            pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "rrdatas")
-
-    @rrdatas.setter
-    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "rrdatas", value)
-
-    @property
-    @pulumi.getter(name="signatureRrdatas")
-    def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        DNSSEC generated signatures for the above wrr_rrdata.
-        """
-        return pulumi.get(self, "signature_rrdatas")
-
-    @signature_rrdatas.setter
-    def signature_rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "signature_rrdatas", value)
-
-    @property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[float]]:
-        """
-        The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be a decimal in the range [0,1].
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "weight", value)
-
-
-@pulumi.input_type
 class ResourceRecordSetArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input['RRSetRoutingPolicyArgs']] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        A unit of data that will be returned by the DNS servers.
+        A unit of data that is returned by the DNS servers.
         :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input['RRSetRoutingPolicyArgs'] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -906,8 +683,6 @@ class ResourceRecordSetArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if routing_policy is not None:
-            pulumi.set(__self__, "routing_policy", routing_policy)
         if rrdatas is not None:
             pulumi.set(__self__, "rrdatas", rrdatas)
         if signature_rrdatas is not None:
@@ -937,18 +712,6 @@ class ResourceRecordSetArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="routingPolicy")
-    def routing_policy(self) -> Optional[pulumi.Input['RRSetRoutingPolicyArgs']]:
-        """
-        Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-        """
-        return pulumi.get(self, "routing_policy")
-
-    @routing_policy.setter
-    def routing_policy(self, value: Optional[pulumi.Input['RRSetRoutingPolicyArgs']]):
-        pulumi.set(self, "routing_policy", value)
 
     @property
     @pulumi.getter
@@ -997,5 +760,63 @@ class ResourceRecordSetArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ResponsePolicyNetworkArgs:
+    def __init__(__self__, *,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 network_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network_url: The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if network_url is not None:
+            pulumi.set(__self__, "network_url", network_url)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        """
+        return pulumi.get(self, "network_url")
+
+    @network_url.setter
+    def network_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_url", value)
+
+
+@pulumi.input_type
+class ResponsePolicyRuleLocalDataArgs:
+    def __init__(__self__, *,
+                 local_datas: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] local_datas: All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        """
+        if local_datas is not None:
+            pulumi.set(__self__, "local_datas", local_datas)
+
+    @property
+    @pulumi.getter(name="localDatas")
+    def local_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]]:
+        """
+        All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+        """
+        return pulumi.get(self, "local_datas")
+
+    @local_datas.setter
+    def local_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]]):
+        pulumi.set(self, "local_datas", value)
 
 

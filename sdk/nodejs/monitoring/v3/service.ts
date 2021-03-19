@@ -45,8 +45,9 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["appEngine"] = args ? args.appEngine : undefined;
@@ -54,6 +55,7 @@ export class Service extends pulumi.CustomResource {
             inputs["clusterIstio"] = args ? args.clusterIstio : undefined;
             inputs["custom"] = args ? args.custom : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["istioCanonicalService"] = args ? args.istioCanonicalService : undefined;
             inputs["meshIstio"] = args ? args.meshIstio : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -61,12 +63,8 @@ export class Service extends pulumi.CustomResource {
             inputs["telemetry"] = args ? args.telemetry : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Service.__pulumiType, name, inputs, opts);
     }
@@ -96,6 +94,10 @@ export interface ServiceArgs {
      * Name used for UI elements listing this Service.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+     */
+    readonly istioCanonicalService?: pulumi.Input<inputs.monitoring.v3.IstioCanonicalService>;
     /**
      * Type used for Istio services scoped to an Istio mesh.
      */

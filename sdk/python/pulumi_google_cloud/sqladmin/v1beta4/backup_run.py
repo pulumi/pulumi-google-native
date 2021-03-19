@@ -56,7 +56,7 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input[str] status: The status of this run.
-        :param pulumi.Input[str] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+        :param pulumi.Input[str] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         """
         if __name__ is not None:

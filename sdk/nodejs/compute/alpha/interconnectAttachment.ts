@@ -45,11 +45,12 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InterconnectAttachmentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
@@ -88,12 +89,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InterconnectAttachment.__pulumiType, name, inputs, opts);
     }
@@ -157,7 +154,7 @@ export interface InterconnectAttachmentArgs {
     /**
      * Indicates the user-supplied encryption option of this interconnect attachment: 
      * - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-     * - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec over Interconnect, create the attachment using this option.
+     * - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
      */
     readonly encryption?: pulumi.Input<string>;
     /**

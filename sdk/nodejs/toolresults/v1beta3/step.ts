@@ -45,14 +45,15 @@ export class Step extends pulumi.CustomResource {
      */
     constructor(name: string, args: StepArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.executionId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.executionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'executionId'");
             }
-            if ((!args || args.historyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["completionTime"] = args ? args.completionTime : undefined;
@@ -76,12 +77,8 @@ export class Step extends pulumi.CustomResource {
             inputs["toolExecutionStep"] = args ? args.toolExecutionStep : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Step.__pulumiType, name, inputs, opts);
     }

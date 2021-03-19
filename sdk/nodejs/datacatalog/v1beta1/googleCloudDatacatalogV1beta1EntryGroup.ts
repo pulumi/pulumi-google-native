@@ -45,8 +45,9 @@ export class GoogleCloudDatacatalogV1beta1EntryGroup extends pulumi.CustomResour
      */
     constructor(name: string, args: GoogleCloudDatacatalogV1beta1EntryGroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["dataCatalogTimestamps"] = args ? args.dataCatalogTimestamps : undefined;
@@ -57,12 +58,8 @@ export class GoogleCloudDatacatalogV1beta1EntryGroup extends pulumi.CustomResour
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDatacatalogV1beta1EntryGroup.__pulumiType, name, inputs, opts);
     }

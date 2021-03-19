@@ -44,9 +44,13 @@ export class Address extends pulumi.CustomResource {
      */
     constructor(name: string, args: AddressArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             inputs["address"] = args ? args.address : undefined;
             inputs["addressType"] = args ? args.addressType : undefined;
@@ -72,12 +76,8 @@ export class Address extends pulumi.CustomResource {
             inputs["users"] = args ? args.users : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Address.__pulumiType, name, inputs, opts);
     }
@@ -140,7 +140,7 @@ export interface AddressArgs {
      */
     readonly networkTier?: pulumi.Input<string>;
     /**
-     * The prefix length if the resource reprensents an IP range.
+     * The prefix length if the resource represents an IP range.
      */
     readonly prefixLength?: pulumi.Input<number>;
     /**
@@ -153,13 +153,13 @@ export interface AddressArgs {
      * - `DNS_RESOLVER` for a DNS resolver address in a subnetwork 
      * - `VPC_PEERING` for addresses that are reserved for VPC peer networks. 
      * - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. 
-     * - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec encrypted Interconnect configuration. These addresses are regional resources.
+     * - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
-     * [Output Only] The URL of the region where the regional address resides. This field is not applicable to global addresses. You must specify this field as part of the HTTP request URL.
+     * [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

@@ -13,6 +13,7 @@ __all__ = [
     'AddonsConfigArgs',
     'AuthenticatorGroupsConfigArgs',
     'AutoUpgradeOptionsArgs',
+    'AutopilotArgs',
     'AutoprovisioningNodePoolDefaultsArgs',
     'BigQueryDestinationArgs',
     'BinaryAuthorizationArgs',
@@ -51,6 +52,7 @@ __all__ = [
     'NodeConfigArgs',
     'NodeKubeletConfigArgs',
     'NodeManagementArgs',
+    'NodeNetworkConfigArgs',
     'NodePoolArgs',
     'NodePoolAutoscalingArgs',
     'NodeTaintArgs',
@@ -365,6 +367,30 @@ class AutoUpgradeOptionsArgs:
 
 
 @pulumi.input_type
+class AutopilotArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Autopilot is the configuration for Autopilot settings on the cluster.
+        :param pulumi.Input[bool] enabled: Enable Autopilot
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Autopilot
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class AutoprovisioningNodePoolDefaultsArgs:
     def __init__(__self__, *,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
@@ -673,6 +699,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
+                 autopilot: Optional[pulumi.Input['AutopilotArgs']] = None,
                  autoscaling: Optional[pulumi.Input['ClusterAutoscalingArgs']] = None,
                  binary_authorization: Optional[pulumi.Input['BinaryAuthorizationArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
@@ -734,6 +761,7 @@ class ClusterArgs:
         A Google Kubernetes Engine cluster.
         :param pulumi.Input['AddonsConfigArgs'] addons_config: Configurations for the various addons available to run in the cluster.
         :param pulumi.Input['AuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration controlling RBAC group membership information.
+        :param pulumi.Input['AutopilotArgs'] autopilot: Autopilot configuration for the cluster.
         :param pulumi.Input['ClusterAutoscalingArgs'] autoscaling: Cluster-level autoscaling configuration.
         :param pulumi.Input['BinaryAuthorizationArgs'] binary_authorization: Configuration for Binary Authorization.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
@@ -796,6 +824,8 @@ class ClusterArgs:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
+        if autopilot is not None:
+            pulumi.set(__self__, "autopilot", autopilot)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if binary_authorization is not None:
@@ -934,6 +964,18 @@ class ClusterArgs:
     @authenticator_groups_config.setter
     def authenticator_groups_config(self, value: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
+
+    @property
+    @pulumi.getter
+    def autopilot(self) -> Optional[pulumi.Input['AutopilotArgs']]:
+        """
+        Autopilot configuration for the cluster.
+        """
+        return pulumi.get(self, "autopilot")
+
+    @autopilot.setter
+    def autopilot(self, value: Optional[pulumi.Input['AutopilotArgs']]):
+        pulumi.set(self, "autopilot", value)
 
     @property
     @pulumi.getter
@@ -2671,6 +2713,7 @@ class NetworkConfigArgs:
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_snat_status: Optional[pulumi.Input['DefaultSnatStatusArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
+                 enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
@@ -2679,6 +2722,7 @@ class NetworkConfigArgs:
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input[str] network: Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param pulumi.Input[str] subnetwork: Output only. The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
@@ -2689,6 +2733,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
         if enable_intra_node_visibility is not None:
             pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
+        if enable_l4ilb_subsetting is not None:
+            pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if private_ipv6_google_access is not None:
@@ -2731,6 +2777,18 @@ class NetworkConfigArgs:
     @enable_intra_node_visibility.setter
     def enable_intra_node_visibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_intra_node_visibility", value)
+
+    @property
+    @pulumi.getter(name="enableL4ilbSubsetting")
+    def enable_l4ilb_subsetting(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether L4ILB Subsetting is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_l4ilb_subsetting")
+
+    @enable_l4ilb_subsetting.setter
+    def enable_l4ilb_subsetting(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_l4ilb_subsetting", value)
 
     @property
     @pulumi.getter
@@ -3322,6 +3380,62 @@ class NodeManagementArgs:
 
 
 @pulumi.input_type
+class NodeNetworkConfigArgs:
+    def __init__(__self__, *,
+                 create_pod_range: Optional[pulumi.Input[bool]] = None,
+                 pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 pod_range: Optional[pulumi.Input[str]] = None):
+        """
+        Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+        :param pulumi.Input[bool] create_pod_range: Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+        :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+        :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+        """
+        if create_pod_range is not None:
+            pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if pod_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
+        if pod_range is not None:
+            pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="createPodRange")
+    def create_pod_range(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+        """
+        return pulumi.get(self, "create_pod_range")
+
+    @create_pod_range.setter
+    def create_pod_range(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_pod_range", value)
+
+    @property
+    @pulumi.getter(name="podIpv4CidrBlock")
+    def pod_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use.
+        """
+        return pulumi.get(self, "pod_ipv4_cidr_block")
+
+    @pod_ipv4_cidr_block.setter
+    def pod_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+        """
+        return pulumi.get(self, "pod_range")
+
+    @pod_range.setter
+    def pod_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_range", value)
+
+
+@pulumi.input_type
 class NodePoolArgs:
     def __init__(__self__, *,
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
@@ -3333,6 +3447,7 @@ class NodePoolArgs:
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -3350,6 +3465,7 @@ class NodePoolArgs:
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
+        :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
         :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
@@ -3375,6 +3491,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if pod_ipv4_cidr_size is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
         if self_link is not None:
@@ -3495,6 +3613,18 @@ class NodePoolArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NodeNetworkConfigArgs']]:
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NodeNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
 
     @property
     @pulumi.getter(name="podIpv4CidrSize")

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
 {
 
     /// <summary>
-    /// The details of reachability state from the latest run.
+    /// Results of the configuration analysis from the last run of the test.
     /// </summary>
     public sealed class ReachabilityDetailsArgs : Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         public Input<Inputs.StatusArgs>? Error { get; set; }
 
         /// <summary>
-        /// The overall reachability result of the test.
+        /// The overall result of the test's configuration analysis.
         /// </summary>
         [Input("result")]
         public Input<string>? Result { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1.Inputs
         }
 
         /// <summary>
-        /// The time the reachability state was verified.
+        /// The time of the configuration analysis.
         /// </summary>
         [Input("verifyTime")]
         public Input<string>? VerifyTime { get; set; }

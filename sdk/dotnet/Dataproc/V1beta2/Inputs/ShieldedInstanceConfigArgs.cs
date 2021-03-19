@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2.Inputs
 {
 
     /// <summary>
-    /// Shielded Instance Config for clusters using shielded VMs.
+    /// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
     /// </summary>
     public sealed class ShieldedInstanceConfigArgs : Pulumi.ResourceArgs
     {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Dns.V1
 {
     /// <summary>
-    /// Atomically update the ResourceRecordSet collection.
+    /// Atomically updates the ResourceRecordSet collection.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:dns/v1:Change")]
     public partial class Change : Pulumi.CustomResource
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleCloud.Dns.V1
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+        /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

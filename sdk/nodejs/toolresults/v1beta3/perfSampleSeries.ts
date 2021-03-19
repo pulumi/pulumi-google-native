@@ -45,17 +45,18 @@ export class PerfSampleSeries extends pulumi.CustomResource {
      */
     constructor(name: string, args: PerfSampleSeriesArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.executionId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.executionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'executionId'");
             }
-            if ((!args || args.historyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.stepId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.stepId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stepId'");
             }
             inputs["basicPerfSampleSeries"] = args ? args.basicPerfSampleSeries : undefined;
@@ -66,12 +67,8 @@ export class PerfSampleSeries extends pulumi.CustomResource {
             inputs["stepId"] = args ? args.stepId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PerfSampleSeries.__pulumiType, name, inputs, opts);
     }

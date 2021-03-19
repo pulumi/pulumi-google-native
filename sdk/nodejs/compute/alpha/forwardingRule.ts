@@ -45,8 +45,9 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ForwardingRuleArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["IPAddress"] = args ? args.IPAddress : undefined;
@@ -71,6 +72,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["portRange"] = args ? args.portRange : undefined;
             inputs["ports"] = args ? args.ports : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["pscConnectionId"] = args ? args.pscConnectionId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -82,12 +84,8 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["target"] = args ? args.target : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ForwardingRule.__pulumiType, name, inputs, opts);
     }
@@ -259,6 +257,10 @@ export interface ForwardingRuleArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
+     * [Output Only] The PSC connection id of the PSC Forwarding Rule.
+     */
+    readonly pscConnectionId?: pulumi.Input<string>;
+    /**
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region?: pulumi.Input<string>;
@@ -306,14 +308,5 @@ export interface ForwardingRuleArgs {
      * If the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified.
      */
     readonly subnetwork?: pulumi.Input<string>;
-    /**
-     * The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     *
-     * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle. Currently, the supported Google API bundles include:
-     *
-     *  
-     * - vpc-sc - GCP APIs that support VPC Service Controls. For more information about which APIs support VPC Service Controls, refer to VPC-SC supported products and limitations.  
-     * - all-apis - All GCP APIs. For more information about which APIs are supported with this bundle, refer to Private Google Access-specific domains and VIPs.
-     */
     readonly target?: pulumi.Input<string>;
 }

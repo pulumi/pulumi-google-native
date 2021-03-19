@@ -65,6 +65,12 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         [Input("createStatement")]
         public Input<string>? CreateStatement { get; set; }
 
+        /// <summary>
+        /// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
+
         [Input("extraStatements")]
         private InputList<string>? _extraStatements;
 

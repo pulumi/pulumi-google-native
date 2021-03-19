@@ -45,11 +45,12 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InterconnectAttachmentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
@@ -61,9 +62,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["dataplaneVersion"] = args ? args.dataplaneVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
+            inputs["encryption"] = args ? args.encryption : undefined;
             inputs["googleReferenceId"] = args ? args.googleReferenceId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
+            inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -85,12 +88,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InterconnectAttachment.__pulumiType, name, inputs, opts);
     }
@@ -152,6 +151,12 @@ export interface InterconnectAttachmentArgs {
      */
     readonly edgeAvailabilityDomain?: pulumi.Input<string>;
     /**
+     * Indicates the user-supplied encryption option of this interconnect attachment: 
+     * - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
+     * - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
+     */
+    readonly encryption?: pulumi.Input<string>;
+    /**
      * [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
      */
     readonly googleReferenceId?: pulumi.Input<string>;
@@ -163,6 +168,10 @@ export interface InterconnectAttachmentArgs {
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     readonly interconnect?: pulumi.Input<string>;
+    /**
+     * URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
+     */
+    readonly ipsecInternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
      */

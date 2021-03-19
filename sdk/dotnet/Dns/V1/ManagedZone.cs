@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Dns.V1
 {
     /// <summary>
-    /// Create a new ManagedZone.
+    /// Creates a new ManagedZone.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:dns/v1:ManagedZone")]
     public partial class ManagedZone : Pulumi.CustomResource
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleCloud.Dns.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users will leave this field unset.
+        /// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
         /// </summary>
         [Input("nameServerSet")]
         public Input<string>? NameServerSet { get; set; }
@@ -159,13 +159,13 @@ namespace Pulumi.GoogleCloud.Dns.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+        /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
         /// </summary>
         [Input("reverseLookupConfig")]
         public Input<Inputs.ManagedZoneReverseLookupConfigArgs>? ReverseLookupConfig { get; set; }
 
         /// <summary>
-        /// This field links to the associated service directory namespace. This field should not be set for public zones or forwarding zones.
+        /// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
         /// </summary>
         [Input("serviceDirectoryConfig")]
         public Input<Inputs.ManagedZoneServiceDirectoryConfigArgs>? ServiceDirectoryConfig { get; set; }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Dialogflow.V3
 {
     /// <summary>
-    /// Creates a session entity type. If the specified session entity type already exists, overrides the session entity type.
+    /// Creates a session entity type.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SessionEntityType")]
     public partial class GoogleCloudDialogflowCxV3SessionEntityType : Pulumi.CustomResource

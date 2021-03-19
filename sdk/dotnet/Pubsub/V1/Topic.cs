@@ -95,6 +95,12 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         [Input("satisfiesPzs")]
         public Input<bool>? SatisfiesPzs { get; set; }
 
+        /// <summary>
+        /// Settings for validating messages published against a schema.
+        /// </summary>
+        [Input("schemaSettings")]
+        public Input<Inputs.SchemaSettingsArgs>? SchemaSettings { get; set; }
+
         public TopicArgs()
         {
         }

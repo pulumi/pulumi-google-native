@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 {
     /// <summary>
-    /// Creates a new User data mapping in the parent Consent store.
+    /// Creates a new User data mapping in the parent consent store.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:UserDataMapping")]
     public partial class UserDataMapping : Pulumi.CustomResource
@@ -60,19 +60,19 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public sealed class UserDataMappingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Indicates the time when this data mapping was archived.
+        /// Output only. Indicates the time when this mapping was archived.
         /// </summary>
         [Input("archiveTime")]
         public Input<string>? ArchiveTime { get; set; }
 
         /// <summary>
-        /// Output only. Indicates whether this data mapping is archived.
+        /// Output only. Indicates whether this mapping is archived.
         /// </summary>
         [Input("archived")]
         public Input<bool>? Archived { get; set; }
 
         /// <summary>
-        /// Required. A unique identifier for the mapped data.
+        /// Required. A unique identifier for the mapped resource.
         /// </summary>
         [Input("dataId")]
         public Input<string>? DataId { get; set; }
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputList<Inputs.AttributeArgs>? _resourceAttributes;
 
         /// <summary>
-        /// Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+        /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
         /// </summary>
         public InputList<Inputs.AttributeArgs> ResourceAttributes
         {

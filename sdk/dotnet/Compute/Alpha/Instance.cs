@@ -314,6 +314,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         }
 
         /// <summary>
+        /// [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        /// </summary>
+        [Input("resourceStatus")]
+        public Input<Inputs.ResourceStatusArgs>? ResourceStatus { get; set; }
+
+        /// <summary>
         /// [Output Only] Reserved for future use.
         /// </summary>
         [Input("satisfiesPzs")]
@@ -411,7 +417,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? SourceMachineImage { get; set; }
 
         /// <summary>
-        /// Source GMI encryption key when creating an instance from GMI.
+        /// Source machine image encryption key when creating an instance from a machine image.
         /// </summary>
         [Input("sourceMachineImageEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceMachineImageEncryptionKey { get; set; }

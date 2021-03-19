@@ -66,6 +66,12 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
         [Input("onUpdateAction")]
         public Input<string>? OnUpdateAction { get; set; }
 
+        /// <summary>
+        /// Indicates how many IOPS must be provisioned for the disk.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<string>? ProvisionedIops { get; set; }
+
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
 

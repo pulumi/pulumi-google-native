@@ -61,7 +61,7 @@ class GoogleAppsCloudidentityDevicesV1Device(pulumi.CustomResource):
         :param pulumi.Input[str] build_number: Output only. Build number of the device.
         :param pulumi.Input[str] compromised_state: Output only. Represents whether the Device is compromised.
         :param pulumi.Input[str] create_time: Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.
-        :param pulumi.Input[str] customer: Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+        :param pulumi.Input[str] customer: Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
         :param pulumi.Input[str] device_type: Output only. Type of device.
         :param pulumi.Input[bool] enabled_developer_options: Output only. Whether developer options is enabled on device.
         :param pulumi.Input[bool] enabled_usb_debugging: Output only. Whether USB debugging is enabled on device.

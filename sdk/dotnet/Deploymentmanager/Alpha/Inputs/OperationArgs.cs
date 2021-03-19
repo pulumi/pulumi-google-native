@@ -88,6 +88,12 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+        /// </summary>
+        [Input("operationGroupId")]
+        public Input<string>? OperationGroupId { get; set; }
+
+        /// <summary>
         /// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
         /// </summary>
         [Input("operationType")]

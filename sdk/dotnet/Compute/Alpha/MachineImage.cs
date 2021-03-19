@@ -124,6 +124,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] The URL for this machine image. The server defines this URL.
         /// </summary>
         [Input("selfLink")]

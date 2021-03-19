@@ -62,6 +62,8 @@ type reservationArgs struct {
 	CreationTime *string `pulumi:"creationTime"`
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
 	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
+	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+	MaxConcurrency *string `pulumi:"maxConcurrency"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name *string `pulumi:"name"`
 	// Required. Project, location. E.g., `projects/myproject/locations/US`
@@ -80,6 +82,8 @@ type ReservationArgs struct {
 	CreationTime pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
+	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+	MaxConcurrency pulumi.StringPtrInput
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
 	Name pulumi.StringPtrInput
 	// Required. Project, location. E.g., `projects/myproject/locations/US`

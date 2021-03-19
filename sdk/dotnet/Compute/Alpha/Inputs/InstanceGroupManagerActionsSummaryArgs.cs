@@ -63,6 +63,30 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         public Input<int>? Restarting { get; set; }
 
         /// <summary>
+        /// [Output Only] The number of instances in the managed instance group that are scheduled to be resumed or are currently being resumed.
+        /// </summary>
+        [Input("resuming")]
+        public Input<int>? Resuming { get; set; }
+
+        /// <summary>
+        /// [Output Only] The number of instances in the managed instance group that are scheduled to be started or are currently being started.
+        /// </summary>
+        [Input("starting")]
+        public Input<int>? Starting { get; set; }
+
+        /// <summary>
+        /// [Output Only] The number of instances in the managed instance group that are scheduled to be stopped or are currently being stopped.
+        /// </summary>
+        [Input("stopping")]
+        public Input<int>? Stopping { get; set; }
+
+        /// <summary>
+        /// [Output Only] The number of instances in the managed instance group that are scheduled to be suspended or are currently being suspended.
+        /// </summary>
+        [Input("suspending")]
+        public Input<int>? Suspending { get; set; }
+
+        /// <summary>
         /// [Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.
         /// </summary>
         [Input("verifying")]

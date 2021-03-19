@@ -13,22 +13,16 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
     public sealed class SecurityPolicyRuleRateLimitOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+        /// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         /// </summary>
         [Input("banDurationSec")]
         public Input<int>? BanDurationSec { get; set; }
 
         /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+        /// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         /// </summary>
         [Input("banThreshold")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsThresholdArgs>? BanThreshold { get; set; }
-
-        /// <summary>
-        /// Can only be specified if the action for the rule is "rate_based_ban" If specified, determines the time (in seconds) the traffic will continue to be blocked by the rate limit after the rate falls below the threshold. The default value is 0 seconds. [Deprecated] This field is deprecated.
-        /// </summary>
-        [Input("blockDuration")]
-        public Input<int>? BlockDuration { get; set; }
 
         /// <summary>
         /// Action to take when requests are under the given threshold. When requests are throttled, this is also the action for all requests which are not dropped. Valid options are "allow", "fairshare", and "drop_overload".
@@ -53,12 +47,6 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         /// </summary>
         [Input("rateLimitThreshold")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsThresholdArgs>? RateLimitThreshold { get; set; }
-
-        /// <summary>
-        /// Rate in requests per second at which to begin ratelimiting. [Deprecated] This field is deprecated.
-        /// </summary>
-        [Input("thresholdRps")]
-        public Input<int>? ThresholdRps { get; set; }
 
         public SecurityPolicyRuleRateLimitOptionsArgs()
         {

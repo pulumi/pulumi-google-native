@@ -102,6 +102,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
+        /// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+        /// </summary>
+        [Input("expiresInSeconds")]
+        public Input<string>? ExpiresInSeconds { get; set; }
+
+        /// <summary>
         /// Time the developer app was created in milliseconds since epoch.
         /// </summary>
         [Input("issuedAt")]

@@ -2061,6 +2061,8 @@ type Operation struct {
 	Kind *string `pulumi:"kind"`
 	// [Output Only] Name of the operation.
 	Name *string `pulumi:"name"`
+	// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+	OperationGroupId *string `pulumi:"operationGroupId"`
 	// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
 	OperationType *string `pulumi:"operationType"`
 	// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
@@ -2122,6 +2124,8 @@ type OperationArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// [Output Only] Name of the operation.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+	OperationGroupId pulumi.StringPtrInput `pulumi:"operationGroupId"`
 	// [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
 	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
 	// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
@@ -2279,6 +2283,11 @@ func (o OperationOutput) Kind() pulumi.StringPtrOutput {
 // [Output Only] Name of the operation.
 func (o OperationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Operation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+func (o OperationOutput) OperationGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Operation) *string { return v.OperationGroupId }).(pulumi.StringPtrOutput)
 }
 
 // [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
@@ -2466,6 +2475,16 @@ func (o OperationPtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+func (o OperationPtrOutput) OperationGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Operation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationGroupId
 	}).(pulumi.StringPtrOutput)
 }
 

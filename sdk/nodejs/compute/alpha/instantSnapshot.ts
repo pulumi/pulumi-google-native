@@ -44,11 +44,12 @@ export class InstantSnapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstantSnapshotArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -63,6 +64,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
@@ -71,12 +73,8 @@ export class InstantSnapshot extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstantSnapshot.__pulumiType, name, inputs, opts);
     }
@@ -141,6 +139,10 @@ export interface InstantSnapshotArgs {
      */
     readonly requestId?: pulumi.Input<string>;
     /**
+     * [Output Only] Reserved for future use.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    /**
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
@@ -150,9 +152,12 @@ export interface InstantSnapshotArgs {
     readonly selfLinkWithId?: pulumi.Input<string>;
     /**
      * URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-     * - projects/project/zones/zone/disks/disk 
-     * - zones/zone/disks/disk
+     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+     * - projects/project/zones/zone/disks/disk  
+     * - projects/project/regions/region/disks/disk  
+     * - zones/zone/disks/disk  
+     * - regions/region/disks/disk
      */
     readonly sourceDisk?: pulumi.Input<string>;
     /**

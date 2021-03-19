@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Atomically update the ResourceRecordSet collection.
+// Atomically updates the ResourceRecordSet collection.
 type Change struct {
 	pulumi.CustomResourceState
 }
@@ -62,11 +62,11 @@ func (ChangeState) ElementType() reflect.Type {
 
 type changeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions []ResourceRecordSet `pulumi:"additions"`
+	Additions []ResourceRecordSetType `pulumi:"additions"`
 	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
-	Deletions []ResourceRecordSet `pulumi:"deletions"`
+	Deletions []ResourceRecordSetType `pulumi:"deletions"`
 	// Unique identifier for the resource; defined by the server (output only).
 	Id *string `pulumi:"id"`
 	// If the DNS queries for the zone will be served.
@@ -78,18 +78,18 @@ type changeArgs struct {
 	Project string `pulumi:"project"`
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime *string `pulumi:"startTime"`
-	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
 	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a Change resource.
 type ChangeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions ResourceRecordSetArrayInput
+	Additions ResourceRecordSetTypeArrayInput
 	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId pulumi.StringPtrInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
-	Deletions ResourceRecordSetArrayInput
+	Deletions ResourceRecordSetTypeArrayInput
 	// Unique identifier for the resource; defined by the server (output only).
 	Id pulumi.StringPtrInput
 	// If the DNS queries for the zone will be served.
@@ -101,7 +101,7 @@ type ChangeArgs struct {
 	Project pulumi.StringInput
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime pulumi.StringPtrInput
-	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
 	Status pulumi.StringPtrInput
 }
 

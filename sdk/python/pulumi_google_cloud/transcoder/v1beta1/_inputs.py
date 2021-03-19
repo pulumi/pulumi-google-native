@@ -38,6 +38,7 @@ __all__ = [
     'OriginUriArgs',
     'OutputArgs',
     'OverlayArgs',
+    'PadArgs',
     'PreprocessingConfigArgs',
     'ProgressArgs',
     'PubsubDestinationArgs',
@@ -190,7 +191,7 @@ class AnimationFadeArgs:
         :param pulumi.Input[str] end_time_offset: The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
         :param pulumi.Input[str] fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
         :param pulumi.Input[str] start_time_offset: The time to start the fade animation, in seconds. Default: 0
-        :param pulumi.Input['NormalizedCoordinateArgs'] xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+        :param pulumi.Input['NormalizedCoordinateArgs'] xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
         if end_time_offset is not None:
             pulumi.set(__self__, "end_time_offset", end_time_offset)
@@ -241,7 +242,7 @@ class AnimationFadeArgs:
     @pulumi.getter
     def xy(self) -> Optional[pulumi.Input['NormalizedCoordinateArgs']]:
         """
-        Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+        Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
         return pulumi.get(self, "xy")
 
@@ -258,7 +259,7 @@ class AnimationStaticArgs:
         """
         Display static overlay object.
         :param pulumi.Input[str] start_time_offset: The time to start displaying the overlay object, in seconds. Default: 0
-        :param pulumi.Input['NormalizedCoordinateArgs'] xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+        :param pulumi.Input['NormalizedCoordinateArgs'] xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
         if start_time_offset is not None:
             pulumi.set(__self__, "start_time_offset", start_time_offset)
@@ -281,7 +282,7 @@ class AnimationStaticArgs:
     @pulumi.getter
     def xy(self) -> Optional[pulumi.Input['NormalizedCoordinateArgs']]:
         """
-        Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object.
+        Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
         return pulumi.get(self, "xy")
 
@@ -300,7 +301,7 @@ class AudioArgs:
         Audio preprocessing configuration.
         :param pulumi.Input[bool] high_boost: Enable boosting high frequency components. The default is `false`.
         :param pulumi.Input[bool] low_boost: Enable boosting low frequency components. The default is `false`.
-        :param pulumi.Input[float] lufs: Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo, and 0 disables normalization. The default is 0.
+        :param pulumi.Input[float] lufs: Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
         """
         if high_boost is not None:
             pulumi.set(__self__, "high_boost", high_boost)
@@ -337,7 +338,7 @@ class AudioArgs:
     @pulumi.getter
     def lufs(self) -> Optional[pulumi.Input[float]]:
         """
-        Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo, and 0 disables normalization. The default is 0.
+        Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
         """
         return pulumi.get(self, "lufs")
 
@@ -1058,9 +1059,9 @@ class ImageArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Overlaid jpeg image.
-        :param pulumi.Input[float] alpha: Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+        :param pulumi.Input[float] alpha: Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
         :param pulumi.Input['NormalizedCoordinateArgs'] resolution: Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-        :param pulumi.Input[str] uri: Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+        :param pulumi.Input[str] uri: Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         """
         if alpha is not None:
             pulumi.set(__self__, "alpha", alpha)
@@ -1073,7 +1074,7 @@ class ImageArgs:
     @pulumi.getter
     def alpha(self) -> Optional[pulumi.Input[float]]:
         """
-        Target image opacity. Valid values: `1` (solid, default), `0` (transparent).
+        Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
         """
         return pulumi.get(self, "alpha")
 
@@ -1097,7 +1098,7 @@ class ImageArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+        Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         """
         return pulumi.get(self, "uri")
 
@@ -1116,7 +1117,7 @@ class InputArgs:
         Input asset.
         :param pulumi.Input[str] key: A unique key for this input. Must be specified when using advanced mapping and edit lists.
         :param pulumi.Input['PreprocessingConfigArgs'] preprocessing_config: Preprocessing configurations.
-        :param pulumi.Input[str] uri: URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/inputs/file.mp4`. If empty the value will be populated from `Job.input_uri`.
+        :param pulumi.Input[str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1153,7 +1154,7 @@ class InputArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/inputs/file.mp4`. If empty the value will be populated from `Job.input_uri`.
+        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
         """
         return pulumi.get(self, "uri")
 
@@ -1675,13 +1676,86 @@ class OverlayArgs:
 
 
 @pulumi.input_type
+class PadArgs:
+    def __init__(__self__, *,
+                 bottom_pixels: Optional[pulumi.Input[int]] = None,
+                 left_pixels: Optional[pulumi.Input[int]] = None,
+                 right_pixels: Optional[pulumi.Input[int]] = None,
+                 top_pixels: Optional[pulumi.Input[int]] = None):
+        """
+        Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
+        :param pulumi.Input[int] bottom_pixels: The number of pixels to add to the bottom. The default is 0.
+        :param pulumi.Input[int] left_pixels: The number of pixels to add to the left. The default is 0.
+        :param pulumi.Input[int] right_pixels: The number of pixels to add to the right. The default is 0.
+        :param pulumi.Input[int] top_pixels: The number of pixels to add to the top. The default is 0.
+        """
+        if bottom_pixels is not None:
+            pulumi.set(__self__, "bottom_pixels", bottom_pixels)
+        if left_pixels is not None:
+            pulumi.set(__self__, "left_pixels", left_pixels)
+        if right_pixels is not None:
+            pulumi.set(__self__, "right_pixels", right_pixels)
+        if top_pixels is not None:
+            pulumi.set(__self__, "top_pixels", top_pixels)
+
+    @property
+    @pulumi.getter(name="bottomPixels")
+    def bottom_pixels(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of pixels to add to the bottom. The default is 0.
+        """
+        return pulumi.get(self, "bottom_pixels")
+
+    @bottom_pixels.setter
+    def bottom_pixels(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bottom_pixels", value)
+
+    @property
+    @pulumi.getter(name="leftPixels")
+    def left_pixels(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of pixels to add to the left. The default is 0.
+        """
+        return pulumi.get(self, "left_pixels")
+
+    @left_pixels.setter
+    def left_pixels(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "left_pixels", value)
+
+    @property
+    @pulumi.getter(name="rightPixels")
+    def right_pixels(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of pixels to add to the right. The default is 0.
+        """
+        return pulumi.get(self, "right_pixels")
+
+    @right_pixels.setter
+    def right_pixels(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "right_pixels", value)
+
+    @property
+    @pulumi.getter(name="topPixels")
+    def top_pixels(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of pixels to add to the top. The default is 0.
+        """
+        return pulumi.get(self, "top_pixels")
+
+    @top_pixels.setter
+    def top_pixels(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "top_pixels", value)
+
+
+@pulumi.input_type
 class PreprocessingConfigArgs:
     def __init__(__self__, *,
                  audio: Optional[pulumi.Input['AudioArgs']] = None,
                  color: Optional[pulumi.Input['ColorArgs']] = None,
                  crop: Optional[pulumi.Input['CropArgs']] = None,
                  deblock: Optional[pulumi.Input['DeblockArgs']] = None,
-                 denoise: Optional[pulumi.Input['DenoiseArgs']] = None):
+                 denoise: Optional[pulumi.Input['DenoiseArgs']] = None,
+                 pad: Optional[pulumi.Input['PadArgs']] = None):
         """
         Preprocessing configurations.
         :param pulumi.Input['AudioArgs'] audio: Audio preprocessing configuration.
@@ -1689,6 +1763,7 @@ class PreprocessingConfigArgs:
         :param pulumi.Input['CropArgs'] crop: Specify the video cropping configuration.
         :param pulumi.Input['DeblockArgs'] deblock: Deblock preprocessing configuration.
         :param pulumi.Input['DenoiseArgs'] denoise: Denoise preprocessing configuration.
+        :param pulumi.Input['PadArgs'] pad: Specify the video pad filter configuration.
         """
         if audio is not None:
             pulumi.set(__self__, "audio", audio)
@@ -1700,6 +1775,8 @@ class PreprocessingConfigArgs:
             pulumi.set(__self__, "deblock", deblock)
         if denoise is not None:
             pulumi.set(__self__, "denoise", denoise)
+        if pad is not None:
+            pulumi.set(__self__, "pad", pad)
 
     @property
     @pulumi.getter
@@ -1760,6 +1837,18 @@ class PreprocessingConfigArgs:
     @denoise.setter
     def denoise(self, value: Optional[pulumi.Input['DenoiseArgs']]):
         pulumi.set(self, "denoise", value)
+
+    @property
+    @pulumi.getter
+    def pad(self) -> Optional[pulumi.Input['PadArgs']]:
+        """
+        Specify the video pad filter configuration.
+        """
+        return pulumi.get(self, "pad")
+
+    @pad.setter
+    def pad(self, value: Optional[pulumi.Input['PadArgs']]):
+        pulumi.set(self, "pad", value)
 
 
 @pulumi.input_type
@@ -1890,7 +1979,7 @@ class SegmentSettingsArgs:
         """
         Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
         :param pulumi.Input[bool] individual_segments: Required. Create an individual segment file. The default is `false`.
-        :param pulumi.Input[str] segment_duration: Duration of the segments in seconds. The default is `"6.0s"`.
+        :param pulumi.Input[str] segment_duration: Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
         """
         if individual_segments is not None:
             pulumi.set(__self__, "individual_segments", individual_segments)
@@ -1913,7 +2002,7 @@ class SegmentSettingsArgs:
     @pulumi.getter(name="segmentDuration")
     def segment_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Duration of the segments in seconds. The default is `"6.0s"`.
+        Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
         """
         return pulumi.get(self, "segment_duration")
 
@@ -1930,6 +2019,7 @@ class SpriteSheetArgs:
                  file_prefix: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
+                 quality: Optional[pulumi.Input[int]] = None,
                  row_count: Optional[pulumi.Input[int]] = None,
                  sprite_height_pixels: Optional[pulumi.Input[int]] = None,
                  sprite_width_pixels: Optional[pulumi.Input[int]] = None,
@@ -1942,6 +2032,7 @@ class SpriteSheetArgs:
         :param pulumi.Input[str] file_prefix: Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
         :param pulumi.Input[str] format: Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
         :param pulumi.Input[str] interval: Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
+        :param pulumi.Input[int] quality: The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
         :param pulumi.Input[int] row_count: The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
         :param pulumi.Input[int] sprite_height_pixels: Required. The height of sprite in pixels. Must be an even integer.
         :param pulumi.Input[int] sprite_width_pixels: Required. The width of sprite in pixels. Must be an even integer.
@@ -1958,6 +2049,8 @@ class SpriteSheetArgs:
             pulumi.set(__self__, "format", format)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
+        if quality is not None:
+            pulumi.set(__self__, "quality", quality)
         if row_count is not None:
             pulumi.set(__self__, "row_count", row_count)
         if sprite_height_pixels is not None:
@@ -2028,6 +2121,18 @@ class SpriteSheetArgs:
     @interval.setter
     def interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def quality(self) -> Optional[pulumi.Input[int]]:
+        """
+        The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
+        """
+        return pulumi.get(self, "quality")
+
+    @quality.setter
+    def quality(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "quality", value)
 
     @property
     @pulumi.getter(name="rowCount")
@@ -2261,8 +2366,8 @@ class VideoStreamArgs:
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
         :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `"vbr"`. The default is `false`.
         :param pulumi.Input[str] entropy_coder: The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
-        :param pulumi.Input[float] frame_rate: Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
-        :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `"3s"`.
+        :param pulumi.Input[float] frame_rate: Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ``` | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 | ```
+        :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `"yuv420p"`. Supported pixel formats: - 'yuv420p' pixel format. - 'yuv422p' pixel format. - 'yuv444p' pixel format. - 'yuv420p10' 10-bit HDR pixel format. - 'yuv422p10' 10-bit HDR pixel format. - 'yuv444p10' 10-bit HDR pixel format. - 'yuv420p12' 12-bit HDR pixel format. - 'yuv422p12' 12-bit HDR pixel format. - 'yuv444p12' 12-bit HDR pixel format.
@@ -2429,7 +2534,7 @@ class VideoStreamArgs:
     @pulumi.getter(name="frameRate")
     def frame_rate(self) -> Optional[pulumi.Input[float]]:
         """
-        Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
+        Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ``` | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 | ```
         """
         return pulumi.get(self, "frame_rate")
 
@@ -2441,7 +2546,7 @@ class VideoStreamArgs:
     @pulumi.getter(name="gopDuration")
     def gop_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Select the GOP size based on the specified duration. The default is `"3s"`.
+        Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         """
         return pulumi.get(self, "gop_duration")
 

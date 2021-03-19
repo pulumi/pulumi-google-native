@@ -216,6 +216,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Input("satisfiesPzs")]
+        public Input<bool>? SatisfiesPzs { get; set; }
+
+        /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>
         [Input("selfLink")]

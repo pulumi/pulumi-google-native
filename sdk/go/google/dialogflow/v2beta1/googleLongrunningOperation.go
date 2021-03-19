@@ -72,6 +72,8 @@ type googleLongrunningOperationArgs struct {
 	KnowledgeTypes []string `pulumi:"knowledgeTypes"`
 	// Output only. The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
 	LatestReloadStatus *GoogleCloudDialogflowV2beta1DocumentReloadStatus `pulumi:"latestReloadStatus"`
+	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+	Metadata map[string]string `pulumi:"metadata"`
 	// Required. The MIME type of this document.
 	MimeType *string `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
@@ -98,6 +100,8 @@ type GoogleLongrunningOperationArgs struct {
 	KnowledgeTypes pulumi.StringArrayInput
 	// Output only. The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
 	LatestReloadStatus GoogleCloudDialogflowV2beta1DocumentReloadStatusPtrInput
+	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+	Metadata pulumi.StringMapInput
 	// Required. The MIME type of this document.
 	MimeType pulumi.StringPtrInput
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.

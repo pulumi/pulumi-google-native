@@ -69,6 +69,8 @@ type serviceAttachmentArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
@@ -103,6 +105,8 @@ type ServiceAttachmentArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+	EnableProxyProtocol pulumi.BoolPtrInput
 	// [Output Only] The unique identifier for the resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.

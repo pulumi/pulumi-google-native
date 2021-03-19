@@ -10,8 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Notebooks.V1.Inputs
 {
 
+    /// <summary>
+    /// The entry of VM image upgrade history.
+    /// </summary>
     public sealed class UpgradeHistoryEntryArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action. Rolloback or Upgrade.
+        /// </summary>
+        [Input("action")]
+        public Input<string>? Action { get; set; }
+
         /// <summary>
         /// The container image before this instance upgrade.
         /// </summary>
@@ -41,6 +50,18 @@ namespace Pulumi.GoogleCloud.Notebooks.V1.Inputs
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+        /// </summary>
+        [Input("targetImage")]
+        public Input<string>? TargetImage { get; set; }
+
+        /// <summary>
+        /// Target VM Version, like m63.
+        /// </summary>
+        [Input("targetVersion")]
+        public Input<string>? TargetVersion { get; set; }
 
         /// <summary>
         /// The version of the notebook instance before this upgrade.

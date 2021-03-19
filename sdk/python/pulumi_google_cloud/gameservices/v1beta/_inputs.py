@@ -22,6 +22,7 @@ __all__ = [
     'FleetConfigArgs',
     'GameServerClusterConnectionInfoArgs',
     'GkeClusterReferenceArgs',
+    'GkeHubClusterReferenceArgs',
     'LabelSelectorArgs',
     'LogConfigArgs',
     'PolicyArgs',
@@ -586,14 +587,18 @@ class FleetConfigArgs:
 class GameServerClusterConnectionInfoArgs:
     def __init__(__self__, *,
                  gke_cluster_reference: Optional[pulumi.Input['GkeClusterReferenceArgs']] = None,
+                 gke_hub_cluster_reference: Optional[pulumi.Input['GkeHubClusterReferenceArgs']] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
         """
         The game server cluster connection information.
         :param pulumi.Input['GkeClusterReferenceArgs'] gke_cluster_reference: Reference to the GKE cluster where the game servers are installed.
+        :param pulumi.Input['GkeHubClusterReferenceArgs'] gke_hub_cluster_reference: Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
         :param pulumi.Input[str] namespace: Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
         """
         if gke_cluster_reference is not None:
             pulumi.set(__self__, "gke_cluster_reference", gke_cluster_reference)
+        if gke_hub_cluster_reference is not None:
+            pulumi.set(__self__, "gke_hub_cluster_reference", gke_hub_cluster_reference)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
 
@@ -608,6 +613,18 @@ class GameServerClusterConnectionInfoArgs:
     @gke_cluster_reference.setter
     def gke_cluster_reference(self, value: Optional[pulumi.Input['GkeClusterReferenceArgs']]):
         pulumi.set(self, "gke_cluster_reference", value)
+
+    @property
+    @pulumi.getter(name="gkeHubClusterReference")
+    def gke_hub_cluster_reference(self) -> Optional[pulumi.Input['GkeHubClusterReferenceArgs']]:
+        """
+        Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+        """
+        return pulumi.get(self, "gke_hub_cluster_reference")
+
+    @gke_hub_cluster_reference.setter
+    def gke_hub_cluster_reference(self, value: Optional[pulumi.Input['GkeHubClusterReferenceArgs']]):
+        pulumi.set(self, "gke_hub_cluster_reference", value)
 
     @property
     @pulumi.getter
@@ -644,6 +661,30 @@ class GkeClusterReferenceArgs:
     @cluster.setter
     def cluster(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster", value)
+
+
+@pulumi.input_type
+class GkeHubClusterReferenceArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None):
+        """
+        GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+        :param pulumi.Input[str] membership: The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
 
 
 @pulumi.input_type

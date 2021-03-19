@@ -45,11 +45,13 @@ export class Build extends pulumi.CustomResource {
      */
     constructor(name: string, args: BuildArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'parent'");
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectId'");
             }
             inputs["artifacts"] = args ? args.artifacts : undefined;
+            inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
             inputs["buildTriggerId"] = args ? args.buildTriggerId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["finishTime"] = args ? args.finishTime : undefined;
@@ -77,12 +79,8 @@ export class Build extends pulumi.CustomResource {
             inputs["timing"] = args ? args.timing : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Build.__pulumiType, name, inputs, opts);
     }
@@ -96,6 +94,10 @@ export interface BuildArgs {
      * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
      */
     readonly artifacts?: pulumi.Input<inputs.cloudbuild.v1.Artifacts>;
+    /**
+     * Secrets and secret environment variables.
+     */
+    readonly availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.Secrets>;
     /**
      * Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
      */
@@ -135,11 +137,11 @@ export interface BuildArgs {
     /**
      * The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
     /**
      * Output only. ID of the project.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly projectId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */
@@ -149,7 +151,7 @@ export interface BuildArgs {
      */
     readonly results?: pulumi.Input<inputs.cloudbuild.v1.Results>;
     /**
-     * Secrets to decrypt using Cloud Key Management Service.
+     * Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
      */
     readonly secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.Secret>[]>;
     /**

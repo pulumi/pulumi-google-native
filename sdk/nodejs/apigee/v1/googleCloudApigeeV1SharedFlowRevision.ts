@@ -44,8 +44,9 @@ export class GoogleCloudApigeeV1SharedFlowRevision extends pulumi.CustomResource
      */
     constructor(name: string, args: GoogleCloudApigeeV1SharedFlowRevisionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -56,12 +57,8 @@ export class GoogleCloudApigeeV1SharedFlowRevision extends pulumi.CustomResource
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudApigeeV1SharedFlowRevision.__pulumiType, name, inputs, opts);
     }

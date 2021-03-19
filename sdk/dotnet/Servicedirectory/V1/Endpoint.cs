@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Servicedirectory.V1
 {
     /// <summary>
-    /// Creates a endpoint, and returns the new Endpoint.
+    /// Creates an endpoint, and returns the new endpoint.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:servicedirectory/v1:Endpoint")]
     public partial class Endpoint : Pulumi.CustomResource
@@ -60,7 +60,7 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
     public sealed class EndpointArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. An IPv4 or IPv6 address. Service Directory will reject bad addresses like: "8.8.8" "8.8.8.8:53" "test:bad:address" "[::1]" "[::1]:8080" Limited to 45 characters.
+        /// Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -69,7 +69,7 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: - The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that goes beyond any these limits will be rejected. - Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements will be rejected. - The '(*.)google.com/' and '(*.)googleapis.com/' prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries will be silently ignored by the system. Note: This field is equivalent to the 'metadata' field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
+        /// Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/) Annotations that fails to meet these requirements are rejected. * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
         public Input<string>? EndpointId { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        /// Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Service Directory will reject values outside of [0, 65535].
+        /// Optional. Service Directory rejects values outside of `[0, 65535]`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

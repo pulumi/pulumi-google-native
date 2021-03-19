@@ -45,20 +45,17 @@ export class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration 
      */
     constructor(name: string, args: GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["parent"] = args ? args.parent : undefined;
             inputs["predictionApiKeyRegistration"] = args ? args.predictionApiKeyRegistration : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration.__pulumiType, name, inputs, opts);
     }

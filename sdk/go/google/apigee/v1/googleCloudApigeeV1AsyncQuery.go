@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
+// Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
 type GoogleCloudApigeeV1AsyncQuery struct {
 	pulumi.CustomResourceState
 }
@@ -76,7 +76,7 @@ type googleCloudApigeeV1AsyncQueryArgs struct {
 	Name *string `pulumi:"name"`
 	// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
 	OutputFormat *string `pulumi:"outputFormat"`
-	// Required. The parent resource name. Must be of the form `organizations/{org}`.
+	// Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`.
 	Parent string `pulumi:"parent"`
 	// Asynchronous Report ID.
 	ReportDefinitionId *string `pulumi:"reportDefinitionId"`
@@ -104,7 +104,7 @@ type GoogleCloudApigeeV1AsyncQueryArgs struct {
 	Name pulumi.StringPtrInput
 	// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
 	OutputFormat pulumi.StringPtrInput
-	// Required. The parent resource name. Must be of the form `organizations/{org}`.
+	// Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`.
 	Parent pulumi.StringInput
 	// Asynchronous Report ID.
 	ReportDefinitionId pulumi.StringPtrInput

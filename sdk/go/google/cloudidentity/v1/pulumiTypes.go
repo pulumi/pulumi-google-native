@@ -10,6 +10,421 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Dynamic group metadata like queries and status.
+type DynamicGroupMetadata struct {
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	Queries []DynamicGroupQuery `pulumi:"queries"`
+	// Output only. Status of the dynamic group.
+	Status *DynamicGroupStatus `pulumi:"status"`
+}
+
+// DynamicGroupMetadataInput is an input type that accepts DynamicGroupMetadataArgs and DynamicGroupMetadataOutput values.
+// You can construct a concrete instance of `DynamicGroupMetadataInput` via:
+//
+//          DynamicGroupMetadataArgs{...}
+type DynamicGroupMetadataInput interface {
+	pulumi.Input
+
+	ToDynamicGroupMetadataOutput() DynamicGroupMetadataOutput
+	ToDynamicGroupMetadataOutputWithContext(context.Context) DynamicGroupMetadataOutput
+}
+
+// Dynamic group metadata like queries and status.
+type DynamicGroupMetadataArgs struct {
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	Queries DynamicGroupQueryArrayInput `pulumi:"queries"`
+	// Output only. Status of the dynamic group.
+	Status DynamicGroupStatusPtrInput `pulumi:"status"`
+}
+
+func (DynamicGroupMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupMetadata)(nil)).Elem()
+}
+
+func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataOutput() DynamicGroupMetadataOutput {
+	return i.ToDynamicGroupMetadataOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataOutputWithContext(ctx context.Context) DynamicGroupMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataOutput)
+}
+
+func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataPtrOutput() DynamicGroupMetadataPtrOutput {
+	return i.ToDynamicGroupMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataPtrOutputWithContext(ctx context.Context) DynamicGroupMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataOutput).ToDynamicGroupMetadataPtrOutputWithContext(ctx)
+}
+
+// DynamicGroupMetadataPtrInput is an input type that accepts DynamicGroupMetadataArgs, DynamicGroupMetadataPtr and DynamicGroupMetadataPtrOutput values.
+// You can construct a concrete instance of `DynamicGroupMetadataPtrInput` via:
+//
+//          DynamicGroupMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type DynamicGroupMetadataPtrInput interface {
+	pulumi.Input
+
+	ToDynamicGroupMetadataPtrOutput() DynamicGroupMetadataPtrOutput
+	ToDynamicGroupMetadataPtrOutputWithContext(context.Context) DynamicGroupMetadataPtrOutput
+}
+
+type dynamicGroupMetadataPtrType DynamicGroupMetadataArgs
+
+func DynamicGroupMetadataPtr(v *DynamicGroupMetadataArgs) DynamicGroupMetadataPtrInput {
+	return (*dynamicGroupMetadataPtrType)(v)
+}
+
+func (*dynamicGroupMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupMetadata)(nil)).Elem()
+}
+
+func (i *dynamicGroupMetadataPtrType) ToDynamicGroupMetadataPtrOutput() DynamicGroupMetadataPtrOutput {
+	return i.ToDynamicGroupMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *dynamicGroupMetadataPtrType) ToDynamicGroupMetadataPtrOutputWithContext(ctx context.Context) DynamicGroupMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataPtrOutput)
+}
+
+// Dynamic group metadata like queries and status.
+type DynamicGroupMetadataOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupMetadata)(nil)).Elem()
+}
+
+func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataOutput() DynamicGroupMetadataOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataOutputWithContext(ctx context.Context) DynamicGroupMetadataOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutput() DynamicGroupMetadataPtrOutput {
+	return o.ToDynamicGroupMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupMetadataOutput) ToDynamicGroupMetadataPtrOutputWithContext(ctx context.Context) DynamicGroupMetadataPtrOutput {
+	return o.ApplyT(func(v DynamicGroupMetadata) *DynamicGroupMetadata {
+		return &v
+	}).(DynamicGroupMetadataPtrOutput)
+}
+
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+func (o DynamicGroupMetadataOutput) Queries() DynamicGroupQueryArrayOutput {
+	return o.ApplyT(func(v DynamicGroupMetadata) []DynamicGroupQuery { return v.Queries }).(DynamicGroupQueryArrayOutput)
+}
+
+// Output only. Status of the dynamic group.
+func (o DynamicGroupMetadataOutput) Status() DynamicGroupStatusPtrOutput {
+	return o.ApplyT(func(v DynamicGroupMetadata) *DynamicGroupStatus { return v.Status }).(DynamicGroupStatusPtrOutput)
+}
+
+type DynamicGroupMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupMetadata)(nil)).Elem()
+}
+
+func (o DynamicGroupMetadataPtrOutput) ToDynamicGroupMetadataPtrOutput() DynamicGroupMetadataPtrOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataPtrOutput) ToDynamicGroupMetadataPtrOutputWithContext(ctx context.Context) DynamicGroupMetadataPtrOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataPtrOutput) Elem() DynamicGroupMetadataOutput {
+	return o.ApplyT(func(v *DynamicGroupMetadata) DynamicGroupMetadata { return *v }).(DynamicGroupMetadataOutput)
+}
+
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+func (o DynamicGroupMetadataPtrOutput) Queries() DynamicGroupQueryArrayOutput {
+	return o.ApplyT(func(v *DynamicGroupMetadata) []DynamicGroupQuery {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(DynamicGroupQueryArrayOutput)
+}
+
+// Output only. Status of the dynamic group.
+func (o DynamicGroupMetadataPtrOutput) Status() DynamicGroupStatusPtrOutput {
+	return o.ApplyT(func(v *DynamicGroupMetadata) *DynamicGroupStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(DynamicGroupStatusPtrOutput)
+}
+
+// Defines a query on a resource.
+type DynamicGroupQuery struct {
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	Query *string `pulumi:"query"`
+	// Resource type for the Dynamic Group Query
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// DynamicGroupQueryInput is an input type that accepts DynamicGroupQueryArgs and DynamicGroupQueryOutput values.
+// You can construct a concrete instance of `DynamicGroupQueryInput` via:
+//
+//          DynamicGroupQueryArgs{...}
+type DynamicGroupQueryInput interface {
+	pulumi.Input
+
+	ToDynamicGroupQueryOutput() DynamicGroupQueryOutput
+	ToDynamicGroupQueryOutputWithContext(context.Context) DynamicGroupQueryOutput
+}
+
+// Defines a query on a resource.
+type DynamicGroupQueryArgs struct {
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// Resource type for the Dynamic Group Query
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (DynamicGroupQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupQuery)(nil)).Elem()
+}
+
+func (i DynamicGroupQueryArgs) ToDynamicGroupQueryOutput() DynamicGroupQueryOutput {
+	return i.ToDynamicGroupQueryOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupQueryArgs) ToDynamicGroupQueryOutputWithContext(ctx context.Context) DynamicGroupQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryOutput)
+}
+
+// DynamicGroupQueryArrayInput is an input type that accepts DynamicGroupQueryArray and DynamicGroupQueryArrayOutput values.
+// You can construct a concrete instance of `DynamicGroupQueryArrayInput` via:
+//
+//          DynamicGroupQueryArray{ DynamicGroupQueryArgs{...} }
+type DynamicGroupQueryArrayInput interface {
+	pulumi.Input
+
+	ToDynamicGroupQueryArrayOutput() DynamicGroupQueryArrayOutput
+	ToDynamicGroupQueryArrayOutputWithContext(context.Context) DynamicGroupQueryArrayOutput
+}
+
+type DynamicGroupQueryArray []DynamicGroupQueryInput
+
+func (DynamicGroupQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicGroupQuery)(nil)).Elem()
+}
+
+func (i DynamicGroupQueryArray) ToDynamicGroupQueryArrayOutput() DynamicGroupQueryArrayOutput {
+	return i.ToDynamicGroupQueryArrayOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupQueryArray) ToDynamicGroupQueryArrayOutputWithContext(ctx context.Context) DynamicGroupQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryArrayOutput)
+}
+
+// Defines a query on a resource.
+type DynamicGroupQueryOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupQuery)(nil)).Elem()
+}
+
+func (o DynamicGroupQueryOutput) ToDynamicGroupQueryOutput() DynamicGroupQueryOutput {
+	return o
+}
+
+func (o DynamicGroupQueryOutput) ToDynamicGroupQueryOutputWithContext(ctx context.Context) DynamicGroupQueryOutput {
+	return o
+}
+
+// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+func (o DynamicGroupQueryOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicGroupQuery) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// Resource type for the Dynamic Group Query
+func (o DynamicGroupQueryOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicGroupQuery) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type DynamicGroupQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicGroupQuery)(nil)).Elem()
+}
+
+func (o DynamicGroupQueryArrayOutput) ToDynamicGroupQueryArrayOutput() DynamicGroupQueryArrayOutput {
+	return o
+}
+
+func (o DynamicGroupQueryArrayOutput) ToDynamicGroupQueryArrayOutputWithContext(ctx context.Context) DynamicGroupQueryArrayOutput {
+	return o
+}
+
+func (o DynamicGroupQueryArrayOutput) Index(i pulumi.IntInput) DynamicGroupQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamicGroupQuery {
+		return vs[0].([]DynamicGroupQuery)[vs[1].(int)]
+	}).(DynamicGroupQueryOutput)
+}
+
+// The current status of a dynamic group along with timestamp.
+type DynamicGroupStatus struct {
+	// Status of the dynamic group.
+	Status *string `pulumi:"status"`
+	// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+	StatusTime *string `pulumi:"statusTime"`
+}
+
+// DynamicGroupStatusInput is an input type that accepts DynamicGroupStatusArgs and DynamicGroupStatusOutput values.
+// You can construct a concrete instance of `DynamicGroupStatusInput` via:
+//
+//          DynamicGroupStatusArgs{...}
+type DynamicGroupStatusInput interface {
+	pulumi.Input
+
+	ToDynamicGroupStatusOutput() DynamicGroupStatusOutput
+	ToDynamicGroupStatusOutputWithContext(context.Context) DynamicGroupStatusOutput
+}
+
+// The current status of a dynamic group along with timestamp.
+type DynamicGroupStatusArgs struct {
+	// Status of the dynamic group.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+	StatusTime pulumi.StringPtrInput `pulumi:"statusTime"`
+}
+
+func (DynamicGroupStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupStatus)(nil)).Elem()
+}
+
+func (i DynamicGroupStatusArgs) ToDynamicGroupStatusOutput() DynamicGroupStatusOutput {
+	return i.ToDynamicGroupStatusOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupStatusArgs) ToDynamicGroupStatusOutputWithContext(ctx context.Context) DynamicGroupStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusOutput)
+}
+
+func (i DynamicGroupStatusArgs) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
+	return i.ToDynamicGroupStatusPtrOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupStatusArgs) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusOutput).ToDynamicGroupStatusPtrOutputWithContext(ctx)
+}
+
+// DynamicGroupStatusPtrInput is an input type that accepts DynamicGroupStatusArgs, DynamicGroupStatusPtr and DynamicGroupStatusPtrOutput values.
+// You can construct a concrete instance of `DynamicGroupStatusPtrInput` via:
+//
+//          DynamicGroupStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type DynamicGroupStatusPtrInput interface {
+	pulumi.Input
+
+	ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput
+	ToDynamicGroupStatusPtrOutputWithContext(context.Context) DynamicGroupStatusPtrOutput
+}
+
+type dynamicGroupStatusPtrType DynamicGroupStatusArgs
+
+func DynamicGroupStatusPtr(v *DynamicGroupStatusArgs) DynamicGroupStatusPtrInput {
+	return (*dynamicGroupStatusPtrType)(v)
+}
+
+func (*dynamicGroupStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupStatus)(nil)).Elem()
+}
+
+func (i *dynamicGroupStatusPtrType) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
+	return i.ToDynamicGroupStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *dynamicGroupStatusPtrType) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusPtrOutput)
+}
+
+// The current status of a dynamic group along with timestamp.
+type DynamicGroupStatusOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupStatus)(nil)).Elem()
+}
+
+func (o DynamicGroupStatusOutput) ToDynamicGroupStatusOutput() DynamicGroupStatusOutput {
+	return o
+}
+
+func (o DynamicGroupStatusOutput) ToDynamicGroupStatusOutputWithContext(ctx context.Context) DynamicGroupStatusOutput {
+	return o
+}
+
+func (o DynamicGroupStatusOutput) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
+	return o.ToDynamicGroupStatusPtrOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupStatusOutput) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
+	return o.ApplyT(func(v DynamicGroupStatus) *DynamicGroupStatus {
+		return &v
+	}).(DynamicGroupStatusPtrOutput)
+}
+
+// Status of the dynamic group.
+func (o DynamicGroupStatusOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicGroupStatus) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+func (o DynamicGroupStatusOutput) StatusTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicGroupStatus) *string { return v.StatusTime }).(pulumi.StringPtrOutput)
+}
+
+type DynamicGroupStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupStatus)(nil)).Elem()
+}
+
+func (o DynamicGroupStatusPtrOutput) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
+	return o
+}
+
+func (o DynamicGroupStatusPtrOutput) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
+	return o
+}
+
+func (o DynamicGroupStatusPtrOutput) Elem() DynamicGroupStatusOutput {
+	return o.ApplyT(func(v *DynamicGroupStatus) DynamicGroupStatus { return *v }).(DynamicGroupStatusOutput)
+}
+
+// Status of the dynamic group.
+func (o DynamicGroupStatusPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicGroupStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+func (o DynamicGroupStatusPtrOutput) StatusTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicGroupStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKey struct {
 	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
@@ -160,6 +575,140 @@ func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `MembershipRole` expiry details.
+type ExpiryDetail struct {
+	// The time at which the `MembershipRole` will expire.
+	ExpireTime *string `pulumi:"expireTime"`
+}
+
+// ExpiryDetailInput is an input type that accepts ExpiryDetailArgs and ExpiryDetailOutput values.
+// You can construct a concrete instance of `ExpiryDetailInput` via:
+//
+//          ExpiryDetailArgs{...}
+type ExpiryDetailInput interface {
+	pulumi.Input
+
+	ToExpiryDetailOutput() ExpiryDetailOutput
+	ToExpiryDetailOutputWithContext(context.Context) ExpiryDetailOutput
+}
+
+// The `MembershipRole` expiry details.
+type ExpiryDetailArgs struct {
+	// The time at which the `MembershipRole` will expire.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+}
+
+func (ExpiryDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpiryDetail)(nil)).Elem()
+}
+
+func (i ExpiryDetailArgs) ToExpiryDetailOutput() ExpiryDetailOutput {
+	return i.ToExpiryDetailOutputWithContext(context.Background())
+}
+
+func (i ExpiryDetailArgs) ToExpiryDetailOutputWithContext(ctx context.Context) ExpiryDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailOutput)
+}
+
+func (i ExpiryDetailArgs) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
+	return i.ToExpiryDetailPtrOutputWithContext(context.Background())
+}
+
+func (i ExpiryDetailArgs) ToExpiryDetailPtrOutputWithContext(ctx context.Context) ExpiryDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailOutput).ToExpiryDetailPtrOutputWithContext(ctx)
+}
+
+// ExpiryDetailPtrInput is an input type that accepts ExpiryDetailArgs, ExpiryDetailPtr and ExpiryDetailPtrOutput values.
+// You can construct a concrete instance of `ExpiryDetailPtrInput` via:
+//
+//          ExpiryDetailArgs{...}
+//
+//  or:
+//
+//          nil
+type ExpiryDetailPtrInput interface {
+	pulumi.Input
+
+	ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput
+	ToExpiryDetailPtrOutputWithContext(context.Context) ExpiryDetailPtrOutput
+}
+
+type expiryDetailPtrType ExpiryDetailArgs
+
+func ExpiryDetailPtr(v *ExpiryDetailArgs) ExpiryDetailPtrInput {
+	return (*expiryDetailPtrType)(v)
+}
+
+func (*expiryDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpiryDetail)(nil)).Elem()
+}
+
+func (i *expiryDetailPtrType) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
+	return i.ToExpiryDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *expiryDetailPtrType) ToExpiryDetailPtrOutputWithContext(ctx context.Context) ExpiryDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailPtrOutput)
+}
+
+// The `MembershipRole` expiry details.
+type ExpiryDetailOutput struct{ *pulumi.OutputState }
+
+func (ExpiryDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpiryDetail)(nil)).Elem()
+}
+
+func (o ExpiryDetailOutput) ToExpiryDetailOutput() ExpiryDetailOutput {
+	return o
+}
+
+func (o ExpiryDetailOutput) ToExpiryDetailOutputWithContext(ctx context.Context) ExpiryDetailOutput {
+	return o
+}
+
+func (o ExpiryDetailOutput) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
+	return o.ToExpiryDetailPtrOutputWithContext(context.Background())
+}
+
+func (o ExpiryDetailOutput) ToExpiryDetailPtrOutputWithContext(ctx context.Context) ExpiryDetailPtrOutput {
+	return o.ApplyT(func(v ExpiryDetail) *ExpiryDetail {
+		return &v
+	}).(ExpiryDetailPtrOutput)
+}
+
+// The time at which the `MembershipRole` will expire.
+func (o ExpiryDetailOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpiryDetail) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+type ExpiryDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (ExpiryDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpiryDetail)(nil)).Elem()
+}
+
+func (o ExpiryDetailPtrOutput) ToExpiryDetailPtrOutput() ExpiryDetailPtrOutput {
+	return o
+}
+
+func (o ExpiryDetailPtrOutput) ToExpiryDetailPtrOutputWithContext(ctx context.Context) ExpiryDetailPtrOutput {
+	return o
+}
+
+func (o ExpiryDetailPtrOutput) Elem() ExpiryDetailOutput {
+	return o.ApplyT(func(v *ExpiryDetail) ExpiryDetail { return *v }).(ExpiryDetailOutput)
+}
+
+// The time at which the `MembershipRole` will expire.
+func (o ExpiryDetailPtrOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpiryDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpireTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -358,6 +907,8 @@ func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) SupportsWork
 
 // A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
 type MembershipRole struct {
+	// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+	ExpiryDetail *ExpiryDetail `pulumi:"expiryDetail"`
 	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 	Name *string `pulumi:"name"`
 }
@@ -375,6 +926,8 @@ type MembershipRoleInput interface {
 
 // A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
 type MembershipRoleArgs struct {
+	// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+	ExpiryDetail ExpiryDetailPtrInput `pulumi:"expiryDetail"`
 	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -431,6 +984,11 @@ func (o MembershipRoleOutput) ToMembershipRoleOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+func (o MembershipRoleOutput) ExpiryDetail() ExpiryDetailPtrOutput {
+	return o.ApplyT(func(v MembershipRole) *ExpiryDetail { return v.ExpiryDetail }).(ExpiryDetailPtrOutput)
+}
+
 // The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
 func (o MembershipRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MembershipRole) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -457,8 +1015,16 @@ func (o MembershipRoleArrayOutput) Index(i pulumi.IntInput) MembershipRoleOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(DynamicGroupMetadataOutput{})
+	pulumi.RegisterOutputType(DynamicGroupMetadataPtrOutput{})
+	pulumi.RegisterOutputType(DynamicGroupQueryOutput{})
+	pulumi.RegisterOutputType(DynamicGroupQueryArrayOutput{})
+	pulumi.RegisterOutputType(DynamicGroupStatusOutput{})
+	pulumi.RegisterOutputType(DynamicGroupStatusPtrOutput{})
 	pulumi.RegisterOutputType(EntityKeyOutput{})
 	pulumi.RegisterOutputType(EntityKeyPtrOutput{})
+	pulumi.RegisterOutputType(ExpiryDetailOutput{})
+	pulumi.RegisterOutputType(ExpiryDetailPtrOutput{})
 	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput{})
 	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput{})
 	pulumi.RegisterOutputType(MembershipRoleOutput{})

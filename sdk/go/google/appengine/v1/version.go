@@ -127,6 +127,8 @@ type versionArgs struct {
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Part of `parent`. See documentation of `appsId`.
 	ServicesId string `pulumi:"servicesId"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
@@ -211,6 +213,8 @@ type VersionArgs struct {
 	RuntimeChannel pulumi.StringPtrInput
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath pulumi.StringPtrInput
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `appsId`.
 	ServicesId pulumi.StringInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.

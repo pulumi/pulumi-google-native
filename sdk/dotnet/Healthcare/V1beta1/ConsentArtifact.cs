@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 {
     /// <summary>
-    /// Creates a new Consent artifact in the parent Consent store.
+    /// Creates a new Consent artifact in the parent consent store.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:ConsentArtifact")]
     public partial class ConsentArtifact : Pulumi.CustomResource
@@ -63,7 +63,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputList<Inputs.ImageArgs>? _consentContentScreenshots;
 
         /// <summary>
-        /// Screenshots of the consent content.
+        /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
         /// </summary>
         public InputList<Inputs.ImageArgs> ConsentContentScreenshots
         {
@@ -72,13 +72,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         }
 
         /// <summary>
-        /// An string indicating the version of the consent content.
+        /// Optional. An string indicating the version of the consent information shown to the user.
         /// </summary>
         [Input("consentContentVersion")]
         public Input<string>? ConsentContentVersion { get; set; }
 
         /// <summary>
-        /// A signature from guardian.
+        /// Optional. A signature from a guardian.
         /// </summary>
         [Input("guardianSignature")]
         public Input<Inputs.SignatureArgs>? GuardianSignature { get; set; }
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Metadata associated with the consent artifact. For example, the consent locale or user agent version.
+        /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -96,13 +96,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         }
 
         /// <summary>
-        /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the Consent store this consent artifact belongs to.
+        /// Required. The name of the consent store this Consent artifact belongs to.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -114,13 +114,13 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// User's signature.
+        /// Optional. User's signature.
         /// </summary>
         [Input("userSignature")]
         public Input<Inputs.SignatureArgs>? UserSignature { get; set; }
 
         /// <summary>
-        /// A signature from a witness.
+        /// Optional. A signature from a witness.
         /// </summary>
         [Input("witnessSignature")]
         public Input<Inputs.SignatureArgs>? WitnessSignature { get; set; }

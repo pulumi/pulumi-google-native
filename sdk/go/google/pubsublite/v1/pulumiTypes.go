@@ -301,7 +301,7 @@ func (o DeliveryConfigPtrOutput) DeliveryRequirement() pulumi.StringPtrOutput {
 type PartitionConfig struct {
 	// The capacity configuration.
 	Capacity *Capacity `pulumi:"capacity"`
-	// The number of partitions in the topic. Must be at least 1.
+	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 	Count *string `pulumi:"count"`
 	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
 	Scale *int `pulumi:"scale"`
@@ -322,7 +322,7 @@ type PartitionConfigInput interface {
 type PartitionConfigArgs struct {
 	// The capacity configuration.
 	Capacity CapacityPtrInput `pulumi:"capacity"`
-	// The number of partitions in the topic. Must be at least 1.
+	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 	Count pulumi.StringPtrInput `pulumi:"count"`
 	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -411,7 +411,7 @@ func (o PartitionConfigOutput) Capacity() CapacityPtrOutput {
 	return o.ApplyT(func(v PartitionConfig) *Capacity { return v.Capacity }).(CapacityPtrOutput)
 }
 
-// The number of partitions in the topic. Must be at least 1.
+// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 func (o PartitionConfigOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PartitionConfig) *string { return v.Count }).(pulumi.StringPtrOutput)
 }
@@ -449,7 +449,7 @@ func (o PartitionConfigPtrOutput) Capacity() CapacityPtrOutput {
 	}).(CapacityPtrOutput)
 }
 
-// The number of partitions in the topic. Must be at least 1.
+// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 func (o PartitionConfigPtrOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartitionConfig) *string {
 		if v == nil {

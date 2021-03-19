@@ -68,6 +68,8 @@ type resourcePolicyArgs struct {
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
+	// Resource policy for scheduling instance operations.
+	InstanceSchedulePolicy *ResourcePolicyInstanceSchedulePolicy `pulumi:"instanceSchedulePolicy"`
 	// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
 	Kind *string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -81,6 +83,8 @@ type resourcePolicyArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// [Output Only] The system status of the resource policy.
+	ResourceStatus *ResourcePolicyResourceStatus `pulumi:"resourceStatus"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Resource policy for persistent disks for creating snapshots.
@@ -98,6 +102,8 @@ type ResourcePolicyArgs struct {
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
+	// Resource policy for scheduling instance operations.
+	InstanceSchedulePolicy ResourcePolicyInstanceSchedulePolicyPtrInput
 	// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
 	Kind pulumi.StringPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -111,6 +117,8 @@ type ResourcePolicyArgs struct {
 	//
 	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// [Output Only] The system status of the resource policy.
+	ResourceStatus ResourcePolicyResourceStatusPtrInput
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringPtrInput
 	// Resource policy for persistent disks for creating snapshots.

@@ -66,7 +66,7 @@ type buildTriggerArgs struct {
 	Description *string `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled *bool `pulumi:"disabled"`
-	// Path, from the source root, to a file whose contents is used for the template.
+	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename *string `pulumi:"filename"`
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github *GitHubEventsConfig `pulumi:"github"`
@@ -98,7 +98,7 @@ type BuildTriggerArgs struct {
 	Description pulumi.StringPtrInput
 	// If true, the trigger will never automatically execute a build.
 	Disabled pulumi.BoolPtrInput
-	// Path, from the source root, to a file whose contents is used for the template.
+	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringPtrInput
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github GitHubEventsConfigPtrInput

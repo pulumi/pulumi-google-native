@@ -74,13 +74,13 @@ type transferConfigArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences *EmailPreferences `pulumi:"emailPreferences"`
-	// The resource name of the transfer config. Transfer config names have the form of `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated based on the config_id specified in CreateTransferConfigRequest along with project_id and region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required, will be generated for config_id.
+	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
 	// Output only. Next time when data transfer will run.
 	NextRunTime *string `pulumi:"nextRunTime"`
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
-	// Data transfer specific parameters.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params map[string]string `pulumi:"params"`
 	// Required. The BigQuery project id where the transfer configuration should be created. Must be in the format projects/{project_id}/locations/{location_id} or projects/{project_id}. If specified location and location of the destination bigquery dataset do not match - the request will fail.
 	Parent string `pulumi:"parent"`
@@ -118,13 +118,13 @@ type TransferConfigArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
 	EmailPreferences EmailPreferencesPtrInput
-	// The resource name of the transfer config. Transfer config names have the form of `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated based on the config_id specified in CreateTransferConfigRequest along with project_id and region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required, will be generated for config_id.
+	// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
 	// Output only. Next time when data transfer will run.
 	NextRunTime pulumi.StringPtrInput
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
-	// Data transfer specific parameters.
+	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params pulumi.StringMapInput
 	// Required. The BigQuery project id where the transfer configuration should be created. Must be in the format projects/{project_id}/locations/{location_id} or projects/{project_id}. If specified location and location of the destination bigquery dataset do not match - the request will fail.
 	Parent pulumi.StringInput

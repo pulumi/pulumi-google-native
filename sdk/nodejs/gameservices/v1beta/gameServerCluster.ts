@@ -45,10 +45,12 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: GameServerClusterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            inputs["allocationPriority"] = args ? args.allocationPriority : undefined;
             inputs["connectionInfo"] = args ? args.connectionInfo : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -60,12 +62,8 @@ export class GameServerCluster extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GameServerCluster.__pulumiType, name, inputs, opts);
     }
@@ -75,6 +73,10 @@ export class GameServerCluster extends pulumi.CustomResource {
  * The set of arguments for constructing a GameServerCluster resource.
  */
 export interface GameServerClusterArgs {
+    /**
+     * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
+     */
+    readonly allocationPriority?: pulumi.Input<string>;
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */

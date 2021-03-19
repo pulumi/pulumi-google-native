@@ -45,6 +45,12 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1.Inputs
         [Input("denoise")]
         public Input<Inputs.DenoiseArgs>? Denoise { get; set; }
 
+        /// <summary>
+        /// Specify the video pad filter configuration.
+        /// </summary>
+        [Input("pad")]
+        public Input<Inputs.PadArgs>? Pad { get; set; }
+
         public PreprocessingConfigArgs()
         {
         }

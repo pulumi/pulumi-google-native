@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4.Inputs
         public Input<bool>? QueryInsightsEnabled { get; set; }
 
         /// <summary>
-        /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.
+        /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
         /// </summary>
         [Input("queryStringLength")]
         public Input<int>? QueryStringLength { get; set; }

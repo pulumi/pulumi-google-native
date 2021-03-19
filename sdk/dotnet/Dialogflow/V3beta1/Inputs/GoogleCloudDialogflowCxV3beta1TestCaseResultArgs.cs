@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1.Inputs
         }
 
         /// <summary>
-        /// Optional. Environment where the test was run. If not set, it indicates the draft environment.
+        /// Environment where the test was run. If not set, it indicates the draft environment.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

@@ -12,6 +12,7 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'DataCatalogConfigArgs',
     'DatabaseDumpArgs',
     'ExprArgs',
     'HiveMetastoreConfigArgs',
@@ -21,6 +22,7 @@ __all__ = [
     'MetadataIntegrationArgs',
     'MetadataManagementActivityArgs',
     'PolicyArgs',
+    'RestoreArgs',
     'SecretArgs',
 ]
 
@@ -161,16 +163,42 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class DataCatalogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Specifies how metastore metadata should be integrated with the Data Catalog service.
+        :param pulumi.Input[bool] enabled: Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class DatabaseDumpArgs:
     def __init__(__self__, *,
                  database_type: Optional[pulumi.Input[str]] = None,
                  gcs_uri: Optional[pulumi.Input[str]] = None,
-                 source_database: Optional[pulumi.Input[str]] = None):
+                 source_database: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         A specification of the location of and metadata about a database dump from a relational database management system.
         :param pulumi.Input[str] database_type: The type of the database.
-        :param pulumi.Input[str] gcs_uri: A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+        :param pulumi.Input[str] gcs_uri: A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
         :param pulumi.Input[str] source_database: The name of the source database.
+        :param pulumi.Input[str] type: Optional. The type of the database dump. If unspecified, defaults to MYSQL.
         """
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
@@ -178,6 +206,8 @@ class DatabaseDumpArgs:
             pulumi.set(__self__, "gcs_uri", gcs_uri)
         if source_database is not None:
             pulumi.set(__self__, "source_database", source_database)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="databaseType")
@@ -195,7 +225,7 @@ class DatabaseDumpArgs:
     @pulumi.getter(name="gcsUri")
     def gcs_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+        A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
         """
         return pulumi.get(self, "gcs_uri")
 
@@ -214,6 +244,18 @@ class DatabaseDumpArgs:
     @source_database.setter
     def source_database(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_database", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -443,17 +485,21 @@ class MaintenanceWindowArgs:
 @pulumi.input_type
 class MetadataExportArgs:
     def __init__(__self__, *,
+                 database_dump_type: Optional[pulumi.Input[str]] = None,
                  destination_gcs_uri: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         The details of a metadata export operation.
+        :param pulumi.Input[str] database_dump_type: Output only. The type of the database dump.
         :param pulumi.Input[str] destination_gcs_uri: Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
         :param pulumi.Input[str] end_time: Output only. The time when the export ended.
         :param pulumi.Input[str] start_time: Output only. The time when the export started.
         :param pulumi.Input[str] state: Output only. The current state of the export.
         """
+        if database_dump_type is not None:
+            pulumi.set(__self__, "database_dump_type", database_dump_type)
         if destination_gcs_uri is not None:
             pulumi.set(__self__, "destination_gcs_uri", destination_gcs_uri)
         if end_time is not None:
@@ -462,6 +508,18 @@ class MetadataExportArgs:
             pulumi.set(__self__, "start_time", start_time)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="databaseDumpType")
+    def database_dump_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The type of the database dump.
+        """
+        return pulumi.get(self, "database_dump_type")
+
+    @database_dump_type.setter
+    def database_dump_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_dump_type", value)
 
     @property
     @pulumi.getter(name="destinationGcsUri")
@@ -514,23 +572,42 @@ class MetadataExportArgs:
 
 @pulumi.input_type
 class MetadataIntegrationArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 data_catalog_config: Optional[pulumi.Input['DataCatalogConfigArgs']] = None):
         """
         Specifies how metastore metadata should be integrated with external services.
+        :param pulumi.Input['DataCatalogConfigArgs'] data_catalog_config: The integration config for the Data Catalog service.
         """
-        pass
+        if data_catalog_config is not None:
+            pulumi.set(__self__, "data_catalog_config", data_catalog_config)
+
+    @property
+    @pulumi.getter(name="dataCatalogConfig")
+    def data_catalog_config(self) -> Optional[pulumi.Input['DataCatalogConfigArgs']]:
+        """
+        The integration config for the Data Catalog service.
+        """
+        return pulumi.get(self, "data_catalog_config")
+
+    @data_catalog_config.setter
+    def data_catalog_config(self, value: Optional[pulumi.Input['DataCatalogConfigArgs']]):
+        pulumi.set(self, "data_catalog_config", value)
 
 
 @pulumi.input_type
 class MetadataManagementActivityArgs:
     def __init__(__self__, *,
-                 metadata_exports: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataExportArgs']]]] = None):
+                 metadata_exports: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataExportArgs']]]] = None,
+                 restores: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreArgs']]]] = None):
         """
         The metadata management activities of the metastore service.
         :param pulumi.Input[Sequence[pulumi.Input['MetadataExportArgs']]] metadata_exports: Output only. The latest metadata exports of the metastore service.
+        :param pulumi.Input[Sequence[pulumi.Input['RestoreArgs']]] restores: Output only. The latest restores of the metastore service.
         """
         if metadata_exports is not None:
             pulumi.set(__self__, "metadata_exports", metadata_exports)
+        if restores is not None:
+            pulumi.set(__self__, "restores", restores)
 
     @property
     @pulumi.getter(name="metadataExports")
@@ -543,6 +620,18 @@ class MetadataManagementActivityArgs:
     @metadata_exports.setter
     def metadata_exports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetadataExportArgs']]]]):
         pulumi.set(self, "metadata_exports", value)
+
+    @property
+    @pulumi.getter
+    def restores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreArgs']]]]:
+        """
+        Output only. The latest restores of the metastore service.
+        """
+        return pulumi.get(self, "restores")
+
+    @restores.setter
+    def restores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreArgs']]]]):
+        pulumi.set(self, "restores", value)
 
 
 @pulumi.input_type
@@ -615,6 +704,110 @@ class PolicyArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class RestoreArgs:
+    def __init__(__self__, *,
+                 backup: Optional[pulumi.Input[str]] = None,
+                 details: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The details of a metadata restore operation.
+        :param pulumi.Input[str] backup: Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+        :param pulumi.Input[str] details: Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
+        :param pulumi.Input[str] end_time: Output only. The time when the restore ended.
+        :param pulumi.Input[str] start_time: Output only. The time when the restore started.
+        :param pulumi.Input[str] state: Output only. The current state of the restore.
+        :param pulumi.Input[str] type: Output only. The type of restore.
+        """
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the restore ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the restore started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The current state of the restore.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The type of restore.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

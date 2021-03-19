@@ -69,7 +69,7 @@ type routerArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (Encrypted Interconnect feature).
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
@@ -109,7 +109,7 @@ type RouterArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (Encrypted Interconnect feature).
+	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput

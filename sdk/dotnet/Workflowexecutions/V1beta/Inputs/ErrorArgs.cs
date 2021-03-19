@@ -16,16 +16,22 @@ namespace Pulumi.GoogleCloud.Workflowexecutions.V1beta.Inputs
     public sealed class ErrorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human readable error context, helpful for debugging purposes.
+        /// Human readable stack trace string.
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
 
         /// <summary>
-        /// Error payload returned by the execution, represented as a JSON string.
+        /// Error message and data returned represented as a JSON string.
         /// </summary>
         [Input("payload")]
         public Input<string>? Payload { get; set; }
+
+        /// <summary>
+        /// Stack trace with detailed information of where error was generated.
+        /// </summary>
+        [Input("stackTrace")]
+        public Input<Inputs.StackTraceArgs>? StackTrace { get; set; }
 
         public ErrorArgs()
         {

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2.Inputs
         public Input<int>? BootDiskSizeGb { get; set; }
 
         /// <summary>
-        /// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        /// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }

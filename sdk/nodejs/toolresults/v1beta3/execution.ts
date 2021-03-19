@@ -45,11 +45,12 @@ export class Execution extends pulumi.CustomResource {
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.historyId === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["completionTime"] = args ? args.completionTime : undefined;
@@ -65,12 +66,8 @@ export class Execution extends pulumi.CustomResource {
             inputs["testExecutionMatrixId"] = args ? args.testExecutionMatrixId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Execution.__pulumiType, name, inputs, opts);
     }

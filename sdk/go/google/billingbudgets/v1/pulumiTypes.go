@@ -12,9 +12,9 @@ import (
 
 // The budgeted amount for each usage period.
 type GoogleCloudBillingBudgetsV1BudgetAmount struct {
-	// Use the last period's actual spend as the budget for the present period.
+	// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
 	LastPeriodAmount *GoogleCloudBillingBudgetsV1LastPeriodAmount `pulumi:"lastPeriodAmount"`
-	// A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+	// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
 	SpecifiedAmount *GoogleTypeMoney `pulumi:"specifiedAmount"`
 }
 
@@ -31,9 +31,9 @@ type GoogleCloudBillingBudgetsV1BudgetAmountInput interface {
 
 // The budgeted amount for each usage period.
 type GoogleCloudBillingBudgetsV1BudgetAmountArgs struct {
-	// Use the last period's actual spend as the budget for the present period.
+	// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
 	LastPeriodAmount GoogleCloudBillingBudgetsV1LastPeriodAmountPtrInput `pulumi:"lastPeriodAmount"`
-	// A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+	// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
 	SpecifiedAmount GoogleTypeMoneyPtrInput `pulumi:"specifiedAmount"`
 }
 
@@ -115,14 +115,14 @@ func (o GoogleCloudBillingBudgetsV1BudgetAmountOutput) ToGoogleCloudBillingBudge
 	}).(GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput)
 }
 
-// Use the last period's actual spend as the budget for the present period.
+// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
 func (o GoogleCloudBillingBudgetsV1BudgetAmountOutput) LastPeriodAmount() GoogleCloudBillingBudgetsV1LastPeriodAmountPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1BudgetAmount) *GoogleCloudBillingBudgetsV1LastPeriodAmount {
 		return v.LastPeriodAmount
 	}).(GoogleCloudBillingBudgetsV1LastPeriodAmountPtrOutput)
 }
 
-// A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
 func (o GoogleCloudBillingBudgetsV1BudgetAmountOutput) SpecifiedAmount() GoogleTypeMoneyPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1BudgetAmount) *GoogleTypeMoney { return v.SpecifiedAmount }).(GoogleTypeMoneyPtrOutput)
 }
@@ -145,7 +145,7 @@ func (o GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput) Elem() GoogleCloudBill
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1BudgetAmount) GoogleCloudBillingBudgetsV1BudgetAmount { return *v }).(GoogleCloudBillingBudgetsV1BudgetAmountOutput)
 }
 
-// Use the last period's actual spend as the budget for the present period.
+// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
 func (o GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput) LastPeriodAmount() GoogleCloudBillingBudgetsV1LastPeriodAmountPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1BudgetAmount) *GoogleCloudBillingBudgetsV1LastPeriodAmount {
 		if v == nil {
@@ -155,7 +155,7 @@ func (o GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput) LastPeriodAmount() Goo
 	}).(GoogleCloudBillingBudgetsV1LastPeriodAmountPtrOutput)
 }
 
-// A specified amount to use as the budget. `currency_code` is optional. If specified, it must match the currency of the billing account. The `currency_code` is provided on output.
+// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
 func (o GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput) SpecifiedAmount() GoogleTypeMoneyPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1BudgetAmount) *GoogleTypeMoney {
 		if v == nil {
@@ -165,12 +165,169 @@ func (o GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput) SpecifiedAmount() Goog
 	}).(GoogleTypeMoneyPtrOutput)
 }
 
+// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+type GoogleCloudBillingBudgetsV1CustomPeriod struct {
+	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
+	EndDate *GoogleTypeDate `pulumi:"endDate"`
+	// Required. The start date must be after January 1, 2017.
+	StartDate *GoogleTypeDate `pulumi:"startDate"`
+}
+
+// GoogleCloudBillingBudgetsV1CustomPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1CustomPeriodArgs and GoogleCloudBillingBudgetsV1CustomPeriodOutput values.
+// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1CustomPeriodInput` via:
+//
+//          GoogleCloudBillingBudgetsV1CustomPeriodArgs{...}
+type GoogleCloudBillingBudgetsV1CustomPeriodInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBillingBudgetsV1CustomPeriodOutput() GoogleCloudBillingBudgetsV1CustomPeriodOutput
+	ToGoogleCloudBillingBudgetsV1CustomPeriodOutputWithContext(context.Context) GoogleCloudBillingBudgetsV1CustomPeriodOutput
+}
+
+// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+type GoogleCloudBillingBudgetsV1CustomPeriodArgs struct {
+	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
+	EndDate GoogleTypeDatePtrInput `pulumi:"endDate"`
+	// Required. The start date must be after January 1, 2017.
+	StartDate GoogleTypeDatePtrInput `pulumi:"startDate"`
+}
+
+func (GoogleCloudBillingBudgetsV1CustomPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBillingBudgetsV1CustomPeriod)(nil)).Elem()
+}
+
+func (i GoogleCloudBillingBudgetsV1CustomPeriodArgs) ToGoogleCloudBillingBudgetsV1CustomPeriodOutput() GoogleCloudBillingBudgetsV1CustomPeriodOutput {
+	return i.ToGoogleCloudBillingBudgetsV1CustomPeriodOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBillingBudgetsV1CustomPeriodArgs) ToGoogleCloudBillingBudgetsV1CustomPeriodOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1CustomPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1CustomPeriodOutput)
+}
+
+func (i GoogleCloudBillingBudgetsV1CustomPeriodArgs) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutput() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return i.ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBillingBudgetsV1CustomPeriodArgs) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1CustomPeriodOutput).ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudBillingBudgetsV1CustomPeriodPtrInput is an input type that accepts GoogleCloudBillingBudgetsV1CustomPeriodArgs, GoogleCloudBillingBudgetsV1CustomPeriodPtr and GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1CustomPeriodPtrInput` via:
+//
+//          GoogleCloudBillingBudgetsV1CustomPeriodArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudBillingBudgetsV1CustomPeriodPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutput() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput
+	ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(context.Context) GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput
+}
+
+type googleCloudBillingBudgetsV1CustomPeriodPtrType GoogleCloudBillingBudgetsV1CustomPeriodArgs
+
+func GoogleCloudBillingBudgetsV1CustomPeriodPtr(v *GoogleCloudBillingBudgetsV1CustomPeriodArgs) GoogleCloudBillingBudgetsV1CustomPeriodPtrInput {
+	return (*googleCloudBillingBudgetsV1CustomPeriodPtrType)(v)
+}
+
+func (*googleCloudBillingBudgetsV1CustomPeriodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1CustomPeriod)(nil)).Elem()
+}
+
+func (i *googleCloudBillingBudgetsV1CustomPeriodPtrType) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutput() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return i.ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudBillingBudgetsV1CustomPeriodPtrType) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput)
+}
+
+// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+type GoogleCloudBillingBudgetsV1CustomPeriodOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBillingBudgetsV1CustomPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBillingBudgetsV1CustomPeriod)(nil)).Elem()
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodOutput) ToGoogleCloudBillingBudgetsV1CustomPeriodOutput() GoogleCloudBillingBudgetsV1CustomPeriodOutput {
+	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodOutput) ToGoogleCloudBillingBudgetsV1CustomPeriodOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1CustomPeriodOutput {
+	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodOutput) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutput() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return o.ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodOutput) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1CustomPeriod) *GoogleCloudBillingBudgetsV1CustomPeriod {
+		return &v
+	}).(GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput)
+}
+
+// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
+func (o GoogleCloudBillingBudgetsV1CustomPeriodOutput) EndDate() GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1CustomPeriod) *GoogleTypeDate { return v.EndDate }).(GoogleTypeDatePtrOutput)
+}
+
+// Required. The start date must be after January 1, 2017.
+func (o GoogleCloudBillingBudgetsV1CustomPeriodOutput) StartDate() GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1CustomPeriod) *GoogleTypeDate { return v.StartDate }).(GoogleTypeDatePtrOutput)
+}
+
+type GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1CustomPeriod)(nil)).Elem()
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutput() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput) ToGoogleCloudBillingBudgetsV1CustomPeriodPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput) Elem() GoogleCloudBillingBudgetsV1CustomPeriodOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1CustomPeriod) GoogleCloudBillingBudgetsV1CustomPeriod { return *v }).(GoogleCloudBillingBudgetsV1CustomPeriodOutput)
+}
+
+// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
+func (o GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput) EndDate() GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1CustomPeriod) *GoogleTypeDate {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(GoogleTypeDatePtrOutput)
+}
+
+// Required. The start date must be after January 1, 2017.
+func (o GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput) StartDate() GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1CustomPeriod) *GoogleTypeDate {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(GoogleTypeDatePtrOutput)
+}
+
 // A filter for a budget, limiting the scope of the cost to calculate.
 type GoogleCloudBillingBudgetsV1Filter struct {
+	// Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+	CalendarPeriod *string `pulumi:"calendarPeriod"`
 	// Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
 	CreditTypes []string `pulumi:"creditTypes"`
 	// Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
 	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
+	// Optional. Specifies to track usage from any start date (required) to any end date (optional).
+	CustomPeriod *GoogleCloudBillingBudgetsV1CustomPeriod `pulumi:"customPeriod"`
 	// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
@@ -194,10 +351,14 @@ type GoogleCloudBillingBudgetsV1FilterInput interface {
 
 // A filter for a budget, limiting the scope of the cost to calculate.
 type GoogleCloudBillingBudgetsV1FilterArgs struct {
+	// Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+	CalendarPeriod pulumi.StringPtrInput `pulumi:"calendarPeriod"`
 	// Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
 	CreditTypes pulumi.StringArrayInput `pulumi:"creditTypes"`
 	// Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
 	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
+	// Optional. Specifies to track usage from any start date (required) to any end date (optional).
+	CustomPeriod GoogleCloudBillingBudgetsV1CustomPeriodPtrInput `pulumi:"customPeriod"`
 	// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
@@ -286,6 +447,11 @@ func (o GoogleCloudBillingBudgetsV1FilterOutput) ToGoogleCloudBillingBudgetsV1Fi
 	}).(GoogleCloudBillingBudgetsV1FilterPtrOutput)
 }
 
+// Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+func (o GoogleCloudBillingBudgetsV1FilterOutput) CalendarPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) *string { return v.CalendarPeriod }).(pulumi.StringPtrOutput)
+}
+
 // Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
 func (o GoogleCloudBillingBudgetsV1FilterOutput) CreditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) []string { return v.CreditTypes }).(pulumi.StringArrayOutput)
@@ -294,6 +460,13 @@ func (o GoogleCloudBillingBudgetsV1FilterOutput) CreditTypes() pulumi.StringArra
 // Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
 func (o GoogleCloudBillingBudgetsV1FilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies to track usage from any start date (required) to any end date (optional).
+func (o GoogleCloudBillingBudgetsV1FilterOutput) CustomPeriod() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1Filter) *GoogleCloudBillingBudgetsV1CustomPeriod {
+		return v.CustomPeriod
+	}).(GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput)
 }
 
 // Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
@@ -334,6 +507,16 @@ func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) Elem() GoogleCloudBillingBud
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1Filter) GoogleCloudBillingBudgetsV1Filter { return *v }).(GoogleCloudBillingBudgetsV1FilterOutput)
 }
 
+// Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) CalendarPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1Filter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CalendarPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
 func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) CreditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1Filter) []string {
@@ -352,6 +535,16 @@ func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) CreditTypesTreatment() pulum
 		}
 		return v.CreditTypesTreatment
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies to track usage from any start date (required) to any end date (optional).
+func (o GoogleCloudBillingBudgetsV1FilterPtrOutput) CustomPeriod() GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1Filter) *GoogleCloudBillingBudgetsV1CustomPeriod {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPeriod
+	}).(GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput)
 }
 
 // Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
@@ -519,7 +712,7 @@ type GoogleCloudBillingBudgetsV1NotificationsRule struct {
 	MonitoringNotificationChannels []string `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details on Pub/Sub roles and permissions.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
-	// Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+	// Optional. Required when NotificationsRule.pubsub_topic is set. The schema version of the notification sent to NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
 	SchemaVersion *string `pulumi:"schemaVersion"`
 }
 
@@ -542,7 +735,7 @@ type GoogleCloudBillingBudgetsV1NotificationsRuleArgs struct {
 	MonitoringNotificationChannels pulumi.StringArrayInput `pulumi:"monitoringNotificationChannels"`
 	// Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details on Pub/Sub roles and permissions.
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
-	// Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+	// Optional. Required when NotificationsRule.pubsub_topic is set. The schema version of the notification sent to NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
 	SchemaVersion pulumi.StringPtrInput `pulumi:"schemaVersion"`
 }
 
@@ -639,7 +832,7 @@ func (o GoogleCloudBillingBudgetsV1NotificationsRuleOutput) PubsubTopic() pulumi
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRule) *string { return v.PubsubTopic }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+// Optional. Required when NotificationsRule.pubsub_topic is set. The schema version of the notification sent to NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
 func (o GoogleCloudBillingBudgetsV1NotificationsRuleOutput) SchemaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1NotificationsRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
 }
@@ -694,7 +887,7 @@ func (o GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput) PubsubTopic() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+// Optional. Required when NotificationsRule.pubsub_topic is set. The schema version of the notification sent to NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
 func (o GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1NotificationsRule) *string {
 		if v == nil {
@@ -811,6 +1004,178 @@ func (o GoogleCloudBillingBudgetsV1ThresholdRuleArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudBillingBudgetsV1ThresholdRule {
 		return vs[0].([]GoogleCloudBillingBudgetsV1ThresholdRule)[vs[1].(int)]
 	}).(GoogleCloudBillingBudgetsV1ThresholdRuleOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type GoogleTypeDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
+// You can construct a concrete instance of `GoogleTypeDateInput` via:
+//
+//          GoogleTypeDateArgs{...}
+type GoogleTypeDateInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDateOutput() GoogleTypeDateOutput
+	ToGoogleTypeDateOutputWithContext(context.Context) GoogleTypeDateOutput
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type GoogleTypeDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (GoogleTypeDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+	return i.ToGoogleTypeDateOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput)
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput).ToGoogleTypeDatePtrOutputWithContext(ctx)
+}
+
+// GoogleTypeDatePtrInput is an input type that accepts GoogleTypeDateArgs, GoogleTypeDatePtr and GoogleTypeDatePtrOutput values.
+// You can construct a concrete instance of `GoogleTypeDatePtrInput` via:
+//
+//          GoogleTypeDateArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleTypeDatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput
+	ToGoogleTypeDatePtrOutputWithContext(context.Context) GoogleTypeDatePtrOutput
+}
+
+type googleTypeDatePtrType GoogleTypeDateArgs
+
+func GoogleTypeDatePtr(v *GoogleTypeDateArgs) GoogleTypeDatePtrInput {
+	return (*googleTypeDatePtrType)(v)
+}
+
+func (*googleTypeDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDate)(nil)).Elem()
+}
+
+func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDatePtrOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type GoogleTypeDateOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+	return o
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+	return o
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return o.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *GoogleTypeDate {
+		return &v
+	}).(GoogleTypeDatePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type GoogleTypeDatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDate)(nil)).Elem()
+}
+
+func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+	return o
+}
+
+func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+	return o
+}
+
+func (o GoogleTypeDatePtrOutput) Elem() GoogleTypeDateOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate { return *v }).(GoogleTypeDateOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
 }
 
 // Represents an amount of money with its currency type.
@@ -988,6 +1353,8 @@ func (o GoogleTypeMoneyPtrOutput) Units() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1BudgetAmountOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1BudgetAmountPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1CustomPeriodOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1FilterOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1FilterPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1LastPeriodAmountOutput{})
@@ -996,6 +1363,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1ThresholdRuleOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1ThresholdRuleArrayOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeMoneyOutput{})
 	pulumi.RegisterOutputType(GoogleTypeMoneyPtrOutput{})
 }

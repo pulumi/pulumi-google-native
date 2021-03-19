@@ -45,8 +45,9 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["artifactGcsUri"] = args ? args.artifactGcsUri : undefined;
@@ -70,12 +71,8 @@ export class Service extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Service.__pulumiType, name, inputs, opts);
     }
@@ -122,7 +119,7 @@ export interface ServiceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Immutable. The relative resource name of the VPC network on which the instance can be accessed. The network must belong to the same project as the metastore instance. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+     * Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
      */
     readonly network?: pulumi.Input<string>;
     /**

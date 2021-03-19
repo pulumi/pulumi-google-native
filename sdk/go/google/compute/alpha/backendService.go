@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+// Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
 type BackendService struct {
 	pulumi.CustomResourceState
 }
@@ -25,9 +25,6 @@ func NewBackendService(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource BackendService
 	err := ctx.RegisterResource("google-cloud:compute/alpha:BackendService", name, args, &resource, opts...)
@@ -69,7 +66,7 @@ type backendServiceArgs struct {
 	AffinityCookieTtlSec *int `pulumi:"affinityCookieTtlSec"`
 	// The list of backends that serve this BackendService.
 	Backends []Backend `pulumi:"backends"`
-	// Cloud CDN configuration for this BackendService. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+	// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
 	CdnPolicy *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
 	//
@@ -135,6 +132,10 @@ type backendServiceArgs struct {
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	MaxStreamDuration *Duration `pulumi:"maxStreamDuration"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -149,7 +150,7 @@ type backendServiceArgs struct {
 	OutlierDetection *OutlierDetection `pulumi:"outlierDetection"`
 	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
 	//
-	// This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
 	Port *int `pulumi:"port"`
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
@@ -164,7 +165,7 @@ type backendServiceArgs struct {
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol *string `pulumi:"protocol"`
 	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -192,7 +193,7 @@ type backendServiceArgs struct {
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	SessionAffinity *string     `pulumi:"sessionAffinity"`
 	Subsetting      *Subsetting `pulumi:"subsetting"`
-	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds.
+	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
 	TimeoutSec *int `pulumi:"timeoutSec"`
 }
 
@@ -206,7 +207,7 @@ type BackendServiceArgs struct {
 	AffinityCookieTtlSec pulumi.IntPtrInput
 	// The list of backends that serve this BackendService.
 	Backends BackendArrayInput
-	// Cloud CDN configuration for this BackendService. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+	// Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
 	CdnPolicy BackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
 	//
@@ -272,6 +273,10 @@ type BackendServiceArgs struct {
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
 	LogConfig BackendServiceLogConfigPtrInput
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	MaxStreamDuration DurationPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -286,7 +291,7 @@ type BackendServiceArgs struct {
 	OutlierDetection OutlierDetectionPtrInput
 	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
 	//
-	// This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+	// Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port.
 	Port pulumi.IntPtrInput
 	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
 	//
@@ -301,7 +306,7 @@ type BackendServiceArgs struct {
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -329,7 +334,7 @@ type BackendServiceArgs struct {
 	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	SessionAffinity pulumi.StringPtrInput
 	Subsetting      SubsettingPtrInput
-	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds.
+	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntPtrInput
 }
 

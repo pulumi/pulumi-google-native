@@ -174,6 +174,12 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         public Input<string>? State { get; set; }
 
         /// <summary>
+        /// Output only. Returns true if there is an update waiting to be applied
+        /// </summary>
+        [Input("updateAvailable")]
+        public Input<bool>? UpdateAvailable { get; set; }
+
+        /// <summary>
         /// Output only. The time the instance was updated.
         /// </summary>
         [Input("updateTime")]

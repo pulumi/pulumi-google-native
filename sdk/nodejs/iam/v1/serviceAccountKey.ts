@@ -44,8 +44,9 @@ export class ServiceAccountKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceAccountKeyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
@@ -53,12 +54,8 @@ export class ServiceAccountKey extends pulumi.CustomResource {
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceAccountKey.__pulumiType, name, inputs, opts);
     }

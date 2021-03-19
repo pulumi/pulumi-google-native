@@ -8,11 +8,13 @@ import * as utilities from "../../utilities";
 export * from "./change";
 export * from "./managedZone";
 export * from "./policy";
+export * from "./resourceRecordSet";
 
 // Import resources to register:
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";
 import { Policy } from "./policy";
+import { ResourceRecordSet } from "./resourceRecordSet";
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +26,8 @@ const _module = {
                 return new ManagedZone(name, <any>undefined, { urn })
             case "google-cloud:dns/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:dns/v1:ResourceRecordSet":
+                return new ResourceRecordSet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

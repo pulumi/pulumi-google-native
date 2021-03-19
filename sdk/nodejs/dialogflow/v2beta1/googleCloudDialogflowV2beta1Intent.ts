@@ -45,8 +45,9 @@ export class GoogleCloudDialogflowV2beta1Intent extends pulumi.CustomResource {
      */
     constructor(name: string, args: GoogleCloudDialogflowV2beta1IntentArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -59,6 +60,7 @@ export class GoogleCloudDialogflowV2beta1Intent extends pulumi.CustomResource {
             inputs["intentView"] = args ? args.intentView : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
+            inputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
             inputs["messages"] = args ? args.messages : undefined;
             inputs["mlDisabled"] = args ? args.mlDisabled : undefined;
             inputs["mlEnabled"] = args ? args.mlEnabled : undefined;
@@ -74,12 +76,8 @@ export class GoogleCloudDialogflowV2beta1Intent extends pulumi.CustomResource {
             inputs["webhookState"] = args ? args.webhookState : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDialogflowV2beta1Intent.__pulumiType, name, inputs, opts);
     }
@@ -129,6 +127,10 @@ export interface GoogleCloudDialogflowV2beta1IntentArgs {
      * Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
      */
     readonly languageCode?: pulumi.Input<string>;
+    /**
+     * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+     */
+    readonly liveAgentHandoff?: pulumi.Input<boolean>;
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */

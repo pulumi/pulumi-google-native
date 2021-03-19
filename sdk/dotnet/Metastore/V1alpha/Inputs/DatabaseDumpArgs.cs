@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha.Inputs
         public Input<string>? DatabaseType { get; set; }
 
         /// <summary>
-        /// A Cloud Storage object URI that specifies the source from which to import metadata. It must begin with gs://.
+        /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
         /// </summary>
         [Input("gcsUri")]
         public Input<string>? GcsUri { get; set; }
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha.Inputs
         /// </summary>
         [Input("sourceDatabase")]
         public Input<string>? SourceDatabase { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public DatabaseDumpArgs()
         {

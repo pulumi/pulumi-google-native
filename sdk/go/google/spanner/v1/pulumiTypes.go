@@ -128,6 +128,312 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
+// Encryption configuration for a Cloud Spanner database.
+type EncryptionConfig struct {
+	// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
+// You can construct a concrete instance of `EncryptionConfigInput` via:
+//
+//          EncryptionConfigArgs{...}
+type EncryptionConfigInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigOutput() EncryptionConfigOutput
+	ToEncryptionConfigOutputWithContext(context.Context) EncryptionConfigOutput
+}
+
+// Encryption configuration for a Cloud Spanner database.
+type EncryptionConfigArgs struct {
+	// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (EncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return i.ToEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput).ToEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigPtrInput` via:
+//
+//          EncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput
+	ToEncryptionConfigPtrOutputWithContext(context.Context) EncryptionConfigPtrOutput
+}
+
+type encryptionConfigPtrType EncryptionConfigArgs
+
+func EncryptionConfigPtr(v *EncryptionConfigArgs) EncryptionConfigPtrInput {
+	return (*encryptionConfigPtrType)(v)
+}
+
+func (*encryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
+}
+
+// Encryption configuration for a Cloud Spanner database.
+type EncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+		return &v
+	}).(EncryptionConfigPtrOutput)
+}
+
+// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+}
+
+// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+func (o EncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption information for a Cloud Spanner database or backup.
+type EncryptionInfo struct {
+	// Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
+	EncryptionStatus *Status `pulumi:"encryptionStatus"`
+	// Output only. The type of encryption.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// Output only. A Cloud KMS key version that is being used to protect the database or backup.
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
+}
+
+// EncryptionInfoInput is an input type that accepts EncryptionInfoArgs and EncryptionInfoOutput values.
+// You can construct a concrete instance of `EncryptionInfoInput` via:
+//
+//          EncryptionInfoArgs{...}
+type EncryptionInfoInput interface {
+	pulumi.Input
+
+	ToEncryptionInfoOutput() EncryptionInfoOutput
+	ToEncryptionInfoOutputWithContext(context.Context) EncryptionInfoOutput
+}
+
+// Encryption information for a Cloud Spanner database or backup.
+type EncryptionInfoArgs struct {
+	// Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
+	EncryptionStatus StatusPtrInput `pulumi:"encryptionStatus"`
+	// Output only. The type of encryption.
+	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
+	// Output only. A Cloud KMS key version that is being used to protect the database or backup.
+	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
+}
+
+func (EncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionInfo)(nil)).Elem()
+}
+
+func (i EncryptionInfoArgs) ToEncryptionInfoOutput() EncryptionInfoOutput {
+	return i.ToEncryptionInfoOutputWithContext(context.Background())
+}
+
+func (i EncryptionInfoArgs) ToEncryptionInfoOutputWithContext(ctx context.Context) EncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoOutput)
+}
+
+func (i EncryptionInfoArgs) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
+	return i.ToEncryptionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionInfoArgs) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoOutput).ToEncryptionInfoPtrOutputWithContext(ctx)
+}
+
+// EncryptionInfoPtrInput is an input type that accepts EncryptionInfoArgs, EncryptionInfoPtr and EncryptionInfoPtrOutput values.
+// You can construct a concrete instance of `EncryptionInfoPtrInput` via:
+//
+//          EncryptionInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionInfoPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput
+	ToEncryptionInfoPtrOutputWithContext(context.Context) EncryptionInfoPtrOutput
+}
+
+type encryptionInfoPtrType EncryptionInfoArgs
+
+func EncryptionInfoPtr(v *EncryptionInfoArgs) EncryptionInfoPtrInput {
+	return (*encryptionInfoPtrType)(v)
+}
+
+func (*encryptionInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionInfo)(nil)).Elem()
+}
+
+func (i *encryptionInfoPtrType) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
+	return i.ToEncryptionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionInfoPtrType) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoPtrOutput)
+}
+
+// Encryption information for a Cloud Spanner database or backup.
+type EncryptionInfoOutput struct{ *pulumi.OutputState }
+
+func (EncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionInfo)(nil)).Elem()
+}
+
+func (o EncryptionInfoOutput) ToEncryptionInfoOutput() EncryptionInfoOutput {
+	return o
+}
+
+func (o EncryptionInfoOutput) ToEncryptionInfoOutputWithContext(ctx context.Context) EncryptionInfoOutput {
+	return o
+}
+
+func (o EncryptionInfoOutput) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
+	return o.ToEncryptionInfoPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionInfoOutput) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
+	return o.ApplyT(func(v EncryptionInfo) *EncryptionInfo {
+		return &v
+	}).(EncryptionInfoPtrOutput)
+}
+
+// Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
+func (o EncryptionInfoOutput) EncryptionStatus() StatusPtrOutput {
+	return o.ApplyT(func(v EncryptionInfo) *Status { return v.EncryptionStatus }).(StatusPtrOutput)
+}
+
+// Output only. The type of encryption.
+func (o EncryptionInfoOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionInfo) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// Output only. A Cloud KMS key version that is being used to protect the database or backup.
+func (o EncryptionInfoOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionInfo) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionInfo)(nil)).Elem()
+}
+
+func (o EncryptionInfoPtrOutput) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
+	return o
+}
+
+func (o EncryptionInfoPtrOutput) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
+	return o
+}
+
+func (o EncryptionInfoPtrOutput) Elem() EncryptionInfoOutput {
+	return o.ApplyT(func(v *EncryptionInfo) EncryptionInfo { return *v }).(EncryptionInfoOutput)
+}
+
+// Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
+func (o EncryptionInfoPtrOutput) EncryptionStatus() StatusPtrOutput {
+	return o.ApplyT(func(v *EncryptionInfo) *Status {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionStatus
+	}).(StatusPtrOutput)
+}
+
+// Output only. The type of encryption.
+func (o EncryptionInfoPtrOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. A Cloud KMS key version that is being used to protect the database or backup.
+func (o EncryptionInfoPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -930,9 +1236,185 @@ func (o SessionTypePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type Status struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// StatusInput is an input type that accepts StatusArgs and StatusOutput values.
+// You can construct a concrete instance of `StatusInput` via:
+//
+//          StatusArgs{...}
+type StatusInput interface {
+	pulumi.Input
+
+	ToStatusOutput() StatusOutput
+	ToStatusOutputWithContext(context.Context) StatusOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (StatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Status)(nil)).Elem()
+}
+
+func (i StatusArgs) ToStatusOutput() StatusOutput {
+	return i.ToStatusOutputWithContext(context.Background())
+}
+
+func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
+}
+
+func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
+	return i.ToStatusPtrOutputWithContext(context.Background())
+}
+
+func (i StatusArgs) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput).ToStatusPtrOutputWithContext(ctx)
+}
+
+// StatusPtrInput is an input type that accepts StatusArgs, StatusPtr and StatusPtrOutput values.
+// You can construct a concrete instance of `StatusPtrInput` via:
+//
+//          StatusArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusPtrInput interface {
+	pulumi.Input
+
+	ToStatusPtrOutput() StatusPtrOutput
+	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
+}
+
+type statusPtrType StatusArgs
+
+func StatusPtr(v *StatusArgs) StatusPtrInput {
+	return (*statusPtrType)(v)
+}
+
+func (*statusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Status)(nil)).Elem()
+}
+
+func (i *statusPtrType) ToStatusPtrOutput() StatusPtrOutput {
+	return i.ToStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusOutput struct{ *pulumi.OutputState }
+
+func (StatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Status)(nil)).Elem()
+}
+
+func (o StatusOutput) ToStatusOutput() StatusOutput {
+	return o
+}
+
+func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+	return o
+}
+
+func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
+	return o.ToStatusPtrOutputWithContext(context.Background())
+}
+
+func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return o.ApplyT(func(v Status) *Status {
+		return &v
+	}).(StatusPtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Status) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Status) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type StatusPtrOutput struct{ *pulumi.OutputState }
+
+func (StatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Status)(nil)).Elem()
+}
+
+func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
+	return o
+}
+
+func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return o
+}
+
+func (o StatusPtrOutput) Elem() StatusOutput {
+	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Status) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Status) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Status) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionInfoOutput{})
+	pulumi.RegisterOutputType(EncryptionInfoPtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})
@@ -941,4 +1423,6 @@ func init() {
 	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(SessionTypeOutput{})
 	pulumi.RegisterOutputType(SessionTypePtrOutput{})
+	pulumi.RegisterOutputType(StatusOutput{})
+	pulumi.RegisterOutputType(StatusPtrOutput{})
 }

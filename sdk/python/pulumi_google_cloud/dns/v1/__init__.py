@@ -6,6 +6,7 @@
 from .change import *
 from .managed_zone import *
 from .policy import *
+from .resource_record_set import *
 from ._inputs import *
 
 def _register_module():
@@ -26,6 +27,8 @@ def _register_module():
                 return ManagedZone(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:dns/v1:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dns/v1:ResourceRecordSet":
+                return ResourceRecordSet(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

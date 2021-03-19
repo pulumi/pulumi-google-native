@@ -77,6 +77,8 @@ type nodeGroupArgs struct {
 	InitialNodeCount int `pulumi:"initialNodeCount"`
 	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
 	Kind *string `pulumi:"kind"`
+	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+	LocationHint *string `pulumi:"locationHint"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
 	MaintenancePolicy *string                     `pulumi:"maintenancePolicy"`
 	MaintenanceWindow *NodeGroupMaintenanceWindow `pulumi:"maintenanceWindow"`
@@ -116,6 +118,8 @@ type NodeGroupArgs struct {
 	InitialNodeCount pulumi.IntInput
 	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
 	Kind pulumi.StringPtrInput
+	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+	LocationHint pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
 	MaintenancePolicy pulumi.StringPtrInput
 	MaintenanceWindow NodeGroupMaintenanceWindowPtrInput

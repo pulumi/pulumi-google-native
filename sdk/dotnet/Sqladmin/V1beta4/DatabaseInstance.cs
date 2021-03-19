@@ -210,7 +210,7 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
         public Input<string>? RootPassword { get; set; }
 
         /// <summary>
-        /// The status indicating if instance satisfies physical zone separation. Reserved for future use.
+        /// The status indicating if instance satisfiesPzs. Reserved for future use.
         /// </summary>
         [Input("satisfiesPzs")]
         public Input<bool>? SatisfiesPzs { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
         public Input<Inputs.SettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        /// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

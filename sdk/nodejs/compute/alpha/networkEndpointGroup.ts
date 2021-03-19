@@ -45,9 +45,13 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["appEngine"] = args ? args.appEngine : undefined;
@@ -63,22 +67,20 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
+            inputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkEndpointGroup.__pulumiType, name, inputs, opts);
     }
@@ -145,6 +147,10 @@ export interface NetworkEndpointGroupArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    readonly pscTargetService?: pulumi.Input<string>;
+    /**
      * [Output Only] The URL of the region where the network endpoint group is located.
      */
     readonly region?: pulumi.Input<string>;
@@ -165,6 +171,10 @@ export interface NetworkEndpointGroupArgs {
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
     /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+     */
+    readonly serverlessDeployment?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupServerlessDeployment>;
+    /**
      * [Output only] Number of network endpoints in the network endpoint group.
      */
     readonly size?: pulumi.Input<number>;
@@ -179,5 +189,5 @@ export interface NetworkEndpointGroupArgs {
     /**
      * [Output Only] The URL of the zone where the network endpoint group is located.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

@@ -66,7 +66,7 @@ type serviceArgs struct {
 	Backend *Backend `pulumi:"backend"`
 	// Billing configuration.
 	Billing *Billing `pulumi:"billing"`
-	// This field is obsolete. Its value must be set to `3`.
+	// Deprecated. The service config compiler always sets this field to `3`.
 	ConfigVersion *int `pulumi:"configVersion"`
 	// Context configuration.
 	Context *Context `pulumi:"context"`
@@ -126,7 +126,7 @@ type ServiceArgs struct {
 	Backend BackendPtrInput
 	// Billing configuration.
 	Billing BillingPtrInput
-	// This field is obsolete. Its value must be set to `3`.
+	// Deprecated. The service config compiler always sets this field to `3`.
 	ConfigVersion pulumi.IntPtrInput
 	// Context configuration.
 	Context ContextPtrInput

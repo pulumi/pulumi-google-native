@@ -45,7 +45,8 @@ export class GoogleAppsCloudidentityDevicesV1Device extends pulumi.CustomResourc
      */
     constructor(name: string, args?: GoogleAppsCloudidentityDevicesV1DeviceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
+        opts = opts || {};
+        if (!opts.id) {
             inputs["androidSpecificAttributes"] = args ? args.androidSpecificAttributes : undefined;
             inputs["assetTag"] = args ? args.assetTag : undefined;
             inputs["basebandVersion"] = args ? args.basebandVersion : undefined;
@@ -77,12 +78,8 @@ export class GoogleAppsCloudidentityDevicesV1Device extends pulumi.CustomResourc
             inputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleAppsCloudidentityDevicesV1Device.__pulumiType, name, inputs, opts);
     }
@@ -125,7 +122,7 @@ export interface GoogleAppsCloudidentityDevicesV1DeviceArgs {
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+     * Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
      */
     readonly customer?: pulumi.Input<string>;
     /**

@@ -6,17 +6,23 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./googleCloudDialogflowV2beta1Context";
+export * from "./googleCloudDialogflowV2beta1Conversation";
+export * from "./googleCloudDialogflowV2beta1ConversationProfile";
 export * from "./googleCloudDialogflowV2beta1EntityType";
 export * from "./googleCloudDialogflowV2beta1Intent";
 export * from "./googleCloudDialogflowV2beta1KnowledgeBase";
+export * from "./googleCloudDialogflowV2beta1Participant";
 export * from "./googleCloudDialogflowV2beta1SessionEntityType";
 export * from "./googleLongrunningOperation";
 
 // Import resources to register:
 import { GoogleCloudDialogflowV2beta1Context } from "./googleCloudDialogflowV2beta1Context";
+import { GoogleCloudDialogflowV2beta1Conversation } from "./googleCloudDialogflowV2beta1Conversation";
+import { GoogleCloudDialogflowV2beta1ConversationProfile } from "./googleCloudDialogflowV2beta1ConversationProfile";
 import { GoogleCloudDialogflowV2beta1EntityType } from "./googleCloudDialogflowV2beta1EntityType";
 import { GoogleCloudDialogflowV2beta1Intent } from "./googleCloudDialogflowV2beta1Intent";
 import { GoogleCloudDialogflowV2beta1KnowledgeBase } from "./googleCloudDialogflowV2beta1KnowledgeBase";
+import { GoogleCloudDialogflowV2beta1Participant } from "./googleCloudDialogflowV2beta1Participant";
 import { GoogleCloudDialogflowV2beta1SessionEntityType } from "./googleCloudDialogflowV2beta1SessionEntityType";
 import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
 
@@ -26,12 +32,18 @@ const _module = {
         switch (type) {
             case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Context":
                 return new GoogleCloudDialogflowV2beta1Context(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Conversation":
+                return new GoogleCloudDialogflowV2beta1Conversation(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1ConversationProfile":
+                return new GoogleCloudDialogflowV2beta1ConversationProfile(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1EntityType":
                 return new GoogleCloudDialogflowV2beta1EntityType(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Intent":
                 return new GoogleCloudDialogflowV2beta1Intent(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1KnowledgeBase":
                 return new GoogleCloudDialogflowV2beta1KnowledgeBase(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Participant":
+                return new GoogleCloudDialogflowV2beta1Participant(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1SessionEntityType":
                 return new GoogleCloudDialogflowV2beta1SessionEntityType(name, <any>undefined, { urn })
             case "google-cloud:dialogflow/v2beta1:GoogleLongrunningOperation":

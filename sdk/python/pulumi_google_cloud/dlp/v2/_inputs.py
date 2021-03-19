@@ -721,8 +721,8 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
                  sample_method: Optional[pulumi.Input[str]] = None):
         """
         Options defining a file or a set of files within a Google Cloud Storage bucket.
-        :param pulumi.Input[str] bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
-        :param pulumi.Input[int] bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        :param pulumi.Input[str] bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
+        :param pulumi.Input[int] bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         :param pulumi.Input['GooglePrivacyDlpV2FileSetArgs'] file_set: The set of one or more files to scan.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         :param pulumi.Input[int] files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
@@ -744,7 +744,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
     @pulumi.getter(name="bytesLimitPerFile")
     def bytes_limit_per_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         """
         return pulumi.get(self, "bytes_limit_per_file")
 
@@ -756,7 +756,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
     @pulumi.getter(name="bytesLimitPerFilePercent")
     def bytes_limit_per_file_percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         """
         return pulumi.get(self, "bytes_limit_per_file_percent")
 
@@ -1526,7 +1526,7 @@ class GooglePrivacyDlpV2DeidentifyTemplateArgs:
         """
         DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         :param pulumi.Input[str] create_time: Output only. The creation timestamp of an inspectTemplate.
-        :param pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs'] deidentify_config: ///////////// // The core content of the template // ///////////////
+        :param pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs'] deidentify_config: The core content of the template.
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] name: Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
@@ -1561,7 +1561,7 @@ class GooglePrivacyDlpV2DeidentifyTemplateArgs:
     @pulumi.getter(name="deidentifyConfig")
     def deidentify_config(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']]:
         """
-        ///////////// // The core content of the template // ///////////////
+        The core content of the template.
         """
         return pulumi.get(self, "deidentify_config")
 
@@ -2081,7 +2081,7 @@ class GooglePrivacyDlpV2FindingLimitsArgs:
                  max_findings_per_item: Optional[pulumi.Input[int]] = None,
                  max_findings_per_request: Optional[pulumi.Input[int]] = None):
         """
-        Configuration to control the number of findings returned.
+        Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeLimitArgs']]] max_findings_per_info_type: Configuration of findings limit given for specified infoTypes.
         :param pulumi.Input[int] max_findings_per_item: Max number of findings that will be returned for each item scanned. When set within `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within `InspectContentRequest`, this field is ignored.
         :param pulumi.Input[int] max_findings_per_request: Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
@@ -4215,7 +4215,7 @@ class GooglePrivacyDlpV2ScheduleArgs:
     def __init__(__self__, *,
                  recurrence_period_duration: Optional[pulumi.Input[str]] = None):
         """
-        Schedule for triggeredJobs.
+        Schedule for inspect job triggers.
         :param pulumi.Input[str] recurrence_period_duration: With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         """
         if recurrence_period_duration is not None:

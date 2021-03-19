@@ -19,6 +19,7 @@ class Group(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -36,6 +37,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time when the `Group` was created.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the `Group`.
+        :param pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] group_key: Required. Immutable. The `EntityKey` of the `Group`.
         :param pulumi.Input[str] initial_group_config: Optional. The initial configuration option for the `Group`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
@@ -63,6 +65,7 @@ class Group(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['display_name'] = display_name
+            __props__['dynamic_group_metadata'] = dynamic_group_metadata
             __props__['group_key'] = group_key
             __props__['initial_group_config'] = initial_group_config
             __props__['labels'] = labels

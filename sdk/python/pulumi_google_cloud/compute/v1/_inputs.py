@@ -11,6 +11,7 @@ from ... import _utilities, _tables
 __all__ = [
     'AcceleratorConfigArgs',
     'AccessConfigArgs',
+    'AdvancedMachineFeaturesArgs',
     'AliasIpRangeArgs',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesArgs',
@@ -28,7 +29,11 @@ __all__ = [
     'AutoscalingPolicyScaleInControlArgs',
     'BackendArgs',
     'BackendBucketCdnPolicyArgs',
+    'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs',
+    'BackendBucketCdnPolicyNegativeCachingPolicyArgs',
     'BackendServiceCdnPolicyArgs',
+    'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs',
+    'BackendServiceCdnPolicyNegativeCachingPolicyArgs',
     'BackendServiceFailoverPolicyArgs',
     'BackendServiceIAPArgs',
     'BackendServiceLogConfigArgs',
@@ -52,7 +57,12 @@ __all__ = [
     'ExternalVpnGatewayInterfaceArgs',
     'FileContentBufferArgs',
     'FirewallLogConfigArgs',
+    'FirewallPolicyAssociationArgs',
+    'FirewallPolicyRuleArgs',
+    'FirewallPolicyRuleMatcherArgs',
+    'FirewallPolicyRuleMatcherLayer4ConfigArgs',
     'FixedOrPercentArgs',
+    'ForwardingRuleServiceDirectoryRegistrationArgs',
     'GRPCHealthCheckArgs',
     'GuestOsFeatureArgs',
     'HTTP2HealthCheckArgs',
@@ -119,6 +129,8 @@ __all__ = [
     'PathMatcherArgs',
     'PathRuleArgs',
     'PolicyArgs',
+    'PublicAdvertisedPrefixPublicDelegatedPrefixArgs',
+    'PublicDelegatedPrefixPublicDelegatedSubPrefixArgs',
     'RequestMirrorPolicyArgs',
     'ReservationArgs',
     'ReservationAffinityArgs',
@@ -126,6 +138,10 @@ __all__ = [
     'ResourcePolicyDailyCycleArgs',
     'ResourcePolicyGroupPlacementPolicyArgs',
     'ResourcePolicyHourlyCycleArgs',
+    'ResourcePolicyInstanceSchedulePolicyArgs',
+    'ResourcePolicyInstanceSchedulePolicyScheduleArgs',
+    'ResourcePolicyResourceStatusArgs',
+    'ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs',
     'ResourcePolicySnapshotSchedulePolicyArgs',
     'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs',
     'ResourcePolicySnapshotSchedulePolicyScheduleArgs',
@@ -161,6 +177,7 @@ __all__ = [
     'TCPHealthCheckArgs',
     'TagsArgs',
     'UrlMapTestArgs',
+    'UrlMapTestHeaderArgs',
     'UrlRewriteArgs',
     'VpnGatewayVpnGatewayInterfaceArgs',
     'WeightedBackendServiceArgs',
@@ -335,6 +352,30 @@ class AccessConfigArgs:
 
 
 @pulumi.input_type
+class AdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None):
+        """
+        Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
+        :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        """
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable nested virtualization or not (default is false).
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @enable_nested_virtualization.setter
+    def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nested_virtualization", value)
+
+
+@pulumi.input_type
 class AliasIpRangeArgs:
     def __init__(__self__, *,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -418,12 +459,14 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
     def __init__(__self__, *,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs']]]] = None,
+                 location_hint: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None):
         """
         Properties of the SKU instances being reserved. Next ID: 9
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: Specifies accelerator type and count.
         :param pulumi.Input[Sequence[pulumi.Input['AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs']]] local_ssds: Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
+        :param pulumi.Input[str] location_hint: An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] machine_type: Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
         :param pulumi.Input[str] min_cpu_platform: Minimum cpu platform the reservation.
         """
@@ -431,6 +474,8 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if local_ssds is not None:
             pulumi.set(__self__, "local_ssds", local_ssds)
+        if location_hint is not None:
+            pulumi.set(__self__, "location_hint", location_hint)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if min_cpu_platform is not None:
@@ -459,6 +504,18 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
     @local_ssds.setter
     def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs']]]]):
         pulumi.set(self, "local_ssds", value)
+
+    @property
+    @pulumi.getter(name="locationHint")
+    def location_hint(self) -> Optional[pulumi.Input[str]]:
+        """
+        An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
+        """
+        return pulumi.get(self, "location_hint")
+
+    @location_hint.setter
+    def location_hint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location_hint", value)
 
     @property
     @pulumi.getter(name="machineType")
@@ -830,6 +887,7 @@ class AttachedDiskInitializeParamsArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  on_update_action: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
@@ -852,6 +910,7 @@ class AttachedDiskInitializeParamsArgs:
                - zones/zone/diskTypes/diskType  Note that for InstanceTemplate, this is the name of the disk type, not URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         :param pulumi.Input[str] on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
+        :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param pulumi.Input[str] source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD.
                
@@ -896,6 +955,8 @@ class AttachedDiskInitializeParamsArgs:
             pulumi.set(__self__, "labels", labels)
         if on_update_action is not None:
             pulumi.set(__self__, "on_update_action", on_update_action)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source_image is not None:
@@ -985,6 +1046,18 @@ class AttachedDiskInitializeParamsArgs:
     @on_update_action.setter
     def on_update_action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_update_action", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how many IOPS must be provisioned for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioned_iops", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -1294,7 +1367,8 @@ class AutoscalingPolicyArgs:
                  max_num_replicas: Optional[pulumi.Input[int]] = None,
                  min_num_replicas: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 scale_in_control: Optional[pulumi.Input['AutoscalingPolicyScaleInControlArgs']] = None):
+                 scale_in_control: Optional[pulumi.Input['AutoscalingPolicyScaleInControlArgs']] = None,
+                 scaling_schedules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Cloud Autoscaler policy.
         :param pulumi.Input[int] cool_down_period_sec: The number of seconds that the autoscaler waits before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The default time autoscaler waits is 60 seconds.
@@ -1306,6 +1380,7 @@ class AutoscalingPolicyArgs:
         :param pulumi.Input[int] max_num_replicas: The maximum number of instances that the autoscaler can scale out to. This is required when creating or updating an autoscaler. The maximum number of replicas must not be lower than minimal number of replicas.
         :param pulumi.Input[int] min_num_replicas: The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
         :param pulumi.Input[str] mode: Defines operating mode for this policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
         if cool_down_period_sec is not None:
             pulumi.set(__self__, "cool_down_period_sec", cool_down_period_sec)
@@ -1323,6 +1398,8 @@ class AutoscalingPolicyArgs:
             pulumi.set(__self__, "mode", mode)
         if scale_in_control is not None:
             pulumi.set(__self__, "scale_in_control", scale_in_control)
+        if scaling_schedules is not None:
+            pulumi.set(__self__, "scaling_schedules", scaling_schedules)
 
     @property
     @pulumi.getter(name="coolDownPeriodSec")
@@ -1418,6 +1495,18 @@ class AutoscalingPolicyArgs:
     @scale_in_control.setter
     def scale_in_control(self, value: Optional[pulumi.Input['AutoscalingPolicyScaleInControlArgs']]):
         pulumi.set(self, "scale_in_control", value)
+
+    @property
+    @pulumi.getter(name="scalingSchedules")
+    def scaling_schedules(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+        """
+        return pulumi.get(self, "scaling_schedules")
+
+    @scaling_schedules.setter
+    def scaling_schedules(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "scaling_schedules", value)
 
 
 @pulumi.input_type
@@ -1659,26 +1748,12 @@ class BackendArgs:
                  max_utilization: Optional[pulumi.Input[float]] = None):
         """
         Message containing information of one individual backend.
-        :param pulumi.Input[str] balancing_mode: Specifies the balancing mode for the backend.
+        :param pulumi.Input[str] balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
+        :param pulumi.Input[float] capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
                
-               When choosing a balancing mode, you need to consider the loadBalancingScheme, and protocol for the backend service, as well as the type of backend (instance group or NEG).
+               Not supported by:
                
-                
-               - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections the backend can handle.
-               You can use the CONNECTION balancing mode if the protocol for the backend service is SSL, TCP, or UDP.
-               
-               If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you must also specify exactly one of the following parameters: maxConnections (except for regional managed instance groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-               
-               If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify any additional parameters.
-                
-               - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second (RPS).
-               You can use the RATE balancing mode if the protocol for the backend service is HTTP, HTTP2, or HTTPS. You must specify exactly one of the following parameters: maxRate (except for regional managed instance groups), maxRatePerInstance, or maxRatePerEndpoint.
-                
-               - If the load balancing mode is UTILIZATION, the load is spread based on the backend utilization of instances in an instance group.
-               You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend service is EXTERNAL (except Network Load Balancing), INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There are no restrictions on the backend service protocol.
-        :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
-               
-               This cannot be used for Internal TCP/UDP Load Balancing and Network Load Balancing.
+               - Internal TCP/UDP Load Balancing - Network Load Balancing
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
         :param pulumi.Input[str] group: The fully-qualified URL of an instance group or network endpoint group (NEG) resource. The type of backend that a backend service supports depends on the backend service's loadBalancingScheme.
@@ -1692,33 +1767,28 @@ class BackendArgs:
                For regional services, the backend must be in the same region as the backend service.
                
                You must use the fully-qualified URL (starting with https://www.googleapis.com/) to specify the instance group or NEG. Partial URLs are not supported.
-        :param pulumi.Input[int] max_connections: Defines a target maximum number of simultaneous connections that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
+        :param pulumi.Input[int] max_connections: Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is RATE. Not supported by:
                
-               Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
-        :param pulumi.Input[int] max_connections_per_endpoint: Defines a target maximum number of simultaneous connections for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a maximum number of target maximum simultaneous connections for the NEG. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnections, or maxConnectionsPerInstance.
+               - Internal TCP/UDP Load Balancing - Network Load Balancing
+        :param pulumi.Input[int] max_connections_per_endpoint: Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
                
-               Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
-        :param pulumi.Input[int] max_connections_per_instance: Defines a target maximum number of simultaneous connections for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum number of simultaneous connections for the whole instance group. If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
+               Not available if the backend's balancingMode is RATE. Not supported by:
                
-               Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
-        :param pulumi.Input[int] max_rate: Defines a maximum number of HTTP requests per second (RPS) that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). Must not be defined if the backend is a managed instance group that uses autoscaling based on load balancing.
+               - Internal TCP/UDP Load Balancing - Network Load Balancing.
+        :param pulumi.Input[int] max_connections_per_instance: Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
                
-               If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+               Not available if the backend's balancingMode is RATE. Not supported by:
                
-               Not available if the backend's balancingMode is CONNECTION.
-        :param pulumi.Input[float] max_rate_per_endpoint: Defines a maximum target for requests per second (RPS) for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a target maximum rate for the NEG.
-               
-               If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerInstance.
+               - Internal TCP/UDP Load Balancing - Network Load Balancing.
+        :param pulumi.Input[int] max_rate: Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
                
                Not available if the backend's balancingMode is CONNECTION.
-        :param pulumi.Input[float] max_rate_per_instance: Defines a maximum target for requests per second (RPS) for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum rate for the whole instance group.
-               
-               If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+        :param pulumi.Input[float] max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
                
                Not available if the backend's balancingMode is CONNECTION.
-        :param pulumi.Input[float] max_utilization: Defines the maximum average backend utilization of a backend VM in an instance group. The valid range is [0.0, 1.0]. This is an optional parameter if the backend's balancingMode is UTILIZATION.
+        :param pulumi.Input[float] max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
                
-               This parameter can be used in conjunction with maxRate, maxRatePerInstance, maxConnections (except for regional managed instance groups), or maxConnectionsPerInstance.
+               Not available if the backend's balancingMode is CONNECTION.
         """
         if balancing_mode is not None:
             pulumi.set(__self__, "balancing_mode", balancing_mode)
@@ -1749,23 +1819,7 @@ class BackendArgs:
     @pulumi.getter(name="balancingMode")
     def balancing_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the balancing mode for the backend.
-
-        When choosing a balancing mode, you need to consider the loadBalancingScheme, and protocol for the backend service, as well as the type of backend (instance group or NEG).
-
-         
-        - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections the backend can handle.
-        You can use the CONNECTION balancing mode if the protocol for the backend service is SSL, TCP, or UDP.
-
-        If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you must also specify exactly one of the following parameters: maxConnections (except for regional managed instance groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-
-        If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP Load Balancers) or EXTERNAL  (Network Load Balancing), you cannot specify any additional parameters.
-         
-        - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second (RPS).
-        You can use the RATE balancing mode if the protocol for the backend service is HTTP, HTTP2, or HTTPS. You must specify exactly one of the following parameters: maxRate (except for regional managed instance groups), maxRatePerInstance, or maxRatePerEndpoint.
-         
-        - If the load balancing mode is UTILIZATION, the load is spread based on the backend utilization of instances in an instance group.
-        You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend service is EXTERNAL (except Network Load Balancing), INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There are no restrictions on the backend service protocol.
+        Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see  Connection balancing mode.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -1777,9 +1831,11 @@ class BackendArgs:
     @pulumi.getter(name="capacityScaler")
     def capacity_scaler(self) -> Optional[pulumi.Input[float]]:
         """
-        A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+        A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
 
-        This cannot be used for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        Not supported by:
+
+        - Internal TCP/UDP Load Balancing - Network Load Balancing
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -1837,9 +1893,9 @@ class BackendArgs:
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines a target maximum number of simultaneous connections that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
+        Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is RATE. Not supported by:
 
-        Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+        - Internal TCP/UDP Load Balancing - Network Load Balancing
         """
         return pulumi.get(self, "max_connections")
 
@@ -1851,9 +1907,11 @@ class BackendArgs:
     @pulumi.getter(name="maxConnectionsPerEndpoint")
     def max_connections_per_endpoint(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines a target maximum number of simultaneous connections for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a maximum number of target maximum simultaneous connections for the NEG. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter, maxConnections, or maxConnectionsPerInstance.
+        Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 
-        Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+        Not available if the backend's balancingMode is RATE. Not supported by:
+
+        - Internal TCP/UDP Load Balancing - Network Load Balancing.
         """
         return pulumi.get(self, "max_connections_per_endpoint")
 
@@ -1865,9 +1923,11 @@ class BackendArgs:
     @pulumi.getter(name="maxConnectionsPerInstance")
     def max_connections_per_instance(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines a target maximum number of simultaneous connections for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum number of simultaneous connections for the whole instance group. If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is EXTERNAL (except Network Load Balancing), you must specify either this parameter,  maxConnections, or maxConnectionsPerEndpoint.
+        Defines a target maximum number of simultaneous connections. For usage guidelines, see Connection balancing mode and Utilization balancing mode.
 
-        Not available if the backend's balancingMode is RATE. Cannot be specified for Network Load Balancing or Internal TCP/UDP Load Balancing, even though those load balancers require a balancing mode of CONNECTION.
+        Not available if the backend's balancingMode is RATE. Not supported by:
+
+        - Internal TCP/UDP Load Balancing - Network Load Balancing.
         """
         return pulumi.get(self, "max_connections_per_instance")
 
@@ -1879,9 +1939,7 @@ class BackendArgs:
     @pulumi.getter(name="maxRate")
     def max_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines a maximum number of HTTP requests per second (RPS) that the backend can handle. Valid for network endpoint group and instance group backends (except for regional managed instance groups). Must not be defined if the backend is a managed instance group that uses autoscaling based on load balancing.
-
-        If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+        Defines a maximum number of HTTP requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 
         Not available if the backend's balancingMode is CONNECTION.
         """
@@ -1895,9 +1953,7 @@ class BackendArgs:
     @pulumi.getter(name="maxRatePerEndpoint")
     def max_rate_per_endpoint(self) -> Optional[pulumi.Input[float]]:
         """
-        Defines a maximum target for requests per second (RPS) for an endpoint of a NEG. This is multiplied by the number of endpoints in the NEG to implicitly calculate a target maximum rate for the NEG.
-
-        If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerInstance.
+        Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 
         Not available if the backend's balancingMode is CONNECTION.
         """
@@ -1911,9 +1967,7 @@ class BackendArgs:
     @pulumi.getter(name="maxRatePerInstance")
     def max_rate_per_instance(self) -> Optional[pulumi.Input[float]]:
         """
-        Defines a maximum target for requests per second (RPS) for a single VM in a backend instance group. This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum rate for the whole instance group.
-
-        If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode is RATE, you must specify either this parameter, maxRate (except for regional managed instance groups), or maxRatePerEndpoint.
+        Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode.
 
         Not available if the backend's balancingMode is CONNECTION.
         """
@@ -1926,11 +1980,6 @@ class BackendArgs:
     @property
     @pulumi.getter(name="maxUtilization")
     def max_utilization(self) -> Optional[pulumi.Input[float]]:
-        """
-        Defines the maximum average backend utilization of a backend VM in an instance group. The valid range is [0.0, 1.0]. This is an optional parameter if the backend's balancingMode is UTILIZATION.
-
-        This parameter can be used in conjunction with maxRate, maxRatePerInstance, maxConnections (except for regional managed instance groups), or maxConnectionsPerInstance.
-        """
         return pulumi.get(self, "max_utilization")
 
     @max_utilization.setter
@@ -1941,14 +1990,19 @@ class BackendArgs:
 @pulumi.input_type
 class BackendBucketCdnPolicyArgs:
     def __init__(__self__, *,
+                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  max_ttl: Optional[pulumi.Input[int]] = None,
+                 negative_caching: Optional[pulumi.Input[bool]] = None,
+                 negative_caching_policy: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None,
                  signed_url_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Message containing Cloud CDN configuration for a backend bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend. The possible values are:
                
                USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server.
@@ -1956,12 +2010,17 @@ class BackendBucketCdnPolicyArgs:
                FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
                
                CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
-        :param pulumi.Input[int] client_ttl: Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+        :param pulumi.Input[int] client_ttl: Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
         :param pulumi.Input[int] default_ttl: Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policy: Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param pulumi.Input[str] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
         """
+        if bypass_cache_on_request_headers is not None:
+            pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         if cache_mode is not None:
             pulumi.set(__self__, "cache_mode", cache_mode)
         if client_ttl is not None:
@@ -1970,10 +2029,28 @@ class BackendBucketCdnPolicyArgs:
             pulumi.set(__self__, "default_ttl", default_ttl)
         if max_ttl is not None:
             pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policy is not None:
+            pulumi.set(__self__, "negative_caching_policy", negative_caching_policy)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
         if signed_url_key_names is not None:
             pulumi.set(__self__, "signed_url_key_names", signed_url_key_names)
+
+    @property
+    @pulumi.getter(name="bypassCacheOnRequestHeaders")
+    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]]:
+        """
+        Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        """
+        return pulumi.get(self, "bypass_cache_on_request_headers")
+
+    @bypass_cache_on_request_headers.setter
+    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs']]]]):
+        pulumi.set(self, "bypass_cache_on_request_headers", value)
 
     @property
     @pulumi.getter(name="cacheMode")
@@ -1997,7 +2074,7 @@ class BackendBucketCdnPolicyArgs:
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+        Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
         """
         return pulumi.get(self, "client_ttl")
 
@@ -2030,6 +2107,42 @@ class BackendBucketCdnPolicyArgs:
         pulumi.set(self, "max_ttl", value)
 
     @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+        """
+        return pulumi.get(self, "negative_caching")
+
+    @negative_caching.setter
+    def negative_caching(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negative_caching", value)
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicy")
+    def negative_caching_policy(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]:
+        """
+        Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        """
+        return pulumi.get(self, "negative_caching_policy")
+
+    @negative_caching_policy.setter
+    def negative_caching_policy(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]):
+        pulumi.set(self, "negative_caching_policy", value)
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+        """
+        return pulumi.get(self, "serve_while_stale")
+
+    @serve_while_stale.setter
+    def serve_while_stale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_while_stale", value)
+
+    @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
     def signed_url_cache_max_age_sec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2055,17 +2168,86 @@ class BackendBucketCdnPolicyArgs:
 
 
 @pulumi.input_type
+class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[str]] = None):
+        """
+        Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+        :param pulumi.Input[str] header_name: The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_name", value)
+
+
+@pulumi.input_type
+class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        """
+        Specify CDN TTLs for response error codes.
+        :param pulumi.Input[int] code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+        :param pulumi.Input[int] ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
 class BackendServiceCdnPolicyArgs:
     def __init__(__self__, *,
+                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]] = None,
                  cache_key_policy: Optional[pulumi.Input['CacheKeyPolicyArgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  max_ttl: Optional[pulumi.Input[int]] = None,
+                 negative_caching: Optional[pulumi.Input[bool]] = None,
+                 negative_caching_policy: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None,
                  signed_url_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Message containing Cloud CDN configuration for a backend service.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
         :param pulumi.Input['CacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend. The possible values are:
                
@@ -2074,12 +2256,17 @@ class BackendServiceCdnPolicyArgs:
                FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content.
                
                CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
-        :param pulumi.Input[int] client_ttl: Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+        :param pulumi.Input[int] client_ttl: Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
         :param pulumi.Input[int] default_ttl: Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policy: Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param pulumi.Input[str] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
         """
+        if bypass_cache_on_request_headers is not None:
+            pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         if cache_key_policy is not None:
             pulumi.set(__self__, "cache_key_policy", cache_key_policy)
         if cache_mode is not None:
@@ -2090,10 +2277,28 @@ class BackendServiceCdnPolicyArgs:
             pulumi.set(__self__, "default_ttl", default_ttl)
         if max_ttl is not None:
             pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policy is not None:
+            pulumi.set(__self__, "negative_caching_policy", negative_caching_policy)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
         if signed_url_key_names is not None:
             pulumi.set(__self__, "signed_url_key_names", signed_url_key_names)
+
+    @property
+    @pulumi.getter(name="bypassCacheOnRequestHeaders")
+    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]]:
+        """
+        Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        """
+        return pulumi.get(self, "bypass_cache_on_request_headers")
+
+    @bypass_cache_on_request_headers.setter
+    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]]):
+        pulumi.set(self, "bypass_cache_on_request_headers", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
@@ -2129,7 +2334,7 @@ class BackendServiceCdnPolicyArgs:
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies a separate client (e.g. browser client) TTL, separate from the TTL for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL for both Cloud CDN and the client-facing response. The maximum allowed value is 86400s (1 day).
+        Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
         """
         return pulumi.get(self, "client_ttl")
 
@@ -2162,6 +2367,42 @@ class BackendServiceCdnPolicyArgs:
         pulumi.set(self, "max_ttl", value)
 
     @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
+        """
+        return pulumi.get(self, "negative_caching")
+
+    @negative_caching.setter
+    def negative_caching(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negative_caching", value)
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicy")
+    def negative_caching_policy(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]:
+        """
+        Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        """
+        return pulumi.get(self, "negative_caching_policy")
+
+    @negative_caching_policy.setter
+    def negative_caching_policy(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
+        pulumi.set(self, "negative_caching_policy", value)
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
+        """
+        return pulumi.get(self, "serve_while_stale")
+
+    @serve_while_stale.setter
+    def serve_while_stale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_while_stale", value)
+
+    @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
     def signed_url_cache_max_age_sec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2184,6 +2425,70 @@ class BackendServiceCdnPolicyArgs:
     @signed_url_key_names.setter
     def signed_url_key_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "signed_url_key_names", value)
+
+
+@pulumi.input_type
+class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
+    def __init__(__self__, *,
+                 header_name: Optional[pulumi.Input[str]] = None):
+        """
+        Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
+        :param pulumi.Input[str] header_name: The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_name", value)
+
+
+@pulumi.input_type
+class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        """
+        Specify CDN TTLs for response error codes.
+        :param pulumi.Input[int] code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+        :param pulumi.Input[int] ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 are can be specified as values, and you cannot specify a status code more than once.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
@@ -2776,7 +3081,7 @@ class ConnectionDrainingArgs:
                  draining_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Message containing connection draining configuration.
-        :param pulumi.Input[int] draining_timeout_sec: The amount of time in seconds to allow existing connections to persist while on unhealthy backend VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+        :param pulumi.Input[int] draining_timeout_sec: Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
         """
         if draining_timeout_sec is not None:
             pulumi.set(__self__, "draining_timeout_sec", draining_timeout_sec)
@@ -2785,7 +3090,7 @@ class ConnectionDrainingArgs:
     @pulumi.getter(name="drainingTimeoutSec")
     def draining_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of time in seconds to allow existing connections to persist while on unhealthy backend VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+        Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
         """
         return pulumi.get(self, "draining_timeout_sec")
 
@@ -2923,7 +3228,7 @@ class CorsPolicyArgs:
                Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax 
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
@@ -2989,7 +3294,7 @@ class CorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript 
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax 
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origin_regexes")
@@ -3609,6 +3914,408 @@ class FirewallLogConfigArgs:
 
 
 @pulumi.input_type
+class FirewallPolicyAssociationArgs:
+    def __init__(__self__, *,
+                 attachment_target: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 firewall_policy_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 short_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
+        :param pulumi.Input[str] display_name: [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+        :param pulumi.Input[str] firewall_policy_id: [Output Only] The firewall policy ID of the association.
+        :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] short_name: [Output Only] The short name of the firewall policy of the association.
+        """
+        if attachment_target is not None:
+            pulumi.set(__self__, "attachment_target", attachment_target)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if firewall_policy_id is not None:
+            pulumi.set(__self__, "firewall_policy_id", firewall_policy_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if short_name is not None:
+            pulumi.set(__self__, "short_name", short_name)
+
+    @property
+    @pulumi.getter(name="attachmentTarget")
+    def attachment_target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target that the firewall policy is attached to.
+        """
+        return pulumi.get(self, "attachment_target")
+
+    @attachment_target.setter
+    def attachment_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attachment_target", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Deprecated, please use short name instead. The display name of the firewall policy of the association.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="firewallPolicyId")
+    def firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The firewall policy ID of the association.
+        """
+        return pulumi.get(self, "firewall_policy_id")
+
+    @firewall_policy_id.setter
+    def firewall_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firewall_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for an association.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The short name of the firewall policy of the association.
+        """
+        return pulumi.get(self, "short_name")
+
+    @short_name.setter
+    def short_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_name", value)
+
+
+@pulumi.input_type
+class FirewallPolicyRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 match: Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rule_tuple_count: Optional[pulumi.Input[int]] = None,
+                 target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] description: An optional description for this resource.
+        :param pulumi.Input[str] direction: The direction in which this rule applies.
+        :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
+        :param pulumi.Input['FirewallPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[int] rule_tuple_count: [Output Only] Calculation of the complexity of a single firewall policy rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_secure_labels: A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if rule_tuple_count is not None:
+            pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
+        if target_resources is not None:
+            pulumi.set(__self__, "target_resources", target_resources)
+        if target_secure_labels is not None:
+            pulumi.set(__self__, "target_secure_labels", target_secure_labels)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description for this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction in which this rule applies.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']]:
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']]):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="ruleTupleCount")
+    def rule_tuple_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        [Output Only] Calculation of the complexity of a single firewall policy rule.
+        """
+        return pulumi.get(self, "rule_tuple_count")
+
+    @rule_tuple_count.setter
+    def rule_tuple_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rule_tuple_count", value)
+
+    @property
+    @pulumi.getter(name="targetResources")
+    def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        """
+        return pulumi.get(self, "target_resources")
+
+    @target_resources.setter
+    def target_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_resources", value)
+
+    @property
+    @pulumi.getter(name="targetSecureLabels")
+    def target_secure_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
+        """
+        return pulumi.get(self, "target_secure_labels")
+
+    @target_secure_labels.setter
+    def target_secure_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_secure_labels", value)
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of service accounts indicating the sets of instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @target_service_accounts.setter
+    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_service_accounts", value)
+
+
+@pulumi.input_type
+class FirewallPolicyRuleMatcherArgs:
+    def __init__(__self__, *,
+                 dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_secure_labels: List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
+        """
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if layer4_configs is not None:
+            pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_secure_labels is not None:
+            pulumi.set(__self__, "src_secure_labels", src_secure_labels)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @dest_ip_ranges.setter
+    def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @layer4_configs.setter
+    def layer4_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]]):
+        pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcSecureLabels")
+    def src_secure_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
+        """
+        return pulumi.get(self, "src_secure_labels")
+
+    @src_secure_labels.setter
+    def src_secure_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_secure_labels", value)
+
+
+@pulumi.input_type
+class FirewallPolicyRuleMatcherLayer4ConfigArgs:
+    def __init__(__self__, *,
+                 ip_protocol: Optional[pulumi.Input[str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+@pulumi.input_type
 class FixedOrPercentArgs:
     def __init__(__self__, *,
                  calculated: Optional[pulumi.Input[int]] = None,
@@ -3670,6 +4377,62 @@ class FixedOrPercentArgs:
     @percent.setter
     def percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
+class ForwardingRuleServiceDirectoryRegistrationArgs:
+    def __init__(__self__, *,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 service_directory_region: Optional[pulumi.Input[str]] = None):
+        """
+        Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+        :param pulumi.Input[str] namespace: Service Directory namespace to register the forwarding rule under.
+        :param pulumi.Input[str] service: Service Directory service to register the forwarding rule under.
+        :param pulumi.Input[str] service_directory_region: [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if service_directory_region is not None:
+            pulumi.set(__self__, "service_directory_region", service_directory_region)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Directory namespace to register the forwarding rule under.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Directory service to register the forwarding rule under.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryRegion")
+    def service_directory_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        """
+        return pulumi.get(self, "service_directory_region")
+
+    @service_directory_region.setter
+    def service_directory_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_directory_region", value)
 
 
 @pulumi.input_type
@@ -4491,7 +5254,7 @@ class HttpHeaderMatchArgs:
                - -3someString will not match.  
                Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
                Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
-        :param pulumi.Input[str] regex_match: The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript 
+        :param pulumi.Input[str] regex_match: The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  github.com/google/re2/wiki/Syntax 
                For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier.
                Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
                Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -4605,7 +5368,7 @@ class HttpHeaderMatchArgs:
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript 
+        The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see:  github.com/google/re2/wiki/Syntax 
         For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier.
         Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
         Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -4702,7 +5465,7 @@ class HttpQueryParameterMatchArgs:
         :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
         :param pulumi.Input[bool] present_match: Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
                Only one of presentMatch, exactMatch or regexMatch must be set.
-        :param pulumi.Input[str] regex_match: The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see en.cppreference.com/w/cpp/regex/ecmascript 
+        :param pulumi.Input[str] regex_match: The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax 
                Only one of presentMatch, exactMatch or regexMatch must be set.
                Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         """
@@ -4757,7 +5520,7 @@ class HttpQueryParameterMatchArgs:
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> Optional[pulumi.Input[str]]:
         """
-        The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see en.cppreference.com/w/cpp/regex/ecmascript 
+        The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax 
         Only one of presentMatch, exactMatch or regexMatch must be set.
         Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         """
@@ -4983,6 +5746,7 @@ class HttpRouteActionArgs:
     def __init__(__self__, *,
                  cors_policy: Optional[pulumi.Input['CorsPolicyArgs']] = None,
                  fault_injection_policy: Optional[pulumi.Input['HttpFaultInjectionArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  request_mirror_policy: Optional[pulumi.Input['RequestMirrorPolicyArgs']] = None,
                  retry_policy: Optional[pulumi.Input['HttpRetryPolicyArgs']] = None,
                  timeout: Optional[pulumi.Input['DurationArgs']] = None,
@@ -4994,6 +5758,9 @@ class HttpRouteActionArgs:
         :param pulumi.Input['HttpFaultInjectionArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
                timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
                Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+               If not specified, will use the largest maxStreamDuration among all backend services associated with the route.
+               This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input['RequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
                Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input['HttpRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
@@ -5011,6 +5778,8 @@ class HttpRouteActionArgs:
             pulumi.set(__self__, "cors_policy", cors_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
@@ -5048,6 +5817,20 @@ class HttpRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: Optional[pulumi.Input['HttpFaultInjectionArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
+        """
+        Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
+        If not specified, will use the largest maxStreamDuration among all backend services associated with the route.
+        This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['DurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -5289,7 +6072,7 @@ class HttpRouteRuleMatchArgs:
                Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         :param pulumi.Input[Sequence[pulumi.Input['HttpQueryParameterMatchArgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
                Not supported when the URL map is bound to target gRPC proxy.
-        :param pulumi.Input[str] regex_match: For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript 
+        :param pulumi.Input[str] regex_match: For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax 
                Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
                Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
@@ -5396,7 +6179,7 @@ class HttpRouteRuleMatchArgs:
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> Optional[pulumi.Input[str]]:
         """
-        For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript 
+        For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax 
         Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
@@ -5842,14 +6625,14 @@ class InstanceGroupManagerUpdatePolicyArgs:
         :param pulumi.Input[str] instance_redistribution_type: The  instance redistribution policy for regional managed instance groups. Valid values are:  
                - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. 
                - NONE: For non-autoscaled groups, proactive redistribution is disabled.
-        :param pulumi.Input['FixedOrPercentArgs'] max_surge: The maximum number of instances that can be created above the specified targetSize during the update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+        :param pulumi.Input['FixedOrPercentArgs'] max_surge: The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
                
                At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
         :param pulumi.Input['FixedOrPercentArgs'] max_unavailable: The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied:
                
                 
                - The instance's status is RUNNING. 
-               - If there is a health check on the instance group, the instance's liveness health check result must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+               - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates.
                
                At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
         :param pulumi.Input[str] minimal_action: Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
@@ -5887,7 +6670,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[pulumi.Input['FixedOrPercentArgs']]:
         """
-        The maximum number of instances that can be created above the specified targetSize during the update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+        The maximum number of instances that can be created above the specified targetSize during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxSurge is a fixed value equal to the number of zones in which the managed instance group operates.
 
         At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxSurge.
         """
@@ -5905,7 +6688,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
 
          
         - The instance's status is RUNNING. 
-        - If there is a health check on the instance group, the instance's liveness health check result must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances will be rounded up if necessary.
+        - If there is a health check on the instance group, the instance's health check status must be HEALTHY at least once. If there is no health check on the group, then the instance only needs to have a status of RUNNING to be considered available.  This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded up if necessary. The default value for maxUnavailable is a fixed value equal to the number of zones in which the managed instance group operates.
 
         At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
         """
@@ -6014,6 +6797,7 @@ class InstanceGroupManagerVersionArgs:
 @pulumi.input_type
 class InstancePropertiesArgs:
     def __init__(__self__, *,
+                 advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -6024,6 +6808,7 @@ class InstancePropertiesArgs:
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
+                 post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -6032,6 +6817,7 @@ class InstancePropertiesArgs:
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input['TagsArgs']] = None):
         """
+        :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
         :param pulumi.Input['ConfidentialInstanceConfigArgs'] confidential_instance_config: Specifies the Confidential Instance options.
         :param pulumi.Input[str] description: An optional text description for the instances that are created from these properties.
@@ -6042,6 +6828,7 @@ class InstancePropertiesArgs:
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
         :param pulumi.Input[str] min_cpu_platform: Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network access configurations for this interface.
+        :param pulumi.Input[str] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that instances can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties.
@@ -6049,6 +6836,8 @@ class InstancePropertiesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
         :param pulumi.Input['TagsArgs'] tags: A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
         """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if can_ip_forward is not None:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
@@ -6069,6 +6858,8 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if post_key_revocation_action_type is not None:
+            pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if reservation_affinity is not None:
@@ -6083,6 +6874,18 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="canIpForward")
@@ -6203,6 +7006,18 @@ class InstancePropertiesArgs:
     @network_interfaces.setter
     def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="postKeyRevocationActionType")
+    def post_key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        PostKeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "post_key_revocation_action_type")
+
+    @post_key_revocation_action_type.setter
+    def post_key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_key_revocation_action_type", value)
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
@@ -7399,7 +8214,7 @@ class NetworkInterfaceArgs:
         A network interface resource attached to an instance.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
-        :param pulumi.Input[str] fingerprint: Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.
+        :param pulumi.Input[str] fingerprint: Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
         :param pulumi.Input[str] ipv6_address: [Output Only] An IPv6 internal network address for this network interface.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#networkInterface for network interfaces.
         :param pulumi.Input[str] name: [Output Only] The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
@@ -7464,7 +8279,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.
+        Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update the NetworkInterface. The request will fail with error 400 Bad Request if the fingerprint is not provided, or 412 Precondition Failed if the fingerprint is out of date.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -8855,6 +9670,214 @@ class PolicyArgs:
 
 
 @pulumi.input_type
+class PublicAdvertisedPrefixPublicDelegatedPrefixArgs:
+    def __init__(__self__, *,
+                 ip_range: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a CIDR range which can be used to assign addresses.
+        :param pulumi.Input[str] ip_range: The IP address range of the public delegated prefix
+        :param pulumi.Input[str] name: The name of the public delegated prefix
+        :param pulumi.Input[str] project: The project number of the public delegated prefix
+        :param pulumi.Input[str] region: The region of the public delegated prefix if it is regional. If absent, the prefix is global.
+        :param pulumi.Input[str] status: The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
+        """
+        if ip_range is not None:
+            pulumi.set(__self__, "ip_range", ip_range)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address range of the public delegated prefix
+        """
+        return pulumi.get(self, "ip_range")
+
+    @ip_range.setter
+    def ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_range", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the public delegated prefix
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project number of the public delegated prefix
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the public delegated prefix if it is regional. If absent, the prefix is global.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs:
+    def __init__(__self__, *,
+                 delegatee_project: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 is_address: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a sub PublicDelegatedPrefix.
+        :param pulumi.Input[str] delegatee_project: Name of the project scoping this PublicDelegatedSubPrefix.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+        :param pulumi.Input[bool] is_address: Whether the sub prefix is delegated to create Address resources in the delegatee project.
+        :param pulumi.Input[str] name: The name of the sub public delegated prefix.
+        :param pulumi.Input[str] region: [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+        :param pulumi.Input[str] status: [Output Only] The status of the sub public delegated prefix.
+        """
+        if delegatee_project is not None:
+            pulumi.set(__self__, "delegatee_project", delegatee_project)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip_cidr_range is not None:
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if is_address is not None:
+            pulumi.set(__self__, "is_address", is_address)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="delegateeProject")
+    def delegatee_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the project scoping this PublicDelegatedSubPrefix.
+        """
+        return pulumi.get(self, "delegatee_project")
+
+    @delegatee_project.setter
+    def delegatee_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delegatee_project", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 address range, in CIDR format, represented by this sub public delegated prefix.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @ip_cidr_range.setter
+    def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_cidr_range", value)
+
+    @property
+    @pulumi.getter(name="isAddress")
+    def is_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the sub prefix is delegated to create Address resources in the delegatee project.
+        """
+        return pulumi.get(self, "is_address")
+
+    @is_address.setter
+    def is_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_address", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the sub public delegated prefix.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The status of the sub public delegated prefix.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class RequestMirrorPolicyArgs:
     def __init__(__self__, *,
                  backend_service: Optional[pulumi.Input[str]] = None):
@@ -8887,6 +9910,7 @@ class ReservationArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
@@ -8900,6 +9924,7 @@ class ReservationArgs:
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#reservations for reservations.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -8918,6 +9943,8 @@ class ReservationArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if satisfies_pzs is not None:
+            pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if specific_reservation is not None:
@@ -9000,6 +10027,18 @@ class ReservationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Output Only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @satisfies_pzs.setter
+    def satisfies_pzs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "satisfies_pzs", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -9340,6 +10379,181 @@ class ResourcePolicyHourlyCycleArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class ResourcePolicyInstanceSchedulePolicyArgs:
+    def __init__(__self__, *,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
+                 vm_start_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs']] = None,
+                 vm_stop_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs']] = None):
+        """
+        An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
+        :param pulumi.Input[str] expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
+        :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs'] vm_start_schedule: Specifies the schedule for starting instances.
+        :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs'] vm_stop_schedule: Specifies the schedule for stopping instances.
+        """
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if vm_start_schedule is not None:
+            pulumi.set(__self__, "vm_start_schedule", vm_start_schedule)
+        if vm_stop_schedule is not None:
+            pulumi.set(__self__, "vm_stop_schedule", vm_stop_schedule)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration time of the schedule. The timestamp is an RFC3339 string.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the schedule. The timestamp is an RFC3339 string.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter(name="vmStartSchedule")
+    def vm_start_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs']]:
+        """
+        Specifies the schedule for starting instances.
+        """
+        return pulumi.get(self, "vm_start_schedule")
+
+    @vm_start_schedule.setter
+    def vm_start_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs']]):
+        pulumi.set(self, "vm_start_schedule", value)
+
+    @property
+    @pulumi.getter(name="vmStopSchedule")
+    def vm_stop_schedule(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs']]:
+        """
+        Specifies the schedule for stopping instances.
+        """
+        return pulumi.get(self, "vm_stop_schedule")
+
+    @vm_stop_schedule.setter
+    def vm_stop_schedule(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs']]):
+        pulumi.set(self, "vm_stop_schedule", value)
+
+
+@pulumi.input_type
+class ResourcePolicyInstanceSchedulePolicyScheduleArgs:
+    def __init__(__self__, *,
+                 schedule: Optional[pulumi.Input[str]] = None):
+        """
+        Schedule for an instance operation.
+        :param pulumi.Input[str] schedule: Specifies the frequency for the operation, using the unix-cron format.
+        """
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the frequency for the operation, using the unix-cron format.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
+class ResourcePolicyResourceStatusArgs:
+    def __init__(__self__, *,
+                 instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs']] = None):
+        """
+        Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
+        :param pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs'] instance_schedule_policy: [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+        """
+        if instance_schedule_policy is not None:
+            pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
+
+    @property
+    @pulumi.getter(name="instanceSchedulePolicy")
+    def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs']]:
+        """
+        [Output Only] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
+        """
+        return pulumi.get(self, "instance_schedule_policy")
+
+    @instance_schedule_policy.setter
+    def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs']]):
+        pulumi.set(self, "instance_schedule_policy", value)
+
+
+@pulumi.input_type
+class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusArgs:
+    def __init__(__self__, *,
+                 last_run_start_time: Optional[pulumi.Input[str]] = None,
+                 next_run_start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] last_run_start_time: [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+        :param pulumi.Input[str] next_run_start_time: [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+        """
+        if last_run_start_time is not None:
+            pulumi.set(__self__, "last_run_start_time", last_run_start_time)
+        if next_run_start_time is not None:
+            pulumi.set(__self__, "next_run_start_time", next_run_start_time)
+
+    @property
+    @pulumi.getter(name="lastRunStartTime")
+    def last_run_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
+        """
+        return pulumi.get(self, "last_run_start_time")
+
+    @last_run_start_time.setter
+    def last_run_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_run_start_time", value)
+
+    @property
+    @pulumi.getter(name="nextRunStartTime")
+    def next_run_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
+        """
+        return pulumi.get(self, "next_run_start_time")
+
+    @next_run_start_time.setter
+    def next_run_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_run_start_time", value)
 
 
 @pulumi.input_type
@@ -9761,8 +10975,7 @@ class RouterBgpPeerArgs:
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
                - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
-               - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. 
-               - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+               - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
         :param pulumi.Input[str] interface_name: Name of the interface the BGP peer is associated with.
@@ -9813,8 +11026,7 @@ class RouterBgpPeerArgs:
         """
         User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
         - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
-        - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. 
-        - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -10581,7 +11793,7 @@ class SchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None):
         """
-        Sets the scheduling options for an Instance. NextID: 13
+        Sets the scheduling options for an Instance. NextID: 20
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
                
                By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -11140,7 +12352,7 @@ class SslCertificateManagedSslCertificateArgs:
         """
         Configuration and status of a managed SSL certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] domain_status: [Output only] Detailed statuses of the domains specified for managed certificate resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated. Currently only single-domain certs are supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
         :param pulumi.Input[str] status: [Output only] Status of the managed certificate resource.
         """
         if domain_status is not None:
@@ -11166,7 +12378,7 @@ class SslCertificateManagedSslCertificateArgs:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The domains for which a managed SSL certificate will be generated. Currently only single-domain certs are supported.
+        The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
         """
         return pulumi.get(self, "domains")
 
@@ -11379,7 +12591,7 @@ class SubnetworkSecondaryRangeArgs:
                  range_name: Optional[pulumi.Input[str]] = None):
         """
         Represents a secondary IP range of a subnetwork.
-        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-RFC 1918 IP range, not belonging to Google.
+        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
         :param pulumi.Input[str] range_name: The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
         """
         if ip_cidr_range is not None:
@@ -11391,7 +12603,7 @@ class SubnetworkSecondaryRangeArgs:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-RFC 1918 IP range, not belonging to Google.
+        The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -11575,12 +12787,22 @@ class TagsArgs:
 class UrlMapTestArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 expected_output_url: Optional[pulumi.Input[str]] = None,
+                 expected_redirect_response_code: Optional[pulumi.Input[int]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapTestHeaderArgs']]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Message for the expected URL mappings.
         :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input[str] expected_output_url: The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters.
+               For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+               For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters.
+               expectedOutputUrl is optional when service is specified.
+        :param pulumi.Input[int] expected_redirect_response_code: For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+               expectedRedirectResponseCode cannot be set when service is set.
+        :param pulumi.Input[Sequence[pulumi.Input['UrlMapTestHeaderArgs']]] headers: HTTP headers for this request. If headers contains a host header, then host must also match the header value.
         :param pulumi.Input[str] host: Host portion of the URL. If headers contains a host header, then host must also match the header value.
         :param pulumi.Input[str] path: Path portion of the URL.
         :param pulumi.Input[str] service: Expected BackendService or BackendBucket resource the given URL should be mapped to.
@@ -11588,6 +12810,12 @@ class UrlMapTestArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expected_output_url is not None:
+            pulumi.set(__self__, "expected_output_url", expected_output_url)
+        if expected_redirect_response_code is not None:
+            pulumi.set(__self__, "expected_redirect_response_code", expected_redirect_response_code)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if path is not None:
@@ -11606,6 +12834,46 @@ class UrlMapTestArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expectedOutputUrl")
+    def expected_output_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters.
+        For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored.
+        For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters.
+        expectedOutputUrl is optional when service is specified.
+        """
+        return pulumi.get(self, "expected_output_url")
+
+    @expected_output_url.setter
+    def expected_output_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expected_output_url", value)
+
+    @property
+    @pulumi.getter(name="expectedRedirectResponseCode")
+    def expected_redirect_response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
+        expectedRedirectResponseCode cannot be set when service is set.
+        """
+        return pulumi.get(self, "expected_redirect_response_code")
+
+    @expected_redirect_response_code.setter
+    def expected_redirect_response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expected_redirect_response_code", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapTestHeaderArgs']]]]:
+        """
+        HTTP headers for this request. If headers contains a host header, then host must also match the header value.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapTestHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter
@@ -11643,6 +12911,46 @@ class UrlMapTestArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
+class UrlMapTestHeaderArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        HTTP headers used in UrlMapTests.
+        :param pulumi.Input[str] name: Header name.
+        :param pulumi.Input[str] value: Header value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Header name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -11693,14 +13001,18 @@ class UrlRewriteArgs:
 class VpnGatewayVpnGatewayInterfaceArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
         """
         A VPN gateway interface.
         :param pulumi.Input[int] id: The numeric ID of this VPN gateway interface.
+        :param pulumi.Input[str] interconnect_attachment: URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
         :param pulumi.Input[str] ip_address: [Output Only] The external IP address for this VPN gateway interface.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if interconnect_attachment is not None:
+            pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
 
@@ -11715,6 +13027,18 @@ class VpnGatewayVpnGatewayInterfaceArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="interconnectAttachment")
+    def interconnect_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+        """
+        return pulumi.get(self, "interconnect_attachment")
+
+    @interconnect_attachment.setter
+    def interconnect_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interconnect_attachment", value)
 
     @property
     @pulumi.getter(name="ipAddress")

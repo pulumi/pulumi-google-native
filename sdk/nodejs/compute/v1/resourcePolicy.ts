@@ -45,33 +45,32 @@ export class ResourcePolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ResourcePolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourcePolicy.__pulumiType, name, inputs, opts);
     }
@@ -95,6 +94,10 @@ export interface ResourcePolicyArgs {
      */
     readonly id?: pulumi.Input<string>;
     /**
+     * Resource policy for scheduling instance operations.
+     */
+    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.v1.ResourcePolicyInstanceSchedulePolicy>;
+    /**
      * [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
      */
     readonly kind?: pulumi.Input<string>;
@@ -115,6 +118,10 @@ export interface ResourcePolicyArgs {
      * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     readonly requestId?: pulumi.Input<string>;
+    /**
+     * [Output Only] The system status of the resource policy.
+     */
+    readonly resourceStatus?: pulumi.Input<inputs.compute.v1.ResourcePolicyResourceStatus>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */

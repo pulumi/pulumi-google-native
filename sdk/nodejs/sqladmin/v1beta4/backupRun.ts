@@ -45,11 +45,12 @@ export class BackupRun extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackupRunArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["backupKind"] = args ? args.backupKind : undefined;
@@ -71,12 +72,8 @@ export class BackupRun extends pulumi.CustomResource {
             inputs["windowStartTime"] = args ? args.windowStartTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackupRun.__pulumiType, name, inputs, opts);
     }
@@ -147,7 +144,7 @@ export interface BackupRunArgs {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
     readonly type?: pulumi.Input<string>;
     /**

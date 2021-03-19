@@ -1145,9 +1145,9 @@ func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
 
 // Represents a Pub/Sub transport.
 type Pubsub struct {
-	// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription *string `pulumi:"subscription"`
-	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	Topic *string `pulumi:"topic"`
 }
 
@@ -1164,9 +1164,9 @@ type PubsubInput interface {
 
 // Represents a Pub/Sub transport.
 type PubsubArgs struct {
-	// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
-	// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
 
@@ -1248,12 +1248,12 @@ func (o PubsubOutput) ToPubsubPtrOutputWithContext(ctx context.Context) PubsubPt
 	}).(PubsubPtrOutput)
 }
 
-// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o PubsubOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Pubsub) *string { return v.Subscription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 func (o PubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Pubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
@@ -1276,7 +1276,7 @@ func (o PubsubPtrOutput) Elem() PubsubOutput {
 	return o.ApplyT(func(v *Pubsub) Pubsub { return *v }).(PubsubOutput)
 }
 
-// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o PubsubPtrOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pubsub) *string {
 		if v == nil {
@@ -1286,7 +1286,7 @@ func (o PubsubPtrOutput) Subscription() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 func (o PubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pubsub) *string {
 		if v == nil {
@@ -1298,7 +1298,7 @@ func (o PubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 
 // Represents the transport intermediaries created for the trigger in order to deliver events.
 type Transport struct {
-	// The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
 	Pubsub *Pubsub `pulumi:"pubsub"`
 }
 
@@ -1315,7 +1315,7 @@ type TransportInput interface {
 
 // Represents the transport intermediaries created for the trigger in order to deliver events.
 type TransportArgs struct {
-	// The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
 	Pubsub PubsubPtrInput `pulumi:"pubsub"`
 }
 
@@ -1397,7 +1397,7 @@ func (o TransportOutput) ToTransportPtrOutputWithContext(ctx context.Context) Tr
 	}).(TransportPtrOutput)
 }
 
-// The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
 func (o TransportOutput) Pubsub() PubsubPtrOutput {
 	return o.ApplyT(func(v Transport) *Pubsub { return v.Pubsub }).(PubsubPtrOutput)
 }
@@ -1420,7 +1420,7 @@ func (o TransportPtrOutput) Elem() TransportOutput {
 	return o.ApplyT(func(v *Transport) Transport { return *v }).(TransportOutput)
 }
 
-// The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
+// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
 func (o TransportPtrOutput) Pubsub() PubsubPtrOutput {
 	return o.ApplyT(func(v *Transport) *Pubsub {
 		if v == nil {

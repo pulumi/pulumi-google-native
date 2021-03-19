@@ -16,6 +16,12 @@ namespace Pulumi.GoogleCloud.Cloudfunctions.V1.Inputs
     public sealed class HttpsTriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The security level for the function.
+        /// </summary>
+        [Input("securityLevel")]
+        public Input<string>? SecurityLevel { get; set; }
+
+        /// <summary>
         /// Output only. The deployed url for the function.
         /// </summary>
         [Input("url")]

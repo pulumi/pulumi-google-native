@@ -44,20 +44,17 @@ export class TenancyUnit extends pulumi.CustomResource {
      */
     constructor(name: string, args: TenancyUnitArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["parent"] = args ? args.parent : undefined;
             inputs["tenancyUnitId"] = args ? args.tenancyUnitId : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TenancyUnit.__pulumiType, name, inputs, opts);
     }

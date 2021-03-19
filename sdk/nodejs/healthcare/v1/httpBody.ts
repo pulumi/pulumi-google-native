@@ -44,11 +44,12 @@ export class HttpBody extends pulumi.CustomResource {
      */
     constructor(name: string, args: HttpBodyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["contentType"] = args ? args.contentType : undefined;
@@ -58,12 +59,8 @@ export class HttpBody extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HttpBody.__pulumiType, name, inputs, opts);
     }

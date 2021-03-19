@@ -1250,6 +1250,7 @@ class DetailArgs:
                  package: Optional[pulumi.Input[str]] = None,
                  package_type: Optional[pulumi.Input[str]] = None,
                  severity_name: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
                  source_update_time: Optional[pulumi.Input[str]] = None):
         """
         Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
@@ -1262,6 +1263,7 @@ class DetailArgs:
         :param pulumi.Input[str] package: Required. The name of the package where the vulnerability was found.
         :param pulumi.Input[str] package_type: The type of package; whether native or non native(ruby gems, node.js packages etc).
         :param pulumi.Input[str] severity_name: The severity (eg: distro assigned severity) for this vulnerability.
+        :param pulumi.Input[str] source: The source from which the information in this Detail was obtained.
         :param pulumi.Input[str] source_update_time: The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
         """
         if cpe_uri is not None:
@@ -1282,6 +1284,8 @@ class DetailArgs:
             pulumi.set(__self__, "package_type", package_type)
         if severity_name is not None:
             pulumi.set(__self__, "severity_name", severity_name)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
         if source_update_time is not None:
             pulumi.set(__self__, "source_update_time", source_update_time)
 
@@ -1392,6 +1396,18 @@ class DetailArgs:
     @severity_name.setter
     def severity_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "severity_name", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source from which the information in this Detail was obtained.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
 
     @property
     @pulumi.getter(name="sourceUpdateTime")
@@ -3438,18 +3454,22 @@ class StatusArgs:
 class VersionArgs:
     def __init__(__self__, *,
                  epoch: Optional[pulumi.Input[int]] = None,
+                 inclusive: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[str]] = None):
         """
         Version contains structured information about the version of a package.
         :param pulumi.Input[int] epoch: Used to correct mistakes in the version numbering scheme.
+        :param pulumi.Input[bool] inclusive: Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
         :param pulumi.Input[str] kind: Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
         :param pulumi.Input[str] name: Required only when version kind is NORMAL. The main part of the version name.
         :param pulumi.Input[str] revision: The iteration of the package build from the above version.
         """
         if epoch is not None:
             pulumi.set(__self__, "epoch", epoch)
+        if inclusive is not None:
+            pulumi.set(__self__, "inclusive", inclusive)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
@@ -3468,6 +3488,18 @@ class VersionArgs:
     @epoch.setter
     def epoch(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "epoch", value)
+
+    @property
+    @pulumi.getter
+    def inclusive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
+        """
+        return pulumi.get(self, "inclusive")
+
+    @inclusive.setter
+    def inclusive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inclusive", value)
 
     @property
     @pulumi.getter

@@ -45,8 +45,9 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["apis"] = args ? args.apis : undefined;
@@ -79,12 +80,8 @@ export class Service extends pulumi.CustomResource {
             inputs["usage"] = args ? args.usage : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Service.__pulumiType, name, inputs, opts);
     }
@@ -111,7 +108,7 @@ export interface ServiceArgs {
      */
     readonly billing?: pulumi.Input<inputs.servicemanagement.v1.Billing>;
     /**
-     * This field is obsolete. Its value must be set to `3`.
+     * Deprecated. The service config compiler always sets this field to `3`.
      */
     readonly configVersion?: pulumi.Input<number>;
     /**

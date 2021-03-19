@@ -114,7 +114,7 @@ namespace Pulumi.GoogleCloud.Workflows.V1beta
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Workflow code to be executed. The size limit is 32KB.
+        /// Workflow code to be executed. The size limit is 128KB.
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }

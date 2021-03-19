@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Atomically update the ResourceRecordSet collection.
+// Atomically updates the ResourceRecordSet collection.
 type Change struct {
 	pulumi.CustomResourceState
 }
@@ -78,7 +78,7 @@ type changeArgs struct {
 	Project string `pulumi:"project"`
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime *string `pulumi:"startTime"`
-	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
 	Status *string `pulumi:"status"`
 }
 
@@ -101,7 +101,7 @@ type ChangeArgs struct {
 	Project pulumi.StringInput
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime pulumi.StringPtrInput
-	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent but the servers might not be updated yet.
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
 	Status pulumi.StringPtrInput
 }
 

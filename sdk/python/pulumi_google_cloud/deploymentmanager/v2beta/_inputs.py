@@ -774,6 +774,7 @@ class OperationArgs:
                  insert_time: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 operation_group_id: Optional[pulumi.Input[str]] = None,
                  operation_type: Optional[pulumi.Input[str]] = None,
                  progress: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -799,6 +800,7 @@ class OperationArgs:
         :param pulumi.Input[str] insert_time: [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
         :param pulumi.Input[str] name: [Output Only] Name of the operation.
+        :param pulumi.Input[str] operation_group_id: [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
         :param pulumi.Input[str] operation_type: [Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.
         :param pulumi.Input[int] progress: [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.
@@ -834,6 +836,8 @@ class OperationArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if operation_group_id is not None:
+            pulumi.set(__self__, "operation_group_id", operation_group_id)
         if operation_type is not None:
             pulumi.set(__self__, "operation_type", operation_type)
         if progress is not None:
@@ -990,6 +994,18 @@ class OperationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="operationGroupId")
+    def operation_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+        """
+        return pulumi.get(self, "operation_group_id")
+
+    @operation_group_id.setter
+    def operation_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation_group_id", value)
 
     @property
     @pulumi.getter(name="operationType")

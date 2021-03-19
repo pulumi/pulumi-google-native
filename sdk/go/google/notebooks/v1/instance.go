@@ -110,10 +110,16 @@ type instanceArgs struct {
 	ProxyUri *string `pulumi:"proxyUri"`
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Output only. The state of this instance.
 	State *string `pulumi:"state"`
 	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
 	Subnet *string `pulumi:"subnet"`
+	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags []string `pulumi:"tags"`
 	// Output only. Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The upgrade history of this instance.
@@ -176,10 +182,16 @@ type InstanceArgs struct {
 	ProxyUri pulumi.StringPtrInput
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount pulumi.StringPtrInput
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+	ServiceAccountScopes pulumi.StringArrayInput
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput
 	// Output only. The state of this instance.
 	State pulumi.StringPtrInput
 	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
 	Subnet pulumi.StringPtrInput
+	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags pulumi.StringArrayInput
 	// Output only. Instance update time.
 	UpdateTime pulumi.StringPtrInput
 	// The upgrade history of this instance.

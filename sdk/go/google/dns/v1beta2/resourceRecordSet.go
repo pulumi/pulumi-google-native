@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Create a new ResourceRecordSet.
+// Creates a new ResourceRecordSet.
 type ResourceRecordSet struct {
 	pulumi.CustomResourceState
 }
@@ -70,8 +70,6 @@ type resourceRecordSetArgs struct {
 	Name *string `pulumi:"name"`
 	// Identifies the project addressed by this request.
 	Project string `pulumi:"project"`
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-	RoutingPolicy *RRSetRoutingPolicy `pulumi:"routingPolicy"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas []string `pulumi:"rrdatas"`
 	// As defined in RFC 4034 (section 3.2).
@@ -93,8 +91,6 @@ type ResourceRecordSetArgs struct {
 	Name pulumi.StringPtrInput
 	// Identifies the project addressed by this request.
 	Project pulumi.StringInput
-	// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-	RoutingPolicy RRSetRoutingPolicyPtrInput
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
 	Rrdatas pulumi.StringArrayInput
 	// As defined in RFC 4034 (section 3.2).

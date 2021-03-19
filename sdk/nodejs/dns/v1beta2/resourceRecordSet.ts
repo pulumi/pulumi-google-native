@@ -2,11 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Create a new ResourceRecordSet.
+ * Creates a new ResourceRecordSet.
  */
 export class ResourceRecordSet extends pulumi.CustomResource {
     /**
@@ -45,11 +44,12 @@ export class ResourceRecordSet extends pulumi.CustomResource {
      */
     constructor(name: string, args: ResourceRecordSetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.managedZone === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
@@ -57,19 +57,14 @@ export class ResourceRecordSet extends pulumi.CustomResource {
             inputs["managedZone"] = args ? args.managedZone : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["routingPolicy"] = args ? args.routingPolicy : undefined;
             inputs["rrdatas"] = args ? args.rrdatas : undefined;
             inputs["signatureRrdatas"] = args ? args.signatureRrdatas : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourceRecordSet.__pulumiType, name, inputs, opts);
     }
@@ -96,10 +91,6 @@ export interface ResourceRecordSetArgs {
      * Identifies the project addressed by this request.
      */
     readonly project: pulumi.Input<string>;
-    /**
-     * Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An error is returned otherwise.
-     */
-    readonly routingPolicy?: pulumi.Input<inputs.dns.v1beta2.RRSetRoutingPolicy>;
     /**
      * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
      */

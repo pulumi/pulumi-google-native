@@ -21,6 +21,7 @@ class Service(pulumi.CustomResource):
                  cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
                  custom: Optional[pulumi.Input[pulumi.InputType['CustomArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 istio_canonical_service: Optional[pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']]] = None,
                  mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterIstioArgs']] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
         :param pulumi.Input[pulumi.InputType['CustomArgs']] custom: Custom service type.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
+        :param pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']] istio_canonical_service: Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
         :param pulumi.Input[pulumi.InputType['MeshIstioArgs']] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         :param pulumi.Input[str] parent: Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER] 
@@ -67,6 +69,7 @@ class Service(pulumi.CustomResource):
             __props__['cluster_istio'] = cluster_istio
             __props__['custom'] = custom
             __props__['display_name'] = display_name
+            __props__['istio_canonical_service'] = istio_canonical_service
             __props__['mesh_istio'] = mesh_istio
             __props__['name'] = name
             if parent is None and not opts.urn:

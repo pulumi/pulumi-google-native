@@ -78,6 +78,12 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Dynamic group metadata like queries and status.
+        /// </summary>
+        [Input("dynamicGroupMetadata")]
+        public Input<Inputs.DynamicGroupMetadataArgs>? DynamicGroupMetadata { get; set; }
+
+        /// <summary>
         /// Required. Immutable. The `EntityKey` of the `Group`.
         /// </summary>
         [Input("groupKey")]

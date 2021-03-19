@@ -96,6 +96,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<bool>? EnableFlowLogs { get; set; }
 
         /// <summary>
+        /// Enables Layer2 communication on the subnetwork.
+        /// </summary>
+        [Input("enableL2")]
+        public Input<bool>? EnableL2 { get; set; }
+
+        /// <summary>
         /// Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("enablePrivateV6Access")]
@@ -134,7 +140,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. This may be a RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging to Google. The range can be expanded after creation using expandIpCidrRange.
+        /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -278,6 +284,18 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("vlans")]
+        private InputList<int>? _vlans;
+
+        /// <summary>
+        /// A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
+        /// </summary>
+        public InputList<int> Vlans
+        {
+            get => _vlans ?? (_vlans = new InputList<int>());
+            set => _vlans = value;
+        }
 
         public SubnetworkArgs()
         {

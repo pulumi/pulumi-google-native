@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./attributeDefinition";
+export * from "./consent";
+export * from "./consentArtifact";
+export * from "./consentStore";
 export * from "./dataset";
 export * from "./dicomStore";
 export * from "./fhirStore";
@@ -12,8 +16,13 @@ export * from "./hl7V2Store";
 export * from "./httpBody";
 export * from "./message";
 export * from "./policy";
+export * from "./userDataMapping";
 
 // Import resources to register:
+import { AttributeDefinition } from "./attributeDefinition";
+import { Consent } from "./consent";
+import { ConsentArtifact } from "./consentArtifact";
+import { ConsentStore } from "./consentStore";
 import { Dataset } from "./dataset";
 import { DicomStore } from "./dicomStore";
 import { FhirStore } from "./fhirStore";
@@ -21,11 +30,20 @@ import { Hl7V2Store } from "./hl7V2Store";
 import { HttpBody } from "./httpBody";
 import { Message } from "./message";
 import { Policy } from "./policy";
+import { UserDataMapping } from "./userDataMapping";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-cloud:healthcare/v1:AttributeDefinition":
+                return new AttributeDefinition(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1:Consent":
+                return new Consent(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1:ConsentArtifact":
+                return new ConsentArtifact(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1:ConsentStore":
+                return new ConsentStore(name, <any>undefined, { urn })
             case "google-cloud:healthcare/v1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
             case "google-cloud:healthcare/v1:DicomStore":
@@ -40,6 +58,8 @@ const _module = {
                 return new Message(name, <any>undefined, { urn })
             case "google-cloud:healthcare/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1:UserDataMapping":
+                return new UserDataMapping(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

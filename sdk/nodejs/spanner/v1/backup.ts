@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -44,27 +45,28 @@ export class Backup extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["database"] = args ? args.database : undefined;
+            inputs["encryptionConfig_encryptionType"] = args ? args.encryptionConfig_encryptionType : undefined;
+            inputs["encryptionConfig_kmsKeyName"] = args ? args.encryptionConfig_kmsKeyName : undefined;
+            inputs["encryptionInfo"] = args ? args.encryptionInfo : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["referencingDatabases"] = args ? args.referencingDatabases : undefined;
             inputs["sizeBytes"] = args ? args.sizeBytes : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["versionTime"] = args ? args.versionTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Backup.__pulumiType, name, inputs, opts);
     }
@@ -79,13 +81,25 @@ export interface BackupArgs {
      */
     readonly backupId?: pulumi.Input<string>;
     /**
-     * Output only. The backup will contain an externally consistent copy of the database at the timestamp specified by `create_time`. `create_time` is approximately the time the CreateBackup request is received.
+     * Output only. The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
      */
     readonly database?: pulumi.Input<string>;
+    /**
+     * Required. The encryption type of the backup.
+     */
+    readonly encryptionConfig_encryptionType?: pulumi.Input<string>;
+    /**
+     * Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+     */
+    readonly encryptionConfig_kmsKeyName?: pulumi.Input<string>;
+    /**
+     * Output only. The encryption information for the backup.
+     */
+    readonly encryptionInfo?: pulumi.Input<inputs.spanner.v1.EncryptionInfo>;
     /**
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
      */
@@ -110,4 +124,8 @@ export interface BackupArgs {
      * Output only. The current state of the backup.
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
+     */
+    readonly versionTime?: pulumi.Input<string>;
 }

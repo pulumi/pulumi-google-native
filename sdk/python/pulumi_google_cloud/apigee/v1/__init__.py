@@ -22,6 +22,7 @@ from .google_cloud_apigee_v1_reference import *
 from .google_cloud_apigee_v1_resource_file import *
 from .google_cloud_apigee_v1_shared_flow_revision import *
 from .google_cloud_apigee_v1_target_server import *
+from .google_cloud_apigee_v1_trace_config_override import *
 from .google_iam_v1_policy import *
 from .google_longrunning_operation import *
 from ._inputs import *
@@ -76,6 +77,8 @@ def _register_module():
                 return GoogleCloudApigeeV1SharedFlowRevision(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1TargetServer":
                 return GoogleCloudApigeeV1TargetServer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1TraceConfigOverride":
+                return GoogleCloudApigeeV1TraceConfigOverride(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:apigee/v1:GoogleIamV1Policy":
                 return GoogleIamV1Policy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:apigee/v1:GoogleLongrunningOperation":

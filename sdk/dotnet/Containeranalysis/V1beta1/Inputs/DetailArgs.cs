@@ -70,6 +70,12 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1.Inputs
         public Input<string>? SeverityName { get; set; }
 
         /// <summary>
+        /// The source from which the information in this Detail was obtained.
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
         /// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
         /// </summary>
         [Input("sourceUpdateTime")]

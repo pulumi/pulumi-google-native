@@ -90,6 +90,8 @@ type instanceArgs struct {
 	Parent string `pulumi:"parent"`
 	// Output only. The state of this Memcached instance.
 	State *string `pulumi:"state"`
+	// Output only. Returns true if there is an update waiting to be applied
+	UpdateAvailable *bool `pulumi:"updateAvailable"`
 	// Output only. The time the instance was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
@@ -130,6 +132,8 @@ type InstanceArgs struct {
 	Parent pulumi.StringInput
 	// Output only. The state of this Memcached instance.
 	State pulumi.StringPtrInput
+	// Output only. Returns true if there is an update waiting to be applied
+	UpdateAvailable pulumi.BoolPtrInput
 	// Output only. The time the instance was updated.
 	UpdateTime pulumi.StringPtrInput
 	// Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.

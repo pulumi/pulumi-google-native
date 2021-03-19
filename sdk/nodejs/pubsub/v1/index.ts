@@ -6,12 +6,14 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./policy";
+export * from "./schema";
 export * from "./snapshot";
 export * from "./subscription";
 export * from "./topic";
 
 // Import resources to register:
 import { Policy } from "./policy";
+import { Schema } from "./schema";
 import { Snapshot } from "./snapshot";
 import { Subscription } from "./subscription";
 import { Topic } from "./topic";
@@ -22,6 +24,8 @@ const _module = {
         switch (type) {
             case "google-cloud:pubsub/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1:Schema":
+                return new Schema(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1:Subscription":

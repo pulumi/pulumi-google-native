@@ -45,8 +45,9 @@ export class CertificateAuthority extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertificateAuthorityArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["accessUrls"] = args ? args.accessUrls : undefined;
@@ -72,12 +73,8 @@ export class CertificateAuthority extends pulumi.CustomResource {
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CertificateAuthority.__pulumiType, name, inputs, opts);
     }

@@ -65,6 +65,12 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -100,6 +106,24 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
+
+        [Input("topics")]
+        private InputList<Inputs.TopicArgs>? _topics;
+
+        /// <summary>
+        /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        /// </summary>
+        public InputList<Inputs.TopicArgs> Topics
+        {
+            get => _topics ?? (_topics = new InputList<Inputs.TopicArgs>());
+            set => _topics = value;
+        }
+
+        /// <summary>
+        /// Input only. The TTL for the Secret.
+        /// </summary>
+        [Input("ttl")]
+        public Input<string>? Ttl { get; set; }
 
         public SecretArgs()
         {

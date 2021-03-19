@@ -32,6 +32,7 @@ class Instance(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 update_available: Optional[pulumi.Input[bool]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
@@ -58,6 +59,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: Optional: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[str] parent: Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
         :param pulumi.Input[str] state: Output only. The state of this Memcached instance.
+        :param pulumi.Input[bool] update_available: Output only. Returns true if there is an update waiting to be applied
         :param pulumi.Input[str] update_time: Output only. The time the instance was updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
@@ -96,6 +98,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['state'] = state
+            __props__['update_available'] = update_available
             __props__['update_time'] = update_time
             __props__['zones'] = zones
         super(Instance, __self__).__init__(

@@ -60,6 +60,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
         [Input("response")]
         public Input<string>? Response { get; set; }
 
+        /// <summary>
+        /// Weight report mode. used for weighted Load Balancing.
+        /// </summary>
+        [Input("weightReportMode")]
+        public Input<string>? WeightReportMode { get; set; }
+
         public HTTPHealthCheckArgs()
         {
         }

@@ -70,7 +70,7 @@ type googleAppsCloudidentityDevicesV1DeviceArgs struct {
 	CompromisedState *string `pulumi:"compromisedState"`
 	// Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
 	Customer *string `pulumi:"customer"`
 	// Output only. Type of device.
 	DeviceType *string `pulumi:"deviceType"`
@@ -132,7 +132,7 @@ type GoogleAppsCloudidentityDevicesV1DeviceArgs struct {
 	CompromisedState pulumi.StringPtrInput
 	// Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.
 	CreateTime pulumi.StringPtrInput
-	// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
 	Customer pulumi.StringPtrInput
 	// Output only. Type of device.
 	DeviceType pulumi.StringPtrInput

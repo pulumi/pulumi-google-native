@@ -45,20 +45,17 @@ export class GoogleCloudDatalabelingV1beta1AnnotationSpecSet extends pulumi.Cust
      */
     constructor(name: string, args: GoogleCloudDatalabelingV1beta1AnnotationSpecSetArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (!(opts && opts.id)) {
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["annotationSpecSet"] = args ? args.annotationSpecSet : undefined;
             inputs["parent"] = args ? args.parent : undefined;
         } else {
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GoogleCloudDatalabelingV1beta1AnnotationSpecSet.__pulumiType, name, inputs, opts);
     }

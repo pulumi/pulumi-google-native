@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Apigee.V1
 {
     /// <summary>
-    /// Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
+    /// Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:apigee/v1:GoogleCloudApigeeV1AsyncQuery")]
     public partial class GoogleCloudApigeeV1AsyncQuery : Pulumi.CustomResource
@@ -126,7 +126,7 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? OutputFormat { get; set; }
 
         /// <summary>
-        /// Required. The parent resource name. Must be of the form `organizations/{org}`.
+        /// Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;

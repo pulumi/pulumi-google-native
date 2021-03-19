@@ -13,6 +13,7 @@ export * from "./commitment";
 export * from "./disk";
 export * from "./externalVpnGateway";
 export * from "./firewall";
+export * from "./firewallPolicy";
 export * from "./forwardingRule";
 export * from "./healthCheck";
 export * from "./healthCheckService";
@@ -33,6 +34,8 @@ export * from "./nodeTemplate";
 export * from "./notificationEndpoint";
 export * from "./packetMirroring";
 export * from "./policy";
+export * from "./publicAdvertisedPrefix";
+export * from "./publicDelegatedPrefix";
 export * from "./reservation";
 export * from "./resourcePolicy";
 export * from "./route";
@@ -62,6 +65,7 @@ import { Commitment } from "./commitment";
 import { Disk } from "./disk";
 import { ExternalVpnGateway } from "./externalVpnGateway";
 import { Firewall } from "./firewall";
+import { FirewallPolicy } from "./firewallPolicy";
 import { ForwardingRule } from "./forwardingRule";
 import { HealthCheck } from "./healthCheck";
 import { HealthCheckService } from "./healthCheckService";
@@ -82,6 +86,8 @@ import { NodeTemplate } from "./nodeTemplate";
 import { NotificationEndpoint } from "./notificationEndpoint";
 import { PacketMirroring } from "./packetMirroring";
 import { Policy } from "./policy";
+import { PublicAdvertisedPrefix } from "./publicAdvertisedPrefix";
+import { PublicDelegatedPrefix } from "./publicDelegatedPrefix";
 import { Reservation } from "./reservation";
 import { ResourcePolicy } from "./resourcePolicy";
 import { Route } from "./route";
@@ -122,6 +128,8 @@ const _module = {
                 return new ExternalVpnGateway(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:FirewallPolicy":
+                return new FirewallPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:HealthCheck":
@@ -162,6 +170,10 @@ const _module = {
                 return new PacketMirroring(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:PublicAdvertisedPrefix":
+                return new PublicAdvertisedPrefix(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:PublicDelegatedPrefix":
+                return new PublicDelegatedPrefix(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:ResourcePolicy":

@@ -15,6 +15,7 @@ class Route(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_conflicting_subnetworks: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class Route(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_conflicting_subnetworks: Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
@@ -93,6 +95,7 @@ class Route(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['allow_conflicting_subnetworks'] = allow_conflicting_subnetworks
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
             __props__['dest_range'] = dest_range

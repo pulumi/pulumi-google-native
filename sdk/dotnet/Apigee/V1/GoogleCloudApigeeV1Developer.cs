@@ -120,7 +120,7 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? DeveloperId { get; set; }
 
         /// <summary>
-        /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid.
+        /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

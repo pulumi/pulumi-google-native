@@ -144,9 +144,9 @@ func (o AnnotationSourcePtrOutput) CloudHealthcareSource() CloudHealthcareSource
 	}).(CloudHealthcareSourcePtrOutput)
 }
 
-// An attribute value for a consent or data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
+// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
 type Attribute struct {
-	// Indicates the name of an attribute defined at the consent store.
+	// Indicates the name of an attribute defined in the consent store.
 	AttributeDefinitionId *string `pulumi:"attributeDefinitionId"`
 	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values []string `pulumi:"values"`
@@ -163,9 +163,9 @@ type AttributeInput interface {
 	ToAttributeOutputWithContext(context.Context) AttributeOutput
 }
 
-// An attribute value for a consent or data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
+// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
 type AttributeArgs struct {
-	// Indicates the name of an attribute defined at the consent store.
+	// Indicates the name of an attribute defined in the consent store.
 	AttributeDefinitionId pulumi.StringPtrInput `pulumi:"attributeDefinitionId"`
 	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -208,7 +208,7 @@ func (i AttributeArray) ToAttributeArrayOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AttributeArrayOutput)
 }
 
-// An attribute value for a consent or data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
+// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
 type AttributeOutput struct{ *pulumi.OutputState }
 
 func (AttributeOutput) ElementType() reflect.Type {
@@ -223,7 +223,7 @@ func (o AttributeOutput) ToAttributeOutputWithContext(ctx context.Context) Attri
 	return o
 }
 
-// Indicates the name of an attribute defined at the consent store.
+// Indicates the name of an attribute defined in the consent store.
 func (o AttributeOutput) AttributeDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Attribute) *string { return v.AttributeDefinitionId }).(pulumi.StringPtrOutput)
 }
@@ -1159,11 +1159,11 @@ func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
 	}).(FieldOutput)
 }
 
-// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicy struct {
-	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 	AuthorizationRule *Expr `pulumi:"authorizationRule"`
-	// The data resources that this policy applies to. A data resource is a match if it matches all the attributes listed here.
+	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
 }
 
@@ -1178,11 +1178,11 @@ type GoogleCloudHealthcareV1beta1ConsentPolicyInput interface {
 	ToGoogleCloudHealthcareV1beta1ConsentPolicyOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1ConsentPolicyOutput
 }
 
-// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicyArgs struct {
-	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 	AuthorizationRule ExprPtrInput `pulumi:"authorizationRule"`
-	// The data resources that this policy applies to. A data resource is a match if it matches all the attributes listed here.
+	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes AttributeArrayInput `pulumi:"resourceAttributes"`
 }
 
@@ -1223,7 +1223,7 @@ func (i GoogleCloudHealthcareV1beta1ConsentPolicyArray) ToGoogleCloudHealthcareV
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1ConsentPolicyArrayOutput)
 }
 
-// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicyOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudHealthcareV1beta1ConsentPolicyOutput) ElementType() reflect.Type {
@@ -1238,12 +1238,12 @@ func (o GoogleCloudHealthcareV1beta1ConsentPolicyOutput) ToGoogleCloudHealthcare
 	return o
 }
 
-// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 func (o GoogleCloudHealthcareV1beta1ConsentPolicyOutput) AuthorizationRule() ExprPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1ConsentPolicy) *Expr { return v.AuthorizationRule }).(ExprPtrOutput)
 }
 
-// The data resources that this policy applies to. A data resource is a match if it matches all the attributes listed here.
+// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 func (o GoogleCloudHealthcareV1beta1ConsentPolicyOutput) ResourceAttributes() AttributeArrayOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1ConsentPolicy) []Attribute { return v.ResourceAttributes }).(AttributeArrayOutput)
 }
@@ -1957,7 +1957,7 @@ func (o Hl7TypesConfigArrayOutput) Index(i pulumi.IntInput) Hl7TypesConfigOutput
 
 // Specifies where and whether to send notifications upon changes to a data store.
 type Hl7V2NotificationConfig struct {
-	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
+	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Fields/functions available for filtering are: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
 	Filter *string `pulumi:"filter"`
 	// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Cloud Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging).
 	PubsubTopic *string `pulumi:"pubsubTopic"`
@@ -1976,7 +1976,7 @@ type Hl7V2NotificationConfigInput interface {
 
 // Specifies where and whether to send notifications upon changes to a data store.
 type Hl7V2NotificationConfigArgs struct {
-	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
+	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Fields/functions available for filtering are: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Cloud Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging).
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
@@ -2034,7 +2034,7 @@ func (o Hl7V2NotificationConfigOutput) ToHl7V2NotificationConfigOutputWithContex
 	return o
 }
 
-// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
+// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Fields/functions available for filtering are: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
 func (o Hl7V2NotificationConfigOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7V2NotificationConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -4378,13 +4378,13 @@ func (o SensitiveTextAnnotationPtrOutput) Details() pulumi.StringMapOutput {
 
 // User signature.
 type Signature struct {
-	// An image of the user's signature.
+	// Optional. An image of the user's signature.
 	Image *Image `pulumi:"image"`
-	// Metadata associated with the user's signature. For example, the user's name or the user's title.
+	// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Timestamp of the signature.
+	// Optional. Timestamp of the signature.
 	SignatureTime *string `pulumi:"signatureTime"`
-	// User's UUID provided by the client.
+	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
 }
 
@@ -4401,13 +4401,13 @@ type SignatureInput interface {
 
 // User signature.
 type SignatureArgs struct {
-	// An image of the user's signature.
+	// Optional. An image of the user's signature.
 	Image ImagePtrInput `pulumi:"image"`
-	// Metadata associated with the user's signature. For example, the user's name or the user's title.
+	// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// Timestamp of the signature.
+	// Optional. Timestamp of the signature.
 	SignatureTime pulumi.StringPtrInput `pulumi:"signatureTime"`
-	// User's UUID provided by the client.
+	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
 }
 
@@ -4489,22 +4489,22 @@ func (o SignatureOutput) ToSignaturePtrOutputWithContext(ctx context.Context) Si
 	}).(SignaturePtrOutput)
 }
 
-// An image of the user's signature.
+// Optional. An image of the user's signature.
 func (o SignatureOutput) Image() ImagePtrOutput {
 	return o.ApplyT(func(v Signature) *Image { return v.Image }).(ImagePtrOutput)
 }
 
-// Metadata associated with the user's signature. For example, the user's name or the user's title.
+// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
 func (o SignatureOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Signature) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Timestamp of the signature.
+// Optional. Timestamp of the signature.
 func (o SignatureOutput) SignatureTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Signature) *string { return v.SignatureTime }).(pulumi.StringPtrOutput)
 }
 
-// User's UUID provided by the client.
+// Required. User's UUID provided by the client.
 func (o SignatureOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Signature) *string { return v.UserId }).(pulumi.StringPtrOutput)
 }
@@ -4527,7 +4527,7 @@ func (o SignaturePtrOutput) Elem() SignatureOutput {
 	return o.ApplyT(func(v *Signature) Signature { return *v }).(SignatureOutput)
 }
 
-// An image of the user's signature.
+// Optional. An image of the user's signature.
 func (o SignaturePtrOutput) Image() ImagePtrOutput {
 	return o.ApplyT(func(v *Signature) *Image {
 		if v == nil {
@@ -4537,7 +4537,7 @@ func (o SignaturePtrOutput) Image() ImagePtrOutput {
 	}).(ImagePtrOutput)
 }
 
-// Metadata associated with the user's signature. For example, the user's name or the user's title.
+// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
 func (o SignaturePtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Signature) map[string]string {
 		if v == nil {
@@ -4547,7 +4547,7 @@ func (o SignaturePtrOutput) Metadata() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Timestamp of the signature.
+// Optional. Timestamp of the signature.
 func (o SignaturePtrOutput) SignatureTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Signature) *string {
 		if v == nil {
@@ -4557,7 +4557,7 @@ func (o SignaturePtrOutput) SignatureTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// User's UUID provided by the client.
+// Required. User's UUID provided by the client.
 func (o SignaturePtrOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Signature) *string {
 		if v == nil {
@@ -4794,6 +4794,159 @@ func (o TypeArrayOutput) Index(i pulumi.IntInput) TypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Type {
 		return vs[0].([]Type)[vs[1].(int)]
 	}).(TypeOutput)
+}
+
+// Contains the configuration for FHIR profiles and validation.
+type ValidationConfig struct {
+	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
+	DisableProfileValidation *bool `pulumi:"disableProfileValidation"`
+	// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	EnabledImplementationGuides []string `pulumi:"enabledImplementationGuides"`
+}
+
+// ValidationConfigInput is an input type that accepts ValidationConfigArgs and ValidationConfigOutput values.
+// You can construct a concrete instance of `ValidationConfigInput` via:
+//
+//          ValidationConfigArgs{...}
+type ValidationConfigInput interface {
+	pulumi.Input
+
+	ToValidationConfigOutput() ValidationConfigOutput
+	ToValidationConfigOutputWithContext(context.Context) ValidationConfigOutput
+}
+
+// Contains the configuration for FHIR profiles and validation.
+type ValidationConfigArgs struct {
+	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
+	DisableProfileValidation pulumi.BoolPtrInput `pulumi:"disableProfileValidation"`
+	// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+	EnabledImplementationGuides pulumi.StringArrayInput `pulumi:"enabledImplementationGuides"`
+}
+
+func (ValidationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidationConfig)(nil)).Elem()
+}
+
+func (i ValidationConfigArgs) ToValidationConfigOutput() ValidationConfigOutput {
+	return i.ToValidationConfigOutputWithContext(context.Background())
+}
+
+func (i ValidationConfigArgs) ToValidationConfigOutputWithContext(ctx context.Context) ValidationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidationConfigOutput)
+}
+
+func (i ValidationConfigArgs) ToValidationConfigPtrOutput() ValidationConfigPtrOutput {
+	return i.ToValidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ValidationConfigArgs) ToValidationConfigPtrOutputWithContext(ctx context.Context) ValidationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidationConfigOutput).ToValidationConfigPtrOutputWithContext(ctx)
+}
+
+// ValidationConfigPtrInput is an input type that accepts ValidationConfigArgs, ValidationConfigPtr and ValidationConfigPtrOutput values.
+// You can construct a concrete instance of `ValidationConfigPtrInput` via:
+//
+//          ValidationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ValidationConfigPtrInput interface {
+	pulumi.Input
+
+	ToValidationConfigPtrOutput() ValidationConfigPtrOutput
+	ToValidationConfigPtrOutputWithContext(context.Context) ValidationConfigPtrOutput
+}
+
+type validationConfigPtrType ValidationConfigArgs
+
+func ValidationConfigPtr(v *ValidationConfigArgs) ValidationConfigPtrInput {
+	return (*validationConfigPtrType)(v)
+}
+
+func (*validationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValidationConfig)(nil)).Elem()
+}
+
+func (i *validationConfigPtrType) ToValidationConfigPtrOutput() ValidationConfigPtrOutput {
+	return i.ToValidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *validationConfigPtrType) ToValidationConfigPtrOutputWithContext(ctx context.Context) ValidationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidationConfigPtrOutput)
+}
+
+// Contains the configuration for FHIR profiles and validation.
+type ValidationConfigOutput struct{ *pulumi.OutputState }
+
+func (ValidationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidationConfig)(nil)).Elem()
+}
+
+func (o ValidationConfigOutput) ToValidationConfigOutput() ValidationConfigOutput {
+	return o
+}
+
+func (o ValidationConfigOutput) ToValidationConfigOutputWithContext(ctx context.Context) ValidationConfigOutput {
+	return o
+}
+
+func (o ValidationConfigOutput) ToValidationConfigPtrOutput() ValidationConfigPtrOutput {
+	return o.ToValidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ValidationConfigOutput) ToValidationConfigPtrOutputWithContext(ctx context.Context) ValidationConfigPtrOutput {
+	return o.ApplyT(func(v ValidationConfig) *ValidationConfig {
+		return &v
+	}).(ValidationConfigPtrOutput)
+}
+
+// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
+func (o ValidationConfigOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ValidationConfig) *bool { return v.DisableProfileValidation }).(pulumi.BoolPtrOutput)
+}
+
+// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+func (o ValidationConfigOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValidationConfig) []string { return v.EnabledImplementationGuides }).(pulumi.StringArrayOutput)
+}
+
+type ValidationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ValidationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValidationConfig)(nil)).Elem()
+}
+
+func (o ValidationConfigPtrOutput) ToValidationConfigPtrOutput() ValidationConfigPtrOutput {
+	return o
+}
+
+func (o ValidationConfigPtrOutput) ToValidationConfigPtrOutputWithContext(ctx context.Context) ValidationConfigPtrOutput {
+	return o
+}
+
+func (o ValidationConfigPtrOutput) Elem() ValidationConfigOutput {
+	return o.ApplyT(func(v *ValidationConfig) ValidationConfig { return *v }).(ValidationConfigOutput)
+}
+
+// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
+func (o ValidationConfigPtrOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ValidationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableProfileValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
+func (o ValidationConfigPtrOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ValidationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledImplementationGuides
+	}).(pulumi.StringArrayOutput)
 }
 
 // Describes a selector for extracting and matching an MSH field to a value.
@@ -5082,6 +5235,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamConfigArrayOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})
 	pulumi.RegisterOutputType(TypeArrayOutput{})
+	pulumi.RegisterOutputType(ValidationConfigOutput{})
+	pulumi.RegisterOutputType(ValidationConfigPtrOutput{})
 	pulumi.RegisterOutputType(VersionSourceOutput{})
 	pulumi.RegisterOutputType(VersionSourceArrayOutput{})
 	pulumi.RegisterOutputType(VertexOutput{})
