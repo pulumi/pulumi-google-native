@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"github.com/golang/glog"
 	"github.com/golang/protobuf/ptypes/empty"
+	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-cloud/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v2/resource/provider"
@@ -21,6 +22,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"time"
 )
 
 type googleCloudProvider struct {
@@ -192,9 +194,14 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			delete(inputs, key)
 		}
 
-		resp, err = sendRequestWithTimeout(ctx, "POST", uri, inputs.Mappable(), 0)
+		op, err := sendRequestWithTimeout(ctx, "POST", uri, inputs.Mappable(), 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s", err)
+		}
+
+		resp, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, op)
+		if err != nil {
+			return nil, errors.Wrapf(err, "waiting for completion")
 		}
 	}
 
@@ -204,12 +211,67 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), SkipNulls: true},
 	)
 
-	// TODO: Await. Successful response doesn't mean that operation is complete.
-
 	return &rpc.CreateResponse{
 		Id:         id,
 		Properties: outputs,
 	}, nil
+}
+
+func (p *googleCloudProvider) waitForResourceOpCompletion(ctx context.Context, baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
+	retryPolicy := backoff.Backoff{
+		Min:    1 * time.Second,
+		Max:    15 * time.Second,
+		Factor: 1.5,
+		Jitter: true,
+	}
+	for {
+		glog.V(9).Infof("waiting for completion: %+v", resp)
+
+		// There are two styles of operations: one returns a 'done' boolean flag, another one returns status='DONE'.
+		done, hasDone := resp["done"].(bool)
+		status, hasStatus := resp["status"].(string)
+		completed := (hasDone && done) || (hasStatus && status == "DONE")
+		if completed {
+			if failure, has := resp["error"]; has {
+				return nil, errors.Errorf("operation errored with %+v", failure)
+			}
+			if statusMessage, has := resp["statusMessage"]; has {
+				return nil, errors.Errorf("operation failed with %q", statusMessage)
+			}
+			if response, has := resp["response"].(map[string]interface{}); has {
+				return response, nil
+			}
+			if operationType, has := resp["operationType"].(string); has && strings.Contains(strings.ToLower(operationType), "delete") {
+				return resp, nil
+			}
+			if targetLink, has := resp["targetLink"].(string); has {
+				return sendRequestWithTimeout(ctx, "GET", targetLink, nil, 0)
+			}
+			return resp, nil
+		}
+
+		var pollUri string
+		if selfLink, has := resp["selfLink"].(string); has && hasStatus {
+			pollUri = selfLink
+		} else {
+			if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
+				pollUri = fmt.Sprintf("%s/v1/%s", baseUrl, name)
+			}
+		}
+
+		if pollUri == "" {
+			return resp, nil
+		}
+
+		time.Sleep(retryPolicy.Duration())
+
+		op, err := sendRequestWithTimeout(ctx, "GET", pollUri, nil, 0)
+		if err != nil {
+			return nil, errors.Wrapf(err, "polling operation status")
+		}
+
+		resp = op
+	}
 }
 
 func evalParam(inputs resource.PropertyMap, param string) string {
@@ -256,9 +318,14 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 	id := req.GetId()
 	uri := fmt.Sprintf("%s/%s", res.BaseUrl, id)
 
-	_, err := sendRequestWithTimeout(ctx, "DELETE", uri, nil, 0)
+	resp, err := sendRequestWithTimeout(ctx, "DELETE", uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
+	}
+
+	_, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, resp)
+	if err != nil {
+		return nil, errors.Wrapf(err, "waiting for completion")
 	}
 
 	return &empty.Empty{}, nil

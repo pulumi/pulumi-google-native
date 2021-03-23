@@ -4,7 +4,7 @@ import * as cloud from "@pulumi/google-cloud";
 const project = "pulumi-development";
 const region = "us-central1";
 
-const runName = "run-nextgen";
+const runName = "run-native";
 const service = new cloud.run.v1.Service("service", {
     parent: `projects/${project}/locations/${region}`,
     apiVersion: "serving.knative.dev/v1",
@@ -76,11 +76,11 @@ const pyInvoker = new cloud.cloudfunctions.v1.Policy("py-invoker", {
 
 export const functionUrl = `https://${region}-${project}.cloudfunctions.net/${functionName}`;
 
-const clusterName = "gke-nextgen";
+const clusterName = "gke-native";
 const cluster = new cloud.container.v1.Cluster("cluster", {
     parent: `projects/${project}/locations/${region}`,
     cluster: {
-        initialClusterVersion: "1.17.14-gke.1600",
+        initialClusterVersion: "1.18.16-gke.500",
         initialNodeCount: 1,
         masterAuth: {
             password: "hDiqST+U7{t+BkQA+OD*",
@@ -119,6 +119,6 @@ const pool = new cloud.container.v1.NodePool("nodepool", {
             autoRepair: true,
         },
         name: "primary-node-pool",
-        version: "1.17.14-gke.1600",
+        version: "1.18.16-gke.500",
     },
 }, {dependsOn: [cluster]});
