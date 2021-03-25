@@ -230,8 +230,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(ctx context.Context, b
 		// There are two styles of operations: one returns a 'done' boolean flag, another one returns status='DONE'.
 		done, hasDone := resp["done"].(bool)
 		status, hasStatus := resp["status"].(string)
-		completed := (hasDone && done) || (hasStatus && status == "DONE")
-		if completed {
+		if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
 			if failure, has := resp["error"]; has {
 				return nil, errors.Errorf("operation errored with %+v", failure)
 			}
