@@ -12,6 +12,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/pulumi/pulumi/pkg/v2 v2.23.1
 	github.com/pulumi/pulumi/sdk/v2 v2.23.1
+	github.com/stretchr/testify v1.6.1 // indirect
 	golang.org/x/oauth2 v0.0.0-20201203001011-0b49973bad19
 	google.golang.org/api v0.36.0
 )

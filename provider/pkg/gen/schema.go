@@ -152,7 +152,28 @@ func (g *packageGenerator) findResources(resources map[string]discovery.RestReso
 	for _, res := range resources {
 		for methodName, value := range res.Methods {
 			restMethod := value
-			if methodName == "create" || methodName == "insert" || methodName == "setIamPolicy" {
+			switch methodName {
+			case "create":
+				if restMethod.Request == nil {
+					typeName := resourceName(restMethod)
+					err := g.genResource(typeName, &restMethod)
+					if err != nil {
+						return err
+					}
+				} else {
+					name := restMethod.Request.Ref
+					name = strings.TrimPrefix(name, "Create")
+					name = strings.TrimSuffix(name, "Request")
+					prefix := strings.Split(restMethod.Id, ".")[0]
+					if strings.HasPrefix(strings.ToLower(name), prefix) && len(name) > len(prefix) {
+						name = name[len(prefix):]
+					}
+					err := g.genResource(name, &restMethod)
+					if err != nil {
+						return err
+					}
+				}
+			case "insert", "setIamPolicy":
 				typeName := resourceName(restMethod)
 				err := g.genResource(typeName, &restMethod)
 				if err != nil {
@@ -301,6 +322,10 @@ func resourceName(restMethod discovery.RestMethod) (name string) {
 		name = strings.TrimSuffix(name, "Request")
 	case "Object":
 		name = "BucketObject"
+	}
+	prefix := strings.Split(restMethod.Id, ".")[0]
+	if strings.HasPrefix(strings.ToLower(name), prefix) && len(prefix) < len(name) {
+		name = name[len(prefix):]
 	}
 	return
 }
