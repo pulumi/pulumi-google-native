@@ -20,9 +20,10 @@ func TestCoverage(t *testing.T) {
 	require.NoError(t, j.Decode(&native))
 	f.Close()
 	resourceToNativeTok := map[string]codegen.StringSet{}
+	fmt.Printf("Total resources in native provider: %d\n", len(native.Resources))
 	for tok := range native.Resources {
 		sp := strings.Split(tok, ":")
-		res := sp[len(sp) - 1]
+		res := sp[len(sp)-1]
 		if _, ok := resourceToNativeTok[res]; !ok {
 			resourceToNativeTok[res] = codegen.NewStringSet()
 		}
@@ -35,9 +36,12 @@ func TestCoverage(t *testing.T) {
 	tf := schema.PackageSpec{}
 	require.NoError(t, j.Decode(&tf))
 	resourceToTfTok := map[string]codegen.StringSet{}
+	fmt.Printf("Total resources in TF provider: %d\n", len(tf.Resources))
+	fmt.Println()
+
 	for tok := range tf.Resources {
 		sp := strings.Split(tok, ":")
-		res := sp[len(sp) -1]
+		res := sp[len(sp)-1]
 		if _, ok := resourceToTfTok[res]; !ok {
 			resourceToTfTok[res] = codegen.NewStringSet()
 		}
