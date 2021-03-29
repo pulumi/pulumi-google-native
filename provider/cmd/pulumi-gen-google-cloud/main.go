@@ -86,10 +86,22 @@ func emitDiscoveryFiles(outDir string) error {
 		return err
 	}
 
+	// TODO: this one item is not found in the directory list - figure out why.
+	list.Items = append(list.Items, &discovery.DirectoryListItems {
+		DiscoveryRestUrl: "https://vpcaccess.googleapis.com/$discovery/rest?version=v1",
+		Title: "Cloud VPC Access",
+		Id: "vpcaccess:v1",
+	})
+
+	// TODO: getting access denied from https://essentialcontacts.googleapis.com/$discovery/rest?version=v1beta1
+	// but the TF provider uses that API. it's not in the list either.
+
 	for _, item := range list.Items {
 		// TODO: this is arbitrary - find a better way?
 		if !strings.HasPrefix(item.DocumentationLink, "https://cloud.google.com") &&
 			!strings.HasPrefix(item.Title, "Cloud") &&
+			!strings.HasPrefix(item.Title, "Firebase") &&
+			!strings.HasPrefix(item.Title, "Identity Toolkit") &&
 			!strings.HasPrefix(item.Title, "Compute"){
 			continue
 		}
