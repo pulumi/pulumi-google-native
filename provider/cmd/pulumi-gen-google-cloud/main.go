@@ -117,6 +117,8 @@ func copyJsonFile(url, outDir, path string) error {
 		return err
 	}
 
+	// Marshaller will write JSON nodes in alphanumeric order which makes the files "stable",
+	// and we can track the history more easily.
 	output, err := json.MarshalIndent(ifce, "", "  ")
 	if err != nil {
 		return err
