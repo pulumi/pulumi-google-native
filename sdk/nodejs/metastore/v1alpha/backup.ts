@@ -6,94 +6,94 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new MetadataImport in a given project and location.
+ * Creates a new Backup in a given project and location.
  */
-export class MetadataImport extends pulumi.CustomResource {
+export class Backup extends pulumi.CustomResource {
     /**
-     * Get an existing MetadataImport resource's state with the given name, ID, and optional extra
+     * Get an existing Backup resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): MetadataImport {
-        return new MetadataImport(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): Backup {
+        return new Backup(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:metastore/v1beta:MetadataImport';
+    public static readonly __pulumiType = 'google-cloud:metastore/v1alpha:Backup';
 
     /**
-     * Returns true if the given object is an instance of MetadataImport.  This is designed to work even
+     * Returns true if the given object is an instance of Backup.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is MetadataImport {
+    public static isInstance(obj: any): obj is Backup {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === MetadataImport.__pulumiType;
+        return obj['__pulumiType'] === Backup.__pulumiType;
     }
 
 
     /**
-     * Create a MetadataImport resource with the given unique name, arguments, and options.
+     * Create a Backup resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: MetadataImportArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: BackupArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            inputs["backupId"] = args ? args.backupId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["databaseDump"] = args ? args.databaseDump : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["metadataImportId"] = args ? args.metadataImportId : undefined;
+            inputs["endTime"] = args ? args.endTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["serviceRevision"] = args ? args.serviceRevision : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MetadataImport.__pulumiType, name, inputs, opts);
+        super(Backup.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a MetadataImport resource.
+ * The set of arguments for constructing a Backup resource.
  */
-export interface MetadataImportArgs {
+export interface BackupArgs {
     /**
-     * Output only. The time when the metadata import was created.
+     * Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+     */
+    readonly backupId?: pulumi.Input<string>;
+    /**
+     * Output only. The time when the backup was started.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Immutable. A database dump from a pre-existing metastore's database.
-     */
-    readonly databaseDump?: pulumi.Input<inputs.metastore.v1beta.DatabaseDump>;
-    /**
-     * The description of the metadata import.
+     * The description of the backup.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+     * Output only. The time when the backup finished creating.
      */
-    readonly metadataImportId?: pulumi.Input<string>;
+    readonly endTime?: pulumi.Input<string>;
     /**
-     * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+     * Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The relative resource name of the service in which to create a metastore import, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+     * Required. The relative resource name of the service in which to create a backup of the following form:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
     readonly parent: pulumi.Input<string>;
     /**
@@ -101,11 +101,11 @@ export interface MetadataImportArgs {
      */
     readonly requestId?: pulumi.Input<string>;
     /**
-     * Output only. The current state of the metadata import.
+     * Output only. The revision of the service at the time of backup.
+     */
+    readonly serviceRevision?: pulumi.Input<inputs.metastore.v1alpha.Service>;
+    /**
+     * Output only. The current state of the backup.
      */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the metadata import was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

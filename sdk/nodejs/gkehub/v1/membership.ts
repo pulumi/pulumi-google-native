@@ -61,6 +61,7 @@ export class Membership extends pulumi.CustomResource {
             inputs["membershipId"] = args ? args.membershipId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["uniqueId"] = args ? args.uniqueId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -121,6 +122,10 @@ export interface MembershipArgs {
      * Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*&#47;locations/*`.
      */
     readonly parent: pulumi.Input<string>;
+    /**
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Output only. State of the Membership resource.
      */

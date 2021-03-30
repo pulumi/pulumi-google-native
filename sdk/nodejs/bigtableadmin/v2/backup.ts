@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -50,6 +51,7 @@ export class Backup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
+            inputs["encryptionInfo"] = args ? args.encryptionInfo : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -75,6 +77,10 @@ export interface BackupArgs {
      * Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
      */
     readonly backupId?: pulumi.Input<string>;
+    /**
+     * Output only. The encryption information for the backup.
+     */
+    readonly encryptionInfo?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionInfo>;
     /**
      * Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
      */

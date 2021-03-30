@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new policy in the specified project using the data included in the request.
+ * Creates a new network firewall policy in the specified project and region.
  */
 export class FirewallPolicy extends pulumi.CustomResource {
     /**
@@ -43,10 +43,16 @@ export class FirewallPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FirewallPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: FirewallPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
+            }
             inputs["associations"] = args ? args.associations : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -56,7 +62,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
@@ -116,13 +122,13 @@ export interface FirewallPolicyArgs {
      */
     readonly parent?: pulumi.Input<string>;
     /**
-     * Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+     * Project ID for this request.
      */
-    readonly parentId?: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

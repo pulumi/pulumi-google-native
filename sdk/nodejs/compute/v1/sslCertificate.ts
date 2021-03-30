@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a SslCertificate resource in the specified project and region using the data included in the request
+ * Creates a SslCertificate resource in the specified project using the data included in the request.
  */
 export class SslCertificate extends pulumi.CustomResource {
     /**
@@ -49,9 +49,6 @@ export class SslCertificate extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["certificate"] = args ? args.certificate : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -125,7 +122,7 @@ export interface SslCertificateArgs {
     /**
      * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+ * Creates a ForwardingRule resource in the specified project and region using the data included in the request.
  */
 export class ForwardingRule extends pulumi.CustomResource {
     /**
@@ -49,6 +49,9 @@ export class ForwardingRule extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             inputs["IPAddress"] = args ? args.IPAddress : undefined;
             inputs["IPProtocol"] = args ? args.IPProtocol : undefined;
@@ -262,7 +265,7 @@ export interface ForwardingRuleArgs {
     /**
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *

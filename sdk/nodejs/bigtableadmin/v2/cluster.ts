@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -51,6 +52,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
+            inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -77,6 +79,10 @@ export interface ClusterArgs {
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
     readonly defaultStorageType?: pulumi.Input<string>;
+    /**
+     * Immutable. The encryption configuration for CMEK-protected clusters.
+     */
+    readonly encryptionConfig?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionConfig>;
     /**
      * Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
      */

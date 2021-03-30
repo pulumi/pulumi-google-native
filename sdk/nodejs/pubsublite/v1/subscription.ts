@@ -53,6 +53,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["deliveryConfig"] = args ? args.deliveryConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["skipBacklog"] = args ? args.skipBacklog : undefined;
             inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
@@ -80,6 +81,10 @@ export interface SubscriptionArgs {
      * Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.
      */
     readonly parent: pulumi.Input<string>;
+    /**
+     * If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+     */
+    readonly skipBacklog?: pulumi.Input<boolean>;
     /**
      * Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
      */

@@ -5,20 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./publicKey";
+export * from "./feature";
+export * from "./policy";
 
 // Import resources to register:
-import { PublicKey } from "./publicKey";
+import { Feature } from "./feature";
+import { Policy } from "./policy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudshell/v1alpha1:PublicKey":
-                return new PublicKey(name, <any>undefined, { urn })
+            case "google-cloud:gkehub/v1beta:Feature":
+                return new Feature(name, <any>undefined, { urn })
+            case "google-cloud:gkehub/v1beta:Policy":
+                return new Policy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudshell/v1alpha1", _module)
+pulumi.runtime.registerResourceModule("google-cloud", "gkehub/v1beta", _module)

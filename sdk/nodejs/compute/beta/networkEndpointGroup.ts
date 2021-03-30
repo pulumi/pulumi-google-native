@@ -50,9 +50,6 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
@@ -169,5 +166,5 @@ export interface NetworkEndpointGroupArgs {
     /**
      * [Output Only] The URL of the zone where the network endpoint group is located.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

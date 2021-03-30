@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Sets the access control policy on the specified resource. Replaces any existing policy.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+ * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -22,7 +22,7 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/beta:Policy';
+    public static readonly __pulumiType = 'google-cloud:gkehub/v1beta:Policy';
 
     /**
      * Returns true if the given object is an instance of Policy.  This is designed to work even
@@ -47,17 +47,12 @@ export class Policy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.project === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'project'");
-            }
             if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
             inputs["policy"] = args ? args.policy : undefined;
-            inputs["project"] = args ? args.project : undefined;
             inputs["resource"] = args ? args.resource : undefined;
+            inputs["updateMask"] = args ? args.updateMask : undefined;
         } else {
         }
         if (!opts.version) {
@@ -72,23 +67,15 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyArgs {
     /**
-     * Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+     * REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.
      */
-    readonly bindings?: pulumi.Input<pulumi.Input<inputs.compute.beta.Binding>[]>;
+    readonly policy?: pulumi.Input<inputs.gkehub.v1beta.Policy>;
     /**
-     * Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
-     */
-    readonly etag?: pulumi.Input<string>;
-    /**
-     * REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them.
-     */
-    readonly policy?: pulumi.Input<inputs.compute.beta.Policy>;
-    /**
-     * Project ID for this request.
-     */
-    readonly project: pulumi.Input<string>;
-    /**
-     * Name or id of the resource for this request.
+     * REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.
      */
     readonly resource: pulumi.Input<string>;
+    /**
+     * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
+     */
+    readonly updateMask?: pulumi.Input<string>;
 }

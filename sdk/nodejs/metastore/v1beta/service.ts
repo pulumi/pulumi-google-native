@@ -62,6 +62,7 @@ export class Service extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -115,21 +116,25 @@ export interface ServiceArgs {
      */
     readonly metadataManagementActivity?: pulumi.Input<inputs.metastore.v1beta.MetadataManagementActivity>;
     /**
-     * Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+     * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+     * Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
+     * Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
      */
     readonly parent: pulumi.Input<string>;
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
     readonly port?: pulumi.Input<number>;
+    /**
+     * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+     */
+    readonly releaseChannel?: pulumi.Input<string>;
     /**
      * Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
      */

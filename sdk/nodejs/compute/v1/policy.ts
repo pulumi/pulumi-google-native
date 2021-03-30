@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Sets the access control policy on the specified resource. Replaces any existing policy.
+ * Sets the access control policy on the specified resource. Replaces any existing policy.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -50,9 +50,6 @@ export class Policy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
@@ -60,7 +57,6 @@ export class Policy extends pulumi.CustomResource {
             inputs["etag"] = args ? args.etag : undefined;
             inputs["policy"] = args ? args.policy : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
             inputs["resource"] = args ? args.resource : undefined;
         } else {
         }
@@ -76,7 +72,7 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyArgs {
     /**
-     * Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+     * Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
      */
     readonly bindings?: pulumi.Input<pulumi.Input<inputs.compute.v1.Binding>[]>;
     /**
@@ -91,10 +87,6 @@ export interface PolicyArgs {
      * Project ID for this request.
      */
     readonly project: pulumi.Input<string>;
-    /**
-     * The name of the region for this request.
-     */
-    readonly region: pulumi.Input<string>;
     /**
      * Name or id of the resource for this request.
      */

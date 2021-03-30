@@ -8,7 +8,7 @@ import * as utilities from "../../utilities";
 /**
  * Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
  *
- * A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
+ * A regional managed instance group can contain up to 2000 instances.
  */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -52,8 +52,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
@@ -153,7 +153,7 @@ export interface InstanceGroupManagerArgs {
     /**
      * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
      */
-    readonly region?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *
@@ -195,5 +195,5 @@ export interface InstanceGroupManagerArgs {
     /**
      * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

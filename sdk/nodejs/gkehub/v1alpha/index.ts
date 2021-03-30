@@ -5,15 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./feature";
 export * from "./policy";
 
 // Import resources to register:
+import { Feature } from "./feature";
 import { Policy } from "./policy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-cloud:gkehub/v1alpha:Feature":
+                return new Feature(name, <any>undefined, { urn })
             case "google-cloud:gkehub/v1alpha:Policy":
                 return new Policy(name, <any>undefined, { urn })
             default:

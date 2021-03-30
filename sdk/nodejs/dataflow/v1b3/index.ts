@@ -6,11 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./job";
-export * from "./templateVersion";
 
 // Import resources to register:
 import { Job } from "./job";
-import { TemplateVersion } from "./templateVersion";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +16,6 @@ const _module = {
         switch (type) {
             case "google-cloud:dataflow/v1b3:Job":
                 return new Job(name, <any>undefined, { urn })
-            case "google-cloud:dataflow/v1b3:TemplateVersion":
-                return new TemplateVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

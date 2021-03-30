@@ -5,11 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./backup";
 export * from "./metadataImport";
 export * from "./policy";
 export * from "./service";
 
 // Import resources to register:
+import { Backup } from "./backup";
 import { MetadataImport } from "./metadataImport";
 import { Policy } from "./policy";
 import { Service } from "./service";
@@ -18,6 +20,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-cloud:metastore/v1beta:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "google-cloud:metastore/v1beta:MetadataImport":
                 return new MetadataImport(name, <any>undefined, { urn })
             case "google-cloud:metastore/v1beta:Policy":
