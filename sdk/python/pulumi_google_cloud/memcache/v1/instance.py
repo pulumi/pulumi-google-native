@@ -44,22 +44,22 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[str] create_time: Output only. The time the instance was created.
-        :param pulumi.Input[str] discovery_endpoint: Output only. Endpoint for Discovery API
-        :param pulumi.Input[str] display_name: User provided name for the instance only used for display purposes. Cannot be more than 80 characters.
-        :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location If any of the above are not met, will raise an invalid argument error.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe current statuses of memcached instance.
+        :param pulumi.Input[str] discovery_endpoint: Output only. Endpoint for the Discovery API.
+        :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+        :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] memcache_full_version: Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeArgs']]]] memcache_nodes: Output only. List of Memcached nodes. Refer to [Node] message for more details.
-        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the latest supported minor version.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which zones Memcached nodes within an instances should be provisioned in. Refer to [zones] field for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeArgs']]]] memcache_nodes: Output only. List of Memcached nodes. Refer to Node message for more details.
+        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Required. Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
         :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: Optional: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[str] parent: Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
         :param pulumi.Input[str] state: Output only. The state of this Memcached instance.
         :param pulumi.Input[str] update_time: Output only. The time the instance was updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

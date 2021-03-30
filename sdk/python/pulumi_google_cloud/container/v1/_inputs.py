@@ -3912,23 +3912,39 @@ class ShieldedNodesArgs:
 @pulumi.input_type
 class StatusConditionArgs:
     def __init__(__self__, *,
+                 canonical_code: Optional[pulumi.Input[str]] = None,
                  code: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
-        :param pulumi.Input[str] code: Machine-friendly representation of the condition
+        :param pulumi.Input[str] canonical_code: Canonical code of the condition.
+        :param pulumi.Input[str] code: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         :param pulumi.Input[str] message: Human-friendly representation of the condition
         """
+        if canonical_code is not None:
+            pulumi.set(__self__, "canonical_code", canonical_code)
         if code is not None:
             pulumi.set(__self__, "code", code)
         if message is not None:
             pulumi.set(__self__, "message", message)
 
     @property
+    @pulumi.getter(name="canonicalCode")
+    def canonical_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Canonical code of the condition.
+        """
+        return pulumi.get(self, "canonical_code")
+
+    @canonical_code.setter
+    def canonical_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "canonical_code", value)
+
+    @property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[str]]:
         """
-        Machine-friendly representation of the condition
+        Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         """
         return pulumi.get(self, "code")
 

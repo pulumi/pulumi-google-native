@@ -38,7 +38,7 @@ class InstantSnapshot(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates an instant snapshot in the specified zone.
+        Creates an instant snapshot in the specified region.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,6 +103,8 @@ class InstantSnapshot(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['satisfies_pzs'] = satisfies_pzs
@@ -111,8 +113,6 @@ class InstantSnapshot(pulumi.CustomResource):
             __props__['source_disk'] = source_disk
             __props__['source_disk_id'] = source_disk_id
             __props__['status'] = status
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(InstantSnapshot, __self__).__init__(
             'google-cloud:compute/alpha:InstantSnapshot',

@@ -62,7 +62,7 @@ class Disk(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+        Creates a persistent regional disk in the specified project using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -192,6 +192,8 @@ class Disk(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['provisioned_iops'] = provisioned_iops
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['replica_zones'] = replica_zones
             __props__['request_id'] = request_id
@@ -212,8 +214,6 @@ class Disk(pulumi.CustomResource):
             __props__['storage_type'] = storage_type
             __props__['type'] = type
             __props__['users'] = users
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(Disk, __self__).__init__(
             'google-cloud:compute/beta:Disk',

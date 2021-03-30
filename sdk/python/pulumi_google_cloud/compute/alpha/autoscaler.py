@@ -96,6 +96,8 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['recommended_size'] = recommended_size
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['scaling_schedule_status'] = scaling_schedule_status
@@ -104,8 +106,6 @@ class Autoscaler(pulumi.CustomResource):
             __props__['status'] = status
             __props__['status_details'] = status_details
             __props__['target'] = target
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(Autoscaler, __self__).__init__(
             'google-cloud:compute/alpha:Autoscaler',

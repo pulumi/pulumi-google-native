@@ -19,6 +19,7 @@ class Subscription(pulumi.CustomResource):
                  delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 skip_backlog: Optional[pulumi.Input[bool]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -32,6 +33,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeliveryConfigArgs']] delivery_config: The settings for this subscription's message delivery.
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         :param pulumi.Input[str] parent: Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.
+        :param pulumi.Input[bool] skip_backlog: If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
         :param pulumi.Input[str] subscription_id: Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
         :param pulumi.Input[str] topic: The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         """
@@ -57,6 +59,7 @@ class Subscription(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
+            __props__['skip_backlog'] = skip_backlog
             __props__['subscription_id'] = subscription_id
             __props__['topic'] = topic
         super(Subscription, __self__).__init__(

@@ -23,8 +23,10 @@ __all__ = [
     'EndpointConfigArgs',
     'ExprArgs',
     'GceClusterConfigArgs',
+    'GkeClusterConfigArgs',
     'HadoopJobArgs',
     'HiveJobArgs',
+    'IdentityConfigArgs',
     'InstanceGroupAutoscalingPolicyConfigArgs',
     'InstanceGroupConfigArgs',
     'InstanceReferenceArgs',
@@ -35,6 +37,7 @@ __all__ = [
     'ManagedClusterArgs',
     'ManagedGroupConfigArgs',
     'MetastoreConfigArgs',
+    'NamespacedGkeDeploymentTargetArgs',
     'NodeGroupAffinityArgs',
     'NodeInitializationActionArgs',
     'OrderedJobArgs',
@@ -313,6 +316,7 @@ class ClusterConfigArgs:
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  endpoint_config: Optional[pulumi.Input['EndpointConfigArgs']] = None,
                  gce_cluster_config: Optional[pulumi.Input['GceClusterConfigArgs']] = None,
+                 gke_cluster_config: Optional[pulumi.Input['GkeClusterConfigArgs']] = None,
                  initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['NodeInitializationActionArgs']]]] = None,
                  lifecycle_config: Optional[pulumi.Input['LifecycleConfigArgs']] = None,
                  master_config: Optional[pulumi.Input['InstanceGroupConfigArgs']] = None,
@@ -329,6 +333,7 @@ class ClusterConfigArgs:
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for the cluster.
         :param pulumi.Input['EndpointConfigArgs'] endpoint_config: Optional. Port/endpoint configuration for this cluster
         :param pulumi.Input['GceClusterConfigArgs'] gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
+        :param pulumi.Input['GkeClusterConfigArgs'] gke_cluster_config: Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
         :param pulumi.Input[Sequence[pulumi.Input['NodeInitializationActionArgs']]] initialization_actions: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi 
         :param pulumi.Input['LifecycleConfigArgs'] lifecycle_config: Optional. Lifecycle setting for the cluster.
         :param pulumi.Input['InstanceGroupConfigArgs'] master_config: Optional. The Compute Engine config settings for the master instance in a cluster.
@@ -349,6 +354,8 @@ class ClusterConfigArgs:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
         if gce_cluster_config is not None:
             pulumi.set(__self__, "gce_cluster_config", gce_cluster_config)
+        if gke_cluster_config is not None:
+            pulumi.set(__self__, "gke_cluster_config", gke_cluster_config)
         if initialization_actions is not None:
             pulumi.set(__self__, "initialization_actions", initialization_actions)
         if lifecycle_config is not None:
@@ -427,6 +434,18 @@ class ClusterConfigArgs:
     @gce_cluster_config.setter
     def gce_cluster_config(self, value: Optional[pulumi.Input['GceClusterConfigArgs']]):
         pulumi.set(self, "gce_cluster_config", value)
+
+    @property
+    @pulumi.getter(name="gkeClusterConfig")
+    def gke_cluster_config(self) -> Optional[pulumi.Input['GkeClusterConfigArgs']]:
+        """
+        Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+        """
+        return pulumi.get(self, "gke_cluster_config")
+
+    @gke_cluster_config.setter
+    def gke_cluster_config(self, value: Optional[pulumi.Input['GkeClusterConfigArgs']]):
+        pulumi.set(self, "gke_cluster_config", value)
 
     @property
     @pulumi.getter(name="initializationActions")
@@ -1082,6 +1101,30 @@ class GceClusterConfigArgs:
 
 
 @pulumi.input_type
+class GkeClusterConfigArgs:
+    def __init__(__self__, *,
+                 namespaced_gke_deployment_target: Optional[pulumi.Input['NamespacedGkeDeploymentTargetArgs']] = None):
+        """
+        The GKE config for this cluster.
+        :param pulumi.Input['NamespacedGkeDeploymentTargetArgs'] namespaced_gke_deployment_target: Optional. A target for the deployment.
+        """
+        if namespaced_gke_deployment_target is not None:
+            pulumi.set(__self__, "namespaced_gke_deployment_target", namespaced_gke_deployment_target)
+
+    @property
+    @pulumi.getter(name="namespacedGkeDeploymentTarget")
+    def namespaced_gke_deployment_target(self) -> Optional[pulumi.Input['NamespacedGkeDeploymentTargetArgs']]:
+        """
+        Optional. A target for the deployment.
+        """
+        return pulumi.get(self, "namespaced_gke_deployment_target")
+
+    @namespaced_gke_deployment_target.setter
+    def namespaced_gke_deployment_target(self, value: Optional[pulumi.Input['NamespacedGkeDeploymentTargetArgs']]):
+        pulumi.set(self, "namespaced_gke_deployment_target", value)
+
+
+@pulumi.input_type
 class HadoopJobArgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1319,6 +1362,30 @@ class HiveJobArgs:
     @script_variables.setter
     def script_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "script_variables", value)
+
+
+@pulumi.input_type
+class IdentityConfigArgs:
+    def __init__(__self__, *,
+                 user_service_account_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Identity related configuration, including service account based secure multi-tenancy user mappings.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_service_account_mapping: Required. Map of user to service account.
+        """
+        if user_service_account_mapping is not None:
+            pulumi.set(__self__, "user_service_account_mapping", user_service_account_mapping)
+
+    @property
+    @pulumi.getter(name="userServiceAccountMapping")
+    def user_service_account_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Required. Map of user to service account.
+        """
+        return pulumi.get(self, "user_service_account_mapping")
+
+    @user_service_account_mapping.setter
+    def user_service_account_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_service_account_mapping", value)
 
 
 @pulumi.input_type
@@ -2119,6 +2186,46 @@ class MetastoreConfigArgs:
     @dataproc_metastore_service.setter
     def dataproc_metastore_service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataproc_metastore_service", value)
+
+
+@pulumi.input_type
+class NamespacedGkeDeploymentTargetArgs:
+    def __init__(__self__, *,
+                 cluster_namespace: Optional[pulumi.Input[str]] = None,
+                 target_gke_cluster: Optional[pulumi.Input[str]] = None):
+        """
+        A full, namespace-isolated deployment target for an existing GKE cluster.
+        :param pulumi.Input[str] cluster_namespace: Optional. A namespace within the GKE cluster to deploy into.
+        :param pulumi.Input[str] target_gke_cluster: Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        if cluster_namespace is not None:
+            pulumi.set(__self__, "cluster_namespace", cluster_namespace)
+        if target_gke_cluster is not None:
+            pulumi.set(__self__, "target_gke_cluster", target_gke_cluster)
+
+    @property
+    @pulumi.getter(name="clusterNamespace")
+    def cluster_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A namespace within the GKE cluster to deploy into.
+        """
+        return pulumi.get(self, "cluster_namespace")
+
+    @cluster_namespace.setter
+    def cluster_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_namespace", value)
+
+    @property
+    @pulumi.getter(name="targetGkeCluster")
+    def target_gke_cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        """
+        return pulumi.get(self, "target_gke_cluster")
+
+    @target_gke_cluster.setter
+    def target_gke_cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_gke_cluster", value)
 
 
 @pulumi.input_type
@@ -2964,13 +3071,29 @@ class ReservationAffinityArgs:
 @pulumi.input_type
 class SecurityConfigArgs:
     def __init__(__self__, *,
+                 identity_config: Optional[pulumi.Input['IdentityConfigArgs']] = None,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None):
         """
         Security related configuration, including encryption, Kerberos, etc.
+        :param pulumi.Input['IdentityConfigArgs'] identity_config: Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Optional. Kerberos related configuration.
         """
+        if identity_config is not None:
+            pulumi.set(__self__, "identity_config", identity_config)
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
+
+    @property
+    @pulumi.getter(name="identityConfig")
+    def identity_config(self) -> Optional[pulumi.Input['IdentityConfigArgs']]:
+        """
+        Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+        """
+        return pulumi.get(self, "identity_config")
+
+    @identity_config.setter
+    def identity_config(self, value: Optional[pulumi.Input['IdentityConfigArgs']]):
+        pulumi.set(self, "identity_config", value)
 
     @property
     @pulumi.getter(name="kerberosConfig")

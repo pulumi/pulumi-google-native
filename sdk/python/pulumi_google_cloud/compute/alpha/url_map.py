@@ -67,11 +67,7 @@ class UrlMap(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]] path_matchers: The list of named PathMatchers to use against the URL.
         :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
                Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -108,6 +104,8 @@ class UrlMap(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['self_link'] = self_link

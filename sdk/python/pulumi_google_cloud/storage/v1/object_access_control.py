@@ -34,7 +34,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new default object ACL entry on the specified bucket.
+        Creates a new ACL entry on the specified object.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,6 +93,8 @@ class ObjectAccessControl(pulumi.CustomResource):
             __props__['generation'] = generation
             __props__['id'] = id
             __props__['kind'] = kind
+            if object is None and not opts.urn:
+                raise TypeError("Missing required property 'object'")
             __props__['object'] = object
             __props__['project_team'] = project_team
             __props__['provisional_user_project'] = provisional_user_project

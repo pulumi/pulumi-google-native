@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._inputs import *
 
 __all__ = ['ApigatewayOperation']
 
@@ -15,33 +16,41 @@ class ApigatewayOperation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_config: Optional[pulumi.Input[str]] = None,
+                 api_config_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 default_hostname: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway_id: Optional[pulumi.Input[str]] = None,
+                 gateway_config: Optional[pulumi.Input[pulumi.InputType['ApigatewayGatewayConfigArgs']]] = None,
+                 gateway_service_account: Optional[pulumi.Input[str]] = None,
+                 grpc_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 managed_service_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigFileArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 openapi_documents: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigOpenApiDocumentArgs']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 service_config_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Gateway in a given project and location.
+        Creates a new ApiConfig in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_config: Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        :param pulumi.Input[str] api_config_id: Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] create_time: Output only. Created time.
-        :param pulumi.Input[str] default_hostname: Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
         :param pulumi.Input[str] display_name: Optional. Display name.
-        :param pulumi.Input[str] gateway_id: Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+        :param pulumi.Input[pulumi.InputType['ApigatewayGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
+        :param pulumi.Input[str] gateway_service_account: Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]] grpc_services: Optional. gRPC service definition files. If specified, openapi_documents must not be included.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-        :param pulumi.Input[str] name: Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-        :param pulumi.Input[str] parent: Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`
-        :param pulumi.Input[str] state: Output only. The current state of the Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigFileArgs']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+        :param pulumi.Input[str] name: Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigOpenApiDocumentArgs']]]] openapi_documents: Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+        :param pulumi.Input[str] parent: Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`
+        :param pulumi.Input[str] service_config_id: Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        :param pulumi.Input[str] state: Output only. State of the API Config.
         :param pulumi.Input[str] update_time: Output only. Updated time.
         """
         if __name__ is not None:
@@ -61,16 +70,20 @@ class ApigatewayOperation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['api_config'] = api_config
+            __props__['api_config_id'] = api_config_id
             __props__['create_time'] = create_time
-            __props__['default_hostname'] = default_hostname
             __props__['display_name'] = display_name
-            __props__['gateway_id'] = gateway_id
+            __props__['gateway_config'] = gateway_config
+            __props__['gateway_service_account'] = gateway_service_account
+            __props__['grpc_services'] = grpc_services
             __props__['labels'] = labels
+            __props__['managed_service_configs'] = managed_service_configs
             __props__['name'] = name
+            __props__['openapi_documents'] = openapi_documents
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
+            __props__['service_config_id'] = service_config_id
             __props__['state'] = state
             __props__['update_time'] = update_time
         super(ApigatewayOperation, __self__).__init__(

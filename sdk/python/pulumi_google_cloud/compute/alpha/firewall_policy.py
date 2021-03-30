@@ -25,7 +25,7 @@ class FirewallPolicy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 parent_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
@@ -37,7 +37,7 @@ class FirewallPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new policy in the specified project using the data included in the request.
+        Creates a new network firewall policy in the specified project and region.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -52,7 +52,7 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
         :param pulumi.Input[str] name: [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         :param pulumi.Input[str] parent: [Output Only] The parent of the firewall policy.
-        :param pulumi.Input[str] parent_id: Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
                
@@ -91,7 +91,11 @@ class FirewallPolicy(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['parent'] = parent
-            __props__['parent_id'] = parent_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__['project'] = project
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['rule_tuple_count'] = rule_tuple_count

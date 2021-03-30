@@ -9,25 +9,27 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 from ._inputs import *
 
-__all__ = ['TemplateVersion']
+__all__ = ['Policy']
 
 
-class TemplateVersion(pulumi.CustomResource):
+class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 template_version: Optional[pulumi.Input[pulumi.InputType['TemplateVersionArgs']]] = None,
+                 policy: Optional[pulumi.Input[pulumi.InputType['PolicyArgs']]] = None,
+                 resource: Optional[pulumi.Input[str]] = None,
+                 update_mask: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Template with TemplateVersion. Requires project_id(projects) and template display_name(catalogTemplates). The template display_name is set by the user.
+        Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] parent: The parent project and template that the TemplateVersion will be created under. Create using project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}
-        :param pulumi.Input[pulumi.InputType['TemplateVersionArgs']] template_version: The TemplateVersion object to create.
+        :param pulumi.Input[pulumi.InputType['PolicyArgs']] policy: REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.
+        :param pulumi.Input[str] resource: REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.
+        :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -46,12 +48,13 @@ class TemplateVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['template_version'] = template_version
-        super(TemplateVersion, __self__).__init__(
-            'google-cloud:dataflow/v1b3:TemplateVersion',
+            __props__['policy'] = policy
+            if resource is None and not opts.urn:
+                raise TypeError("Missing required property 'resource'")
+            __props__['resource'] = resource
+            __props__['update_mask'] = update_mask
+        super(Policy, __self__).__init__(
+            'google-cloud:gkehub/v1beta:Policy',
             resource_name,
             __props__,
             opts)
@@ -59,9 +62,9 @@ class TemplateVersion(pulumi.CustomResource):
     @staticmethod
     def get(resource_name: str,
             id: pulumi.Input[str],
-            opts: Optional[pulumi.ResourceOptions] = None) -> 'TemplateVersion':
+            opts: Optional[pulumi.ResourceOptions] = None) -> 'Policy':
         """
-        Get an existing TemplateVersion resource's state with the given name, id, and optional extra
+        Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -72,7 +75,7 @@ class TemplateVersion(pulumi.CustomResource):
 
         __props__ = dict()
 
-        return TemplateVersion(resource_name, opts=opts, __props__=__props__)
+        return Policy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

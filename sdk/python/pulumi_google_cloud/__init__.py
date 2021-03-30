@@ -32,7 +32,6 @@ from . import (
     cloudresourcemanager,
     cloudscheduler,
     cloudsearch,
-    cloudshell,
     cloudtasks,
     cloudtrace,
     composer,

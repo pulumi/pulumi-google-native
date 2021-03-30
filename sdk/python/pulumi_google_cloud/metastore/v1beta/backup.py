@@ -9,39 +9,39 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 from ._inputs import *
 
-__all__ = ['MetadataImport']
+__all__ = ['Backup']
 
 
-class MetadataImport(pulumi.CustomResource):
+class Backup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 metadata_import_id: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 service_revision: Optional[pulumi.Input[pulumi.InputType['ServiceArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new MetadataImport in a given project and location.
+        Creates a new Backup in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The time when the metadata import was created.
-        :param pulumi.Input[pulumi.InputType['DatabaseDumpArgs']] database_dump: Immutable. A database dump from a pre-existing metastore's database.
-        :param pulumi.Input[str] description: The description of the metadata import.
-        :param pulumi.Input[str] metadata_import_id: Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-        :param pulumi.Input[str] name: Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
-        :param pulumi.Input[str] parent: Required. The relative resource name of the service in which to create a metastore import, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        :param pulumi.Input[str] backup_id: Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+        :param pulumi.Input[str] create_time: Output only. The time when the backup was started.
+        :param pulumi.Input[str] description: The description of the backup.
+        :param pulumi.Input[str] end_time: Output only. The time when the backup finished creating.
+        :param pulumi.Input[str] name: Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+        :param pulumi.Input[str] parent: Required. The relative resource name of the service in which to create a backup of the following form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-        :param pulumi.Input[str] state: Output only. The current state of the metadata import.
-        :param pulumi.Input[str] update_time: Output only. The time when the metadata import was last updated.
+        :param pulumi.Input[pulumi.InputType['ServiceArgs']] service_revision: Output only. The revision of the service at the time of backup.
+        :param pulumi.Input[str] state: Output only. The current state of the backup.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,19 +60,19 @@ class MetadataImport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['backup_id'] = backup_id
             __props__['create_time'] = create_time
-            __props__['database_dump'] = database_dump
             __props__['description'] = description
-            __props__['metadata_import_id'] = metadata_import_id
+            __props__['end_time'] = end_time
             __props__['name'] = name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['request_id'] = request_id
+            __props__['service_revision'] = service_revision
             __props__['state'] = state
-            __props__['update_time'] = update_time
-        super(MetadataImport, __self__).__init__(
-            'google-cloud:metastore/v1alpha:MetadataImport',
+        super(Backup, __self__).__init__(
+            'google-cloud:metastore/v1beta:Backup',
             resource_name,
             __props__,
             opts)
@@ -80,9 +80,9 @@ class MetadataImport(pulumi.CustomResource):
     @staticmethod
     def get(resource_name: str,
             id: pulumi.Input[str],
-            opts: Optional[pulumi.ResourceOptions] = None) -> 'MetadataImport':
+            opts: Optional[pulumi.ResourceOptions] = None) -> 'Backup':
         """
-        Get an existing MetadataImport resource's state with the given name, id, and optional extra
+        Get an existing Backup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -93,7 +93,7 @@ class MetadataImport(pulumi.CustomResource):
 
         __props__ = dict()
 
-        return MetadataImport(resource_name, opts=opts, __props__=__props__)
+        return Backup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

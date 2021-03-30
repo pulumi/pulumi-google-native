@@ -3,7 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .public_key import *
+from .feature import *
+from .policy import *
 from ._inputs import *
 
 def _register_module():
@@ -18,13 +19,15 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:cloudshell/v1alpha1:PublicKey":
-                return PublicKey(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:gkehub/v1beta:Feature":
+                return Feature(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:gkehub/v1beta:Policy":
+                return Policy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
-    pulumi.runtime.register_resource_module("google-cloud", "cloudshell/v1alpha1", _module_instance)
+    pulumi.runtime.register_resource_module("google-cloud", "gkehub/v1beta", _module_instance)
 
 _register_module()

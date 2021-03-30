@@ -104,6 +104,8 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__['self_link'] = self_link
             __props__['size'] = size
             __props__['subnetwork'] = subnetwork
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(NetworkEndpointGroup, __self__).__init__(
             'google-cloud:compute/v1:NetworkEndpointGroup',

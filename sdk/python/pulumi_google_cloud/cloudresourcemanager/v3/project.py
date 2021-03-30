@@ -29,19 +29,19 @@ class Project(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. Creation time.
         :param pulumi.Input[str] delete_time: Output only. The time at which this resource was requested for deletion.
-        :param pulumi.Input[str] display_name: Optional. A user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
+        :param pulumi.Input[str] display_name: Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
         :param pulumi.Input[str] etag: Output only. A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
-        :param pulumi.Input[str] name: Output only. The unique resource name of the Project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+        :param pulumi.Input[str] name: Output only. The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
         :param pulumi.Input[str] parent: Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
-        :param pulumi.Input[str] project_id: Immutable. The unique, user-assigned id of the Project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-        :param pulumi.Input[str] state: Output only. The Project lifecycle state.
+        :param pulumi.Input[str] project_id: Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+        :param pulumi.Input[str] state: Output only. The project lifecycle state.
         :param pulumi.Input[str] update_time: Output only. The most recent time this resource was modified.
         """
         if __name__ is not None:

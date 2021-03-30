@@ -16,26 +16,18 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 operator_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']]] = None,
+                 instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InstructionArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 requester_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Create a FeedbackMessage object.
+        Creates an instruction for how data should be labeled.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] body: String content of the feedback. Maximum of 10000 characters.
-        :param pulumi.Input[str] create_time: Create time.
-        :param pulumi.Input[str] image: The image storing this feedback if the feedback is an image representing operator's comments.
-        :param pulumi.Input[str] name: Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
-        :param pulumi.Input[str] parent: Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InstructionArgs']] instruction: Required. Instruction of how to perform the labeling task.
+        :param pulumi.Input[str] parent: Required. Instruction resource parent, format: projects/{project_id}
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -54,15 +46,10 @@ class GoogleLongrunningOperation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['body'] = body
-            __props__['create_time'] = create_time
-            __props__['image'] = image
-            __props__['name'] = name
-            __props__['operator_feedback_metadata'] = operator_feedback_metadata
+            __props__['instruction'] = instruction
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
-            __props__['requester_feedback_metadata'] = requester_feedback_metadata
         super(GoogleLongrunningOperation, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:GoogleLongrunningOperation',
             resource_name,

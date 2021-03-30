@@ -51,7 +51,7 @@ class ForwardingRule(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+        Creates a ForwardingRule resource in the specified project and region using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -217,6 +217,8 @@ class ForwardingRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['psc_connection_id'] = psc_connection_id
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['request_id'] = request_id
             __props__['self_link'] = self_link

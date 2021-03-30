@@ -87,11 +87,11 @@ class Note(pulumi.CustomResource):
             __props__['expiration_time'] = expiration_time
             __props__['kind'] = kind
             __props__['long_description'] = long_description
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['note_id'] = note_id
             __props__['package'] = package
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['related_url'] = related_url
             __props__['short_description'] = short_description
