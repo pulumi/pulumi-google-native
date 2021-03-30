@@ -158,8 +158,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] The URL of the region where the network endpoint group is located.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -210,8 +210,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] The URL of the zone where the network endpoint group is located.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public NetworkEndpointGroupArgs()
         {

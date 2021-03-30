@@ -112,8 +112,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public AutoscalerArgs()
         {

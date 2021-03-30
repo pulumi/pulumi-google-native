@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.V1
 {
     /// <summary>
-    /// Creates a persistent regional disk in the specified project using the data included in the request.
+    /// Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/v1:Disk")]
     public partial class Disk : Pulumi.CustomResource
@@ -202,8 +202,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("replicaZones")]
         private InputList<string>? _replicaZones;
@@ -369,8 +369,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public DiskArgs()
         {

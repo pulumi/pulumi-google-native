@@ -16,6 +16,12 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
     public sealed class GoogleCloudChannelV1ValueArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Represents a boolean value.
+        /// </summary>
+        [Input("boolValue")]
+        public Input<bool>? BoolValue { get; set; }
+
+        /// <summary>
         /// Represents a double value.
         /// </summary>
         [Input("doubleValue")]

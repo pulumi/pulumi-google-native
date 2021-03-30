@@ -12,7 +12,7 @@ namespace Pulumi.GoogleCloud.Compute.V1
     /// <summary>
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
     /// 
-    /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
+    /// A regional managed instance group can contain up to 2000 instances.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/v1:InstanceGroupManager")]
     public partial class InstanceGroupManager : Pulumi.CustomResource
@@ -162,8 +162,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -234,8 +234,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public InstanceGroupManagerArgs()
         {

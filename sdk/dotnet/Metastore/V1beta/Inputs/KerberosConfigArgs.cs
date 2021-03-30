@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta.Inputs
         public Input<string>? Krb5ConfigGcsUri { get; set; }
 
         /// <summary>
-        /// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        /// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }

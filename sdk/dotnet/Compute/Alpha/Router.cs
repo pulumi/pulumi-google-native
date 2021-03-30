@@ -91,6 +91,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
 
         /// <summary>
         /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        /// Not currently available in all Interconnect locations.
         /// </summary>
         [Input("encryptedInterconnectRouter")]
         public Input<bool>? EncryptedInterconnectRouter { get; set; }

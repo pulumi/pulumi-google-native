@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha.Inputs
     public sealed class RestoreArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+        /// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
         /// </summary>
         [Input("backup")]
         public Input<string>? Backup { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta.Inputs
         public Input<string>? DatabaseDumpType { get; set; }
 
         /// <summary>
-        /// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
+        /// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
         /// </summary>
         [Input("destinationGcsUri")]
         public Input<string>? DestinationGcsUri { get; set; }

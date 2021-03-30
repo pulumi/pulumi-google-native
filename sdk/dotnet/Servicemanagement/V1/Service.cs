@@ -90,7 +90,7 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1
         public Input<Inputs.BillingArgs>? Billing { get; set; }
 
         /// <summary>
-        /// Deprecated. The service config compiler always sets this field to `3`.
+        /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         /// </summary>
         [Input("configVersion")]
         public Input<int>? ConfigVersion { get; set; }

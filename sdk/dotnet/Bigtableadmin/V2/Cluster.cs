@@ -72,6 +72,12 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         public Input<string>? DefaultStorageType { get; set; }
 
         /// <summary>
+        /// Immutable. The encryption configuration for CMEK-protected clusters.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         /// </summary>
         [Input("location")]

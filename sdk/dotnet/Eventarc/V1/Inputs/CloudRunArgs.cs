@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Eventarc.V1.Inputs
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+        /// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

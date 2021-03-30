@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.V1
 {
     /// <summary>
-    /// Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+    /// Creates a ForwardingRule resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/v1:ForwardingRule")]
     public partial class ForwardingRule : Pulumi.CustomResource
@@ -291,8 +291,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.

@@ -170,7 +170,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<Inputs.SubnetworkLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is INCLUDE_ALL_METADATA.
+        /// Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA.
         /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }

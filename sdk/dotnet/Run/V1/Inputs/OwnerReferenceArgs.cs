@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         public Input<bool>? Controller { get; set; }
 
         /// <summary>
-        /// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

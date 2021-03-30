@@ -27,6 +27,12 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1.Inputs
         [Input("storageSource")]
         public Input<Inputs.StorageSourceArgs>? StorageSource { get; set; }
 
+        /// <summary>
+        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        /// </summary>
+        [Input("storageSourceManifest")]
+        public Input<Inputs.StorageSourceManifestArgs>? StorageSourceManifest { get; set; }
+
         public SourceArgs()
         {
         }

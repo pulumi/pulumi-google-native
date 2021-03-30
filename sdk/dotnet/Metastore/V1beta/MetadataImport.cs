@@ -84,13 +84,13 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         public Input<string>? MetadataImportId { get; set; }
 
         /// <summary>
-        /// Immutable. The relative resource name of the metadata import, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}".
+        /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The relative resource name of the service in which to create a metastore import, in the following form:"projects/{project_number}/locations/{location_id}/services/{service_id}"
+        /// Required. The relative resource name of the service in which to create a metastore import, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;

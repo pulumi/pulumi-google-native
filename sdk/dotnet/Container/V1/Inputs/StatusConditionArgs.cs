@@ -16,7 +16,13 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
     public sealed class StatusConditionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Machine-friendly representation of the condition
+        /// Canonical code of the condition.
+        /// </summary>
+        [Input("canonicalCode")]
+        public Input<string>? CanonicalCode { get; set; }
+
+        /// <summary>
+        /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }

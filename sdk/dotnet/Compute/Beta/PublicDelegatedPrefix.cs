@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Beta
 {
     /// <summary>
-    /// Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
+    /// Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/beta:PublicDelegatedPrefix")]
     public partial class PublicDelegatedPrefix : Pulumi.CustomResource
@@ -136,8 +136,8 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.

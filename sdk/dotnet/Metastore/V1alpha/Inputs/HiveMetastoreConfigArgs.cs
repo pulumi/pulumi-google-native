@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha.Inputs
         }
 
         /// <summary>
-        /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path ("hive_metastore_config.kerberos_config") in the request's update_mask while omitting this field from the request's service.
+        /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         /// </summary>
         [Input("kerberosConfig")]
         public Input<Inputs.KerberosConfigArgs>? KerberosConfig { get; set; }

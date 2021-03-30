@@ -134,14 +134,14 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         /// <summary>
         /// The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
         /// </summary>
-        [Input("parent")]
-        public Input<string>? Parent { get; set; }
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
         /// Output only. ID of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

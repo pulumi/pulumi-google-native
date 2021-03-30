@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Beta
 {
     /// <summary>
-    /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+    /// Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/beta:BackendService")]
     public partial class BackendService : Pulumi.CustomResource
@@ -304,8 +304,8 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -340,7 +340,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// Type of session affinity to use. The default is NONE.
         /// 
-        /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
+        /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
         /// 
         /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         /// 

@@ -166,7 +166,7 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4.Inputs
         public Input<string>? StorageAutoResizeLimit { get; set; }
 
         /// <summary>
-        /// The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+        /// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

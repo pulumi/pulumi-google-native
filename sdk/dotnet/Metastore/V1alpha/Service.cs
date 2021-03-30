@@ -114,19 +114,19 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha
         public Input<Inputs.MetadataManagementActivityArgs>? MetadataManagementActivity { get; set; }
 
         /// <summary>
-        /// Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+        /// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+        /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
+        /// Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -136,6 +136,12 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        /// </summary>
+        [Input("releaseChannel")]
+        public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
         /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.

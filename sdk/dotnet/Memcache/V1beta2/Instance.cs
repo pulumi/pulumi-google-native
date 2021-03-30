@@ -72,19 +72,19 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. Endpoint for Discovery API
+        /// Output only. Endpoint for the Discovery API.
         /// </summary>
         [Input("discoveryEndpoint")]
         public Input<string>? DiscoveryEndpoint { get; set; }
 
         /// <summary>
-        /// User provided name for the instance only used for display purposes. Cannot be more than 80 characters.
+        /// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location If any of the above are not met, will raise an invalid argument error.
+        /// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         private InputList<Inputs.InstanceMessageArgs>? _instanceMessages;
 
         /// <summary>
-        /// List of messages that describe current statuses of memcached instance.
+        /// List of messages that describe the current state of the Memcached instance.
         /// </summary>
         public InputList<Inputs.InstanceMessageArgs> InstanceMessages
         {
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         private InputList<Inputs.NodeArgs>? _memcacheNodes;
 
         /// <summary>
-        /// Output only. List of Memcached nodes. Refer to [Node] message for more details.
+        /// Output only. List of Memcached nodes. Refer to Node message for more details.
         /// </summary>
         public InputList<Inputs.NodeArgs> MemcacheNodes
         {
@@ -132,13 +132,13 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         }
 
         /// <summary>
-        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the latest supported minor version.
+        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         /// </summary>
         [Input("memcacheVersion")]
         public Input<string>? MemcacheVersion { get; set; }
 
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which zones Memcached nodes within an instances should be provisioned in. Refer to [zones] field for more details.
+        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         private InputList<string>? _zones;
 
         /// <summary>
-        /// Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+        /// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         /// </summary>
         public InputList<string> Zones
         {

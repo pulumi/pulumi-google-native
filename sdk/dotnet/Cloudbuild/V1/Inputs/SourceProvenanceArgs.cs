@@ -39,6 +39,12 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1.Inputs
         [Input("resolvedStorageSource")]
         public Input<Inputs.StorageSourceArgs>? ResolvedStorageSource { get; set; }
 
+        /// <summary>
+        /// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
+        /// </summary>
+        [Input("resolvedStorageSourceManifest")]
+        public Input<Inputs.StorageSourceManifestArgs>? ResolvedStorageSourceManifest { get; set; }
+
         public SourceProvenanceArgs()
         {
         }

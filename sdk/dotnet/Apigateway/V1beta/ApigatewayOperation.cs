@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Apigateway.V1beta
 {
     /// <summary>
-    /// Creates a new Gateway in a given project and location.
+    /// Creates a new ApiConfig in a given project and location.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:apigateway/v1beta:ApigatewayOperation")]
     public partial class ApigatewayOperation : Pulumi.CustomResource
@@ -60,10 +60,10 @@ namespace Pulumi.GoogleCloud.Apigateway.V1beta
     public sealed class ApigatewayOperationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
         /// </summary>
-        [Input("apiConfig")]
-        public Input<string>? ApiConfig { get; set; }
+        [Input("apiConfigId")]
+        public Input<string>? ApiConfigId { get; set; }
 
         /// <summary>
         /// Output only. Created time.
@@ -72,22 +72,34 @@ namespace Pulumi.GoogleCloud.Apigateway.V1beta
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-        /// </summary>
-        [Input("defaultHostname")]
-        public Input<string>? DefaultHostname { get; set; }
-
-        /// <summary>
         /// Optional. Display name.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+        /// Immutable. Gateway specific configuration.
         /// </summary>
-        [Input("gatewayId")]
-        public Input<string>? GatewayId { get; set; }
+        [Input("gatewayConfig")]
+        public Input<Inputs.ApigatewayGatewayConfigArgs>? GatewayConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+        /// </summary>
+        [Input("gatewayServiceAccount")]
+        public Input<string>? GatewayServiceAccount { get; set; }
+
+        [Input("grpcServices")]
+        private InputList<Inputs.ApigatewayApiConfigGrpcServiceDefinitionArgs>? _grpcServices;
+
+        /// <summary>
+        /// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
+        /// </summary>
+        public InputList<Inputs.ApigatewayApiConfigGrpcServiceDefinitionArgs> GrpcServices
+        {
+            get => _grpcServices ?? (_grpcServices = new InputList<Inputs.ApigatewayApiConfigGrpcServiceDefinitionArgs>());
+            set => _grpcServices = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -101,20 +113,50 @@ namespace Pulumi.GoogleCloud.Apigateway.V1beta
             set => _labels = value;
         }
 
+        [Input("managedServiceConfigs")]
+        private InputList<Inputs.ApigatewayApiConfigFileArgs>? _managedServiceConfigs;
+
         /// <summary>
-        /// Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+        /// </summary>
+        public InputList<Inputs.ApigatewayApiConfigFileArgs> ManagedServiceConfigs
+        {
+            get => _managedServiceConfigs ?? (_managedServiceConfigs = new InputList<Inputs.ApigatewayApiConfigFileArgs>());
+            set => _managedServiceConfigs = value;
+        }
+
+        /// <summary>
+        /// Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("openapiDocuments")]
+        private InputList<Inputs.ApigatewayApiConfigOpenApiDocumentArgs>? _openapiDocuments;
+
         /// <summary>
-        /// Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`
+        /// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+        /// </summary>
+        public InputList<Inputs.ApigatewayApiConfigOpenApiDocumentArgs> OpenapiDocuments
+        {
+            get => _openapiDocuments ?? (_openapiDocuments = new InputList<Inputs.ApigatewayApiConfigOpenApiDocumentArgs>());
+            set => _openapiDocuments = value;
+        }
+
+        /// <summary>
+        /// Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The current state of the Gateway.
+        /// Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        /// </summary>
+        [Input("serviceConfigId")]
+        public Input<string>? ServiceConfigId { get; set; }
+
+        /// <summary>
+        /// Output only. State of the API Config.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
