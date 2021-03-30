@@ -1,37 +1,34 @@
 {
-  "id": "speech:v2beta1",
-  "name": "speech",
-  "revision": "20210311",
-  "ownerDomain": "google.com",
   "auth": {
     "oauth2": {
       "scopes": {
         "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
+          "description": "See, edit, configure, and delete your Google Cloud Platform data"
         }
       }
     }
   },
+  "basePath": "",
+  "baseUrl": "https://speech.googleapis.com/",
+  "batchPath": "batch",
+  "canonicalName": "Speech",
+  "description": "Converts audio to text by applying powerful neural network models.",
+  "discoveryVersion": "v1",
+  "documentationLink": "https://cloud.google.com/speech-to-text/docs/quickstart-protocol",
+  "fullyEncodeReservedExpansion": true,
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "id": "speech:v2beta1",
   "kind": "discovery#restDescription",
+  "mtlsRootUrl": "https://speech.mtls.googleapis.com/",
+  "name": "speech",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
   "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
     "$.xgafv": {
-      "type": "string",
-      "location": "query",
+      "description": "V1 error format.",
       "enum": [
         "1",
         "2"
@@ -40,30 +37,17 @@
         "v1 error format",
         "v2 error format"
       ],
-      "description": "V1 error format."
-    },
-    "key": {
-      "type": "string",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "default": "true",
       "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean"
+      "type": "string"
     },
-    "oauth_token": {
-      "type": "string",
-      "description": "OAuth 2.0 token for the current user.",
-      "location": "query"
+    "access_token": {
+      "description": "OAuth access token.",
+      "location": "query",
+      "type": "string"
     },
     "alt": {
+      "default": "json",
+      "description": "Data format for response.",
       "enum": [
         "json",
         "media",
@@ -74,26 +58,52 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "default": "json",
       "location": "query",
-      "type": "string",
-      "description": "Data format for response."
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
-    "access_token": {
+    "callback": {
+      "description": "JSONP",
       "location": "query",
-      "type": "string",
-      "description": "OAuth access token."
+      "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query",
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "default": "true",
+      "description": "Returns response with indentations and line breaks.",
+      "location": "query",
+      "type": "boolean"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query",
+      "type": "string"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query",
+      "type": "string"
     }
   },
-  "documentationLink": "https://cloud.google.com/speech-to-text/docs/quickstart-protocol",
-  "description": "Converts audio to text by applying powerful neural network models.",
-  "fullyEncodeReservedExpansion": true,
-  "baseUrl": "https://speech.googleapis.com/",
+  "protocol": "rest",
   "resources": {
     "projects": {
       "resources": {
@@ -101,71 +111,71 @@
           "resources": {
             "operations": {
               "methods": {
-                "list": {
-                  "id": "speech.projects.locations.operations.list",
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-                  "flatPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "filter": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The standard list filter."
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The standard list page token.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "type": "integer",
-                      "description": "The standard list page size.",
-                      "format": "int32"
-                    },
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "path": "v2beta1/{+name}/operations"
-                },
                 "get": {
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "flatPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "httpMethod": "GET",
                   "id": "speech.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
                   ],
-                  "httpMethod": "GET",
-                  "path": "v2beta1/{+name}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "flatPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "parameters": {
                     "name": {
+                      "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                       "required": true,
-                      "description": "The name of the operation resource.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "path": "v2beta1/{+name}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "list": {
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "flatPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "httpMethod": "GET",
+                  "id": "speech.projects.locations.operations.list",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "description": "The standard list page size.",
+                      "format": "int32",
+                      "location": "query",
+                      "type": "integer"
+                    },
+                    "pageToken": {
+                      "description": "The standard list page token.",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "path": "v2beta1/{+name}/operations",
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
                 }
               }
             }
@@ -174,234 +184,224 @@
       }
     }
   },
-  "version_module": true,
-  "title": "Cloud Speech-to-Text API",
+  "revision": "20210325",
+  "rootUrl": "https://speech.googleapis.com/",
   "schemas": {
-    "SpeechRecognitionAlternative": {
-      "type": "object",
-      "properties": {
-        "confidence": {
-          "readOnly": true,
-          "type": "number",
-          "format": "float",
-          "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set."
-        },
-        "transcript": {
-          "readOnly": true,
-          "description": "Output only. Transcript text representing the words that the user spoke.",
-          "type": "string"
-        },
-        "words": {
-          "description": "Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.",
-          "readOnly": true,
-          "type": "array",
-          "items": {
-            "$ref": "WordInfo"
-          }
-        }
-      },
-      "description": "Alternative hypotheses (a.k.a. n-best list).",
-      "id": "SpeechRecognitionAlternative"
-    },
-    "Status": {
-      "type": "object",
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "properties": {
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
-          }
-        },
-        "code": {
-          "type": "integer",
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32"
-        }
-      }
-    },
     "ListOperationsResponse": {
-      "type": "object",
       "description": "The response message for Operations.ListOperations.",
       "id": "ListOperationsResponse",
       "properties": {
         "nextPageToken": {
-          "type": "string",
-          "description": "The standard List next-page token."
+          "description": "The standard List next-page token.",
+          "type": "string"
         },
         "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
           "items": {
             "$ref": "Operation"
           },
-          "type": "array",
-          "description": "A list of operations that matches the specified filter in the request."
-        }
-      }
-    },
-    "SpeechRecognitionResult": {
-      "type": "object",
-      "description": "A speech recognition result corresponding to a portion of the audio.",
-      "properties": {
-        "channelTag": {
-          "type": "integer",
-          "format": "int32",
-          "readOnly": true,
-          "description": "Output only. For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For `audio_channel_count` = N, its output values can range from `1` to `N`."
-        },
-        "languageCode": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio."
-        },
-        "alternatives": {
-          "description": "Output only. May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.",
-          "items": {
-            "$ref": "SpeechRecognitionAlternative"
-          },
-          "type": "array",
-          "readOnly": true
+          "type": "array"
         }
       },
-      "id": "SpeechRecognitionResult"
-    },
-    "LongRunningRecognizeResponse": {
-      "type": "object",
-      "description": "The only message returned to the client by the `LongRunningRecognize` method. It contains the result as zero or more sequential SpeechRecognitionResult messages. It is included in the `result.response` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.",
-      "properties": {
-        "results": {
-          "readOnly": true,
-          "description": "Output only. Sequential list of transcription results corresponding to sequential portions of audio.",
-          "type": "array",
-          "items": {
-            "$ref": "SpeechRecognitionResult"
-          }
-        }
-      },
-      "id": "LongRunningRecognizeResponse"
+      "type": "object"
     },
     "LongRunningRecognizeMetadata": {
+      "description": "Describes the progress of a long-running `LongRunningRecognize` call. It is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.",
       "id": "LongRunningRecognizeMetadata",
       "properties": {
         "lastUpdateTime": {
-          "readOnly": true,
           "description": "Output only. Time of the most recent processing update.",
-          "type": "string",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
         },
         "progressPercent": {
           "description": "Output only. Approximate percentage of audio processed thus far. Guaranteed to be 100 when the audio is fully processed and the results are available.",
-          "readOnly": true,
           "format": "int32",
+          "readOnly": true,
           "type": "integer"
-        },
-        "uri": {
-          "type": "string",
-          "description": "The URI of the audio file being transcribed. Empty if the audio was sent as byte content."
         },
         "startTime": {
           "description": "Output only. Time when the request was received.",
-          "type": "string",
+          "format": "google-datetime",
           "readOnly": true,
-          "format": "google-datetime"
+          "type": "string"
+        },
+        "uri": {
+          "description": "The URI of the audio file being transcribed. Empty if the audio was sent as byte content.",
+          "type": "string"
         }
       },
-      "type": "object",
-      "description": "Describes the progress of a long-running `LongRunningRecognize` call. It is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service."
+      "type": "object"
+    },
+    "LongRunningRecognizeResponse": {
+      "description": "The only message returned to the client by the `LongRunningRecognize` method. It contains the result as zero or more sequential SpeechRecognitionResult messages. It is included in the `result.response` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.",
+      "id": "LongRunningRecognizeResponse",
+      "properties": {
+        "results": {
+          "description": "Output only. Sequential list of transcription results corresponding to sequential portions of audio.",
+          "items": {
+            "$ref": "SpeechRecognitionResult"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type": "object"
     },
     "Operation": {
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "id": "Operation",
       "properties": {
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
-        },
         "done": {
           "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
           "type": "boolean"
         },
-        "response": {
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "metadata": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
           "type": "object"
         },
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string"
         },
-        "metadata": {
+        "response": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
           },
-          "type": "object",
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object"
         }
       },
-      "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a network API call.",
       "type": "object"
     },
-    "WordInfo": {
-      "type": "object",
-      "id": "WordInfo",
-      "description": "Word-specific information for recognized words.",
+    "SpeechRecognitionAlternative": {
+      "description": "Alternative hypotheses (a.k.a. n-best list).",
+      "id": "SpeechRecognitionAlternative",
       "properties": {
         "confidence": {
           "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set.",
+          "format": "float",
           "readOnly": true,
-          "type": "number",
-          "format": "float"
+          "type": "number"
         },
-        "speakerTag": {
-          "type": "integer",
-          "description": "Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from `1` to `diarization_config.max_speaker_count` . `speaker_tag` is set if `diarization_config.enable_speaker_diarization` = `true` and only in the top alternative.",
+        "transcript": {
+          "description": "Output only. Transcript text representing the words that the user spoke.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "words": {
+          "description": "Output only. A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.",
+          "items": {
+            "$ref": "WordInfo"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SpeechRecognitionResult": {
+      "description": "A speech recognition result corresponding to a portion of the audio.",
+      "id": "SpeechRecognitionResult",
+      "properties": {
+        "alternatives": {
+          "description": "Output only. May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.",
+          "items": {
+            "$ref": "SpeechRecognitionAlternative"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "channelTag": {
+          "description": "Output only. For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For `audio_channel_count` = N, its output values can range from `1` to `N`.",
           "format": "int32",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
+        },
+        "languageCode": {
+          "description": "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Status": {
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "id": "Status",
+      "properties": {
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+          "items": {
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "WordInfo": {
+      "description": "Word-specific information for recognized words.",
+      "id": "WordInfo",
+      "properties": {
+        "confidence": {
+          "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set.",
+          "format": "float",
+          "readOnly": true,
+          "type": "number"
         },
         "endOffset": {
-          "type": "string",
           "description": "Output only. Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
           "format": "google-duration",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
-        "word": {
-          "type": "string",
-          "description": "Output only. The word corresponding to this set of information.",
-          "readOnly": true
+        "speakerTag": {
+          "description": "Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from `1` to `diarization_config.max_speaker_count` . `speaker_tag` is set if `diarization_config.enable_speaker_diarization` = `true` and only in the top alternative.",
+          "format": "int32",
+          "readOnly": true,
+          "type": "integer"
         },
         "startOffset": {
           "description": "Output only. Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
-          "type": "string",
+          "format": "google-duration",
           "readOnly": true,
-          "format": "google-duration"
+          "type": "string"
+        },
+        "word": {
+          "description": "Output only. The word corresponding to this set of information.",
+          "readOnly": true,
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     }
   },
-  "canonicalName": "Speech",
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "batchPath": "batch",
-  "mtlsRootUrl": "https://speech.mtls.googleapis.com/",
-  "version": "v2beta1",
-  "rootUrl": "https://speech.googleapis.com/",
-  "protocol": "rest",
   "servicePath": "",
-  "basePath": "",
-  "ownerName": "Google",
-  "discoveryVersion": "v1"
+  "title": "Cloud Speech-to-Text API",
+  "version": "v2beta1",
+  "version_module": true
 }
