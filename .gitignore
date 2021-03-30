@@ -4,6 +4,7 @@
 **/bin/
 **/obj/
 **/.vscode/
+**/.DS_Store
 /vendor/
 .pulumi
 **/node_modules/

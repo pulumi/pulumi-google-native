@@ -6,7 +6,9 @@ const region = "us-central1";
 
 const runName = "run-native";
 const service = new cloud.run.v1.Service("service", {
-    parent: `projects/${project}/locations/${region}`,
+    projectsId: project,
+    locationsId: region,
+    servicesId: runName,
     apiVersion: "serving.knative.dev/v1",
     kind: "Service",
     metadata: {
@@ -21,26 +23,28 @@ const service = new cloud.run.v1.Service("service", {
     },
 });
 
-const iamHello = new cloud.run.v1.Policy("allow-all", {
-    resource: `projects/${project}/locations/${region}/services/${runName}`,
+const iamHello = new cloud.run.v1.ServiceIamPolicy("allow-all", {
+    projectsId: project,
+    locationsId: region,
+    servicesId: runName,
     policy: {
-        bindings: [
-            {
-                members: ["allUsers"],
-                role: "roles/run.invoker",
-            }
-        ],
+        bindings: [{
+            members: ["allUsers"],
+            role: "roles/run.invoker",
+        }],
     },
 }, { dependsOn: [service] });
 
 const bucketName = "bucket-nextgen";
 const bucket = new cloud.storage.v1.Bucket("bucket", {
-    project,
+    project: project,
+    bucket: bucketName,
     name: bucketName,
 });
 
 const archiveName = "zip2";
 const bucketObject = new cloud.storage.v1.BucketObject(archiveName, {
+    object: archiveName,
     name: archiveName,
     bucket: bucketName,
     source: new asset.AssetArchive({
@@ -49,8 +53,10 @@ const bucketObject = new cloud.storage.v1.BucketObject(archiveName, {
 }, { dependsOn: [bucket] });
 
 const functionName = "python-func";
-const functionPython = new cloud.cloudfunctions.v1.CloudFunction(functionName, {
-    location: `projects/${project}/locations/${region}`,
+const functionPython = new cloud.cloudfunctions.v1.Function(functionName, {
+    projectsId: project,
+    locationsId: region,
+    functionsId: functionName,
     name: `projects/${project}/locations/${region}/functions/${functionName}`,
     sourceArchiveUrl: `gs://${bucketName}/${archiveName}`,
     httpsTrigger: {},
@@ -62,8 +68,10 @@ const functionPython = new cloud.cloudfunctions.v1.CloudFunction(functionName, {
     versionId: "1",
 }, { dependsOn: [bucketObject] });
 
-const pyInvoker = new cloud.cloudfunctions.v1.Policy("py-invoker", {
-    resource: `projects/${project}/locations/${region}/functions/${functionName}`,
+const pyInvoker = new cloud.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
+    projectsId: project,
+    locationsId: region,
+    functionsId: functionName,
     policy: {
         bindings: [
             {
@@ -78,6 +86,9 @@ export const functionUrl = `https://${region}-${project}.cloudfunctions.net/${fu
 
 const clusterName = "gke-native";
 const cluster = new cloud.container.v1.Cluster("cluster", {
+    projectsId: project,
+    locationsId: region,
+    clustersId: clusterName,
     parent: `projects/${project}/locations/${region}`,
     cluster: {
         initialClusterVersion: "1.18.16-gke.500",
@@ -101,7 +112,12 @@ const cluster = new cloud.container.v1.Cluster("cluster", {
     }
 });
 
-const pool = new cloud.container.v1.NodePool("nodepool", {
+const nodePoolName = "extra-node-pool";
+const pool = new cloud.container.v1.ClusterNodePool(nodePoolName, {
+    projectsId: project,
+    locationsId: region,
+    clustersId: clusterName,
+    nodePoolsId: nodePoolName,
     parent: `projects/${project}/locations/${region}/clusters/${clusterName}`,
     nodePool: {
         config: {
@@ -118,7 +134,7 @@ const pool = new cloud.container.v1.NodePool("nodepool", {
         management: {
             autoRepair: true,
         },
-        name: "primary-node-pool",
+        name: nodePoolName,
         version: "1.18.16-gke.500",
     },
 }, {dependsOn: [cluster]});
