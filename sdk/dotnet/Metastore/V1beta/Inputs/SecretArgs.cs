@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta.Inputs
     public sealed class SecretArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The relative resource name of a Secret Manager secret version, in the following form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
+        /// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
         /// </summary>
         [Input("cloudSecret")]
         public Input<string>? CloudSecret { get; set; }

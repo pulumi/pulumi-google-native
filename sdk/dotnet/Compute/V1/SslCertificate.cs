@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.V1
 {
     /// <summary>
-    /// Creates a SslCertificate resource in the specified project and region using the data included in the request
+    /// Creates a SslCertificate resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/v1:SslCertificate")]
     public partial class SslCertificate : Pulumi.CustomResource
@@ -122,8 +122,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.

@@ -27,6 +27,7 @@ __all__ = [
     'SourceArgs',
     'SourceProvenanceArgs',
     'StorageSourceArgs',
+    'StorageSourceManifestArgs',
     'TimeSpanArgs',
     'VolumeArgs',
 ]
@@ -1627,16 +1628,20 @@ class SecretsArgs:
 class SourceArgs:
     def __init__(__self__, *,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
-                 storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None):
+                 storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
+                 storage_source_manifest: Optional[pulumi.Input['StorageSourceManifestArgs']] = None):
         """
         Location of the source in a supported storage service.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
+        :param pulumi.Input['StorageSourceManifestArgs'] storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
         """
         if repo_source is not None:
             pulumi.set(__self__, "repo_source", repo_source)
         if storage_source is not None:
             pulumi.set(__self__, "storage_source", storage_source)
+        if storage_source_manifest is not None:
+            pulumi.set(__self__, "storage_source_manifest", storage_source_manifest)
 
     @property
     @pulumi.getter(name="repoSource")
@@ -1662,18 +1667,32 @@ class SourceArgs:
     def storage_source(self, value: Optional[pulumi.Input['StorageSourceArgs']]):
         pulumi.set(self, "storage_source", value)
 
+    @property
+    @pulumi.getter(name="storageSourceManifest")
+    def storage_source_manifest(self) -> Optional[pulumi.Input['StorageSourceManifestArgs']]:
+        """
+        If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        """
+        return pulumi.get(self, "storage_source_manifest")
+
+    @storage_source_manifest.setter
+    def storage_source_manifest(self, value: Optional[pulumi.Input['StorageSourceManifestArgs']]):
+        pulumi.set(self, "storage_source_manifest", value)
+
 
 @pulumi.input_type
 class SourceProvenanceArgs:
     def __init__(__self__, *,
                  file_hashes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resolved_repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
-                 resolved_storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None):
+                 resolved_storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
+                 resolved_storage_source_manifest: Optional[pulumi.Input['StorageSourceManifestArgs']] = None):
         """
         Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] file_hashes: Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
         :param pulumi.Input['RepoSourceArgs'] resolved_repo_source: A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
         :param pulumi.Input['StorageSourceArgs'] resolved_storage_source: A copy of the build's `source.storage_source`, if exists, with any generations resolved.
+        :param pulumi.Input['StorageSourceManifestArgs'] resolved_storage_source_manifest: A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
         """
         if file_hashes is not None:
             pulumi.set(__self__, "file_hashes", file_hashes)
@@ -1681,6 +1700,8 @@ class SourceProvenanceArgs:
             pulumi.set(__self__, "resolved_repo_source", resolved_repo_source)
         if resolved_storage_source is not None:
             pulumi.set(__self__, "resolved_storage_source", resolved_storage_source)
+        if resolved_storage_source_manifest is not None:
+            pulumi.set(__self__, "resolved_storage_source_manifest", resolved_storage_source_manifest)
 
     @property
     @pulumi.getter(name="fileHashes")
@@ -1717,6 +1738,18 @@ class SourceProvenanceArgs:
     @resolved_storage_source.setter
     def resolved_storage_source(self, value: Optional[pulumi.Input['StorageSourceArgs']]):
         pulumi.set(self, "resolved_storage_source", value)
+
+    @property
+    @pulumi.getter(name="resolvedStorageSourceManifest")
+    def resolved_storage_source_manifest(self) -> Optional[pulumi.Input['StorageSourceManifestArgs']]:
+        """
+        A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
+        """
+        return pulumi.get(self, "resolved_storage_source_manifest")
+
+    @resolved_storage_source_manifest.setter
+    def resolved_storage_source_manifest(self, value: Optional[pulumi.Input['StorageSourceManifestArgs']]):
+        pulumi.set(self, "resolved_storage_source_manifest", value)
 
 
 @pulumi.input_type
@@ -1767,6 +1800,62 @@ class StorageSourceArgs:
     def object(self) -> Optional[pulumi.Input[str]]:
         """
         Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+        """
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object", value)
+
+
+@pulumi.input_type
+class StorageSourceManifestArgs:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 generation: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None):
+        """
+        Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+        :param pulumi.Input[str] bucket: Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        :param pulumi.Input[str] generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        :param pulumi.Input[str] object: Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if object is not None:
+            pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        """
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google Cloud Storage object containing the source manifest. This object must be a JSON file.
         """
         return pulumi.get(self, "object")
 

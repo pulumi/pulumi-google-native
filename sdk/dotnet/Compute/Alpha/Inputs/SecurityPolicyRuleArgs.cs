@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
     public sealed class SecurityPolicyRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

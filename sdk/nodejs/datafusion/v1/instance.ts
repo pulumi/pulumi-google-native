@@ -57,6 +57,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["enableRbac"] = args ? args.enableRbac : undefined;
             inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
             inputs["gcsBucket"] = args ? args.gcsBucket : undefined;
@@ -118,6 +119,10 @@ export interface InstanceArgs {
      * Display name for an instance.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Option to enable granular role-based access control.
+     */
+    readonly enableRbac?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Logging.
      */

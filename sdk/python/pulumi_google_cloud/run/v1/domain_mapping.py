@@ -17,6 +17,7 @@ class DomainMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: The API version for this call such as "domains.cloudrun.com/v1".
+        :param pulumi.Input[str] dry_run: DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
         :param pulumi.Input[str] kind: The kind of resource, in this case "DomainMapping".
         :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this BuildTemplate.
         :param pulumi.Input[str] parent: The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.
@@ -55,6 +57,7 @@ class DomainMapping(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['api_version'] = api_version
+            __props__['dry_run'] = dry_run
             __props__['kind'] = kind
             __props__['metadata'] = metadata
             if parent is None and not opts.urn:

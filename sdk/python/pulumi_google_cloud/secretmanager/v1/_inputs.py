@@ -18,6 +18,7 @@ __all__ = [
     'PolicyArgs',
     'ReplicaArgs',
     'ReplicationArgs',
+    'RotationArgs',
     'TopicArgs',
     'UserManagedArgs',
 ]
@@ -428,6 +429,46 @@ class ReplicationArgs:
     @user_managed.setter
     def user_managed(self, value: Optional[pulumi.Input['UserManagedArgs']]):
         pulumi.set(self, "user_managed", value)
+
+
+@pulumi.input_type
+class RotationArgs:
+    def __init__(__self__, *,
+                 next_rotation_time: Optional[pulumi.Input[str]] = None,
+                 rotation_period: Optional[pulumi.Input[str]] = None):
+        """
+        The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
+        :param pulumi.Input[str] next_rotation_time: Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+        :param pulumi.Input[str] rotation_period: Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
+        """
+        if next_rotation_time is not None:
+            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        if rotation_period is not None:
+            pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @next_rotation_time.setter
+    def next_rotation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_rotation_time", value)
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+    @rotation_period.setter
+    def rotation_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_period", value)
 
 
 @pulumi.input_type

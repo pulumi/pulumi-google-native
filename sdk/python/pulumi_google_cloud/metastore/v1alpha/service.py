@@ -28,6 +28,7 @@ class Service(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 release_channel: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -51,10 +52,11 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
         :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[pulumi.InputType['MetadataManagementActivityArgs']] metadata_management_activity: Output only. The metadata management activities of the metastore service.
-        :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
-        :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
-        :param pulumi.Input[str] parent: Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
+        :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+        :param pulumi.Input[str] parent: Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
+        :param pulumi.Input[str] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
         :param pulumi.Input[str] service_id: Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input[str] state: Output only. The current state of the metastore service.
@@ -94,6 +96,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['port'] = port
+            __props__['release_channel'] = release_channel
             __props__['request_id'] = request_id
             __props__['service_id'] = service_id
             __props__['state'] = state

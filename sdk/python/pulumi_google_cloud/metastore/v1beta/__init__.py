@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .backup import *
 from .metadata_import import *
 from .policy import *
 from .service import *
@@ -20,7 +21,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:metastore/v1beta:MetadataImport":
+            if typ == "google-cloud:metastore/v1beta:Backup":
+                return Backup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:metastore/v1beta:MetadataImport":
                 return MetadataImport(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:metastore/v1beta:Policy":
                 return Policy(name, pulumi.ResourceOptions(urn=urn))

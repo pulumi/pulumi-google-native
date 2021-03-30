@@ -174,7 +174,7 @@ namespace Pulumi.GoogleCloud.Retail.V2beta
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// Immutable. The type of the product. This field is output-only.
+        /// Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -58,6 +58,7 @@ __all__ = [
     'RowLevelSecurityStatisticsArgs',
     'ScriptStackFrameArgs',
     'ScriptStatisticsArgs',
+    'SessionInfoArgs',
     'SnapshotDefinitionArgs',
     'StandardSqlDataTypeArgs',
     'StandardSqlFieldArgs',
@@ -3349,6 +3350,7 @@ class JobStatisticsArgs:
                  reservation_id: Optional[pulumi.Input[str]] = None,
                  row_level_security_statistics: Optional[pulumi.Input['RowLevelSecurityStatisticsArgs']] = None,
                  script_statistics: Optional[pulumi.Input['ScriptStatisticsArgs']] = None,
+                 session_info_template: Optional[pulumi.Input['SessionInfoArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  total_bytes_processed: Optional[pulumi.Input[str]] = None,
                  total_slot_ms: Optional[pulumi.Input[str]] = None,
@@ -3367,6 +3369,7 @@ class JobStatisticsArgs:
         :param pulumi.Input[str] reservation_id: [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
         :param pulumi.Input['RowLevelSecurityStatisticsArgs'] row_level_security_statistics: [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
         :param pulumi.Input['ScriptStatisticsArgs'] script_statistics: [Output-only] Statistics for a child job of a script.
+        :param pulumi.Input['SessionInfoArgs'] session_info_template: [Output-only] [Preview] Information of the session if this job is part of one.
         :param pulumi.Input[str] start_time: [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         :param pulumi.Input[str] total_bytes_processed: [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
         :param pulumi.Input[str] total_slot_ms: [Output-only] Slot-milliseconds for the job.
@@ -3398,6 +3401,8 @@ class JobStatisticsArgs:
             pulumi.set(__self__, "row_level_security_statistics", row_level_security_statistics)
         if script_statistics is not None:
             pulumi.set(__self__, "script_statistics", script_statistics)
+        if session_info_template is not None:
+            pulumi.set(__self__, "session_info_template", session_info_template)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
         if total_bytes_processed is not None:
@@ -3562,6 +3567,18 @@ class JobStatisticsArgs:
     @script_statistics.setter
     def script_statistics(self, value: Optional[pulumi.Input['ScriptStatisticsArgs']]):
         pulumi.set(self, "script_statistics", value)
+
+    @property
+    @pulumi.getter(name="sessionInfoTemplate")
+    def session_info_template(self) -> Optional[pulumi.Input['SessionInfoArgs']]:
+        """
+        [Output-only] [Preview] Information of the session if this job is part of one.
+        """
+        return pulumi.get(self, "session_info_template")
+
+    @session_info_template.setter
+    def session_info_template(self, value: Optional[pulumi.Input['SessionInfoArgs']]):
+        pulumi.set(self, "session_info_template", value)
 
     @property
     @pulumi.getter(name="startTime")
@@ -5075,6 +5092,29 @@ class ScriptStatisticsArgs:
 
 
 @pulumi.input_type
+class SessionInfoArgs:
+    def __init__(__self__, *,
+                 session_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] session_id: [Output-only] // [Preview] Id of the session.
+        """
+        if session_id is not None:
+            pulumi.set(__self__, "session_id", session_id)
+
+    @property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] // [Preview] Id of the session.
+        """
+        return pulumi.get(self, "session_id")
+
+    @session_id.setter
+    def session_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_id", value)
+
+
+@pulumi.input_type
 class SnapshotDefinitionArgs:
     def __init__(__self__, *,
                  base_table_reference: Optional[pulumi.Input['TableReferenceArgs']] = None,
@@ -5311,16 +5351,22 @@ class TableFieldSchemaArgs:
                  categories: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None,
+                 max_length: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 precision: Optional[pulumi.Input[str]] = None,
+                 scale: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] categories: [Optional] The categories attached to this field, used for field-level access control.
         :param pulumi.Input[str] description: [Optional] The field description. The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
+        :param pulumi.Input[str] max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
         :param pulumi.Input[str] mode: [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
         :param pulumi.Input[str] name: [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
+        :param pulumi.Input[str] precision: [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        :param pulumi.Input[str] scale: [Optional] See documentation for precision.
         :param pulumi.Input[str] type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
         """
         if categories is not None:
@@ -5329,12 +5375,18 @@ class TableFieldSchemaArgs:
             pulumi.set(__self__, "description", description)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if policy_tags is not None:
             pulumi.set(__self__, "policy_tags", policy_tags)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -5375,6 +5427,18 @@ class TableFieldSchemaArgs:
         pulumi.set(self, "fields", value)
 
     @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+        """
+        return pulumi.get(self, "max_length")
+
+    @max_length.setter
+    def max_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_length", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5406,6 +5470,30 @@ class TableFieldSchemaArgs:
     @policy_tags.setter
     def policy_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "policy_tags", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] See documentation for precision.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale", value)
 
     @property
     @pulumi.getter

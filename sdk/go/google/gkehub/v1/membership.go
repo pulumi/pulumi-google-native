@@ -80,6 +80,8 @@ type membershipArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
 	Parent string `pulumi:"parent"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// Output only. State of the Membership resource.
 	State *MembershipStateType `pulumi:"state"`
 	// Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
@@ -112,6 +114,8 @@ type MembershipArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
 	Parent pulumi.StringInput
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 	// Output only. State of the Membership resource.
 	State MembershipStateTypePtrInput
 	// Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a TargetHttpProxy resource in the specified project and region using the data included in the request.
+// Creates a TargetHttpProxy resource in the specified project using the data included in the request.
 type TargetHttpProxy struct {
 	pulumi.CustomResourceState
 }
@@ -25,9 +25,6 @@ func NewTargetHttpProxy(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource TargetHttpProxy
 	err := ctx.RegisterResource("google-cloud:compute/v1:TargetHttpProxy", name, args, &resource, opts...)
@@ -82,7 +79,7 @@ type targetHttpProxyArgs struct {
 	// The default is false.
 	ProxyBind *bool `pulumi:"proxyBind"`
 	// [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -118,7 +115,7 @@ type TargetHttpProxyArgs struct {
 	// The default is false.
 	ProxyBind pulumi.BoolPtrInput
 	// [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.

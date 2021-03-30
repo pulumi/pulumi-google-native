@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SecurityPolicy(string name, SecurityPolicyArgs? args = null, CustomResourceOptions? options = null)
+        public SecurityPolicy(string name, SecurityPolicyArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:compute/alpha:SecurityPolicy", name, args ?? new SecurityPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -148,10 +148,10 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
+        /// Project ID for this request.
         /// </summary>
-        [Input("parentId")]
-        public Input<string>? ParentId { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -198,6 +198,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// If true, the request will not be committed.
+        /// </summary>
+        [Input("validateOnly")]
+        public Input<bool>? ValidateOnly { get; set; }
 
         public SecurityPolicyArgs()
         {

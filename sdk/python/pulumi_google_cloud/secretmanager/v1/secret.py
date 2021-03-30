@@ -22,6 +22,7 @@ class Secret(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
+                 rotation: Optional[pulumi.Input[pulumi.InputType['RotationArgs']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
         :param pulumi.Input[str] parent: Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
         :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        :param pulumi.Input[pulumi.InputType['RotationArgs']] rotation: Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
         :param pulumi.Input[str] secret_id: Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         :param pulumi.Input[str] ttl: Input only. The TTL for the Secret.
@@ -68,6 +70,7 @@ class Secret(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['replication'] = replication
+            __props__['rotation'] = rotation
             __props__['secret_id'] = secret_id
             __props__['topics'] = topics
             __props__['ttl'] = ttl

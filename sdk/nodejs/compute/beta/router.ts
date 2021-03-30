@@ -99,6 +99,7 @@ export interface RouterArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+     * Not currently available in all Interconnect locations.
      */
     readonly encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**

@@ -6059,6 +6059,8 @@ type JobStatistics struct {
 	RowLevelSecurityStatistics *RowLevelSecurityStatistics `pulumi:"rowLevelSecurityStatistics"`
 	// [Output-only] Statistics for a child job of a script.
 	ScriptStatistics *ScriptStatistics `pulumi:"scriptStatistics"`
+	// [Output-only] [Preview] Information of the session if this job is part of one.
+	SessionInfoTemplate *SessionInfo `pulumi:"sessionInfoTemplate"`
 	// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 	StartTime *string `pulumi:"startTime"`
 	// [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
@@ -6107,6 +6109,8 @@ type JobStatisticsArgs struct {
 	RowLevelSecurityStatistics RowLevelSecurityStatisticsPtrInput `pulumi:"rowLevelSecurityStatistics"`
 	// [Output-only] Statistics for a child job of a script.
 	ScriptStatistics ScriptStatisticsPtrInput `pulumi:"scriptStatistics"`
+	// [Output-only] [Preview] Information of the session if this job is part of one.
+	SessionInfoTemplate SessionInfoPtrInput `pulumi:"sessionInfoTemplate"`
 	// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
@@ -6257,6 +6261,11 @@ func (o JobStatisticsOutput) RowLevelSecurityStatistics() RowLevelSecurityStatis
 // [Output-only] Statistics for a child job of a script.
 func (o JobStatisticsOutput) ScriptStatistics() ScriptStatisticsPtrOutput {
 	return o.ApplyT(func(v JobStatistics) *ScriptStatistics { return v.ScriptStatistics }).(ScriptStatisticsPtrOutput)
+}
+
+// [Output-only] [Preview] Information of the session if this job is part of one.
+func (o JobStatisticsOutput) SessionInfoTemplate() SessionInfoPtrOutput {
+	return o.ApplyT(func(v JobStatistics) *SessionInfo { return v.SessionInfoTemplate }).(SessionInfoPtrOutput)
 }
 
 // [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
@@ -6425,6 +6434,16 @@ func (o JobStatisticsPtrOutput) ScriptStatistics() ScriptStatisticsPtrOutput {
 		}
 		return v.ScriptStatistics
 	}).(ScriptStatisticsPtrOutput)
+}
+
+// [Output-only] [Preview] Information of the session if this job is part of one.
+func (o JobStatisticsPtrOutput) SessionInfoTemplate() SessionInfoPtrOutput {
+	return o.ApplyT(func(v *JobStatistics) *SessionInfo {
+		if v == nil {
+			return nil
+		}
+		return v.SessionInfoTemplate
+	}).(SessionInfoPtrOutput)
 }
 
 // [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
@@ -10053,6 +10072,137 @@ func (o ScriptStatisticsPtrOutput) StackFrames() ScriptStackFrameArrayOutput {
 	}).(ScriptStackFrameArrayOutput)
 }
 
+type SessionInfo struct {
+	// [Output-only] // [Preview] Id of the session.
+	SessionId *string `pulumi:"sessionId"`
+}
+
+// SessionInfoInput is an input type that accepts SessionInfoArgs and SessionInfoOutput values.
+// You can construct a concrete instance of `SessionInfoInput` via:
+//
+//          SessionInfoArgs{...}
+type SessionInfoInput interface {
+	pulumi.Input
+
+	ToSessionInfoOutput() SessionInfoOutput
+	ToSessionInfoOutputWithContext(context.Context) SessionInfoOutput
+}
+
+type SessionInfoArgs struct {
+	// [Output-only] // [Preview] Id of the session.
+	SessionId pulumi.StringPtrInput `pulumi:"sessionId"`
+}
+
+func (SessionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionInfo)(nil)).Elem()
+}
+
+func (i SessionInfoArgs) ToSessionInfoOutput() SessionInfoOutput {
+	return i.ToSessionInfoOutputWithContext(context.Background())
+}
+
+func (i SessionInfoArgs) ToSessionInfoOutputWithContext(ctx context.Context) SessionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoOutput)
+}
+
+func (i SessionInfoArgs) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
+	return i.ToSessionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SessionInfoArgs) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoOutput).ToSessionInfoPtrOutputWithContext(ctx)
+}
+
+// SessionInfoPtrInput is an input type that accepts SessionInfoArgs, SessionInfoPtr and SessionInfoPtrOutput values.
+// You can construct a concrete instance of `SessionInfoPtrInput` via:
+//
+//          SessionInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type SessionInfoPtrInput interface {
+	pulumi.Input
+
+	ToSessionInfoPtrOutput() SessionInfoPtrOutput
+	ToSessionInfoPtrOutputWithContext(context.Context) SessionInfoPtrOutput
+}
+
+type sessionInfoPtrType SessionInfoArgs
+
+func SessionInfoPtr(v *SessionInfoArgs) SessionInfoPtrInput {
+	return (*sessionInfoPtrType)(v)
+}
+
+func (*sessionInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionInfo)(nil)).Elem()
+}
+
+func (i *sessionInfoPtrType) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
+	return i.ToSessionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionInfoPtrType) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionInfoPtrOutput)
+}
+
+type SessionInfoOutput struct{ *pulumi.OutputState }
+
+func (SessionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionInfo)(nil)).Elem()
+}
+
+func (o SessionInfoOutput) ToSessionInfoOutput() SessionInfoOutput {
+	return o
+}
+
+func (o SessionInfoOutput) ToSessionInfoOutputWithContext(ctx context.Context) SessionInfoOutput {
+	return o
+}
+
+func (o SessionInfoOutput) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
+	return o.ToSessionInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SessionInfoOutput) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
+	return o.ApplyT(func(v SessionInfo) *SessionInfo {
+		return &v
+	}).(SessionInfoPtrOutput)
+}
+
+// [Output-only] // [Preview] Id of the session.
+func (o SessionInfoOutput) SessionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionInfo) *string { return v.SessionId }).(pulumi.StringPtrOutput)
+}
+
+type SessionInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionInfo)(nil)).Elem()
+}
+
+func (o SessionInfoPtrOutput) ToSessionInfoPtrOutput() SessionInfoPtrOutput {
+	return o
+}
+
+func (o SessionInfoPtrOutput) ToSessionInfoPtrOutputWithContext(ctx context.Context) SessionInfoPtrOutput {
+	return o
+}
+
+func (o SessionInfoPtrOutput) Elem() SessionInfoOutput {
+	return o.ApplyT(func(v *SessionInfo) SessionInfo { return *v }).(SessionInfoOutput)
+}
+
+// [Output-only] // [Preview] Id of the session.
+func (o SessionInfoPtrOutput) SessionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionId
+	}).(pulumi.StringPtrOutput)
+}
+
 type SnapshotDefinition struct {
 	// [Required] Reference describing the ID of the table that is snapshotted.
 	BaseTableReference *TableReference `pulumi:"baseTableReference"`
@@ -10920,11 +11070,17 @@ type TableFieldSchema struct {
 	Description *string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
 	Fields []TableFieldSchema `pulumi:"fields"`
+	// [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+	MaxLength *string `pulumi:"maxLength"`
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode *string `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
 	Name       *string           `pulumi:"name"`
 	PolicyTags map[string]string `pulumi:"policyTags"`
+	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+	Precision *string `pulumi:"precision"`
+	// [Optional] See documentation for precision.
+	Scale *string `pulumi:"scale"`
 	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
 	Type *string `pulumi:"type"`
 }
@@ -10947,11 +11103,17 @@ type TableFieldSchemaArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
 	Fields TableFieldSchemaArrayInput `pulumi:"fields"`
+	// [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+	MaxLength pulumi.StringPtrInput `pulumi:"maxLength"`
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
 	Name       pulumi.StringPtrInput `pulumi:"name"`
 	PolicyTags pulumi.StringMapInput `pulumi:"policyTags"`
+	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+	Precision pulumi.StringPtrInput `pulumi:"precision"`
+	// [Optional] See documentation for precision.
+	Scale pulumi.StringPtrInput `pulumi:"scale"`
 	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -11022,6 +11184,11 @@ func (o TableFieldSchemaOutput) Fields() TableFieldSchemaArrayOutput {
 	return o.ApplyT(func(v TableFieldSchema) []TableFieldSchema { return v.Fields }).(TableFieldSchemaArrayOutput)
 }
 
+// [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+func (o TableFieldSchemaOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *string { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 func (o TableFieldSchemaOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableFieldSchema) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -11034,6 +11201,16 @@ func (o TableFieldSchemaOutput) Name() pulumi.StringPtrOutput {
 
 func (o TableFieldSchemaOutput) PolicyTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TableFieldSchema) map[string]string { return v.PolicyTags }).(pulumi.StringMapOutput)
+}
+
+// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+func (o TableFieldSchemaOutput) Precision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *string { return v.Precision }).(pulumi.StringPtrOutput)
+}
+
+// [Optional] See documentation for precision.
+func (o TableFieldSchemaOutput) Scale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *string { return v.Scale }).(pulumi.StringPtrOutput)
 }
 
 // [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
@@ -12101,6 +12278,8 @@ func init() {
 	pulumi.RegisterOutputType(ScriptStackFrameArrayOutput{})
 	pulumi.RegisterOutputType(ScriptStatisticsOutput{})
 	pulumi.RegisterOutputType(ScriptStatisticsPtrOutput{})
+	pulumi.RegisterOutputType(SessionInfoOutput{})
+	pulumi.RegisterOutputType(SessionInfoPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeOutput{})

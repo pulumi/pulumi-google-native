@@ -11,6 +11,7 @@ from ... import _utilities, _tables
 __all__ = [
     'GoogleCloudApigeeV1ApiProductRefArgs',
     'GoogleCloudApigeeV1AttributeArgs',
+    'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs',
     'GoogleCloudApigeeV1CredentialArgs',
     'GoogleCloudApigeeV1CustomReportMetricArgs',
     'GoogleCloudApigeeV1DatastoreConfigArgs',
@@ -21,8 +22,6 @@ __all__ = [
     'GoogleCloudApigeeV1OperationArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
-    'GoogleCloudApigeeV1PropertiesArgs',
-    'GoogleCloudApigeeV1PropertyArgs',
     'GoogleCloudApigeeV1QueryMetricArgs',
     'GoogleCloudApigeeV1QuotaArgs',
     'GoogleCloudApigeeV1ReportPropertyArgs',
@@ -113,6 +112,62 @@ class GoogleCloudApigeeV1AttributeArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs:
+    def __init__(__self__, *,
+                 env: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None):
+        """
+        Labels that can be used to filter Apigee metrics.
+        :param pulumi.Input[str] env: The environment ID associated with the metrics.
+        :param pulumi.Input[str] instance_id: Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+        :param pulumi.Input[str] location: Required. The location associated with the metrics.
+        """
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[str]]:
+        """
+        The environment ID associated with the metrics.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env", value)
+
+    @property
+    @pulumi.getter
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The location associated with the metrics.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
 
 @pulumi.input_type
@@ -422,16 +477,16 @@ class GoogleCloudApigeeV1DateRangeArgs:
 class GoogleCloudApigeeV1GraphQLOperationArgs:
     def __init__(__self__, *,
                  operation: Optional[pulumi.Input[str]] = None,
-                 operation_type: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 operation_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
         :param pulumi.Input[str] operation: GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_type: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_types: Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
         """
         if operation is not None:
             pulumi.set(__self__, "operation", operation)
-        if operation_type is not None:
-            pulumi.set(__self__, "operation_type", operation_type)
+        if operation_types is not None:
+            pulumi.set(__self__, "operation_types", operation_types)
 
     @property
     @pulumi.getter
@@ -446,16 +501,16 @@ class GoogleCloudApigeeV1GraphQLOperationArgs:
         pulumi.set(self, "operation", value)
 
     @property
-    @pulumi.getter(name="operationType")
-    def operation_type(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="operationTypes")
+    def operation_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
         """
-        return pulumi.get(self, "operation_type")
+        return pulumi.get(self, "operation_types")
 
-    @operation_type.setter
-    def operation_type(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "operation_type", value)
+    @operation_types.setter
+    def operation_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "operation_types", value)
 
 
 @pulumi.input_type
@@ -720,70 +775,6 @@ class GoogleCloudApigeeV1OperationGroupArgs:
     @operation_configs.setter
     def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationConfigArgs']]]]):
         pulumi.set(self, "operation_configs", value)
-
-
-@pulumi.input_type
-class GoogleCloudApigeeV1PropertiesArgs:
-    def __init__(__self__, *,
-                 property: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]]] = None):
-        """
-        Message for compatibility with legacy Edge specification for Java Properties object in JSON.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]] property: List of all properties in the object
-        """
-        if property is not None:
-            pulumi.set(__self__, "property", property)
-
-    @property
-    @pulumi.getter
-    def property(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]]]:
-        """
-        List of all properties in the object
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]]]):
-        pulumi.set(self, "property", value)
-
-
-@pulumi.input_type
-class GoogleCloudApigeeV1PropertyArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
-        """
-        A single property entry in the Properties message.
-        :param pulumi.Input[str] name: The property key
-        :param pulumi.Input[str] value: The property value
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The property key
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The property value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Storage.V1
 {
     /// <summary>
-    /// Creates a new default object ACL entry on the specified bucket.
+    /// Creates a new ACL entry on the specified object.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:storage/v1:ObjectAccessControl")]
     public partial class ObjectAccessControl : Pulumi.CustomResource
@@ -127,8 +127,8 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// <summary>
         /// The name of the object, if applied to an object.
         /// </summary>
-        [Input("object")]
-        public Input<string>? Object { get; set; }
+        [Input("object", required: true)]
+        public Input<string> Object { get; set; } = null!;
 
         [Input("projectTeam")]
         private InputMap<string>? _projectTeam;

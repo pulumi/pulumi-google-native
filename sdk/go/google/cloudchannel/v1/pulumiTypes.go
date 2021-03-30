@@ -154,7 +154,7 @@ type GoogleCloudChannelV1CloudIdentityInfo struct {
 	CustomerType *string `pulumi:"customerType"`
 	// Edu information about the customer.
 	EduData *GoogleCloudChannelV1EduData `pulumi:"eduData"`
-	// Whether the domain is verified.
+	// Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
 	IsDomainVerified *bool `pulumi:"isDomainVerified"`
 	// Language code.
 	LanguageCode *string `pulumi:"languageCode"`
@@ -185,7 +185,7 @@ type GoogleCloudChannelV1CloudIdentityInfoArgs struct {
 	CustomerType pulumi.StringPtrInput `pulumi:"customerType"`
 	// Edu information about the customer.
 	EduData GoogleCloudChannelV1EduDataPtrInput `pulumi:"eduData"`
-	// Whether the domain is verified.
+	// Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
 	IsDomainVerified pulumi.BoolPtrInput `pulumi:"isDomainVerified"`
 	// Language code.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
@@ -293,7 +293,7 @@ func (o GoogleCloudChannelV1CloudIdentityInfoOutput) EduData() GoogleCloudChanne
 	return o.ApplyT(func(v GoogleCloudChannelV1CloudIdentityInfo) *GoogleCloudChannelV1EduData { return v.EduData }).(GoogleCloudChannelV1EduDataPtrOutput)
 }
 
-// Whether the domain is verified.
+// Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
 func (o GoogleCloudChannelV1CloudIdentityInfoOutput) IsDomainVerified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1CloudIdentityInfo) *bool { return v.IsDomainVerified }).(pulumi.BoolPtrOutput)
 }
@@ -371,7 +371,7 @@ func (o GoogleCloudChannelV1CloudIdentityInfoPtrOutput) EduData() GoogleCloudCha
 	}).(GoogleCloudChannelV1EduDataPtrOutput)
 }
 
-// Whether the domain is verified.
+// Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
 func (o GoogleCloudChannelV1CloudIdentityInfoPtrOutput) IsDomainVerified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1CloudIdentityInfo) *bool {
 		if v == nil {
@@ -2122,6 +2122,8 @@ func (o GoogleCloudChannelV1TrialSettingsPtrOutput) Trial() pulumi.BoolPtrOutput
 
 // Data type and value of a parameter.
 type GoogleCloudChannelV1Value struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	DoubleValue *float64 `pulumi:"doubleValue"`
 	// Represents an int64 value.
@@ -2145,6 +2147,8 @@ type GoogleCloudChannelV1ValueInput interface {
 
 // Data type and value of a parameter.
 type GoogleCloudChannelV1ValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
 	// Represents an int64 value.
@@ -2233,6 +2237,11 @@ func (o GoogleCloudChannelV1ValueOutput) ToGoogleCloudChannelV1ValuePtrOutputWit
 	}).(GoogleCloudChannelV1ValuePtrOutput)
 }
 
+// Represents a boolean value.
+func (o GoogleCloudChannelV1ValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1Value) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
 // Represents a double value.
 func (o GoogleCloudChannelV1ValueOutput) DoubleValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1Value) *float64 { return v.DoubleValue }).(pulumi.Float64PtrOutput)
@@ -2269,6 +2278,16 @@ func (o GoogleCloudChannelV1ValuePtrOutput) ToGoogleCloudChannelV1ValuePtrOutput
 
 func (o GoogleCloudChannelV1ValuePtrOutput) Elem() GoogleCloudChannelV1ValueOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1Value) GoogleCloudChannelV1Value { return *v }).(GoogleCloudChannelV1ValueOutput)
+}
+
+// Represents a boolean value.
+func (o GoogleCloudChannelV1ValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1Value) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Represents a double value.

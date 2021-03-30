@@ -26,6 +26,9 @@ func NewNetworkEndpointGroup(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
+	}
 	var resource NetworkEndpointGroup
 	err := ctx.RegisterResource("google-cloud:compute/v1:NetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {
@@ -99,7 +102,7 @@ type networkEndpointGroupArgs struct {
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// [Output Only] The URL of the zone where the network endpoint group is located.
-	Zone *string `pulumi:"zone"`
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NetworkEndpointGroup resource.
@@ -145,7 +148,7 @@ type NetworkEndpointGroupArgs struct {
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
 	// [Output Only] The URL of the zone where the network endpoint group is located.
-	Zone pulumi.StringPtrInput
+	Zone pulumi.StringInput
 }
 
 func (NetworkEndpointGroupArgs) ElementType() reflect.Type {

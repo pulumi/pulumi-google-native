@@ -13,7 +13,7 @@ import (
 
 // Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
 //
-// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
+// A regional managed instance group can contain up to 2000 instances.
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 }
@@ -28,8 +28,8 @@ func NewInstanceGroupManager(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource InstanceGroupManager
 	err := ctx.RegisterResource("google-cloud:compute/beta:InstanceGroupManager", name, args, &resource, opts...)
@@ -96,7 +96,7 @@ type instanceGroupManagerArgs struct {
 	// Project ID for this request.
 	Project string `pulumi:"project"`
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -122,7 +122,7 @@ type instanceGroupManagerArgs struct {
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroupManager resource.
@@ -160,7 +160,7 @@ type InstanceGroupManagerArgs struct {
 	// Project ID for this request.
 	Project pulumi.StringInput
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -186,7 +186,7 @@ type InstanceGroupManagerArgs struct {
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionArrayInput
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (InstanceGroupManagerArgs) ElementType() reflect.Type {

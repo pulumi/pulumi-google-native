@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Alpha
 {
     /// <summary>
-    /// Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
+    /// Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/alpha:TargetHttpsProxy")]
     public partial class TargetHttpsProxy : Pulumi.CustomResource
@@ -164,8 +164,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.

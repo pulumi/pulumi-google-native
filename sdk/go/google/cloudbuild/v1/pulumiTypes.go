@@ -3149,6 +3149,8 @@ type Source struct {
 	RepoSource *RepoSource `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
 	StorageSource *StorageSource `pulumi:"storageSource"`
+	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+	StorageSourceManifest *StorageSourceManifest `pulumi:"storageSourceManifest"`
 }
 
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
@@ -3168,6 +3170,8 @@ type SourceArgs struct {
 	RepoSource RepoSourcePtrInput `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
 	StorageSource StorageSourcePtrInput `pulumi:"storageSource"`
+	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+	StorageSourceManifest StorageSourceManifestPtrInput `pulumi:"storageSourceManifest"`
 }
 
 func (SourceArgs) ElementType() reflect.Type {
@@ -3258,6 +3262,11 @@ func (o SourceOutput) StorageSource() StorageSourcePtrOutput {
 	return o.ApplyT(func(v Source) *StorageSource { return v.StorageSource }).(StorageSourcePtrOutput)
 }
 
+// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+func (o SourceOutput) StorageSourceManifest() StorageSourceManifestPtrOutput {
+	return o.ApplyT(func(v Source) *StorageSourceManifest { return v.StorageSourceManifest }).(StorageSourceManifestPtrOutput)
+}
+
 type SourcePtrOutput struct{ *pulumi.OutputState }
 
 func (SourcePtrOutput) ElementType() reflect.Type {
@@ -3296,6 +3305,16 @@ func (o SourcePtrOutput) StorageSource() StorageSourcePtrOutput {
 	}).(StorageSourcePtrOutput)
 }
 
+// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+func (o SourcePtrOutput) StorageSourceManifest() StorageSourceManifestPtrOutput {
+	return o.ApplyT(func(v *Source) *StorageSourceManifest {
+		if v == nil {
+			return nil
+		}
+		return v.StorageSourceManifest
+	}).(StorageSourceManifestPtrOutput)
+}
+
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
 type SourceProvenance struct {
 	// Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
@@ -3304,6 +3323,8 @@ type SourceProvenance struct {
 	ResolvedRepoSource *RepoSource `pulumi:"resolvedRepoSource"`
 	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
 	ResolvedStorageSource *StorageSource `pulumi:"resolvedStorageSource"`
+	// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
+	ResolvedStorageSourceManifest *StorageSourceManifest `pulumi:"resolvedStorageSourceManifest"`
 }
 
 // SourceProvenanceInput is an input type that accepts SourceProvenanceArgs and SourceProvenanceOutput values.
@@ -3325,6 +3346,8 @@ type SourceProvenanceArgs struct {
 	ResolvedRepoSource RepoSourcePtrInput `pulumi:"resolvedRepoSource"`
 	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
 	ResolvedStorageSource StorageSourcePtrInput `pulumi:"resolvedStorageSource"`
+	// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
+	ResolvedStorageSourceManifest StorageSourceManifestPtrInput `pulumi:"resolvedStorageSourceManifest"`
 }
 
 func (SourceProvenanceArgs) ElementType() reflect.Type {
@@ -3420,6 +3443,11 @@ func (o SourceProvenanceOutput) ResolvedStorageSource() StorageSourcePtrOutput {
 	return o.ApplyT(func(v SourceProvenance) *StorageSource { return v.ResolvedStorageSource }).(StorageSourcePtrOutput)
 }
 
+// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
+func (o SourceProvenanceOutput) ResolvedStorageSourceManifest() StorageSourceManifestPtrOutput {
+	return o.ApplyT(func(v SourceProvenance) *StorageSourceManifest { return v.ResolvedStorageSourceManifest }).(StorageSourceManifestPtrOutput)
+}
+
 type SourceProvenancePtrOutput struct{ *pulumi.OutputState }
 
 func (SourceProvenancePtrOutput) ElementType() reflect.Type {
@@ -3466,6 +3494,16 @@ func (o SourceProvenancePtrOutput) ResolvedStorageSource() StorageSourcePtrOutpu
 		}
 		return v.ResolvedStorageSource
 	}).(StorageSourcePtrOutput)
+}
+
+// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
+func (o SourceProvenancePtrOutput) ResolvedStorageSourceManifest() StorageSourceManifestPtrOutput {
+	return o.ApplyT(func(v *SourceProvenance) *StorageSourceManifest {
+		if v == nil {
+			return nil
+		}
+		return v.ResolvedStorageSourceManifest
+	}).(StorageSourceManifestPtrOutput)
 }
 
 // Location of the source in an archive file in Google Cloud Storage.
@@ -3633,6 +3671,178 @@ func (o StorageSourcePtrOutput) Generation() pulumi.StringPtrOutput {
 // Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
 func (o StorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+type StorageSourceManifest struct {
+	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket *string `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	Generation *string `pulumi:"generation"`
+	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	Object *string `pulumi:"object"`
+}
+
+// StorageSourceManifestInput is an input type that accepts StorageSourceManifestArgs and StorageSourceManifestOutput values.
+// You can construct a concrete instance of `StorageSourceManifestInput` via:
+//
+//          StorageSourceManifestArgs{...}
+type StorageSourceManifestInput interface {
+	pulumi.Input
+
+	ToStorageSourceManifestOutput() StorageSourceManifestOutput
+	ToStorageSourceManifestOutputWithContext(context.Context) StorageSourceManifestOutput
+}
+
+// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+type StorageSourceManifestArgs struct {
+	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	Object pulumi.StringPtrInput `pulumi:"object"`
+}
+
+func (StorageSourceManifestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceManifest)(nil)).Elem()
+}
+
+func (i StorageSourceManifestArgs) ToStorageSourceManifestOutput() StorageSourceManifestOutput {
+	return i.ToStorageSourceManifestOutputWithContext(context.Background())
+}
+
+func (i StorageSourceManifestArgs) ToStorageSourceManifestOutputWithContext(ctx context.Context) StorageSourceManifestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestOutput)
+}
+
+func (i StorageSourceManifestArgs) ToStorageSourceManifestPtrOutput() StorageSourceManifestPtrOutput {
+	return i.ToStorageSourceManifestPtrOutputWithContext(context.Background())
+}
+
+func (i StorageSourceManifestArgs) ToStorageSourceManifestPtrOutputWithContext(ctx context.Context) StorageSourceManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestOutput).ToStorageSourceManifestPtrOutputWithContext(ctx)
+}
+
+// StorageSourceManifestPtrInput is an input type that accepts StorageSourceManifestArgs, StorageSourceManifestPtr and StorageSourceManifestPtrOutput values.
+// You can construct a concrete instance of `StorageSourceManifestPtrInput` via:
+//
+//          StorageSourceManifestArgs{...}
+//
+//  or:
+//
+//          nil
+type StorageSourceManifestPtrInput interface {
+	pulumi.Input
+
+	ToStorageSourceManifestPtrOutput() StorageSourceManifestPtrOutput
+	ToStorageSourceManifestPtrOutputWithContext(context.Context) StorageSourceManifestPtrOutput
+}
+
+type storageSourceManifestPtrType StorageSourceManifestArgs
+
+func StorageSourceManifestPtr(v *StorageSourceManifestArgs) StorageSourceManifestPtrInput {
+	return (*storageSourceManifestPtrType)(v)
+}
+
+func (*storageSourceManifestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceManifest)(nil)).Elem()
+}
+
+func (i *storageSourceManifestPtrType) ToStorageSourceManifestPtrOutput() StorageSourceManifestPtrOutput {
+	return i.ToStorageSourceManifestPtrOutputWithContext(context.Background())
+}
+
+func (i *storageSourceManifestPtrType) ToStorageSourceManifestPtrOutputWithContext(ctx context.Context) StorageSourceManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestPtrOutput)
+}
+
+// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+type StorageSourceManifestOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceManifestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceManifest)(nil)).Elem()
+}
+
+func (o StorageSourceManifestOutput) ToStorageSourceManifestOutput() StorageSourceManifestOutput {
+	return o
+}
+
+func (o StorageSourceManifestOutput) ToStorageSourceManifestOutputWithContext(ctx context.Context) StorageSourceManifestOutput {
+	return o
+}
+
+func (o StorageSourceManifestOutput) ToStorageSourceManifestPtrOutput() StorageSourceManifestPtrOutput {
+	return o.ToStorageSourceManifestPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSourceManifestOutput) ToStorageSourceManifestPtrOutputWithContext(ctx context.Context) StorageSourceManifestPtrOutput {
+	return o.ApplyT(func(v StorageSourceManifest) *StorageSourceManifest {
+		return &v
+	}).(StorageSourceManifestPtrOutput)
+}
+
+// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceManifestOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageSourceManifest) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+func (o StorageSourceManifestOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageSourceManifest) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+func (o StorageSourceManifestOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageSourceManifest) *string { return v.Object }).(pulumi.StringPtrOutput)
+}
+
+type StorageSourceManifestPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceManifestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceManifest)(nil)).Elem()
+}
+
+func (o StorageSourceManifestPtrOutput) ToStorageSourceManifestPtrOutput() StorageSourceManifestPtrOutput {
+	return o
+}
+
+func (o StorageSourceManifestPtrOutput) ToStorageSourceManifestPtrOutputWithContext(ctx context.Context) StorageSourceManifestPtrOutput {
+	return o
+}
+
+func (o StorageSourceManifestPtrOutput) Elem() StorageSourceManifestOutput {
+	return o.ApplyT(func(v *StorageSourceManifest) StorageSourceManifest { return *v }).(StorageSourceManifestOutput)
+}
+
+// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceManifestPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceManifest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+func (o StorageSourceManifestPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceManifest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+func (o StorageSourceManifestPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceManifest) *string {
 		if v == nil {
 			return nil
 		}
@@ -3939,6 +4149,8 @@ func init() {
 	pulumi.RegisterOutputType(SourceProvenancePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceOutput{})
 	pulumi.RegisterOutputType(StorageSourcePtrOutput{})
+	pulumi.RegisterOutputType(StorageSourceManifestOutput{})
+	pulumi.RegisterOutputType(StorageSourceManifestPtrOutput{})
 	pulumi.RegisterOutputType(TimeSpanOutput{})
 	pulumi.RegisterOutputType(TimeSpanPtrOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})

@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
         public Input<Inputs.GoogleCloudChannelV1EduDataArgs>? EduData { get; set; }
 
         /// <summary>
-        /// Whether the domain is verified.
+        /// Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
         /// </summary>
         [Input("isDomainVerified")]
         public Input<bool>? IsDomainVerified { get; set; }

@@ -7,10 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new policy in the specified project using the data included in the request.
+// Creates a new network firewall policy in the specified project and region.
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 }
@@ -19,9 +20,15 @@ type FirewallPolicy struct {
 func NewFirewallPolicy(ctx *pulumi.Context,
 	name string, args *FirewallPolicyArgs, opts ...pulumi.ResourceOption) (*FirewallPolicy, error) {
 	if args == nil {
-		args = &FirewallPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
 	var resource FirewallPolicy
 	err := ctx.RegisterResource("google-cloud:compute/alpha:FirewallPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -74,10 +81,10 @@ type firewallPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// [Output Only] The parent of the firewall policy.
 	Parent *string `pulumi:"parent"`
-	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-	ParentId *string `pulumi:"parentId"`
+	// Project ID for this request.
+	Project string `pulumi:"project"`
 	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -118,10 +125,10 @@ type FirewallPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// [Output Only] The parent of the firewall policy.
 	Parent pulumi.StringPtrInput
-	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-	ParentId pulumi.StringPtrInput
+	// Project ID for this request.
+	Project pulumi.StringInput
 	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.

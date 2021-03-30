@@ -746,6 +746,8 @@ type ClusterConfig struct {
 	EndpointConfig *EndpointConfig `pulumi:"endpointConfig"`
 	// Optional. The shared Compute Engine config settings for all instances in a cluster.
 	GceClusterConfig *GceClusterConfig `pulumi:"gceClusterConfig"`
+	// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	GkeClusterConfig *GkeClusterConfig `pulumi:"gkeClusterConfig"`
 	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 	InitializationActions []NodeInitializationAction `pulumi:"initializationActions"`
 	// Optional. Lifecycle setting for the cluster.
@@ -789,6 +791,8 @@ type ClusterConfigArgs struct {
 	EndpointConfig EndpointConfigPtrInput `pulumi:"endpointConfig"`
 	// Optional. The shared Compute Engine config settings for all instances in a cluster.
 	GceClusterConfig GceClusterConfigPtrInput `pulumi:"gceClusterConfig"`
+	// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	GkeClusterConfig GkeClusterConfigPtrInput `pulumi:"gkeClusterConfig"`
 	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 	InitializationActions NodeInitializationActionArrayInput `pulumi:"initializationActions"`
 	// Optional. Lifecycle setting for the cluster.
@@ -912,6 +916,11 @@ func (o ClusterConfigOutput) GceClusterConfig() GceClusterConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *GceClusterConfig { return v.GceClusterConfig }).(GceClusterConfigPtrOutput)
 }
 
+// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+func (o ClusterConfigOutput) GkeClusterConfig() GkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v ClusterConfig) *GkeClusterConfig { return v.GkeClusterConfig }).(GkeClusterConfigPtrOutput)
+}
+
 // Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 func (o ClusterConfigOutput) InitializationActions() NodeInitializationActionArrayOutput {
 	return o.ApplyT(func(v ClusterConfig) []NodeInitializationAction { return v.InitializationActions }).(NodeInitializationActionArrayOutput)
@@ -1023,6 +1032,16 @@ func (o ClusterConfigPtrOutput) GceClusterConfig() GceClusterConfigPtrOutput {
 		}
 		return v.GceClusterConfig
 	}).(GceClusterConfigPtrOutput)
+}
+
+// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+func (o ClusterConfigPtrOutput) GkeClusterConfig() GkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterConfig) *GkeClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusterConfig
+	}).(GkeClusterConfigPtrOutput)
 }
 
 // Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
@@ -2650,6 +2669,140 @@ func (o GceClusterConfigPtrOutput) ZoneUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The GKE config for this cluster.
+type GkeClusterConfig struct {
+	// Optional. A target for the deployment.
+	NamespacedGkeDeploymentTarget *NamespacedGkeDeploymentTarget `pulumi:"namespacedGkeDeploymentTarget"`
+}
+
+// GkeClusterConfigInput is an input type that accepts GkeClusterConfigArgs and GkeClusterConfigOutput values.
+// You can construct a concrete instance of `GkeClusterConfigInput` via:
+//
+//          GkeClusterConfigArgs{...}
+type GkeClusterConfigInput interface {
+	pulumi.Input
+
+	ToGkeClusterConfigOutput() GkeClusterConfigOutput
+	ToGkeClusterConfigOutputWithContext(context.Context) GkeClusterConfigOutput
+}
+
+// The GKE config for this cluster.
+type GkeClusterConfigArgs struct {
+	// Optional. A target for the deployment.
+	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetPtrInput `pulumi:"namespacedGkeDeploymentTarget"`
+}
+
+func (GkeClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeClusterConfig)(nil)).Elem()
+}
+
+func (i GkeClusterConfigArgs) ToGkeClusterConfigOutput() GkeClusterConfigOutput {
+	return i.ToGkeClusterConfigOutputWithContext(context.Background())
+}
+
+func (i GkeClusterConfigArgs) ToGkeClusterConfigOutputWithContext(ctx context.Context) GkeClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigOutput)
+}
+
+func (i GkeClusterConfigArgs) ToGkeClusterConfigPtrOutput() GkeClusterConfigPtrOutput {
+	return i.ToGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GkeClusterConfigArgs) ToGkeClusterConfigPtrOutputWithContext(ctx context.Context) GkeClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigOutput).ToGkeClusterConfigPtrOutputWithContext(ctx)
+}
+
+// GkeClusterConfigPtrInput is an input type that accepts GkeClusterConfigArgs, GkeClusterConfigPtr and GkeClusterConfigPtrOutput values.
+// You can construct a concrete instance of `GkeClusterConfigPtrInput` via:
+//
+//          GkeClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToGkeClusterConfigPtrOutput() GkeClusterConfigPtrOutput
+	ToGkeClusterConfigPtrOutputWithContext(context.Context) GkeClusterConfigPtrOutput
+}
+
+type gkeClusterConfigPtrType GkeClusterConfigArgs
+
+func GkeClusterConfigPtr(v *GkeClusterConfigArgs) GkeClusterConfigPtrInput {
+	return (*gkeClusterConfigPtrType)(v)
+}
+
+func (*gkeClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeClusterConfig)(nil)).Elem()
+}
+
+func (i *gkeClusterConfigPtrType) ToGkeClusterConfigPtrOutput() GkeClusterConfigPtrOutput {
+	return i.ToGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeClusterConfigPtrType) ToGkeClusterConfigPtrOutputWithContext(ctx context.Context) GkeClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigPtrOutput)
+}
+
+// The GKE config for this cluster.
+type GkeClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeClusterConfig)(nil)).Elem()
+}
+
+func (o GkeClusterConfigOutput) ToGkeClusterConfigOutput() GkeClusterConfigOutput {
+	return o
+}
+
+func (o GkeClusterConfigOutput) ToGkeClusterConfigOutputWithContext(ctx context.Context) GkeClusterConfigOutput {
+	return o
+}
+
+func (o GkeClusterConfigOutput) ToGkeClusterConfigPtrOutput() GkeClusterConfigPtrOutput {
+	return o.ToGkeClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GkeClusterConfigOutput) ToGkeClusterConfigPtrOutputWithContext(ctx context.Context) GkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v GkeClusterConfig) *GkeClusterConfig {
+		return &v
+	}).(GkeClusterConfigPtrOutput)
+}
+
+// Optional. A target for the deployment.
+func (o GkeClusterConfigOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v GkeClusterConfig) *NamespacedGkeDeploymentTarget { return v.NamespacedGkeDeploymentTarget }).(NamespacedGkeDeploymentTargetPtrOutput)
+}
+
+type GkeClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeClusterConfig)(nil)).Elem()
+}
+
+func (o GkeClusterConfigPtrOutput) ToGkeClusterConfigPtrOutput() GkeClusterConfigPtrOutput {
+	return o
+}
+
+func (o GkeClusterConfigPtrOutput) ToGkeClusterConfigPtrOutputWithContext(ctx context.Context) GkeClusterConfigPtrOutput {
+	return o
+}
+
+func (o GkeClusterConfigPtrOutput) Elem() GkeClusterConfigOutput {
+	return o.ApplyT(func(v *GkeClusterConfig) GkeClusterConfig { return *v }).(GkeClusterConfigOutput)
+}
+
+// Optional. A target for the deployment.
+func (o GkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v *GkeClusterConfig) *NamespacedGkeDeploymentTarget {
+		if v == nil {
+			return nil
+		}
+		return v.NamespacedGkeDeploymentTarget
+	}).(NamespacedGkeDeploymentTargetPtrOutput)
+}
+
 // A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 type HadoopJob struct {
 	// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -3143,6 +3296,140 @@ func (o HiveJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 			return nil
 		}
 		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
+}
+
+// Identity related configuration, including service account based secure multi-tenancy user mappings.
+type IdentityConfig struct {
+	// Required. Map of user to service account.
+	UserServiceAccountMapping map[string]string `pulumi:"userServiceAccountMapping"`
+}
+
+// IdentityConfigInput is an input type that accepts IdentityConfigArgs and IdentityConfigOutput values.
+// You can construct a concrete instance of `IdentityConfigInput` via:
+//
+//          IdentityConfigArgs{...}
+type IdentityConfigInput interface {
+	pulumi.Input
+
+	ToIdentityConfigOutput() IdentityConfigOutput
+	ToIdentityConfigOutputWithContext(context.Context) IdentityConfigOutput
+}
+
+// Identity related configuration, including service account based secure multi-tenancy user mappings.
+type IdentityConfigArgs struct {
+	// Required. Map of user to service account.
+	UserServiceAccountMapping pulumi.StringMapInput `pulumi:"userServiceAccountMapping"`
+}
+
+func (IdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityConfig)(nil)).Elem()
+}
+
+func (i IdentityConfigArgs) ToIdentityConfigOutput() IdentityConfigOutput {
+	return i.ToIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityConfigArgs) ToIdentityConfigOutputWithContext(ctx context.Context) IdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityConfigOutput)
+}
+
+func (i IdentityConfigArgs) ToIdentityConfigPtrOutput() IdentityConfigPtrOutput {
+	return i.ToIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityConfigArgs) ToIdentityConfigPtrOutputWithContext(ctx context.Context) IdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityConfigOutput).ToIdentityConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityConfigPtrInput is an input type that accepts IdentityConfigArgs, IdentityConfigPtr and IdentityConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityConfigPtrInput` via:
+//
+//          IdentityConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type IdentityConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityConfigPtrOutput() IdentityConfigPtrOutput
+	ToIdentityConfigPtrOutputWithContext(context.Context) IdentityConfigPtrOutput
+}
+
+type identityConfigPtrType IdentityConfigArgs
+
+func IdentityConfigPtr(v *IdentityConfigArgs) IdentityConfigPtrInput {
+	return (*identityConfigPtrType)(v)
+}
+
+func (*identityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityConfig)(nil)).Elem()
+}
+
+func (i *identityConfigPtrType) ToIdentityConfigPtrOutput() IdentityConfigPtrOutput {
+	return i.ToIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityConfigPtrType) ToIdentityConfigPtrOutputWithContext(ctx context.Context) IdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityConfigPtrOutput)
+}
+
+// Identity related configuration, including service account based secure multi-tenancy user mappings.
+type IdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityConfig)(nil)).Elem()
+}
+
+func (o IdentityConfigOutput) ToIdentityConfigOutput() IdentityConfigOutput {
+	return o
+}
+
+func (o IdentityConfigOutput) ToIdentityConfigOutputWithContext(ctx context.Context) IdentityConfigOutput {
+	return o
+}
+
+func (o IdentityConfigOutput) ToIdentityConfigPtrOutput() IdentityConfigPtrOutput {
+	return o.ToIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityConfigOutput) ToIdentityConfigPtrOutputWithContext(ctx context.Context) IdentityConfigPtrOutput {
+	return o.ApplyT(func(v IdentityConfig) *IdentityConfig {
+		return &v
+	}).(IdentityConfigPtrOutput)
+}
+
+// Required. Map of user to service account.
+func (o IdentityConfigOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v IdentityConfig) map[string]string { return v.UserServiceAccountMapping }).(pulumi.StringMapOutput)
+}
+
+type IdentityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityConfig)(nil)).Elem()
+}
+
+func (o IdentityConfigPtrOutput) ToIdentityConfigPtrOutput() IdentityConfigPtrOutput {
+	return o
+}
+
+func (o IdentityConfigPtrOutput) ToIdentityConfigPtrOutputWithContext(ctx context.Context) IdentityConfigPtrOutput {
+	return o
+}
+
+func (o IdentityConfigPtrOutput) Elem() IdentityConfigOutput {
+	return o.ApplyT(func(v *IdentityConfig) IdentityConfig { return *v }).(IdentityConfigOutput)
+}
+
+// Required. Map of user to service account.
+func (o IdentityConfigPtrOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *IdentityConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserServiceAccountMapping
 	}).(pulumi.StringMapOutput)
 }
 
@@ -5094,6 +5381,159 @@ func (o MetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOut
 			return nil
 		}
 		return v.DataprocMetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+// A full, namespace-isolated deployment target for an existing GKE cluster.
+type NamespacedGkeDeploymentTarget struct {
+	// Optional. A namespace within the GKE cluster to deploy into.
+	ClusterNamespace *string `pulumi:"clusterNamespace"`
+	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	TargetGkeCluster *string `pulumi:"targetGkeCluster"`
+}
+
+// NamespacedGkeDeploymentTargetInput is an input type that accepts NamespacedGkeDeploymentTargetArgs and NamespacedGkeDeploymentTargetOutput values.
+// You can construct a concrete instance of `NamespacedGkeDeploymentTargetInput` via:
+//
+//          NamespacedGkeDeploymentTargetArgs{...}
+type NamespacedGkeDeploymentTargetInput interface {
+	pulumi.Input
+
+	ToNamespacedGkeDeploymentTargetOutput() NamespacedGkeDeploymentTargetOutput
+	ToNamespacedGkeDeploymentTargetOutputWithContext(context.Context) NamespacedGkeDeploymentTargetOutput
+}
+
+// A full, namespace-isolated deployment target for an existing GKE cluster.
+type NamespacedGkeDeploymentTargetArgs struct {
+	// Optional. A namespace within the GKE cluster to deploy into.
+	ClusterNamespace pulumi.StringPtrInput `pulumi:"clusterNamespace"`
+	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	TargetGkeCluster pulumi.StringPtrInput `pulumi:"targetGkeCluster"`
+}
+
+func (NamespacedGkeDeploymentTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (i NamespacedGkeDeploymentTargetArgs) ToNamespacedGkeDeploymentTargetOutput() NamespacedGkeDeploymentTargetOutput {
+	return i.ToNamespacedGkeDeploymentTargetOutputWithContext(context.Background())
+}
+
+func (i NamespacedGkeDeploymentTargetArgs) ToNamespacedGkeDeploymentTargetOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetOutput)
+}
+
+func (i NamespacedGkeDeploymentTargetArgs) ToNamespacedGkeDeploymentTargetPtrOutput() NamespacedGkeDeploymentTargetPtrOutput {
+	return i.ToNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i NamespacedGkeDeploymentTargetArgs) ToNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetOutput).ToNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx)
+}
+
+// NamespacedGkeDeploymentTargetPtrInput is an input type that accepts NamespacedGkeDeploymentTargetArgs, NamespacedGkeDeploymentTargetPtr and NamespacedGkeDeploymentTargetPtrOutput values.
+// You can construct a concrete instance of `NamespacedGkeDeploymentTargetPtrInput` via:
+//
+//          NamespacedGkeDeploymentTargetArgs{...}
+//
+//  or:
+//
+//          nil
+type NamespacedGkeDeploymentTargetPtrInput interface {
+	pulumi.Input
+
+	ToNamespacedGkeDeploymentTargetPtrOutput() NamespacedGkeDeploymentTargetPtrOutput
+	ToNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Context) NamespacedGkeDeploymentTargetPtrOutput
+}
+
+type namespacedGkeDeploymentTargetPtrType NamespacedGkeDeploymentTargetArgs
+
+func NamespacedGkeDeploymentTargetPtr(v *NamespacedGkeDeploymentTargetArgs) NamespacedGkeDeploymentTargetPtrInput {
+	return (*namespacedGkeDeploymentTargetPtrType)(v)
+}
+
+func (*namespacedGkeDeploymentTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (i *namespacedGkeDeploymentTargetPtrType) ToNamespacedGkeDeploymentTargetPtrOutput() NamespacedGkeDeploymentTargetPtrOutput {
+	return i.ToNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *namespacedGkeDeploymentTargetPtrType) ToNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetPtrOutput)
+}
+
+// A full, namespace-isolated deployment target for an existing GKE cluster.
+type NamespacedGkeDeploymentTargetOutput struct{ *pulumi.OutputState }
+
+func (NamespacedGkeDeploymentTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (o NamespacedGkeDeploymentTargetOutput) ToNamespacedGkeDeploymentTargetOutput() NamespacedGkeDeploymentTargetOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetOutput) ToNamespacedGkeDeploymentTargetOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetOutput) ToNamespacedGkeDeploymentTargetPtrOutput() NamespacedGkeDeploymentTargetPtrOutput {
+	return o.ToNamespacedGkeDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (o NamespacedGkeDeploymentTargetOutput) ToNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetPtrOutput {
+	return o.ApplyT(func(v NamespacedGkeDeploymentTarget) *NamespacedGkeDeploymentTarget {
+		return &v
+	}).(NamespacedGkeDeploymentTargetPtrOutput)
+}
+
+// Optional. A namespace within the GKE cluster to deploy into.
+func (o NamespacedGkeDeploymentTargetOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacedGkeDeploymentTarget) *string { return v.ClusterNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o NamespacedGkeDeploymentTargetOutput) TargetGkeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespacedGkeDeploymentTarget) *string { return v.TargetGkeCluster }).(pulumi.StringPtrOutput)
+}
+
+type NamespacedGkeDeploymentTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (NamespacedGkeDeploymentTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespacedGkeDeploymentTarget)(nil)).Elem()
+}
+
+func (o NamespacedGkeDeploymentTargetPtrOutput) ToNamespacedGkeDeploymentTargetPtrOutput() NamespacedGkeDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetPtrOutput) ToNamespacedGkeDeploymentTargetPtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetPtrOutput) Elem() NamespacedGkeDeploymentTargetOutput {
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTarget) NamespacedGkeDeploymentTarget { return *v }).(NamespacedGkeDeploymentTargetOutput)
+}
+
+// Optional. A namespace within the GKE cluster to deploy into.
+func (o NamespacedGkeDeploymentTargetPtrOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o NamespacedGkeDeploymentTargetPtrOutput) TargetGkeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetGkeCluster
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7069,6 +7509,8 @@ func (o ReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
 
 // Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfig struct {
+	// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+	IdentityConfig *IdentityConfig `pulumi:"identityConfig"`
 	// Optional. Kerberos related configuration.
 	KerberosConfig *KerberosConfig `pulumi:"kerberosConfig"`
 }
@@ -7086,6 +7528,8 @@ type SecurityConfigInput interface {
 
 // Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfigArgs struct {
+	// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+	IdentityConfig IdentityConfigPtrInput `pulumi:"identityConfig"`
 	// Optional. Kerberos related configuration.
 	KerberosConfig KerberosConfigPtrInput `pulumi:"kerberosConfig"`
 }
@@ -7168,6 +7612,11 @@ func (o SecurityConfigOutput) ToSecurityConfigPtrOutputWithContext(ctx context.C
 	}).(SecurityConfigPtrOutput)
 }
 
+// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+func (o SecurityConfigOutput) IdentityConfig() IdentityConfigPtrOutput {
+	return o.ApplyT(func(v SecurityConfig) *IdentityConfig { return v.IdentityConfig }).(IdentityConfigPtrOutput)
+}
+
 // Optional. Kerberos related configuration.
 func (o SecurityConfigOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v SecurityConfig) *KerberosConfig { return v.KerberosConfig }).(KerberosConfigPtrOutput)
@@ -7189,6 +7638,16 @@ func (o SecurityConfigPtrOutput) ToSecurityConfigPtrOutputWithContext(ctx contex
 
 func (o SecurityConfigPtrOutput) Elem() SecurityConfigOutput {
 	return o.ApplyT(func(v *SecurityConfig) SecurityConfig { return *v }).(SecurityConfigOutput)
+}
+
+// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+func (o SecurityConfigPtrOutput) IdentityConfig() IdentityConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityConfig) *IdentityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityConfig
+	}).(IdentityConfigPtrOutput)
 }
 
 // Optional. Kerberos related configuration.
@@ -8714,10 +9173,14 @@ func init() {
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeClusterConfigOutput{})
+	pulumi.RegisterOutputType(GkeClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(HadoopJobOutput{})
 	pulumi.RegisterOutputType(HadoopJobPtrOutput{})
 	pulumi.RegisterOutputType(HiveJobOutput{})
 	pulumi.RegisterOutputType(HiveJobPtrOutput{})
+	pulumi.RegisterOutputType(IdentityConfigOutput{})
+	pulumi.RegisterOutputType(IdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigOutput{})
@@ -8738,6 +9201,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedGroupConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetOutput{})
+	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetPtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionOutput{})

@@ -50,8 +50,8 @@ export class Autoscaler extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -119,7 +119,7 @@ export interface AutoscalerArgs {
     /**
      * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
      *
@@ -155,5 +155,5 @@ export interface AutoscalerArgs {
     /**
      * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

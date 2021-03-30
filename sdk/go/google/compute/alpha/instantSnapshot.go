@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates an instant snapshot in the specified zone.
+// Creates an instant snapshot in the specified region.
 type InstantSnapshot struct {
 	pulumi.CustomResourceState
 }
@@ -26,8 +26,8 @@ func NewInstantSnapshot(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource InstantSnapshot
 	err := ctx.RegisterResource("google-cloud:compute/alpha:InstantSnapshot", name, args, &resource, opts...)
@@ -84,7 +84,7 @@ type instantSnapshotArgs struct {
 	// Project ID for this request.
 	Project string `pulumi:"project"`
 	// [Output Only] URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -110,7 +110,7 @@ type instantSnapshotArgs struct {
 	// [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
 	Status *string `pulumi:"status"`
 	// [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstantSnapshot resource.
@@ -138,7 +138,7 @@ type InstantSnapshotArgs struct {
 	// Project ID for this request.
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -164,7 +164,7 @@ type InstantSnapshotArgs struct {
 	// [Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.
 	Status pulumi.StringPtrInput
 	// [Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (InstantSnapshotArgs) ElementType() reflect.Type {

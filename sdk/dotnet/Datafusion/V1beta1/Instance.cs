@@ -114,6 +114,12 @@ namespace Pulumi.GoogleCloud.Datafusion.V1beta1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Option to enable granular role-based access control.
+        /// </summary>
+        [Input("enableRbac")]
+        public Input<bool>? EnableRbac { get; set; }
+
+        /// <summary>
         /// Option to enable Stackdriver Logging.
         /// </summary>
         [Input("enableStackdriverLogging")]

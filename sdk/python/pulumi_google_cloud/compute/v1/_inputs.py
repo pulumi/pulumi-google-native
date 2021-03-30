@@ -1512,17 +1512,37 @@ class AutoscalingPolicyArgs:
 @pulumi.input_type
 class AutoscalingPolicyCpuUtilizationArgs:
     def __init__(__self__, *,
+                 predictive_method: Optional[pulumi.Input[str]] = None,
                  utilization_target: Optional[pulumi.Input[float]] = None):
         """
         CPU utilization policy.
+        :param pulumi.Input[str] predictive_method: Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+               
+               * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
         :param pulumi.Input[float] utilization_target: The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
                
                If the CPU level is below the target utilization, the autoscaler scales in the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.
                
                If the average CPU is above the target utilization, the autoscaler scales out until it reaches the maximum number of instances you specified or until the average utilization reaches the target utilization.
         """
+        if predictive_method is not None:
+            pulumi.set(__self__, "predictive_method", predictive_method)
         if utilization_target is not None:
             pulumi.set(__self__, "utilization_target", utilization_target)
+
+    @property
+    @pulumi.getter(name="predictiveMethod")
+    def predictive_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+
+        * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+        return pulumi.get(self, "predictive_method")
+
+    @predictive_method.setter
+    def predictive_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predictive_method", value)
 
     @property
     @pulumi.getter(name="utilizationTarget")
@@ -1997,6 +2017,7 @@ class BackendBucketCdnPolicyArgs:
                  max_ttl: Optional[pulumi.Input[int]] = None,
                  negative_caching: Optional[pulumi.Input[bool]] = None,
                  negative_caching_policy: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 request_coalescing: Optional[pulumi.Input[bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None,
                  signed_url_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2015,6 +2036,7 @@ class BackendBucketCdnPolicyArgs:
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
         :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policy: Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        :param pulumi.Input[bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param pulumi.Input[str] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
@@ -2033,6 +2055,8 @@ class BackendBucketCdnPolicyArgs:
             pulumi.set(__self__, "negative_caching", negative_caching)
         if negative_caching_policy is not None:
             pulumi.set(__self__, "negative_caching_policy", negative_caching_policy)
+        if request_coalescing is not None:
+            pulumi.set(__self__, "request_coalescing", request_coalescing)
         if serve_while_stale is not None:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
@@ -2129,6 +2153,18 @@ class BackendBucketCdnPolicyArgs:
     @negative_caching_policy.setter
     def negative_caching_policy(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]):
         pulumi.set(self, "negative_caching_policy", value)
+
+    @property
+    @pulumi.getter(name="requestCoalescing")
+    def request_coalescing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        """
+        return pulumi.get(self, "request_coalescing")
+
+    @request_coalescing.setter
+    def request_coalescing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_coalescing", value)
 
     @property
     @pulumi.getter(name="serveWhileStale")
@@ -2242,6 +2278,7 @@ class BackendServiceCdnPolicyArgs:
                  max_ttl: Optional[pulumi.Input[int]] = None,
                  negative_caching: Optional[pulumi.Input[bool]] = None,
                  negative_caching_policy: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 request_coalescing: Optional[pulumi.Input[bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[str]] = None,
                  signed_url_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2261,6 +2298,7 @@ class BackendServiceCdnPolicyArgs:
         :param pulumi.Input[int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policy: Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
+        :param pulumi.Input[bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
         :param pulumi.Input[int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         :param pulumi.Input[str] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signed_url_key_names: [Output Only] Names of the keys for signing request URLs.
@@ -2281,6 +2319,8 @@ class BackendServiceCdnPolicyArgs:
             pulumi.set(__self__, "negative_caching", negative_caching)
         if negative_caching_policy is not None:
             pulumi.set(__self__, "negative_caching_policy", negative_caching_policy)
+        if request_coalescing is not None:
+            pulumi.set(__self__, "request_coalescing", request_coalescing)
         if serve_while_stale is not None:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
@@ -2389,6 +2429,18 @@ class BackendServiceCdnPolicyArgs:
     @negative_caching_policy.setter
     def negative_caching_policy(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
         pulumi.set(self, "negative_caching_policy", value)
+
+    @property
+    @pulumi.getter(name="requestCoalescing")
+    def request_coalescing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        """
+        return pulumi.get(self, "request_coalescing")
+
+    @request_coalescing.setter
+    def request_coalescing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_coalescing", value)
 
     @property
     @pulumi.getter(name="serveWhileStale")
@@ -3621,12 +3673,28 @@ class DisplayDeviceArgs:
 @pulumi.input_type
 class DistributionPolicyArgs:
     def __init__(__self__, *,
+                 target_shape: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionPolicyZoneConfigurationArgs']]]] = None):
         """
+        :param pulumi.Input[str] target_shape: The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
         :param pulumi.Input[Sequence[pulumi.Input['DistributionPolicyZoneConfigurationArgs']]] zones: Zones where the regional managed instance group will create and manage its instances.
         """
+        if target_shape is not None:
+            pulumi.set(__self__, "target_shape", target_shape)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="targetShape")
+    def target_shape(self) -> Optional[pulumi.Input[str]]:
+        """
+        The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
+        """
+        return pulumi.get(self, "target_shape")
+
+    @target_shape.setter
+    def target_shape(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_shape", value)
 
     @property
     @pulumi.getter
@@ -11958,7 +12026,7 @@ class SecurityPolicyRuleArgs:
                  priority: Optional[pulumi.Input[int]] = None):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param pulumi.Input[str] action: The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
         :param pulumi.Input['SecurityPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -11982,7 +12050,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
         """
         return pulumi.get(self, "action")
 
@@ -12495,7 +12563,7 @@ class SubnetworkLogConfigArgs:
         :param pulumi.Input[bool] enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
         :param pulumi.Input[str] filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
-        :param pulumi.Input[str] metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+        :param pulumi.Input[str] metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metadata_fields: Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
         """
         if aggregation_interval is not None:
@@ -12563,7 +12631,7 @@ class SubnetworkLogConfigArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[str]]:
         """
-        Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+        Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         """
         return pulumi.get(self, "metadata")
 
@@ -13007,6 +13075,7 @@ class VpnGatewayVpnGatewayInterfaceArgs:
         A VPN gateway interface.
         :param pulumi.Input[int] id: The numeric ID of this VPN gateway interface.
         :param pulumi.Input[str] interconnect_attachment: URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+               Not currently available in all Interconnect locations.
         :param pulumi.Input[str] ip_address: [Output Only] The external IP address for this VPN gateway interface.
         """
         if id is not None:
@@ -13033,6 +13102,7 @@ class VpnGatewayVpnGatewayInterfaceArgs:
     def interconnect_attachment(self) -> Optional[pulumi.Input[str]]:
         """
         URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+        Not currently available in all Interconnect locations.
         """
         return pulumi.get(self, "interconnect_attachment")
 

@@ -141,7 +141,7 @@ export interface GoogleCloudRetailV2alphaProductArgs {
      */
     readonly title?: pulumi.Input<string>;
     /**
-     * Immutable. The type of the product. This field is output-only.
+     * Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
      */
     readonly type?: pulumi.Input<string>;
     /**

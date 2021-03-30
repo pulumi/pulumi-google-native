@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from ._inputs import *
 
 __all__ = ['Backup']
 
@@ -16,6 +17,7 @@ class Backup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
+                 encryption_info: Optional[pulumi.Input[pulumi.InputType['EncryptionInfoArgs']]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,6 +35,7 @@ class Backup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_id: Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+        :param pulumi.Input[pulumi.InputType['EncryptionInfoArgs']] encryption_info: Output only. The encryption information for the backup.
         :param pulumi.Input[str] end_time: Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
         :param pulumi.Input[str] expire_time: Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         :param pulumi.Input[str] name: A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
@@ -60,6 +63,7 @@ class Backup(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['backup_id'] = backup_id
+            __props__['encryption_info'] = encryption_info
             __props__['end_time'] = end_time
             __props__['expire_time'] = expire_time
             __props__['name'] = name

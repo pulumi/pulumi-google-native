@@ -66,6 +66,12 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
+        /// Output only. The encryption information for the backup.
+        /// </summary>
+        [Input("encryptionInfo")]
+        public Input<Inputs.EncryptionInfoArgs>? EncryptionInfo { get; set; }
+
+        /// <summary>
         /// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
         /// </summary>
         [Input("endTime")]

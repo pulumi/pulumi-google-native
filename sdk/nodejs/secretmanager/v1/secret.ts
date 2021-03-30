@@ -56,6 +56,7 @@ export class Secret extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["replication"] = args ? args.replication : undefined;
+            inputs["rotation"] = args ? args.rotation : undefined;
             inputs["secretId"] = args ? args.secretId : undefined;
             inputs["topics"] = args ? args.topics : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
@@ -96,6 +97,10 @@ export interface SecretArgs {
      * Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     readonly replication?: pulumi.Input<inputs.secretmanager.v1.Replication>;
+    /**
+     * Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+     */
+    readonly rotation?: pulumi.Input<inputs.secretmanager.v1.Rotation>;
     /**
      * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
      */

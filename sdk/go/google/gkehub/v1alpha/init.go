@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-cloud:gkehub/v1alpha:Feature":
+		r, err = NewFeature(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:gkehub/v1alpha:Policy":
 		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:

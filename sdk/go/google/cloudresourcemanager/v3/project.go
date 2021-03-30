@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+// Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
 type Project struct {
 	pulumi.CustomResourceState
 }
@@ -58,19 +58,19 @@ type projectArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. The time at which this resource was requested for deletion.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// Optional. A user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
+	// Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
 	DisplayName *string `pulumi:"displayName"`
 	// Output only. A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// Optional. The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+	// Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
 	Labels map[string]string `pulumi:"labels"`
-	// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
+	// Output only. The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
 	Name *string `pulumi:"name"`
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent *string `pulumi:"parent"`
-	// Immutable. The unique, user-assigned id of the Project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
 	ProjectId *string `pulumi:"projectId"`
-	// Output only. The Project lifecycle state.
+	// Output only. The project lifecycle state.
 	State *string `pulumi:"state"`
 	// Output only. The most recent time this resource was modified.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -82,19 +82,19 @@ type ProjectArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. The time at which this resource was requested for deletion.
 	DeleteTime pulumi.StringPtrInput
-	// Optional. A user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
+	// Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
 	DisplayName pulumi.StringPtrInput
 	// Output only. A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// Optional. The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+	// Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
 	Labels pulumi.StringMapInput
-	// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
+	// Output only. The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
 	Name pulumi.StringPtrInput
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent pulumi.StringPtrInput
-	// Immutable. The unique, user-assigned id of the Project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
 	ProjectId pulumi.StringPtrInput
-	// Output only. The Project lifecycle state.
+	// Output only. The project lifecycle state.
 	State pulumi.StringPtrInput
 	// Output only. The most recent time this resource was modified.
 	UpdateTime pulumi.StringPtrInput

@@ -5418,9 +5418,9 @@ type SpriteSheet struct {
 	Quality *int `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount *int `pulumi:"rowCount"`
-	// Required. The height of sprite in pixels. Must be an even integer.
+	// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteHeightPixels *int `pulumi:"spriteHeightPixels"`
-	// Required. The width of sprite in pixels. Must be an even integer.
+	// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteWidthPixels *int `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
@@ -5455,9 +5455,9 @@ type SpriteSheetArgs struct {
 	Quality pulumi.IntPtrInput `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount pulumi.IntPtrInput `pulumi:"rowCount"`
-	// Required. The height of sprite in pixels. Must be an even integer.
+	// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteHeightPixels pulumi.IntPtrInput `pulumi:"spriteHeightPixels"`
-	// Required. The width of sprite in pixels. Must be an even integer.
+	// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteWidthPixels pulumi.IntPtrInput `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
@@ -5552,12 +5552,12 @@ func (o SpriteSheetOutput) RowCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *int { return v.RowCount }).(pulumi.IntPtrOutput)
 }
 
-// Required. The height of sprite in pixels. Must be an even integer.
+// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
 func (o SpriteSheetOutput) SpriteHeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *int { return v.SpriteHeightPixels }).(pulumi.IntPtrOutput)
 }
 
-// Required. The width of sprite in pixels. Must be an even integer.
+// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
 func (o SpriteSheetOutput) SpriteWidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *int { return v.SpriteWidthPixels }).(pulumi.IntPtrOutput)
 }

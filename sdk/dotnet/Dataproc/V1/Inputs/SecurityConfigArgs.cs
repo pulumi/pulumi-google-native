@@ -16,6 +16,12 @@ namespace Pulumi.GoogleCloud.Dataproc.V1.Inputs
     public sealed class SecurityConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+        /// </summary>
+        [Input("identityConfig")]
+        public Input<Inputs.IdentityConfigArgs>? IdentityConfig { get; set; }
+
+        /// <summary>
         /// Optional. Kerberos related configuration.
         /// </summary>
         [Input("kerberosConfig")]

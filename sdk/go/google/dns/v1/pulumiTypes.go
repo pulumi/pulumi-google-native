@@ -1417,7 +1417,7 @@ type ManagedZoneServiceDirectoryConfigNamespace struct {
 	// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
 	DeletionTime *string `pulumi:"deletionTime"`
 	Kind         *string `pulumi:"kind"`
-	// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+	// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
 	NamespaceUrl *string `pulumi:"namespaceUrl"`
 }
 
@@ -1436,7 +1436,7 @@ type ManagedZoneServiceDirectoryConfigNamespaceArgs struct {
 	// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
 	DeletionTime pulumi.StringPtrInput `pulumi:"deletionTime"`
 	Kind         pulumi.StringPtrInput `pulumi:"kind"`
-	// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+	// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
 	NamespaceUrl pulumi.StringPtrInput `pulumi:"namespaceUrl"`
 }
 
@@ -1526,7 +1526,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) Kind() pulumi.StringPt
 	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
 func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) NamespaceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) *string { return v.NamespaceUrl }).(pulumi.StringPtrOutput)
 }
@@ -1570,7 +1570,7 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) Kind() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
 func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) NamespaceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespace) *string {
 		if v == nil {

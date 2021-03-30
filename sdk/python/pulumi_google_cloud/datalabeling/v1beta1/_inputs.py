@@ -16,6 +16,7 @@ __all__ = [
     'GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs',
     'GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs',
     'GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs',
+    'GoogleCloudDatalabelingV1beta1CsvInstructionArgs',
     'GoogleCloudDatalabelingV1beta1DatasetArgs',
     'GoogleCloudDatalabelingV1beta1EvaluationConfigArgs',
     'GoogleCloudDatalabelingV1beta1EvaluationJobArgs',
@@ -25,8 +26,8 @@ __all__ = [
     'GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs',
     'GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs',
     'GoogleCloudDatalabelingV1beta1InputConfigArgs',
-    'GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs',
-    'GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs',
+    'GoogleCloudDatalabelingV1beta1InstructionArgs',
+    'GoogleCloudDatalabelingV1beta1PdfInstructionArgs',
     'GoogleCloudDatalabelingV1beta1SentimentConfigArgs',
     'GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs',
     'GoogleCloudDatalabelingV1beta1TextMetadataArgs',
@@ -323,6 +324,30 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs:
     @is_multi_label.setter
     def is_multi_label(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_multi_label", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatalabelingV1beta1CsvInstructionArgs:
+    def __init__(__self__, *,
+                 gcs_file_uri: Optional[pulumi.Input[str]] = None):
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+        :param pulumi.Input[str] gcs_file_uri: CSV file for the instruction. Only gcs path is allowed.
+        """
+        if gcs_file_uri is not None:
+            pulumi.set(__self__, "gcs_file_uri", gcs_file_uri)
+
+    @property
+    @pulumi.getter(name="gcsFileUri")
+    def gcs_file_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        CSV file for the instruction. Only gcs path is allowed.
+        """
+        return pulumi.get(self, "gcs_file_uri")
+
+    @gcs_file_uri.setter
+    def gcs_file_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_file_uri", value)
 
 
 @pulumi.input_type
@@ -1214,21 +1239,179 @@ class GoogleCloudDatalabelingV1beta1InputConfigArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs:
-    def __init__(__self__):
+class GoogleCloudDatalabelingV1beta1InstructionArgs:
+    def __init__(__self__, *,
+                 blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 csv_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pdf_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
         """
-        Metadata describing the feedback from the operator.
+        Instruction of how to perform the labeling task for human operators. Currently only PDF instruction is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: Output only. The names of any related resources that are blocking changes to the instruction.
+        :param pulumi.Input[str] create_time: Output only. Creation time of instruction.
+        :param pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs'] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        :param pulumi.Input[str] data_type: Required. The data type of this instruction.
+        :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+        :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
+        :param pulumi.Input[str] name: Output only. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        :param pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs'] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        :param pulumi.Input[str] update_time: Output only. Last update time of instruction.
         """
-        pass
+        if blocking_resources is not None:
+            pulumi.set(__self__, "blocking_resources", blocking_resources)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if csv_instruction is not None:
+            pulumi.set(__self__, "csv_instruction", csv_instruction)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pdf_instruction is not None:
+            pulumi.set(__self__, "pdf_instruction", pdf_instruction)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="blockingResources")
+    def blocking_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Output only. The names of any related resources that are blocking changes to the instruction.
+        """
+        return pulumi.get(self, "blocking_resources")
+
+    @blocking_resources.setter
+    def blocking_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocking_resources", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Creation time of instruction.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="csvInstruction")
+    def csv_instruction(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]:
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        """
+        return pulumi.get(self, "csv_instruction")
+
+    @csv_instruction.setter
+    def csv_instruction(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]):
+        pulumi.set(self, "csv_instruction", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The data type of this instruction.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The display name of the instruction. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pdfInstruction")
+    def pdf_instruction(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]:
+        """
+        Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        """
+        return pulumi.get(self, "pdf_instruction")
+
+    @pdf_instruction.setter
+    def pdf_instruction(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]):
+        pulumi.set(self, "pdf_instruction", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Last update time of instruction.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
-class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs:
-    def __init__(__self__):
+class GoogleCloudDatalabelingV1beta1PdfInstructionArgs:
+    def __init__(__self__, *,
+                 gcs_file_uri: Optional[pulumi.Input[str]] = None):
         """
-        Metadata describing the feedback from the labeling task requester.
+        Instruction from a PDF file.
+        :param pulumi.Input[str] gcs_file_uri: PDF file for the instruction. Only gcs path is allowed.
         """
-        pass
+        if gcs_file_uri is not None:
+            pulumi.set(__self__, "gcs_file_uri", gcs_file_uri)
+
+    @property
+    @pulumi.getter(name="gcsFileUri")
+    def gcs_file_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        PDF file for the instruction. Only gcs path is allowed.
+        """
+        return pulumi.get(self, "gcs_file_uri")
+
+    @gcs_file_uri.setter
+    def gcs_file_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_file_uri", value)
 
 
 @pulumi.input_type

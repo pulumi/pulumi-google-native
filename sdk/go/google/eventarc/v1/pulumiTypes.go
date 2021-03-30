@@ -352,7 +352,7 @@ type CloudRun struct {
 	Path *string `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region *string `pulumi:"region"`
-	// Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 	Service *string `pulumi:"service"`
 }
 
@@ -373,7 +373,7 @@ type CloudRunArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -465,7 +465,7 @@ func (o CloudRunOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o CloudRunOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -508,7 +508,7 @@ func (o CloudRunPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o CloudRunPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {

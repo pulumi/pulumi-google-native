@@ -464,7 +464,7 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
                  namespace_url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] deletion_time: The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
-        :param pulumi.Input[str] namespace_url: The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+        :param pulumi.Input[str] namespace_url: The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
         """
         if deletion_time is not None:
             pulumi.set(__self__, "deletion_time", deletion_time)
@@ -498,7 +498,7 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
     @pulumi.getter(name="namespaceUrl")
     def namespace_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+        The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
         """
         return pulumi.get(self, "namespace_url")
 

@@ -66,6 +66,12 @@ namespace Pulumi.GoogleCloud.Run.V1
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
+        /// DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<string>? DryRun { get; set; }
+
+        /// <summary>
         /// The kind of resource, in this case "DomainMapping".
         /// </summary>
         [Input("kind")]

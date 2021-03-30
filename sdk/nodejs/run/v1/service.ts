@@ -51,6 +51,7 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
+            inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -74,11 +75,15 @@ export interface ServiceArgs {
      */
     readonly apiVersion?: pulumi.Input<string>;
     /**
+     * DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
+     */
+    readonly dryRun?: pulumi.Input<string>;
+    /**
      * The kind of resource, in this case "Service".
      */
     readonly kind?: pulumi.Input<string>;
     /**
-     * Metadata associated with this Service, including name, namespace, labels, and annotations.
+     * Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMeta>;
     /**

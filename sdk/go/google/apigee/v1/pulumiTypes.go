@@ -268,6 +268,47 @@ func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs) ToGoogleCloudApigee
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput)
 }
 
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return i.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput).ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput is an input type that accepts GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs, GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtr and GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput` via:
+//
+//          GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput
+	ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput
+}
+
+type googleCloudApigeeV1CanaryEvaluationMetricLabelsPtrType GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs
+
+func GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtr(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput {
+	return (*googleCloudApigeeV1CanaryEvaluationMetricLabelsPtrType)(v)
+}
+
+func (*googleCloudApigeeV1CanaryEvaluationMetricLabelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1CanaryEvaluationMetricLabels)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1CanaryEvaluationMetricLabelsPtrType) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return i.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1CanaryEvaluationMetricLabelsPtrType) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput)
+}
+
 // Labels that can be used to filter Apigee metrics.
 type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput struct{ *pulumi.OutputState }
 
@@ -283,6 +324,16 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApig
 	return o
 }
 
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return o.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
+		return &v
+	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput)
+}
+
 // The environment ID associated with the metrics.
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) Env() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string { return v.Env }).(pulumi.StringPtrOutput)
@@ -296,6 +347,56 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) Instance_id() pul
 // Required. The location associated with the metrics.
 func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1CanaryEvaluationMetricLabels)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Elem() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabels) GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
+		return *v
+	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput)
+}
+
+// The environment ID associated with the metrics.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Env() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Instance_id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instance_id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The location associated with the metrics.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudApigeeV1Credential struct {
@@ -935,7 +1036,7 @@ type GoogleCloudApigeeV1GraphQLOperation struct {
 	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
 	Operation *string `pulumi:"operation"`
 	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
-	OperationType []string `pulumi:"operationType"`
+	OperationTypes []string `pulumi:"operationTypes"`
 }
 
 // GoogleCloudApigeeV1GraphQLOperationInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationArgs and GoogleCloudApigeeV1GraphQLOperationOutput values.
@@ -954,7 +1055,7 @@ type GoogleCloudApigeeV1GraphQLOperationArgs struct {
 	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
 	Operation pulumi.StringPtrInput `pulumi:"operation"`
 	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
-	OperationType pulumi.StringArrayInput `pulumi:"operationType"`
+	OperationTypes pulumi.StringArrayInput `pulumi:"operationTypes"`
 }
 
 func (GoogleCloudApigeeV1GraphQLOperationArgs) ElementType() reflect.Type {
@@ -1015,8 +1116,8 @@ func (o GoogleCloudApigeeV1GraphQLOperationOutput) Operation() pulumi.StringPtrO
 }
 
 // Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
-func (o GoogleCloudApigeeV1GraphQLOperationOutput) OperationType() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperation) []string { return v.OperationType }).(pulumi.StringArrayOutput)
+func (o GoogleCloudApigeeV1GraphQLOperationOutput) OperationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperation) []string { return v.OperationTypes }).(pulumi.StringArrayOutput)
 }
 
 type GoogleCloudApigeeV1GraphQLOperationArrayOutput struct{ *pulumi.OutputState }
@@ -1749,47 +1850,6 @@ func (i GoogleCloudApigeeV1PropertiesArgs) ToGoogleCloudApigeeV1PropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesOutput)
 }
 
-func (i GoogleCloudApigeeV1PropertiesArgs) ToGoogleCloudApigeeV1PropertiesPtrOutput() GoogleCloudApigeeV1PropertiesPtrOutput {
-	return i.ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudApigeeV1PropertiesArgs) ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesOutput).ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudApigeeV1PropertiesPtrInput is an input type that accepts GoogleCloudApigeeV1PropertiesArgs, GoogleCloudApigeeV1PropertiesPtr and GoogleCloudApigeeV1PropertiesPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1PropertiesPtrInput` via:
-//
-//          GoogleCloudApigeeV1PropertiesArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudApigeeV1PropertiesPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudApigeeV1PropertiesPtrOutput() GoogleCloudApigeeV1PropertiesPtrOutput
-	ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(context.Context) GoogleCloudApigeeV1PropertiesPtrOutput
-}
-
-type googleCloudApigeeV1PropertiesPtrType GoogleCloudApigeeV1PropertiesArgs
-
-func GoogleCloudApigeeV1PropertiesPtr(v *GoogleCloudApigeeV1PropertiesArgs) GoogleCloudApigeeV1PropertiesPtrInput {
-	return (*googleCloudApigeeV1PropertiesPtrType)(v)
-}
-
-func (*googleCloudApigeeV1PropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1Properties)(nil)).Elem()
-}
-
-func (i *googleCloudApigeeV1PropertiesPtrType) ToGoogleCloudApigeeV1PropertiesPtrOutput() GoogleCloudApigeeV1PropertiesPtrOutput {
-	return i.ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudApigeeV1PropertiesPtrType) ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesPtrOutput)
-}
-
 // Message for compatibility with legacy Edge specification for Java Properties object in JSON.
 type GoogleCloudApigeeV1PropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1805,47 +1865,9 @@ func (o GoogleCloudApigeeV1PropertiesOutput) ToGoogleCloudApigeeV1PropertiesOutp
 	return o
 }
 
-func (o GoogleCloudApigeeV1PropertiesOutput) ToGoogleCloudApigeeV1PropertiesPtrOutput() GoogleCloudApigeeV1PropertiesPtrOutput {
-	return o.ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudApigeeV1PropertiesOutput) ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Properties) *GoogleCloudApigeeV1Properties {
-		return &v
-	}).(GoogleCloudApigeeV1PropertiesPtrOutput)
-}
-
 // List of all properties in the object
 func (o GoogleCloudApigeeV1PropertiesOutput) Property() GoogleCloudApigeeV1PropertyArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1Properties) []GoogleCloudApigeeV1Property { return v.Property }).(GoogleCloudApigeeV1PropertyArrayOutput)
-}
-
-type GoogleCloudApigeeV1PropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1PropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudApigeeV1Properties)(nil)).Elem()
-}
-
-func (o GoogleCloudApigeeV1PropertiesPtrOutput) ToGoogleCloudApigeeV1PropertiesPtrOutput() GoogleCloudApigeeV1PropertiesPtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1PropertiesPtrOutput) ToGoogleCloudApigeeV1PropertiesPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesPtrOutput {
-	return o
-}
-
-func (o GoogleCloudApigeeV1PropertiesPtrOutput) Elem() GoogleCloudApigeeV1PropertiesOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1Properties) GoogleCloudApigeeV1Properties { return *v }).(GoogleCloudApigeeV1PropertiesOutput)
-}
-
-// List of all properties in the object
-func (o GoogleCloudApigeeV1PropertiesPtrOutput) Property() GoogleCloudApigeeV1PropertyArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudApigeeV1Properties) []GoogleCloudApigeeV1Property {
-		if v == nil {
-			return nil
-		}
-		return v.Property
-	}).(GoogleCloudApigeeV1PropertyArrayOutput)
 }
 
 // A single property entry in the Properties message.
@@ -3684,6 +3706,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CustomReportMetricOutput{})
@@ -3705,7 +3728,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationGroupOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationGroupPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertiesOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertiesPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QueryMetricOutput{})

@@ -72,6 +72,8 @@ type instanceArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name for an instance.
 	DisplayName *string `pulumi:"displayName"`
+	// Option to enable granular role-based access control.
+	EnableRbac *bool `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
@@ -130,6 +132,8 @@ type InstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name for an instance.
 	DisplayName pulumi.StringPtrInput
+	// Option to enable granular role-based access control.
+	EnableRbac pulumi.BoolPtrInput
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.

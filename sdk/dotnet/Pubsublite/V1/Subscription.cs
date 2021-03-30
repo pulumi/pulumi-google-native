@@ -78,6 +78,12 @@ namespace Pulumi.GoogleCloud.Pubsublite.V1
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
+        /// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+        /// </summary>
+        [Input("skipBacklog")]
+        public Input<bool>? SkipBacklog { get; set; }
+
+        /// <summary>
         /// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
         /// </summary>
         [Input("subscriptionId")]

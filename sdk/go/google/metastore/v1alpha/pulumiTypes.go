@@ -866,7 +866,7 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 type HiveMetastoreConfig struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
-	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path ("hive_metastore_config.kerberos_config") in the request's update_mask while omitting this field from the request's service.
+	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig *KerberosConfig `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
 	Version *string `pulumi:"version"`
@@ -887,7 +887,7 @@ type HiveMetastoreConfigInput interface {
 type HiveMetastoreConfigArgs struct {
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
-	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path ("hive_metastore_config.kerberos_config") in the request's update_mask while omitting this field from the request's service.
+	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 	KerberosConfig KerberosConfigPtrInput `pulumi:"kerberosConfig"`
 	// Immutable. The Hive metastore schema version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -976,7 +976,7 @@ func (o HiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
 
-// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path ("hive_metastore_config.kerberos_config") in the request's update_mask while omitting this field from the request's service.
+// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) *KerberosConfig { return v.KerberosConfig }).(KerberosConfigPtrOutput)
 }
@@ -1014,7 +1014,7 @@ func (o HiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path ("hive_metastore_config.kerberos_config") in the request's update_mask while omitting this field from the request's service.
+// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
 func (o HiveMetastoreConfigPtrOutput) KerberosConfig() KerberosConfigPtrOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfig) *KerberosConfig {
 		if v == nil {
@@ -1040,7 +1040,7 @@ type KerberosConfig struct {
 	Keytab *Secret `pulumi:"keytab"`
 	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
 	Krb5ConfigGcsUri *string `pulumi:"krb5ConfigGcsUri"`
-	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
 	Principal *string `pulumi:"principal"`
 }
 
@@ -1061,7 +1061,7 @@ type KerberosConfigArgs struct {
 	Keytab SecretPtrInput `pulumi:"keytab"`
 	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
 	Krb5ConfigGcsUri pulumi.StringPtrInput `pulumi:"krb5ConfigGcsUri"`
-	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
 	Principal pulumi.StringPtrInput `pulumi:"principal"`
 }
 
@@ -1153,7 +1153,7 @@ func (o KerberosConfigOutput) Krb5ConfigGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KerberosConfig) *string { return v.Krb5ConfigGcsUri }).(pulumi.StringPtrOutput)
 }
 
-// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
 func (o KerberosConfigOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KerberosConfig) *string { return v.Principal }).(pulumi.StringPtrOutput)
 }
@@ -1196,7 +1196,7 @@ func (o KerberosConfigPtrOutput) Krb5ConfigGcsUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
 func (o KerberosConfigPtrOutput) Principal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KerberosConfig) *string {
 		if v == nil {
@@ -1363,7 +1363,7 @@ func (o MaintenanceWindowPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 type MetadataExport struct {
 	// Output only. The type of the database dump.
 	DatabaseDumpType *string `pulumi:"databaseDumpType"`
-	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
+	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
 	DestinationGcsUri *string `pulumi:"destinationGcsUri"`
 	// Output only. The time when the export ended.
 	EndTime *string `pulumi:"endTime"`
@@ -1388,7 +1388,7 @@ type MetadataExportInput interface {
 type MetadataExportArgs struct {
 	// Output only. The type of the database dump.
 	DatabaseDumpType pulumi.StringPtrInput `pulumi:"databaseDumpType"`
-	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
+	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
 	DestinationGcsUri pulumi.StringPtrInput `pulumi:"destinationGcsUri"`
 	// Output only. The time when the export ended.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
@@ -1455,7 +1455,7 @@ func (o MetadataExportOutput) DatabaseDumpType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataExport) *string { return v.DatabaseDumpType }).(pulumi.StringPtrOutput)
 }
 
-// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where ` is automatically generated.
+// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
 func (o MetadataExportOutput) DestinationGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataExport) *string { return v.DestinationGcsUri }).(pulumi.StringPtrOutput)
 }
@@ -1975,7 +1975,7 @@ func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
 
 // The details of a metadata restore operation.
 type Restore struct {
-	// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 	Backup *string `pulumi:"backup"`
 	// Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
 	Details *string `pulumi:"details"`
@@ -2002,7 +2002,7 @@ type RestoreInput interface {
 
 // The details of a metadata restore operation.
 type RestoreArgs struct {
-	// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 	Backup pulumi.StringPtrInput `pulumi:"backup"`
 	// Output only. The restore details containing the revision of the service to be restored to, in format of JSON.
 	Details pulumi.StringPtrInput `pulumi:"details"`
@@ -2068,7 +2068,7 @@ func (o RestoreOutput) ToRestoreOutputWithContext(ctx context.Context) RestoreOu
 	return o
 }
 
-// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+// Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
 func (o RestoreOutput) Backup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Restore) *string { return v.Backup }).(pulumi.StringPtrOutput)
 }
@@ -2120,7 +2120,7 @@ func (o RestoreArrayOutput) Index(i pulumi.IntInput) RestoreOutput {
 
 // A securely stored value.
 type Secret struct {
-	// The relative resource name of a Secret Manager secret version, in the following form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
+	// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
 	CloudSecret *string `pulumi:"cloudSecret"`
 }
 
@@ -2137,7 +2137,7 @@ type SecretInput interface {
 
 // A securely stored value.
 type SecretArgs struct {
-	// The relative resource name of a Secret Manager secret version, in the following form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
+	// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
 	CloudSecret pulumi.StringPtrInput `pulumi:"cloudSecret"`
 }
 
@@ -2219,7 +2219,7 @@ func (o SecretOutput) ToSecretPtrOutputWithContext(ctx context.Context) SecretPt
 	}).(SecretPtrOutput)
 }
 
-// The relative resource name of a Secret Manager secret version, in the following form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
+// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
 func (o SecretOutput) CloudSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Secret) *string { return v.CloudSecret }).(pulumi.StringPtrOutput)
 }
@@ -2242,13 +2242,451 @@ func (o SecretPtrOutput) Elem() SecretOutput {
 	return o.ApplyT(func(v *Secret) Secret { return *v }).(SecretOutput)
 }
 
-// The relative resource name of a Secret Manager secret version, in the following form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
+// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
 func (o SecretPtrOutput) CloudSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) *string {
 		if v == nil {
 			return nil
 		}
 		return v.CloudSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// A managed metastore service that serves metadata queries.
+type ServiceType struct {
+	// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
+	// Output only. The time when the metastore service was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Output only. The URI of the endpoint used to access the metastore service.
+	EndpointUri *string `pulumi:"endpointUri"`
+	// Configuration information specific to running Hive metastore software as the metastore service.
+	HiveMetastoreConfig *HiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
+	// User-defined labels for the metastore service.
+	Labels map[string]string `pulumi:"labels"`
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
+	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	MetadataIntegration *MetadataIntegration `pulumi:"metadataIntegration"`
+	// Output only. The metadata management activities of the metastore service.
+	MetadataManagementActivity *MetadataManagementActivity `pulumi:"metadataManagementActivity"`
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	Name *string `pulumi:"name"`
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+	Network *string `pulumi:"network"`
+	// The TCP port at which the metastore service is reached. Default: 9083.
+	Port *int `pulumi:"port"`
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
+	// Output only. The current state of the metastore service.
+	State *string `pulumi:"state"`
+	// Output only. Additional information about the current state of the metastore service, if available.
+	StateMessage *string `pulumi:"stateMessage"`
+	// The tier of the service.
+	Tier *string `pulumi:"tier"`
+	// Output only. The globally unique resource identifier of the metastore service.
+	Uid *string `pulumi:"uid"`
+	// Output only. The time when the metastore service was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// ServiceTypeInput is an input type that accepts ServiceTypeArgs and ServiceTypeOutput values.
+// You can construct a concrete instance of `ServiceTypeInput` via:
+//
+//          ServiceTypeArgs{...}
+type ServiceTypeInput interface {
+	pulumi.Input
+
+	ToServiceTypeOutput() ServiceTypeOutput
+	ToServiceTypeOutputWithContext(context.Context) ServiceTypeOutput
+}
+
+// A managed metastore service that serves metadata queries.
+type ServiceTypeArgs struct {
+	// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+	ArtifactGcsUri pulumi.StringPtrInput `pulumi:"artifactGcsUri"`
+	// Output only. The time when the metastore service was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Output only. The URI of the endpoint used to access the metastore service.
+	EndpointUri pulumi.StringPtrInput `pulumi:"endpointUri"`
+	// Configuration information specific to running Hive metastore software as the metastore service.
+	HiveMetastoreConfig HiveMetastoreConfigPtrInput `pulumi:"hiveMetastoreConfig"`
+	// User-defined labels for the metastore service.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	MetadataIntegration MetadataIntegrationPtrInput `pulumi:"metadataIntegration"`
+	// Output only. The metadata management activities of the metastore service.
+	MetadataManagementActivity MetadataManagementActivityPtrInput `pulumi:"metadataManagementActivity"`
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The TCP port at which the metastore service is reached. Default: 9083.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel pulumi.StringPtrInput `pulumi:"releaseChannel"`
+	// Output only. The current state of the metastore service.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output only. Additional information about the current state of the metastore service, if available.
+	StateMessage pulumi.StringPtrInput `pulumi:"stateMessage"`
+	// The tier of the service.
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
+	// Output only. The globally unique resource identifier of the metastore service.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+	// Output only. The time when the metastore service was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (ServiceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceType)(nil)).Elem()
+}
+
+func (i ServiceTypeArgs) ToServiceTypeOutput() ServiceTypeOutput {
+	return i.ToServiceTypeOutputWithContext(context.Background())
+}
+
+func (i ServiceTypeArgs) ToServiceTypeOutputWithContext(ctx context.Context) ServiceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTypeOutput)
+}
+
+func (i ServiceTypeArgs) ToServiceTypePtrOutput() ServiceTypePtrOutput {
+	return i.ToServiceTypePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTypeArgs) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTypeOutput).ToServiceTypePtrOutputWithContext(ctx)
+}
+
+// ServiceTypePtrInput is an input type that accepts ServiceTypeArgs, ServiceTypePtr and ServiceTypePtrOutput values.
+// You can construct a concrete instance of `ServiceTypePtrInput` via:
+//
+//          ServiceTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceTypePtrInput interface {
+	pulumi.Input
+
+	ToServiceTypePtrOutput() ServiceTypePtrOutput
+	ToServiceTypePtrOutputWithContext(context.Context) ServiceTypePtrOutput
+}
+
+type serviceTypePtrType ServiceTypeArgs
+
+func ServiceTypePtr(v *ServiceTypeArgs) ServiceTypePtrInput {
+	return (*serviceTypePtrType)(v)
+}
+
+func (*serviceTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceType)(nil)).Elem()
+}
+
+func (i *serviceTypePtrType) ToServiceTypePtrOutput() ServiceTypePtrOutput {
+	return i.ToServiceTypePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTypePtrType) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTypePtrOutput)
+}
+
+// A managed metastore service that serves metadata queries.
+type ServiceTypeOutput struct{ *pulumi.OutputState }
+
+func (ServiceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceType)(nil)).Elem()
+}
+
+func (o ServiceTypeOutput) ToServiceTypeOutput() ServiceTypeOutput {
+	return o
+}
+
+func (o ServiceTypeOutput) ToServiceTypeOutputWithContext(ctx context.Context) ServiceTypeOutput {
+	return o
+}
+
+func (o ServiceTypeOutput) ToServiceTypePtrOutput() ServiceTypePtrOutput {
+	return o.ToServiceTypePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTypeOutput) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
+	return o.ApplyT(func(v ServiceType) *ServiceType {
+		return &v
+	}).(ServiceTypePtrOutput)
+}
+
+// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+func (o ServiceTypeOutput) ArtifactGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.ArtifactGcsUri }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The time when the metastore service was created.
+func (o ServiceTypeOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The URI of the endpoint used to access the metastore service.
+func (o ServiceTypeOutput) EndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.EndpointUri }).(pulumi.StringPtrOutput)
+}
+
+// Configuration information specific to running Hive metastore software as the metastore service.
+func (o ServiceTypeOutput) HiveMetastoreConfig() HiveMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v ServiceType) *HiveMetastoreConfig { return v.HiveMetastoreConfig }).(HiveMetastoreConfigPtrOutput)
+}
+
+// User-defined labels for the metastore service.
+func (o ServiceTypeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+func (o ServiceTypeOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v ServiceType) *MaintenanceWindow { return v.MaintenanceWindow }).(MaintenanceWindowPtrOutput)
+}
+
+// The setting that defines how metastore metadata should be integrated with external services and systems.
+func (o ServiceTypeOutput) MetadataIntegration() MetadataIntegrationPtrOutput {
+	return o.ApplyT(func(v ServiceType) *MetadataIntegration { return v.MetadataIntegration }).(MetadataIntegrationPtrOutput)
+}
+
+// Output only. The metadata management activities of the metastore service.
+func (o ServiceTypeOutput) MetadataManagementActivity() MetadataManagementActivityPtrOutput {
+	return o.ApplyT(func(v ServiceType) *MetadataManagementActivity { return v.MetadataManagementActivity }).(MetadataManagementActivityPtrOutput)
+}
+
+// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+func (o ServiceTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+func (o ServiceTypeOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The TCP port at which the metastore service is reached. Default: 9083.
+func (o ServiceTypeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceType) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+func (o ServiceTypeOutput) ReleaseChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.ReleaseChannel }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The current state of the metastore service.
+func (o ServiceTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Output only. Additional information about the current state of the metastore service, if available.
+func (o ServiceTypeOutput) StateMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.StateMessage }).(pulumi.StringPtrOutput)
+}
+
+// The tier of the service.
+func (o ServiceTypeOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The globally unique resource identifier of the metastore service.
+func (o ServiceTypeOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The time when the metastore service was last updated.
+func (o ServiceTypeOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceType)(nil)).Elem()
+}
+
+func (o ServiceTypePtrOutput) ToServiceTypePtrOutput() ServiceTypePtrOutput {
+	return o
+}
+
+func (o ServiceTypePtrOutput) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
+	return o
+}
+
+func (o ServiceTypePtrOutput) Elem() ServiceTypeOutput {
+	return o.ApplyT(func(v *ServiceType) ServiceType { return *v }).(ServiceTypeOutput)
+}
+
+// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+func (o ServiceTypePtrOutput) ArtifactGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactGcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The time when the metastore service was created.
+func (o ServiceTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The URI of the endpoint used to access the metastore service.
+func (o ServiceTypePtrOutput) EndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration information specific to running Hive metastore software as the metastore service.
+func (o ServiceTypePtrOutput) HiveMetastoreConfig() HiveMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *HiveMetastoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HiveMetastoreConfig
+	}).(HiveMetastoreConfigPtrOutput)
+}
+
+// User-defined labels for the metastore service.
+func (o ServiceTypePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceType) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+func (o ServiceTypePtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *MaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindow
+	}).(MaintenanceWindowPtrOutput)
+}
+
+// The setting that defines how metastore metadata should be integrated with external services and systems.
+func (o ServiceTypePtrOutput) MetadataIntegration() MetadataIntegrationPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *MetadataIntegration {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataIntegration
+	}).(MetadataIntegrationPtrOutput)
+}
+
+// Output only. The metadata management activities of the metastore service.
+func (o ServiceTypePtrOutput) MetadataManagementActivity() MetadataManagementActivityPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *MetadataManagementActivity {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataManagementActivity
+	}).(MetadataManagementActivityPtrOutput)
+}
+
+// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+func (o ServiceTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+func (o ServiceTypePtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TCP port at which the metastore service is reached. Default: 9083.
+func (o ServiceTypePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+func (o ServiceTypePtrOutput) ReleaseChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseChannel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The current state of the metastore service.
+func (o ServiceTypePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. Additional information about the current state of the metastore service, if available.
+func (o ServiceTypePtrOutput) StateMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tier of the service.
+func (o ServiceTypePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The globally unique resource identifier of the metastore service.
+func (o ServiceTypePtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The time when the metastore service was last updated.
+func (o ServiceTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2283,4 +2721,6 @@ func init() {
 	pulumi.RegisterOutputType(RestoreArrayOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTypeOutput{})
+	pulumi.RegisterOutputType(ServiceTypePtrOutput{})
 }

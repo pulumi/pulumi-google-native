@@ -70,6 +70,8 @@ type secretArgs struct {
 	Parent string `pulumi:"parent"`
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `pulumi:"replication"`
+	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+	Rotation *Rotation `pulumi:"rotation"`
 	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
 	SecretId *string `pulumi:"secretId"`
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -92,6 +94,8 @@ type SecretArgs struct {
 	Parent pulumi.StringInput
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationPtrInput
+	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+	Rotation RotationPtrInput
 	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
 	SecretId pulumi.StringPtrInput
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

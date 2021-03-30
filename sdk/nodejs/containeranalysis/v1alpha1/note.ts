@@ -47,8 +47,8 @@ export class Note extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.parent === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
@@ -120,7 +120,7 @@ export interface NoteArgs {
     /**
      * The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
      */
-    readonly name: pulumi.Input<string>;
+    readonly name?: pulumi.Input<string>;
     /**
      * The ID to use for this note.
      */
@@ -132,7 +132,7 @@ export interface NoteArgs {
     /**
      * This field contains the project Id for example: "projects/{project_id}
      */
-    readonly parent?: pulumi.Input<string>;
+    readonly parent: pulumi.Input<string>;
     /**
      * URLs associated with this note
      */

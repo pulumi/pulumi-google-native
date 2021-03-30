@@ -2694,7 +2694,7 @@ class OwnerReferenceArgs:
         :param pulumi.Input[str] api_version: API version of the referent.
         :param pulumi.Input[bool] block_owner_deletion: If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
         :param pulumi.Input[bool] controller: If true, this reference points to the managing controller. +optional
-        :param pulumi.Input[str] kind: Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        :param pulumi.Input[str] kind: Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] name: Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
         :param pulumi.Input[str] uid: UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
         """
@@ -2751,7 +2751,7 @@ class OwnerReferenceArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         """
         return pulumi.get(self, "kind")
 

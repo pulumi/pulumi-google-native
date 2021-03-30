@@ -65,7 +65,7 @@ class GoogleCloudChannelV1CloudIdentityInfoArgs:
         :param pulumi.Input[str] alternate_email: The alternate email.
         :param pulumi.Input[str] customer_type: CustomerType indicates verification type needed for using services.
         :param pulumi.Input['GoogleCloudChannelV1EduDataArgs'] edu_data: Edu information about the customer.
-        :param pulumi.Input[bool] is_domain_verified: Whether the domain is verified.
+        :param pulumi.Input[bool] is_domain_verified: Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
         :param pulumi.Input[str] language_code: Language code.
         :param pulumi.Input[str] phone_number: Phone number associated with the Cloud Identity.
         :param pulumi.Input[str] primary_domain: Output only. The primary domain name.
@@ -139,7 +139,7 @@ class GoogleCloudChannelV1CloudIdentityInfoArgs:
     @pulumi.getter(name="isDomainVerified")
     def is_domain_verified(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the domain is verified.
+        Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
         """
         return pulumi.get(self, "is_domain_verified")
 
@@ -867,17 +867,21 @@ class GoogleCloudChannelV1TrialSettingsArgs:
 @pulumi.input_type
 class GoogleCloudChannelV1ValueArgs:
     def __init__(__self__, *,
+                 bool_value: Optional[pulumi.Input[bool]] = None,
                  double_value: Optional[pulumi.Input[float]] = None,
                  int64_value: Optional[pulumi.Input[str]] = None,
                  proto_value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  string_value: Optional[pulumi.Input[str]] = None):
         """
         Data type and value of a parameter.
+        :param pulumi.Input[bool] bool_value: Represents a boolean value.
         :param pulumi.Input[float] double_value: Represents a double value.
         :param pulumi.Input[str] int64_value: Represents an int64 value.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] proto_value: Represents an 'Any' proto value.
         :param pulumi.Input[str] string_value: Represents a string value.
         """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
         if double_value is not None:
             pulumi.set(__self__, "double_value", double_value)
         if int64_value is not None:
@@ -886,6 +890,18 @@ class GoogleCloudChannelV1ValueArgs:
             pulumi.set(__self__, "proto_value", proto_value)
         if string_value is not None:
             pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Represents a boolean value.
+        """
+        return pulumi.get(self, "bool_value")
+
+    @bool_value.setter
+    def bool_value(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bool_value", value)
 
     @property
     @pulumi.getter(name="doubleValue")

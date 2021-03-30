@@ -56,7 +56,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthenticationArgs']] authentication: Auth configuration.
         :param pulumi.Input[pulumi.InputType['BackendArgs']] backend: API backend configuration.
         :param pulumi.Input[pulumi.InputType['BillingArgs']] billing: Billing configuration.
-        :param pulumi.Input[int] config_version: Deprecated. The service config compiler always sets this field to `3`.
+        :param pulumi.Input[int] config_version: Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         :param pulumi.Input[pulumi.InputType['ContextArgs']] context: Context configuration.
         :param pulumi.Input[pulumi.InputType['ControlArgs']] control: Configuration for the service control plane.
         :param pulumi.Input[pulumi.InputType['CustomErrorArgs']] custom_error: Custom error configuration.

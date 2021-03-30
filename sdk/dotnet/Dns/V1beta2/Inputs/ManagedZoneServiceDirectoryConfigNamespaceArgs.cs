@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2.Inputs
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The fully qualified URL of the namespace associated with the zone. This should be formatted like https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+        /// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
         /// </summary>
         [Input("namespaceUrl")]
         public Input<string>? NamespaceUrl { get; set; }

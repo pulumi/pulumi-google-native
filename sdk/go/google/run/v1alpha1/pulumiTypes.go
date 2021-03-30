@@ -5963,7 +5963,7 @@ type OwnerReference struct {
 	BlockOwnerDeletion *bool `pulumi:"blockOwnerDeletion"`
 	// If true, this reference points to the managing controller. +optional
 	Controller *bool `pulumi:"controller"`
-	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
 	Name *string `pulumi:"name"`
@@ -5990,7 +5990,7 @@ type OwnerReferenceArgs struct {
 	BlockOwnerDeletion pulumi.BoolPtrInput `pulumi:"blockOwnerDeletion"`
 	// If true, this reference points to the managing controller. +optional
 	Controller pulumi.BoolPtrInput `pulumi:"controller"`
-	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6065,7 +6065,7 @@ func (o OwnerReferenceOutput) Controller() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OwnerReference) *bool { return v.Controller }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 func (o OwnerReferenceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OwnerReference) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

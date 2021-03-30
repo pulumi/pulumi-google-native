@@ -180,11 +180,6 @@ export namespace cloudsearch {
     }
 }
 
-export namespace cloudshell {
-    export namespace v1alpha1 {
-    }
-}
-
 export namespace cloudtasks {
     export namespace v2 {
     }
@@ -374,6 +369,9 @@ export namespace gkehub {
     }
 
     export namespace v1alpha2 {
+    }
+
+    export namespace v1beta {
     }
 
     export namespace v1beta1 {

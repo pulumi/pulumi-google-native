@@ -108,7 +108,7 @@ export interface ServiceArgs {
      */
     readonly billing?: pulumi.Input<inputs.servicemanagement.v1.Billing>;
     /**
-     * Deprecated. The service config compiler always sets this field to `3`.
+     * Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
      */
     readonly configVersion?: pulumi.Input<number>;
     /**

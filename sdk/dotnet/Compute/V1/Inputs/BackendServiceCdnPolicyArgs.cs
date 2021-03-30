@@ -82,6 +82,12 @@ namespace Pulumi.GoogleCloud.Compute.V1.Inputs
         }
 
         /// <summary>
+        /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        /// </summary>
+        [Input("requestCoalescing")]
+        public Input<bool>? RequestCoalescing { get; set; }
+
+        /// <summary>
         /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
         /// </summary>
         [Input("serveWhileStale")]

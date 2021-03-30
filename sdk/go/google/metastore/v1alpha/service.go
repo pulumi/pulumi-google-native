@@ -74,14 +74,16 @@ type serviceArgs struct {
 	MetadataIntegration *MetadataIntegration `pulumi:"metadataIntegration"`
 	// Output only. The metadata management activities of the metastore service.
 	MetadataManagementActivity *MetadataManagementActivity `pulumi:"metadataManagementActivity"`
-	// Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name *string `pulumi:"name"`
-	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
-	// Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
+	// Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
 	Parent string `pulumi:"parent"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port *int `pulumi:"port"`
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 	RequestId *string `pulumi:"requestId"`
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
@@ -116,14 +118,16 @@ type ServiceArgs struct {
 	MetadataIntegration MetadataIntegrationPtrInput
 	// Output only. The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityPtrInput
-	// Immutable. The relative resource name of the metastore service, of the form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name pulumi.StringPtrInput
-	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:"projects/{project_number}/global/networks/{network_id}".
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput
-	// Required. The relative resource name of the location in which to create a metastore service, in the following form:"projects/{project_number}/locations/{location_id}".
+	// Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
 	Parent pulumi.StringInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port pulumi.IntPtrInput
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel pulumi.StringPtrInput
 	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 	RequestId pulumi.StringPtrInput
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.

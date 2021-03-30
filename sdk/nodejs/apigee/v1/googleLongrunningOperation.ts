@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an environment in an organization.
+ * Creates a new canary evaluation for an organization.
  */
 export class GoogleLongrunningOperation extends pulumi.CustomResource {
     /**
@@ -50,14 +50,16 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["createdAt"] = args ? args.createdAt : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
+            inputs["control"] = args ? args.control : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["endTime"] = args ? args.endTime : undefined;
+            inputs["metricLabels"] = args ? args.metricLabels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["properties"] = args ? args.properties : undefined;
+            inputs["startTime"] = args ? args.startTime : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["treatment"] = args ? args.treatment : undefined;
+            inputs["verdict"] = args ? args.verdict : undefined;
         } else {
         }
         if (!opts.version) {
@@ -72,35 +74,43 @@ export class GoogleLongrunningOperation extends pulumi.CustomResource {
  */
 export interface GoogleLongrunningOperationArgs {
     /**
-     * Output only. Creation time of this environment as milliseconds since epoch.
+     * Required. The stable version that is serving requests.
      */
-    readonly createdAt?: pulumi.Input<string>;
+    readonly control?: pulumi.Input<string>;
     /**
-     * Optional. Description of the environment.
+     * Output only. Create time of the canary evaluation.
      */
-    readonly description?: pulumi.Input<string>;
+    readonly createTime?: pulumi.Input<string>;
     /**
-     * Optional. Display name for this environment.
+     * Required. End time for the evaluation's analysis.
      */
-    readonly displayName?: pulumi.Input<string>;
+    readonly endTime?: pulumi.Input<string>;
     /**
-     * Output only. Last modification time of this environment as milliseconds since epoch.
+     * Required. Labels used to filter the metrics used for a canary evaluation.
      */
-    readonly lastModifiedAt?: pulumi.Input<string>;
+    readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabels>;
     /**
-     * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+     * Output only. Name of the canary evalution.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
+     * Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`.
      */
     readonly parent: pulumi.Input<string>;
     /**
-     * Optional. Key-value pairs that may be used for customizing the environment.
+     * Required. Start time for the canary evaluation's analysis.
      */
-    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Properties>;
+    readonly startTime?: pulumi.Input<string>;
     /**
-     * Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
+     * Output only. The current state of the canary evaluation.
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * Required. The newer version that is serving requests.
+     */
+    readonly treatment?: pulumi.Input<string>;
+    /**
+     * Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+     */
+    readonly verdict?: pulumi.Input<string>;
 }

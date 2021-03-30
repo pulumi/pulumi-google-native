@@ -12,8 +12,18 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'CloudAuditLoggingFeatureSpecArgs',
+    'CommonFeatureSpecArgs',
+    'CommonFeatureStateArgs',
     'ExprArgs',
+    'FeatureResourceStateArgs',
+    'FeatureStateArgs',
+    'MultiClusterIngressFeatureSpecArgs',
     'PolicyArgs',
+    'ServiceMeshAnalysisMessageArgs',
+    'ServiceMeshAnalysisMessageBaseArgs',
+    'ServiceMeshFeatureStateArgs',
+    'ServiceMeshTypeArgs',
 ]
 
 @pulumi.input_type
@@ -153,6 +163,110 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class CloudAuditLoggingFeatureSpecArgs:
+    def __init__(__self__, *,
+                 allowlisted_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Spec for Audit Logging Allowlisting.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlisted_service_accounts: Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
+        """
+        if allowlisted_service_accounts is not None:
+            pulumi.set(__self__, "allowlisted_service_accounts", allowlisted_service_accounts)
+
+    @property
+    @pulumi.getter(name="allowlistedServiceAccounts")
+    def allowlisted_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
+        """
+        return pulumi.get(self, "allowlisted_service_accounts")
+
+    @allowlisted_service_accounts.setter
+    def allowlisted_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowlisted_service_accounts", value)
+
+
+@pulumi.input_type
+class CommonFeatureSpecArgs:
+    def __init__(__self__, *,
+                 cloudauditlogging: Optional[pulumi.Input['CloudAuditLoggingFeatureSpecArgs']] = None,
+                 multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
+        """
+        CommonFeatureSpec contains Hub-wide configuration information
+        :param pulumi.Input['CloudAuditLoggingFeatureSpecArgs'] cloudauditlogging: Cloud Audit Logging-specific spec.
+        :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
+        """
+        if cloudauditlogging is not None:
+            pulumi.set(__self__, "cloudauditlogging", cloudauditlogging)
+        if multiclusteringress is not None:
+            pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def cloudauditlogging(self) -> Optional[pulumi.Input['CloudAuditLoggingFeatureSpecArgs']]:
+        """
+        Cloud Audit Logging-specific spec.
+        """
+        return pulumi.get(self, "cloudauditlogging")
+
+    @cloudauditlogging.setter
+    def cloudauditlogging(self, value: Optional[pulumi.Input['CloudAuditLoggingFeatureSpecArgs']]):
+        pulumi.set(self, "cloudauditlogging", value)
+
+    @property
+    @pulumi.getter
+    def multiclusteringress(self) -> Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']]:
+        """
+        Multicluster Ingress-specific spec.
+        """
+        return pulumi.get(self, "multiclusteringress")
+
+    @multiclusteringress.setter
+    def multiclusteringress(self, value: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']]):
+        pulumi.set(self, "multiclusteringress", value)
+
+
+@pulumi.input_type
+class CommonFeatureStateArgs:
+    def __init__(__self__, *,
+                 servicemesh: Optional[pulumi.Input['ServiceMeshFeatureStateArgs']] = None,
+                 state: Optional[pulumi.Input['FeatureStateArgs']] = None):
+        """
+        CommonFeatureState contains Hub-wide Feature status information.
+        :param pulumi.Input['ServiceMeshFeatureStateArgs'] servicemesh: Service Mesh-specific state.
+        :param pulumi.Input['FeatureStateArgs'] state: Output only. The "running state" of the Feature in this Hub.
+        """
+        if servicemesh is not None:
+            pulumi.set(__self__, "servicemesh", servicemesh)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def servicemesh(self) -> Optional[pulumi.Input['ServiceMeshFeatureStateArgs']]:
+        """
+        Service Mesh-specific state.
+        """
+        return pulumi.get(self, "servicemesh")
+
+    @servicemesh.setter
+    def servicemesh(self, value: Optional[pulumi.Input['ServiceMeshFeatureStateArgs']]):
+        pulumi.set(self, "servicemesh", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['FeatureStateArgs']]:
+        """
+        Output only. The "running state" of the Feature in this Hub.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['FeatureStateArgs']]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -225,6 +339,110 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class FeatureResourceStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+        :param pulumi.Input[str] state: The current state of the Feature resource in the Hub API.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current state of the Feature resource in the Hub API.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class FeatureStateArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+        :param pulumi.Input[str] code: The high-level, machine-readable status of this Feature.
+        :param pulumi.Input[str] description: A human-readable description of the current status.
+        :param pulumi.Input[str] update_time: The time this status and any related Feature-specific details were updated.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The high-level, machine-readable status of this Feature.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable description of the current status.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time this status and any related Feature-specific details were updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class MultiClusterIngressFeatureSpecArgs:
+    def __init__(__self__, *,
+                 config_membership: Optional[pulumi.Input[str]] = None):
+        """
+        FeatureSpec contains the input for the MultiClusterIngress feature.
+        :param pulumi.Input[str] config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        if config_membership is not None:
+            pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter(name="configMembership")
+    def config_membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        return pulumi.get(self, "config_membership")
+
+    @config_membership.setter
+    def config_membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_membership", value)
+
+
+@pulumi.input_type
 class PolicyArgs:
     def __init__(__self__, *,
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
@@ -294,5 +512,197 @@ class PolicyArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ServiceMeshAnalysisMessageArgs:
+    def __init__(__self__, *,
+                 args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 message_base: Optional[pulumi.Input['ServiceMeshAnalysisMessageBaseArgs']] = None,
+                 resource_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] args: A UI can combine these args with a template (based on message_base.type) to produce an internationalized message.
+        :param pulumi.Input[str] description: A human readable description of what the error means. It is suitable for non-internationalize display purposes.
+        :param pulumi.Input['ServiceMeshAnalysisMessageBaseArgs'] message_base: Details common to all types of Istio and ServiceMesh analysis messages.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_paths: A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if message_base is not None:
+            pulumi.set(__self__, "message_base", message_base)
+        if resource_paths is not None:
+            pulumi.set(__self__, "resource_paths", resource_paths)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A UI can combine these args with a template (based on message_base.type) to produce an internationalized message.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human readable description of what the error means. It is suitable for non-internationalize display purposes.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="messageBase")
+    def message_base(self) -> Optional[pulumi.Input['ServiceMeshAnalysisMessageBaseArgs']]:
+        """
+        Details common to all types of Istio and ServiceMesh analysis messages.
+        """
+        return pulumi.get(self, "message_base")
+
+    @message_base.setter
+    def message_base(self, value: Optional[pulumi.Input['ServiceMeshAnalysisMessageBaseArgs']]):
+        pulumi.set(self, "message_base", value)
+
+    @property
+    @pulumi.getter(name="resourcePaths")
+    def resource_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster
+        """
+        return pulumi.get(self, "resource_paths")
+
+    @resource_paths.setter
+    def resource_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_paths", value)
+
+
+@pulumi.input_type
+class ServiceMeshAnalysisMessageBaseArgs:
+    def __init__(__self__, *,
+                 documentation_url: Optional[pulumi.Input[str]] = None,
+                 level: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['ServiceMeshTypeArgs']] = None):
+        """
+        AnalysisMessageBase describes some common information that is needed for all messages.
+        :param pulumi.Input[str] documentation_url: A url pointing to the Service Mesh or Istio documentation for this specific error type.
+        :param pulumi.Input[str] level: Represents how severe a message is.
+        :param pulumi.Input['ServiceMeshTypeArgs'] type: Represents the specific type of a message.
+        """
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        A url pointing to the Service Mesh or Istio documentation for this specific error type.
+        """
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Represents how severe a message is.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['ServiceMeshTypeArgs']]:
+        """
+        Represents the specific type of a message.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['ServiceMeshTypeArgs']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServiceMeshFeatureStateArgs:
+    def __init__(__self__, *,
+                 analysis_messages: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceMeshAnalysisMessageArgs']]]] = None):
+        """
+        FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceMeshAnalysisMessageArgs']]] analysis_messages: Output only. Results of running Service Mesh analyzers.
+        """
+        if analysis_messages is not None:
+            pulumi.set(__self__, "analysis_messages", analysis_messages)
+
+    @property
+    @pulumi.getter(name="analysisMessages")
+    def analysis_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceMeshAnalysisMessageArgs']]]]:
+        """
+        Output only. Results of running Service Mesh analyzers.
+        """
+        return pulumi.get(self, "analysis_messages")
+
+    @analysis_messages.setter
+    def analysis_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceMeshAnalysisMessageArgs']]]]):
+        pulumi.set(self, "analysis_messages", value)
+
+
+@pulumi.input_type
+class ServiceMeshTypeArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None):
+        """
+        A unique identifier for the type of message. Display_name is intended to be human-readable, code is intended to be machine readable. There should be a one-to-one mapping between display_name and code. (i.e. do not re-use display_names or codes between message types.) See istio.analysis.v1alpha1.AnalysisMessageBase.Type
+        :param pulumi.Input[str] code: A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
+        :param pulumi.Input[str] display_name: A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
 

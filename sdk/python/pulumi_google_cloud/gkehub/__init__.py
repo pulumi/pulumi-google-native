@@ -8,5 +8,6 @@ from . import (
     v1,
     v1alpha,
     v1alpha2,
+    v1beta,
     v1beta1,
 )

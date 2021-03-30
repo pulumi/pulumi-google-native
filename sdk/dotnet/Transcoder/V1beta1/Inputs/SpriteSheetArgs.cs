@@ -58,13 +58,13 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1.Inputs
         public Input<int>? RowCount { get; set; }
 
         /// <summary>
-        /// Required. The height of sprite in pixels. Must be an even integer.
+        /// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
         /// </summary>
         [Input("spriteHeightPixels")]
         public Input<int>? SpriteHeightPixels { get; set; }
 
         /// <summary>
-        /// Required. The width of sprite in pixels. Must be an even integer.
+        /// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
         /// </summary>
         [Input("spriteWidthPixels")]
         public Input<int>? SpriteWidthPixels { get; set; }

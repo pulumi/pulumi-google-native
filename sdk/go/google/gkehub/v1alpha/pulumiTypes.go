@@ -346,6 +346,446 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
+// Spec for Audit Logging Allowlisting.
+type CloudAuditLoggingFeatureSpec struct {
+	// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
+	AllowlistedServiceAccounts []string `pulumi:"allowlistedServiceAccounts"`
+}
+
+// CloudAuditLoggingFeatureSpecInput is an input type that accepts CloudAuditLoggingFeatureSpecArgs and CloudAuditLoggingFeatureSpecOutput values.
+// You can construct a concrete instance of `CloudAuditLoggingFeatureSpecInput` via:
+//
+//          CloudAuditLoggingFeatureSpecArgs{...}
+type CloudAuditLoggingFeatureSpecInput interface {
+	pulumi.Input
+
+	ToCloudAuditLoggingFeatureSpecOutput() CloudAuditLoggingFeatureSpecOutput
+	ToCloudAuditLoggingFeatureSpecOutputWithContext(context.Context) CloudAuditLoggingFeatureSpecOutput
+}
+
+// Spec for Audit Logging Allowlisting.
+type CloudAuditLoggingFeatureSpecArgs struct {
+	// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
+	AllowlistedServiceAccounts pulumi.StringArrayInput `pulumi:"allowlistedServiceAccounts"`
+}
+
+func (CloudAuditLoggingFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAuditLoggingFeatureSpec)(nil)).Elem()
+}
+
+func (i CloudAuditLoggingFeatureSpecArgs) ToCloudAuditLoggingFeatureSpecOutput() CloudAuditLoggingFeatureSpecOutput {
+	return i.ToCloudAuditLoggingFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i CloudAuditLoggingFeatureSpecArgs) ToCloudAuditLoggingFeatureSpecOutputWithContext(ctx context.Context) CloudAuditLoggingFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLoggingFeatureSpecOutput)
+}
+
+func (i CloudAuditLoggingFeatureSpecArgs) ToCloudAuditLoggingFeatureSpecPtrOutput() CloudAuditLoggingFeatureSpecPtrOutput {
+	return i.ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CloudAuditLoggingFeatureSpecArgs) ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(ctx context.Context) CloudAuditLoggingFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLoggingFeatureSpecOutput).ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// CloudAuditLoggingFeatureSpecPtrInput is an input type that accepts CloudAuditLoggingFeatureSpecArgs, CloudAuditLoggingFeatureSpecPtr and CloudAuditLoggingFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `CloudAuditLoggingFeatureSpecPtrInput` via:
+//
+//          CloudAuditLoggingFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type CloudAuditLoggingFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToCloudAuditLoggingFeatureSpecPtrOutput() CloudAuditLoggingFeatureSpecPtrOutput
+	ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(context.Context) CloudAuditLoggingFeatureSpecPtrOutput
+}
+
+type cloudAuditLoggingFeatureSpecPtrType CloudAuditLoggingFeatureSpecArgs
+
+func CloudAuditLoggingFeatureSpecPtr(v *CloudAuditLoggingFeatureSpecArgs) CloudAuditLoggingFeatureSpecPtrInput {
+	return (*cloudAuditLoggingFeatureSpecPtrType)(v)
+}
+
+func (*cloudAuditLoggingFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAuditLoggingFeatureSpec)(nil)).Elem()
+}
+
+func (i *cloudAuditLoggingFeatureSpecPtrType) ToCloudAuditLoggingFeatureSpecPtrOutput() CloudAuditLoggingFeatureSpecPtrOutput {
+	return i.ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudAuditLoggingFeatureSpecPtrType) ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(ctx context.Context) CloudAuditLoggingFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLoggingFeatureSpecPtrOutput)
+}
+
+// Spec for Audit Logging Allowlisting.
+type CloudAuditLoggingFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (CloudAuditLoggingFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAuditLoggingFeatureSpec)(nil)).Elem()
+}
+
+func (o CloudAuditLoggingFeatureSpecOutput) ToCloudAuditLoggingFeatureSpecOutput() CloudAuditLoggingFeatureSpecOutput {
+	return o
+}
+
+func (o CloudAuditLoggingFeatureSpecOutput) ToCloudAuditLoggingFeatureSpecOutputWithContext(ctx context.Context) CloudAuditLoggingFeatureSpecOutput {
+	return o
+}
+
+func (o CloudAuditLoggingFeatureSpecOutput) ToCloudAuditLoggingFeatureSpecPtrOutput() CloudAuditLoggingFeatureSpecPtrOutput {
+	return o.ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CloudAuditLoggingFeatureSpecOutput) ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(ctx context.Context) CloudAuditLoggingFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CloudAuditLoggingFeatureSpec) *CloudAuditLoggingFeatureSpec {
+		return &v
+	}).(CloudAuditLoggingFeatureSpecPtrOutput)
+}
+
+// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
+func (o CloudAuditLoggingFeatureSpecOutput) AllowlistedServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudAuditLoggingFeatureSpec) []string { return v.AllowlistedServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+type CloudAuditLoggingFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudAuditLoggingFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAuditLoggingFeatureSpec)(nil)).Elem()
+}
+
+func (o CloudAuditLoggingFeatureSpecPtrOutput) ToCloudAuditLoggingFeatureSpecPtrOutput() CloudAuditLoggingFeatureSpecPtrOutput {
+	return o
+}
+
+func (o CloudAuditLoggingFeatureSpecPtrOutput) ToCloudAuditLoggingFeatureSpecPtrOutputWithContext(ctx context.Context) CloudAuditLoggingFeatureSpecPtrOutput {
+	return o
+}
+
+func (o CloudAuditLoggingFeatureSpecPtrOutput) Elem() CloudAuditLoggingFeatureSpecOutput {
+	return o.ApplyT(func(v *CloudAuditLoggingFeatureSpec) CloudAuditLoggingFeatureSpec { return *v }).(CloudAuditLoggingFeatureSpecOutput)
+}
+
+// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
+func (o CloudAuditLoggingFeatureSpecPtrOutput) AllowlistedServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudAuditLoggingFeatureSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowlistedServiceAccounts
+	}).(pulumi.StringArrayOutput)
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpec struct {
+	// Cloud Audit Logging-specific spec.
+	Cloudauditlogging *CloudAuditLoggingFeatureSpec `pulumi:"cloudauditlogging"`
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress *MultiClusterIngressFeatureSpec `pulumi:"multiclusteringress"`
+}
+
+// CommonFeatureSpecInput is an input type that accepts CommonFeatureSpecArgs and CommonFeatureSpecOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecInput` via:
+//
+//          CommonFeatureSpecArgs{...}
+type CommonFeatureSpecInput interface {
+	pulumi.Input
+
+	ToCommonFeatureSpecOutput() CommonFeatureSpecOutput
+	ToCommonFeatureSpecOutputWithContext(context.Context) CommonFeatureSpecOutput
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecArgs struct {
+	// Cloud Audit Logging-specific spec.
+	Cloudauditlogging CloudAuditLoggingFeatureSpecPtrInput `pulumi:"cloudauditlogging"`
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress MultiClusterIngressFeatureSpecPtrInput `pulumi:"multiclusteringress"`
+}
+
+func (CommonFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpec)(nil)).Elem()
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecOutput() CommonFeatureSpecOutput {
+	return i.ToCommonFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecOutputWithContext(ctx context.Context) CommonFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecOutput)
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return i.ToCommonFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecOutput).ToCommonFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// CommonFeatureSpecPtrInput is an input type that accepts CommonFeatureSpecArgs, CommonFeatureSpecPtr and CommonFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecPtrInput` via:
+//
+//          CommonFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type CommonFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput
+	ToCommonFeatureSpecPtrOutputWithContext(context.Context) CommonFeatureSpecPtrOutput
+}
+
+type commonFeatureSpecPtrType CommonFeatureSpecArgs
+
+func CommonFeatureSpecPtr(v *CommonFeatureSpecArgs) CommonFeatureSpecPtrInput {
+	return (*commonFeatureSpecPtrType)(v)
+}
+
+func (*commonFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpec)(nil)).Elem()
+}
+
+func (i *commonFeatureSpecPtrType) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return i.ToCommonFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *commonFeatureSpecPtrType) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecPtrOutput)
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpec)(nil)).Elem()
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecOutput() CommonFeatureSpecOutput {
+	return o
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecOutputWithContext(ctx context.Context) CommonFeatureSpecOutput {
+	return o
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return o.ToCommonFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *CommonFeatureSpec {
+		return &v
+	}).(CommonFeatureSpecPtrOutput)
+}
+
+// Cloud Audit Logging-specific spec.
+func (o CommonFeatureSpecOutput) Cloudauditlogging() CloudAuditLoggingFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *CloudAuditLoggingFeatureSpec { return v.Cloudauditlogging }).(CloudAuditLoggingFeatureSpecPtrOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *MultiClusterIngressFeatureSpec { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+type CommonFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpec)(nil)).Elem()
+}
+
+func (o CommonFeatureSpecPtrOutput) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return o
+}
+
+func (o CommonFeatureSpecPtrOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return o
+}
+
+func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) CommonFeatureSpec { return *v }).(CommonFeatureSpecOutput)
+}
+
+// Cloud Audit Logging-specific spec.
+func (o CommonFeatureSpecPtrOutput) Cloudauditlogging() CloudAuditLoggingFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *CloudAuditLoggingFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Cloudauditlogging
+	}).(CloudAuditLoggingFeatureSpecPtrOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *MultiClusterIngressFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Multiclusteringress
+	}).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureState struct {
+	// Service Mesh-specific state.
+	Servicemesh *ServiceMeshFeatureState `pulumi:"servicemesh"`
+	// Output only. The "running state" of the Feature in this Hub.
+	State *FeatureStateType `pulumi:"state"`
+}
+
+// CommonFeatureStateInput is an input type that accepts CommonFeatureStateArgs and CommonFeatureStateOutput values.
+// You can construct a concrete instance of `CommonFeatureStateInput` via:
+//
+//          CommonFeatureStateArgs{...}
+type CommonFeatureStateInput interface {
+	pulumi.Input
+
+	ToCommonFeatureStateOutput() CommonFeatureStateOutput
+	ToCommonFeatureStateOutputWithContext(context.Context) CommonFeatureStateOutput
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateArgs struct {
+	// Service Mesh-specific state.
+	Servicemesh ServiceMeshFeatureStatePtrInput `pulumi:"servicemesh"`
+	// Output only. The "running state" of the Feature in this Hub.
+	State FeatureStateTypePtrInput `pulumi:"state"`
+}
+
+func (CommonFeatureStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureState)(nil)).Elem()
+}
+
+func (i CommonFeatureStateArgs) ToCommonFeatureStateOutput() CommonFeatureStateOutput {
+	return i.ToCommonFeatureStateOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureStateArgs) ToCommonFeatureStateOutputWithContext(ctx context.Context) CommonFeatureStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateOutput)
+}
+
+func (i CommonFeatureStateArgs) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
+	return i.ToCommonFeatureStatePtrOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureStateArgs) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateOutput).ToCommonFeatureStatePtrOutputWithContext(ctx)
+}
+
+// CommonFeatureStatePtrInput is an input type that accepts CommonFeatureStateArgs, CommonFeatureStatePtr and CommonFeatureStatePtrOutput values.
+// You can construct a concrete instance of `CommonFeatureStatePtrInput` via:
+//
+//          CommonFeatureStateArgs{...}
+//
+//  or:
+//
+//          nil
+type CommonFeatureStatePtrInput interface {
+	pulumi.Input
+
+	ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput
+	ToCommonFeatureStatePtrOutputWithContext(context.Context) CommonFeatureStatePtrOutput
+}
+
+type commonFeatureStatePtrType CommonFeatureStateArgs
+
+func CommonFeatureStatePtr(v *CommonFeatureStateArgs) CommonFeatureStatePtrInput {
+	return (*commonFeatureStatePtrType)(v)
+}
+
+func (*commonFeatureStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureState)(nil)).Elem()
+}
+
+func (i *commonFeatureStatePtrType) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
+	return i.ToCommonFeatureStatePtrOutputWithContext(context.Background())
+}
+
+func (i *commonFeatureStatePtrType) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStatePtrOutput)
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureState)(nil)).Elem()
+}
+
+func (o CommonFeatureStateOutput) ToCommonFeatureStateOutput() CommonFeatureStateOutput {
+	return o
+}
+
+func (o CommonFeatureStateOutput) ToCommonFeatureStateOutputWithContext(ctx context.Context) CommonFeatureStateOutput {
+	return o
+}
+
+func (o CommonFeatureStateOutput) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
+	return o.ToCommonFeatureStatePtrOutputWithContext(context.Background())
+}
+
+func (o CommonFeatureStateOutput) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
+	return o.ApplyT(func(v CommonFeatureState) *CommonFeatureState {
+		return &v
+	}).(CommonFeatureStatePtrOutput)
+}
+
+// Service Mesh-specific state.
+func (o CommonFeatureStateOutput) Servicemesh() ServiceMeshFeatureStatePtrOutput {
+	return o.ApplyT(func(v CommonFeatureState) *ServiceMeshFeatureState { return v.Servicemesh }).(ServiceMeshFeatureStatePtrOutput)
+}
+
+// Output only. The "running state" of the Feature in this Hub.
+func (o CommonFeatureStateOutput) State() FeatureStateTypePtrOutput {
+	return o.ApplyT(func(v CommonFeatureState) *FeatureStateType { return v.State }).(FeatureStateTypePtrOutput)
+}
+
+type CommonFeatureStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureState)(nil)).Elem()
+}
+
+func (o CommonFeatureStatePtrOutput) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
+	return o
+}
+
+func (o CommonFeatureStatePtrOutput) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
+	return o
+}
+
+func (o CommonFeatureStatePtrOutput) Elem() CommonFeatureStateOutput {
+	return o.ApplyT(func(v *CommonFeatureState) CommonFeatureState { return *v }).(CommonFeatureStateOutput)
+}
+
+// Service Mesh-specific state.
+func (o CommonFeatureStatePtrOutput) Servicemesh() ServiceMeshFeatureStatePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureState) *ServiceMeshFeatureState {
+		if v == nil {
+			return nil
+		}
+		return v.Servicemesh
+	}).(ServiceMeshFeatureStatePtrOutput)
+}
+
+// Output only. The "running state" of the Feature in this Hub.
+func (o CommonFeatureStatePtrOutput) State() FeatureStateTypePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureState) *FeatureStateType {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(FeatureStateTypePtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -534,6 +974,446 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceState struct {
+	// The current state of the Feature resource in the Hub API.
+	State *string `pulumi:"state"`
+}
+
+// FeatureResourceStateInput is an input type that accepts FeatureResourceStateArgs and FeatureResourceStateOutput values.
+// You can construct a concrete instance of `FeatureResourceStateInput` via:
+//
+//          FeatureResourceStateArgs{...}
+type FeatureResourceStateInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStateOutput() FeatureResourceStateOutput
+	ToFeatureResourceStateOutputWithContext(context.Context) FeatureResourceStateOutput
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceStateArgs struct {
+	// The current state of the Feature resource in the Hub API.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (FeatureResourceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceState)(nil)).Elem()
+}
+
+func (i FeatureResourceStateArgs) ToFeatureResourceStateOutput() FeatureResourceStateOutput {
+	return i.ToFeatureResourceStateOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput)
+}
+
+func (i FeatureResourceStateArgs) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
+	return i.ToFeatureResourceStatePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateArgs) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput).ToFeatureResourceStatePtrOutputWithContext(ctx)
+}
+
+// FeatureResourceStatePtrInput is an input type that accepts FeatureResourceStateArgs, FeatureResourceStatePtr and FeatureResourceStatePtrOutput values.
+// You can construct a concrete instance of `FeatureResourceStatePtrInput` via:
+//
+//          FeatureResourceStateArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureResourceStatePtrInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput
+	ToFeatureResourceStatePtrOutputWithContext(context.Context) FeatureResourceStatePtrOutput
+}
+
+type featureResourceStatePtrType FeatureResourceStateArgs
+
+func FeatureResourceStatePtr(v *FeatureResourceStateArgs) FeatureResourceStatePtrInput {
+	return (*featureResourceStatePtrType)(v)
+}
+
+func (*featureResourceStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureResourceState)(nil)).Elem()
+}
+
+func (i *featureResourceStatePtrType) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
+	return i.ToFeatureResourceStatePtrOutputWithContext(context.Background())
+}
+
+func (i *featureResourceStatePtrType) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStatePtrOutput)
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceStateOutput struct{ *pulumi.OutputState }
+
+func (FeatureResourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceState)(nil)).Elem()
+}
+
+func (o FeatureResourceStateOutput) ToFeatureResourceStateOutput() FeatureResourceStateOutput {
+	return o
+}
+
+func (o FeatureResourceStateOutput) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
+	return o
+}
+
+func (o FeatureResourceStateOutput) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
+	return o.ToFeatureResourceStatePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureResourceStateOutput) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
+	return o.ApplyT(func(v FeatureResourceState) *FeatureResourceState {
+		return &v
+	}).(FeatureResourceStatePtrOutput)
+}
+
+// The current state of the Feature resource in the Hub API.
+func (o FeatureResourceStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureResourceState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type FeatureResourceStatePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureResourceStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureResourceState)(nil)).Elem()
+}
+
+func (o FeatureResourceStatePtrOutput) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
+	return o
+}
+
+func (o FeatureResourceStatePtrOutput) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
+	return o
+}
+
+func (o FeatureResourceStatePtrOutput) Elem() FeatureResourceStateOutput {
+	return o.ApplyT(func(v *FeatureResourceState) FeatureResourceState { return *v }).(FeatureResourceStateOutput)
+}
+
+// The current state of the Feature resource in the Hub API.
+func (o FeatureResourceStatePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureResourceState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+type FeatureStateType struct {
+	// The high-level, machine-readable status of this Feature.
+	Code *string `pulumi:"code"`
+	// A human-readable description of the current status.
+	Description *string `pulumi:"description"`
+	// The time this status and any related Feature-specific details were updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// FeatureStateTypeInput is an input type that accepts FeatureStateTypeArgs and FeatureStateTypeOutput values.
+// You can construct a concrete instance of `FeatureStateTypeInput` via:
+//
+//          FeatureStateTypeArgs{...}
+type FeatureStateTypeInput interface {
+	pulumi.Input
+
+	ToFeatureStateTypeOutput() FeatureStateTypeOutput
+	ToFeatureStateTypeOutputWithContext(context.Context) FeatureStateTypeOutput
+}
+
+// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+type FeatureStateTypeArgs struct {
+	// The high-level, machine-readable status of this Feature.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// A human-readable description of the current status.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The time this status and any related Feature-specific details were updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (FeatureStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateType)(nil)).Elem()
+}
+
+func (i FeatureStateTypeArgs) ToFeatureStateTypeOutput() FeatureStateTypeOutput {
+	return i.ToFeatureStateTypeOutputWithContext(context.Background())
+}
+
+func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput)
+}
+
+func (i FeatureStateTypeArgs) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
+	return i.ToFeatureStateTypePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureStateTypeArgs) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput).ToFeatureStateTypePtrOutputWithContext(ctx)
+}
+
+// FeatureStateTypePtrInput is an input type that accepts FeatureStateTypeArgs, FeatureStateTypePtr and FeatureStateTypePtrOutput values.
+// You can construct a concrete instance of `FeatureStateTypePtrInput` via:
+//
+//          FeatureStateTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureStateTypePtrInput interface {
+	pulumi.Input
+
+	ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput
+	ToFeatureStateTypePtrOutputWithContext(context.Context) FeatureStateTypePtrOutput
+}
+
+type featureStateTypePtrType FeatureStateTypeArgs
+
+func FeatureStateTypePtr(v *FeatureStateTypeArgs) FeatureStateTypePtrInput {
+	return (*featureStateTypePtrType)(v)
+}
+
+func (*featureStateTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureStateType)(nil)).Elem()
+}
+
+func (i *featureStateTypePtrType) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
+	return i.ToFeatureStateTypePtrOutputWithContext(context.Background())
+}
+
+func (i *featureStateTypePtrType) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypePtrOutput)
+}
+
+// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+type FeatureStateTypeOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateType)(nil)).Elem()
+}
+
+func (o FeatureStateTypeOutput) ToFeatureStateTypeOutput() FeatureStateTypeOutput {
+	return o
+}
+
+func (o FeatureStateTypeOutput) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
+	return o
+}
+
+func (o FeatureStateTypeOutput) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
+	return o.ToFeatureStateTypePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureStateTypeOutput) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
+	return o.ApplyT(func(v FeatureStateType) *FeatureStateType {
+		return &v
+	}).(FeatureStateTypePtrOutput)
+}
+
+// The high-level, machine-readable status of this Feature.
+func (o FeatureStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// A human-readable description of the current status.
+func (o FeatureStateTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureStateType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The time this status and any related Feature-specific details were updated.
+func (o FeatureStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type FeatureStateTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureStateType)(nil)).Elem()
+}
+
+func (o FeatureStateTypePtrOutput) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
+	return o
+}
+
+func (o FeatureStateTypePtrOutput) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
+	return o
+}
+
+func (o FeatureStateTypePtrOutput) Elem() FeatureStateTypeOutput {
+	return o.ApplyT(func(v *FeatureStateType) FeatureStateType { return *v }).(FeatureStateTypeOutput)
+}
+
+// The high-level, machine-readable status of this Feature.
+func (o FeatureStateTypePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// A human-readable description of the current status.
+func (o FeatureStateTypePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time this status and any related Feature-specific details were updated.
+func (o FeatureStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureSpec contains the input for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpec struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership *string `pulumi:"configMembership"`
+}
+
+// MultiClusterIngressFeatureSpecInput is an input type that accepts MultiClusterIngressFeatureSpecArgs and MultiClusterIngressFeatureSpecOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecInput` via:
+//
+//          MultiClusterIngressFeatureSpecArgs{...}
+type MultiClusterIngressFeatureSpecInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecOutput() MultiClusterIngressFeatureSpecOutput
+	ToMultiClusterIngressFeatureSpecOutputWithContext(context.Context) MultiClusterIngressFeatureSpecOutput
+}
+
+// FeatureSpec contains the input for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecArgs struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
+}
+
+func (MultiClusterIngressFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecOutput() MultiClusterIngressFeatureSpecOutput {
+	return i.ToMultiClusterIngressFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecOutput)
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecOutput).ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// MultiClusterIngressFeatureSpecPtrInput is an input type that accepts MultiClusterIngressFeatureSpecArgs, MultiClusterIngressFeatureSpecPtr and MultiClusterIngressFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecPtrInput` via:
+//
+//          MultiClusterIngressFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiClusterIngressFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput
+	ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Context) MultiClusterIngressFeatureSpecPtrOutput
+}
+
+type multiClusterIngressFeatureSpecPtrType MultiClusterIngressFeatureSpecArgs
+
+func MultiClusterIngressFeatureSpecPtr(v *MultiClusterIngressFeatureSpecArgs) MultiClusterIngressFeatureSpecPtrInput {
+	return (*multiClusterIngressFeatureSpecPtrType)(v)
+}
+
+func (*multiClusterIngressFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (i *multiClusterIngressFeatureSpecPtrType) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *multiClusterIngressFeatureSpecPtrType) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// FeatureSpec contains the input for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecOutput() MultiClusterIngressFeatureSpecOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
+		return &v
+	}).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *string { return v.ConfigMembership }).(pulumi.StringPtrOutput)
+}
+
+type MultiClusterIngressFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecPtrOutput) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecPtrOutput) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatureSpecOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec { return *v }).(MultiClusterIngressFeatureSpecOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigMembership
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -728,6 +1608,592 @@ func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration.
+type ServiceMeshAnalysisMessage struct {
+	// A UI can combine these args with a template (based on message_base.type) to produce an internationalized message.
+	Args map[string]string `pulumi:"args"`
+	// A human readable description of what the error means. It is suitable for non-internationalize display purposes.
+	Description *string `pulumi:"description"`
+	// Details common to all types of Istio and ServiceMesh analysis messages.
+	MessageBase *ServiceMeshAnalysisMessageBase `pulumi:"messageBase"`
+	// A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster
+	ResourcePaths []string `pulumi:"resourcePaths"`
+}
+
+// ServiceMeshAnalysisMessageInput is an input type that accepts ServiceMeshAnalysisMessageArgs and ServiceMeshAnalysisMessageOutput values.
+// You can construct a concrete instance of `ServiceMeshAnalysisMessageInput` via:
+//
+//          ServiceMeshAnalysisMessageArgs{...}
+type ServiceMeshAnalysisMessageInput interface {
+	pulumi.Input
+
+	ToServiceMeshAnalysisMessageOutput() ServiceMeshAnalysisMessageOutput
+	ToServiceMeshAnalysisMessageOutputWithContext(context.Context) ServiceMeshAnalysisMessageOutput
+}
+
+// AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration.
+type ServiceMeshAnalysisMessageArgs struct {
+	// A UI can combine these args with a template (based on message_base.type) to produce an internationalized message.
+	Args pulumi.StringMapInput `pulumi:"args"`
+	// A human readable description of what the error means. It is suitable for non-internationalize display purposes.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Details common to all types of Istio and ServiceMesh analysis messages.
+	MessageBase ServiceMeshAnalysisMessageBasePtrInput `pulumi:"messageBase"`
+	// A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster
+	ResourcePaths pulumi.StringArrayInput `pulumi:"resourcePaths"`
+}
+
+func (ServiceMeshAnalysisMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshAnalysisMessage)(nil)).Elem()
+}
+
+func (i ServiceMeshAnalysisMessageArgs) ToServiceMeshAnalysisMessageOutput() ServiceMeshAnalysisMessageOutput {
+	return i.ToServiceMeshAnalysisMessageOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshAnalysisMessageArgs) ToServiceMeshAnalysisMessageOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshAnalysisMessageOutput)
+}
+
+// ServiceMeshAnalysisMessageArrayInput is an input type that accepts ServiceMeshAnalysisMessageArray and ServiceMeshAnalysisMessageArrayOutput values.
+// You can construct a concrete instance of `ServiceMeshAnalysisMessageArrayInput` via:
+//
+//          ServiceMeshAnalysisMessageArray{ ServiceMeshAnalysisMessageArgs{...} }
+type ServiceMeshAnalysisMessageArrayInput interface {
+	pulumi.Input
+
+	ToServiceMeshAnalysisMessageArrayOutput() ServiceMeshAnalysisMessageArrayOutput
+	ToServiceMeshAnalysisMessageArrayOutputWithContext(context.Context) ServiceMeshAnalysisMessageArrayOutput
+}
+
+type ServiceMeshAnalysisMessageArray []ServiceMeshAnalysisMessageInput
+
+func (ServiceMeshAnalysisMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMeshAnalysisMessage)(nil)).Elem()
+}
+
+func (i ServiceMeshAnalysisMessageArray) ToServiceMeshAnalysisMessageArrayOutput() ServiceMeshAnalysisMessageArrayOutput {
+	return i.ToServiceMeshAnalysisMessageArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshAnalysisMessageArray) ToServiceMeshAnalysisMessageArrayOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshAnalysisMessageArrayOutput)
+}
+
+// AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration.
+type ServiceMeshAnalysisMessageOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshAnalysisMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshAnalysisMessage)(nil)).Elem()
+}
+
+func (o ServiceMeshAnalysisMessageOutput) ToServiceMeshAnalysisMessageOutput() ServiceMeshAnalysisMessageOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageOutput) ToServiceMeshAnalysisMessageOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageOutput {
+	return o
+}
+
+// A UI can combine these args with a template (based on message_base.type) to produce an internationalized message.
+func (o ServiceMeshAnalysisMessageOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessage) map[string]string { return v.Args }).(pulumi.StringMapOutput)
+}
+
+// A human readable description of what the error means. It is suitable for non-internationalize display purposes.
+func (o ServiceMeshAnalysisMessageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessage) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Details common to all types of Istio and ServiceMesh analysis messages.
+func (o ServiceMeshAnalysisMessageOutput) MessageBase() ServiceMeshAnalysisMessageBasePtrOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessage) *ServiceMeshAnalysisMessageBase { return v.MessageBase }).(ServiceMeshAnalysisMessageBasePtrOutput)
+}
+
+// A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster
+func (o ServiceMeshAnalysisMessageOutput) ResourcePaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessage) []string { return v.ResourcePaths }).(pulumi.StringArrayOutput)
+}
+
+type ServiceMeshAnalysisMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshAnalysisMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMeshAnalysisMessage)(nil)).Elem()
+}
+
+func (o ServiceMeshAnalysisMessageArrayOutput) ToServiceMeshAnalysisMessageArrayOutput() ServiceMeshAnalysisMessageArrayOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageArrayOutput) ToServiceMeshAnalysisMessageArrayOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageArrayOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageArrayOutput) Index(i pulumi.IntInput) ServiceMeshAnalysisMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceMeshAnalysisMessage {
+		return vs[0].([]ServiceMeshAnalysisMessage)[vs[1].(int)]
+	}).(ServiceMeshAnalysisMessageOutput)
+}
+
+// AnalysisMessageBase describes some common information that is needed for all messages.
+type ServiceMeshAnalysisMessageBase struct {
+	// A url pointing to the Service Mesh or Istio documentation for this specific error type.
+	DocumentationUrl *string `pulumi:"documentationUrl"`
+	// Represents how severe a message is.
+	Level *string `pulumi:"level"`
+	// Represents the specific type of a message.
+	Type *ServiceMeshType `pulumi:"type"`
+}
+
+// ServiceMeshAnalysisMessageBaseInput is an input type that accepts ServiceMeshAnalysisMessageBaseArgs and ServiceMeshAnalysisMessageBaseOutput values.
+// You can construct a concrete instance of `ServiceMeshAnalysisMessageBaseInput` via:
+//
+//          ServiceMeshAnalysisMessageBaseArgs{...}
+type ServiceMeshAnalysisMessageBaseInput interface {
+	pulumi.Input
+
+	ToServiceMeshAnalysisMessageBaseOutput() ServiceMeshAnalysisMessageBaseOutput
+	ToServiceMeshAnalysisMessageBaseOutputWithContext(context.Context) ServiceMeshAnalysisMessageBaseOutput
+}
+
+// AnalysisMessageBase describes some common information that is needed for all messages.
+type ServiceMeshAnalysisMessageBaseArgs struct {
+	// A url pointing to the Service Mesh or Istio documentation for this specific error type.
+	DocumentationUrl pulumi.StringPtrInput `pulumi:"documentationUrl"`
+	// Represents how severe a message is.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// Represents the specific type of a message.
+	Type ServiceMeshTypePtrInput `pulumi:"type"`
+}
+
+func (ServiceMeshAnalysisMessageBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshAnalysisMessageBase)(nil)).Elem()
+}
+
+func (i ServiceMeshAnalysisMessageBaseArgs) ToServiceMeshAnalysisMessageBaseOutput() ServiceMeshAnalysisMessageBaseOutput {
+	return i.ToServiceMeshAnalysisMessageBaseOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshAnalysisMessageBaseArgs) ToServiceMeshAnalysisMessageBaseOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshAnalysisMessageBaseOutput)
+}
+
+func (i ServiceMeshAnalysisMessageBaseArgs) ToServiceMeshAnalysisMessageBasePtrOutput() ServiceMeshAnalysisMessageBasePtrOutput {
+	return i.ToServiceMeshAnalysisMessageBasePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshAnalysisMessageBaseArgs) ToServiceMeshAnalysisMessageBasePtrOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshAnalysisMessageBaseOutput).ToServiceMeshAnalysisMessageBasePtrOutputWithContext(ctx)
+}
+
+// ServiceMeshAnalysisMessageBasePtrInput is an input type that accepts ServiceMeshAnalysisMessageBaseArgs, ServiceMeshAnalysisMessageBasePtr and ServiceMeshAnalysisMessageBasePtrOutput values.
+// You can construct a concrete instance of `ServiceMeshAnalysisMessageBasePtrInput` via:
+//
+//          ServiceMeshAnalysisMessageBaseArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceMeshAnalysisMessageBasePtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshAnalysisMessageBasePtrOutput() ServiceMeshAnalysisMessageBasePtrOutput
+	ToServiceMeshAnalysisMessageBasePtrOutputWithContext(context.Context) ServiceMeshAnalysisMessageBasePtrOutput
+}
+
+type serviceMeshAnalysisMessageBasePtrType ServiceMeshAnalysisMessageBaseArgs
+
+func ServiceMeshAnalysisMessageBasePtr(v *ServiceMeshAnalysisMessageBaseArgs) ServiceMeshAnalysisMessageBasePtrInput {
+	return (*serviceMeshAnalysisMessageBasePtrType)(v)
+}
+
+func (*serviceMeshAnalysisMessageBasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshAnalysisMessageBase)(nil)).Elem()
+}
+
+func (i *serviceMeshAnalysisMessageBasePtrType) ToServiceMeshAnalysisMessageBasePtrOutput() ServiceMeshAnalysisMessageBasePtrOutput {
+	return i.ToServiceMeshAnalysisMessageBasePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshAnalysisMessageBasePtrType) ToServiceMeshAnalysisMessageBasePtrOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshAnalysisMessageBasePtrOutput)
+}
+
+// AnalysisMessageBase describes some common information that is needed for all messages.
+type ServiceMeshAnalysisMessageBaseOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshAnalysisMessageBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshAnalysisMessageBase)(nil)).Elem()
+}
+
+func (o ServiceMeshAnalysisMessageBaseOutput) ToServiceMeshAnalysisMessageBaseOutput() ServiceMeshAnalysisMessageBaseOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageBaseOutput) ToServiceMeshAnalysisMessageBaseOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageBaseOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageBaseOutput) ToServiceMeshAnalysisMessageBasePtrOutput() ServiceMeshAnalysisMessageBasePtrOutput {
+	return o.ToServiceMeshAnalysisMessageBasePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshAnalysisMessageBaseOutput) ToServiceMeshAnalysisMessageBasePtrOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageBasePtrOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessageBase) *ServiceMeshAnalysisMessageBase {
+		return &v
+	}).(ServiceMeshAnalysisMessageBasePtrOutput)
+}
+
+// A url pointing to the Service Mesh or Istio documentation for this specific error type.
+func (o ServiceMeshAnalysisMessageBaseOutput) DocumentationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessageBase) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
+}
+
+// Represents how severe a message is.
+func (o ServiceMeshAnalysisMessageBaseOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessageBase) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// Represents the specific type of a message.
+func (o ServiceMeshAnalysisMessageBaseOutput) Type() ServiceMeshTypePtrOutput {
+	return o.ApplyT(func(v ServiceMeshAnalysisMessageBase) *ServiceMeshType { return v.Type }).(ServiceMeshTypePtrOutput)
+}
+
+type ServiceMeshAnalysisMessageBasePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshAnalysisMessageBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshAnalysisMessageBase)(nil)).Elem()
+}
+
+func (o ServiceMeshAnalysisMessageBasePtrOutput) ToServiceMeshAnalysisMessageBasePtrOutput() ServiceMeshAnalysisMessageBasePtrOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageBasePtrOutput) ToServiceMeshAnalysisMessageBasePtrOutputWithContext(ctx context.Context) ServiceMeshAnalysisMessageBasePtrOutput {
+	return o
+}
+
+func (o ServiceMeshAnalysisMessageBasePtrOutput) Elem() ServiceMeshAnalysisMessageBaseOutput {
+	return o.ApplyT(func(v *ServiceMeshAnalysisMessageBase) ServiceMeshAnalysisMessageBase { return *v }).(ServiceMeshAnalysisMessageBaseOutput)
+}
+
+// A url pointing to the Service Mesh or Istio documentation for this specific error type.
+func (o ServiceMeshAnalysisMessageBasePtrOutput) DocumentationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshAnalysisMessageBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents how severe a message is.
+func (o ServiceMeshAnalysisMessageBasePtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshAnalysisMessageBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the specific type of a message.
+func (o ServiceMeshAnalysisMessageBasePtrOutput) Type() ServiceMeshTypePtrOutput {
+	return o.ApplyT(func(v *ServiceMeshAnalysisMessageBase) *ServiceMeshType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(ServiceMeshTypePtrOutput)
+}
+
+// FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+type ServiceMeshFeatureState struct {
+	// Output only. Results of running Service Mesh analyzers.
+	AnalysisMessages []ServiceMeshAnalysisMessage `pulumi:"analysisMessages"`
+}
+
+// ServiceMeshFeatureStateInput is an input type that accepts ServiceMeshFeatureStateArgs and ServiceMeshFeatureStateOutput values.
+// You can construct a concrete instance of `ServiceMeshFeatureStateInput` via:
+//
+//          ServiceMeshFeatureStateArgs{...}
+type ServiceMeshFeatureStateInput interface {
+	pulumi.Input
+
+	ToServiceMeshFeatureStateOutput() ServiceMeshFeatureStateOutput
+	ToServiceMeshFeatureStateOutputWithContext(context.Context) ServiceMeshFeatureStateOutput
+}
+
+// FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+type ServiceMeshFeatureStateArgs struct {
+	// Output only. Results of running Service Mesh analyzers.
+	AnalysisMessages ServiceMeshAnalysisMessageArrayInput `pulumi:"analysisMessages"`
+}
+
+func (ServiceMeshFeatureStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshFeatureState)(nil)).Elem()
+}
+
+func (i ServiceMeshFeatureStateArgs) ToServiceMeshFeatureStateOutput() ServiceMeshFeatureStateOutput {
+	return i.ToServiceMeshFeatureStateOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshFeatureStateArgs) ToServiceMeshFeatureStateOutputWithContext(ctx context.Context) ServiceMeshFeatureStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshFeatureStateOutput)
+}
+
+func (i ServiceMeshFeatureStateArgs) ToServiceMeshFeatureStatePtrOutput() ServiceMeshFeatureStatePtrOutput {
+	return i.ToServiceMeshFeatureStatePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshFeatureStateArgs) ToServiceMeshFeatureStatePtrOutputWithContext(ctx context.Context) ServiceMeshFeatureStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshFeatureStateOutput).ToServiceMeshFeatureStatePtrOutputWithContext(ctx)
+}
+
+// ServiceMeshFeatureStatePtrInput is an input type that accepts ServiceMeshFeatureStateArgs, ServiceMeshFeatureStatePtr and ServiceMeshFeatureStatePtrOutput values.
+// You can construct a concrete instance of `ServiceMeshFeatureStatePtrInput` via:
+//
+//          ServiceMeshFeatureStateArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceMeshFeatureStatePtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshFeatureStatePtrOutput() ServiceMeshFeatureStatePtrOutput
+	ToServiceMeshFeatureStatePtrOutputWithContext(context.Context) ServiceMeshFeatureStatePtrOutput
+}
+
+type serviceMeshFeatureStatePtrType ServiceMeshFeatureStateArgs
+
+func ServiceMeshFeatureStatePtr(v *ServiceMeshFeatureStateArgs) ServiceMeshFeatureStatePtrInput {
+	return (*serviceMeshFeatureStatePtrType)(v)
+}
+
+func (*serviceMeshFeatureStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshFeatureState)(nil)).Elem()
+}
+
+func (i *serviceMeshFeatureStatePtrType) ToServiceMeshFeatureStatePtrOutput() ServiceMeshFeatureStatePtrOutput {
+	return i.ToServiceMeshFeatureStatePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshFeatureStatePtrType) ToServiceMeshFeatureStatePtrOutputWithContext(ctx context.Context) ServiceMeshFeatureStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshFeatureStatePtrOutput)
+}
+
+// FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+type ServiceMeshFeatureStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshFeatureStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshFeatureState)(nil)).Elem()
+}
+
+func (o ServiceMeshFeatureStateOutput) ToServiceMeshFeatureStateOutput() ServiceMeshFeatureStateOutput {
+	return o
+}
+
+func (o ServiceMeshFeatureStateOutput) ToServiceMeshFeatureStateOutputWithContext(ctx context.Context) ServiceMeshFeatureStateOutput {
+	return o
+}
+
+func (o ServiceMeshFeatureStateOutput) ToServiceMeshFeatureStatePtrOutput() ServiceMeshFeatureStatePtrOutput {
+	return o.ToServiceMeshFeatureStatePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshFeatureStateOutput) ToServiceMeshFeatureStatePtrOutputWithContext(ctx context.Context) ServiceMeshFeatureStatePtrOutput {
+	return o.ApplyT(func(v ServiceMeshFeatureState) *ServiceMeshFeatureState {
+		return &v
+	}).(ServiceMeshFeatureStatePtrOutput)
+}
+
+// Output only. Results of running Service Mesh analyzers.
+func (o ServiceMeshFeatureStateOutput) AnalysisMessages() ServiceMeshAnalysisMessageArrayOutput {
+	return o.ApplyT(func(v ServiceMeshFeatureState) []ServiceMeshAnalysisMessage { return v.AnalysisMessages }).(ServiceMeshAnalysisMessageArrayOutput)
+}
+
+type ServiceMeshFeatureStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshFeatureStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshFeatureState)(nil)).Elem()
+}
+
+func (o ServiceMeshFeatureStatePtrOutput) ToServiceMeshFeatureStatePtrOutput() ServiceMeshFeatureStatePtrOutput {
+	return o
+}
+
+func (o ServiceMeshFeatureStatePtrOutput) ToServiceMeshFeatureStatePtrOutputWithContext(ctx context.Context) ServiceMeshFeatureStatePtrOutput {
+	return o
+}
+
+func (o ServiceMeshFeatureStatePtrOutput) Elem() ServiceMeshFeatureStateOutput {
+	return o.ApplyT(func(v *ServiceMeshFeatureState) ServiceMeshFeatureState { return *v }).(ServiceMeshFeatureStateOutput)
+}
+
+// Output only. Results of running Service Mesh analyzers.
+func (o ServiceMeshFeatureStatePtrOutput) AnalysisMessages() ServiceMeshAnalysisMessageArrayOutput {
+	return o.ApplyT(func(v *ServiceMeshFeatureState) []ServiceMeshAnalysisMessage {
+		if v == nil {
+			return nil
+		}
+		return v.AnalysisMessages
+	}).(ServiceMeshAnalysisMessageArrayOutput)
+}
+
+// A unique identifier for the type of message. Display_name is intended to be human-readable, code is intended to be machine readable. There should be a one-to-one mapping between display_name and code. (i.e. do not re-use display_names or codes between message types.) See istio.analysis.v1alpha1.AnalysisMessageBase.Type
+type ServiceMeshType struct {
+	// A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
+	Code *string `pulumi:"code"`
+	// A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// ServiceMeshTypeInput is an input type that accepts ServiceMeshTypeArgs and ServiceMeshTypeOutput values.
+// You can construct a concrete instance of `ServiceMeshTypeInput` via:
+//
+//          ServiceMeshTypeArgs{...}
+type ServiceMeshTypeInput interface {
+	pulumi.Input
+
+	ToServiceMeshTypeOutput() ServiceMeshTypeOutput
+	ToServiceMeshTypeOutputWithContext(context.Context) ServiceMeshTypeOutput
+}
+
+// A unique identifier for the type of message. Display_name is intended to be human-readable, code is intended to be machine readable. There should be a one-to-one mapping between display_name and code. (i.e. do not re-use display_names or codes between message types.) See istio.analysis.v1alpha1.AnalysisMessageBase.Type
+type ServiceMeshTypeArgs struct {
+	// A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (ServiceMeshTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshType)(nil)).Elem()
+}
+
+func (i ServiceMeshTypeArgs) ToServiceMeshTypeOutput() ServiceMeshTypeOutput {
+	return i.ToServiceMeshTypeOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshTypeArgs) ToServiceMeshTypeOutputWithContext(ctx context.Context) ServiceMeshTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshTypeOutput)
+}
+
+func (i ServiceMeshTypeArgs) ToServiceMeshTypePtrOutput() ServiceMeshTypePtrOutput {
+	return i.ToServiceMeshTypePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshTypeArgs) ToServiceMeshTypePtrOutputWithContext(ctx context.Context) ServiceMeshTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshTypeOutput).ToServiceMeshTypePtrOutputWithContext(ctx)
+}
+
+// ServiceMeshTypePtrInput is an input type that accepts ServiceMeshTypeArgs, ServiceMeshTypePtr and ServiceMeshTypePtrOutput values.
+// You can construct a concrete instance of `ServiceMeshTypePtrInput` via:
+//
+//          ServiceMeshTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceMeshTypePtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshTypePtrOutput() ServiceMeshTypePtrOutput
+	ToServiceMeshTypePtrOutputWithContext(context.Context) ServiceMeshTypePtrOutput
+}
+
+type serviceMeshTypePtrType ServiceMeshTypeArgs
+
+func ServiceMeshTypePtr(v *ServiceMeshTypeArgs) ServiceMeshTypePtrInput {
+	return (*serviceMeshTypePtrType)(v)
+}
+
+func (*serviceMeshTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshType)(nil)).Elem()
+}
+
+func (i *serviceMeshTypePtrType) ToServiceMeshTypePtrOutput() ServiceMeshTypePtrOutput {
+	return i.ToServiceMeshTypePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshTypePtrType) ToServiceMeshTypePtrOutputWithContext(ctx context.Context) ServiceMeshTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshTypePtrOutput)
+}
+
+// A unique identifier for the type of message. Display_name is intended to be human-readable, code is intended to be machine readable. There should be a one-to-one mapping between display_name and code. (i.e. do not re-use display_names or codes between message types.) See istio.analysis.v1alpha1.AnalysisMessageBase.Type
+type ServiceMeshTypeOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshType)(nil)).Elem()
+}
+
+func (o ServiceMeshTypeOutput) ToServiceMeshTypeOutput() ServiceMeshTypeOutput {
+	return o
+}
+
+func (o ServiceMeshTypeOutput) ToServiceMeshTypeOutputWithContext(ctx context.Context) ServiceMeshTypeOutput {
+	return o
+}
+
+func (o ServiceMeshTypeOutput) ToServiceMeshTypePtrOutput() ServiceMeshTypePtrOutput {
+	return o.ToServiceMeshTypePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshTypeOutput) ToServiceMeshTypePtrOutputWithContext(ctx context.Context) ServiceMeshTypePtrOutput {
+	return o.ApplyT(func(v ServiceMeshType) *ServiceMeshType {
+		return &v
+	}).(ServiceMeshTypePtrOutput)
+}
+
+// A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
+func (o ServiceMeshTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
+func (o ServiceMeshTypeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshType)(nil)).Elem()
+}
+
+func (o ServiceMeshTypePtrOutput) ToServiceMeshTypePtrOutput() ServiceMeshTypePtrOutput {
+	return o
+}
+
+func (o ServiceMeshTypePtrOutput) ToServiceMeshTypePtrOutputWithContext(ctx context.Context) ServiceMeshTypePtrOutput {
+	return o
+}
+
+func (o ServiceMeshTypePtrOutput) Elem() ServiceMeshTypeOutput {
+	return o.ApplyT(func(v *ServiceMeshType) ServiceMeshType { return *v }).(ServiceMeshTypeOutput)
+}
+
+// A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
+func (o ServiceMeshTypePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
+func (o ServiceMeshTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
@@ -735,8 +2201,28 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(CloudAuditLoggingFeatureSpecOutput{})
+	pulumi.RegisterOutputType(CloudAuditLoggingFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(CommonFeatureStateOutput{})
+	pulumi.RegisterOutputType(CommonFeatureStatePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStatePtrOutput{})
+	pulumi.RegisterOutputType(FeatureStateTypeOutput{})
+	pulumi.RegisterOutputType(FeatureStateTypePtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTypeOutput{})
 	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshAnalysisMessageOutput{})
+	pulumi.RegisterOutputType(ServiceMeshAnalysisMessageArrayOutput{})
+	pulumi.RegisterOutputType(ServiceMeshAnalysisMessageBaseOutput{})
+	pulumi.RegisterOutputType(ServiceMeshAnalysisMessageBasePtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshFeatureStateOutput{})
+	pulumi.RegisterOutputType(ServiceMeshFeatureStatePtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshTypeOutput{})
+	pulumi.RegisterOutputType(ServiceMeshTypePtrOutput{})
 }

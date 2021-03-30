@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Memcache.V1.Inputs
 {
 
+    /// <summary>
+    /// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+    /// </summary>
     public sealed class MemcacheParametersArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes and any action needs to be taken to apply parameters on nodes.
+        /// Output only.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

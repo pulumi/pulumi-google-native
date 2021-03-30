@@ -33,7 +33,6 @@ import * as cloudprofiler from "./cloudprofiler";
 import * as cloudresourcemanager from "./cloudresourcemanager";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudsearch from "./cloudsearch";
-import * as cloudshell from "./cloudshell";
 import * as cloudtasks from "./cloudtasks";
 import * as cloudtrace from "./cloudtrace";
 import * as composer from "./composer";
@@ -134,7 +133,6 @@ export {
     cloudresourcemanager,
     cloudscheduler,
     cloudsearch,
-    cloudshell,
     cloudtasks,
     cloudtrace,
     composer,

@@ -51,6 +51,7 @@ export class DomainMapping extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
+            inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -73,6 +74,10 @@ export interface DomainMappingArgs {
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
     readonly apiVersion?: pulumi.Input<string>;
+    /**
+     * DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
+     */
+    readonly dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".
      */

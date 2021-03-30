@@ -23,8 +23,8 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	var resource Build
 	err := ctx.RegisterResource("google-cloud:cloudbuild/v1:Build", name, args, &resource, opts...)
@@ -81,9 +81,9 @@ type buildArgs struct {
 	// Special options for this build.
 	Options *BuildOptions `pulumi:"options"`
 	// The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
-	Parent *string `pulumi:"parent"`
+	Parent string `pulumi:"parent"`
 	// Output only. ID of the project.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Output only. Results of the build.
@@ -139,9 +139,9 @@ type BuildArgs struct {
 	// Special options for this build.
 	Options BuildOptionsPtrInput
 	// The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
-	Parent pulumi.StringPtrInput
+	Parent pulumi.StringInput
 	// Output only. ID of the project.
-	ProjectId pulumi.StringInput
+	ProjectId pulumi.StringPtrInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput
 	// Output only. Results of the build.

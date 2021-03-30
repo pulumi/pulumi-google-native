@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Apigee.V1
 {
     /// <summary>
-    /// Creates an environment in an organization.
+    /// Creates a new canary evaluation for an organization.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:apigee/v1:GoogleLongrunningOperation")]
     public partial class GoogleLongrunningOperation : Pulumi.CustomResource
@@ -60,52 +60,64 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public sealed class GoogleLongrunningOperationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Creation time of this environment as milliseconds since epoch.
+        /// Required. The stable version that is serving requests.
         /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
+        [Input("control")]
+        public Input<string>? Control { get; set; }
 
         /// <summary>
-        /// Optional. Description of the environment.
+        /// Output only. Create time of the canary evaluation.
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Display name for this environment.
+        /// Required. End time for the evaluation's analysis.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("endTime")]
+        public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Output only. Last modification time of this environment as milliseconds since epoch.
+        /// Required. Labels used to filter the metrics used for a canary evaluation.
         /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
+        [Input("metricLabels")]
+        public Input<Inputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>? MetricLabels { get; set; }
 
         /// <summary>
-        /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        /// Output only. Name of the canary evalution.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}`
+        /// Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Key-value pairs that may be used for customizing the environment.
+        /// Required. Start time for the canary evaluation's analysis.
         /// </summary>
-        [Input("properties")]
-        public Input<Inputs.GoogleCloudApigeeV1PropertiesArgs>? Properties { get; set; }
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
+        /// Output only. The current state of the canary evaluation.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Required. The newer version that is serving requests.
+        /// </summary>
+        [Input("treatment")]
+        public Input<string>? Treatment { get; set; }
+
+        /// <summary>
+        /// Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+        /// </summary>
+        [Input("verdict")]
+        public Input<string>? Verdict { get; set; }
 
         public GoogleLongrunningOperationArgs()
         {

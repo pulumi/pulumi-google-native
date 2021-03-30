@@ -60,6 +60,8 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
 	ApiVersion *string `pulumi:"apiVersion"`
+	// DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
+	DryRun *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
 	Kind *string `pulumi:"kind"`
 	// Metadata associated with this BuildTemplate.
@@ -76,6 +78,8 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
 	ApiVersion pulumi.StringPtrInput
+	// DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
+	DryRun pulumi.StringPtrInput
 	// The kind of resource, in this case "DomainMapping".
 	Kind pulumi.StringPtrInput
 	// Metadata associated with this BuildTemplate.

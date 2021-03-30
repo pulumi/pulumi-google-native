@@ -1300,7 +1300,7 @@ class SettingsArgs:
         :param pulumi.Input[str] settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+        :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example *db-custom-1-3840* .
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         if activation_policy is not None:
@@ -1620,7 +1620,7 @@ class SettingsArgs:
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+        The tier (or machine type) for this instance, for example *db-custom-1-3840* .
         """
         return pulumi.get(self, "tier")
 

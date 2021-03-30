@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2.Inputs
         private InputMap<string>? _clusterStates;
 
         /// <summary>
-        /// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `FULL`
+        /// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
         /// </summary>
         public InputMap<string> ClusterStates
         {

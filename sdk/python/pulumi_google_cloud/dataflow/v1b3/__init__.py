@@ -4,7 +4,6 @@
 
 # Export this package's modules as members:
 from .job import *
-from .template_version import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +20,6 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:dataflow/v1b3:Job":
                 return Job(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dataflow/v1b3:TemplateVersion":
-                return TemplateVersion(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

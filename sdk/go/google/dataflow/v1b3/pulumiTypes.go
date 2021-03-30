@@ -10,178 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Job information for templates.
-type Artifact struct {
-	// Container image path set for flex Template.
-	ContainerSpec *ContainerSpec `pulumi:"containerSpec"`
-	// job_graph_gcs_path set for legacy Template.
-	JobGraphGcsPath *string `pulumi:"jobGraphGcsPath"`
-	// Metadata set for legacy Template.
-	Metadata *TemplateMetadata `pulumi:"metadata"`
-}
-
-// ArtifactInput is an input type that accepts ArtifactArgs and ArtifactOutput values.
-// You can construct a concrete instance of `ArtifactInput` via:
-//
-//          ArtifactArgs{...}
-type ArtifactInput interface {
-	pulumi.Input
-
-	ToArtifactOutput() ArtifactOutput
-	ToArtifactOutputWithContext(context.Context) ArtifactOutput
-}
-
-// Job information for templates.
-type ArtifactArgs struct {
-	// Container image path set for flex Template.
-	ContainerSpec ContainerSpecPtrInput `pulumi:"containerSpec"`
-	// job_graph_gcs_path set for legacy Template.
-	JobGraphGcsPath pulumi.StringPtrInput `pulumi:"jobGraphGcsPath"`
-	// Metadata set for legacy Template.
-	Metadata TemplateMetadataPtrInput `pulumi:"metadata"`
-}
-
-func (ArtifactArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Artifact)(nil)).Elem()
-}
-
-func (i ArtifactArgs) ToArtifactOutput() ArtifactOutput {
-	return i.ToArtifactOutputWithContext(context.Background())
-}
-
-func (i ArtifactArgs) ToArtifactOutputWithContext(ctx context.Context) ArtifactOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactOutput)
-}
-
-func (i ArtifactArgs) ToArtifactPtrOutput() ArtifactPtrOutput {
-	return i.ToArtifactPtrOutputWithContext(context.Background())
-}
-
-func (i ArtifactArgs) ToArtifactPtrOutputWithContext(ctx context.Context) ArtifactPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactOutput).ToArtifactPtrOutputWithContext(ctx)
-}
-
-// ArtifactPtrInput is an input type that accepts ArtifactArgs, ArtifactPtr and ArtifactPtrOutput values.
-// You can construct a concrete instance of `ArtifactPtrInput` via:
-//
-//          ArtifactArgs{...}
-//
-//  or:
-//
-//          nil
-type ArtifactPtrInput interface {
-	pulumi.Input
-
-	ToArtifactPtrOutput() ArtifactPtrOutput
-	ToArtifactPtrOutputWithContext(context.Context) ArtifactPtrOutput
-}
-
-type artifactPtrType ArtifactArgs
-
-func ArtifactPtr(v *ArtifactArgs) ArtifactPtrInput {
-	return (*artifactPtrType)(v)
-}
-
-func (*artifactPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Artifact)(nil)).Elem()
-}
-
-func (i *artifactPtrType) ToArtifactPtrOutput() ArtifactPtrOutput {
-	return i.ToArtifactPtrOutputWithContext(context.Background())
-}
-
-func (i *artifactPtrType) ToArtifactPtrOutputWithContext(ctx context.Context) ArtifactPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactPtrOutput)
-}
-
-// Job information for templates.
-type ArtifactOutput struct{ *pulumi.OutputState }
-
-func (ArtifactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Artifact)(nil)).Elem()
-}
-
-func (o ArtifactOutput) ToArtifactOutput() ArtifactOutput {
-	return o
-}
-
-func (o ArtifactOutput) ToArtifactOutputWithContext(ctx context.Context) ArtifactOutput {
-	return o
-}
-
-func (o ArtifactOutput) ToArtifactPtrOutput() ArtifactPtrOutput {
-	return o.ToArtifactPtrOutputWithContext(context.Background())
-}
-
-func (o ArtifactOutput) ToArtifactPtrOutputWithContext(ctx context.Context) ArtifactPtrOutput {
-	return o.ApplyT(func(v Artifact) *Artifact {
-		return &v
-	}).(ArtifactPtrOutput)
-}
-
-// Container image path set for flex Template.
-func (o ArtifactOutput) ContainerSpec() ContainerSpecPtrOutput {
-	return o.ApplyT(func(v Artifact) *ContainerSpec { return v.ContainerSpec }).(ContainerSpecPtrOutput)
-}
-
-// job_graph_gcs_path set for legacy Template.
-func (o ArtifactOutput) JobGraphGcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Artifact) *string { return v.JobGraphGcsPath }).(pulumi.StringPtrOutput)
-}
-
-// Metadata set for legacy Template.
-func (o ArtifactOutput) Metadata() TemplateMetadataPtrOutput {
-	return o.ApplyT(func(v Artifact) *TemplateMetadata { return v.Metadata }).(TemplateMetadataPtrOutput)
-}
-
-type ArtifactPtrOutput struct{ *pulumi.OutputState }
-
-func (ArtifactPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Artifact)(nil)).Elem()
-}
-
-func (o ArtifactPtrOutput) ToArtifactPtrOutput() ArtifactPtrOutput {
-	return o
-}
-
-func (o ArtifactPtrOutput) ToArtifactPtrOutputWithContext(ctx context.Context) ArtifactPtrOutput {
-	return o
-}
-
-func (o ArtifactPtrOutput) Elem() ArtifactOutput {
-	return o.ApplyT(func(v *Artifact) Artifact { return *v }).(ArtifactOutput)
-}
-
-// Container image path set for flex Template.
-func (o ArtifactPtrOutput) ContainerSpec() ContainerSpecPtrOutput {
-	return o.ApplyT(func(v *Artifact) *ContainerSpec {
-		if v == nil {
-			return nil
-		}
-		return v.ContainerSpec
-	}).(ContainerSpecPtrOutput)
-}
-
-// job_graph_gcs_path set for legacy Template.
-func (o ArtifactPtrOutput) JobGraphGcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Artifact) *string {
-		if v == nil {
-			return nil
-		}
-		return v.JobGraphGcsPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata set for legacy Template.
-func (o ArtifactPtrOutput) Metadata() TemplateMetadataPtrOutput {
-	return o.ApplyT(func(v *Artifact) *TemplateMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(TemplateMetadataPtrOutput)
-}
-
 // Settings for WorkerPool autoscaling.
 type AutoscalingSettings struct {
 	// The algorithm to use for autoscaling.
@@ -814,197 +642,6 @@ func (o ComponentTransformArrayOutput) Index(i pulumi.IntInput) ComponentTransfo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComponentTransform {
 		return vs[0].([]ComponentTransform)[vs[1].(int)]
 	}).(ComponentTransformOutput)
-}
-
-// Container Spec.
-type ContainerSpec struct {
-	// Default runtime environment for the job.
-	DefaultEnvironment *FlexTemplateRuntimeEnvironment `pulumi:"defaultEnvironment"`
-	// Name of the docker container image. E.g., gcr.io/project/some-image
-	Image *string `pulumi:"image"`
-	// Metadata describing a template including description and validation rules.
-	Metadata *TemplateMetadata `pulumi:"metadata"`
-	// Required. SDK info of the Flex Template.
-	SdkInfo *SDKInfo `pulumi:"sdkInfo"`
-}
-
-// ContainerSpecInput is an input type that accepts ContainerSpecArgs and ContainerSpecOutput values.
-// You can construct a concrete instance of `ContainerSpecInput` via:
-//
-//          ContainerSpecArgs{...}
-type ContainerSpecInput interface {
-	pulumi.Input
-
-	ToContainerSpecOutput() ContainerSpecOutput
-	ToContainerSpecOutputWithContext(context.Context) ContainerSpecOutput
-}
-
-// Container Spec.
-type ContainerSpecArgs struct {
-	// Default runtime environment for the job.
-	DefaultEnvironment FlexTemplateRuntimeEnvironmentPtrInput `pulumi:"defaultEnvironment"`
-	// Name of the docker container image. E.g., gcr.io/project/some-image
-	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Metadata describing a template including description and validation rules.
-	Metadata TemplateMetadataPtrInput `pulumi:"metadata"`
-	// Required. SDK info of the Flex Template.
-	SdkInfo SDKInfoPtrInput `pulumi:"sdkInfo"`
-}
-
-func (ContainerSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerSpec)(nil)).Elem()
-}
-
-func (i ContainerSpecArgs) ToContainerSpecOutput() ContainerSpecOutput {
-	return i.ToContainerSpecOutputWithContext(context.Background())
-}
-
-func (i ContainerSpecArgs) ToContainerSpecOutputWithContext(ctx context.Context) ContainerSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerSpecOutput)
-}
-
-func (i ContainerSpecArgs) ToContainerSpecPtrOutput() ContainerSpecPtrOutput {
-	return i.ToContainerSpecPtrOutputWithContext(context.Background())
-}
-
-func (i ContainerSpecArgs) ToContainerSpecPtrOutputWithContext(ctx context.Context) ContainerSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerSpecOutput).ToContainerSpecPtrOutputWithContext(ctx)
-}
-
-// ContainerSpecPtrInput is an input type that accepts ContainerSpecArgs, ContainerSpecPtr and ContainerSpecPtrOutput values.
-// You can construct a concrete instance of `ContainerSpecPtrInput` via:
-//
-//          ContainerSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type ContainerSpecPtrInput interface {
-	pulumi.Input
-
-	ToContainerSpecPtrOutput() ContainerSpecPtrOutput
-	ToContainerSpecPtrOutputWithContext(context.Context) ContainerSpecPtrOutput
-}
-
-type containerSpecPtrType ContainerSpecArgs
-
-func ContainerSpecPtr(v *ContainerSpecArgs) ContainerSpecPtrInput {
-	return (*containerSpecPtrType)(v)
-}
-
-func (*containerSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerSpec)(nil)).Elem()
-}
-
-func (i *containerSpecPtrType) ToContainerSpecPtrOutput() ContainerSpecPtrOutput {
-	return i.ToContainerSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *containerSpecPtrType) ToContainerSpecPtrOutputWithContext(ctx context.Context) ContainerSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerSpecPtrOutput)
-}
-
-// Container Spec.
-type ContainerSpecOutput struct{ *pulumi.OutputState }
-
-func (ContainerSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerSpec)(nil)).Elem()
-}
-
-func (o ContainerSpecOutput) ToContainerSpecOutput() ContainerSpecOutput {
-	return o
-}
-
-func (o ContainerSpecOutput) ToContainerSpecOutputWithContext(ctx context.Context) ContainerSpecOutput {
-	return o
-}
-
-func (o ContainerSpecOutput) ToContainerSpecPtrOutput() ContainerSpecPtrOutput {
-	return o.ToContainerSpecPtrOutputWithContext(context.Background())
-}
-
-func (o ContainerSpecOutput) ToContainerSpecPtrOutputWithContext(ctx context.Context) ContainerSpecPtrOutput {
-	return o.ApplyT(func(v ContainerSpec) *ContainerSpec {
-		return &v
-	}).(ContainerSpecPtrOutput)
-}
-
-// Default runtime environment for the job.
-func (o ContainerSpecOutput) DefaultEnvironment() FlexTemplateRuntimeEnvironmentPtrOutput {
-	return o.ApplyT(func(v ContainerSpec) *FlexTemplateRuntimeEnvironment { return v.DefaultEnvironment }).(FlexTemplateRuntimeEnvironmentPtrOutput)
-}
-
-// Name of the docker container image. E.g., gcr.io/project/some-image
-func (o ContainerSpecOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerSpec) *string { return v.Image }).(pulumi.StringPtrOutput)
-}
-
-// Metadata describing a template including description and validation rules.
-func (o ContainerSpecOutput) Metadata() TemplateMetadataPtrOutput {
-	return o.ApplyT(func(v ContainerSpec) *TemplateMetadata { return v.Metadata }).(TemplateMetadataPtrOutput)
-}
-
-// Required. SDK info of the Flex Template.
-func (o ContainerSpecOutput) SdkInfo() SDKInfoPtrOutput {
-	return o.ApplyT(func(v ContainerSpec) *SDKInfo { return v.SdkInfo }).(SDKInfoPtrOutput)
-}
-
-type ContainerSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (ContainerSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerSpec)(nil)).Elem()
-}
-
-func (o ContainerSpecPtrOutput) ToContainerSpecPtrOutput() ContainerSpecPtrOutput {
-	return o
-}
-
-func (o ContainerSpecPtrOutput) ToContainerSpecPtrOutputWithContext(ctx context.Context) ContainerSpecPtrOutput {
-	return o
-}
-
-func (o ContainerSpecPtrOutput) Elem() ContainerSpecOutput {
-	return o.ApplyT(func(v *ContainerSpec) ContainerSpec { return *v }).(ContainerSpecOutput)
-}
-
-// Default runtime environment for the job.
-func (o ContainerSpecPtrOutput) DefaultEnvironment() FlexTemplateRuntimeEnvironmentPtrOutput {
-	return o.ApplyT(func(v *ContainerSpec) *FlexTemplateRuntimeEnvironment {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultEnvironment
-	}).(FlexTemplateRuntimeEnvironmentPtrOutput)
-}
-
-// Name of the docker container image. E.g., gcr.io/project/some-image
-func (o ContainerSpecPtrOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContainerSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Image
-	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata describing a template including description and validation rules.
-func (o ContainerSpecPtrOutput) Metadata() TemplateMetadataPtrOutput {
-	return o.ApplyT(func(v *ContainerSpec) *TemplateMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(TemplateMetadataPtrOutput)
-}
-
-// Required. SDK info of the Flex Template.
-func (o ContainerSpecPtrOutput) SdkInfo() SDKInfoPtrOutput {
-	return o.ApplyT(func(v *ContainerSpec) *SDKInfo {
-		if v == nil {
-			return nil
-		}
-		return v.SdkInfo
-	}).(SDKInfoPtrOutput)
 }
 
 // Metadata for a Datastore connector used by the job.
@@ -1666,47 +1303,6 @@ func (i EnvironmentArgs) ToEnvironmentOutputWithContext(ctx context.Context) Env
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput)
 }
 
-func (i EnvironmentArgs) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
-	return i.ToEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i EnvironmentArgs) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput).ToEnvironmentPtrOutputWithContext(ctx)
-}
-
-// EnvironmentPtrInput is an input type that accepts EnvironmentArgs, EnvironmentPtr and EnvironmentPtrOutput values.
-// You can construct a concrete instance of `EnvironmentPtrInput` via:
-//
-//          EnvironmentArgs{...}
-//
-//  or:
-//
-//          nil
-type EnvironmentPtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentPtrOutput() EnvironmentPtrOutput
-	ToEnvironmentPtrOutputWithContext(context.Context) EnvironmentPtrOutput
-}
-
-type environmentPtrType EnvironmentArgs
-
-func EnvironmentPtr(v *EnvironmentArgs) EnvironmentPtrInput {
-	return (*environmentPtrType)(v)
-}
-
-func (*environmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Environment)(nil)).Elem()
-}
-
-func (i *environmentPtrType) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
-	return i.ToEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i *environmentPtrType) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPtrOutput)
-}
-
 // Describes the environment in which a Dataflow Job runs.
 type EnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -1720,16 +1316,6 @@ func (o EnvironmentOutput) ToEnvironmentOutput() EnvironmentOutput {
 
 func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
 	return o
-}
-
-func (o EnvironmentOutput) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
-	return o.ToEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
-	return o.ApplyT(func(v Environment) *Environment {
-		return &v
-	}).(EnvironmentPtrOutput)
 }
 
 // The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
@@ -1817,194 +1403,6 @@ func (o EnvironmentOutput) WorkerZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Environment) *string { return v.WorkerZone }).(pulumi.StringPtrOutput)
 }
 
-type EnvironmentPtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Environment)(nil)).Elem()
-}
-
-func (o EnvironmentPtrOutput) ToEnvironmentPtrOutput() EnvironmentPtrOutput {
-	return o
-}
-
-func (o EnvironmentPtrOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentPtrOutput {
-	return o
-}
-
-func (o EnvironmentPtrOutput) Elem() EnvironmentOutput {
-	return o.ApplyT(func(v *Environment) Environment { return *v }).(EnvironmentOutput)
-}
-
-// The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
-func (o EnvironmentPtrOutput) ClusterManagerApiService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterManagerApiService
-	}).(pulumi.StringPtrOutput)
-}
-
-// The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
-func (o EnvironmentPtrOutput) Dataset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Dataset
-	}).(pulumi.StringPtrOutput)
-}
-
-// Any debugging options to be supplied to the job.
-func (o EnvironmentPtrOutput) DebugOptions() DebugOptionsPtrOutput {
-	return o.ApplyT(func(v *Environment) *DebugOptions {
-		if v == nil {
-			return nil
-		}
-		return v.DebugOptions
-	}).(DebugOptionsPtrOutput)
-}
-
-// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
-func (o EnvironmentPtrOutput) Experiments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Environment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Experiments
-	}).(pulumi.StringArrayOutput)
-}
-
-// Which Flexible Resource Scheduling mode to run in.
-func (o EnvironmentPtrOutput) FlexResourceSchedulingGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FlexResourceSchedulingGoal
-	}).(pulumi.StringPtrOutput)
-}
-
-// Experimental settings.
-func (o EnvironmentPtrOutput) InternalExperiments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.InternalExperiments
-	}).(pulumi.StringMapOutput)
-}
-
-// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-func (o EnvironmentPtrOutput) SdkPipelineOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.SdkPipelineOptions
-	}).(pulumi.StringMapOutput)
-}
-
-// Identity to run virtual machines as. Defaults to the default account.
-func (o EnvironmentPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
-func (o EnvironmentPtrOutput) ServiceKmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceKmsKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
-func (o EnvironmentPtrOutput) ServiceOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Environment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-// Output only. The shuffle mode used for the job.
-func (o EnvironmentPtrOutput) ShuffleMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ShuffleMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-func (o EnvironmentPtrOutput) TempStoragePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TempStoragePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// A description of the process that generated the request.
-func (o EnvironmentPtrOutput) UserAgent() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAgent
-	}).(pulumi.StringMapOutput)
-}
-
-// A structure describing which components and their versions of the service are required in order to run the job.
-func (o EnvironmentPtrOutput) Version() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringMapOutput)
-}
-
-// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
-func (o EnvironmentPtrOutput) WorkerPools() WorkerPoolArrayOutput {
-	return o.ApplyT(func(v *Environment) []WorkerPool {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerPools
-	}).(WorkerPoolArrayOutput)
-}
-
-// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-func (o EnvironmentPtrOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
-func (o EnvironmentPtrOutput) WorkerZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerZone
-	}).(pulumi.StringPtrOutput)
-}
-
 // A message describing the state of a particular execution stage.
 type ExecutionStageState struct {
 	// The time at which the stage transitioned to this state.
@@ -2048,31 +1446,6 @@ func (i ExecutionStageStateArgs) ToExecutionStageStateOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageStateOutput)
 }
 
-// ExecutionStageStateArrayInput is an input type that accepts ExecutionStageStateArray and ExecutionStageStateArrayOutput values.
-// You can construct a concrete instance of `ExecutionStageStateArrayInput` via:
-//
-//          ExecutionStageStateArray{ ExecutionStageStateArgs{...} }
-type ExecutionStageStateArrayInput interface {
-	pulumi.Input
-
-	ToExecutionStageStateArrayOutput() ExecutionStageStateArrayOutput
-	ToExecutionStageStateArrayOutputWithContext(context.Context) ExecutionStageStateArrayOutput
-}
-
-type ExecutionStageStateArray []ExecutionStageStateInput
-
-func (ExecutionStageStateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionStageState)(nil)).Elem()
-}
-
-func (i ExecutionStageStateArray) ToExecutionStageStateArrayOutput() ExecutionStageStateArrayOutput {
-	return i.ToExecutionStageStateArrayOutputWithContext(context.Background())
-}
-
-func (i ExecutionStageStateArray) ToExecutionStageStateArrayOutputWithContext(ctx context.Context) ExecutionStageStateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageStateArrayOutput)
-}
-
 // A message describing the state of a particular execution stage.
 type ExecutionStageStateOutput struct{ *pulumi.OutputState }
 
@@ -2101,26 +1474,6 @@ func (o ExecutionStageStateOutput) ExecutionStageName() pulumi.StringPtrOutput {
 // Executions stage states allow the same set of values as JobState.
 func (o ExecutionStageStateOutput) ExecutionStageState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionStageState) *string { return v.ExecutionStageState }).(pulumi.StringPtrOutput)
-}
-
-type ExecutionStageStateArrayOutput struct{ *pulumi.OutputState }
-
-func (ExecutionStageStateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionStageState)(nil)).Elem()
-}
-
-func (o ExecutionStageStateArrayOutput) ToExecutionStageStateArrayOutput() ExecutionStageStateArrayOutput {
-	return o
-}
-
-func (o ExecutionStageStateArrayOutput) ToExecutionStageStateArrayOutputWithContext(ctx context.Context) ExecutionStageStateArrayOutput {
-	return o
-}
-
-func (o ExecutionStageStateArrayOutput) Index(i pulumi.IntInput) ExecutionStageStateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExecutionStageState {
-		return vs[0].([]ExecutionStageState)[vs[1].(int)]
-	}).(ExecutionStageStateOutput)
 }
 
 // Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing transforms and sources may have been generated by the Dataflow service during execution planning.
@@ -2386,425 +1739,6 @@ func (o FileIODetailsArrayOutput) Index(i pulumi.IntInput) FileIODetailsOutput {
 	}).(FileIODetailsOutput)
 }
 
-// The environment values to be set at runtime for flex template.
-type FlexTemplateRuntimeEnvironment struct {
-	// Additional experiment flags for the job.
-	AdditionalExperiments []string `pulumi:"additionalExperiments"`
-	// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-	AdditionalUserLabels map[string]string `pulumi:"additionalUserLabels"`
-	// Whether to enable Streaming Engine for the job.
-	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
-	// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-	FlexrsGoal *string `pulumi:"flexrsGoal"`
-	// Configuration for VM IPs.
-	IpConfiguration *string `pulumi:"ipConfiguration"`
-	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// The machine type to use for the job. Defaults to the value from the template if not specified.
-	MachineType *string `pulumi:"machineType"`
-	// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-	MaxWorkers *int `pulumi:"maxWorkers"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-	Network *string `pulumi:"network"`
-	// The initial number of Google Compute Engine instances for the job.
-	NumWorkers *int `pulumi:"numWorkers"`
-	// The email address of the service account to run the job as.
-	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-	Subnetwork *string `pulumi:"subnetwork"`
-	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	TempLocation *string `pulumi:"tempLocation"`
-	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-	WorkerRegion *string `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-	WorkerZone *string `pulumi:"workerZone"`
-	// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-	Zone *string `pulumi:"zone"`
-}
-
-// FlexTemplateRuntimeEnvironmentInput is an input type that accepts FlexTemplateRuntimeEnvironmentArgs and FlexTemplateRuntimeEnvironmentOutput values.
-// You can construct a concrete instance of `FlexTemplateRuntimeEnvironmentInput` via:
-//
-//          FlexTemplateRuntimeEnvironmentArgs{...}
-type FlexTemplateRuntimeEnvironmentInput interface {
-	pulumi.Input
-
-	ToFlexTemplateRuntimeEnvironmentOutput() FlexTemplateRuntimeEnvironmentOutput
-	ToFlexTemplateRuntimeEnvironmentOutputWithContext(context.Context) FlexTemplateRuntimeEnvironmentOutput
-}
-
-// The environment values to be set at runtime for flex template.
-type FlexTemplateRuntimeEnvironmentArgs struct {
-	// Additional experiment flags for the job.
-	AdditionalExperiments pulumi.StringArrayInput `pulumi:"additionalExperiments"`
-	// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-	AdditionalUserLabels pulumi.StringMapInput `pulumi:"additionalUserLabels"`
-	// Whether to enable Streaming Engine for the job.
-	EnableStreamingEngine pulumi.BoolPtrInput `pulumi:"enableStreamingEngine"`
-	// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-	FlexrsGoal pulumi.StringPtrInput `pulumi:"flexrsGoal"`
-	// Configuration for VM IPs.
-	IpConfiguration pulumi.StringPtrInput `pulumi:"ipConfiguration"`
-	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
-	// The machine type to use for the job. Defaults to the value from the template if not specified.
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The initial number of Google Compute Engine instances for the job.
-	NumWorkers pulumi.IntPtrInput `pulumi:"numWorkers"`
-	// The email address of the service account to run the job as.
-	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	TempLocation pulumi.StringPtrInput `pulumi:"tempLocation"`
-	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-	WorkerRegion pulumi.StringPtrInput `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-	WorkerZone pulumi.StringPtrInput `pulumi:"workerZone"`
-	// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-	Zone pulumi.StringPtrInput `pulumi:"zone"`
-}
-
-func (FlexTemplateRuntimeEnvironmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexTemplateRuntimeEnvironment)(nil)).Elem()
-}
-
-func (i FlexTemplateRuntimeEnvironmentArgs) ToFlexTemplateRuntimeEnvironmentOutput() FlexTemplateRuntimeEnvironmentOutput {
-	return i.ToFlexTemplateRuntimeEnvironmentOutputWithContext(context.Background())
-}
-
-func (i FlexTemplateRuntimeEnvironmentArgs) ToFlexTemplateRuntimeEnvironmentOutputWithContext(ctx context.Context) FlexTemplateRuntimeEnvironmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateRuntimeEnvironmentOutput)
-}
-
-func (i FlexTemplateRuntimeEnvironmentArgs) ToFlexTemplateRuntimeEnvironmentPtrOutput() FlexTemplateRuntimeEnvironmentPtrOutput {
-	return i.ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i FlexTemplateRuntimeEnvironmentArgs) ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) FlexTemplateRuntimeEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateRuntimeEnvironmentOutput).ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx)
-}
-
-// FlexTemplateRuntimeEnvironmentPtrInput is an input type that accepts FlexTemplateRuntimeEnvironmentArgs, FlexTemplateRuntimeEnvironmentPtr and FlexTemplateRuntimeEnvironmentPtrOutput values.
-// You can construct a concrete instance of `FlexTemplateRuntimeEnvironmentPtrInput` via:
-//
-//          FlexTemplateRuntimeEnvironmentArgs{...}
-//
-//  or:
-//
-//          nil
-type FlexTemplateRuntimeEnvironmentPtrInput interface {
-	pulumi.Input
-
-	ToFlexTemplateRuntimeEnvironmentPtrOutput() FlexTemplateRuntimeEnvironmentPtrOutput
-	ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(context.Context) FlexTemplateRuntimeEnvironmentPtrOutput
-}
-
-type flexTemplateRuntimeEnvironmentPtrType FlexTemplateRuntimeEnvironmentArgs
-
-func FlexTemplateRuntimeEnvironmentPtr(v *FlexTemplateRuntimeEnvironmentArgs) FlexTemplateRuntimeEnvironmentPtrInput {
-	return (*flexTemplateRuntimeEnvironmentPtrType)(v)
-}
-
-func (*flexTemplateRuntimeEnvironmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexTemplateRuntimeEnvironment)(nil)).Elem()
-}
-
-func (i *flexTemplateRuntimeEnvironmentPtrType) ToFlexTemplateRuntimeEnvironmentPtrOutput() FlexTemplateRuntimeEnvironmentPtrOutput {
-	return i.ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i *flexTemplateRuntimeEnvironmentPtrType) ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) FlexTemplateRuntimeEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateRuntimeEnvironmentPtrOutput)
-}
-
-// The environment values to be set at runtime for flex template.
-type FlexTemplateRuntimeEnvironmentOutput struct{ *pulumi.OutputState }
-
-func (FlexTemplateRuntimeEnvironmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexTemplateRuntimeEnvironment)(nil)).Elem()
-}
-
-func (o FlexTemplateRuntimeEnvironmentOutput) ToFlexTemplateRuntimeEnvironmentOutput() FlexTemplateRuntimeEnvironmentOutput {
-	return o
-}
-
-func (o FlexTemplateRuntimeEnvironmentOutput) ToFlexTemplateRuntimeEnvironmentOutputWithContext(ctx context.Context) FlexTemplateRuntimeEnvironmentOutput {
-	return o
-}
-
-func (o FlexTemplateRuntimeEnvironmentOutput) ToFlexTemplateRuntimeEnvironmentPtrOutput() FlexTemplateRuntimeEnvironmentPtrOutput {
-	return o.ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (o FlexTemplateRuntimeEnvironmentOutput) ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) FlexTemplateRuntimeEnvironmentPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *FlexTemplateRuntimeEnvironment {
-		return &v
-	}).(FlexTemplateRuntimeEnvironmentPtrOutput)
-}
-
-// Additional experiment flags for the job.
-func (o FlexTemplateRuntimeEnvironmentOutput) AdditionalExperiments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) []string { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
-}
-
-// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-func (o FlexTemplateRuntimeEnvironmentOutput) AdditionalUserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) map[string]string { return v.AdditionalUserLabels }).(pulumi.StringMapOutput)
-}
-
-// Whether to enable Streaming Engine for the job.
-func (o FlexTemplateRuntimeEnvironmentOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *bool { return v.EnableStreamingEngine }).(pulumi.BoolPtrOutput)
-}
-
-// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-func (o FlexTemplateRuntimeEnvironmentOutput) FlexrsGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.FlexrsGoal }).(pulumi.StringPtrOutput)
-}
-
-// Configuration for VM IPs.
-func (o FlexTemplateRuntimeEnvironmentOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.IpConfiguration }).(pulumi.StringPtrOutput)
-}
-
-// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-func (o FlexTemplateRuntimeEnvironmentOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
-}
-
-// The machine type to use for the job. Defaults to the value from the template if not specified.
-func (o FlexTemplateRuntimeEnvironmentOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.MachineType }).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-func (o FlexTemplateRuntimeEnvironmentOutput) MaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
-}
-
-// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-func (o FlexTemplateRuntimeEnvironmentOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.Network }).(pulumi.StringPtrOutput)
-}
-
-// The initial number of Google Compute Engine instances for the job.
-func (o FlexTemplateRuntimeEnvironmentOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
-}
-
-// The email address of the service account to run the job as.
-func (o FlexTemplateRuntimeEnvironmentOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
-}
-
-// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-func (o FlexTemplateRuntimeEnvironmentOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-func (o FlexTemplateRuntimeEnvironmentOutput) TempLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.TempLocation }).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-func (o FlexTemplateRuntimeEnvironmentOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.WorkerRegion }).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-func (o FlexTemplateRuntimeEnvironmentOutput) WorkerZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.WorkerZone }).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-func (o FlexTemplateRuntimeEnvironmentOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexTemplateRuntimeEnvironment) *string { return v.Zone }).(pulumi.StringPtrOutput)
-}
-
-type FlexTemplateRuntimeEnvironmentPtrOutput struct{ *pulumi.OutputState }
-
-func (FlexTemplateRuntimeEnvironmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FlexTemplateRuntimeEnvironment)(nil)).Elem()
-}
-
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) ToFlexTemplateRuntimeEnvironmentPtrOutput() FlexTemplateRuntimeEnvironmentPtrOutput {
-	return o
-}
-
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) ToFlexTemplateRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) FlexTemplateRuntimeEnvironmentPtrOutput {
-	return o
-}
-
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) Elem() FlexTemplateRuntimeEnvironmentOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) FlexTemplateRuntimeEnvironment { return *v }).(FlexTemplateRuntimeEnvironmentOutput)
-}
-
-// Additional experiment flags for the job.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) AdditionalExperiments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalExperiments
-	}).(pulumi.StringArrayOutput)
-}
-
-// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) AdditionalUserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalUserLabels
-	}).(pulumi.StringMapOutput)
-}
-
-// Whether to enable Streaming Engine for the job.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableStreamingEngine
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) FlexrsGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FlexrsGoal
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration for VM IPs.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpConfiguration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KmsKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The machine type to use for the job. Defaults to the value from the template if not specified.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) MaxWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// The initial number of Google Compute Engine instances for the job.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) NumWorkers() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NumWorkers
-	}).(pulumi.IntPtrOutput)
-}
-
-// The email address of the service account to run the job as.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Subnetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) TempLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TempLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) WorkerZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
-func (o FlexTemplateRuntimeEnvironmentPtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexTemplateRuntimeEnvironment) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Zone
-	}).(pulumi.StringPtrOutput)
-}
-
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfo struct {
 	// A mapping from each stage to the information about that stage.
@@ -2840,47 +1774,6 @@ func (i JobExecutionInfoArgs) ToJobExecutionInfoOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoOutput)
 }
 
-func (i JobExecutionInfoArgs) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
-	return i.ToJobExecutionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i JobExecutionInfoArgs) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoOutput).ToJobExecutionInfoPtrOutputWithContext(ctx)
-}
-
-// JobExecutionInfoPtrInput is an input type that accepts JobExecutionInfoArgs, JobExecutionInfoPtr and JobExecutionInfoPtrOutput values.
-// You can construct a concrete instance of `JobExecutionInfoPtrInput` via:
-//
-//          JobExecutionInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type JobExecutionInfoPtrInput interface {
-	pulumi.Input
-
-	ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput
-	ToJobExecutionInfoPtrOutputWithContext(context.Context) JobExecutionInfoPtrOutput
-}
-
-type jobExecutionInfoPtrType JobExecutionInfoArgs
-
-func JobExecutionInfoPtr(v *JobExecutionInfoArgs) JobExecutionInfoPtrInput {
-	return (*jobExecutionInfoPtrType)(v)
-}
-
-func (*jobExecutionInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobExecutionInfo)(nil)).Elem()
-}
-
-func (i *jobExecutionInfoPtrType) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
-	return i.ToJobExecutionInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *jobExecutionInfoPtrType) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoPtrOutput)
-}
-
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfoOutput struct{ *pulumi.OutputState }
 
@@ -2896,47 +1789,9 @@ func (o JobExecutionInfoOutput) ToJobExecutionInfoOutputWithContext(ctx context.
 	return o
 }
 
-func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
-	return o.ToJobExecutionInfoPtrOutputWithContext(context.Background())
-}
-
-func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
-	return o.ApplyT(func(v JobExecutionInfo) *JobExecutionInfo {
-		return &v
-	}).(JobExecutionInfoPtrOutput)
-}
-
 // A mapping from each stage to the information about that stage.
 func (o JobExecutionInfoOutput) Stages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobExecutionInfo) map[string]string { return v.Stages }).(pulumi.StringMapOutput)
-}
-
-type JobExecutionInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (JobExecutionInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobExecutionInfo)(nil)).Elem()
-}
-
-func (o JobExecutionInfoPtrOutput) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
-	return o
-}
-
-func (o JobExecutionInfoPtrOutput) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
-	return o
-}
-
-func (o JobExecutionInfoPtrOutput) Elem() JobExecutionInfoOutput {
-	return o.ApplyT(func(v *JobExecutionInfo) JobExecutionInfo { return *v }).(JobExecutionInfoOutput)
-}
-
-// A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoPtrOutput) Stages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *JobExecutionInfo) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Stages
-	}).(pulumi.StringMapOutput)
 }
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
@@ -2998,47 +1853,6 @@ func (i JobMetadataArgs) ToJobMetadataOutputWithContext(ctx context.Context) Job
 	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataOutput)
 }
 
-func (i JobMetadataArgs) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
-	return i.ToJobMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i JobMetadataArgs) ToJobMetadataPtrOutputWithContext(ctx context.Context) JobMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataOutput).ToJobMetadataPtrOutputWithContext(ctx)
-}
-
-// JobMetadataPtrInput is an input type that accepts JobMetadataArgs, JobMetadataPtr and JobMetadataPtrOutput values.
-// You can construct a concrete instance of `JobMetadataPtrInput` via:
-//
-//          JobMetadataArgs{...}
-//
-//  or:
-//
-//          nil
-type JobMetadataPtrInput interface {
-	pulumi.Input
-
-	ToJobMetadataPtrOutput() JobMetadataPtrOutput
-	ToJobMetadataPtrOutputWithContext(context.Context) JobMetadataPtrOutput
-}
-
-type jobMetadataPtrType JobMetadataArgs
-
-func JobMetadataPtr(v *JobMetadataArgs) JobMetadataPtrInput {
-	return (*jobMetadataPtrType)(v)
-}
-
-func (*jobMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobMetadata)(nil)).Elem()
-}
-
-func (i *jobMetadataPtrType) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
-	return i.ToJobMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *jobMetadataPtrType) ToJobMetadataPtrOutputWithContext(ctx context.Context) JobMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataPtrOutput)
-}
-
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataOutput struct{ *pulumi.OutputState }
 
@@ -3052,16 +1866,6 @@ func (o JobMetadataOutput) ToJobMetadataOutput() JobMetadataOutput {
 
 func (o JobMetadataOutput) ToJobMetadataOutputWithContext(ctx context.Context) JobMetadataOutput {
 	return o
-}
-
-func (o JobMetadataOutput) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
-	return o.ToJobMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o JobMetadataOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context) JobMetadataPtrOutput {
-	return o.ApplyT(func(v JobMetadata) *JobMetadata {
-		return &v
-	}).(JobMetadataPtrOutput)
 }
 
 // Identification of a BigTable source used in the Dataflow job.
@@ -3097,94 +1901,6 @@ func (o JobMetadataOutput) SdkVersion() SdkVersionPtrOutput {
 // Identification of a Spanner source used in the Dataflow job.
 func (o JobMetadataOutput) SpannerDetails() SpannerIODetailsArrayOutput {
 	return o.ApplyT(func(v JobMetadata) []SpannerIODetails { return v.SpannerDetails }).(SpannerIODetailsArrayOutput)
-}
-
-type JobMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (JobMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobMetadata)(nil)).Elem()
-}
-
-func (o JobMetadataPtrOutput) ToJobMetadataPtrOutput() JobMetadataPtrOutput {
-	return o
-}
-
-func (o JobMetadataPtrOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context) JobMetadataPtrOutput {
-	return o
-}
-
-func (o JobMetadataPtrOutput) Elem() JobMetadataOutput {
-	return o.ApplyT(func(v *JobMetadata) JobMetadata { return *v }).(JobMetadataOutput)
-}
-
-// Identification of a BigTable source used in the Dataflow job.
-func (o JobMetadataPtrOutput) BigTableDetails() BigTableIODetailsArrayOutput {
-	return o.ApplyT(func(v *JobMetadata) []BigTableIODetails {
-		if v == nil {
-			return nil
-		}
-		return v.BigTableDetails
-	}).(BigTableIODetailsArrayOutput)
-}
-
-// Identification of a BigQuery source used in the Dataflow job.
-func (o JobMetadataPtrOutput) BigqueryDetails() BigQueryIODetailsArrayOutput {
-	return o.ApplyT(func(v *JobMetadata) []BigQueryIODetails {
-		if v == nil {
-			return nil
-		}
-		return v.BigqueryDetails
-	}).(BigQueryIODetailsArrayOutput)
-}
-
-// Identification of a Datastore source used in the Dataflow job.
-func (o JobMetadataPtrOutput) DatastoreDetails() DatastoreIODetailsArrayOutput {
-	return o.ApplyT(func(v *JobMetadata) []DatastoreIODetails {
-		if v == nil {
-			return nil
-		}
-		return v.DatastoreDetails
-	}).(DatastoreIODetailsArrayOutput)
-}
-
-// Identification of a File source used in the Dataflow job.
-func (o JobMetadataPtrOutput) FileDetails() FileIODetailsArrayOutput {
-	return o.ApplyT(func(v *JobMetadata) []FileIODetails {
-		if v == nil {
-			return nil
-		}
-		return v.FileDetails
-	}).(FileIODetailsArrayOutput)
-}
-
-// Identification of a PubSub source used in the Dataflow job.
-func (o JobMetadataPtrOutput) PubsubDetails() PubSubIODetailsArrayOutput {
-	return o.ApplyT(func(v *JobMetadata) []PubSubIODetails {
-		if v == nil {
-			return nil
-		}
-		return v.PubsubDetails
-	}).(PubSubIODetailsArrayOutput)
-}
-
-// The SDK version used to run the job.
-func (o JobMetadataPtrOutput) SdkVersion() SdkVersionPtrOutput {
-	return o.ApplyT(func(v *JobMetadata) *SdkVersion {
-		if v == nil {
-			return nil
-		}
-		return v.SdkVersion
-	}).(SdkVersionPtrOutput)
-}
-
-// Identification of a Spanner source used in the Dataflow job.
-func (o JobMetadataPtrOutput) SpannerDetails() SpannerIODetailsArrayOutput {
-	return o.ApplyT(func(v *JobMetadata) []SpannerIODetails {
-		if v == nil {
-			return nil
-		}
-		return v.SpannerDetails
-	}).(SpannerIODetailsArrayOutput)
 }
 
 // The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
@@ -3296,151 +2012,6 @@ func (o PackageArrayOutput) Index(i pulumi.IntInput) PackageOutput {
 	}).(PackageOutput)
 }
 
-// Metadata for a specific parameter.
-type ParameterMetadata struct {
-	// Required. The help text to display for the parameter.
-	HelpText *string `pulumi:"helpText"`
-	// Optional. Whether the parameter is optional. Defaults to false.
-	IsOptional *bool `pulumi:"isOptional"`
-	// Required. The label to display for the parameter.
-	Label *string `pulumi:"label"`
-	// Required. The name of the parameter.
-	Name *string `pulumi:"name"`
-	// Optional. The type of the parameter. Used for selecting input picker.
-	ParamType *string `pulumi:"paramType"`
-	// Optional. Regexes that the parameter must match.
-	Regexes []string `pulumi:"regexes"`
-}
-
-// ParameterMetadataInput is an input type that accepts ParameterMetadataArgs and ParameterMetadataOutput values.
-// You can construct a concrete instance of `ParameterMetadataInput` via:
-//
-//          ParameterMetadataArgs{...}
-type ParameterMetadataInput interface {
-	pulumi.Input
-
-	ToParameterMetadataOutput() ParameterMetadataOutput
-	ToParameterMetadataOutputWithContext(context.Context) ParameterMetadataOutput
-}
-
-// Metadata for a specific parameter.
-type ParameterMetadataArgs struct {
-	// Required. The help text to display for the parameter.
-	HelpText pulumi.StringPtrInput `pulumi:"helpText"`
-	// Optional. Whether the parameter is optional. Defaults to false.
-	IsOptional pulumi.BoolPtrInput `pulumi:"isOptional"`
-	// Required. The label to display for the parameter.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// Required. The name of the parameter.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Optional. The type of the parameter. Used for selecting input picker.
-	ParamType pulumi.StringPtrInput `pulumi:"paramType"`
-	// Optional. Regexes that the parameter must match.
-	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
-}
-
-func (ParameterMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParameterMetadata)(nil)).Elem()
-}
-
-func (i ParameterMetadataArgs) ToParameterMetadataOutput() ParameterMetadataOutput {
-	return i.ToParameterMetadataOutputWithContext(context.Background())
-}
-
-func (i ParameterMetadataArgs) ToParameterMetadataOutputWithContext(ctx context.Context) ParameterMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParameterMetadataOutput)
-}
-
-// ParameterMetadataArrayInput is an input type that accepts ParameterMetadataArray and ParameterMetadataArrayOutput values.
-// You can construct a concrete instance of `ParameterMetadataArrayInput` via:
-//
-//          ParameterMetadataArray{ ParameterMetadataArgs{...} }
-type ParameterMetadataArrayInput interface {
-	pulumi.Input
-
-	ToParameterMetadataArrayOutput() ParameterMetadataArrayOutput
-	ToParameterMetadataArrayOutputWithContext(context.Context) ParameterMetadataArrayOutput
-}
-
-type ParameterMetadataArray []ParameterMetadataInput
-
-func (ParameterMetadataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ParameterMetadata)(nil)).Elem()
-}
-
-func (i ParameterMetadataArray) ToParameterMetadataArrayOutput() ParameterMetadataArrayOutput {
-	return i.ToParameterMetadataArrayOutputWithContext(context.Background())
-}
-
-func (i ParameterMetadataArray) ToParameterMetadataArrayOutputWithContext(ctx context.Context) ParameterMetadataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParameterMetadataArrayOutput)
-}
-
-// Metadata for a specific parameter.
-type ParameterMetadataOutput struct{ *pulumi.OutputState }
-
-func (ParameterMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParameterMetadata)(nil)).Elem()
-}
-
-func (o ParameterMetadataOutput) ToParameterMetadataOutput() ParameterMetadataOutput {
-	return o
-}
-
-func (o ParameterMetadataOutput) ToParameterMetadataOutputWithContext(ctx context.Context) ParameterMetadataOutput {
-	return o
-}
-
-// Required. The help text to display for the parameter.
-func (o ParameterMetadataOutput) HelpText() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterMetadata) *string { return v.HelpText }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Whether the parameter is optional. Defaults to false.
-func (o ParameterMetadataOutput) IsOptional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ParameterMetadata) *bool { return v.IsOptional }).(pulumi.BoolPtrOutput)
-}
-
-// Required. The label to display for the parameter.
-func (o ParameterMetadataOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterMetadata) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// Required. The name of the parameter.
-func (o ParameterMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The type of the parameter. Used for selecting input picker.
-func (o ParameterMetadataOutput) ParamType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterMetadata) *string { return v.ParamType }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Regexes that the parameter must match.
-func (o ParameterMetadataOutput) Regexes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ParameterMetadata) []string { return v.Regexes }).(pulumi.StringArrayOutput)
-}
-
-type ParameterMetadataArrayOutput struct{ *pulumi.OutputState }
-
-func (ParameterMetadataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ParameterMetadata)(nil)).Elem()
-}
-
-func (o ParameterMetadataArrayOutput) ToParameterMetadataArrayOutput() ParameterMetadataArrayOutput {
-	return o
-}
-
-func (o ParameterMetadataArrayOutput) ToParameterMetadataArrayOutputWithContext(ctx context.Context) ParameterMetadataArrayOutput {
-	return o
-}
-
-func (o ParameterMetadataArrayOutput) Index(i pulumi.IntInput) ParameterMetadataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterMetadata {
-		return vs[0].([]ParameterMetadata)[vs[1].(int)]
-	}).(ParameterMetadataOutput)
-}
-
 // A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
 type PipelineDescription struct {
 	// Pipeline level display data.
@@ -3484,47 +2055,6 @@ func (i PipelineDescriptionArgs) ToPipelineDescriptionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionOutput)
 }
 
-func (i PipelineDescriptionArgs) ToPipelineDescriptionPtrOutput() PipelineDescriptionPtrOutput {
-	return i.ToPipelineDescriptionPtrOutputWithContext(context.Background())
-}
-
-func (i PipelineDescriptionArgs) ToPipelineDescriptionPtrOutputWithContext(ctx context.Context) PipelineDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionOutput).ToPipelineDescriptionPtrOutputWithContext(ctx)
-}
-
-// PipelineDescriptionPtrInput is an input type that accepts PipelineDescriptionArgs, PipelineDescriptionPtr and PipelineDescriptionPtrOutput values.
-// You can construct a concrete instance of `PipelineDescriptionPtrInput` via:
-//
-//          PipelineDescriptionArgs{...}
-//
-//  or:
-//
-//          nil
-type PipelineDescriptionPtrInput interface {
-	pulumi.Input
-
-	ToPipelineDescriptionPtrOutput() PipelineDescriptionPtrOutput
-	ToPipelineDescriptionPtrOutputWithContext(context.Context) PipelineDescriptionPtrOutput
-}
-
-type pipelineDescriptionPtrType PipelineDescriptionArgs
-
-func PipelineDescriptionPtr(v *PipelineDescriptionArgs) PipelineDescriptionPtrInput {
-	return (*pipelineDescriptionPtrType)(v)
-}
-
-func (*pipelineDescriptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineDescription)(nil)).Elem()
-}
-
-func (i *pipelineDescriptionPtrType) ToPipelineDescriptionPtrOutput() PipelineDescriptionPtrOutput {
-	return i.ToPipelineDescriptionPtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineDescriptionPtrType) ToPipelineDescriptionPtrOutputWithContext(ctx context.Context) PipelineDescriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionPtrOutput)
-}
-
 // A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
 type PipelineDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -3540,16 +2070,6 @@ func (o PipelineDescriptionOutput) ToPipelineDescriptionOutputWithContext(ctx co
 	return o
 }
 
-func (o PipelineDescriptionOutput) ToPipelineDescriptionPtrOutput() PipelineDescriptionPtrOutput {
-	return o.ToPipelineDescriptionPtrOutputWithContext(context.Background())
-}
-
-func (o PipelineDescriptionOutput) ToPipelineDescriptionPtrOutputWithContext(ctx context.Context) PipelineDescriptionPtrOutput {
-	return o.ApplyT(func(v PipelineDescription) *PipelineDescription {
-		return &v
-	}).(PipelineDescriptionPtrOutput)
-}
-
 // Pipeline level display data.
 func (o PipelineDescriptionOutput) DisplayData() DisplayDataArrayOutput {
 	return o.ApplyT(func(v PipelineDescription) []DisplayData { return v.DisplayData }).(DisplayDataArrayOutput)
@@ -3563,54 +2083,6 @@ func (o PipelineDescriptionOutput) ExecutionPipelineStage() ExecutionStageSummar
 // Description of each transform in the pipeline and collections between them.
 func (o PipelineDescriptionOutput) OriginalPipelineTransform() TransformSummaryArrayOutput {
 	return o.ApplyT(func(v PipelineDescription) []TransformSummary { return v.OriginalPipelineTransform }).(TransformSummaryArrayOutput)
-}
-
-type PipelineDescriptionPtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineDescriptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineDescription)(nil)).Elem()
-}
-
-func (o PipelineDescriptionPtrOutput) ToPipelineDescriptionPtrOutput() PipelineDescriptionPtrOutput {
-	return o
-}
-
-func (o PipelineDescriptionPtrOutput) ToPipelineDescriptionPtrOutputWithContext(ctx context.Context) PipelineDescriptionPtrOutput {
-	return o
-}
-
-func (o PipelineDescriptionPtrOutput) Elem() PipelineDescriptionOutput {
-	return o.ApplyT(func(v *PipelineDescription) PipelineDescription { return *v }).(PipelineDescriptionOutput)
-}
-
-// Pipeline level display data.
-func (o PipelineDescriptionPtrOutput) DisplayData() DisplayDataArrayOutput {
-	return o.ApplyT(func(v *PipelineDescription) []DisplayData {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayData
-	}).(DisplayDataArrayOutput)
-}
-
-// Description of each stage of execution of the pipeline.
-func (o PipelineDescriptionPtrOutput) ExecutionPipelineStage() ExecutionStageSummaryArrayOutput {
-	return o.ApplyT(func(v *PipelineDescription) []ExecutionStageSummary {
-		if v == nil {
-			return nil
-		}
-		return v.ExecutionPipelineStage
-	}).(ExecutionStageSummaryArrayOutput)
-}
-
-// Description of each transform in the pipeline and collections between them.
-func (o PipelineDescriptionPtrOutput) OriginalPipelineTransform() TransformSummaryArrayOutput {
-	return o.ApplyT(func(v *PipelineDescription) []TransformSummary {
-		if v == nil {
-			return nil
-		}
-		return v.OriginalPipelineTransform
-	}).(TransformSummaryArrayOutput)
 }
 
 // Metadata for a PubSub connector used by the job.
@@ -3817,6 +2289,47 @@ func (i RuntimeEnvironmentArgs) ToRuntimeEnvironmentOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentOutput)
 }
 
+func (i RuntimeEnvironmentArgs) ToRuntimeEnvironmentPtrOutput() RuntimeEnvironmentPtrOutput {
+	return i.ToRuntimeEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeEnvironmentArgs) ToRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentOutput).ToRuntimeEnvironmentPtrOutputWithContext(ctx)
+}
+
+// RuntimeEnvironmentPtrInput is an input type that accepts RuntimeEnvironmentArgs, RuntimeEnvironmentPtr and RuntimeEnvironmentPtrOutput values.
+// You can construct a concrete instance of `RuntimeEnvironmentPtrInput` via:
+//
+//          RuntimeEnvironmentArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeEnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeEnvironmentPtrOutput() RuntimeEnvironmentPtrOutput
+	ToRuntimeEnvironmentPtrOutputWithContext(context.Context) RuntimeEnvironmentPtrOutput
+}
+
+type runtimeEnvironmentPtrType RuntimeEnvironmentArgs
+
+func RuntimeEnvironmentPtr(v *RuntimeEnvironmentArgs) RuntimeEnvironmentPtrInput {
+	return (*runtimeEnvironmentPtrType)(v)
+}
+
+func (*runtimeEnvironmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeEnvironment)(nil)).Elem()
+}
+
+func (i *runtimeEnvironmentPtrType) ToRuntimeEnvironmentPtrOutput() RuntimeEnvironmentPtrOutput {
+	return i.ToRuntimeEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeEnvironmentPtrType) ToRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentPtrOutput)
+}
+
 // The environment values to set at runtime.
 type RuntimeEnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -3830,6 +2343,16 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutput() RuntimeEnvironmen
 
 func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutputWithContext(ctx context.Context) RuntimeEnvironmentOutput {
 	return o
+}
+
+func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutput() RuntimeEnvironmentPtrOutput {
+	return o.ToRuntimeEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentPtrOutput {
+	return o.ApplyT(func(v RuntimeEnvironment) *RuntimeEnvironment {
+		return &v
+	}).(RuntimeEnvironmentPtrOutput)
 }
 
 // Additional experiment flags for the job.
@@ -3912,156 +2435,181 @@ func (o RuntimeEnvironmentOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
-// SDK Information.
-type SDKInfo struct {
-	// Required. The SDK Language.
-	Language *string `pulumi:"language"`
-	// Optional. The SDK version.
-	Version *string `pulumi:"version"`
+type RuntimeEnvironmentPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeEnvironment)(nil)).Elem()
 }
 
-// SDKInfoInput is an input type that accepts SDKInfoArgs and SDKInfoOutput values.
-// You can construct a concrete instance of `SDKInfoInput` via:
-//
-//          SDKInfoArgs{...}
-type SDKInfoInput interface {
-	pulumi.Input
-
-	ToSDKInfoOutput() SDKInfoOutput
-	ToSDKInfoOutputWithContext(context.Context) SDKInfoOutput
-}
-
-// SDK Information.
-type SDKInfoArgs struct {
-	// Required. The SDK Language.
-	Language pulumi.StringPtrInput `pulumi:"language"`
-	// Optional. The SDK version.
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (SDKInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SDKInfo)(nil)).Elem()
-}
-
-func (i SDKInfoArgs) ToSDKInfoOutput() SDKInfoOutput {
-	return i.ToSDKInfoOutputWithContext(context.Background())
-}
-
-func (i SDKInfoArgs) ToSDKInfoOutputWithContext(ctx context.Context) SDKInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SDKInfoOutput)
-}
-
-func (i SDKInfoArgs) ToSDKInfoPtrOutput() SDKInfoPtrOutput {
-	return i.ToSDKInfoPtrOutputWithContext(context.Background())
-}
-
-func (i SDKInfoArgs) ToSDKInfoPtrOutputWithContext(ctx context.Context) SDKInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SDKInfoOutput).ToSDKInfoPtrOutputWithContext(ctx)
-}
-
-// SDKInfoPtrInput is an input type that accepts SDKInfoArgs, SDKInfoPtr and SDKInfoPtrOutput values.
-// You can construct a concrete instance of `SDKInfoPtrInput` via:
-//
-//          SDKInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type SDKInfoPtrInput interface {
-	pulumi.Input
-
-	ToSDKInfoPtrOutput() SDKInfoPtrOutput
-	ToSDKInfoPtrOutputWithContext(context.Context) SDKInfoPtrOutput
-}
-
-type sdkinfoPtrType SDKInfoArgs
-
-func SDKInfoPtr(v *SDKInfoArgs) SDKInfoPtrInput {
-	return (*sdkinfoPtrType)(v)
-}
-
-func (*sdkinfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SDKInfo)(nil)).Elem()
-}
-
-func (i *sdkinfoPtrType) ToSDKInfoPtrOutput() SDKInfoPtrOutput {
-	return i.ToSDKInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *sdkinfoPtrType) ToSDKInfoPtrOutputWithContext(ctx context.Context) SDKInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SDKInfoPtrOutput)
-}
-
-// SDK Information.
-type SDKInfoOutput struct{ *pulumi.OutputState }
-
-func (SDKInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SDKInfo)(nil)).Elem()
-}
-
-func (o SDKInfoOutput) ToSDKInfoOutput() SDKInfoOutput {
+func (o RuntimeEnvironmentPtrOutput) ToRuntimeEnvironmentPtrOutput() RuntimeEnvironmentPtrOutput {
 	return o
 }
 
-func (o SDKInfoOutput) ToSDKInfoOutputWithContext(ctx context.Context) SDKInfoOutput {
+func (o RuntimeEnvironmentPtrOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx context.Context) RuntimeEnvironmentPtrOutput {
 	return o
 }
 
-func (o SDKInfoOutput) ToSDKInfoPtrOutput() SDKInfoPtrOutput {
-	return o.ToSDKInfoPtrOutputWithContext(context.Background())
+func (o RuntimeEnvironmentPtrOutput) Elem() RuntimeEnvironmentOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) RuntimeEnvironment { return *v }).(RuntimeEnvironmentOutput)
 }
 
-func (o SDKInfoOutput) ToSDKInfoPtrOutputWithContext(ctx context.Context) SDKInfoPtrOutput {
-	return o.ApplyT(func(v SDKInfo) *SDKInfo {
-		return &v
-	}).(SDKInfoPtrOutput)
-}
-
-// Required. The SDK Language.
-func (o SDKInfoOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SDKInfo) *string { return v.Language }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The SDK version.
-func (o SDKInfoOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SDKInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type SDKInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (SDKInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SDKInfo)(nil)).Elem()
-}
-
-func (o SDKInfoPtrOutput) ToSDKInfoPtrOutput() SDKInfoPtrOutput {
-	return o
-}
-
-func (o SDKInfoPtrOutput) ToSDKInfoPtrOutputWithContext(ctx context.Context) SDKInfoPtrOutput {
-	return o
-}
-
-func (o SDKInfoPtrOutput) Elem() SDKInfoOutput {
-	return o.ApplyT(func(v *SDKInfo) SDKInfo { return *v }).(SDKInfoOutput)
-}
-
-// Required. The SDK Language.
-func (o SDKInfoPtrOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SDKInfo) *string {
+// Additional experiment flags for the job.
+func (o RuntimeEnvironmentPtrOutput) AdditionalExperiments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) []string {
 		if v == nil {
 			return nil
 		}
-		return v.Language
+		return v.AdditionalExperiments
+	}).(pulumi.StringArrayOutput)
+}
+
+// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+func (o RuntimeEnvironmentPtrOutput) AdditionalUserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalUserLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+func (o RuntimeEnvironmentPtrOutput) BypassTempDirValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BypassTempDirValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable Streaming Engine for the job.
+func (o RuntimeEnvironmentPtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStreamingEngine
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for VM IPs.
+func (o RuntimeEnvironmentPtrOutput) IpConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfiguration
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The SDK version.
-func (o SDKInfoPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SDKInfo) *string {
+// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+func (o RuntimeEnvironmentPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Version
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The machine type to use for the job. Defaults to the value from the template if not specified.
+func (o RuntimeEnvironmentPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+func (o RuntimeEnvironmentPtrOutput) MaxWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+func (o RuntimeEnvironmentPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial number of Google Compute Engine instnaces for the job.
+func (o RuntimeEnvironmentPtrOutput) NumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// The email address of the service account to run the job as.
+func (o RuntimeEnvironmentPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+func (o RuntimeEnvironmentPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
+func (o RuntimeEnvironmentPtrOutput) TempLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TempLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
+func (o RuntimeEnvironmentPtrOutput) WorkerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+func (o RuntimeEnvironmentPtrOutput) WorkerZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+func (o RuntimeEnvironmentPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4643,31 +3191,6 @@ func (i StepArgs) ToStepOutputWithContext(ctx context.Context) StepOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StepOutput)
 }
 
-// StepArrayInput is an input type that accepts StepArray and StepArrayOutput values.
-// You can construct a concrete instance of `StepArrayInput` via:
-//
-//          StepArray{ StepArgs{...} }
-type StepArrayInput interface {
-	pulumi.Input
-
-	ToStepArrayOutput() StepArrayOutput
-	ToStepArrayOutputWithContext(context.Context) StepArrayOutput
-}
-
-type StepArray []StepInput
-
-func (StepArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Step)(nil)).Elem()
-}
-
-func (i StepArray) ToStepArrayOutput() StepArrayOutput {
-	return i.ToStepArrayOutputWithContext(context.Background())
-}
-
-func (i StepArray) ToStepArrayOutputWithContext(ctx context.Context) StepArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StepArrayOutput)
-}
-
 // Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
 type StepOutput struct{ *pulumi.OutputState }
 
@@ -4696,26 +3219,6 @@ func (o StepOutput) Name() pulumi.StringPtrOutput {
 // Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
 func (o StepOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Step) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-type StepArrayOutput struct{ *pulumi.OutputState }
-
-func (StepArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Step)(nil)).Elem()
-}
-
-func (o StepArrayOutput) ToStepArrayOutput() StepArrayOutput {
-	return o
-}
-
-func (o StepArrayOutput) ToStepArrayOutputWithContext(ctx context.Context) StepArrayOutput {
-	return o
-}
-
-func (o StepArrayOutput) Index(i pulumi.IntInput) StepOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Step {
-		return vs[0].([]Step)[vs[1].(int)]
-	}).(StepOutput)
 }
 
 // Taskrunner configuration settings.
@@ -5191,464 +3694,6 @@ func (o TaskRunnerSettingsPtrOutput) WorkflowFileName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WorkflowFileName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata describing a template.
-type TemplateMetadata struct {
-	// Optional. A description of the template.
-	Description *string `pulumi:"description"`
-	// Required. The name of the template.
-	Name *string `pulumi:"name"`
-	// The parameters for the template.
-	Parameters []ParameterMetadata `pulumi:"parameters"`
-}
-
-// TemplateMetadataInput is an input type that accepts TemplateMetadataArgs and TemplateMetadataOutput values.
-// You can construct a concrete instance of `TemplateMetadataInput` via:
-//
-//          TemplateMetadataArgs{...}
-type TemplateMetadataInput interface {
-	pulumi.Input
-
-	ToTemplateMetadataOutput() TemplateMetadataOutput
-	ToTemplateMetadataOutputWithContext(context.Context) TemplateMetadataOutput
-}
-
-// Metadata describing a template.
-type TemplateMetadataArgs struct {
-	// Optional. A description of the template.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. The name of the template.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The parameters for the template.
-	Parameters ParameterMetadataArrayInput `pulumi:"parameters"`
-}
-
-func (TemplateMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateMetadata)(nil)).Elem()
-}
-
-func (i TemplateMetadataArgs) ToTemplateMetadataOutput() TemplateMetadataOutput {
-	return i.ToTemplateMetadataOutputWithContext(context.Background())
-}
-
-func (i TemplateMetadataArgs) ToTemplateMetadataOutputWithContext(ctx context.Context) TemplateMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateMetadataOutput)
-}
-
-func (i TemplateMetadataArgs) ToTemplateMetadataPtrOutput() TemplateMetadataPtrOutput {
-	return i.ToTemplateMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i TemplateMetadataArgs) ToTemplateMetadataPtrOutputWithContext(ctx context.Context) TemplateMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateMetadataOutput).ToTemplateMetadataPtrOutputWithContext(ctx)
-}
-
-// TemplateMetadataPtrInput is an input type that accepts TemplateMetadataArgs, TemplateMetadataPtr and TemplateMetadataPtrOutput values.
-// You can construct a concrete instance of `TemplateMetadataPtrInput` via:
-//
-//          TemplateMetadataArgs{...}
-//
-//  or:
-//
-//          nil
-type TemplateMetadataPtrInput interface {
-	pulumi.Input
-
-	ToTemplateMetadataPtrOutput() TemplateMetadataPtrOutput
-	ToTemplateMetadataPtrOutputWithContext(context.Context) TemplateMetadataPtrOutput
-}
-
-type templateMetadataPtrType TemplateMetadataArgs
-
-func TemplateMetadataPtr(v *TemplateMetadataArgs) TemplateMetadataPtrInput {
-	return (*templateMetadataPtrType)(v)
-}
-
-func (*templateMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateMetadata)(nil)).Elem()
-}
-
-func (i *templateMetadataPtrType) ToTemplateMetadataPtrOutput() TemplateMetadataPtrOutput {
-	return i.ToTemplateMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *templateMetadataPtrType) ToTemplateMetadataPtrOutputWithContext(ctx context.Context) TemplateMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateMetadataPtrOutput)
-}
-
-// Metadata describing a template.
-type TemplateMetadataOutput struct{ *pulumi.OutputState }
-
-func (TemplateMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateMetadata)(nil)).Elem()
-}
-
-func (o TemplateMetadataOutput) ToTemplateMetadataOutput() TemplateMetadataOutput {
-	return o
-}
-
-func (o TemplateMetadataOutput) ToTemplateMetadataOutputWithContext(ctx context.Context) TemplateMetadataOutput {
-	return o
-}
-
-func (o TemplateMetadataOutput) ToTemplateMetadataPtrOutput() TemplateMetadataPtrOutput {
-	return o.ToTemplateMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o TemplateMetadataOutput) ToTemplateMetadataPtrOutputWithContext(ctx context.Context) TemplateMetadataPtrOutput {
-	return o.ApplyT(func(v TemplateMetadata) *TemplateMetadata {
-		return &v
-	}).(TemplateMetadataPtrOutput)
-}
-
-// Optional. A description of the template.
-func (o TemplateMetadataOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateMetadata) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Required. The name of the template.
-func (o TemplateMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The parameters for the template.
-func (o TemplateMetadataOutput) Parameters() ParameterMetadataArrayOutput {
-	return o.ApplyT(func(v TemplateMetadata) []ParameterMetadata { return v.Parameters }).(ParameterMetadataArrayOutput)
-}
-
-type TemplateMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (TemplateMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateMetadata)(nil)).Elem()
-}
-
-func (o TemplateMetadataPtrOutput) ToTemplateMetadataPtrOutput() TemplateMetadataPtrOutput {
-	return o
-}
-
-func (o TemplateMetadataPtrOutput) ToTemplateMetadataPtrOutputWithContext(ctx context.Context) TemplateMetadataPtrOutput {
-	return o
-}
-
-func (o TemplateMetadataPtrOutput) Elem() TemplateMetadataOutput {
-	return o.ApplyT(func(v *TemplateMetadata) TemplateMetadata { return *v }).(TemplateMetadataOutput)
-}
-
-// Optional. A description of the template.
-func (o TemplateMetadataPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required. The name of the template.
-func (o TemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The parameters for the template.
-func (o TemplateMetadataPtrOutput) Parameters() ParameterMetadataArrayOutput {
-	return o.ApplyT(func(v *TemplateMetadata) []ParameterMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(ParameterMetadataArrayOutput)
-}
-
-// ///////////////////////////////////////////////////////////////////////////// //// Template Catalog is used to organize user TemplateVersions. //// TemplateVersions that have the same project_id and display_name are //// belong to the same Template. //// Templates with the same project_id belong to the same Project. //// TemplateVersion may have labels and multiple labels are allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed. //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //// tags in the same `Template` are not allowed!
-type TemplateVersionType struct {
-	// Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template.
-	Artifact *Artifact `pulumi:"artifact"`
-	// Creation time of this TemplateVersion.
-	CreateTime *string `pulumi:"createTime"`
-	// Template description from the user.
-	Description *string `pulumi:"description"`
-	// A customized name for Template. Multiple TemplateVersions per Template.
-	DisplayName *string `pulumi:"displayName"`
-	// Labels for the Template Version. Labels can be duplicate within Template.
-	Labels map[string]string `pulumi:"labels"`
-	// A unique project_id. Multiple Templates per Project.
-	ProjectId *string `pulumi:"projectId"`
-	// Alias for version_id, helps locate a TemplateVersion.
-	Tags []string `pulumi:"tags"`
-	// Either LEGACY or FLEX. This should match with the type of artifact.
-	Type *string `pulumi:"type"`
-	// An auto generated version_id for TemplateVersion.
-	VersionId *string `pulumi:"versionId"`
-}
-
-// TemplateVersionTypeInput is an input type that accepts TemplateVersionTypeArgs and TemplateVersionTypeOutput values.
-// You can construct a concrete instance of `TemplateVersionTypeInput` via:
-//
-//          TemplateVersionTypeArgs{...}
-type TemplateVersionTypeInput interface {
-	pulumi.Input
-
-	ToTemplateVersionTypeOutput() TemplateVersionTypeOutput
-	ToTemplateVersionTypeOutputWithContext(context.Context) TemplateVersionTypeOutput
-}
-
-// ///////////////////////////////////////////////////////////////////////////// //// Template Catalog is used to organize user TemplateVersions. //// TemplateVersions that have the same project_id and display_name are //// belong to the same Template. //// Templates with the same project_id belong to the same Project. //// TemplateVersion may have labels and multiple labels are allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed. //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //// tags in the same `Template` are not allowed!
-type TemplateVersionTypeArgs struct {
-	// Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template.
-	Artifact ArtifactPtrInput `pulumi:"artifact"`
-	// Creation time of this TemplateVersion.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// Template description from the user.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// A customized name for Template. Multiple TemplateVersions per Template.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Labels for the Template Version. Labels can be duplicate within Template.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// A unique project_id. Multiple Templates per Project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Alias for version_id, helps locate a TemplateVersion.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Either LEGACY or FLEX. This should match with the type of artifact.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// An auto generated version_id for TemplateVersion.
-	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
-}
-
-func (TemplateVersionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateVersionType)(nil)).Elem()
-}
-
-func (i TemplateVersionTypeArgs) ToTemplateVersionTypeOutput() TemplateVersionTypeOutput {
-	return i.ToTemplateVersionTypeOutputWithContext(context.Background())
-}
-
-func (i TemplateVersionTypeArgs) ToTemplateVersionTypeOutputWithContext(ctx context.Context) TemplateVersionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateVersionTypeOutput)
-}
-
-func (i TemplateVersionTypeArgs) ToTemplateVersionTypePtrOutput() TemplateVersionTypePtrOutput {
-	return i.ToTemplateVersionTypePtrOutputWithContext(context.Background())
-}
-
-func (i TemplateVersionTypeArgs) ToTemplateVersionTypePtrOutputWithContext(ctx context.Context) TemplateVersionTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateVersionTypeOutput).ToTemplateVersionTypePtrOutputWithContext(ctx)
-}
-
-// TemplateVersionTypePtrInput is an input type that accepts TemplateVersionTypeArgs, TemplateVersionTypePtr and TemplateVersionTypePtrOutput values.
-// You can construct a concrete instance of `TemplateVersionTypePtrInput` via:
-//
-//          TemplateVersionTypeArgs{...}
-//
-//  or:
-//
-//          nil
-type TemplateVersionTypePtrInput interface {
-	pulumi.Input
-
-	ToTemplateVersionTypePtrOutput() TemplateVersionTypePtrOutput
-	ToTemplateVersionTypePtrOutputWithContext(context.Context) TemplateVersionTypePtrOutput
-}
-
-type templateVersionTypePtrType TemplateVersionTypeArgs
-
-func TemplateVersionTypePtr(v *TemplateVersionTypeArgs) TemplateVersionTypePtrInput {
-	return (*templateVersionTypePtrType)(v)
-}
-
-func (*templateVersionTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateVersionType)(nil)).Elem()
-}
-
-func (i *templateVersionTypePtrType) ToTemplateVersionTypePtrOutput() TemplateVersionTypePtrOutput {
-	return i.ToTemplateVersionTypePtrOutputWithContext(context.Background())
-}
-
-func (i *templateVersionTypePtrType) ToTemplateVersionTypePtrOutputWithContext(ctx context.Context) TemplateVersionTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateVersionTypePtrOutput)
-}
-
-// ///////////////////////////////////////////////////////////////////////////// //// Template Catalog is used to organize user TemplateVersions. //// TemplateVersions that have the same project_id and display_name are //// belong to the same Template. //// Templates with the same project_id belong to the same Project. //// TemplateVersion may have labels and multiple labels are allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed. //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //// tags in the same `Template` are not allowed!
-type TemplateVersionTypeOutput struct{ *pulumi.OutputState }
-
-func (TemplateVersionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateVersionType)(nil)).Elem()
-}
-
-func (o TemplateVersionTypeOutput) ToTemplateVersionTypeOutput() TemplateVersionTypeOutput {
-	return o
-}
-
-func (o TemplateVersionTypeOutput) ToTemplateVersionTypeOutputWithContext(ctx context.Context) TemplateVersionTypeOutput {
-	return o
-}
-
-func (o TemplateVersionTypeOutput) ToTemplateVersionTypePtrOutput() TemplateVersionTypePtrOutput {
-	return o.ToTemplateVersionTypePtrOutputWithContext(context.Background())
-}
-
-func (o TemplateVersionTypeOutput) ToTemplateVersionTypePtrOutputWithContext(ctx context.Context) TemplateVersionTypePtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *TemplateVersionType {
-		return &v
-	}).(TemplateVersionTypePtrOutput)
-}
-
-// Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template.
-func (o TemplateVersionTypeOutput) Artifact() ArtifactPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *Artifact { return v.Artifact }).(ArtifactPtrOutput)
-}
-
-// Creation time of this TemplateVersion.
-func (o TemplateVersionTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
-}
-
-// Template description from the user.
-func (o TemplateVersionTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// A customized name for Template. Multiple TemplateVersions per Template.
-func (o TemplateVersionTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Labels for the Template Version. Labels can be duplicate within Template.
-func (o TemplateVersionTypeOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TemplateVersionType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// A unique project_id. Multiple Templates per Project.
-func (o TemplateVersionTypeOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
-}
-
-// Alias for version_id, helps locate a TemplateVersion.
-func (o TemplateVersionTypeOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TemplateVersionType) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-// Either LEGACY or FLEX. This should match with the type of artifact.
-func (o TemplateVersionTypeOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// An auto generated version_id for TemplateVersion.
-func (o TemplateVersionTypeOutput) VersionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateVersionType) *string { return v.VersionId }).(pulumi.StringPtrOutput)
-}
-
-type TemplateVersionTypePtrOutput struct{ *pulumi.OutputState }
-
-func (TemplateVersionTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateVersionType)(nil)).Elem()
-}
-
-func (o TemplateVersionTypePtrOutput) ToTemplateVersionTypePtrOutput() TemplateVersionTypePtrOutput {
-	return o
-}
-
-func (o TemplateVersionTypePtrOutput) ToTemplateVersionTypePtrOutputWithContext(ctx context.Context) TemplateVersionTypePtrOutput {
-	return o
-}
-
-func (o TemplateVersionTypePtrOutput) Elem() TemplateVersionTypeOutput {
-	return o.ApplyT(func(v *TemplateVersionType) TemplateVersionType { return *v }).(TemplateVersionTypeOutput)
-}
-
-// Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template.
-func (o TemplateVersionTypePtrOutput) Artifact() ArtifactPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *Artifact {
-		if v == nil {
-			return nil
-		}
-		return v.Artifact
-	}).(ArtifactPtrOutput)
-}
-
-// Creation time of this TemplateVersion.
-func (o TemplateVersionTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Template description from the user.
-func (o TemplateVersionTypePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// A customized name for Template. Multiple TemplateVersions per Template.
-func (o TemplateVersionTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Labels for the Template Version. Labels can be duplicate within Template.
-func (o TemplateVersionTypePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TemplateVersionType) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// A unique project_id. Multiple Templates per Project.
-func (o TemplateVersionTypePtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Alias for version_id, helps locate a TemplateVersion.
-func (o TemplateVersionTypePtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TemplateVersionType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(pulumi.StringArrayOutput)
-}
-
-// Either LEGACY or FLEX. This should match with the type of artifact.
-func (o TemplateVersionTypePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// An auto generated version_id for TemplateVersion.
-func (o TemplateVersionTypePtrOutput) VersionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateVersionType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VersionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6316,8 +4361,6 @@ func (o WorkerSettingsPtrOutput) WorkerId() pulumi.StringPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(ArtifactOutput{})
-	pulumi.RegisterOutputType(ArtifactPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryIODetailsOutput{})
@@ -6328,8 +4371,6 @@ func init() {
 	pulumi.RegisterOutputType(ComponentSourceArrayOutput{})
 	pulumi.RegisterOutputType(ComponentTransformOutput{})
 	pulumi.RegisterOutputType(ComponentTransformArrayOutput{})
-	pulumi.RegisterOutputType(ContainerSpecOutput{})
-	pulumi.RegisterOutputType(ContainerSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatastoreIODetailsOutput{})
 	pulumi.RegisterOutputType(DatastoreIODetailsArrayOutput{})
 	pulumi.RegisterOutputType(DebugOptionsOutput{})
@@ -6339,30 +4380,20 @@ func init() {
 	pulumi.RegisterOutputType(DisplayDataOutput{})
 	pulumi.RegisterOutputType(DisplayDataArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})
-	pulumi.RegisterOutputType(EnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateOutput{})
-	pulumi.RegisterOutputType(ExecutionStageStateArrayOutput{})
 	pulumi.RegisterOutputType(ExecutionStageSummaryOutput{})
 	pulumi.RegisterOutputType(ExecutionStageSummaryArrayOutput{})
 	pulumi.RegisterOutputType(FileIODetailsOutput{})
 	pulumi.RegisterOutputType(FileIODetailsArrayOutput{})
-	pulumi.RegisterOutputType(FlexTemplateRuntimeEnvironmentOutput{})
-	pulumi.RegisterOutputType(FlexTemplateRuntimeEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(JobExecutionInfoOutput{})
-	pulumi.RegisterOutputType(JobExecutionInfoPtrOutput{})
 	pulumi.RegisterOutputType(JobMetadataOutput{})
-	pulumi.RegisterOutputType(JobMetadataPtrOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackageArrayOutput{})
-	pulumi.RegisterOutputType(ParameterMetadataOutput{})
-	pulumi.RegisterOutputType(ParameterMetadataArrayOutput{})
 	pulumi.RegisterOutputType(PipelineDescriptionOutput{})
-	pulumi.RegisterOutputType(PipelineDescriptionPtrOutput{})
 	pulumi.RegisterOutputType(PubSubIODetailsOutput{})
 	pulumi.RegisterOutputType(PubSubIODetailsArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeEnvironmentOutput{})
-	pulumi.RegisterOutputType(SDKInfoOutput{})
-	pulumi.RegisterOutputType(SDKInfoPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageArrayOutput{})
 	pulumi.RegisterOutputType(SdkVersionOutput{})
@@ -6372,13 +4403,8 @@ func init() {
 	pulumi.RegisterOutputType(StageSourceOutput{})
 	pulumi.RegisterOutputType(StageSourceArrayOutput{})
 	pulumi.RegisterOutputType(StepOutput{})
-	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(TaskRunnerSettingsOutput{})
 	pulumi.RegisterOutputType(TaskRunnerSettingsPtrOutput{})
-	pulumi.RegisterOutputType(TemplateMetadataOutput{})
-	pulumi.RegisterOutputType(TemplateMetadataPtrOutput{})
-	pulumi.RegisterOutputType(TemplateVersionTypeOutput{})
-	pulumi.RegisterOutputType(TemplateVersionTypePtrOutput{})
 	pulumi.RegisterOutputType(TransformSummaryOutput{})
 	pulumi.RegisterOutputType(TransformSummaryArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})

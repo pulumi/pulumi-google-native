@@ -1258,6 +1258,159 @@ func (o ReplicationPtrOutput) UserManaged() UserManagedPtrOutput {
 	}).(UserManagedPtrOutput)
 }
 
+// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
+type Rotation struct {
+	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+	NextRotationTime *string `pulumi:"nextRotationTime"`
+	// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
+	RotationPeriod *string `pulumi:"rotationPeriod"`
+}
+
+// RotationInput is an input type that accepts RotationArgs and RotationOutput values.
+// You can construct a concrete instance of `RotationInput` via:
+//
+//          RotationArgs{...}
+type RotationInput interface {
+	pulumi.Input
+
+	ToRotationOutput() RotationOutput
+	ToRotationOutputWithContext(context.Context) RotationOutput
+}
+
+// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
+type RotationArgs struct {
+	// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+	NextRotationTime pulumi.StringPtrInput `pulumi:"nextRotationTime"`
+	// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
+	RotationPeriod pulumi.StringPtrInput `pulumi:"rotationPeriod"`
+}
+
+func (RotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rotation)(nil)).Elem()
+}
+
+func (i RotationArgs) ToRotationOutput() RotationOutput {
+	return i.ToRotationOutputWithContext(context.Background())
+}
+
+func (i RotationArgs) ToRotationOutputWithContext(ctx context.Context) RotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RotationOutput)
+}
+
+func (i RotationArgs) ToRotationPtrOutput() RotationPtrOutput {
+	return i.ToRotationPtrOutputWithContext(context.Background())
+}
+
+func (i RotationArgs) ToRotationPtrOutputWithContext(ctx context.Context) RotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RotationOutput).ToRotationPtrOutputWithContext(ctx)
+}
+
+// RotationPtrInput is an input type that accepts RotationArgs, RotationPtr and RotationPtrOutput values.
+// You can construct a concrete instance of `RotationPtrInput` via:
+//
+//          RotationArgs{...}
+//
+//  or:
+//
+//          nil
+type RotationPtrInput interface {
+	pulumi.Input
+
+	ToRotationPtrOutput() RotationPtrOutput
+	ToRotationPtrOutputWithContext(context.Context) RotationPtrOutput
+}
+
+type rotationPtrType RotationArgs
+
+func RotationPtr(v *RotationArgs) RotationPtrInput {
+	return (*rotationPtrType)(v)
+}
+
+func (*rotationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Rotation)(nil)).Elem()
+}
+
+func (i *rotationPtrType) ToRotationPtrOutput() RotationPtrOutput {
+	return i.ToRotationPtrOutputWithContext(context.Background())
+}
+
+func (i *rotationPtrType) ToRotationPtrOutputWithContext(ctx context.Context) RotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RotationPtrOutput)
+}
+
+// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
+type RotationOutput struct{ *pulumi.OutputState }
+
+func (RotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rotation)(nil)).Elem()
+}
+
+func (o RotationOutput) ToRotationOutput() RotationOutput {
+	return o
+}
+
+func (o RotationOutput) ToRotationOutputWithContext(ctx context.Context) RotationOutput {
+	return o
+}
+
+func (o RotationOutput) ToRotationPtrOutput() RotationPtrOutput {
+	return o.ToRotationPtrOutputWithContext(context.Background())
+}
+
+func (o RotationOutput) ToRotationPtrOutputWithContext(ctx context.Context) RotationPtrOutput {
+	return o.ApplyT(func(v Rotation) *Rotation {
+		return &v
+	}).(RotationPtrOutput)
+}
+
+// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+func (o RotationOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rotation) *string { return v.NextRotationTime }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
+func (o RotationOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rotation) *string { return v.RotationPeriod }).(pulumi.StringPtrOutput)
+}
+
+type RotationPtrOutput struct{ *pulumi.OutputState }
+
+func (RotationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Rotation)(nil)).Elem()
+}
+
+func (o RotationPtrOutput) ToRotationPtrOutput() RotationPtrOutput {
+	return o
+}
+
+func (o RotationPtrOutput) ToRotationPtrOutputWithContext(ctx context.Context) RotationPtrOutput {
+	return o
+}
+
+func (o RotationPtrOutput) Elem() RotationOutput {
+	return o.ApplyT(func(v *Rotation) Rotation { return *v }).(RotationOutput)
+}
+
+// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if rotation_period is set.
+func (o RotationPtrOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextRotationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications.
+func (o RotationPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RotationPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 // A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
 type Topic struct {
 	// Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
@@ -1511,6 +1664,8 @@ func init() {
 	pulumi.RegisterOutputType(ReplicaArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationOutput{})
 	pulumi.RegisterOutputType(ReplicationPtrOutput{})
+	pulumi.RegisterOutputType(RotationOutput{})
+	pulumi.RegisterOutputType(RotationPtrOutput{})
 	pulumi.RegisterOutputType(TopicOutput{})
 	pulumi.RegisterOutputType(TopicArrayOutput{})
 	pulumi.RegisterOutputType(UserManagedOutput{})

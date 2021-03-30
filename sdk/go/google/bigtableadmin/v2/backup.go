@@ -60,6 +60,8 @@ func (BackupState) ElementType() reflect.Type {
 type backupArgs struct {
 	// Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
 	BackupId *string `pulumi:"backupId"`
+	// Output only. The encryption information for the backup.
+	EncryptionInfo *EncryptionInfo `pulumi:"encryptionInfo"`
 	// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
 	EndTime *string `pulumi:"endTime"`
 	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
@@ -82,6 +84,8 @@ type backupArgs struct {
 type BackupArgs struct {
 	// Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
 	BackupId pulumi.StringPtrInput
+	// Output only. The encryption information for the backup.
+	EncryptionInfo EncryptionInfoPtrInput
 	// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
 	EndTime pulumi.StringPtrInput
 	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.

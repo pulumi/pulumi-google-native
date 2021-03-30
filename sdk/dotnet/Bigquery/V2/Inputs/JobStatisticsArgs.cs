@@ -103,6 +103,12 @@ namespace Pulumi.GoogleCloud.Bigquery.V2.Inputs
         public Input<Inputs.ScriptStatisticsArgs>? ScriptStatistics { get; set; }
 
         /// <summary>
+        /// [Output-only] [Preview] Information of the session if this job is part of one.
+        /// </summary>
+        [Input("sessionInfoTemplate")]
+        public Input<Inputs.SessionInfoArgs>? SessionInfoTemplate { get; set; }
+
+        /// <summary>
         /// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
         /// </summary>
         [Input("startTime")]

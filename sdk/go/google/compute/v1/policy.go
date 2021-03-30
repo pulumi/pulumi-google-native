@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Sets the access control policy on the specified resource. Replaces any existing policy.
+// Sets the access control policy on the specified resource. Replaces any existing policy.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 type Policy struct {
 	pulumi.CustomResourceState
 }
@@ -25,9 +25,6 @@ func NewPolicy(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	if args.Resource == nil {
 		return nil, errors.New("invalid value for required argument 'Resource'")
@@ -64,7 +61,7 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
 	Bindings []Binding `pulumi:"bindings"`
 	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
 	Etag *string `pulumi:"etag"`
@@ -72,15 +69,13 @@ type policyArgs struct {
 	Policy *PolicyType `pulumi:"policy"`
 	// Project ID for this request.
 	Project string `pulumi:"project"`
-	// The name of the region for this request.
-	Region string `pulumi:"region"`
 	// Name or id of the resource for this request.
 	Resource string `pulumi:"resource"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
 	Bindings BindingArrayInput
 	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
 	Etag pulumi.StringPtrInput
@@ -88,8 +83,6 @@ type PolicyArgs struct {
 	Policy PolicyTypePtrInput
 	// Project ID for this request.
 	Project pulumi.StringInput
-	// The name of the region for this request.
-	Region pulumi.StringInput
 	// Name or id of the resource for this request.
 	Resource pulumi.StringInput
 }

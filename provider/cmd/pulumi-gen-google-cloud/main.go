@@ -90,31 +90,41 @@ func emitDiscoveryFiles(outDir string) error {
 		}
 
 		fileName := fmt.Sprintf("%s.json", strings.ReplaceAll(item.Id, ":", "_"))
-		filePath := path.Join(outDir, fileName)
-		err := downloadFile(item.DiscoveryRestUrl, filePath)
+		err := copyJsonFile(item.DiscoveryRestUrl, outDir, fileName)
 		if err != nil {
-			return errors.Wrapf(err, "writing %s", filePath)
+			return errors.Wrapf(err, "writing %s", fileName)
 		}
 	}
 
 	return nil
 }
 
-func downloadFile(url, path string) error {
+func copyJsonFile(url, outDir, path string) error {
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 
-	out, err := os.Create(path)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
-	defer out.Close()
 
-	_, err = io.Copy(out, resp.Body)
-	return err
+	var ifce interface{}
+	err = json.Unmarshal(body, &ifce)
+	if err != nil {
+		return err
+	}
+
+	// Marshaller will write JSON nodes in alphanumeric order which makes the files "stable",
+	// and we can track the history more easily.
+	output, err := json.MarshalIndent(ifce, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	return emitFile(outDir, path, output)
 }
 
 // emitSchema writes the Pulumi schema JSON to the 'schema.json' file in the given directory.
