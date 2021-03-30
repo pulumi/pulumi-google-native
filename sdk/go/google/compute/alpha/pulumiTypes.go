@@ -34107,7 +34107,7 @@ func (o SecurityPolicyCloudArmorConfigPtrOutput) EnableMl() pulumi.BoolPtrOutput
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -34156,7 +34156,7 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -34244,7 +34244,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -38237,7 +38237,7 @@ type SubnetworkLogConfig struct {
 	FilterExpr *string `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling *float64 `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata *string `pulumi:"metadata"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
 	MetadataFields []string `pulumi:"metadataFields"`
@@ -38264,7 +38264,7 @@ type SubnetworkLogConfigArgs struct {
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
 	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
@@ -38368,7 +38368,7 @@ func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *float64 { return v.FlowSampling }).(pulumi.Float64PtrOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 func (o SubnetworkLogConfigOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.Metadata }).(pulumi.StringPtrOutput)
 }
@@ -38436,7 +38436,7 @@ func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -40736,6 +40736,7 @@ type VpnGatewayVpnGatewayInterface struct {
 	// The numeric ID of this VPN gateway interface.
 	Id *int `pulumi:"id"`
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+	// Not currently available in all Interconnect locations.
 	InterconnectAttachment *string `pulumi:"interconnectAttachment"`
 	// [Output Only] The external IP address for this VPN gateway interface.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -40757,6 +40758,7 @@ type VpnGatewayVpnGatewayInterfaceArgs struct {
 	// The numeric ID of this VPN gateway interface.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+	// Not currently available in all Interconnect locations.
 	InterconnectAttachment pulumi.StringPtrInput `pulumi:"interconnectAttachment"`
 	// [Output Only] The external IP address for this VPN gateway interface.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
@@ -40820,6 +40822,7 @@ func (o VpnGatewayVpnGatewayInterfaceOutput) Id() pulumi.IntPtrOutput {
 }
 
 // URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+// Not currently available in all Interconnect locations.
 func (o VpnGatewayVpnGatewayInterfaceOutput) InterconnectAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterface) *string { return v.InterconnectAttachment }).(pulumi.StringPtrOutput)
 }

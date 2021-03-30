@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
+// Creates a persistent regional disk in the specified project using the data included in the request.
 type Disk struct {
 	pulumi.CustomResourceState
 }
@@ -26,8 +26,8 @@ func NewDisk(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Disk
 	err := ctx.RegisterResource("google-cloud:compute/beta:Disk", name, args, &resource, opts...)
@@ -112,7 +112,7 @@ type diskArgs struct {
 	// Indicates how many IOPS must be provisioned for the disk.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -184,7 +184,7 @@ type diskArgs struct {
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
 	Users []string `pulumi:"users"`
 	// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Disk resource.
@@ -240,7 +240,7 @@ type DiskArgs struct {
 	// Indicates how many IOPS must be provisioned for the disk.
 	ProvisionedIops pulumi.StringPtrInput
 	// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
@@ -312,7 +312,7 @@ type DiskArgs struct {
 	// [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
 	Users pulumi.StringArrayInput
 	// [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (DiskArgs) ElementType() reflect.Type {

@@ -2609,6 +2609,10 @@ func (o AutoscalingPolicyPtrOutput) ScalingSchedules() pulumi.StringMapOutput {
 
 // CPU utilization policy.
 type AutoscalingPolicyCpuUtilization struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	//
+	// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod *string `pulumi:"predictiveMethod"`
 	// The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
 	//
 	// If the CPU level is below the target utilization, the autoscaler scales in the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.
@@ -2630,6 +2634,10 @@ type AutoscalingPolicyCpuUtilizationInput interface {
 
 // CPU utilization policy.
 type AutoscalingPolicyCpuUtilizationArgs struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	//
+	// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod pulumi.StringPtrInput `pulumi:"predictiveMethod"`
 	// The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
 	//
 	// If the CPU level is below the target utilization, the autoscaler scales in the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.
@@ -2716,6 +2724,13 @@ func (o AutoscalingPolicyCpuUtilizationOutput) ToAutoscalingPolicyCpuUtilization
 	}).(AutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+//
+// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o AutoscalingPolicyCpuUtilizationOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyCpuUtilization) *string { return v.PredictiveMethod }).(pulumi.StringPtrOutput)
+}
+
 // The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
 //
 // If the CPU level is below the target utilization, the autoscaler scales in the number of instances until it reaches the minimum number of instances you specified or until the average CPU of your instances reaches the target utilization.
@@ -2741,6 +2756,18 @@ func (o AutoscalingPolicyCpuUtilizationPtrOutput) ToAutoscalingPolicyCpuUtilizat
 
 func (o AutoscalingPolicyCpuUtilizationPtrOutput) Elem() AutoscalingPolicyCpuUtilizationOutput {
 	return o.ApplyT(func(v *AutoscalingPolicyCpuUtilization) AutoscalingPolicyCpuUtilization { return *v }).(AutoscalingPolicyCpuUtilizationOutput)
+}
+
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+//
+// * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o AutoscalingPolicyCpuUtilizationPtrOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingPolicyCpuUtilization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredictiveMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not specified, the default is 0.6.
@@ -3541,6 +3568,8 @@ type BackendBucketCdnPolicy struct {
 	NegativeCaching *bool `pulumi:"negativeCaching"`
 	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
 	NegativeCachingPolicy []BackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicy"`
+	// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+	RequestCoalescing *bool `pulumi:"requestCoalescing"`
 	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
 	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
@@ -3582,6 +3611,8 @@ type BackendBucketCdnPolicyArgs struct {
 	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
 	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
 	NegativeCachingPolicy BackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicy"`
+	// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+	RequestCoalescing pulumi.BoolPtrInput `pulumi:"requestCoalescing"`
 	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
 	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
@@ -3713,6 +3744,11 @@ func (o BackendBucketCdnPolicyOutput) NegativeCachingPolicy() BackendBucketCdnPo
 	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+func (o BackendBucketCdnPolicyOutput) RequestCoalescing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *bool { return v.RequestCoalescing }).(pulumi.BoolPtrOutput)
+}
+
 // Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
 func (o BackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
@@ -3820,6 +3856,16 @@ func (o BackendBucketCdnPolicyPtrOutput) NegativeCachingPolicy() BackendBucketCd
 		}
 		return v.NegativeCachingPolicy
 	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+func (o BackendBucketCdnPolicyPtrOutput) RequestCoalescing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestCoalescing
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
@@ -4085,6 +4131,8 @@ type BackendServiceCdnPolicy struct {
 	NegativeCaching *bool `pulumi:"negativeCaching"`
 	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
 	NegativeCachingPolicy []BackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicy"`
+	// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+	RequestCoalescing *bool `pulumi:"requestCoalescing"`
 	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
 	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
@@ -4128,6 +4176,8 @@ type BackendServiceCdnPolicyArgs struct {
 	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
 	// Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists.
 	NegativeCachingPolicy BackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicy"`
+	// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+	RequestCoalescing pulumi.BoolPtrInput `pulumi:"requestCoalescing"`
 	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
 	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
@@ -4264,6 +4314,11 @@ func (o BackendServiceCdnPolicyOutput) NegativeCachingPolicy() BackendServiceCdn
 	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+func (o BackendServiceCdnPolicyOutput) RequestCoalescing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *bool { return v.RequestCoalescing }).(pulumi.BoolPtrOutput)
+}
+
 // Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
 func (o BackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
@@ -4381,6 +4436,16 @@ func (o BackendServiceCdnPolicyPtrOutput) NegativeCachingPolicy() BackendService
 		}
 		return v.NegativeCachingPolicy
 	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+func (o BackendServiceCdnPolicyPtrOutput) RequestCoalescing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestCoalescing
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
@@ -7468,6 +7533,8 @@ func (o DisplayDevicePtrOutput) EnableDisplay() pulumi.BoolPtrOutput {
 }
 
 type DistributionPolicy struct {
+	// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
+	TargetShape *string `pulumi:"targetShape"`
 	// Zones where the regional managed instance group will create and manage its instances.
 	Zones []DistributionPolicyZoneConfiguration `pulumi:"zones"`
 }
@@ -7484,6 +7551,8 @@ type DistributionPolicyInput interface {
 }
 
 type DistributionPolicyArgs struct {
+	// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
+	TargetShape pulumi.StringPtrInput `pulumi:"targetShape"`
 	// Zones where the regional managed instance group will create and manage its instances.
 	Zones DistributionPolicyZoneConfigurationArrayInput `pulumi:"zones"`
 }
@@ -7565,6 +7634,11 @@ func (o DistributionPolicyOutput) ToDistributionPolicyPtrOutputWithContext(ctx c
 	}).(DistributionPolicyPtrOutput)
 }
 
+// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
+func (o DistributionPolicyOutput) TargetShape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DistributionPolicy) *string { return v.TargetShape }).(pulumi.StringPtrOutput)
+}
+
 // Zones where the regional managed instance group will create and manage its instances.
 func (o DistributionPolicyOutput) Zones() DistributionPolicyZoneConfigurationArrayOutput {
 	return o.ApplyT(func(v DistributionPolicy) []DistributionPolicyZoneConfiguration { return v.Zones }).(DistributionPolicyZoneConfigurationArrayOutput)
@@ -7586,6 +7660,16 @@ func (o DistributionPolicyPtrOutput) ToDistributionPolicyPtrOutputWithContext(ct
 
 func (o DistributionPolicyPtrOutput) Elem() DistributionPolicyOutput {
 	return o.ApplyT(func(v *DistributionPolicy) DistributionPolicy { return *v }).(DistributionPolicyOutput)
+}
+
+// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
+func (o DistributionPolicyPtrOutput) TargetShape() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetShape
+	}).(pulumi.StringPtrOutput)
 }
 
 // Zones where the regional managed instance group will create and manage its instances.
@@ -26271,7 +26355,7 @@ func (o SchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) SchedulingNo
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -26298,7 +26382,7 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -26364,7 +26448,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to preform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -28164,7 +28248,7 @@ type SubnetworkLogConfig struct {
 	FilterExpr *string `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling *float64 `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata *string `pulumi:"metadata"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
 	MetadataFields []string `pulumi:"metadataFields"`
@@ -28191,7 +28275,7 @@ type SubnetworkLogConfigArgs struct {
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
 	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
@@ -28295,7 +28379,7 @@ func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *float64 { return v.FlowSampling }).(pulumi.Float64PtrOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 func (o SubnetworkLogConfigOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.Metadata }).(pulumi.StringPtrOutput)
 }
@@ -28363,7 +28447,7 @@ func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -29343,6 +29427,7 @@ type VpnGatewayVpnGatewayInterface struct {
 	// The numeric ID of this VPN gateway interface.
 	Id *int `pulumi:"id"`
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+	// Not currently available in all Interconnect locations.
 	InterconnectAttachment *string `pulumi:"interconnectAttachment"`
 	// [Output Only] The external IP address for this VPN gateway interface.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -29364,6 +29449,7 @@ type VpnGatewayVpnGatewayInterfaceArgs struct {
 	// The numeric ID of this VPN gateway interface.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+	// Not currently available in all Interconnect locations.
 	InterconnectAttachment pulumi.StringPtrInput `pulumi:"interconnectAttachment"`
 	// [Output Only] The external IP address for this VPN gateway interface.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
@@ -29427,6 +29513,7 @@ func (o VpnGatewayVpnGatewayInterfaceOutput) Id() pulumi.IntPtrOutput {
 }
 
 // URL of the interconnect attachment resource. When the value of this field is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource.
+// Not currently available in all Interconnect locations.
 func (o VpnGatewayVpnGatewayInterfaceOutput) InterconnectAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterface) *string { return v.InterconnectAttachment }).(pulumi.StringPtrOutput)
 }

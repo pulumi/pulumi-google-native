@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a SslCertificate resource in the specified project and region using the data included in the request
+// Creates a SslCertificate resource in the specified project using the data included in the request.
 type SslCertificate struct {
 	pulumi.CustomResourceState
 }
@@ -25,9 +25,6 @@ func NewSslCertificate(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource SslCertificate
 	err := ctx.RegisterResource("google-cloud:compute/v1:SslCertificate", name, args, &resource, opts...)
@@ -82,7 +79,7 @@ type sslCertificateArgs struct {
 	// Project ID for this request.
 	Project string `pulumi:"project"`
 	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -122,7 +119,7 @@ type SslCertificateArgs struct {
 	// Project ID for this request.
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.

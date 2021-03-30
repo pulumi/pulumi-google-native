@@ -62,6 +62,8 @@ type clusterArgs struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType *string `pulumi:"defaultStorageType"`
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
 	Location *string `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
@@ -80,6 +82,8 @@ type ClusterArgs struct {
 	ClusterId pulumi.StringPtrInput
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType pulumi.StringPtrInput
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig EncryptionConfigPtrInput
 	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
 	Location pulumi.StringPtrInput
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.

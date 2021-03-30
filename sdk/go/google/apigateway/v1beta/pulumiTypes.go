@@ -247,6 +247,31 @@ func (i ApigatewayApiConfigGrpcServiceDefinitionArgs) ToApigatewayApiConfigGrpcS
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionOutput)
 }
 
+// ApigatewayApiConfigGrpcServiceDefinitionArrayInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionArray and ApigatewayApiConfigGrpcServiceDefinitionArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionArrayInput` via:
+//
+//          ApigatewayApiConfigGrpcServiceDefinitionArray{ ApigatewayApiConfigGrpcServiceDefinitionArgs{...} }
+type ApigatewayApiConfigGrpcServiceDefinitionArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigGrpcServiceDefinitionArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionArrayOutput
+	ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput
+}
+
+type ApigatewayApiConfigGrpcServiceDefinitionArray []ApigatewayApiConfigGrpcServiceDefinitionInput
+
+func (ApigatewayApiConfigGrpcServiceDefinitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigGrpcServiceDefinition)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionArray) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return i.ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionArray) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionArrayOutput)
+}
+
 // A gRPC service definition.
 type ApigatewayApiConfigGrpcServiceDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -270,6 +295,26 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) FileDescriptorSet() Apig
 // Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.
 func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) Source() ApigatewayApiConfigFileArrayOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigGrpcServiceDefinition) []ApigatewayApiConfigFile { return v.Source }).(ApigatewayApiConfigFileArrayOutput)
+}
+
+type ApigatewayApiConfigGrpcServiceDefinitionArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigGrpcServiceDefinition)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigGrpcServiceDefinitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigGrpcServiceDefinition {
+		return vs[0].([]ApigatewayApiConfigGrpcServiceDefinition)[vs[1].(int)]
+	}).(ApigatewayApiConfigGrpcServiceDefinitionOutput)
 }
 
 // An OpenAPI Specification Document describing an API.
@@ -307,6 +352,31 @@ func (i ApigatewayApiConfigOpenApiDocumentArgs) ToApigatewayApiConfigOpenApiDocu
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentOutput)
 }
 
+// ApigatewayApiConfigOpenApiDocumentArrayInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentArray and ApigatewayApiConfigOpenApiDocumentArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentArrayInput` via:
+//
+//          ApigatewayApiConfigOpenApiDocumentArray{ ApigatewayApiConfigOpenApiDocumentArgs{...} }
+type ApigatewayApiConfigOpenApiDocumentArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigOpenApiDocumentArrayOutput() ApigatewayApiConfigOpenApiDocumentArrayOutput
+	ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput
+}
+
+type ApigatewayApiConfigOpenApiDocumentArray []ApigatewayApiConfigOpenApiDocumentInput
+
+func (ApigatewayApiConfigOpenApiDocumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigOpenApiDocument)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentArray) ToApigatewayApiConfigOpenApiDocumentArrayOutput() ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return i.ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentArray) ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentArrayOutput)
+}
+
 // An OpenAPI Specification Document describing an API.
 type ApigatewayApiConfigOpenApiDocumentOutput struct{ *pulumi.OutputState }
 
@@ -325,6 +395,26 @@ func (o ApigatewayApiConfigOpenApiDocumentOutput) ToApigatewayApiConfigOpenApiDo
 // The OpenAPI Specification document file.
 func (o ApigatewayApiConfigOpenApiDocumentOutput) Document() ApigatewayApiConfigFilePtrOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigOpenApiDocument) *ApigatewayApiConfigFile { return v.Document }).(ApigatewayApiConfigFilePtrOutput)
+}
+
+type ApigatewayApiConfigOpenApiDocumentArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigOpenApiDocumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigOpenApiDocument)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToApigatewayApiConfigOpenApiDocumentArrayOutput() ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigOpenApiDocumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigOpenApiDocument {
+		return vs[0].([]ApigatewayApiConfigOpenApiDocument)[vs[1].(int)]
+	}).(ApigatewayApiConfigOpenApiDocumentOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -1023,6 +1113,47 @@ func (i ApigatewayGatewayConfigArgs) ToApigatewayGatewayConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayGatewayConfigOutput)
 }
 
+func (i ApigatewayGatewayConfigArgs) ToApigatewayGatewayConfigPtrOutput() ApigatewayGatewayConfigPtrOutput {
+	return i.ToApigatewayGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApigatewayGatewayConfigArgs) ToApigatewayGatewayConfigPtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayGatewayConfigOutput).ToApigatewayGatewayConfigPtrOutputWithContext(ctx)
+}
+
+// ApigatewayGatewayConfigPtrInput is an input type that accepts ApigatewayGatewayConfigArgs, ApigatewayGatewayConfigPtr and ApigatewayGatewayConfigPtrOutput values.
+// You can construct a concrete instance of `ApigatewayGatewayConfigPtrInput` via:
+//
+//          ApigatewayGatewayConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ApigatewayGatewayConfigPtrInput interface {
+	pulumi.Input
+
+	ToApigatewayGatewayConfigPtrOutput() ApigatewayGatewayConfigPtrOutput
+	ToApigatewayGatewayConfigPtrOutputWithContext(context.Context) ApigatewayGatewayConfigPtrOutput
+}
+
+type apigatewayGatewayConfigPtrType ApigatewayGatewayConfigArgs
+
+func ApigatewayGatewayConfigPtr(v *ApigatewayGatewayConfigArgs) ApigatewayGatewayConfigPtrInput {
+	return (*apigatewayGatewayConfigPtrType)(v)
+}
+
+func (*apigatewayGatewayConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApigatewayGatewayConfig)(nil)).Elem()
+}
+
+func (i *apigatewayGatewayConfigPtrType) ToApigatewayGatewayConfigPtrOutput() ApigatewayGatewayConfigPtrOutput {
+	return i.ToApigatewayGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *apigatewayGatewayConfigPtrType) ToApigatewayGatewayConfigPtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayGatewayConfigPtrOutput)
+}
+
 // Configuration settings for Gateways.
 type ApigatewayGatewayConfigOutput struct{ *pulumi.OutputState }
 
@@ -1038,9 +1169,47 @@ func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigOutputWithContex
 	return o
 }
 
+func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigPtrOutput() ApigatewayGatewayConfigPtrOutput {
+	return o.ToApigatewayGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigPtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigPtrOutput {
+	return o.ApplyT(func(v ApigatewayGatewayConfig) *ApigatewayGatewayConfig {
+		return &v
+	}).(ApigatewayGatewayConfigPtrOutput)
+}
+
 // Required. Backend settings that are applied to all backends of the Gateway.
 func (o ApigatewayGatewayConfigOutput) BackendConfig() ApigatewayBackendConfigPtrOutput {
 	return o.ApplyT(func(v ApigatewayGatewayConfig) *ApigatewayBackendConfig { return v.BackendConfig }).(ApigatewayBackendConfigPtrOutput)
+}
+
+type ApigatewayGatewayConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayGatewayConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApigatewayGatewayConfig)(nil)).Elem()
+}
+
+func (o ApigatewayGatewayConfigPtrOutput) ToApigatewayGatewayConfigPtrOutput() ApigatewayGatewayConfigPtrOutput {
+	return o
+}
+
+func (o ApigatewayGatewayConfigPtrOutput) ToApigatewayGatewayConfigPtrOutputWithContext(ctx context.Context) ApigatewayGatewayConfigPtrOutput {
+	return o
+}
+
+func (o ApigatewayGatewayConfigPtrOutput) Elem() ApigatewayGatewayConfigOutput {
+	return o.ApplyT(func(v *ApigatewayGatewayConfig) ApigatewayGatewayConfig { return *v }).(ApigatewayGatewayConfigOutput)
+}
+
+// Required. Backend settings that are applied to all backends of the Gateway.
+func (o ApigatewayGatewayConfigPtrOutput) BackendConfig() ApigatewayBackendConfigPtrOutput {
+	return o.ApplyT(func(v *ApigatewayGatewayConfig) *ApigatewayBackendConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BackendConfig
+	}).(ApigatewayBackendConfigPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -1239,7 +1408,9 @@ func init() {
 	pulumi.RegisterOutputType(ApigatewayApiConfigFilePtrOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigFileArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditConfigOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditLogConfigOutput{})
@@ -1251,6 +1422,7 @@ func init() {
 	pulumi.RegisterOutputType(ApigatewayExprOutput{})
 	pulumi.RegisterOutputType(ApigatewayExprPtrOutput{})
 	pulumi.RegisterOutputType(ApigatewayGatewayConfigOutput{})
+	pulumi.RegisterOutputType(ApigatewayGatewayConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApigatewayPolicyTypeOutput{})
 	pulumi.RegisterOutputType(ApigatewayPolicyTypePtrOutput{})
 }

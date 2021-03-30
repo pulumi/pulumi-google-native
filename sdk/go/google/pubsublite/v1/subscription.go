@@ -64,6 +64,8 @@ type subscriptionArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.
 	Parent string `pulumi:"parent"`
+	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+	SkipBacklog *bool `pulumi:"skipBacklog"`
 	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
@@ -78,6 +80,8 @@ type SubscriptionArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.
 	Parent pulumi.StringInput
+	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+	SkipBacklog pulumi.BoolPtrInput
 	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
 	SubscriptionId pulumi.StringPtrInput
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}

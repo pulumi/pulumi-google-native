@@ -9911,7 +9911,9 @@ func (o ShieldedNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 type StatusCondition struct {
-	// Machine-friendly representation of the condition
+	// Canonical code of the condition.
+	CanonicalCode *string `pulumi:"canonicalCode"`
+	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
 	Code *string `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message *string `pulumi:"message"`
@@ -9930,7 +9932,9 @@ type StatusConditionInput interface {
 
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 type StatusConditionArgs struct {
-	// Machine-friendly representation of the condition
+	// Canonical code of the condition.
+	CanonicalCode pulumi.StringPtrInput `pulumi:"canonicalCode"`
+	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
 	Code pulumi.StringPtrInput `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message pulumi.StringPtrInput `pulumi:"message"`
@@ -9988,7 +9992,12 @@ func (o StatusConditionOutput) ToStatusConditionOutputWithContext(ctx context.Co
 	return o
 }
 
-// Machine-friendly representation of the condition
+// Canonical code of the condition.
+func (o StatusConditionOutput) CanonicalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatusCondition) *string { return v.CanonicalCode }).(pulumi.StringPtrOutput)
+}
+
+// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
 func (o StatusConditionOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusCondition) *string { return v.Code }).(pulumi.StringPtrOutput)
 }

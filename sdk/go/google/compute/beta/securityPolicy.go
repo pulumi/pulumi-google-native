@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type SecurityPolicy struct {
 func NewSecurityPolicy(ctx *pulumi.Context,
 	name string, args *SecurityPolicyArgs, opts ...pulumi.ResourceOption) (*SecurityPolicy, error) {
 	if args == nil {
-		args = &SecurityPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
+	}
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("google-cloud:compute/beta:SecurityPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -81,8 +85,8 @@ type securityPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// [Output Only] The parent of the security policy.
 	Parent *string `pulumi:"parent"`
-	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-	ParentId *string `pulumi:"parentId"`
+	// Project ID for this request.
+	Project string `pulumi:"project"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -99,6 +103,8 @@ type securityPolicyArgs struct {
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type *string `pulumi:"type"`
+	// If true, the request will not be committed.
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a SecurityPolicy resource.
@@ -130,8 +136,8 @@ type SecurityPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// [Output Only] The parent of the security policy.
 	Parent pulumi.StringPtrInput
-	// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-	ParentId pulumi.StringPtrInput
+	// Project ID for this request.
+	Project pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
 	//
 	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
@@ -148,6 +154,8 @@ type SecurityPolicyArgs struct {
 	SelfLinkWithId pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type pulumi.StringPtrInput
+	// If true, the request will not be committed.
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (SecurityPolicyArgs) ElementType() reflect.Type {

@@ -2972,7 +2972,7 @@ type Settings struct {
 	StorageAutoResize *bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit *string `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+	// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
 	Tier *string `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -3035,7 +3035,7 @@ type SettingsArgs struct {
 	StorageAutoResize pulumi.BoolPtrInput `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit pulumi.StringPtrInput `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+	// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -3229,7 +3229,7 @@ func (o SettingsOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.StorageAutoResizeLimit }).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
 func (o SettingsOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -3477,7 +3477,7 @@ func (o SettingsPtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL instances).
+// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
 func (o SettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Settings) *string {
 		if v == nil {
