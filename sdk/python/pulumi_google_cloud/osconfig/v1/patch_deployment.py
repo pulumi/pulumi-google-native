@@ -23,9 +23,9 @@ class PatchDeployment(pulumi.CustomResource):
                  last_execute_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  one_time_schedule: Optional[pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  patch_config: Optional[pulumi.Input[pulumi.InputType['PatchConfigArgs']]] = None,
-                 patch_deployment_id: Optional[pulumi.Input[str]] = None,
+                 patch_deployments_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  recurring_schedule: Optional[pulumi.Input[pulumi.InputType['RecurringScheduleArgs']]] = None,
                  rollout: Optional[pulumi.Input[pulumi.InputType['PatchRolloutArgs']]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -44,9 +44,7 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] last_execute_time: Output only. The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
         :param pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']] one_time_schedule: Required. Schedule a one-time execution.
-        :param pulumi.Input[str] parent: Required. The project to apply this patch deployment to in the form `projects/*`.
         :param pulumi.Input[pulumi.InputType['PatchConfigArgs']] patch_config: Optional. Patch configuration that is applied.
-        :param pulumi.Input[str] patch_deployment_id: Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input[pulumi.InputType['RecurringScheduleArgs']] recurring_schedule: Required. Schedule recurring executions.
         :param pulumi.Input[pulumi.InputType['PatchRolloutArgs']] rollout: Optional. Rollout strategy of the patch job.
         :param pulumi.Input[str] update_time: Output only. Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -75,11 +73,13 @@ class PatchDeployment(pulumi.CustomResource):
             __props__['last_execute_time'] = last_execute_time
             __props__['name'] = name
             __props__['one_time_schedule'] = one_time_schedule
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['patch_config'] = patch_config
-            __props__['patch_deployment_id'] = patch_deployment_id
+            if patch_deployments_id is None and not opts.urn:
+                raise TypeError("Missing required property 'patch_deployments_id'")
+            __props__['patch_deployments_id'] = patch_deployments_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['recurring_schedule'] = recurring_schedule
             __props__['rollout'] = rollout
             __props__['update_time'] = update_time

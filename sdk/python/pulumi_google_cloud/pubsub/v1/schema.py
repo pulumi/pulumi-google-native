@@ -17,8 +17,8 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 schema_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 schemas_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -30,8 +30,6 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
         :param pulumi.Input[str] name: Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-        :param pulumi.Input[str] parent: Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
-        :param pulumi.Input[str] schema_id: The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
         :param pulumi.Input[str] type: The type of the schema definition.
         """
         if __name__ is not None:
@@ -53,10 +51,12 @@ class Schema(pulumi.CustomResource):
 
             __props__['definition'] = definition
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['schema_id'] = schema_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if schemas_id is None and not opts.urn:
+                raise TypeError("Missing required property 'schemas_id'")
+            __props__['schemas_id'] = schemas_id
             __props__['type'] = type
         super(Schema, __self__).__init__(
             'google-cloud:pubsub/v1:Schema',

@@ -16,8 +16,9 @@ class Company(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 companies_id: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[pulumi.InputType['CompanyArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -27,7 +28,6 @@ class Company(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CompanyArgs']] company: Required. The company to be created.
-        :param pulumi.Input[str] parent: Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -46,10 +46,13 @@ class Company(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if companies_id is None and not opts.urn:
+                raise TypeError("Missing required property 'companies_id'")
+            __props__['companies_id'] = companies_id
             __props__['company'] = company
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Company, __self__).__init__(
             'google-cloud:jobs/v3p1beta1:Company',
             resource_name,

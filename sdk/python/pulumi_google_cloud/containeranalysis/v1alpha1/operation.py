@@ -18,7 +18,7 @@ class Operation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  operation_id: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,7 +29,6 @@ class Operation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: The operation to create.
         :param pulumi.Input[str] operation_id: The ID to use for this operation.
-        :param pulumi.Input[str] parent: The project Id that this operation should be created under.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,9 +49,9 @@ class Operation(pulumi.CustomResource):
 
             __props__['operation'] = operation
             __props__['operation_id'] = operation_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Operation, __self__).__init__(
             'google-cloud:containeranalysis/v1alpha1:Operation',
             resource_name,

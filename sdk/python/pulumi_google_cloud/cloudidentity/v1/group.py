@@ -21,7 +21,7 @@ class Group(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 initial_group_config: Optional[pulumi.Input[str]] = None,
+                 groups_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -39,7 +39,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the `Group`.
         :param pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] group_key: Required. Immutable. The `EntityKey` of the `Group`.
-        :param pulumi.Input[str] initial_group_config: Optional. The initial configuration option for the `Group`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
         :param pulumi.Input[str] name: Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
         :param pulumi.Input[str] parent: Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
@@ -67,7 +66,9 @@ class Group(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['dynamic_group_metadata'] = dynamic_group_metadata
             __props__['group_key'] = group_key
-            __props__['initial_group_config'] = initial_group_config
+            if groups_id is None and not opts.urn:
+                raise TypeError("Missing required property 'groups_id'")
+            __props__['groups_id'] = groups_id
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['parent'] = parent

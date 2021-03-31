@@ -20,8 +20,10 @@ class Topic(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  schema_settings: Optional[pulumi.Input[pulumi.InputType['SchemaSettingsArgs']]] = None,
+                 topics_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -57,11 +59,15 @@ class Topic(pulumi.CustomResource):
             __props__['kms_key_name'] = kms_key_name
             __props__['labels'] = labels
             __props__['message_storage_policy'] = message_storage_policy
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['satisfies_pzs'] = satisfies_pzs
             __props__['schema_settings'] = schema_settings
+            if topics_id is None and not opts.urn:
+                raise TypeError("Missing required property 'topics_id'")
+            __props__['topics_id'] = topics_id
         super(Topic, __self__).__init__(
             'google-cloud:pubsub/v1:Topic',
             resource_name,

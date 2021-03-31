@@ -20,13 +20,13 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 instance_group: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -51,13 +51,7 @@ class InstanceGroup(pulumi.CustomResource):
                
                Named ports apply to all instances in this instance group.
         :param pulumi.Input[str] network: [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the instance group is located (for regional resources).
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] The URL for this instance group. The server generates this URL.
         :param pulumi.Input[int] size: [Output Only] The total number of instances in the instance group.
         :param pulumi.Input[str] subnetwork: [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
@@ -84,6 +78,9 @@ class InstanceGroup(pulumi.CustomResource):
             __props__['description'] = description
             __props__['fingerprint'] = fingerprint
             __props__['id'] = id
+            if instance_group is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_group'")
+            __props__['instance_group'] = instance_group
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['named_ports'] = named_ports
@@ -92,7 +89,6 @@ class InstanceGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['size'] = size
             __props__['subnetwork'] = subnetwork

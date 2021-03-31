@@ -3,10 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_datalabeling_v1beta1_annotation_spec_set import *
-from .google_cloud_datalabeling_v1beta1_dataset import *
-from .google_cloud_datalabeling_v1beta1_evaluation_job import *
-from .google_longrunning_operation import *
+from .annotation_spec_set import *
+from .dataset import *
+from .dataset_annotated_dataset_feedback_thread_feedback_message import *
+from .evaluation_job import *
+from .instruction import *
 from ._inputs import *
 
 def _register_module():
@@ -21,14 +22,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1AnnotationSpecSet":
-                return GoogleCloudDatalabelingV1beta1AnnotationSpecSet(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1Dataset":
-                return GoogleCloudDatalabelingV1beta1Dataset(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1EvaluationJob":
-                return GoogleCloudDatalabelingV1beta1EvaluationJob(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datalabeling/v1beta1:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:datalabeling/v1beta1:AnnotationSpecSet":
+                return AnnotationSpecSet(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datalabeling/v1beta1:Dataset":
+                return Dataset(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
+                return DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datalabeling/v1beta1:EvaluationJob":
+                return EvaluationJob(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datalabeling/v1beta1:Instruction":
+                return Instruction(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

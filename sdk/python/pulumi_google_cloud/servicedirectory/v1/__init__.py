@@ -3,10 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .endpoint import *
 from .namespace import *
-from .policy import *
-from .service import *
+from .namespace_iam_policy import *
+from .namespace_service import *
+from .namespace_service_endpoint import *
+from .namespace_service_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,14 +22,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:servicedirectory/v1:Endpoint":
-                return Endpoint(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:servicedirectory/v1:Namespace":
+            if typ == "google-cloud:servicedirectory/v1:Namespace":
                 return Namespace(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:servicedirectory/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:servicedirectory/v1:Service":
-                return Service(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:servicedirectory/v1:NamespaceIamPolicy":
+                return NamespaceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:servicedirectory/v1:NamespaceService":
+                return NamespaceService(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:servicedirectory/v1:NamespaceServiceEndpoint":
+                return NamespaceServiceEndpoint(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:servicedirectory/v1:NamespaceServiceIamPolicy":
+                return NamespaceServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

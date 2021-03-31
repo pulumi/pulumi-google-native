@@ -19,9 +19,9 @@ class Secret(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
-                 secret_id: Optional[pulumi.Input[str]] = None,
+                 secrets_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,9 +33,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time at which the Secret was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
         :param pulumi.Input[str] name: Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
-        :param pulumi.Input[str] parent: Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
         :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
-        :param pulumi.Input[str] secret_id: Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,11 +55,13 @@ class Secret(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['labels'] = labels
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['replication'] = replication
-            __props__['secret_id'] = secret_id
+            if secrets_id is None and not opts.urn:
+                raise TypeError("Missing required property 'secrets_id'")
+            __props__['secrets_id'] = secrets_id
         super(Secret, __self__).__init__(
             'google-cloud:secretmanager/v1beta1:Secret',
             resource_name,

@@ -22,12 +22,14 @@ class Job(pulumi.CustomResource):
                  failure_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FailureDetailArgs']]]]] = None,
                  failure_reason: Optional[pulumi.Input[str]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
+                 jobs_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_uri: Optional[pulumi.Input[pulumi.InputType['OriginUriArgs']]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  progress: Optional[pulumi.Input[pulumi.InputType['ProgressArgs']]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
@@ -49,7 +51,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
         :param pulumi.Input[pulumi.InputType['OriginUriArgs']] origin_uri: Output only. The origin URI. *Note*: This feature is not yet available.
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
-        :param pulumi.Input[str] parent: Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
         :param pulumi.Input[int] priority: Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
         :param pulumi.Input[pulumi.InputType['ProgressArgs']] progress: Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
         :param pulumi.Input[str] start_time: Output only. The time the transcoding started.
@@ -80,14 +81,20 @@ class Job(pulumi.CustomResource):
             __props__['failure_details'] = failure_details
             __props__['failure_reason'] = failure_reason
             __props__['input_uri'] = input_uri
+            if jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'jobs_id'")
+            __props__['jobs_id'] = jobs_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             __props__['origin_uri'] = origin_uri
             __props__['output_uri'] = output_uri
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['priority'] = priority
             __props__['progress'] = progress
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['start_time'] = start_time
             __props__['state'] = state
             __props__['template_id'] = template_id

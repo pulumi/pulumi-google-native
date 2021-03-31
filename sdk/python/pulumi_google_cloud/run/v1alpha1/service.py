@@ -18,8 +18,10 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 services_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
                  __props__=None,
@@ -33,7 +35,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] api_version: The API version for this call such as "serving.knative.dev/v1alpha1".
         :param pulumi.Input[str] kind: The kind of resource, in this case "Service".
         :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations.
-        :param pulumi.Input[str] parent: The project ID or project number in which this service should be created.
         :param pulumi.Input[pulumi.InputType['ServiceSpecArgs']] spec: Spec holds the desired state of the Service (from the client).
         :param pulumi.Input[pulumi.InputType['ServiceStatusArgs']] status: Status communicates the observed state of the Service (from the controller).
         """
@@ -56,10 +57,16 @@ class Service(pulumi.CustomResource):
 
             __props__['api_version'] = api_version
             __props__['kind'] = kind
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['metadata'] = metadata
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if services_id is None and not opts.urn:
+                raise TypeError("Missing required property 'services_id'")
+            __props__['services_id'] = services_id
             __props__['spec'] = spec
             __props__['status'] = status
         super(Service, __self__).__init__(

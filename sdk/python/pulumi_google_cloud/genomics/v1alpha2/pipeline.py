@@ -63,6 +63,8 @@ class Pipeline(pulumi.CustomResource):
             __props__['input_parameters'] = input_parameters
             __props__['name'] = name
             __props__['output_parameters'] = output_parameters
+            if pipeline_id is None and not opts.urn:
+                raise TypeError("Missing required property 'pipeline_id'")
             __props__['pipeline_id'] = pipeline_id
             __props__['project_id'] = project_id
             __props__['resources'] = resources

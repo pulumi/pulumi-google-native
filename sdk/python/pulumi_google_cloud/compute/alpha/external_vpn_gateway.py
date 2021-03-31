@@ -18,6 +18,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -26,7 +27,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -46,13 +46,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                To see the latest fingerprint, make a get() request to retrieve an ExternalVpnGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] redundancy_type: Indicates the user-supplied redundancy type of this external VPN gateway.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         if __name__ is not None:
@@ -74,6 +68,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
+            if external_vpn_gateway is None and not opts.urn:
+                raise TypeError("Missing required property 'external_vpn_gateway'")
+            __props__['external_vpn_gateway'] = external_vpn_gateway
             __props__['id'] = id
             __props__['interfaces'] = interfaces
             __props__['kind'] = kind
@@ -84,7 +81,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['redundancy_type'] = redundancy_type
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
         super(ExternalVpnGateway, __self__).__init__(
             'google-cloud:compute/alpha:ExternalVpnGateway',

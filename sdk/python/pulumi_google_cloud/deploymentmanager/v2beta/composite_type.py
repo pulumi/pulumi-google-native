@@ -16,6 +16,7 @@ class CompositeType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 composite_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  insert_time: Optional[pulumi.Input[str]] = None,
@@ -39,7 +40,6 @@ class CompositeType(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]] labels: Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
         :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: Output only. The Operation that most recently ran, or is currently running, on this composite type.
-        :param pulumi.Input[str] project: The project ID for this request.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['TemplateContentsArgs']] template_contents: Files for the template type.
         """
@@ -60,6 +60,9 @@ class CompositeType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if composite_type is None and not opts.urn:
+                raise TypeError("Missing required property 'composite_type'")
+            __props__['composite_type'] = composite_type
             __props__['description'] = description
             __props__['id'] = id
             __props__['insert_time'] = insert_time

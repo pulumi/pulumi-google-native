@@ -23,12 +23,13 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  is_internal: Optional[pulumi.Input[bool]] = None,
                  monitored_resource: Optional[pulumi.Input[pulumi.InputType['MonitoredResourceArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
+                 uptime_check_configs_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,7 +45,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] is_internal: If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
         :param pulumi.Input[pulumi.InputType['MonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
         :param pulumi.Input[str] name: A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
-        :param pulumi.Input[str] parent: Required. The project in which to create the Uptime check. The format is: projects/[PROJECT_ID_OR_NUMBER] 
         :param pulumi.Input[str] period: How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         :param pulumi.Input[pulumi.InputType['ResourceGroupArgs']] resource_group: The group resource associated with the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
@@ -75,14 +75,17 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__['is_internal'] = is_internal
             __props__['monitored_resource'] = monitored_resource
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['period'] = period
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['resource_group'] = resource_group
             __props__['selected_regions'] = selected_regions
             __props__['tcp_check'] = tcp_check
             __props__['timeout'] = timeout
+            if uptime_check_configs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'uptime_check_configs_id'")
+            __props__['uptime_check_configs_id'] = uptime_check_configs_id
         super(UptimeCheckConfig, __self__).__init__(
             'google-cloud:monitoring/v3:UptimeCheckConfig',
             resource_name,

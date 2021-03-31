@@ -19,11 +19,11 @@ class InstanceTemplate(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
@@ -40,13 +40,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: [Output Only] A unique identifier for this instance template. The server defines this identifier.
         :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[pulumi.InputType['InstancePropertiesArgs']] properties: The instance properties for this instance template.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] The URL for this instance template. The server defines this URL.
         :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
                - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
@@ -73,13 +67,15 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
             __props__['id'] = id
+            if instance_template is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_template'")
+            __props__['instance_template'] = instance_template
             __props__['kind'] = kind
             __props__['name'] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['properties'] = properties
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['source_instance'] = source_instance
             __props__['source_instance_params'] = source_instance_params

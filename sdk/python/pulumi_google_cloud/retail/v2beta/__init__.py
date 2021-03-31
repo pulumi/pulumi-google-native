@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_retail_v2beta_product import *
+from .catalog_branch_product import *
 from ._inputs import *
 
 def _register_module():
@@ -18,8 +18,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:retail/v2beta:GoogleCloudRetailV2betaProduct":
-                return GoogleCloudRetailV2betaProduct(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:retail/v2beta:CatalogBranchProduct":
+                return CatalogBranchProduct(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

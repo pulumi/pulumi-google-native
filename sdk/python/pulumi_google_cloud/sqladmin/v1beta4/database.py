@@ -18,6 +18,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,9 @@ class Database(pulumi.CustomResource):
 
             __props__['charset'] = charset
             __props__['collation'] = collation
+            if database is None and not opts.urn:
+                raise TypeError("Missing required property 'database'")
+            __props__['database'] = database
             __props__['etag'] = etag
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

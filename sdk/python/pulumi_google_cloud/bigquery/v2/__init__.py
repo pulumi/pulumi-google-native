@@ -5,9 +5,10 @@
 # Export this package's modules as members:
 from .dataset import *
 from .job import *
-from .policy import *
 from .routine import *
+from .row_access_policy_iam_policy import *
 from .table import *
+from .table_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -26,12 +27,14 @@ def _register_module():
                 return Dataset(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:bigquery/v2:Job":
                 return Job(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:bigquery/v2:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:bigquery/v2:Routine":
                 return Routine(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:bigquery/v2:RowAccessPolicyIamPolicy":
+                return RowAccessPolicyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:bigquery/v2:Table":
                 return Table(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:bigquery/v2:TableIamPolicy":
+                return TableIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

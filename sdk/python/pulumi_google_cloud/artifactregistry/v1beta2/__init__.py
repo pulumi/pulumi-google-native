@@ -3,9 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .policy import *
 from .repository import *
-from .tag import *
+from .repository_iam_policy import *
+from .repository_package_tag import *
 from ._inputs import *
 
 def _register_module():
@@ -20,12 +20,12 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:artifactregistry/v1beta2:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:artifactregistry/v1beta2:Repository":
+            if typ == "google-cloud:artifactregistry/v1beta2:Repository":
                 return Repository(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:artifactregistry/v1beta2:Tag":
-                return Tag(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:artifactregistry/v1beta2:RepositoryIamPolicy":
+                return RepositoryIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:artifactregistry/v1beta2:RepositoryPackageTag":
+                return RepositoryPackageTag(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

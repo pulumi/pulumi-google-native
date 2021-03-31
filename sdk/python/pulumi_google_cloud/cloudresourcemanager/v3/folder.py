@@ -19,6 +19,7 @@ class Folder(pulumi.CustomResource):
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 folders_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,9 @@ class Folder(pulumi.CustomResource):
             __props__['delete_time'] = delete_time
             __props__['display_name'] = display_name
             __props__['etag'] = etag
+            if folders_id is None and not opts.urn:
+                raise TypeError("Missing required property 'folders_id'")
+            __props__['folders_id'] = folders_id
             __props__['name'] = name
             __props__['parent'] = parent
             __props__['state'] = state

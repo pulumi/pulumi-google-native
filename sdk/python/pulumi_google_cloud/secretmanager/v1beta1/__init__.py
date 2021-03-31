@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .policy import *
 from .secret import *
+from .secret_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -19,10 +19,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:secretmanager/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:secretmanager/v1beta1:Secret":
+            if typ == "google-cloud:secretmanager/v1beta1:Secret":
                 return Secret(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:secretmanager/v1beta1:SecretIamPolicy":
+                return SecretIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

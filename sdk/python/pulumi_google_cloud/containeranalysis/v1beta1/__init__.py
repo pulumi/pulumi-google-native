@@ -4,8 +4,9 @@
 
 # Export this package's modules as members:
 from .note import *
+from .note_iam_policy import *
 from .occurrence import *
-from .policy import *
+from .occurrence_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -22,10 +23,12 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:containeranalysis/v1beta1:Note":
                 return Note(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:containeranalysis/v1beta1:NoteIamPolicy":
+                return NoteIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:containeranalysis/v1beta1:Occurrence":
                 return Occurrence(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:containeranalysis/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:containeranalysis/v1beta1:OccurrenceIamPolicy":
+                return OccurrenceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -5,11 +5,13 @@
 # Export this package's modules as members:
 from .bucket import *
 from .bucket_access_control import *
+from .bucket_iam_policy import *
 from .bucket_object import *
+from .default_object_access_control import *
 from .hmac_key import *
 from .notification import *
 from .object_access_control import *
-from .policy import *
+from .object_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -28,16 +30,20 @@ def _register_module():
                 return Bucket(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:storage/v1:BucketAccessControl":
                 return BucketAccessControl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:storage/v1:BucketIamPolicy":
+                return BucketIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:storage/v1:BucketObject":
                 return BucketObject(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:storage/v1:DefaultObjectAccessControl":
+                return DefaultObjectAccessControl(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:storage/v1:HmacKey":
                 return HmacKey(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:storage/v1:Notification":
                 return Notification(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:storage/v1:ObjectAccessControl":
                 return ObjectAccessControl(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:storage/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:storage/v1:ObjectIamPolicy":
+                return ObjectIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

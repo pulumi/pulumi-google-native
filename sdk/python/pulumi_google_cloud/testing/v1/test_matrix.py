@@ -23,7 +23,6 @@ class TestMatrix(pulumi.CustomResource):
                  invalid_matrix_details: Optional[pulumi.Input[str]] = None,
                  outcome_summary: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
@@ -45,7 +44,6 @@ class TestMatrix(pulumi.CustomResource):
         :param pulumi.Input[str] invalid_matrix_details: Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
         :param pulumi.Input[str] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         :param pulumi.Input[str] project_id: The cloud project that owns the test matrix.
-        :param pulumi.Input[str] request_id: A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
         :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Required. Where the results for the matrix are written.
         :param pulumi.Input[str] state: Output only. Indicates the current progress of the test matrix.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]] test_executions: Output only. The list of test executions that the service creates for this matrix.
@@ -79,7 +77,6 @@ class TestMatrix(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
-            __props__['request_id'] = request_id
             __props__['result_storage'] = result_storage
             __props__['state'] = state
             __props__['test_executions'] = test_executions

@@ -18,7 +18,6 @@ class CertificateAuthority(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_urls: Optional[pulumi.Input[pulumi.InputType['AccessUrlsArgs']]] = None,
                  ca_certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]]]] = None,
-                 certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityPolicyArgs']]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -28,10 +27,10 @@ class CertificateAuthority(pulumi.CustomResource):
                  key_spec: Optional[pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['SubordinateConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -47,7 +46,6 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AccessUrlsArgs']] access_urls: Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]]] ca_certificate_descriptions: Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
-        :param pulumi.Input[str] certificate_authority_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         :param pulumi.Input[pulumi.InputType['CertificateAuthorityPolicyArgs']] certificate_policy: Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateAuthority was created.
@@ -58,9 +56,7 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input[str] name: Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
-        :param pulumi.Input[str] parent: Required. The resource name of the location associated with the CertificateAuthorities, in the format `projects/*/locations/*`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
-        :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] state: Output only. The State for this CertificateAuthority.
         :param pulumi.Input[pulumi.InputType['SubordinateConfigArgs']] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
         :param pulumi.Input[str] tier: Required. Immutable. The Tier of this CertificateAuthority.
@@ -86,7 +82,6 @@ class CertificateAuthority(pulumi.CustomResource):
 
             __props__['access_urls'] = access_urls
             __props__['ca_certificate_descriptions'] = ca_certificate_descriptions
-            __props__['certificate_authority_id'] = certificate_authority_id
             __props__['certificate_policy'] = certificate_policy
             __props__['config'] = config
             __props__['create_time'] = create_time
@@ -96,12 +91,14 @@ class CertificateAuthority(pulumi.CustomResource):
             __props__['key_spec'] = key_spec
             __props__['labels'] = labels
             __props__['lifetime'] = lifetime
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['pem_ca_certificates'] = pem_ca_certificates
-            __props__['request_id'] = request_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['state'] = state
             __props__['subordinate_config'] = subordinate_config
             __props__['tier'] = tier

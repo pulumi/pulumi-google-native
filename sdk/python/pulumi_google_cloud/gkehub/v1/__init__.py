@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .membership import *
-from .policy import *
+from .membership_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:gkehub/v1:Membership":
                 return Membership(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:gkehub/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:gkehub/v1:MembershipIamPolicy":
+                return MembershipIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

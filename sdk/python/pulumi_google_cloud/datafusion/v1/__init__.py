@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .instance import *
-from .policy import *
+from .instance_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:datafusion/v1:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datafusion/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datafusion/v1:InstanceIamPolicy":
+                return InstanceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

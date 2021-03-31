@@ -27,7 +27,9 @@ __all__ = [
     'GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs',
     'GoogleCloudDatalabelingV1beta1InputConfigArgs',
     'GoogleCloudDatalabelingV1beta1InstructionArgs',
+    'GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs',
     'GoogleCloudDatalabelingV1beta1PdfInstructionArgs',
+    'GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs',
     'GoogleCloudDatalabelingV1beta1SentimentConfigArgs',
     'GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs',
     'GoogleCloudDatalabelingV1beta1TextMetadataArgs',
@@ -1391,6 +1393,15 @@ class GoogleCloudDatalabelingV1beta1InstructionArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs:
+    def __init__(__self__):
+        """
+        Metadata describing the feedback from the operator.
+        """
+        pass
+
+
+@pulumi.input_type
 class GoogleCloudDatalabelingV1beta1PdfInstructionArgs:
     def __init__(__self__, *,
                  gcs_file_uri: Optional[pulumi.Input[str]] = None):
@@ -1412,6 +1423,15 @@ class GoogleCloudDatalabelingV1beta1PdfInstructionArgs:
     @gcs_file_uri.setter
     def gcs_file_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gcs_file_uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs:
+    def __init__(__self__):
+        """
+        Metadata describing the feedback from the labeling task requester.
+        """
+        pass
 
 
 @pulumi.input_type

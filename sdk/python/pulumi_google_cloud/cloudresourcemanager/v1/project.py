@@ -61,6 +61,8 @@ class Project(pulumi.CustomResource):
             __props__['lifecycle_state'] = lifecycle_state
             __props__['name'] = name
             __props__['parent'] = parent
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['project_number'] = project_number
         super(Project, __self__).__init__(

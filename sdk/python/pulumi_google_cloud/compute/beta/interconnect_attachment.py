@@ -29,6 +29,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -42,12 +43,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                  private_interconnect_info: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInfoArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
@@ -104,13 +103,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] partner_asn: Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
         :param pulumi.Input[pulumi.InputType['InterconnectAttachmentPartnerMetadataArgs']] partner_metadata: Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         :param pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInfoArgs']] private_interconnect_info: [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] router: URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] state: [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
@@ -124,7 +117,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                - DEDICATED: an attachment to a Dedicated Interconnect. 
                - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
                - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
-        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
         if __name__ is not None:
@@ -157,6 +149,9 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__['google_reference_id'] = google_reference_id
             __props__['id'] = id
             __props__['interconnect'] = interconnect
+            if interconnect_attachment is None and not opts.urn:
+                raise TypeError("Missing required property 'interconnect_attachment'")
+            __props__['interconnect_attachment'] = interconnect_attachment
             __props__['ipsec_internal_addresses'] = ipsec_internal_addresses
             __props__['kind'] = kind
             __props__['label_fingerprint'] = label_fingerprint
@@ -174,12 +169,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['router'] = router
             __props__['self_link'] = self_link
             __props__['state'] = state
             __props__['type'] = type
-            __props__['validate_only'] = validate_only
             __props__['vlan_tag8021q'] = vlan_tag8021q
         super(InterconnectAttachment, __self__).__init__(
             'google-cloud:compute/beta:InterconnectAttachment',

@@ -18,7 +18,8 @@ class TraceSink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_config: Optional[pulumi.Input[pulumi.InputType['OutputConfigArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 trace_sinks_id: Optional[pulumi.Input[str]] = None,
                  writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -30,7 +31,6 @@ class TraceSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Required. The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
         :param pulumi.Input[pulumi.InputType['OutputConfigArgs']] output_config: Required. The export destination.
-        :param pulumi.Input[str] parent: Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`.
         :param pulumi.Input[str] writer_identity: Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and write data this account will need the dataEditor role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"
         """
         if __name__ is not None:
@@ -52,9 +52,12 @@ class TraceSink(pulumi.CustomResource):
 
             __props__['name'] = name
             __props__['output_config'] = output_config
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if trace_sinks_id is None and not opts.urn:
+                raise TypeError("Missing required property 'trace_sinks_id'")
+            __props__['trace_sinks_id'] = trace_sinks_id
             __props__['writer_identity'] = writer_identity
         super(TraceSink, __self__).__init__(
             'google-cloud:cloudtrace/v2beta1:TraceSink',

@@ -25,9 +25,11 @@ class Subscription(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input[pulumi.InputType['PushConfigArgs']]] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
                  retry_policy: Optional[pulumi.Input[pulumi.InputType['RetryPolicyArgs']]] = None,
+                 subscriptions_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -76,12 +78,16 @@ class Subscription(pulumi.CustomResource):
             __props__['filter'] = filter
             __props__['labels'] = labels
             __props__['message_retention_duration'] = message_retention_duration
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['push_config'] = push_config
             __props__['retain_acked_messages'] = retain_acked_messages
             __props__['retry_policy'] = retry_policy
+            if subscriptions_id is None and not opts.urn:
+                raise TypeError("Missing required property 'subscriptions_id'")
+            __props__['subscriptions_id'] = subscriptions_id
             __props__['topic'] = topic
         super(Subscription, __self__).__init__(
             'google-cloud:pubsub/v1:Subscription',

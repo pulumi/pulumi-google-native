@@ -17,9 +17,10 @@ class JobTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
-                 job_template_id: Optional[pulumi.Input[str]] = None,
+                 job_templates_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,9 +30,7 @@ class JobTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this template.
-        :param pulumi.Input[str] job_template_id: Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-        :param pulumi.Input[str] parent: Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,11 +50,16 @@ class JobTemplate(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['config'] = config
-            __props__['job_template_id'] = job_template_id
+            if job_templates_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_templates_id'")
+            __props__['job_templates_id'] = job_templates_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(JobTemplate, __self__).__init__(
             'google-cloud:transcoder/v1beta1:JobTemplate',
             resource_name,

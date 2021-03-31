@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .cluster import *
-from .node_pool import *
+from .cluster_node_pool import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:container/v1beta1:Cluster":
                 return Cluster(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:container/v1beta1:NodePool":
-                return NodePool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:container/v1beta1:ClusterNodePool":
+                return ClusterNodePool(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

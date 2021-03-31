@@ -4,7 +4,8 @@
 
 # Export this package's modules as members:
 from .domain import *
-from .policy import *
+from .domain_iam_policy import *
+from .peering_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +22,10 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:managedidentities/v1alpha1:Domain":
                 return Domain(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:managedidentities/v1alpha1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:managedidentities/v1alpha1:DomainIamPolicy":
+                return DomainIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:managedidentities/v1alpha1:PeeringIamPolicy":
+                return PeeringIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

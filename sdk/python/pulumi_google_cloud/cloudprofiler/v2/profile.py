@@ -17,8 +17,8 @@ class Profile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  profile_type: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,7 +28,6 @@ class Profile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Deployment details.
-        :param pulumi.Input[str] parent: Parent project to create the profile in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profile_type: One or more profile types that the agent is capable of providing.
         """
         if __name__ is not None:
@@ -49,10 +48,10 @@ class Profile(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['deployment'] = deployment
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['profile_type'] = profile_type
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Profile, __self__).__init__(
             'google-cloud:cloudprofiler/v2:Profile',
             resource_name,

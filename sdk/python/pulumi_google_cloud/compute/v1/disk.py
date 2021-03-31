@@ -18,6 +18,7 @@ class Disk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -36,7 +37,6 @@ class Disk(pulumi.CustomResource):
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -86,15 +86,9 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] options: Internal use only.
         :param pulumi.Input[str] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
@@ -163,6 +157,9 @@ class Disk(pulumi.CustomResource):
 
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
+            if disk is None and not opts.urn:
+                raise TypeError("Missing required property 'disk'")
+            __props__['disk'] = disk
             __props__['disk_encryption_key'] = disk_encryption_key
             __props__['guest_os_features'] = guest_os_features
             __props__['id'] = id
@@ -183,7 +180,6 @@ class Disk(pulumi.CustomResource):
             __props__['provisioned_iops'] = provisioned_iops
             __props__['region'] = region
             __props__['replica_zones'] = replica_zones
-            __props__['request_id'] = request_id
             __props__['resource_policies'] = resource_policies
             __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link

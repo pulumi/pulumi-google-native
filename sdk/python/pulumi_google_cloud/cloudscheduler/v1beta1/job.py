@@ -20,10 +20,12 @@ class Job(pulumi.CustomResource):
                  attempt_deadline: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
+                 jobs_id: Optional[pulumi.Input[str]] = None,
                  last_attempt_time: Optional[pulumi.Input[str]] = None,
                  legacy_app_engine_cron: Optional[pulumi.Input[bool]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  pubsub_target: Optional[pulumi.Input[pulumi.InputType['PubsubTargetArgs']]] = None,
                  retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
@@ -47,7 +49,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] last_attempt_time: Output only. The time the last job attempt started.
         :param pulumi.Input[bool] legacy_app_engine_cron: Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-        :param pulumi.Input[str] parent: Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
         :param pulumi.Input[pulumi.InputType['PubsubTargetArgs']] pubsub_target: Pub/Sub target.
         :param pulumi.Input[pulumi.InputType['RetryConfigArgs']] retry_config: Settings that determine the retry behavior.
         :param pulumi.Input[str] schedule: Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
@@ -78,12 +79,18 @@ class Job(pulumi.CustomResource):
             __props__['attempt_deadline'] = attempt_deadline
             __props__['description'] = description
             __props__['http_target'] = http_target
+            if jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'jobs_id'")
+            __props__['jobs_id'] = jobs_id
             __props__['last_attempt_time'] = last_attempt_time
             __props__['legacy_app_engine_cron'] = legacy_app_engine_cron
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['pubsub_target'] = pubsub_target
             __props__['retry_config'] = retry_config
             __props__['schedule'] = schedule

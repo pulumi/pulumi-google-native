@@ -17,6 +17,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device: Optional[pulumi.Input[pulumi.InputType['DeviceArgs']]] = None,
+                 devices_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -45,6 +46,9 @@ class Device(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['device'] = device
+            if devices_id is None and not opts.urn:
+                raise TypeError("Missing required property 'devices_id'")
+            __props__['devices_id'] = devices_id
         super(Device, __self__).__init__(
             'google-cloud:cloudidentity/v1beta1:Device',
             resource_name,

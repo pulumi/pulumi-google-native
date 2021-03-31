@@ -26,6 +26,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 instance_group_manager: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -33,7 +34,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -73,13 +73,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] The URL for this managed instance group. The server defines this URL.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -126,6 +120,9 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['fingerprint'] = fingerprint
             __props__['id'] = id
             __props__['instance_group'] = instance_group
+            if instance_group_manager is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_group_manager'")
+            __props__['instance_group_manager'] = instance_group_manager
             __props__['instance_lifecycle_policy'] = instance_lifecycle_policy
             __props__['instance_template'] = instance_template
             __props__['kind'] = kind
@@ -135,7 +132,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['service_account'] = service_account

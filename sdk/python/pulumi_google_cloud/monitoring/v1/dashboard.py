@@ -17,12 +17,13 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
+                 dashboards_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
                  mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -38,7 +39,6 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GridLayoutArgs']] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
         :param pulumi.Input[pulumi.InputType['MosaicLayoutArgs']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
-        :param pulumi.Input[str] parent: Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
         :param pulumi.Input[pulumi.InputType['RowLayoutArgs']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
         if __name__ is not None:
@@ -59,14 +59,17 @@ class Dashboard(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['column_layout'] = column_layout
+            if dashboards_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dashboards_id'")
+            __props__['dashboards_id'] = dashboards_id
             __props__['display_name'] = display_name
             __props__['etag'] = etag
             __props__['grid_layout'] = grid_layout
             __props__['mosaic_layout'] = mosaic_layout
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['row_layout'] = row_layout
         super(Dashboard, __self__).__init__(
             'google-cloud:monitoring/v1:Dashboard',

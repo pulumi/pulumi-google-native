@@ -30,6 +30,7 @@ class Instance(pulumi.CustomResource):
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
                  instance_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -47,7 +48,6 @@ class Instance(pulumi.CustomResource):
                  preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_status: Optional[pulumi.Input[pulumi.InputType['ResourceStatusArgs']]] = None,
@@ -62,7 +62,6 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
                  shielded_vm_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']]] = None,
-                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
@@ -129,12 +128,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
-        :param pulumi.Input[str] project: Project ID for this request.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input[pulumi.InputType['ResourceStatusArgs']] resource_status: [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
@@ -149,12 +142,6 @@ class Instance(pulumi.CustomResource):
                Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         :param pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']] shielded_vm_config: Deprecating, please use shielded_instance_config.
         :param pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
-        :param pulumi.Input[str] source_instance_template: Specifies instance template to create the instance.
-               
-               This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:  
-               - https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate 
-               - projects/project/global/instanceTemplates/instanceTemplate 
-               - global/instanceTemplates/instanceTemplate
         :param pulumi.Input[str] source_machine_image: Source machine image
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input[bool] start_restricted: [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
@@ -195,6 +182,9 @@ class Instance(pulumi.CustomResource):
             __props__['guest_accelerators'] = guest_accelerators
             __props__['hostname'] = hostname
             __props__['id'] = id
+            if instance is None and not opts.urn:
+                raise TypeError("Missing required property 'instance'")
+            __props__['instance'] = instance
             __props__['instance_encryption_key'] = instance_encryption_key
             __props__['kind'] = kind
             __props__['label_fingerprint'] = label_fingerprint
@@ -214,7 +204,6 @@ class Instance(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            __props__['request_id'] = request_id
             __props__['reservation_affinity'] = reservation_affinity
             __props__['resource_policies'] = resource_policies
             __props__['resource_status'] = resource_status
@@ -229,7 +218,6 @@ class Instance(pulumi.CustomResource):
             __props__['shielded_instance_integrity_policy'] = shielded_instance_integrity_policy
             __props__['shielded_vm_config'] = shielded_vm_config
             __props__['shielded_vm_integrity_policy'] = shielded_vm_integrity_policy
-            __props__['source_instance_template'] = source_instance_template
             __props__['source_machine_image'] = source_machine_image
             __props__['source_machine_image_encryption_key'] = source_machine_image_encryption_key
             __props__['start_restricted'] = start_restricted

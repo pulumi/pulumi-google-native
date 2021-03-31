@@ -23,9 +23,9 @@ class TargetTcpProxy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 target_tcp_proxy: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,18 +39,12 @@ class TargetTcpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                
                When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
                
                The default is false.
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] service: URL to the BackendService resource.
         """
@@ -81,9 +75,11 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__['project'] = project
             __props__['proxy_bind'] = proxy_bind
             __props__['proxy_header'] = proxy_header
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['service'] = service
+            if target_tcp_proxy is None and not opts.urn:
+                raise TypeError("Missing required property 'target_tcp_proxy'")
+            __props__['target_tcp_proxy'] = target_tcp_proxy
         super(TargetTcpProxy, __self__).__init__(
             'google-cloud:compute/beta:TargetTcpProxy',
             resource_name,

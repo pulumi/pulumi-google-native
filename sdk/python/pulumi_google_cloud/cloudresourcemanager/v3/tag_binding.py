@@ -17,8 +17,8 @@ class TagBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 tag_bindings_id: Optional[pulumi.Input[str]] = None,
                  tag_value: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,7 +30,6 @@ class TagBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form `tagValues/456`.
-        :param pulumi.Input[bool] validate_only: Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,8 +50,10 @@ class TagBinding(pulumi.CustomResource):
 
             __props__['name'] = name
             __props__['parent'] = parent
+            if tag_bindings_id is None and not opts.urn:
+                raise TypeError("Missing required property 'tag_bindings_id'")
+            __props__['tag_bindings_id'] = tag_bindings_id
             __props__['tag_value'] = tag_value
-            __props__['validate_only'] = validate_only
         super(TagBinding, __self__).__init__(
             'google-cloud:cloudresourcemanager/v3:TagBinding',
             resource_name,

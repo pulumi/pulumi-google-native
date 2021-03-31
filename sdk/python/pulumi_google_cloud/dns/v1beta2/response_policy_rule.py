@@ -17,12 +17,12 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  behavior: Optional[pulumi.Input[str]] = None,
-                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
+                 response_policy_rule: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -33,11 +33,8 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] behavior: Answer this query with a behavior rather than DNS data.
-        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         :param pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-        :param pulumi.Input[str] project: Identifies the project addressed by this request.
-        :param pulumi.Input[str] response_policy: User assigned name of the Response Policy containing the Response Policy Rule.
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
         if __name__ is not None:
@@ -58,7 +55,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['behavior'] = behavior
-            __props__['client_operation_id'] = client_operation_id
             __props__['dns_name'] = dns_name
             __props__['kind'] = kind
             __props__['local_data'] = local_data
@@ -68,6 +64,9 @@ class ResponsePolicyRule(pulumi.CustomResource):
             if response_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'response_policy'")
             __props__['response_policy'] = response_policy
+            if response_policy_rule is None and not opts.urn:
+                raise TypeError("Missing required property 'response_policy_rule'")
+            __props__['response_policy_rule'] = response_policy_rule
             __props__['rule_name'] = rule_name
         super(ResponsePolicyRule, __self__).__init__(
             'google-cloud:dns/v1beta2:ResponsePolicyRule',

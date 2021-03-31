@@ -4,7 +4,8 @@
 
 # Export this package's modules as members:
 from .attestor import *
-from .iam_policy import *
+from .attestor_iam_policy import *
+from .policy_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +22,10 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:binaryauthorization/v1:Attestor":
                 return Attestor(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:binaryauthorization/v1:IamPolicy":
-                return IamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:binaryauthorization/v1:AttestorIamPolicy":
+                return AttestorIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:binaryauthorization/v1:PolicyIamPolicy":
+                return PolicyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

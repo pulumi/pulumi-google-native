@@ -22,6 +22,8 @@ __all__ = [
     'GoogleCloudApigeeV1OperationArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
+    'GoogleCloudApigeeV1PropertiesArgs',
+    'GoogleCloudApigeeV1PropertyArgs',
     'GoogleCloudApigeeV1QueryMetricArgs',
     'GoogleCloudApigeeV1QuotaArgs',
     'GoogleCloudApigeeV1ReportPropertyArgs',
@@ -775,6 +777,70 @@ class GoogleCloudApigeeV1OperationGroupArgs:
     @operation_configs.setter
     def operation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1OperationConfigArgs']]]]):
         pulumi.set(self, "operation_configs", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1PropertiesArgs:
+    def __init__(__self__, *,
+                 property: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]]] = None):
+        """
+        Message for compatibility with legacy Edge specification for Java Properties object in JSON.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]] property: List of all properties in the object
+        """
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]]]:
+        """
+        List of all properties in the object
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1PropertyArgs']]]]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1PropertyArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        A single property entry in the Properties message.
+        :param pulumi.Input[str] name: The property key
+        :param pulumi.Input[str] value: The property value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

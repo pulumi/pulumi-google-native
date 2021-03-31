@@ -20,11 +20,11 @@ class GuestPolicy(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 guest_policy_id: Optional[pulumi.Input[str]] = None,
+                 guest_policies_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]]] = None,
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -39,11 +39,9 @@ class GuestPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Time this guest policy was created.
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
-        :param pulumi.Input[str] guest_policy_id: Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]] packages: The software packages to be managed by this policy.
-        :param pulumi.Input[str] parent: Required. The resource name of the parent using one of the following forms: `projects/{project_number}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
         :param pulumi.Input[str] update_time: Output only. Last time this guest policy was updated.
         """
@@ -68,13 +66,15 @@ class GuestPolicy(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['etag'] = etag
-            __props__['guest_policy_id'] = guest_policy_id
+            if guest_policies_id is None and not opts.urn:
+                raise TypeError("Missing required property 'guest_policies_id'")
+            __props__['guest_policies_id'] = guest_policies_id
             __props__['name'] = name
             __props__['package_repositories'] = package_repositories
             __props__['packages'] = packages
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['recipes'] = recipes
             __props__['update_time'] = update_time
         super(GuestPolicy, __self__).__init__(

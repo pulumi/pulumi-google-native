@@ -27,9 +27,9 @@ class Note(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 note_id: Optional[pulumi.Input[str]] = None,
+                 notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
@@ -54,9 +54,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] kind: Output only. The type of analysis. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this note.
         :param pulumi.Input[str] name: Output only. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-        :param pulumi.Input[str] note_id: Required. The ID to use for this note.
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
-        :param pulumi.Input[str] parent: Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
@@ -91,11 +89,13 @@ class Note(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['long_description'] = long_description
             __props__['name'] = name
-            __props__['note_id'] = note_id
+            if notes_id is None and not opts.urn:
+                raise TypeError("Missing required property 'notes_id'")
+            __props__['notes_id'] = notes_id
             __props__['package'] = package
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['related_note_names'] = related_note_names
             __props__['related_url'] = related_url
             __props__['short_description'] = short_description

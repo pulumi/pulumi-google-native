@@ -3,9 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_channel_v1_channel_partner_link import *
-from .google_cloud_channel_v1_customer import *
-from .google_longrunning_operation import *
+from .account_channel_partner_link import *
+from .account_channel_partner_link_customer import *
+from .account_customer import *
+from .account_customer_entitlement import *
 from ._inputs import *
 
 def _register_module():
@@ -20,12 +21,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:cloudchannel/v1:GoogleCloudChannelV1ChannelPartnerLink":
-                return GoogleCloudChannelV1ChannelPartnerLink(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudchannel/v1:GoogleCloudChannelV1Customer":
-                return GoogleCloudChannelV1Customer(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudchannel/v1:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:cloudchannel/v1:AccountChannelPartnerLink":
+                return AccountChannelPartnerLink(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
+                return AccountChannelPartnerLinkCustomer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudchannel/v1:AccountCustomer":
+                return AccountCustomer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudchannel/v1:AccountCustomerEntitlement":
+                return AccountCustomerEntitlement(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

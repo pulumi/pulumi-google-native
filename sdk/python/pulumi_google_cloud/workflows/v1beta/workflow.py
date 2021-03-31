@@ -18,15 +18,16 @@ class Workflow(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  revision_create_time: Optional[pulumi.Input[str]] = None,
                  revision_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 workflow_id: Optional[pulumi.Input[str]] = None,
+                 workflows_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,14 +40,12 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
         :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-        :param pulumi.Input[str] parent: Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location}
         :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the latest revision of the workflow was created.
         :param pulumi.Input[str] revision_id: Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[str] state: Output only. State of the workflow deployment.
         :param pulumi.Input[str] update_time: Output only. The last update timestamp of the workflow.
-        :param pulumi.Input[str] workflow_id: Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,17 +67,22 @@ class Workflow(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['revision_create_time'] = revision_create_time
             __props__['revision_id'] = revision_id
             __props__['service_account'] = service_account
             __props__['source_contents'] = source_contents
             __props__['state'] = state
             __props__['update_time'] = update_time
-            __props__['workflow_id'] = workflow_id
+            if workflows_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workflows_id'")
+            __props__['workflows_id'] = workflows_id
         super(Workflow, __self__).__init__(
             'google-cloud:workflows/v1beta:Workflow',
             resource_name,

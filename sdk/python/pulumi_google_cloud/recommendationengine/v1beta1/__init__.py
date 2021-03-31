@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_recommendationengine_v1beta1_catalog_item import *
-from .google_cloud_recommendationengine_v1beta1_prediction_api_key_registration import *
+from .catalog_catalog_item import *
+from .catalog_event_store_prediction_api_key_registration import *
 from ._inputs import *
 
 def _register_module():
@@ -19,10 +19,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:recommendationengine/v1beta1:GoogleCloudRecommendationengineV1beta1CatalogItem":
-                return GoogleCloudRecommendationengineV1beta1CatalogItem(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:recommendationengine/v1beta1:GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration":
-                return GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:recommendationengine/v1beta1:CatalogCatalogItem":
+                return CatalogCatalogItem(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
+                return CatalogEventStorePredictionApiKeyRegistration(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

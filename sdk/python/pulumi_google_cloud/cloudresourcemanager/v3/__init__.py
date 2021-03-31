@@ -4,12 +4,16 @@
 
 # Export this package's modules as members:
 from .folder import *
+from .folder_iam_policy import *
 from .lien import *
-from .policy import *
+from .organization_iam_policy import *
 from .project import *
+from .project_iam_policy import *
 from .tag_binding import *
 from .tag_key import *
+from .tag_key_iam_policy import *
 from .tag_value import *
+from .tag_value_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -26,18 +30,26 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:cloudresourcemanager/v3:Folder":
                 return Folder(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v3:FolderIamPolicy":
+                return FolderIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudresourcemanager/v3:Lien":
                 return Lien(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudresourcemanager/v3:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v3:OrganizationIamPolicy":
+                return OrganizationIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudresourcemanager/v3:Project":
                 return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v3:ProjectIamPolicy":
+                return ProjectIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudresourcemanager/v3:TagBinding":
                 return TagBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudresourcemanager/v3:TagKey":
                 return TagKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v3:TagKeyIamPolicy":
+                return TagKeyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudresourcemanager/v3:TagValue":
                 return TagValue(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v3:TagValueIamPolicy":
+                return TagValueIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -3,9 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .policy import *
+from .organization_role import *
 from .role import *
 from .service_account import *
+from .service_account_iam_policy import *
 from .service_account_key import *
 from .workload_identity_pool import *
 from .workload_identity_pool_provider import *
@@ -23,12 +24,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:iam/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:iam/v1:OrganizationRole":
+                return OrganizationRole(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:iam/v1:Role":
                 return Role(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:iam/v1:ServiceAccount":
                 return ServiceAccount(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:iam/v1:ServiceAccountIamPolicy":
+                return ServiceAccountIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:iam/v1:ServiceAccountKey":
                 return ServiceAccountKey(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:iam/v1:WorkloadIdentityPool":

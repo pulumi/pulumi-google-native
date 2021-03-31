@@ -16,7 +16,6 @@ class TransferConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorization_code: Optional[pulumi.Input[str]] = None,
                  data_refresh_window_days: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  dataset_region: Optional[pulumi.Input[str]] = None,
@@ -28,14 +27,13 @@ class TransferConfig(pulumi.CustomResource):
                  next_run_time: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
-                 service_account_name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 transfer_configs_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
-                 version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,7 +42,6 @@ class TransferConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authorization_code: Optional OAuth2 authorization code to use with this transfer configuration. This is required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri is an optional parameter. If not specified, then authorization code is posted to the opener of authorization flow window. Otherwise it will be sent to the redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of the browser, with the page text prompting the user to copy the code and paste it in the application.
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
         :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created.
         :param pulumi.Input[str] dataset_region: Output only. Region in which BigQuery dataset is located.
@@ -56,14 +53,11 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] next_run_time: Output only. Next time when data transfer will run.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
-        :param pulumi.Input[str] parent: Required. The BigQuery project id where the transfer configuration should be created. Must be in the format projects/{project_id}/locations/{location_id} or projects/{project_id}. If specified location and location of the destination bigquery dataset do not match - the request will fail.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
         :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
-        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will be created with this service account credentials. It requires that requesting user calling this API has permissions to act as this service account.
         :param pulumi.Input[str] state: Output only. State of the most recently updated transfer run.
         :param pulumi.Input[str] update_time: Output only. Data transfer modification time. Ignored by server on input.
         :param pulumi.Input[str] user_id: Deprecated. Unique ID of the user on whose behalf transfer is done.
-        :param pulumi.Input[str] version_info: Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,7 +76,6 @@ class TransferConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['authorization_code'] = authorization_code
             __props__['data_refresh_window_days'] = data_refresh_window_days
             __props__['data_source_id'] = data_source_id
             __props__['dataset_region'] = dataset_region
@@ -94,16 +87,17 @@ class TransferConfig(pulumi.CustomResource):
             __props__['next_run_time'] = next_run_time
             __props__['notification_pubsub_topic'] = notification_pubsub_topic
             __props__['params'] = params
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['schedule'] = schedule
             __props__['schedule_options'] = schedule_options
-            __props__['service_account_name'] = service_account_name
             __props__['state'] = state
+            if transfer_configs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'transfer_configs_id'")
+            __props__['transfer_configs_id'] = transfer_configs_id
             __props__['update_time'] = update_time
             __props__['user_id'] = user_id
-            __props__['version_info'] = version_info
         super(TransferConfig, __self__).__init__(
             'google-cloud:bigquerydatatransfer/v1:TransferConfig',
             resource_name,

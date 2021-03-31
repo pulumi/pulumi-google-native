@@ -16,7 +16,8 @@ class Snapshot(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 snapshots_id: Optional[pulumi.Input[str]] = None,
                  subscription: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -27,7 +28,6 @@ class Snapshot(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
-        :param pulumi.Input[str] name: Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the resource name rules. Format is `projects/{project}/snapshots/{snap}`.
         :param pulumi.Input[str] subscription: Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         """
         if __name__ is not None:
@@ -48,9 +48,12 @@ class Snapshot(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['labels'] = labels
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if snapshots_id is None and not opts.urn:
+                raise TypeError("Missing required property 'snapshots_id'")
+            __props__['snapshots_id'] = snapshots_id
             __props__['subscription'] = subscription
         super(Snapshot, __self__).__init__(
             'google-cloud:pubsub/v1:Snapshot',

@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_webrisk_v1_submission import *
+from .submission import *
 
 def _register_module():
     import pulumi
@@ -17,8 +17,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:webrisk/v1:GoogleCloudWebriskV1Submission":
-                return GoogleCloudWebriskV1Submission(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:webrisk/v1:Submission":
+                return Submission(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

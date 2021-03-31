@@ -19,7 +19,9 @@ class Instance(pulumi.CustomResource):
                  clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instance: Optional[pulumi.Input[pulumi.InputType['InstanceArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -53,9 +55,13 @@ class Instance(pulumi.CustomResource):
             __props__['clusters'] = clusters
             __props__['instance'] = instance
             __props__['instance_id'] = instance_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
+            if instances_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instances_id'")
+            __props__['instances_id'] = instances_id
             __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Instance, __self__).__init__(
             'google-cloud:bigtableadmin/v2:Instance',
             resource_name,

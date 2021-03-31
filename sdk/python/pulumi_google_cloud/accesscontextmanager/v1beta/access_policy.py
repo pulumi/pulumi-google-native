@@ -15,6 +15,7 @@ class AccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_policies_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,9 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if access_policies_id is None and not opts.urn:
+                raise TypeError("Missing required property 'access_policies_id'")
+            __props__['access_policies_id'] = access_policies_id
             __props__['name'] = name
             __props__['parent'] = parent
             __props__['title'] = title

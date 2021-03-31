@@ -16,18 +16,18 @@ class ConnectivityTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connectivity_tests_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  reachability_details: Optional[pulumi.Input[pulumi.InputType['ReachabilityDetailsArgs']]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
-                 test_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -43,12 +43,10 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Output only. The display name of a Connectivity Test.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
-        :param pulumi.Input[str] parent: Required. The parent resource of the Connectivity Test to create: `projects/{project_id}/locations/global`
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[pulumi.InputType['ReachabilityDetailsArgs']] reachability_details: Output only. The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
         :param pulumi.Input[pulumi.InputType['EndpointArgs']] source: Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
-        :param pulumi.Input[str] test_id: Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
         :param pulumi.Input[str] update_time: Output only. The time the test's configuration was updated.
         """
         if __name__ is not None:
@@ -68,20 +66,22 @@ class ConnectivityTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if connectivity_tests_id is None and not opts.urn:
+                raise TypeError("Missing required property 'connectivity_tests_id'")
+            __props__['connectivity_tests_id'] = connectivity_tests_id
             __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['destination'] = destination
             __props__['display_name'] = display_name
             __props__['labels'] = labels
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['protocol'] = protocol
             __props__['reachability_details'] = reachability_details
             __props__['related_projects'] = related_projects
             __props__['source'] = source
-            __props__['test_id'] = test_id
             __props__['update_time'] = update_time
         super(ConnectivityTest, __self__).__init__(
             'google-cloud:networkmanagement/v1:ConnectivityTest',

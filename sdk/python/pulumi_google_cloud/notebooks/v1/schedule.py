@@ -21,10 +21,11 @@ class Schedule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  execution_template: Optional[pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  recent_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionArgs']]]]] = None,
-                 schedule_id: Optional[pulumi.Input[str]] = None,
+                 schedules_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -42,9 +43,7 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
         :param pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']] execution_template: Notebook Execution Template corresponding to this schedule.
         :param pulumi.Input[str] name: Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-        :param pulumi.Input[str] parent: Required. Format: `parent=projects/{project_id}/locations/{location}`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionArgs']]]] recent_executions: Output only. The most recent execution names triggered from this schedule and their corresponding states.
-        :param pulumi.Input[str] schedule_id: Required. User-defined unique ID of this schedule.
         :param pulumi.Input[str] time_zone: Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         :param pulumi.Input[str] update_time: Output only. Time the schedule was last updated.
         """
@@ -70,12 +69,17 @@ class Schedule(pulumi.CustomResource):
             __props__['description'] = description
             __props__['display_name'] = display_name
             __props__['execution_template'] = execution_template
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['recent_executions'] = recent_executions
-            __props__['schedule_id'] = schedule_id
+            if schedules_id is None and not opts.urn:
+                raise TypeError("Missing required property 'schedules_id'")
+            __props__['schedules_id'] = schedules_id
             __props__['state'] = state
             __props__['time_zone'] = time_zone
             __props__['update_time'] = update_time

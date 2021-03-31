@@ -17,7 +17,8 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  job: Optional[pulumi.Input[pulumi.InputType['JobArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 jobs_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -27,7 +28,6 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobArgs']] job: Required. The Job to be created.
-        :param pulumi.Input[str] parent: Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,9 +47,12 @@ class Job(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['job'] = job
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'jobs_id'")
+            __props__['jobs_id'] = jobs_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Job, __self__).__init__(
             'google-cloud:jobs/v3p1beta1:Job',
             resource_name,

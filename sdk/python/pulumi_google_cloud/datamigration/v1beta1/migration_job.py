@@ -25,11 +25,11 @@ class MigrationJob(pulumi.CustomResource):
                  end_time: Optional[pulumi.Input[str]] = None,
                  error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 migration_job_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 migration_jobs_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  phase: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
@@ -55,11 +55,8 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[str] end_time: Output only. If the migration job is completed, the time when it was completed.
         :param pulumi.Input[pulumi.InputType['StatusArgs']] error: Output only. The error details in case of state FAILED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
-        :param pulumi.Input[str] parent: Required. The parent, which owns this collection of migration jobs.
         :param pulumi.Input[str] phase: Output only. The current migration job phase.
-        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
@@ -95,13 +92,17 @@ class MigrationJob(pulumi.CustomResource):
             __props__['end_time'] = end_time
             __props__['error'] = error
             __props__['labels'] = labels
-            __props__['migration_job_id'] = migration_job_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
+            if migration_jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'migration_jobs_id'")
+            __props__['migration_jobs_id'] = migration_jobs_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['phase'] = phase
-            __props__['request_id'] = request_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['reverse_ssh_connectivity'] = reverse_ssh_connectivity
             __props__['source'] = source
             __props__['source_database'] = source_database

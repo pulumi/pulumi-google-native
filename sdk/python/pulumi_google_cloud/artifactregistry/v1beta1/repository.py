@@ -20,9 +20,10 @@ class Repository(pulumi.CustomResource):
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 repository_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 repositories_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -38,8 +39,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-        :param pulumi.Input[str] parent: The name of the parent resource where the repository will be created.
-        :param pulumi.Input[str] repository_id: The repository id to use for this repository.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
         if __name__ is not None:
@@ -64,11 +63,16 @@ class Repository(pulumi.CustomResource):
             __props__['format'] = format
             __props__['kms_key_name'] = kms_key_name
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['repository_id'] = repository_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if repositories_id is None and not opts.urn:
+                raise TypeError("Missing required property 'repositories_id'")
+            __props__['repositories_id'] = repositories_id
             __props__['update_time'] = update_time
         super(Repository, __self__).__init__(
             'google-cloud:artifactregistry/v1beta1:Repository',

@@ -5,7 +5,7 @@
 # Export this package's modules as members:
 from .composite_type import *
 from .deployment import *
-from .policy import *
+from .deployment_iam_policy import *
 from .type_provider import *
 from ._inputs import *
 
@@ -25,8 +25,8 @@ def _register_module():
                 return CompositeType(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:deploymentmanager/v2beta:Deployment":
                 return Deployment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:deploymentmanager/v2beta:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:deploymentmanager/v2beta:DeploymentIamPolicy":
+                return DeploymentIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:deploymentmanager/v2beta:TypeProvider":
                 return TypeProvider(name, pulumi.ResourceOptions(urn=urn))
             else:

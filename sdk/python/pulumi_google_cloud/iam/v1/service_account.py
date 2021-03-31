@@ -17,8 +17,9 @@ class ServiceAccount(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]] = None,
+                 service_accounts_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,7 +29,6 @@ class ServiceAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-        :param pulumi.Input[str] name: Required. The resource name of the project associated with the service accounts, such as `projects/my-project-123`.
         :param pulumi.Input[pulumi.InputType['ServiceAccountArgs']] service_account: The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
         """
         if __name__ is not None:
@@ -49,10 +49,13 @@ class ServiceAccount(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_id'] = account_id
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['service_account'] = service_account
+            if service_accounts_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_accounts_id'")
+            __props__['service_accounts_id'] = service_accounts_id
         super(ServiceAccount, __self__).__init__(
             'google-cloud:iam/v1:ServiceAccount',
             resource_name,

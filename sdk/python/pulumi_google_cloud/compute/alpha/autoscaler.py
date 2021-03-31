@@ -16,6 +16,7 @@ class Autoscaler(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaler: Optional[pulumi.Input[str]] = None,
                  autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['AutoscalingPolicyArgs']]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -25,7 +26,6 @@ class Autoscaler(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  recommended_size: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -49,14 +49,8 @@ class Autoscaler(pulumi.CustomResource):
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[int] recommended_size: [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedule_status: [Output Only] Status information of existing scaling schedules.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
@@ -86,6 +80,9 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if autoscaler is None and not opts.urn:
+                raise TypeError("Missing required property 'autoscaler'")
+            __props__['autoscaler'] = autoscaler
             __props__['autoscaling_policy'] = autoscaling_policy
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
@@ -96,16 +93,15 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['recommended_size'] = recommended_size
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['scaling_schedule_status'] = scaling_schedule_status
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['status'] = status
             __props__['status_details'] = status_details
             __props__['target'] = target
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(Autoscaler, __self__).__init__(
             'google-cloud:compute/alpha:Autoscaler',

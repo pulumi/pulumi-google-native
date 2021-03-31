@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .v1_beta1_quota_override import *
+from .service_consumer_quota_metric_limit_producer_override import *
 
 def _register_module():
     import pulumi
@@ -17,8 +17,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:serviceconsumermanagement/v1beta1:V1Beta1QuotaOverride":
-                return V1Beta1QuotaOverride(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride":
+                return ServiceConsumerQuotaMetricLimitProducerOverride(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

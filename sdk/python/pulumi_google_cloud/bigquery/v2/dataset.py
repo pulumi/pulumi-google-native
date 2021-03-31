@@ -18,6 +18,7 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
@@ -54,7 +55,6 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] last_modified_time: [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-        :param pulumi.Input[str] project_id: Project ID of the new dataset
         :param pulumi.Input[bool] satisfies_pzs: [Output-only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
@@ -77,6 +77,9 @@ class Dataset(pulumi.CustomResource):
 
             __props__['access'] = access
             __props__['creation_time'] = creation_time
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__['dataset_id'] = dataset_id
             __props__['dataset_reference'] = dataset_reference
             __props__['default_encryption_configuration'] = default_encryption_configuration
             __props__['default_partition_expiration_ms'] = default_partition_expiration_ms

@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .policy import *
+from .v1beta1_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -18,8 +18,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:iap/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:iap/v1beta1:V1beta1IamPolicy":
+                return V1beta1IamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

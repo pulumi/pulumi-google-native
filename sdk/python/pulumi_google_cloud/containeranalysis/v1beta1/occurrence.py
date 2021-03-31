@@ -27,7 +27,8 @@ class Occurrence(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 occurrences_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -51,7 +52,6 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[str] kind: Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] name: Output only. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         :param pulumi.Input[str] note_name: Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-        :param pulumi.Input[str] parent: Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Required. Immutable. The resource for which the occurrence applies.
         :param pulumi.Input[str] update_time: Output only. The time this occurrence was last updated.
@@ -85,9 +85,12 @@ class Occurrence(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['note_name'] = note_name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if occurrences_id is None and not opts.urn:
+                raise TypeError("Missing required property 'occurrences_id'")
+            __props__['occurrences_id'] = occurrences_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['remediation'] = remediation
             __props__['resource'] = resource
             __props__['update_time'] = update_time

@@ -16,8 +16,10 @@ class ServiceAccountKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_algorithm: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 keys_id: Optional[pulumi.Input[str]] = None,
                  private_key_type: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 service_accounts_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -27,7 +29,6 @@ class ServiceAccountKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-        :param pulumi.Input[str] name: Required. The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service account.
         :param pulumi.Input[str] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
         if __name__ is not None:
@@ -48,10 +49,16 @@ class ServiceAccountKey(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['key_algorithm'] = key_algorithm
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            if keys_id is None and not opts.urn:
+                raise TypeError("Missing required property 'keys_id'")
+            __props__['keys_id'] = keys_id
             __props__['private_key_type'] = private_key_type
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if service_accounts_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_accounts_id'")
+            __props__['service_accounts_id'] = service_accounts_id
         super(ServiceAccountKey, __self__).__init__(
             'google-cloud:iam/v1:ServiceAccountKey',
             resource_name,

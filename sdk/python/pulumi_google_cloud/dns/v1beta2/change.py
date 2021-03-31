@@ -17,7 +17,6 @@ class Change(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
-                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
@@ -35,12 +34,9 @@ class Change(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] additions: Which ResourceRecordSets to add?
-        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
-        :param pulumi.Input[str] managed_zone: Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-        :param pulumi.Input[str] project: Identifies the project addressed by this request.
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
         :param pulumi.Input[str] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
@@ -62,7 +58,6 @@ class Change(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['additions'] = additions
-            __props__['client_operation_id'] = client_operation_id
             __props__['deletions'] = deletions
             __props__['id'] = id
             __props__['is_serving'] = is_serving

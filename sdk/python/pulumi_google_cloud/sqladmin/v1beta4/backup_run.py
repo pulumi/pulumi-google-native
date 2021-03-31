@@ -52,7 +52,6 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.Input[str] instance: Name of the database instance.
         :param pulumi.Input[str] kind: This is always *sql#backupRun*.
         :param pulumi.Input[str] location: Location of the backups.
-        :param pulumi.Input[str] project: Project ID of the project that contains the instance.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
         :param pulumi.Input[str] status: The status of this run.
@@ -83,6 +82,8 @@ class BackupRun(pulumi.CustomResource):
             __props__['end_time'] = end_time
             __props__['enqueued_time'] = enqueued_time
             __props__['error'] = error
+            if id is None and not opts.urn:
+                raise TypeError("Missing required property 'id'")
             __props__['id'] = id
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")

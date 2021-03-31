@@ -17,7 +17,7 @@ class ClientEvent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_event: Optional[pulumi.Input[pulumi.InputType['ClientEventArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -27,7 +27,6 @@ class ClientEvent(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientEventArgs']] client_event: Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution.
-        :param pulumi.Input[str] parent: Parent project name.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,9 +46,9 @@ class ClientEvent(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['client_event'] = client_event
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(ClientEvent, __self__).__init__(
             'google-cloud:jobs/v3p1beta1:ClientEvent',
             resource_name,

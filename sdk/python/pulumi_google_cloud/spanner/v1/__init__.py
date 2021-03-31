@@ -3,11 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .backup import *
-from .database import *
 from .instance import *
-from .policy import *
-from .session import *
+from .instance_backup import *
+from .instance_backup_iam_policy import *
+from .instance_database import *
+from .instance_database_iam_policy import *
+from .instance_database_session import *
+from .instance_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -22,16 +24,20 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:spanner/v1:Backup":
-                return Backup(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:spanner/v1:Database":
-                return Database(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:spanner/v1:Instance":
+            if typ == "google-cloud:spanner/v1:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:spanner/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:spanner/v1:Session":
-                return Session(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:spanner/v1:InstanceBackup":
+                return InstanceBackup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:spanner/v1:InstanceBackupIamPolicy":
+                return InstanceBackupIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:spanner/v1:InstanceDatabase":
+                return InstanceDatabase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:spanner/v1:InstanceDatabaseIamPolicy":
+                return InstanceDatabaseIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:spanner/v1:InstanceDatabaseSession":
+                return InstanceDatabaseSession(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:spanner/v1:InstanceIamPolicy":
+                return InstanceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -15,9 +15,9 @@ class HmacKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
-                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -26,9 +26,6 @@ class HmacKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] project_id: Project ID owning the service account.
-        :param pulumi.Input[str] service_account_email: Email address of the service account.
-        :param pulumi.Input[str] user_project: The project to be billed for this request.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,13 +44,15 @@ class HmacKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if access_id is None and not opts.urn:
+                raise TypeError("Missing required property 'access_id'")
+            __props__['access_id'] = access_id
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             if service_account_email is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_email'")
             __props__['service_account_email'] = service_account_email
-            __props__['user_project'] = user_project
         super(HmacKey, __self__).__init__(
             'google-cloud:storage/v1:HmacKey',
             resource_name,

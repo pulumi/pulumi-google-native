@@ -3,9 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_apps_cloudidentity_devices_v1_device import *
+from .device import *
 from .group import *
-from .membership import *
+from .group_membership import *
 from ._inputs import *
 
 def _register_module():
@@ -20,12 +20,12 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:cloudidentity/v1:GoogleAppsCloudidentityDevicesV1Device":
-                return GoogleAppsCloudidentityDevicesV1Device(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:cloudidentity/v1:Device":
+                return Device(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudidentity/v1:Group":
                 return Group(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudidentity/v1:Membership":
-                return Membership(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudidentity/v1:GroupMembership":
+                return GroupMembership(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

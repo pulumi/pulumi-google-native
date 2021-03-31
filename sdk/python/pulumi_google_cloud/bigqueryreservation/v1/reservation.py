@@ -17,9 +17,10 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 reservation_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 reservations_id: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -33,8 +34,6 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] creation_time: Output only. Creation time of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
-        :param pulumi.Input[str] parent: Required. Project, location. E.g., `projects/myproject/locations/US`
-        :param pulumi.Input[str] reservation_id: The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max length is 64 characters.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
         :param pulumi.Input[str] update_time: Output only. Last update time of the reservation.
         """
@@ -57,11 +56,16 @@ class Reservation(pulumi.CustomResource):
 
             __props__['creation_time'] = creation_time
             __props__['ignore_idle_slots'] = ignore_idle_slots
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['reservation_id'] = reservation_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if reservations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'reservations_id'")
+            __props__['reservations_id'] = reservations_id
             __props__['slot_capacity'] = slot_capacity
             __props__['update_time'] = update_time
         super(Reservation, __self__).__init__(

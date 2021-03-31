@@ -39,7 +39,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: [Output-only] Opaque ID field of the job
         :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] job_reference: [Optional] Reference describing the unique-per-user name of the job.
         :param pulumi.Input[str] kind: [Output-only] The type of the resource.
-        :param pulumi.Input[str] project_id: Project ID of the project that will be billed for the job
         :param pulumi.Input[str] self_link: [Output-only] A URL that can be used to access this resource again.
         :param pulumi.Input[pulumi.InputType['JobStatisticsArgs']] statistics: [Output-only] Information about the job, including starting time and ending time of the job.
         :param pulumi.Input[pulumi.InputType['JobStatusArgs']] status: [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.

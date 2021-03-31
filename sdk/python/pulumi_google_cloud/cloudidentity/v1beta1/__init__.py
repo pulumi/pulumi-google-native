@@ -5,7 +5,7 @@
 # Export this package's modules as members:
 from .device import *
 from .group import *
-from .membership import *
+from .group_membership import *
 from ._inputs import *
 
 def _register_module():
@@ -24,8 +24,8 @@ def _register_module():
                 return Device(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudidentity/v1beta1:Group":
                 return Group(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudidentity/v1beta1:Membership":
-                return Membership(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudidentity/v1beta1:GroupMembership":
+                return GroupMembership(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

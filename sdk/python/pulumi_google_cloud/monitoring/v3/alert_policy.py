@@ -16,6 +16,7 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alert_policies_id: Optional[pulumi.Input[str]] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
@@ -25,6 +26,7 @@ class AlertPolicy(pulumi.CustomResource):
                  mutation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None,
@@ -64,6 +66,9 @@ class AlertPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if alert_policies_id is None and not opts.urn:
+                raise TypeError("Missing required property 'alert_policies_id'")
+            __props__['alert_policies_id'] = alert_policies_id
             __props__['combiner'] = combiner
             __props__['conditions'] = conditions
             __props__['creation_record'] = creation_record
@@ -71,10 +76,11 @@ class AlertPolicy(pulumi.CustomResource):
             __props__['documentation'] = documentation
             __props__['enabled'] = enabled
             __props__['mutation_record'] = mutation_record
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['notification_channels'] = notification_channels
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['user_labels'] = user_labels
             __props__['validity'] = validity
         super(AlertPolicy, __self__).__init__(

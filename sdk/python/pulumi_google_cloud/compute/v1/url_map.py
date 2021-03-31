@@ -30,9 +30,9 @@ class UrlMap(pulumi.CustomResource):
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
+                 url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -65,9 +65,7 @@ class UrlMap(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#urlMaps for url maps.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]] path_matchers: The list of named PathMatchers to use against the URL.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
                Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -104,12 +102,12 @@ class UrlMap(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['tests'] = tests
+            if url_map is None and not opts.urn:
+                raise TypeError("Missing required property 'url_map'")
+            __props__['url_map'] = url_map
         super(UrlMap, __self__).__init__(
             'google-cloud:compute/v1:UrlMap',
             resource_name,

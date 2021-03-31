@@ -23,6 +23,8 @@ class NotificationChannel(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mutation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutationRecordArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notification_channels_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  verification_status: Optional[pulumi.Input[str]] = None,
@@ -68,9 +70,13 @@ class NotificationChannel(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['labels'] = labels
             __props__['mutation_records'] = mutation_records
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            if notification_channels_id is None and not opts.urn:
+                raise TypeError("Missing required property 'notification_channels_id'")
+            __props__['notification_channels_id'] = notification_channels_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['type'] = type
             __props__['user_labels'] = user_labels
             __props__['verification_status'] = verification_status

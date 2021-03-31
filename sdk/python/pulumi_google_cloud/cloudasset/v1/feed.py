@@ -18,7 +18,9 @@ class Feed(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feed: Optional[pulumi.Input[pulumi.InputType['FeedArgs']]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 feeds_id: Optional[pulumi.Input[str]] = None,
+                 v1_id: Optional[pulumi.Input[str]] = None,
+                 v1_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,7 +31,6 @@ class Feed(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['FeedArgs']] feed: Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id
         :param pulumi.Input[str] feed_id: Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-        :param pulumi.Input[str] parent: Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,9 +51,15 @@ class Feed(pulumi.CustomResource):
 
             __props__['feed'] = feed
             __props__['feed_id'] = feed_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if feeds_id is None and not opts.urn:
+                raise TypeError("Missing required property 'feeds_id'")
+            __props__['feeds_id'] = feeds_id
+            if v1_id is None and not opts.urn:
+                raise TypeError("Missing required property 'v1_id'")
+            __props__['v1_id'] = v1_id
+            if v1_id1 is None and not opts.urn:
+                raise TypeError("Missing required property 'v1_id1'")
+            __props__['v1_id1'] = v1_id1
         super(Feed, __self__).__init__(
             'google-cloud:cloudasset/v1:Feed',
             resource_name,

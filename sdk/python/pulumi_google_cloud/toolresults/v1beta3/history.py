@@ -19,7 +19,6 @@ class History(pulumi.CustomResource):
                  history_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  test_platform: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -32,8 +31,6 @@ class History(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
         :param pulumi.Input[str] history_id: A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
         :param pulumi.Input[str] name: A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-        :param pulumi.Input[str] project_id: A Project id. Required.
-        :param pulumi.Input[str] request_id: A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
         :param pulumi.Input[str] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         if __name__ is not None:
@@ -59,7 +56,6 @@ class History(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
-            __props__['request_id'] = request_id
             __props__['test_platform'] = test_platform
         super(History, __self__).__init__(
             'google-cloud:toolresults/v1beta3:History',

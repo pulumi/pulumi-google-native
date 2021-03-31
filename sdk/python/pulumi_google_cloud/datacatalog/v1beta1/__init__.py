@@ -3,14 +3,18 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_datacatalog_v1beta1_entry import *
-from .google_cloud_datacatalog_v1beta1_entry_group import *
-from .google_cloud_datacatalog_v1beta1_policy_tag import *
-from .google_cloud_datacatalog_v1beta1_tag import *
-from .google_cloud_datacatalog_v1beta1_tag_template import *
-from .google_cloud_datacatalog_v1beta1_tag_template_field import *
-from .google_cloud_datacatalog_v1beta1_taxonomy import *
-from .policy import *
+from .entry_group import *
+from .entry_group_entry import *
+from .entry_group_entry_tag import *
+from .entry_group_iam_policy import *
+from .entry_group_tag import *
+from .tag_template import *
+from .tag_template_field import *
+from .tag_template_iam_policy import *
+from .taxonomy import *
+from .taxonomy_iam_policy import *
+from .taxonomy_policy_tag import *
+from .taxonomy_policy_tag_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -25,22 +29,30 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Entry":
-                return GoogleCloudDatacatalogV1beta1Entry(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1EntryGroup":
-                return GoogleCloudDatacatalogV1beta1EntryGroup(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1PolicyTag":
-                return GoogleCloudDatacatalogV1beta1PolicyTag(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Tag":
-                return GoogleCloudDatacatalogV1beta1Tag(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1TagTemplate":
-                return GoogleCloudDatacatalogV1beta1TagTemplate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1TagTemplateField":
-                return GoogleCloudDatacatalogV1beta1TagTemplateField(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Taxonomy":
-                return GoogleCloudDatacatalogV1beta1Taxonomy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datacatalog/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:datacatalog/v1beta1:EntryGroup":
+                return EntryGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:EntryGroupEntry":
+                return EntryGroupEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:EntryGroupEntryTag":
+                return EntryGroupEntryTag(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:EntryGroupIamPolicy":
+                return EntryGroupIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:EntryGroupTag":
+                return EntryGroupTag(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:TagTemplate":
+                return TagTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:TagTemplateField":
+                return TagTemplateField(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:TagTemplateIamPolicy":
+                return TagTemplateIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:Taxonomy":
+                return Taxonomy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:TaxonomyIamPolicy":
+                return TaxonomyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTag":
+                return TaxonomyPolicyTag(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
+                return TaxonomyPolicyTagIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

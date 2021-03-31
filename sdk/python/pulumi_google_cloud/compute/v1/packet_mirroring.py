@@ -26,10 +26,10 @@ class PacketMirroring(pulumi.CustomResource):
                  mirrored_resources: Optional[pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourceInfoArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['PacketMirroringNetworkInfoArgs']]] = None,
+                 packet_mirroring: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -54,13 +54,7 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
                
                Default value is 1000. Valid range is 0 through 65535.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URI of the region where the packetMirroring resides.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         if __name__ is not None:
@@ -90,6 +84,9 @@ class PacketMirroring(pulumi.CustomResource):
             __props__['mirrored_resources'] = mirrored_resources
             __props__['name'] = name
             __props__['network'] = network
+            if packet_mirroring is None and not opts.urn:
+                raise TypeError("Missing required property 'packet_mirroring'")
+            __props__['packet_mirroring'] = packet_mirroring
             __props__['priority'] = priority
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -97,7 +94,6 @@ class PacketMirroring(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
         super(PacketMirroring, __self__).__init__(
             'google-cloud:compute/v1:PacketMirroring',

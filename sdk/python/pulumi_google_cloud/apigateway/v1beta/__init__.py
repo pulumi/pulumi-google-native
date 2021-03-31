@@ -3,8 +3,12 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .apigateway_operation import *
-from .apigateway_policy import *
+from .api import *
+from .api_config import *
+from .api_config_iam_policy import *
+from .api_iam_policy import *
+from .gateway import *
+from .gateway_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -19,10 +23,18 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:apigateway/v1beta:ApigatewayOperation":
-                return ApigatewayOperation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigateway/v1beta:ApigatewayPolicy":
-                return ApigatewayPolicy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:apigateway/v1beta:Api":
+                return Api(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigateway/v1beta:ApiConfig":
+                return ApiConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigateway/v1beta:ApiConfigIamPolicy":
+                return ApiConfigIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigateway/v1beta:ApiIamPolicy":
+                return ApiIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigateway/v1beta:Gateway":
+                return Gateway(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigateway/v1beta:GatewayIamPolicy":
+                return GatewayIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

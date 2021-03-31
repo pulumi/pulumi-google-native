@@ -3,18 +3,20 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_dialogflow_cx_v3_agent import *
-from .google_cloud_dialogflow_cx_v3_entity_type import *
-from .google_cloud_dialogflow_cx_v3_experiment import *
-from .google_cloud_dialogflow_cx_v3_flow import *
-from .google_cloud_dialogflow_cx_v3_intent import *
-from .google_cloud_dialogflow_cx_v3_page import *
-from .google_cloud_dialogflow_cx_v3_security_settings import *
-from .google_cloud_dialogflow_cx_v3_session_entity_type import *
-from .google_cloud_dialogflow_cx_v3_test_case import *
-from .google_cloud_dialogflow_cx_v3_transition_route_group import *
-from .google_cloud_dialogflow_cx_v3_webhook import *
-from .google_longrunning_operation import *
+from .agent import *
+from .agent_entity_type import *
+from .agent_environment import *
+from .agent_environment_experiment import *
+from .agent_environment_session_entity_type import *
+from .agent_flow import *
+from .agent_flow_page import *
+from .agent_flow_transition_route_group import *
+from .agent_flow_version import *
+from .agent_intent import *
+from .agent_session_entity_type import *
+from .agent_test_case import *
+from .agent_webhook import *
+from .security_setting import *
 from ._inputs import *
 
 def _register_module():
@@ -29,30 +31,34 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Agent":
-                return GoogleCloudDialogflowCxV3Agent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3EntityType":
-                return GoogleCloudDialogflowCxV3EntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Experiment":
-                return GoogleCloudDialogflowCxV3Experiment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Flow":
-                return GoogleCloudDialogflowCxV3Flow(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Intent":
-                return GoogleCloudDialogflowCxV3Intent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Page":
-                return GoogleCloudDialogflowCxV3Page(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SecuritySettings":
-                return GoogleCloudDialogflowCxV3SecuritySettings(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SessionEntityType":
-                return GoogleCloudDialogflowCxV3SessionEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3TestCase":
-                return GoogleCloudDialogflowCxV3TestCase(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3TransitionRouteGroup":
-                return GoogleCloudDialogflowCxV3TransitionRouteGroup(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Webhook":
-                return GoogleCloudDialogflowCxV3Webhook(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v3:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:dialogflow/v3:Agent":
+                return Agent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentEntityType":
+                return AgentEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentEnvironment":
+                return AgentEnvironment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentEnvironmentExperiment":
+                return AgentEnvironmentExperiment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType":
+                return AgentEnvironmentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentFlow":
+                return AgentFlow(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentFlowPage":
+                return AgentFlowPage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentFlowTransitionRouteGroup":
+                return AgentFlowTransitionRouteGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentFlowVersion":
+                return AgentFlowVersion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentIntent":
+                return AgentIntent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentSessionEntityType":
+                return AgentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentTestCase":
+                return AgentTestCase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:AgentWebhook":
+                return AgentWebhook(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v3:SecuritySetting":
+                return SecuritySetting(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -5,8 +5,8 @@
 # Export this package's modules as members:
 from .backup_run import *
 from .database import *
-from .database_instance import *
-from .ssl_certs_insert_response import *
+from .instance import *
+from .ssl_cert import *
 from .user import *
 from ._inputs import *
 
@@ -26,10 +26,10 @@ def _register_module():
                 return BackupRun(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:sqladmin/v1beta4:Database":
                 return Database(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:sqladmin/v1beta4:DatabaseInstance":
-                return DatabaseInstance(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:sqladmin/v1beta4:SslCertsInsertResponse":
-                return SslCertsInsertResponse(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:sqladmin/v1beta4:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:sqladmin/v1beta4:SslCert":
+                return SslCert(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:sqladmin/v1beta4:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
             else:
