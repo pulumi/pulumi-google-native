@@ -22,6 +22,7 @@ class AgentEntityType(pulumi.CustomResource):
                  entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2EntityTypeEntityArgs']]]]] = None,
                  entity_types_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -64,6 +65,9 @@ class AgentEntityType(pulumi.CustomResource):
                 raise TypeError("Missing required property 'entity_types_id'")
             __props__['entity_types_id'] = entity_types_id
             __props__['kind'] = kind
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")

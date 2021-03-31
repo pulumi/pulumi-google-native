@@ -80,6 +80,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         [Input("entityTypesId", required: true)]
         public Input<string> EntityTypesId { get; set; } = null!;
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         /// </summary>

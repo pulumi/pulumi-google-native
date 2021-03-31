@@ -22,6 +22,7 @@ class ConversationProfile(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_message_event_notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
@@ -74,6 +75,9 @@ class ConversationProfile(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['human_agent_assistant_config'] = human_agent_assistant_config
             __props__['language_code'] = language_code
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['logging_config'] = logging_config
             __props__['name'] = name
             __props__['new_message_event_notification_config'] = new_message_event_notification_config

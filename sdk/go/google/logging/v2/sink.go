@@ -23,11 +23,14 @@ func NewSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
 	if args.SinksId == nil {
 		return nil, errors.New("invalid value for required argument 'SinksId'")
+	}
+	if args.V2Id == nil {
+		return nil, errors.New("invalid value for required argument 'V2Id'")
+	}
+	if args.V2Id1 == nil {
+		return nil, errors.New("invalid value for required argument 'V2Id1'")
 	}
 	var resource Sink
 	err := ctx.RegisterResource("google-cloud:logging/v2:Sink", name, args, &resource, opts...)
@@ -81,10 +84,11 @@ type sinkArgs struct {
 	Name *string `pulumi:"name"`
 	// Deprecated. This field is unused.
 	OutputVersionFormat *string `pulumi:"outputVersionFormat"`
-	ProjectsId          string  `pulumi:"projectsId"`
 	SinksId             string  `pulumi:"sinksId"`
 	// Output only. The last update timestamp of the sink.This field may not be present for older sinks.
 	UpdateTime *string `pulumi:"updateTime"`
+	V2Id       string  `pulumi:"v2Id"`
+	V2Id1      string  `pulumi:"v2Id1"`
 	// Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
 	WriterIdentity *string `pulumi:"writerIdentity"`
 }
@@ -111,10 +115,11 @@ type SinkArgs struct {
 	Name pulumi.StringPtrInput
 	// Deprecated. This field is unused.
 	OutputVersionFormat pulumi.StringPtrInput
-	ProjectsId          pulumi.StringInput
 	SinksId             pulumi.StringInput
 	// Output only. The last update timestamp of the sink.This field may not be present for older sinks.
 	UpdateTime pulumi.StringPtrInput
+	V2Id       pulumi.StringInput
+	V2Id1      pulumi.StringInput
 	// Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
 	WriterIdentity pulumi.StringPtrInput
 }

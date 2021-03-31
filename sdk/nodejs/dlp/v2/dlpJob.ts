@@ -50,6 +50,9 @@ export class DlpJob extends pulumi.CustomResource {
             if ((!args || args.dlpJobsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dlpJobsId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -57,6 +60,7 @@ export class DlpJob extends pulumi.CustomResource {
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["riskJob"] = args ? args.riskJob : undefined;
         } else {
@@ -85,6 +89,7 @@ export interface DlpJobArgs {
      * Deprecated. This field has no effect.
      */
     readonly locationId?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * A risk analysis job calculates re-identification risk metrics for a BigQuery table.

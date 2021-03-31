@@ -50,6 +50,9 @@ export class AgentIntent extends pulumi.CustomResource {
             if ((!args || args.intentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'intentsId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -63,6 +66,7 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["intentsId"] = args ? args.intentsId : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["messages"] = args ? args.messages : undefined;
             inputs["mlDisabled"] = args ? args.mlDisabled : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -125,6 +129,7 @@ export interface AgentIntentArgs {
      * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
      */
     readonly liveAgentHandoff?: pulumi.Input<boolean>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */

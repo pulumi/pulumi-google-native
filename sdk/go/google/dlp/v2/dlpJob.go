@@ -26,6 +26,9 @@ func NewDlpJob(ctx *pulumi.Context,
 	if args.DlpJobsId == nil {
 		return nil, errors.New("invalid value for required argument 'DlpJobsId'")
 	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -67,8 +70,9 @@ type dlpJobArgs struct {
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	JobId *string `pulumi:"jobId"`
 	// Deprecated. This field has no effect.
-	LocationId *string `pulumi:"locationId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	LocationId  *string `pulumi:"locationId"`
+	LocationsId string  `pulumi:"locationsId"`
+	ProjectsId  string  `pulumi:"projectsId"`
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
 	RiskJob *GooglePrivacyDlpV2RiskAnalysisJobConfig `pulumi:"riskJob"`
 }
@@ -81,8 +85,9 @@ type DlpJobArgs struct {
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	JobId pulumi.StringPtrInput
 	// Deprecated. This field has no effect.
-	LocationId pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	LocationId  pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
 	RiskJob GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput
 }

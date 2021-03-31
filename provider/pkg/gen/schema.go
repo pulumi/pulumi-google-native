@@ -29,6 +29,7 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -162,7 +163,13 @@ type packageGenerator struct {
 }
 
 func (g *packageGenerator) findResources(parent string, resources map[string]discovery.RestResource) error {
-	for name, res := range resources {
+	var names []string
+	for name := range resources {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		res := resources[name]
 		name = ToUpperCamel(inflector.Singularize(name))
 		var createMethod, deleteMethod *discovery.RestMethod
 		for methodName, value := range res.Methods {
@@ -218,6 +225,10 @@ func (g *packageGenerator) genResource(typeName string, createMethod, deleteMeth
 	}
 
 	for name, param := range createMethod.Parameters {
+		if param.Location == "path" && strings.HasPrefix(param.Description, "Deprecated.") {
+			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
+			return nil
+		}
 		if param.Location != "query" || !param.Required {
 			continue
 		}

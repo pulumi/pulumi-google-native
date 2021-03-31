@@ -26,6 +26,9 @@ func NewDeidentifyTemplate(ctx *pulumi.Context,
 	if args.DeidentifyTemplatesId == nil {
 		return nil, errors.New("invalid value for required argument 'DeidentifyTemplatesId'")
 	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -65,8 +68,9 @@ type deidentifyTemplateArgs struct {
 	DeidentifyTemplate    *GooglePrivacyDlpV2DeidentifyTemplate `pulumi:"deidentifyTemplate"`
 	DeidentifyTemplatesId string                                `pulumi:"deidentifyTemplatesId"`
 	// Deprecated. This field has no effect.
-	LocationId *string `pulumi:"locationId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	LocationId  *string `pulumi:"locationId"`
+	LocationsId string  `pulumi:"locationsId"`
+	ProjectsId  string  `pulumi:"projectsId"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -77,8 +81,9 @@ type DeidentifyTemplateArgs struct {
 	DeidentifyTemplate    GooglePrivacyDlpV2DeidentifyTemplatePtrInput
 	DeidentifyTemplatesId pulumi.StringInput
 	// Deprecated. This field has no effect.
-	LocationId pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	LocationId  pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

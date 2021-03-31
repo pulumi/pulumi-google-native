@@ -20,6 +20,7 @@ class AgentEnvironmentUserSessionEntityType(pulumi.CustomResource):
                  entity_override_mode: Optional[pulumi.Input[str]] = None,
                  entity_types_id: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  sessions_id: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,9 @@ class AgentEnvironmentUserSessionEntityType(pulumi.CustomResource):
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
             __props__['environments_id'] = environments_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")

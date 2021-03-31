@@ -80,6 +80,9 @@ namespace Pulumi.GoogleCloud.Dlp.V2
         [Input("locationId")]
         public Input<string>? LocationId { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 

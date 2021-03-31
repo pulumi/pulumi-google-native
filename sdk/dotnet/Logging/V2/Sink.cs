@@ -125,9 +125,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
         [Input("outputVersionFormat")]
         public Input<string>? OutputVersionFormat { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
-
         [Input("sinksId", required: true)]
         public Input<string> SinksId { get; set; } = null!;
 
@@ -136,6 +133,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        [Input("v2Id", required: true)]
+        public Input<string> V2Id { get; set; } = null!;
+
+        [Input("v2Id1", required: true)]
+        public Input<string> V2Id1 { get; set; } = null!;
 
         /// <summary>
         /// Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.

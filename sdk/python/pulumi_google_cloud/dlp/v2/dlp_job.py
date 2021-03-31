@@ -20,6 +20,7 @@ class DlpJob(pulumi.CustomResource):
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
                  __props__=None,
@@ -58,6 +59,9 @@ class DlpJob(pulumi.CustomResource):
             __props__['inspect_job'] = inspect_job
             __props__['job_id'] = job_id
             __props__['location_id'] = location_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id

@@ -49,6 +49,9 @@ export class AgentSessionContext extends pulumi.CustomResource {
             if ((!args || args.contextsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'contextsId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -57,6 +60,7 @@ export class AgentSessionContext extends pulumi.CustomResource {
             }
             inputs["contextsId"] = args ? args.contextsId : undefined;
             inputs["lifespanCount"] = args ? args.lifespanCount : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -79,6 +83,7 @@ export interface AgentSessionContextArgs {
      * Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
      */
     readonly lifespanCount?: pulumi.Input<number>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
      */

@@ -47,11 +47,14 @@ export class Sink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
             if ((!args || args.sinksId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sinksId'");
+            }
+            if ((!args || args.v2Id === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'v2Id'");
+            }
+            if ((!args || args.v2Id1 === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'v2Id1'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -63,9 +66,10 @@ export class Sink extends pulumi.CustomResource {
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["outputVersionFormat"] = args ? args.outputVersionFormat : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["sinksId"] = args ? args.sinksId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["v2Id"] = args ? args.v2Id : undefined;
+            inputs["v2Id1"] = args ? args.v2Id1 : undefined;
             inputs["writerIdentity"] = args ? args.writerIdentity : undefined;
         } else {
         }
@@ -120,12 +124,13 @@ export interface SinkArgs {
      * Deprecated. This field is unused.
      */
     readonly outputVersionFormat?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
     readonly sinksId: pulumi.Input<string>;
     /**
      * Output only. The last update timestamp of the sink.This field may not be present for older sinks.
      */
     readonly updateTime?: pulumi.Input<string>;
+    readonly v2Id: pulumi.Input<string>;
+    readonly v2Id1: pulumi.Input<string>;
     /**
      * Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
      */

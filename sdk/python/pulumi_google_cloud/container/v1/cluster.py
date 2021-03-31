@@ -17,9 +17,11 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[pulumi.InputType['ClusterArgs']]] = None,
-                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 clusters_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -52,15 +54,17 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cluster'] = cluster
-            if cluster_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
+            if clusters_id is None and not opts.urn:
+                raise TypeError("Missing required property 'clusters_id'")
+            __props__['clusters_id'] = clusters_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['parent'] = parent
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['zone'] = zone
         super(Cluster, __self__).__init__(
             'google-cloud:container/v1:Cluster',

@@ -19,6 +19,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
                  deidentify_template: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyTemplateArgs']]] = None,
                  deidentify_templates_id: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -55,6 +56,9 @@ class DeidentifyTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'deidentify_templates_id'")
             __props__['deidentify_templates_id'] = deidentify_templates_id
             __props__['location_id'] = location_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id

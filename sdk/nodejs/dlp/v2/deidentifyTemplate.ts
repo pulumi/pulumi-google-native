@@ -50,12 +50,16 @@ export class DeidentifyTemplate extends pulumi.CustomResource {
             if ((!args || args.deidentifyTemplatesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deidentifyTemplatesId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["deidentifyTemplate"] = args ? args.deidentifyTemplate : undefined;
             inputs["deidentifyTemplatesId"] = args ? args.deidentifyTemplatesId : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
         } else {
@@ -80,6 +84,7 @@ export interface DeidentifyTemplateArgs {
      * Deprecated. This field has no effect.
      */
     readonly locationId?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

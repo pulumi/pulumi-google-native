@@ -26,6 +26,9 @@ func NewAgentSessionEntityType(ctx *pulumi.Context,
 	if args.EntityTypesId == nil {
 		return nil, errors.New("invalid value for required argument 'EntityTypesId'")
 	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -69,6 +72,7 @@ type agentSessionEntityTypeArgs struct {
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode *string `pulumi:"entityOverrideMode"`
 	EntityTypesId      string  `pulumi:"entityTypesId"`
+	LocationsId        string  `pulumi:"locationsId"`
 	// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -82,6 +86,7 @@ type AgentSessionEntityTypeArgs struct {
 	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
 	EntityOverrideMode pulumi.StringPtrInput
 	EntityTypesId      pulumi.StringInput
+	LocationsId        pulumi.StringInput
 	// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

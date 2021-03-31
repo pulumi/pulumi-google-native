@@ -62,8 +62,14 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <summary>
         /// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("clustersId", required: true)]
+        public Input<string> ClustersId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The node pool to create.
@@ -71,8 +77,8 @@ namespace Pulumi.GoogleCloud.Container.V1
         [Input("nodePool")]
         public Input<Inputs.NodePoolArgs>? NodePool { get; set; }
 
-        [Input("nodePoolId", required: true)]
-        public Input<string> NodePoolId { get; set; } = null!;
+        [Input("nodePoolsId", required: true)]
+        public Input<string> NodePoolsId { get; set; } = null!;
 
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
@@ -83,14 +89,17 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <summary>
         /// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public ClusterNodePoolArgs()
         {

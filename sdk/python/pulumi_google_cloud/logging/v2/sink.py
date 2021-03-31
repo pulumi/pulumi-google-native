@@ -26,9 +26,10 @@ class Sink(pulumi.CustomResource):
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_version_format: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
                  sinks_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
+                 v2_id: Optional[pulumi.Input[str]] = None,
+                 v2_id1: Optional[pulumi.Input[str]] = None,
                  writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -78,13 +79,16 @@ class Sink(pulumi.CustomResource):
             __props__['include_children'] = include_children
             __props__['name'] = name
             __props__['output_version_format'] = output_version_format
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
             if sinks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sinks_id'")
             __props__['sinks_id'] = sinks_id
             __props__['update_time'] = update_time
+            if v2_id is None and not opts.urn:
+                raise TypeError("Missing required property 'v2_id'")
+            __props__['v2_id'] = v2_id
+            if v2_id1 is None and not opts.urn:
+                raise TypeError("Missing required property 'v2_id1'")
+            __props__['v2_id1'] = v2_id1
             __props__['writer_identity'] = writer_identity
         super(Sink, __self__).__init__(
             'google-cloud:logging/v2:Sink',

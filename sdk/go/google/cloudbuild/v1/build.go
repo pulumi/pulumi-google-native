@@ -23,8 +23,11 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Build
 	err := ctx.RegisterResource("google-cloud:cloudbuild/v1:Build", name, args, &resource, opts...)
@@ -71,7 +74,8 @@ type buildArgs struct {
 	// Output only. Unique identifier of the build.
 	Id *string `pulumi:"id"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-	Images []string `pulumi:"images"`
+	Images      []string `pulumi:"images"`
+	LocationsId string   `pulumi:"locationsId"`
 	// Output only. URL to logs for this build in Google Cloud Console.
 	LogUrl *string `pulumi:"logUrl"`
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -81,7 +85,8 @@ type buildArgs struct {
 	// Special options for this build.
 	Options *BuildOptions `pulumi:"options"`
 	// Output only. ID of the project.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId  *string `pulumi:"projectId"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Output only. Results of the build.
@@ -127,7 +132,8 @@ type BuildArgs struct {
 	// Output only. Unique identifier of the build.
 	Id pulumi.StringPtrInput
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-	Images pulumi.StringArrayInput
+	Images      pulumi.StringArrayInput
+	LocationsId pulumi.StringInput
 	// Output only. URL to logs for this build in Google Cloud Console.
 	LogUrl pulumi.StringPtrInput
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -137,7 +143,8 @@ type BuildArgs struct {
 	// Special options for this build.
 	Options BuildOptionsPtrInput
 	// Output only. ID of the project.
-	ProjectId pulumi.StringInput
+	ProjectId  pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput
 	// Output only. Results of the build.

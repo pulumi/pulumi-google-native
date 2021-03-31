@@ -50,6 +50,9 @@ export class ConversationProfile extends pulumi.CustomResource {
             if ((!args || args.conversationProfilesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationProfilesId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -59,6 +62,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["newMessageEventNotificationConfig"] = args ? args.newMessageEventNotificationConfig : undefined;
@@ -100,6 +104,7 @@ export interface ConversationProfileArgs {
      * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
      */
     readonly languageCode?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Configuration for logging conversation lifecycle events.
      */

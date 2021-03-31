@@ -47,23 +47,26 @@ export class ClusterNodePool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clusterId'");
+            if ((!args || args.clustersId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clustersId'");
             }
-            if ((!args || args.nodePoolId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nodePoolId'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.nodePoolsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nodePoolsId'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
+            inputs["clustersId"] = args ? args.clustersId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["nodePool"] = args ? args.nodePool : undefined;
-            inputs["nodePoolId"] = args ? args.nodePoolId : undefined;
+            inputs["nodePoolsId"] = args ? args.nodePoolsId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
@@ -81,12 +84,14 @@ export interface ClusterNodePoolArgs {
     /**
      * Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
      */
-    readonly clusterId: pulumi.Input<string>;
+    readonly clusterId?: pulumi.Input<string>;
+    readonly clustersId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. The node pool to create.
      */
     readonly nodePool?: pulumi.Input<inputs.container.v1.NodePool>;
-    readonly nodePoolId: pulumi.Input<string>;
+    readonly nodePoolsId: pulumi.Input<string>;
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
@@ -94,9 +99,10 @@ export interface ClusterNodePoolArgs {
     /**
      * Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly projectId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

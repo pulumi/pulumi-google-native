@@ -23,17 +23,17 @@ func NewClusterNodePool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClusterId == nil {
-		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	if args.ClustersId == nil {
+		return nil, errors.New("invalid value for required argument 'ClustersId'")
 	}
-	if args.NodePoolId == nil {
-		return nil, errors.New("invalid value for required argument 'NodePoolId'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.NodePoolsId == nil {
+		return nil, errors.New("invalid value for required argument 'NodePoolsId'")
 	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource ClusterNodePool
 	err := ctx.RegisterResource("google-cloud:container/v1:ClusterNodePool", name, args, &resource, opts...)
@@ -68,31 +68,37 @@ func (ClusterNodePoolState) ElementType() reflect.Type {
 
 type clusterNodePoolArgs struct {
 	// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   *string `pulumi:"clusterId"`
+	ClustersId  string  `pulumi:"clustersId"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Required. The node pool to create.
-	NodePool   *NodePool `pulumi:"nodePool"`
-	NodePoolId string    `pulumi:"nodePoolId"`
+	NodePool    *NodePool `pulumi:"nodePool"`
+	NodePoolsId string    `pulumi:"nodePoolsId"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent *string `pulumi:"parent"`
 	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId  *string `pulumi:"projectId"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ClusterNodePool resource.
 type ClusterNodePoolArgs struct {
 	// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-	ClusterId pulumi.StringInput
+	ClusterId   pulumi.StringPtrInput
+	ClustersId  pulumi.StringInput
+	LocationsId pulumi.StringInput
 	// Required. The node pool to create.
-	NodePool   NodePoolPtrInput
-	NodePoolId pulumi.StringInput
+	NodePool    NodePoolPtrInput
+	NodePoolsId pulumi.StringInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent pulumi.StringPtrInput
 	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
-	ProjectId pulumi.StringInput
+	ProjectId  pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (ClusterNodePoolArgs) ElementType() reflect.Type {

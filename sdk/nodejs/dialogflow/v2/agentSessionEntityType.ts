@@ -50,6 +50,9 @@ export class AgentSessionEntityType extends pulumi.CustomResource {
             if ((!args || args.entityTypesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entityTypesId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -59,6 +62,7 @@ export class AgentSessionEntityType extends pulumi.CustomResource {
             inputs["entities"] = args ? args.entities : undefined;
             inputs["entityOverrideMode"] = args ? args.entityOverrideMode : undefined;
             inputs["entityTypesId"] = args ? args.entityTypesId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["sessionsId"] = args ? args.sessionsId : undefined;
@@ -84,6 +88,7 @@ export interface AgentSessionEntityTypeArgs {
      */
     readonly entityOverrideMode?: pulumi.Input<string>;
     readonly entityTypesId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
      */

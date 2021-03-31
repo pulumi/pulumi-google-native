@@ -98,6 +98,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
         /// </summary>

@@ -107,6 +107,9 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
             set => _images = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. URL to logs for this build in Google Cloud Console.
         /// </summary>
@@ -134,8 +137,11 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         /// <summary>
         /// Output only. ID of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

@@ -29,6 +29,9 @@ func NewAgentEnvironmentUserSessionEntityType(ctx *pulumi.Context,
 	if args.EnvironmentsId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
 	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -76,6 +79,7 @@ type agentEnvironmentUserSessionEntityTypeArgs struct {
 	EntityOverrideMode *string `pulumi:"entityOverrideMode"`
 	EntityTypesId      string  `pulumi:"entityTypesId"`
 	EnvironmentsId     string  `pulumi:"environmentsId"`
+	LocationsId        string  `pulumi:"locationsId"`
 	// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -91,6 +95,7 @@ type AgentEnvironmentUserSessionEntityTypeArgs struct {
 	EntityOverrideMode pulumi.StringPtrInput
 	EntityTypesId      pulumi.StringInput
 	EnvironmentsId     pulumi.StringInput
+	LocationsId        pulumi.StringInput
 	// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

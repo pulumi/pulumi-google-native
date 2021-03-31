@@ -140,6 +140,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         [Input("liveAgentHandoff")]
         public Input<bool>? LiveAgentHandoff { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         [Input("messages")]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageArgs>? _messages;
 

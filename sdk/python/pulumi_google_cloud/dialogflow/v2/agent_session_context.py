@@ -17,6 +17,7 @@ class AgentSessionContext(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contexts_id: Optional[pulumi.Input[str]] = None,
                  lifespan_count: Optional[pulumi.Input[int]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,9 @@ class AgentSessionContext(pulumi.CustomResource):
                 raise TypeError("Missing required property 'contexts_id'")
             __props__['contexts_id'] = contexts_id
             __props__['lifespan_count'] = lifespan_count
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             __props__['parameters'] = parameters
             if projects_id is None and not opts.urn:

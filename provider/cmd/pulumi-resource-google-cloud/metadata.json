@@ -1244,9 +1244,10 @@
         },
         "google-cloud:cloudbuild/v1:Build": {
             "baseUrl": "https://cloudbuild.googleapis.com/",
-            "createPath": "v1/projects/{projectId}/builds",
+            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/builds",
             "createParams": [
-                "projectId"
+                "projectsId",
+                "locationsId"
             ]
         },
         "google-cloud:cloudbuild/v1:Trigger": {
@@ -5016,32 +5017,32 @@
         },
         "google-cloud:container/v1:Cluster": {
             "baseUrl": "https://container.googleapis.com/",
-            "createPath": "v1/projects/{projectId}/zones/{zone}/clusters",
+            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/clusters",
             "createParams": [
-                "projectId",
-                "zone"
+                "projectsId",
+                "locationsId"
             ],
-            "deletePath": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}",
+            "deletePath": "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
             "deleteParams": [
-                "projectId",
-                "zone",
-                "clusterId"
+                "projectsId",
+                "locationsId",
+                "clustersId"
             ]
         },
         "google-cloud:container/v1:ClusterNodePool": {
             "baseUrl": "https://container.googleapis.com/",
-            "createPath": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
+            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
             "createParams": [
-                "projectId",
-                "zone",
-                "clusterId"
+                "projectsId",
+                "locationsId",
+                "clustersId"
             ],
-            "deletePath": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}",
+            "deletePath": "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}",
             "deleteParams": [
-                "projectId",
-                "zone",
-                "clusterId",
-                "nodePoolId"
+                "projectsId",
+                "locationsId",
+                "clustersId",
+                "nodePoolsId"
             ]
         },
         "google-cloud:container/v1beta1:Cluster": {
@@ -5959,28 +5960,32 @@
         },
         "google-cloud:dialogflow/v2:AgentEntityType": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/agent/entityTypes",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes",
             "createParams": [
-                "projectsId"
+                "projectsId",
+                "locationsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/agent/entityTypes/{entityTypesId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "entityTypesId"
             ]
         },
         "google-cloud:dialogflow/v2:AgentEnvironmentUserSessionContext": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
             "createParams": [
                 "projectsId",
+                "locationsId",
                 "environmentsId",
                 "usersId",
                 "sessionsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts/{contextsId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "environmentsId",
                 "usersId",
                 "sessionsId",
@@ -5989,16 +5994,18 @@
         },
         "google-cloud:dialogflow/v2:AgentEnvironmentUserSessionEntityType": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes",
             "createParams": [
                 "projectsId",
+                "locationsId",
                 "environmentsId",
                 "usersId",
                 "sessionsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/entityTypes/{entityTypesId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "environmentsId",
                 "usersId",
                 "sessionsId",
@@ -6007,13 +6014,15 @@
         },
         "google-cloud:dialogflow/v2:AgentIntent": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/agent/intents",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents",
             "createParams": [
-                "projectsId"
+                "projectsId",
+                "locationsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/agent/intents/{intentsId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/agent/intents/{intentsId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "intentsId"
             ]
         },
@@ -6045,28 +6054,32 @@
         },
         "google-cloud:dialogflow/v2:AgentSessionContext": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts",
             "createParams": [
                 "projectsId",
+                "locationsId",
                 "sessionsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "sessionsId",
                 "contextsId"
             ]
         },
         "google-cloud:dialogflow/v2:AgentSessionEntityType": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes",
             "createParams": [
                 "projectsId",
+                "locationsId",
                 "sessionsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "sessionsId",
                 "entityTypesId"
             ]
@@ -6090,13 +6103,15 @@
         },
         "google-cloud:dialogflow/v2:ConversationProfile": {
             "baseUrl": "https://dialogflow.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/conversationProfiles",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles",
             "createParams": [
-                "projectsId"
+                "projectsId",
+                "locationsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/conversationProfiles/{conversationProfilesId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/conversationProfiles/{conversationProfilesId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "conversationProfilesId"
             ]
         },
@@ -6773,25 +6788,29 @@
         },
         "google-cloud:dlp/v2:DeidentifyTemplate": {
             "baseUrl": "https://dlp.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/deidentifyTemplates",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
             "createParams": [
-                "projectsId"
+                "projectsId",
+                "locationsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "deidentifyTemplatesId"
             ]
         },
         "google-cloud:dlp/v2:DlpJob": {
             "baseUrl": "https://dlp.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/dlpJobs",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
             "createParams": [
-                "projectsId"
+                "projectsId",
+                "locationsId"
             ],
-            "deletePath": "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}",
+            "deletePath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}",
             "deleteParams": [
                 "projectsId",
+                "locationsId",
                 "dlpJobsId"
             ]
         },
@@ -8420,13 +8439,15 @@
         },
         "google-cloud:logging/v2:Sink": {
             "baseUrl": "https://logging.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/sinks",
+            "createPath": "v2/{v2Id}/{v2Id1}/sinks",
             "createParams": [
-                "projectsId"
+                "v2Id",
+                "v2Id1"
             ],
-            "deletePath": "v2/projects/{projectsId}/sinks/{sinksId}",
+            "deletePath": "v2/{v2Id}/{v2Id1}/sinks/{sinksId}",
             "deleteParams": [
-                "projectsId",
+                "v2Id",
+                "v2Id1",
                 "sinksId"
             ]
         },

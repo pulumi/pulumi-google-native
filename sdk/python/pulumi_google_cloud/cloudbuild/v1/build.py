@@ -23,11 +23,13 @@ class Build(pulumi.CustomResource):
                  finish_time: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  log_url: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
                  results: Optional[pulumi.Input[pulumi.InputType['ResultsArgs']]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
@@ -101,13 +103,17 @@ class Build(pulumi.CustomResource):
             __props__['finish_time'] = finish_time
             __props__['id'] = id
             __props__['images'] = images
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['log_url'] = log_url
             __props__['logs_bucket'] = logs_bucket
             __props__['name'] = name
             __props__['options'] = options
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['queue_ttl'] = queue_ttl
             __props__['results'] = results
             __props__['secrets'] = secrets

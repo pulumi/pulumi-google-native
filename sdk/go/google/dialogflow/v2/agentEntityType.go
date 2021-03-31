@@ -26,6 +26,9 @@ func NewAgentEntityType(ctx *pulumi.Context,
 	if args.EntityTypesId == nil {
 		return nil, errors.New("invalid value for required argument 'EntityTypesId'")
 	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -71,7 +74,8 @@ type agentEntityTypeArgs struct {
 	Entities      []GoogleCloudDialogflowV2EntityTypeEntity `pulumi:"entities"`
 	EntityTypesId string                                    `pulumi:"entityTypesId"`
 	// Required. Indicates the kind of entity type.
-	Kind *string `pulumi:"kind"`
+	Kind        *string `pulumi:"kind"`
+	LocationsId string  `pulumi:"locationsId"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -89,7 +93,8 @@ type AgentEntityTypeArgs struct {
 	Entities      GoogleCloudDialogflowV2EntityTypeEntityArrayInput
 	EntityTypesId pulumi.StringInput
 	// Required. Indicates the kind of entity type.
-	Kind pulumi.StringPtrInput
+	Kind        pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

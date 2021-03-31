@@ -50,6 +50,9 @@ export class AgentEntityType extends pulumi.CustomResource {
             if ((!args || args.entityTypesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entityTypesId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -59,6 +62,7 @@ export class AgentEntityType extends pulumi.CustomResource {
             inputs["entities"] = args ? args.entities : undefined;
             inputs["entityTypesId"] = args ? args.entityTypesId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
@@ -95,6 +99,7 @@ export interface AgentEntityTypeArgs {
      * Required. Indicates the kind of entity type.
      */
     readonly kind?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
      */

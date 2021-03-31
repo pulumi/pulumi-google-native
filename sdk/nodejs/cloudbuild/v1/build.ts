@@ -47,8 +47,11 @@ export class Build extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
@@ -57,11 +60,13 @@ export class Build extends pulumi.CustomResource {
             inputs["finishTime"] = args ? args.finishTime : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["images"] = args ? args.images : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["logUrl"] = args ? args.logUrl : undefined;
             inputs["logsBucket"] = args ? args.logsBucket : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["options"] = args ? args.options : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["queueTtl"] = args ? args.queueTtl : undefined;
             inputs["results"] = args ? args.results : undefined;
             inputs["secrets"] = args ? args.secrets : undefined;
@@ -117,6 +122,7 @@ export interface BuildArgs {
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
      */
     readonly images?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. URL to logs for this build in Google Cloud Console.
      */
@@ -136,7 +142,8 @@ export interface BuildArgs {
     /**
      * Output only. ID of the project.
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly projectId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */

@@ -26,6 +26,7 @@ class AgentIntent(pulumi.CustomResource):
                  intents_id: Optional[pulumi.Input[str]] = None,
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  live_agent_handoff: Optional[pulumi.Input[bool]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentMessageArgs']]]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -96,6 +97,9 @@ class AgentIntent(pulumi.CustomResource):
             __props__['intents_id'] = intents_id
             __props__['is_fallback'] = is_fallback
             __props__['live_agent_handoff'] = live_agent_handoff
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['messages'] = messages
             __props__['ml_disabled'] = ml_disabled
             __props__['name'] = name
