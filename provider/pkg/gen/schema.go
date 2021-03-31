@@ -221,7 +221,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	resourceTok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
-	requiredProperties := codegen.NewStringSet()
+	requiredInputProperties := codegen.NewStringSet()
 
 	createPath := createMethod.FlatPath
 	if createPath == "" {
@@ -253,7 +253,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
 		resourceMeta.CreateParams = append(resourceMeta.CreateParams, name)
-		requiredProperties.Add(name)
+		requiredInputProperties.Add(name)
 	}
 
 	var idPath string
@@ -290,7 +290,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 
 	if createMethod.Request != nil {
 		request := g.rest.Schemas[createMethod.Request.Ref]
-		bodyProperties, err := g.genProperties(&request)
+		bodyProperties, required, err := g.genProperties(&request, false)
 		if err != nil {
 			return err
 		}
@@ -298,6 +298,22 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		for name, prop := range bodyProperties {
 			inputProperties[name] = prop
 		}
+		for _, name := range required {
+			requiredInputProperties.Add(name)
+		}
+	}
+
+	properties := map[string]schema.PropertySpec{}
+	requiredProperties := codegen.NewStringSet()
+	if getMethod != nil && getMethod.Response != nil {
+		response := g.rest.Schemas[getMethod.Response.Ref]
+		responseProperties, required, err := g.genProperties(&response, true)
+		if err != nil {
+			return err
+		}
+		properties = responseProperties
+		requiredProperties = codegen.NewStringSet(required...)
+		g.escapeCSharpNames(typeName, properties)
 	}
 
 	if resourceTok == "google-cloud:storage/v1:Object" {
@@ -313,41 +329,59 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		ObjectTypeSpec: schema.ObjectTypeSpec{
 			Description: createMethod.Description,
 			Type:        "object",
-			// TODO: Output properties
+			Properties:  properties,
+			Required:    requiredProperties.SortedValues(),
 		},
 		InputProperties: inputProperties,
-		RequiredInputs:  requiredProperties.SortedValues(),
+		RequiredInputs:  requiredInputProperties.SortedValues(),
 	}
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
 }
 
-func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema) (map[string]schema.PropertySpec, error) {
+func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, isOutput bool) (map[string]schema.PropertySpec, []string, error) {
 	result := map[string]schema.PropertySpec{}
+	required := codegen.NewStringSet()
 	for name, value := range typeSchema.Properties {
-		prop := value
-		typeSpec, err := g.genTypeSpec(&prop)
-		if err != nil {
-			return nil, err
+		if strings.HasPrefix(value.Description, "Deprecated.") {
+			continue
+		}
+		if !isOutput && value.ReadOnly {
+			continue
+		}
+		if isOutput && name == "id" {
+			continue
 		}
 
+		prop := value
+		typeSpec, err := g.genTypeSpec(&prop, isOutput)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		if prop.Required || isOutput {
+			required.Add(name)
+		}
+
+		description := strings.TrimPrefix(prop.Description, "Output only. ")
+
 		result[name] = schema.PropertySpec{
-			Description: prop.Description,
+			Description: description,
 			TypeSpec:    *typeSpec,
 		}
 	}
-	return result, nil
+	return result, required.SortedValues(), nil
 }
 
 func makeValidIdentifier(name string) string {
 	return strings.ReplaceAll(name, ".", "_")
 }
 
-func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.TypeSpec, error) {
+func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
 	switch {
 	case prop.Items != nil:
-		items, err := g.genTypeSpec(prop.Items)
+		items, err := g.genTypeSpec(prop.Items, isOutput)
 		if err != nil {
 			return nil, err
 		}
@@ -362,13 +396,16 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.Type
 		return &schema.TypeSpec{Type: prop.Type}, nil
 	case prop.Ref != "":
 		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, prop.Ref)
+		if isOutput {
+			tok += "Response"
+		}
 		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
 
 		if !g.visitedTypes.Has(tok) {
 			g.visitedTypes.Add(tok)
 
 			typeSchema := g.rest.Schemas[prop.Ref]
-			properties, err := g.genProperties(&typeSchema)
+			properties, required, err := g.genProperties(&typeSchema, isOutput)
 			if err != nil {
 				return nil, err
 			}
@@ -378,6 +415,7 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.Type
 					Description: typeSchema.Description,
 					Type:        "object",
 					Properties:  properties,
+					Required:    required,
 				},
 			}
 		}
@@ -388,6 +426,20 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema) (*schema.Type
 		}, nil
 	}
 	return nil, errors.New("unknown type")
+}
+
+func (m *packageGenerator) escapeCSharpNames(typeName string, resourceResponse map[string]schema.PropertySpec) {
+	for name, swagger := range resourceResponse {
+		// C# doesn't allow properties to have the same name as its containing type.
+		if strings.Title(name) == typeName {
+			swagger.Language = map[string]json.RawMessage{
+				"csharp": rawMessage(map[string]interface{}{
+					"name": fmt.Sprintf("%sValue", typeName),
+				}),
+			}
+			resourceResponse[name] = swagger
+		}
+	}
 }
 
 func resourceName(restMethod discovery.RestMethod) (name string) {

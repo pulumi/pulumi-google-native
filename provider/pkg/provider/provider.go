@@ -204,12 +204,16 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 		insertCall.Media(bytes.NewReader(content))
-		_, err = insertCall.Do()
+		obj, err := insertCall.Do()
 		if err != nil {
 			return nil, err
 		}
 
-		resp = map[string]interface{}{}
+		resp = map[string]interface{}{
+			"mediaLink": obj.MediaLink,
+			"name":      obj.Name,
+			"selfLink":  obj.SelfLink,
+		}
 	default:
 		uri = fmt.Sprintf("%s%s", res.BaseUrl, res.CreatePath)
 		for _, param := range res.CreateParams {
