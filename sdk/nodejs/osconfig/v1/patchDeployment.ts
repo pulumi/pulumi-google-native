@@ -47,8 +47,11 @@ export class PatchDeployment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.patchDeploymentsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'patchDeploymentsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -57,9 +60,9 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["lastExecuteTime"] = args ? args.lastExecuteTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["patchConfig"] = args ? args.patchConfig : undefined;
-            inputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
+            inputs["patchDeploymentsId"] = args ? args.patchDeploymentsId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
             inputs["rollout"] = args ? args.rollout : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -105,17 +108,11 @@ export interface PatchDeploymentArgs {
      */
     readonly oneTimeSchedule?: pulumi.Input<inputs.osconfig.v1.OneTimeSchedule>;
     /**
-     * Required. The project to apply this patch deployment to in the form `projects/*`.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Optional. Patch configuration that is applied.
      */
     readonly patchConfig?: pulumi.Input<inputs.osconfig.v1.PatchConfig>;
-    /**
-     * Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-     */
-    readonly patchDeploymentId?: pulumi.Input<string>;
+    readonly patchDeploymentsId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Required. Schedule recurring executions.
      */

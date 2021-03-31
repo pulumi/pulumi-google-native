@@ -47,6 +47,9 @@ export class NodeTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.nodeTemplate === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nodeTemplate'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -62,11 +65,11 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
+            inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["nodeType"] = args ? args.nodeType : undefined;
             inputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serverBinding"] = args ? args.serverBinding : undefined;
             inputs["status"] = args ? args.status : undefined;
@@ -114,6 +117,7 @@ export interface NodeTemplateArgs {
      * Labels to use for node affinity, which will be used in instance scheduling.
      */
     readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly nodeTemplate: pulumi.Input<string>;
     /**
      * The node type to use for nodes group that are created from this template.
      */
@@ -124,22 +128,11 @@ export interface NodeTemplateArgs {
      * This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
      */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.v1.NodeTemplateNodeTypeFlexibility>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The name of the region where the node template resides, such as us-central1.
      */
     readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

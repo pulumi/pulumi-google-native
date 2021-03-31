@@ -6,11 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./attestor";
-export * from "./iamPolicy";
+export * from "./attestorIamPolicy";
+export * from "./policyIamPolicy";
 
 // Import resources to register:
 import { Attestor } from "./attestor";
-import { IamPolicy } from "./iamPolicy";
+import { AttestorIamPolicy } from "./attestorIamPolicy";
+import { PolicyIamPolicy } from "./policyIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +20,10 @@ const _module = {
         switch (type) {
             case "google-cloud:binaryauthorization/v1beta1:Attestor":
                 return new Attestor(name, <any>undefined, { urn })
-            case "google-cloud:binaryauthorization/v1beta1:IamPolicy":
-                return new IamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:binaryauthorization/v1beta1:AttestorIamPolicy":
+                return new AttestorIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:binaryauthorization/v1beta1:PolicyIamPolicy":
+                return new PolicyIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

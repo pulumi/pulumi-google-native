@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudServicenetworkingV1betaConnection";
+export * from "./serviceConnection";
 
 // Import resources to register:
-import { GoogleCloudServicenetworkingV1betaConnection } from "./googleCloudServicenetworkingV1betaConnection";
+import { ServiceConnection } from "./serviceConnection";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:servicenetworking/v1beta:GoogleCloudServicenetworkingV1betaConnection":
-                return new GoogleCloudServicenetworkingV1betaConnection(name, <any>undefined, { urn })
+            case "google-cloud:servicenetworking/v1beta:ServiceConnection":
+                return new ServiceConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

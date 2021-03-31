@@ -47,6 +47,9 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instance'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -66,6 +69,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["hostname"] = args ? args.hostname : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["instance"] = args ? args.instance : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -80,7 +84,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
@@ -89,7 +92,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["serviceAccounts"] = args ? args.serviceAccounts : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["shieldedInstanceIntegrityPolicy"] = args ? args.shieldedInstanceIntegrityPolicy : undefined;
-            inputs["sourceInstanceTemplate"] = args ? args.sourceInstanceTemplate : undefined;
             inputs["startRestricted"] = args ? args.startRestricted : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
@@ -159,6 +161,7 @@ export interface InstanceArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
+    readonly instance: pulumi.Input<string>;
     /**
      * [Output Only] Type of the resource. Always compute#instance for instances.
      */
@@ -223,18 +226,7 @@ export interface InstanceArgs {
      * The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
      */
     readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
@@ -263,15 +255,6 @@ export interface InstanceArgs {
     readonly serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.v1.ServiceAccount>[]>;
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.v1.ShieldedInstanceConfig>;
     readonly shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.v1.ShieldedInstanceIntegrityPolicy>;
-    /**
-     * Specifies instance template to create the instance.
-     *
-     * This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:  
-     * - https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate 
-     * - projects/project/global/instanceTemplates/instanceTemplate 
-     * - global/instanceTemplates/instanceTemplate
-     */
-    readonly sourceInstanceTemplate?: pulumi.Input<string>;
     /**
      * [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
      */

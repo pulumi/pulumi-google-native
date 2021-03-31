@@ -6,21 +6,29 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./folder";
+export * from "./folderIamPolicy";
 export * from "./lien";
-export * from "./policy";
+export * from "./organizationIamPolicy";
 export * from "./project";
+export * from "./projectIamPolicy";
 export * from "./tagBinding";
 export * from "./tagKey";
+export * from "./tagKeyIamPolicy";
 export * from "./tagValue";
+export * from "./tagValueIamPolicy";
 
 // Import resources to register:
 import { Folder } from "./folder";
+import { FolderIamPolicy } from "./folderIamPolicy";
 import { Lien } from "./lien";
-import { Policy } from "./policy";
+import { OrganizationIamPolicy } from "./organizationIamPolicy";
 import { Project } from "./project";
+import { ProjectIamPolicy } from "./projectIamPolicy";
 import { TagBinding } from "./tagBinding";
 import { TagKey } from "./tagKey";
+import { TagKeyIamPolicy } from "./tagKeyIamPolicy";
 import { TagValue } from "./tagValue";
+import { TagValueIamPolicy } from "./tagValueIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -28,18 +36,26 @@ const _module = {
         switch (type) {
             case "google-cloud:cloudresourcemanager/v3:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v3:FolderIamPolicy":
+                return new FolderIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:cloudresourcemanager/v3:Lien":
                 return new Lien(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v3:OrganizationIamPolicy":
+                return new OrganizationIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:cloudresourcemanager/v3:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v3:ProjectIamPolicy":
+                return new ProjectIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:cloudresourcemanager/v3:TagBinding":
                 return new TagBinding(name, <any>undefined, { urn })
             case "google-cloud:cloudresourcemanager/v3:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v3:TagKeyIamPolicy":
+                return new TagKeyIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:cloudresourcemanager/v3:TagValue":
                 return new TagValue(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v3:TagValueIamPolicy":
+                return new TagValueIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

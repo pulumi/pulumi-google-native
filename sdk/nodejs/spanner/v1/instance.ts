@@ -47,12 +47,16 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.instancesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instancesId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["instance"] = args ? args.instance : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -74,8 +78,6 @@ export interface InstanceArgs {
      * Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
      */
     readonly instanceId?: pulumi.Input<string>;
-    /**
-     * Required. The name of the project in which to create the instance. Values are of the form `projects/`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly instancesId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

@@ -53,6 +53,9 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            if ((!args || args.tableId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tableId'");
+            }
             inputs["clustering"] = args ? args.clustering : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -80,6 +83,7 @@ export class Table extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["snapshotDefinition"] = args ? args.snapshotDefinition : undefined;
             inputs["streamingBuffer"] = args ? args.streamingBuffer : undefined;
+            inputs["tableId"] = args ? args.tableId : undefined;
             inputs["tableReference"] = args ? args.tableReference : undefined;
             inputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -105,9 +109,6 @@ export interface TableArgs {
      * [Output-only] The time when this table was created, in milliseconds since the epoch.
      */
     readonly creationTime?: pulumi.Input<string>;
-    /**
-     * Dataset ID of the new table
-     */
     readonly datasetId: pulumi.Input<string>;
     /**
      * [Optional] A user-friendly description of this table.
@@ -177,9 +178,6 @@ export interface TableArgs {
      * [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
      */
     readonly numRows?: pulumi.Input<string>;
-    /**
-     * Project ID of the new table
-     */
     readonly projectId: pulumi.Input<string>;
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -205,6 +203,7 @@ export interface TableArgs {
      * [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
      */
     readonly streamingBuffer?: pulumi.Input<inputs.bigquery.v2.Streamingbuffer>;
+    readonly tableId: pulumi.Input<string>;
     /**
      * [Required] Reference describing the ID of this table.
      */

@@ -47,12 +47,12 @@ export class Profile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["profileType"] = args ? args.profileType : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -71,11 +71,8 @@ export interface ProfileArgs {
      */
     readonly deployment?: pulumi.Input<inputs.cloudprofiler.v2.Deployment>;
     /**
-     * Parent project to create the profile in.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * One or more profile types that the agent is capable of providing.
      */
     readonly profileType?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly projectsId: pulumi.Input<string>;
 }

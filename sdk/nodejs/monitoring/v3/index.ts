@@ -6,24 +6,24 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./alertPolicy";
-export * from "./createCollectdTimeSeriesResponse";
-export * from "./empty";
+export * from "./collectdTimeSeries";
 export * from "./group";
 export * from "./metricDescriptor";
 export * from "./notificationChannel";
 export * from "./service";
-export * from "./serviceLevelObjective";
+export * from "./serviceServiceLevelObjective";
+export * from "./timeSeries";
 export * from "./uptimeCheckConfig";
 
 // Import resources to register:
 import { AlertPolicy } from "./alertPolicy";
-import { CreateCollectdTimeSeriesResponse } from "./createCollectdTimeSeriesResponse";
-import { Empty } from "./empty";
+import { CollectdTimeSeries } from "./collectdTimeSeries";
 import { Group } from "./group";
 import { MetricDescriptor } from "./metricDescriptor";
 import { NotificationChannel } from "./notificationChannel";
 import { Service } from "./service";
-import { ServiceLevelObjective } from "./serviceLevelObjective";
+import { ServiceServiceLevelObjective } from "./serviceServiceLevelObjective";
+import { TimeSeries } from "./timeSeries";
 import { UptimeCheckConfig } from "./uptimeCheckConfig";
 
 const _module = {
@@ -32,10 +32,8 @@ const _module = {
         switch (type) {
             case "google-cloud:monitoring/v3:AlertPolicy":
                 return new AlertPolicy(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:CreateCollectdTimeSeriesResponse":
-                return new CreateCollectdTimeSeriesResponse(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:Empty":
-                return new Empty(name, <any>undefined, { urn })
+            case "google-cloud:monitoring/v3:CollectdTimeSeries":
+                return new CollectdTimeSeries(name, <any>undefined, { urn })
             case "google-cloud:monitoring/v3:Group":
                 return new Group(name, <any>undefined, { urn })
             case "google-cloud:monitoring/v3:MetricDescriptor":
@@ -44,8 +42,10 @@ const _module = {
                 return new NotificationChannel(name, <any>undefined, { urn })
             case "google-cloud:monitoring/v3:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:ServiceLevelObjective":
-                return new ServiceLevelObjective(name, <any>undefined, { urn })
+            case "google-cloud:monitoring/v3:ServiceServiceLevelObjective":
+                return new ServiceServiceLevelObjective(name, <any>undefined, { urn })
+            case "google-cloud:monitoring/v3:TimeSeries":
+                return new TimeSeries(name, <any>undefined, { urn })
             case "google-cloud:monitoring/v3:UptimeCheckConfig":
                 return new UptimeCheckConfig(name, <any>undefined, { urn })
             default:

@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./cloudFunction";
-export * from "./policy";
+export * from "./function";
+export * from "./functionIamPolicy";
 
 // Import resources to register:
-import { CloudFunction } from "./cloudFunction";
-import { Policy } from "./policy";
+import { Function } from "./function";
+import { FunctionIamPolicy } from "./functionIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudfunctions/v1:CloudFunction":
-                return new CloudFunction(name, <any>undefined, { urn })
-            case "google-cloud:cloudfunctions/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:cloudfunctions/v1:Function":
+                return new Function(name, <any>undefined, { urn })
+            case "google-cloud:cloudfunctions/v1:FunctionIamPolicy":
+                return new FunctionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

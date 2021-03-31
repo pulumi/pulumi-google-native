@@ -5,25 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./certificate";
 export * from "./certificateAuthority";
-export * from "./policy";
+export * from "./certificateAuthorityCertificate";
+export * from "./certificateAuthorityCertificateRevocationListIamPolicy";
+export * from "./certificateAuthorityIamPolicy";
+export * from "./reusableConfigIamPolicy";
 
 // Import resources to register:
-import { Certificate } from "./certificate";
 import { CertificateAuthority } from "./certificateAuthority";
-import { Policy } from "./policy";
+import { CertificateAuthorityCertificate } from "./certificateAuthorityCertificate";
+import { CertificateAuthorityCertificateRevocationListIamPolicy } from "./certificateAuthorityCertificateRevocationListIamPolicy";
+import { CertificateAuthorityIamPolicy } from "./certificateAuthorityIamPolicy";
+import { ReusableConfigIamPolicy } from "./reusableConfigIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:privateca/v1beta1:Certificate":
-                return new Certificate(name, <any>undefined, { urn })
             case "google-cloud:privateca/v1beta1:CertificateAuthority":
                 return new CertificateAuthority(name, <any>undefined, { urn })
-            case "google-cloud:privateca/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:privateca/v1beta1:CertificateAuthorityCertificate":
+                return new CertificateAuthorityCertificate(name, <any>undefined, { urn })
+            case "google-cloud:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy":
+                return new CertificateAuthorityCertificateRevocationListIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:privateca/v1beta1:CertificateAuthorityIamPolicy":
+                return new CertificateAuthorityIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:privateca/v1beta1:ReusableConfigIamPolicy":
+                return new ReusableConfigIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

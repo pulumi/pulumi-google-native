@@ -47,16 +47,23 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.instancesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instancesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["discoveryEndpoint"] = args ? args.discoveryEndpoint : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instanceMessages"] = args ? args.instanceMessages : undefined;
+            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["memcacheFullVersion"] = args ? args.memcacheFullVersion : undefined;
             inputs["memcacheNodes"] = args ? args.memcacheNodes : undefined;
             inputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
@@ -64,7 +71,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["zones"] = args ? args.zones : undefined;
@@ -98,17 +105,15 @@ export interface InstanceArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
-     */
-    readonly instanceId?: pulumi.Input<string>;
-    /**
      * List of messages that describe the current state of the Memcached instance.
      */
     readonly instanceMessages?: pulumi.Input<pulumi.Input<inputs.memcache.v1.InstanceMessage>[]>;
+    readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
      */
@@ -137,10 +142,7 @@ export interface InstanceArgs {
      * Optional: User defined parameters to apply to the memcached process on each node.
      */
     readonly parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParameters>;
-    /**
-     * Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The state of this Memcached instance.
      */

@@ -5,25 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./domainMapping";
-export * from "./policy";
+export * from "./domainmapping";
+export * from "./namespaceDomainmapping";
+export * from "./namespaceService";
 export * from "./service";
+export * from "./serviceIamPolicy";
 
 // Import resources to register:
-import { DomainMapping } from "./domainMapping";
-import { Policy } from "./policy";
+import { Domainmapping } from "./domainmapping";
+import { NamespaceDomainmapping } from "./namespaceDomainmapping";
+import { NamespaceService } from "./namespaceService";
 import { Service } from "./service";
+import { ServiceIamPolicy } from "./serviceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:run/v1:DomainMapping":
-                return new DomainMapping(name, <any>undefined, { urn })
-            case "google-cloud:run/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:run/v1:Domainmapping":
+                return new Domainmapping(name, <any>undefined, { urn })
+            case "google-cloud:run/v1:NamespaceDomainmapping":
+                return new NamespaceDomainmapping(name, <any>undefined, { urn })
+            case "google-cloud:run/v1:NamespaceService":
+                return new NamespaceService(name, <any>undefined, { urn })
             case "google-cloud:run/v1:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "google-cloud:run/v1:ServiceIamPolicy":
+                return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

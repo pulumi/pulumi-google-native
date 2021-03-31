@@ -49,18 +49,20 @@ export class Notification extends pulumi.CustomResource {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
+            if ((!args || args.notification === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'notification'");
+            }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["custom_attributes"] = args ? args.custom_attributes : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["event_types"] = args ? args.event_types : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["notification"] = args ? args.notification : undefined;
             inputs["object_name_prefix"] = args ? args.object_name_prefix : undefined;
             inputs["payload_format"] = args ? args.payload_format : undefined;
-            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["topic"] = args ? args.topic : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
         if (!opts.version) {
@@ -74,9 +76,6 @@ export class Notification extends pulumi.CustomResource {
  * The set of arguments for constructing a Notification resource.
  */
 export interface NotificationArgs {
-    /**
-     * The parent bucket of the notification.
-     */
     readonly bucket: pulumi.Input<string>;
     /**
      * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
@@ -98,6 +97,7 @@ export interface NotificationArgs {
      * The kind of item this is. For notifications, this is always storage#notification.
      */
     readonly kind?: pulumi.Input<string>;
+    readonly notification: pulumi.Input<string>;
     /**
      * If present, only apply this notification configuration to object names that begin with this prefix.
      */
@@ -107,10 +107,6 @@ export interface NotificationArgs {
      */
     readonly payload_format?: pulumi.Input<string>;
     /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    readonly provisionalUserProject?: pulumi.Input<string>;
-    /**
      * The canonical URL of this notification.
      */
     readonly selfLink?: pulumi.Input<string>;
@@ -118,8 +114,4 @@ export interface NotificationArgs {
      * The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
      */
     readonly topic?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request. Required for Requester Pays buckets.
-     */
-    readonly userProject?: pulumi.Input<string>;
 }

@@ -5,45 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudDatacatalogV1beta1Entry";
-export * from "./googleCloudDatacatalogV1beta1EntryGroup";
-export * from "./googleCloudDatacatalogV1beta1PolicyTag";
-export * from "./googleCloudDatacatalogV1beta1Tag";
-export * from "./googleCloudDatacatalogV1beta1TagTemplate";
-export * from "./googleCloudDatacatalogV1beta1TagTemplateField";
-export * from "./googleCloudDatacatalogV1beta1Taxonomy";
-export * from "./policy";
+export * from "./entryGroup";
+export * from "./entryGroupEntry";
+export * from "./entryGroupEntryTag";
+export * from "./entryGroupIamPolicy";
+export * from "./entryGroupTag";
+export * from "./tagTemplate";
+export * from "./tagTemplateField";
+export * from "./tagTemplateIamPolicy";
+export * from "./taxonomy";
+export * from "./taxonomyIamPolicy";
+export * from "./taxonomyPolicyTag";
+export * from "./taxonomyPolicyTagIamPolicy";
 
 // Import resources to register:
-import { GoogleCloudDatacatalogV1beta1Entry } from "./googleCloudDatacatalogV1beta1Entry";
-import { GoogleCloudDatacatalogV1beta1EntryGroup } from "./googleCloudDatacatalogV1beta1EntryGroup";
-import { GoogleCloudDatacatalogV1beta1PolicyTag } from "./googleCloudDatacatalogV1beta1PolicyTag";
-import { GoogleCloudDatacatalogV1beta1Tag } from "./googleCloudDatacatalogV1beta1Tag";
-import { GoogleCloudDatacatalogV1beta1TagTemplate } from "./googleCloudDatacatalogV1beta1TagTemplate";
-import { GoogleCloudDatacatalogV1beta1TagTemplateField } from "./googleCloudDatacatalogV1beta1TagTemplateField";
-import { GoogleCloudDatacatalogV1beta1Taxonomy } from "./googleCloudDatacatalogV1beta1Taxonomy";
-import { Policy } from "./policy";
+import { EntryGroup } from "./entryGroup";
+import { EntryGroupEntry } from "./entryGroupEntry";
+import { EntryGroupEntryTag } from "./entryGroupEntryTag";
+import { EntryGroupIamPolicy } from "./entryGroupIamPolicy";
+import { EntryGroupTag } from "./entryGroupTag";
+import { TagTemplate } from "./tagTemplate";
+import { TagTemplateField } from "./tagTemplateField";
+import { TagTemplateIamPolicy } from "./tagTemplateIamPolicy";
+import { Taxonomy } from "./taxonomy";
+import { TaxonomyIamPolicy } from "./taxonomyIamPolicy";
+import { TaxonomyPolicyTag } from "./taxonomyPolicyTag";
+import { TaxonomyPolicyTagIamPolicy } from "./taxonomyPolicyTagIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Entry":
-                return new GoogleCloudDatacatalogV1beta1Entry(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1EntryGroup":
-                return new GoogleCloudDatacatalogV1beta1EntryGroup(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1PolicyTag":
-                return new GoogleCloudDatacatalogV1beta1PolicyTag(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Tag":
-                return new GoogleCloudDatacatalogV1beta1Tag(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1TagTemplate":
-                return new GoogleCloudDatacatalogV1beta1TagTemplate(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1TagTemplateField":
-                return new GoogleCloudDatacatalogV1beta1TagTemplateField(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Taxonomy":
-                return new GoogleCloudDatacatalogV1beta1Taxonomy(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:EntryGroup":
+                return new EntryGroup(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:EntryGroupEntry":
+                return new EntryGroupEntry(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:EntryGroupEntryTag":
+                return new EntryGroupEntryTag(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:EntryGroupIamPolicy":
+                return new EntryGroupIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:EntryGroupTag":
+                return new EntryGroupTag(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:TagTemplate":
+                return new TagTemplate(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:TagTemplateField":
+                return new TagTemplateField(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:TagTemplateIamPolicy":
+                return new TagTemplateIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:Taxonomy":
+                return new Taxonomy(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:TaxonomyIamPolicy":
+                return new TaxonomyIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTag":
+                return new TaxonomyPolicyTag(name, <any>undefined, { urn })
+            case "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
+                return new TaxonomyPolicyTagIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudWebriskV1Submission";
+export * from "./submission";
 
 // Import resources to register:
-import { GoogleCloudWebriskV1Submission } from "./googleCloudWebriskV1Submission";
+import { Submission } from "./submission";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:webrisk/v1:GoogleCloudWebriskV1Submission":
-                return new GoogleCloudWebriskV1Submission(name, <any>undefined, { urn })
+            case "google-cloud:webrisk/v1:Submission":
+                return new Submission(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

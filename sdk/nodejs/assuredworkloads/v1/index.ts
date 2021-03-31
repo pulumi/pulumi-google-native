@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleLongrunningOperation";
+export * from "./organizationWorkload";
 
 // Import resources to register:
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
+import { OrganizationWorkload } from "./organizationWorkload";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:assuredworkloads/v1:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
+            case "google-cloud:assuredworkloads/v1:OrganizationWorkload":
+                return new OrganizationWorkload(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

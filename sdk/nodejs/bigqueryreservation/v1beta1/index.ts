@@ -5,25 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./assignment";
 export * from "./capacityCommitment";
 export * from "./reservation";
+export * from "./reservationAssignment";
 
 // Import resources to register:
-import { Assignment } from "./assignment";
 import { CapacityCommitment } from "./capacityCommitment";
 import { Reservation } from "./reservation";
+import { ReservationAssignment } from "./reservationAssignment";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:bigqueryreservation/v1beta1:Assignment":
-                return new Assignment(name, <any>undefined, { urn })
             case "google-cloud:bigqueryreservation/v1beta1:CapacityCommitment":
                 return new CapacityCommitment(name, <any>undefined, { urn })
             case "google-cloud:bigqueryreservation/v1beta1:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
+            case "google-cloud:bigqueryreservation/v1beta1:ReservationAssignment":
+                return new ReservationAssignment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

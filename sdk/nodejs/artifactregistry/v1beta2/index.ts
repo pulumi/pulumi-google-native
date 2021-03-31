@@ -5,25 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./policy";
 export * from "./repository";
-export * from "./tag";
+export * from "./repositoryIamPolicy";
+export * from "./repositoryPackageTag";
 
 // Import resources to register:
-import { Policy } from "./policy";
 import { Repository } from "./repository";
-import { Tag } from "./tag";
+import { RepositoryIamPolicy } from "./repositoryIamPolicy";
+import { RepositoryPackageTag } from "./repositoryPackageTag";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:artifactregistry/v1beta2:Policy":
-                return new Policy(name, <any>undefined, { urn })
             case "google-cloud:artifactregistry/v1beta2:Repository":
                 return new Repository(name, <any>undefined, { urn })
-            case "google-cloud:artifactregistry/v1beta2:Tag":
-                return new Tag(name, <any>undefined, { urn })
+            case "google-cloud:artifactregistry/v1beta2:RepositoryIamPolicy":
+                return new RepositoryIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:artifactregistry/v1beta2:RepositoryPackageTag":
+                return new RepositoryPackageTag(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

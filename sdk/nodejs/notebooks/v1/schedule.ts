@@ -47,18 +47,25 @@ export class Schedule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.schedulesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'schedulesId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["cronSchedule"] = args ? args.cronSchedule : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["executionTemplate"] = args ? args.executionTemplate : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["recentExecutions"] = args ? args.recentExecutions : undefined;
-            inputs["scheduleId"] = args ? args.scheduleId : undefined;
+            inputs["schedulesId"] = args ? args.schedulesId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -95,22 +102,17 @@ export interface ScheduleArgs {
      * Notebook Execution Template corresponding to this schedule.
      */
     readonly executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplate>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. Format: `parent=projects/{project_id}/locations/{location}`
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The most recent execution names triggered from this schedule and their corresponding states.
      */
     readonly recentExecutions?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.Execution>[]>;
-    /**
-     * Required. User-defined unique ID of this schedule.
-     */
-    readonly scheduleId?: pulumi.Input<string>;
+    readonly schedulesId: pulumi.Input<string>;
     readonly state?: pulumi.Input<string>;
     /**
      * Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).

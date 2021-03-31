@@ -47,12 +47,20 @@ export class Feed extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.feedsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feedsId'");
+            }
+            if ((!args || args.v1Id === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'v1Id'");
+            }
+            if ((!args || args.v1Id1 === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'v1Id1'");
             }
             inputs["feed"] = args ? args.feed : undefined;
             inputs["feedId"] = args ? args.feedId : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["feedsId"] = args ? args.feedsId : undefined;
+            inputs["v1Id"] = args ? args.v1Id : undefined;
+            inputs["v1Id1"] = args ? args.v1Id1 : undefined;
         } else {
         }
         if (!opts.version) {
@@ -74,8 +82,7 @@ export interface FeedArgs {
      * Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
      */
     readonly feedId?: pulumi.Input<string>;
-    /**
-     * Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly feedsId: pulumi.Input<string>;
+    readonly v1Id: pulumi.Input<string>;
+    readonly v1Id1: pulumi.Input<string>;
 }

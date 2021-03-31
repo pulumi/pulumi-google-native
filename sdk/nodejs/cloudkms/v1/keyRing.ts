@@ -46,13 +46,16 @@ export class KeyRing extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["keyRingId"] = args ? args.keyRingId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -70,16 +73,10 @@ export interface KeyRingArgs {
      * Output only. The time at which this KeyRing was created.
      */
     readonly createTime?: pulumi.Input<string>;
-    /**
-     * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
-    readonly keyRingId?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name for the KeyRing in the format `projects/*&#47;locations/*&#47;keyRings/*`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the location associated with the KeyRings, in the format `projects/*&#47;locations/*`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

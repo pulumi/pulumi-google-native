@@ -47,11 +47,15 @@ export class Bucket extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bucket'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["acl"] = args ? args.acl : undefined;
             inputs["billing"] = args ? args.billing : undefined;
+            inputs["bucket"] = args ? args.bucket : undefined;
             inputs["cors"] = args ? args.cors : undefined;
             inputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             inputs["defaultObjectAcl"] = args ? args.defaultObjectAcl : undefined;
@@ -68,19 +72,14 @@ export class Bucket extends pulumi.CustomResource {
             inputs["metageneration"] = args ? args.metageneration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["owner"] = args ? args.owner : undefined;
-            inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
-            inputs["predefinedDefaultObjectAcl"] = args ? args.predefinedDefaultObjectAcl : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["projectNumber"] = args ? args.projectNumber : undefined;
-            inputs["projection"] = args ? args.projection : undefined;
-            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             inputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["timeCreated"] = args ? args.timeCreated : undefined;
             inputs["updated"] = args ? args.updated : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["website"] = args ? args.website : undefined;
             inputs["zoneAffinity"] = args ? args.zoneAffinity : undefined;
@@ -105,6 +104,7 @@ export interface BucketArgs {
      * The bucket's billing configuration.
      */
     readonly billing?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly bucket: pulumi.Input<string>;
     /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
@@ -169,30 +169,11 @@ export interface BucketArgs {
      * The owner of the bucket. This is always the project team's owner group.
      */
     readonly owner?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Apply a predefined set of access controls to this bucket.
-     */
-    readonly predefinedAcl?: pulumi.Input<string>;
-    /**
-     * Apply a predefined set of default object access controls to this bucket.
-     */
-    readonly predefinedDefaultObjectAcl?: pulumi.Input<string>;
-    /**
-     * A valid API project identifier.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The project number of the project the bucket belongs to.
      */
     readonly projectNumber?: pulumi.Input<string>;
-    /**
-     * Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-     */
-    readonly projection?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
@@ -217,10 +198,6 @@ export interface BucketArgs {
      * The modification time of the bucket in RFC 3339 format.
      */
     readonly updated?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request.
-     */
-    readonly userProject?: pulumi.Input<string>;
     /**
      * The bucket's versioning configuration.
      */

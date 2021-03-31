@@ -53,7 +53,6 @@ export class History extends pulumi.CustomResource {
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["testPlatform"] = args ? args.testPlatform : undefined;
         } else {
         }
@@ -80,14 +79,7 @@ export interface HistoryArgs {
      * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A Project id. Required.
-     */
     readonly projectId: pulumi.Input<string>;
-    /**
-     * A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
      */

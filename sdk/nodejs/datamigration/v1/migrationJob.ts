@@ -47,8 +47,14 @@ export class MigrationJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.migrationJobsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'migrationJobsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["destination"] = args ? args.destination : undefined;
@@ -59,11 +65,11 @@ export class MigrationJob extends pulumi.CustomResource {
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["error"] = args ? args.error : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["migrationJobId"] = args ? args.migrationJobId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["migrationJobsId"] = args ? args.migrationJobsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["phase"] = args ? args.phase : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
             inputs["source"] = args ? args.source : undefined;
             inputs["sourceDatabase"] = args ? args.sourceDatabase : undefined;
@@ -121,26 +127,17 @@ export interface MigrationJobArgs {
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Required. The ID of the instance to create.
-     */
-    readonly migrationJobId?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
+    readonly migrationJobsId: pulumi.Input<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The parent, which owns this collection of migration jobs.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Output only. The current migration job phase.
      */
     readonly phase?: pulumi.Input<string>;
-    /**
-     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
      */

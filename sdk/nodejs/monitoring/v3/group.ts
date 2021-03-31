@@ -46,15 +46,19 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.groupsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groupsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["filter"] = args ? args.filter : undefined;
+            inputs["groupsId"] = args ? args.groupsId : undefined;
             inputs["isCluster"] = args ? args.isCluster : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parentName"] = args ? args.parentName : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -76,6 +80,7 @@ export interface GroupArgs {
      * The filter used to determine which monitored resources belong to this group.
      */
     readonly filter?: pulumi.Input<string>;
+    readonly groupsId: pulumi.Input<string>;
     /**
      * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
      */
@@ -83,13 +88,10 @@ export interface GroupArgs {
     /**
      * Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name?: pulumi.Input<string>;
     /**
      * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
      */
     readonly parentName?: pulumi.Input<string>;
-    /**
-     * If true, validate this request but do not create the group.
-     */
-    readonly validateOnly?: pulumi.Input<boolean>;
+    readonly projectsId: pulumi.Input<string>;
 }

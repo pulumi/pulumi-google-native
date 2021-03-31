@@ -5,25 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudChannelV1ChannelPartnerLink";
-export * from "./googleCloudChannelV1Customer";
-export * from "./googleLongrunningOperation";
+export * from "./accountChannelPartnerLink";
+export * from "./accountChannelPartnerLinkCustomer";
+export * from "./accountCustomer";
+export * from "./accountCustomerEntitlement";
 
 // Import resources to register:
-import { GoogleCloudChannelV1ChannelPartnerLink } from "./googleCloudChannelV1ChannelPartnerLink";
-import { GoogleCloudChannelV1Customer } from "./googleCloudChannelV1Customer";
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
+import { AccountChannelPartnerLink } from "./accountChannelPartnerLink";
+import { AccountChannelPartnerLinkCustomer } from "./accountChannelPartnerLinkCustomer";
+import { AccountCustomer } from "./accountCustomer";
+import { AccountCustomerEntitlement } from "./accountCustomerEntitlement";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudchannel/v1:GoogleCloudChannelV1ChannelPartnerLink":
-                return new GoogleCloudChannelV1ChannelPartnerLink(name, <any>undefined, { urn })
-            case "google-cloud:cloudchannel/v1:GoogleCloudChannelV1Customer":
-                return new GoogleCloudChannelV1Customer(name, <any>undefined, { urn })
-            case "google-cloud:cloudchannel/v1:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
+            case "google-cloud:cloudchannel/v1:AccountChannelPartnerLink":
+                return new AccountChannelPartnerLink(name, <any>undefined, { urn })
+            case "google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
+                return new AccountChannelPartnerLinkCustomer(name, <any>undefined, { urn })
+            case "google-cloud:cloudchannel/v1:AccountCustomer":
+                return new AccountCustomer(name, <any>undefined, { urn })
+            case "google-cloud:cloudchannel/v1:AccountCustomerEntitlement":
+                return new AccountCustomerEntitlement(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

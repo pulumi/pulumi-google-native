@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudBillingBudgetsV1beta1Budget";
+export * from "./billingAccountBudget";
 
 // Import resources to register:
-import { GoogleCloudBillingBudgetsV1beta1Budget } from "./googleCloudBillingBudgetsV1beta1Budget";
+import { BillingAccountBudget } from "./billingAccountBudget";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:billingbudgets/v1beta1:GoogleCloudBillingBudgetsV1beta1Budget":
-                return new GoogleCloudBillingBudgetsV1beta1Budget(name, <any>undefined, { urn })
+            case "google-cloud:billingbudgets/v1beta1:BillingAccountBudget":
+                return new BillingAccountBudget(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

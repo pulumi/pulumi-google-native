@@ -5,17 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./policy";
+export * from "./organizationRole";
 export * from "./role";
 export * from "./serviceAccount";
+export * from "./serviceAccountIamPolicy";
 export * from "./serviceAccountKey";
 export * from "./workloadIdentityPool";
 export * from "./workloadIdentityPoolProvider";
 
 // Import resources to register:
-import { Policy } from "./policy";
+import { OrganizationRole } from "./organizationRole";
 import { Role } from "./role";
 import { ServiceAccount } from "./serviceAccount";
+import { ServiceAccountIamPolicy } from "./serviceAccountIamPolicy";
 import { ServiceAccountKey } from "./serviceAccountKey";
 import { WorkloadIdentityPool } from "./workloadIdentityPool";
 import { WorkloadIdentityPoolProvider } from "./workloadIdentityPoolProvider";
@@ -24,12 +26,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:iam/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:iam/v1:OrganizationRole":
+                return new OrganizationRole(name, <any>undefined, { urn })
             case "google-cloud:iam/v1:Role":
                 return new Role(name, <any>undefined, { urn })
             case "google-cloud:iam/v1:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
+            case "google-cloud:iam/v1:ServiceAccountIamPolicy":
+                return new ServiceAccountIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:iam/v1:ServiceAccountKey":
                 return new ServiceAccountKey(name, <any>undefined, { urn })
             case "google-cloud:iam/v1:WorkloadIdentityPool":

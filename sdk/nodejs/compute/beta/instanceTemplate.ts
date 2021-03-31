@@ -47,17 +47,20 @@ export class InstanceTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceTemplate === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceTemplate'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["properties"] = args ? args.properties : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             inputs["sourceInstanceParams"] = args ? args.sourceInstanceParams : undefined;
@@ -86,6 +89,7 @@ export interface InstanceTemplateArgs {
      * [Output Only] A unique identifier for this instance template. The server defines this identifier.
      */
     readonly id?: pulumi.Input<string>;
+    readonly instanceTemplate: pulumi.Input<string>;
     /**
      * [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
      */
@@ -94,22 +98,11 @@ export interface InstanceTemplateArgs {
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The instance properties for this instance template.
      */
     readonly properties?: pulumi.Input<inputs.compute.beta.InstanceProperties>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The URL for this instance template. The server defines this URL.
      */

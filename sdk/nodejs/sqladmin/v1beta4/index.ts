@@ -7,15 +7,15 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./backupRun";
 export * from "./database";
-export * from "./databaseInstance";
-export * from "./sslCertsInsertResponse";
+export * from "./instance";
+export * from "./sslCert";
 export * from "./user";
 
 // Import resources to register:
 import { BackupRun } from "./backupRun";
 import { Database } from "./database";
-import { DatabaseInstance } from "./databaseInstance";
-import { SslCertsInsertResponse } from "./sslCertsInsertResponse";
+import { Instance } from "./instance";
+import { SslCert } from "./sslCert";
 import { User } from "./user";
 
 const _module = {
@@ -26,10 +26,10 @@ const _module = {
                 return new BackupRun(name, <any>undefined, { urn })
             case "google-cloud:sqladmin/v1beta4:Database":
                 return new Database(name, <any>undefined, { urn })
-            case "google-cloud:sqladmin/v1beta4:DatabaseInstance":
-                return new DatabaseInstance(name, <any>undefined, { urn })
-            case "google-cloud:sqladmin/v1beta4:SslCertsInsertResponse":
-                return new SslCertsInsertResponse(name, <any>undefined, { urn })
+            case "google-cloud:sqladmin/v1beta4:Instance":
+                return new Instance(name, <any>undefined, { urn })
+            case "google-cloud:sqladmin/v1beta4:SslCert":
+                return new SslCert(name, <any>undefined, { urn })
             case "google-cloud:sqladmin/v1beta4:User":
                 return new User(name, <any>undefined, { urn })
             default:

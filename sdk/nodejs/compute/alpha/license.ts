@@ -47,6 +47,9 @@ export class License extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.license === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'license'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -55,10 +58,10 @@ export class License extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["license"] = args ? args.license : undefined;
             inputs["licenseCode"] = args ? args.licenseCode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -96,6 +99,7 @@ export interface LicenseArgs {
      * [Output Only] Type of resource. Always compute#license for licenses.
      */
     readonly kind?: pulumi.Input<string>;
+    readonly license: pulumi.Input<string>;
     /**
      * [Output Only] The unique code used to attach this license to images, snapshots, and disks.
      */
@@ -104,18 +108,7 @@ export interface LicenseArgs {
      * Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     readonly resourceRequirements?: pulumi.Input<inputs.compute.alpha.LicenseResourceRequirements>;
     /**
      * [Output Only] Server-defined URL for the resource.

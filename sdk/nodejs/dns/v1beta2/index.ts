@@ -7,16 +7,16 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./change";
 export * from "./managedZone";
+export * from "./managedZoneRrset";
 export * from "./policy";
-export * from "./resourceRecordSet";
 export * from "./responsePolicy";
 export * from "./responsePolicyRule";
 
 // Import resources to register:
 import { Change } from "./change";
 import { ManagedZone } from "./managedZone";
+import { ManagedZoneRrset } from "./managedZoneRrset";
 import { Policy } from "./policy";
-import { ResourceRecordSet } from "./resourceRecordSet";
 import { ResponsePolicy } from "./responsePolicy";
 import { ResponsePolicyRule } from "./responsePolicyRule";
 
@@ -28,10 +28,10 @@ const _module = {
                 return new Change(name, <any>undefined, { urn })
             case "google-cloud:dns/v1beta2:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
+            case "google-cloud:dns/v1beta2:ManagedZoneRrset":
+                return new ManagedZoneRrset(name, <any>undefined, { urn })
             case "google-cloud:dns/v1beta2:Policy":
                 return new Policy(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1beta2:ResourceRecordSet":
-                return new ResourceRecordSet(name, <any>undefined, { urn })
             case "google-cloud:dns/v1beta2:ResponsePolicy":
                 return new ResponsePolicy(name, <any>undefined, { urn })
             case "google-cloud:dns/v1beta2:ResponsePolicyRule":

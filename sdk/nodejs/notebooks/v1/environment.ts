@@ -47,17 +47,24 @@ export class Environment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.environmentsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentsId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["containerImage"] = args ? args.containerImage : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
+            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["vmImage"] = args ? args.vmImage : undefined;
         } else {
         }
@@ -88,22 +95,17 @@ export interface EnvironmentArgs {
      * Display name of this environment for the UI.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
-     */
-    readonly environmentId?: pulumi.Input<string>;
+    readonly environmentsId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. Format: `projects/{project_id}/locations/{location}`
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
      */
     readonly postStartupScript?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      */

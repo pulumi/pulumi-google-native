@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./build";
-export * from "./buildTrigger";
+export * from "./trigger";
 
 // Import resources to register:
 import { Build } from "./build";
-import { BuildTrigger } from "./buildTrigger";
+import { Trigger } from "./trigger";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:cloudbuild/v1:Build":
                 return new Build(name, <any>undefined, { urn })
-            case "google-cloud:cloudbuild/v1:BuildTrigger":
-                return new BuildTrigger(name, <any>undefined, { urn })
+            case "google-cloud:cloudbuild/v1:Trigger":
+                return new Trigger(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

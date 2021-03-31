@@ -47,6 +47,9 @@ export class Image extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.image === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'image'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -56,9 +59,9 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             inputs["family"] = args ? args.family : undefined;
-            inputs["forceCreate"] = args ? args.forceCreate : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["image"] = args ? args.image : undefined;
             inputs["imageEncryptionKey"] = args ? args.imageEncryptionKey : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
@@ -68,7 +71,6 @@ export class Image extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["shieldedInstanceInitialState"] = args ? args.shieldedInstanceInitialState : undefined;
@@ -122,10 +124,6 @@ export interface ImageArgs {
      */
     readonly family?: pulumi.Input<string>;
     /**
-     * Force image creation if true.
-     */
-    readonly forceCreate?: pulumi.Input<boolean>;
-    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
      */
     readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.beta.GuestOsFeature>[]>;
@@ -133,6 +131,7 @@ export interface ImageArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
+    readonly image: pulumi.Input<string>;
     /**
      * Encrypts the image using a customer-supplied encryption key.
      *
@@ -169,22 +168,11 @@ export interface ImageArgs {
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The parameters of the raw disk image.
      */
     readonly rawDisk?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.
      */

@@ -5,33 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./policy";
 export * from "./schema";
+export * from "./schemaIamPolicy";
 export * from "./snapshot";
+export * from "./snapshotIamPolicy";
 export * from "./subscription";
+export * from "./subscriptionIamPolicy";
 export * from "./topic";
+export * from "./topicIamPolicy";
 
 // Import resources to register:
-import { Policy } from "./policy";
 import { Schema } from "./schema";
+import { SchemaIamPolicy } from "./schemaIamPolicy";
 import { Snapshot } from "./snapshot";
+import { SnapshotIamPolicy } from "./snapshotIamPolicy";
 import { Subscription } from "./subscription";
+import { SubscriptionIamPolicy } from "./subscriptionIamPolicy";
 import { Topic } from "./topic";
+import { TopicIamPolicy } from "./topicIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:pubsub/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1:SchemaIamPolicy":
+                return new SchemaIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1:SnapshotIamPolicy":
+                return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1:SubscriptionIamPolicy":
+                return new SubscriptionIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1:Topic":
                 return new Topic(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1:TopicIamPolicy":
+                return new TopicIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

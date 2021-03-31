@@ -47,14 +47,22 @@ export class Queue extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.queuesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'queuesId'");
             }
             inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["pullTarget"] = args ? args.pullTarget : undefined;
             inputs["purgeTime"] = args ? args.purgeTime : undefined;
+            inputs["queuesId"] = args ? args.queuesId : undefined;
             inputs["rateLimits"] = args ? args.rateLimits : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -78,14 +86,12 @@ export interface QueueArgs {
      * App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudtasks.v2beta2.AppEngineHttpTarget>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The location name in which the queue will be created. For example: `projects/PROJECT_ID/locations/LOCATION_ID` The list of allowed locations can be obtained by calling Cloud Tasks' implementation of ListLocations.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Pull target. A pull queue is a queue that has a PullTarget.
      */
@@ -94,6 +100,7 @@ export interface QueueArgs {
      * Output only. The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
      */
     readonly purgeTime?: pulumi.Input<string>;
+    readonly queuesId: pulumi.Input<string>;
     /**
      * Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts however they control how tasks are attempted in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc).
      */

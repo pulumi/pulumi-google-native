@@ -93,9 +93,6 @@ export interface JobArgs {
      * [Output-only] The type of the resource.
      */
     readonly kind?: pulumi.Input<string>;
-    /**
-     * Project ID of the project that will be billed for the job
-     */
     readonly projectId: pulumi.Input<string>;
     /**
      * [Output-only] A URL that can be used to access this resource again.

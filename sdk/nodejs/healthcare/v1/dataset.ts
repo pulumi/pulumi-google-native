@@ -46,12 +46,19 @@ export class Dataset extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.datasetsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetsId'");
             }
-            inputs["datasetId"] = args ? args.datasetId : undefined;
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
         }
@@ -66,18 +73,13 @@ export class Dataset extends pulumi.CustomResource {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
-    /**
-     * The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-     */
-    readonly datasetId?: pulumi.Input<string>;
+    readonly datasetsId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of the project where the server creates the dataset. For example, `projects/{project_id}/locations/{location_id}`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
      */

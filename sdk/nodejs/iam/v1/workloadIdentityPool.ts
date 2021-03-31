@@ -46,16 +46,23 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.workloadIdentityPoolsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workloadIdentityPoolsId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
+            inputs["workloadIdentityPoolsId"] = args ? args.workloadIdentityPoolsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -81,20 +88,15 @@ export interface WorkloadIdentityPoolArgs {
      * A display name for the pool. Cannot exceed 32 characters.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the pool.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent resource to create the pool in. The only supported location is `global`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The state of the pool.
      */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     */
-    readonly workloadIdentityPoolId?: pulumi.Input<string>;
+    readonly workloadIdentityPoolsId: pulumi.Input<string>;
 }

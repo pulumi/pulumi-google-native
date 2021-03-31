@@ -5,25 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./policy";
 export * from "./subscription";
+export * from "./subscriptionIamPolicy";
 export * from "./topic";
+export * from "./topicIamPolicy";
 
 // Import resources to register:
-import { Policy } from "./policy";
 import { Subscription } from "./subscription";
+import { SubscriptionIamPolicy } from "./subscriptionIamPolicy";
 import { Topic } from "./topic";
+import { TopicIamPolicy } from "./topicIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:pubsub/v1beta2:Policy":
-                return new Policy(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1beta2:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1beta2:SubscriptionIamPolicy":
+                return new SubscriptionIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:pubsub/v1beta2:Topic":
                 return new Topic(name, <any>undefined, { urn })
+            case "google-cloud:pubsub/v1beta2:TopicIamPolicy":
+                return new TopicIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

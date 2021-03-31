@@ -47,11 +47,15 @@ export class Dataset extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
+            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["access"] = args ? args.access : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["datasetReference"] = args ? args.datasetReference : undefined;
             inputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
             inputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
@@ -88,6 +92,7 @@ export interface DatasetArgs {
      * [Output-only] The time when this dataset was created, in milliseconds since the epoch.
      */
     readonly creationTime?: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * [Required] A reference that identifies the dataset.
      */
@@ -133,9 +138,6 @@ export interface DatasetArgs {
      * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
      */
     readonly location?: pulumi.Input<string>;
-    /**
-     * Project ID of the new dataset
-     */
     readonly projectId: pulumi.Input<string>;
     /**
      * [Output-only] Reserved for future use.

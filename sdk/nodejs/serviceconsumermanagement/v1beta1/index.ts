@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./v1beta1QuotaOverride";
+export * from "./serviceConsumerQuotaMetricLimitProducerOverride";
 
 // Import resources to register:
-import { V1Beta1QuotaOverride } from "./v1beta1QuotaOverride";
+import { ServiceConsumerQuotaMetricLimitProducerOverride } from "./serviceConsumerQuotaMetricLimitProducerOverride";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:serviceconsumermanagement/v1beta1:V1Beta1QuotaOverride":
-                return new V1Beta1QuotaOverride(name, <any>undefined, { urn })
+            case "google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride":
+                return new ServiceConsumerQuotaMetricLimitProducerOverride(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

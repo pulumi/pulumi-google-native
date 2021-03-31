@@ -47,8 +47,14 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.jobsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobsId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -56,12 +62,14 @@ export class Job extends pulumi.CustomResource {
             inputs["failureDetails"] = args ? args.failureDetails : undefined;
             inputs["failureReason"] = args ? args.failureReason : undefined;
             inputs["inputUri"] = args ? args.inputUri : undefined;
+            inputs["jobsId"] = args ? args.jobsId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["originUri"] = args ? args.originUri : undefined;
             inputs["outputUri"] = args ? args.outputUri : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["progress"] = args ? args.progress : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
@@ -103,6 +111,8 @@ export interface JobArgs {
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
      */
     readonly inputUri?: pulumi.Input<string>;
+    readonly jobsId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
      */
@@ -116,10 +126,6 @@ export interface JobArgs {
      */
     readonly outputUri?: pulumi.Input<string>;
     /**
-     * Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
      */
     readonly priority?: pulumi.Input<number>;
@@ -127,6 +133,7 @@ export interface JobArgs {
      * Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
      */
     readonly progress?: pulumi.Input<inputs.transcoder.v1beta1.Progress>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The time the transcoding started.
      */

@@ -47,18 +47,25 @@ export class WorkerPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.workerPoolsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workerPoolsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deleteTime"] = args ? args.deleteTime : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
+            inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -80,6 +87,7 @@ export interface WorkerPoolArgs {
      * Output only. Time at which the request to delete the `WorkerPool` was received.
      */
     readonly deleteTime?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
      */
@@ -88,10 +96,7 @@ export interface WorkerPoolArgs {
      * Network configuration for the `WorkerPool`.
      */
     readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.NetworkConfig>;
-    /**
-     * Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. `WorkerPool` state.
      */
@@ -104,8 +109,5 @@ export interface WorkerPoolArgs {
      * Worker configuration for the `WorkerPool`.
      */
     readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.WorkerConfig>;
-    /**
-     * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-     */
-    readonly workerPoolId?: pulumi.Input<string>;
+    readonly workerPoolsId: pulumi.Input<string>;
 }

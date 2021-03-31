@@ -47,6 +47,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.interconnectAttachment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'interconnectAttachment'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -66,6 +69,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["googleReferenceId"] = args ? args.googleReferenceId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
+            inputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
             inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labelFingerprint"] = args ? args.labelFingerprint : undefined;
@@ -79,13 +83,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["privateInterconnectInfo"] = args ? args.privateInterconnectInfo : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["router"] = args ? args.router : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["type"] = args ? args.type : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
         } else {
         }
@@ -170,6 +172,7 @@ export interface InterconnectAttachmentArgs {
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     readonly interconnect?: pulumi.Input<string>;
+    readonly interconnectAttachment: pulumi.Input<string>;
     /**
      * URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
      * Not currently available in all Interconnect locations.
@@ -219,22 +222,11 @@ export interface InterconnectAttachmentArgs {
      * [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
      */
     readonly privateInterconnectInfo?: pulumi.Input<inputs.compute.alpha.InterconnectAttachmentPrivateInfo>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
      */
@@ -264,10 +256,6 @@ export interface InterconnectAttachmentArgs {
      * - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
      */
     readonly type?: pulumi.Input<string>;
-    /**
-     * If true, the request will not be committed.
-     */
-    readonly validateOnly?: pulumi.Input<boolean>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
      */

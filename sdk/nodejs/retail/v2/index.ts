@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudRetailV2Product";
+export * from "./catalogBranchProduct";
 
 // Import resources to register:
-import { GoogleCloudRetailV2Product } from "./googleCloudRetailV2Product";
+import { CatalogBranchProduct } from "./catalogBranchProduct";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:retail/v2:GoogleCloudRetailV2Product":
-                return new GoogleCloudRetailV2Product(name, <any>undefined, { urn })
+            case "google-cloud:retail/v2:CatalogBranchProduct":
+                return new CatalogBranchProduct(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -47,11 +47,15 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.jobsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["job"] = args ? args.job : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["jobsId"] = args ? args.jobsId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -69,8 +73,6 @@ export interface JobArgs {
      * Required. The Job to be created.
      */
     readonly job?: pulumi.Input<inputs.jobs.v3p1beta1.Job>;
-    /**
-     * Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly jobsId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

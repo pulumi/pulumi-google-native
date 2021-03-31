@@ -5,25 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./device";
-export * from "./deviceRegistry";
-export * from "./policy";
+export * from "./registry";
+export * from "./registryDevice";
+export * from "./registryGroupIamPolicy";
+export * from "./registryIamPolicy";
 
 // Import resources to register:
-import { Device } from "./device";
-import { DeviceRegistry } from "./deviceRegistry";
-import { Policy } from "./policy";
+import { Registry } from "./registry";
+import { RegistryDevice } from "./registryDevice";
+import { RegistryGroupIamPolicy } from "./registryGroupIamPolicy";
+import { RegistryIamPolicy } from "./registryIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudiot/v1:Device":
-                return new Device(name, <any>undefined, { urn })
-            case "google-cloud:cloudiot/v1:DeviceRegistry":
-                return new DeviceRegistry(name, <any>undefined, { urn })
-            case "google-cloud:cloudiot/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:cloudiot/v1:Registry":
+                return new Registry(name, <any>undefined, { urn })
+            case "google-cloud:cloudiot/v1:RegistryDevice":
+                return new RegistryDevice(name, <any>undefined, { urn })
+            case "google-cloud:cloudiot/v1:RegistryGroupIamPolicy":
+                return new RegistryGroupIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:cloudiot/v1:RegistryIamPolicy":
+                return new RegistryIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

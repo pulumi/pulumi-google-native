@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./policy";
 export * from "./repo";
+export * from "./repoIamPolicy";
 
 // Import resources to register:
-import { Policy } from "./policy";
 import { Repo } from "./repo";
+import { RepoIamPolicy } from "./repoIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:sourcerepo/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
             case "google-cloud:sourcerepo/v1:Repo":
                 return new Repo(name, <any>undefined, { urn })
+            case "google-cloud:sourcerepo/v1:RepoIamPolicy":
+                return new RepoIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

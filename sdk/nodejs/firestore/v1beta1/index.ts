@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleLongrunningOperation";
+export * from "./databaseIndex";
 
 // Import resources to register:
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
+import { DatabaseIndex } from "./databaseIndex";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:firestore/v1beta1:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
+            case "google-cloud:firestore/v1beta1:DatabaseIndex":
+                return new DatabaseIndex(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

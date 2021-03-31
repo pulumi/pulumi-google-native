@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+ * Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
  */
 export class BackendService extends pulumi.CustomResource {
     /**
@@ -47,13 +47,14 @@ export class BackendService extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.backendService === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backendService'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
+            inputs["backendService"] = args ? args.backendService : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
@@ -84,7 +85,6 @@ export class BackendService extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -113,6 +113,7 @@ export interface BackendServiceArgs {
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
+    readonly backendService: pulumi.Input<string>;
     /**
      * The list of backends that serve this BackendService.
      */
@@ -257,9 +258,6 @@ export interface BackendServiceArgs {
      * Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
      */
     readonly portName?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The protocol this BackendService uses to communicate with backends.
@@ -272,15 +270,7 @@ export interface BackendServiceArgs {
     /**
      * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output Only] The resource URL for the security policy associated with this backend service.
      */

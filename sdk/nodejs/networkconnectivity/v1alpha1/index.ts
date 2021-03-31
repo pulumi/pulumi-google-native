@@ -5,21 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleLongrunningOperation";
-export * from "./policy";
+export * from "./hub";
+export * from "./hubIamPolicy";
+export * from "./internalRangeIamPolicy";
+export * from "./policyBasedRouteIamPolicy";
+export * from "./spoke";
+export * from "./spokeIamPolicy";
 
 // Import resources to register:
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
-import { Policy } from "./policy";
+import { Hub } from "./hub";
+import { HubIamPolicy } from "./hubIamPolicy";
+import { InternalRangeIamPolicy } from "./internalRangeIamPolicy";
+import { PolicyBasedRouteIamPolicy } from "./policyBasedRouteIamPolicy";
+import { Spoke } from "./spoke";
+import { SpokeIamPolicy } from "./spokeIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:networkconnectivity/v1alpha1:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
-            case "google-cloud:networkconnectivity/v1alpha1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:networkconnectivity/v1alpha1:Hub":
+                return new Hub(name, <any>undefined, { urn })
+            case "google-cloud:networkconnectivity/v1alpha1:HubIamPolicy":
+                return new HubIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
+                return new InternalRangeIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy":
+                return new PolicyBasedRouteIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:networkconnectivity/v1alpha1:Spoke":
+                return new Spoke(name, <any>undefined, { urn })
+            case "google-cloud:networkconnectivity/v1alpha1:SpokeIamPolicy":
+                return new SpokeIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

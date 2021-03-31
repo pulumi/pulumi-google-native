@@ -46,21 +46,28 @@ export class Workflow extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.workflowsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workflowsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["revisionCreateTime"] = args ? args.revisionCreateTime : undefined;
             inputs["revisionId"] = args ? args.revisionId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["sourceContents"] = args ? args.sourceContents : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["workflowId"] = args ? args.workflowId : undefined;
+            inputs["workflowsId"] = args ? args.workflowsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -86,14 +93,12 @@ export interface WorkflowArgs {
      * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location}
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The timestamp that the latest revision of the workflow was created.
      */
@@ -118,8 +123,5 @@ export interface WorkflowArgs {
      * Output only. The last update timestamp of the workflow.
      */
     readonly updateTime?: pulumi.Input<string>;
-    /**
-     * Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
-     */
-    readonly workflowId?: pulumi.Input<string>;
+    readonly workflowsId: pulumi.Input<string>;
 }

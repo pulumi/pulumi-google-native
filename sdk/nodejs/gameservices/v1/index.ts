@@ -5,33 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./gameServerCluster";
-export * from "./gameServerConfig";
 export * from "./gameServerDeployment";
-export * from "./policy";
+export * from "./gameServerDeploymentConfig";
+export * from "./gameServerDeploymentIamPolicy";
 export * from "./realm";
+export * from "./realmGameServerCluster";
 
 // Import resources to register:
-import { GameServerCluster } from "./gameServerCluster";
-import { GameServerConfig } from "./gameServerConfig";
 import { GameServerDeployment } from "./gameServerDeployment";
-import { Policy } from "./policy";
+import { GameServerDeploymentConfig } from "./gameServerDeploymentConfig";
+import { GameServerDeploymentIamPolicy } from "./gameServerDeploymentIamPolicy";
 import { Realm } from "./realm";
+import { RealmGameServerCluster } from "./realmGameServerCluster";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:gameservices/v1:GameServerCluster":
-                return new GameServerCluster(name, <any>undefined, { urn })
-            case "google-cloud:gameservices/v1:GameServerConfig":
-                return new GameServerConfig(name, <any>undefined, { urn })
             case "google-cloud:gameservices/v1:GameServerDeployment":
                 return new GameServerDeployment(name, <any>undefined, { urn })
-            case "google-cloud:gameservices/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:gameservices/v1:GameServerDeploymentConfig":
+                return new GameServerDeploymentConfig(name, <any>undefined, { urn })
+            case "google-cloud:gameservices/v1:GameServerDeploymentIamPolicy":
+                return new GameServerDeploymentIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:gameservices/v1:Realm":
                 return new Realm(name, <any>undefined, { urn })
+            case "google-cloud:gameservices/v1:RealmGameServerCluster":
+                return new RealmGameServerCluster(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

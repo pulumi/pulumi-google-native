@@ -47,8 +47,14 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.instancesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instancesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
             inputs["authEnabled"] = args ? args.authEnabled : undefined;
@@ -58,14 +64,15 @@ export class Instance extends pulumi.CustomResource {
             inputs["currentLocationId"] = args ? args.currentLocationId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["host"] = args ? args.host : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["persistenceIamIdentity"] = args ? args.persistenceIamIdentity : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["redisConfigs"] = args ? args.redisConfigs : undefined;
             inputs["redisVersion"] = args ? args.redisVersion : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
@@ -119,10 +126,7 @@ export interface InstanceArgs {
      * Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
      */
     readonly host?: pulumi.Input<string>;
-    /**
-     * Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
-     */
-    readonly instanceId?: pulumi.Input<string>;
+    readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata
      */
@@ -131,6 +135,7 @@ export interface InstanceArgs {
      * Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
      */
     readonly locationId?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. Redis memory size in GiB.
      */
@@ -140,10 +145,6 @@ export interface InstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
      */
     readonly persistenceIamIdentity?: pulumi.Input<string>;
@@ -151,6 +152,7 @@ export interface InstanceArgs {
      * Output only. The port number of the exposed Redis endpoint.
      */
     readonly port?: pulumi.Input<number>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
      */

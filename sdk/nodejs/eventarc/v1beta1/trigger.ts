@@ -47,21 +47,27 @@ export class Trigger extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.triggersId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'triggersId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["matchingCriteria"] = args ? args.matchingCriteria : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["transport"] = args ? args.transport : undefined;
-            inputs["triggerId"] = args ? args.triggerId : undefined;
+            inputs["triggersId"] = args ? args.triggersId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
         }
         if (!opts.version) {
@@ -91,6 +97,7 @@ export interface TriggerArgs {
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
@@ -99,10 +106,7 @@ export interface TriggerArgs {
      * Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent collection in which to add this trigger.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
      */
@@ -111,16 +115,9 @@ export interface TriggerArgs {
      * Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     readonly transport?: pulumi.Input<inputs.eventarc.v1beta1.Transport>;
-    /**
-     * Required. The user-provided ID to be assigned to the trigger.
-     */
-    readonly triggerId?: pulumi.Input<string>;
+    readonly triggersId: pulumi.Input<string>;
     /**
      * Output only. The last-modified time.
      */
     readonly updateTime?: pulumi.Input<string>;
-    /**
-     * Required. If set, validate the request and preview the review, but do not actually post it.
-     */
-    readonly validateOnly?: pulumi.Input<boolean>;
 }

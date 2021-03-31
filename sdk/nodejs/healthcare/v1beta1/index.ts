@@ -5,69 +5,89 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./annotation";
-export * from "./annotationStore";
-export * from "./attributeDefinition";
-export * from "./consent";
-export * from "./consentArtifact";
-export * from "./consentStore";
 export * from "./dataset";
-export * from "./dicomStore";
-export * from "./fhirStore";
-export * from "./hl7V2Store";
-export * from "./httpBody";
-export * from "./message";
-export * from "./policy";
-export * from "./userDataMapping";
+export * from "./datasetAnnotationStore";
+export * from "./datasetAnnotationStoreAnnotation";
+export * from "./datasetAnnotationStoreIamPolicy";
+export * from "./datasetConsentStore";
+export * from "./datasetConsentStoreAttributeDefinition";
+export * from "./datasetConsentStoreConsent";
+export * from "./datasetConsentStoreConsentArtifact";
+export * from "./datasetConsentStoreIamPolicy";
+export * from "./datasetConsentStoreUserDataMapping";
+export * from "./datasetDicomStore";
+export * from "./datasetDicomStoreIamPolicy";
+export * from "./datasetFhirStore";
+export * from "./datasetFhirStoreFhir";
+export * from "./datasetFhirStoreIamPolicy";
+export * from "./datasetHl7V2Store";
+export * from "./datasetHl7V2StoreIamPolicy";
+export * from "./datasetHl7V2StoreMessage";
+export * from "./datasetIamPolicy";
 
 // Import resources to register:
-import { Annotation } from "./annotation";
-import { AnnotationStore } from "./annotationStore";
-import { AttributeDefinition } from "./attributeDefinition";
-import { Consent } from "./consent";
-import { ConsentArtifact } from "./consentArtifact";
-import { ConsentStore } from "./consentStore";
 import { Dataset } from "./dataset";
-import { DicomStore } from "./dicomStore";
-import { FhirStore } from "./fhirStore";
-import { Hl7V2Store } from "./hl7V2Store";
-import { HttpBody } from "./httpBody";
-import { Message } from "./message";
-import { Policy } from "./policy";
-import { UserDataMapping } from "./userDataMapping";
+import { DatasetAnnotationStore } from "./datasetAnnotationStore";
+import { DatasetAnnotationStoreAnnotation } from "./datasetAnnotationStoreAnnotation";
+import { DatasetAnnotationStoreIamPolicy } from "./datasetAnnotationStoreIamPolicy";
+import { DatasetConsentStore } from "./datasetConsentStore";
+import { DatasetConsentStoreAttributeDefinition } from "./datasetConsentStoreAttributeDefinition";
+import { DatasetConsentStoreConsent } from "./datasetConsentStoreConsent";
+import { DatasetConsentStoreConsentArtifact } from "./datasetConsentStoreConsentArtifact";
+import { DatasetConsentStoreIamPolicy } from "./datasetConsentStoreIamPolicy";
+import { DatasetConsentStoreUserDataMapping } from "./datasetConsentStoreUserDataMapping";
+import { DatasetDicomStore } from "./datasetDicomStore";
+import { DatasetDicomStoreIamPolicy } from "./datasetDicomStoreIamPolicy";
+import { DatasetFhirStore } from "./datasetFhirStore";
+import { DatasetFhirStoreFhir } from "./datasetFhirStoreFhir";
+import { DatasetFhirStoreIamPolicy } from "./datasetFhirStoreIamPolicy";
+import { DatasetHl7V2Store } from "./datasetHl7V2Store";
+import { DatasetHl7V2StoreIamPolicy } from "./datasetHl7V2StoreIamPolicy";
+import { DatasetHl7V2StoreMessage } from "./datasetHl7V2StoreMessage";
+import { DatasetIamPolicy } from "./datasetIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:healthcare/v1beta1:Annotation":
-                return new Annotation(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:AnnotationStore":
-                return new AnnotationStore(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:AttributeDefinition":
-                return new AttributeDefinition(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:Consent":
-                return new Consent(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:ConsentArtifact":
-                return new ConsentArtifact(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:ConsentStore":
-                return new ConsentStore(name, <any>undefined, { urn })
             case "google-cloud:healthcare/v1beta1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:DicomStore":
-                return new DicomStore(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:FhirStore":
-                return new FhirStore(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:Hl7V2Store":
-                return new Hl7V2Store(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:HttpBody":
-                return new HttpBody(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:Message":
-                return new Message(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
-            case "google-cloud:healthcare/v1beta1:UserDataMapping":
-                return new UserDataMapping(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetAnnotationStore":
+                return new DatasetAnnotationStore(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetAnnotationStoreAnnotation":
+                return new DatasetAnnotationStoreAnnotation(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy":
+                return new DatasetAnnotationStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetConsentStore":
+                return new DatasetConsentStore(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition":
+                return new DatasetConsentStoreAttributeDefinition(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetConsentStoreConsent":
+                return new DatasetConsentStoreConsent(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetConsentStoreConsentArtifact":
+                return new DatasetConsentStoreConsentArtifact(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
+                return new DatasetConsentStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetConsentStoreUserDataMapping":
+                return new DatasetConsentStoreUserDataMapping(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetDicomStore":
+                return new DatasetDicomStore(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetDicomStoreIamPolicy":
+                return new DatasetDicomStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetFhirStore":
+                return new DatasetFhirStore(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetFhirStoreFhir":
+                return new DatasetFhirStoreFhir(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
+                return new DatasetFhirStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetHl7V2Store":
+                return new DatasetHl7V2Store(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy":
+                return new DatasetHl7V2StoreIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetHl7V2StoreMessage":
+                return new DatasetHl7V2StoreMessage(name, <any>undefined, { urn })
+            case "google-cloud:healthcare/v1beta1:DatasetIamPolicy":
+                return new DatasetIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -47,11 +47,14 @@ export class Deployment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.deployment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'deployment'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["createPolicy"] = args ? args.createPolicy : undefined;
             inputs["credential"] = args ? args.credential : undefined;
+            inputs["deployment"] = args ? args.deployment : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -61,7 +64,6 @@ export class Deployment extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["operation"] = args ? args.operation : undefined;
             inputs["outputs"] = args ? args.outputs : undefined;
-            inputs["preview"] = args ? args.preview : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["target"] = args ? args.target : undefined;
@@ -81,13 +83,10 @@ export class Deployment extends pulumi.CustomResource {
  */
 export interface DeploymentArgs {
     /**
-     * Sets the policy to use for creating new resources.
-     */
-    readonly createPolicy?: pulumi.Input<string>;
-    /**
      * User provided default credential for the deployment.
      */
     readonly credential?: pulumi.Input<inputs.deploymentmanager.alpha.Credential>;
+    readonly deployment: pulumi.Input<string>;
     /**
      * An optional user-provided description of the deployment.
      */
@@ -121,13 +120,6 @@ export interface DeploymentArgs {
      * Output only. List of outputs from the last manifest that deployed successfully.
      */
     readonly outputs?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.DeploymentOutputEntry>[]>;
-    /**
-     * If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
-     */
-    readonly preview?: pulumi.Input<boolean>;
-    /**
-     * The project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * Output only. Server defined URL for the resource.

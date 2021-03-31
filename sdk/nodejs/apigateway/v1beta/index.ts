@@ -5,21 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./apigatewayOperation";
-export * from "./apigatewayPolicy";
+export * from "./api";
+export * from "./apiConfig";
+export * from "./apiConfigIamPolicy";
+export * from "./apiIamPolicy";
+export * from "./gateway";
+export * from "./gatewayIamPolicy";
 
 // Import resources to register:
-import { ApigatewayOperation } from "./apigatewayOperation";
-import { ApigatewayPolicy } from "./apigatewayPolicy";
+import { Api } from "./api";
+import { ApiConfig } from "./apiConfig";
+import { ApiConfigIamPolicy } from "./apiConfigIamPolicy";
+import { ApiIamPolicy } from "./apiIamPolicy";
+import { Gateway } from "./gateway";
+import { GatewayIamPolicy } from "./gatewayIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:apigateway/v1beta:ApigatewayOperation":
-                return new ApigatewayOperation(name, <any>undefined, { urn })
-            case "google-cloud:apigateway/v1beta:ApigatewayPolicy":
-                return new ApigatewayPolicy(name, <any>undefined, { urn })
+            case "google-cloud:apigateway/v1beta:Api":
+                return new Api(name, <any>undefined, { urn })
+            case "google-cloud:apigateway/v1beta:ApiConfig":
+                return new ApiConfig(name, <any>undefined, { urn })
+            case "google-cloud:apigateway/v1beta:ApiConfigIamPolicy":
+                return new ApiConfigIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:apigateway/v1beta:ApiIamPolicy":
+                return new ApiIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:apigateway/v1beta:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
+            case "google-cloud:apigateway/v1beta:GatewayIamPolicy":
+                return new GatewayIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a SslCertificate resource in the specified project and region using the data included in the request
+ * Creates a SslCertificate resource in the specified project using the data included in the request.
  */
 export class SslCertificate extends pulumi.CustomResource {
     /**
@@ -50,8 +50,8 @@ export class SslCertificate extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.sslCertificate === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sslCertificate'");
             }
             inputs["certificate"] = args ? args.certificate : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -64,9 +64,9 @@ export class SslCertificate extends pulumi.CustomResource {
             inputs["privateKey"] = args ? args.privateKey : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfManaged"] = args ? args.selfManaged : undefined;
+            inputs["sslCertificate"] = args ? args.sslCertificate : undefined;
             inputs["subjectAlternativeNames"] = args ? args.subjectAlternativeNames : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
@@ -118,22 +118,11 @@ export interface SslCertificateArgs {
      * A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
      */
     readonly privateKey?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
@@ -142,6 +131,7 @@ export interface SslCertificateArgs {
      * Configuration and status of a self-managed SSL certificate.
      */
     readonly selfManaged?: pulumi.Input<inputs.compute.beta.SslCertificateSelfManagedSslCertificate>;
+    readonly sslCertificate: pulumi.Input<string>;
     /**
      * [Output Only] Domains associated with the certificate via Subject Alternative Name.
      */

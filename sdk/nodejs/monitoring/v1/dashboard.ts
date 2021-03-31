@@ -47,16 +47,20 @@ export class Dashboard extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.dashboardsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dashboardsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["columnLayout"] = args ? args.columnLayout : undefined;
+            inputs["dashboardsId"] = args ? args.dashboardsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["gridLayout"] = args ? args.gridLayout : undefined;
             inputs["mosaicLayout"] = args ? args.mosaicLayout : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["rowLayout"] = args ? args.rowLayout : undefined;
         } else {
         }
@@ -75,6 +79,7 @@ export interface DashboardArgs {
      * The content is divided into equally spaced columns and the widgets are arranged vertically.
      */
     readonly columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayout>;
+    readonly dashboardsId: pulumi.Input<string>;
     /**
      * Required. The mutable, human-readable name.
      */
@@ -95,10 +100,7 @@ export interface DashboardArgs {
      * Immutable. The resource name of the dashboard.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */

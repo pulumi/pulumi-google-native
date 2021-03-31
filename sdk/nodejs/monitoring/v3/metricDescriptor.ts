@@ -47,17 +47,22 @@ export class MetricDescriptor extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.metricDescriptorsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metricDescriptorsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["launchStage"] = args ? args.launchStage : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
+            inputs["metricDescriptorsId"] = args ? args.metricDescriptorsId : undefined;
             inputs["metricKind"] = args ? args.metricKind : undefined;
             inputs["monitoredResourceTypes"] = args ? args.monitoredResourceTypes : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["unit"] = args ? args.unit : undefined;
             inputs["valueType"] = args ? args.valueType : undefined;
@@ -94,6 +99,7 @@ export interface MetricDescriptorArgs {
      * Optional. Metadata which can be used to guide usage of the metric.
      */
     readonly metadata?: pulumi.Input<inputs.monitoring.v3.MetricDescriptorMetadata>;
+    readonly metricDescriptorsId: pulumi.Input<string>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
      */
@@ -105,7 +111,8 @@ export interface MetricDescriptorArgs {
     /**
      * The resource name of the metric descriptor.
      */
-    readonly name: pulumi.Input<string>;
+    readonly name?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" 
      */

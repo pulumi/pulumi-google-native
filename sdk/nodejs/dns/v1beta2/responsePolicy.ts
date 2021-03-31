@@ -50,12 +50,15 @@ export class ResponsePolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            if ((!args || args.responsePolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'responsePolicy'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["responsePolicy"] = args ? args.responsePolicy : undefined;
             inputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
         } else {
         }
@@ -71,10 +74,6 @@ export class ResponsePolicy extends pulumi.CustomResource {
  */
 export interface ResponsePolicyArgs {
     /**
-     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     */
-    readonly clientOperationId?: pulumi.Input<string>;
-    /**
      * User-provided description for this Response Policy.
      */
     readonly description?: pulumi.Input<string>;
@@ -87,10 +86,8 @@ export interface ResponsePolicyArgs {
      * List of network names specifying networks to which this policy is applied.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyNetwork>[]>;
-    /**
-     * Identifies the project addressed by this request.
-     */
     readonly project: pulumi.Input<string>;
+    readonly responsePolicy: pulumi.Input<string>;
     /**
      * User assigned name for this Response Policy.
      */

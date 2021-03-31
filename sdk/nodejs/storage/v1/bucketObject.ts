@@ -50,6 +50,9 @@ export class BucketObject extends pulumi.CustomResource {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
+            if ((!args || args.object === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'object'");
+            }
             inputs["acl"] = args ? args.acl : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["cacheControl"] = args ? args.cacheControl : undefined;
@@ -65,10 +68,6 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             inputs["generation"] = args ? args.generation : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["ifGenerationMatch"] = args ? args.ifGenerationMatch : undefined;
-            inputs["ifGenerationNotMatch"] = args ? args.ifGenerationNotMatch : undefined;
-            inputs["ifMetagenerationMatch"] = args ? args.ifMetagenerationMatch : undefined;
-            inputs["ifMetagenerationNotMatch"] = args ? args.ifMetagenerationNotMatch : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["md5Hash"] = args ? args.md5Hash : undefined;
@@ -76,10 +75,8 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["metageneration"] = args ? args.metageneration : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["object"] = args ? args.object : undefined;
             inputs["owner"] = args ? args.owner : undefined;
-            inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
-            inputs["projection"] = args ? args.projection : undefined;
-            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["retentionExpirationTime"] = args ? args.retentionExpirationTime : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -90,7 +87,6 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["timeDeleted"] = args ? args.timeDeleted : undefined;
             inputs["timeStorageClassUpdated"] = args ? args.timeStorageClassUpdated : undefined;
             inputs["updated"] = args ? args.updated : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
         if (!opts.version) {
@@ -165,22 +161,6 @@ export interface BucketObjectArgs {
      */
     readonly id?: pulumi.Input<string>;
     /**
-     * Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
-     */
-    readonly ifGenerationMatch?: pulumi.Input<string>;
-    /**
-     * Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
-     */
-    readonly ifGenerationNotMatch?: pulumi.Input<string>;
-    /**
-     * Makes the operation conditional on whether the object's current metageneration matches the given value.
-     */
-    readonly ifMetagenerationMatch?: pulumi.Input<string>;
-    /**
-     * Makes the operation conditional on whether the object's current metageneration does not match the given value.
-     */
-    readonly ifMetagenerationNotMatch?: pulumi.Input<string>;
-    /**
      * The kind of item this is. For objects, this is always storage#object.
      */
     readonly kind?: pulumi.Input<string>;
@@ -208,22 +188,11 @@ export interface BucketObjectArgs {
      * The name of the object. Required if not specified by URL parameter.
      */
     readonly name?: pulumi.Input<string>;
+    readonly object: pulumi.Input<string>;
     /**
      * The owner of the object. This will always be the uploader of the object.
      */
     readonly owner?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Apply a predefined set of access controls to this object.
-     */
-    readonly predefinedAcl?: pulumi.Input<string>;
-    /**
-     * Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
-     */
-    readonly projection?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
@@ -261,8 +230,4 @@ export interface BucketObjectArgs {
      * The modification time of the object metadata in RFC 3339 format.
      */
     readonly updated?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request. Required for Requester Pays buckets.
-     */
-    readonly userProject?: pulumi.Input<string>;
 }

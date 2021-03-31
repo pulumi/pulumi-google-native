@@ -47,8 +47,11 @@ export class Occurrence extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.occurrencesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'occurrencesId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["build"] = args ? args.build : undefined;
@@ -61,7 +64,8 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["occurrencesId"] = args ? args.occurrencesId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -123,10 +127,8 @@ export interface OccurrenceArgs {
      * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
     readonly noteName?: pulumi.Input<string>;
-    /**
-     * Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly occurrencesId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */

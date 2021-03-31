@@ -5,33 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./backup";
-export * from "./database";
 export * from "./instance";
-export * from "./policy";
-export * from "./session";
+export * from "./instanceBackup";
+export * from "./instanceBackupIamPolicy";
+export * from "./instanceDatabase";
+export * from "./instanceDatabaseIamPolicy";
+export * from "./instanceDatabaseSession";
+export * from "./instanceIamPolicy";
 
 // Import resources to register:
-import { Backup } from "./backup";
-import { Database } from "./database";
 import { Instance } from "./instance";
-import { Policy } from "./policy";
-import { Session } from "./session";
+import { InstanceBackup } from "./instanceBackup";
+import { InstanceBackupIamPolicy } from "./instanceBackupIamPolicy";
+import { InstanceDatabase } from "./instanceDatabase";
+import { InstanceDatabaseIamPolicy } from "./instanceDatabaseIamPolicy";
+import { InstanceDatabaseSession } from "./instanceDatabaseSession";
+import { InstanceIamPolicy } from "./instanceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:spanner/v1:Backup":
-                return new Backup(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:Database":
-                return new Database(name, <any>undefined, { urn })
             case "google-cloud:spanner/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:Session":
-                return new Session(name, <any>undefined, { urn })
+            case "google-cloud:spanner/v1:InstanceBackup":
+                return new InstanceBackup(name, <any>undefined, { urn })
+            case "google-cloud:spanner/v1:InstanceBackupIamPolicy":
+                return new InstanceBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:spanner/v1:InstanceDatabase":
+                return new InstanceDatabase(name, <any>undefined, { urn })
+            case "google-cloud:spanner/v1:InstanceDatabaseIamPolicy":
+                return new InstanceDatabaseIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:spanner/v1:InstanceDatabaseSession":
+                return new InstanceDatabaseSession(name, <any>undefined, { urn })
+            case "google-cloud:spanner/v1:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

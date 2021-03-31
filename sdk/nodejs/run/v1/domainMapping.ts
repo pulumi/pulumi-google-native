@@ -8,53 +8,60 @@ import * as utilities from "../../utilities";
 /**
  * Create a new domain mapping.
  */
-export class DomainMapping extends pulumi.CustomResource {
+export class Domainmapping extends pulumi.CustomResource {
     /**
-     * Get an existing DomainMapping resource's state with the given name, ID, and optional extra
+     * Get an existing Domainmapping resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): DomainMapping {
-        return new DomainMapping(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): Domainmapping {
+        return new Domainmapping(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:run/v1:DomainMapping';
+    public static readonly __pulumiType = 'google-cloud:run/v1:Domainmapping';
 
     /**
-     * Returns true if the given object is an instance of DomainMapping.  This is designed to work even
+     * Returns true if the given object is an instance of Domainmapping.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DomainMapping {
+    public static isInstance(obj: any): obj is Domainmapping {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DomainMapping.__pulumiType;
+        return obj['__pulumiType'] === Domainmapping.__pulumiType;
     }
 
 
     /**
-     * Create a DomainMapping resource with the given unique name, arguments, and options.
+     * Create a Domainmapping resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DomainMappingArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DomainmappingArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.domainmappingsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainmappingsId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
+            inputs["domainmappingsId"] = args ? args.domainmappingsId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -62,34 +69,29 @@ export class DomainMapping extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DomainMapping.__pulumiType, name, inputs, opts);
+        super(Domainmapping.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a DomainMapping resource.
+ * The set of arguments for constructing a Domainmapping resource.
  */
-export interface DomainMappingArgs {
+export interface DomainmappingArgs {
     /**
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
     readonly apiVersion?: pulumi.Input<string>;
-    /**
-     * DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
-     */
-    readonly dryRun?: pulumi.Input<string>;
+    readonly domainmappingsId: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".
      */
     readonly kind?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Metadata associated with this BuildTemplate.
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMeta>;
-    /**
-     * The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */

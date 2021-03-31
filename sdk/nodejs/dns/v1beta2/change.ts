@@ -54,7 +54,6 @@ export class Change extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["additions"] = args ? args.additions : undefined;
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["deletions"] = args ? args.deletions : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["isServing"] = args ? args.isServing : undefined;
@@ -81,10 +80,6 @@ export interface ChangeArgs {
      */
     readonly additions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSet>[]>;
     /**
-     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     */
-    readonly clientOperationId?: pulumi.Input<string>;
-    /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.
      */
     readonly deletions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSet>[]>;
@@ -97,13 +92,7 @@ export interface ChangeArgs {
      */
     readonly isServing?: pulumi.Input<boolean>;
     readonly kind?: pulumi.Input<string>;
-    /**
-     * Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     */
     readonly managedZone: pulumi.Input<string>;
-    /**
-     * Identifies the project addressed by this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The time that this operation was started by the server (output only). This is in RFC3339 text format.

@@ -6,13 +6,15 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./connectionProfile";
+export * from "./connectionProfileIamPolicy";
 export * from "./migrationJob";
-export * from "./policy";
+export * from "./migrationJobIamPolicy";
 
 // Import resources to register:
 import { ConnectionProfile } from "./connectionProfile";
+import { ConnectionProfileIamPolicy } from "./connectionProfileIamPolicy";
 import { MigrationJob } from "./migrationJob";
-import { Policy } from "./policy";
+import { MigrationJobIamPolicy } from "./migrationJobIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,10 +22,12 @@ const _module = {
         switch (type) {
             case "google-cloud:datamigration/v1:ConnectionProfile":
                 return new ConnectionProfile(name, <any>undefined, { urn })
+            case "google-cloud:datamigration/v1:ConnectionProfileIamPolicy":
+                return new ConnectionProfileIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:datamigration/v1:MigrationJob":
                 return new MigrationJob(name, <any>undefined, { urn })
-            case "google-cloud:datamigration/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:datamigration/v1:MigrationJobIamPolicy":
+                return new MigrationJobIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

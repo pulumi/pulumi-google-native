@@ -43,11 +43,15 @@ export class Device extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: DeviceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DeviceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.devicesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'devicesId'");
+            }
             inputs["device"] = args ? args.device : undefined;
+            inputs["devicesId"] = args ? args.devicesId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -65,4 +69,5 @@ export interface DeviceArgs {
      * Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
      */
     readonly device?: pulumi.Input<inputs.cloudidentity.v1beta1.Device>;
+    readonly devicesId: pulumi.Input<string>;
 }

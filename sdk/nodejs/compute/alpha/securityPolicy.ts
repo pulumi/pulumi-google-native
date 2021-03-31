@@ -50,6 +50,9 @@ export class SecurityPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            if ((!args || args.securityPolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'securityPolicy'");
+            }
             inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
             inputs["associations"] = args ? args.associations : undefined;
             inputs["cloudArmorConfig"] = args ? args.cloudArmorConfig : undefined;
@@ -64,13 +67,12 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
+            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["type"] = args ? args.type : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
         }
         if (!opts.version) {
@@ -134,18 +136,7 @@ export interface SecurityPolicyArgs {
      * [Output Only] The parent of the security policy.
      */
     readonly parent?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
@@ -154,6 +145,7 @@ export interface SecurityPolicyArgs {
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SecurityPolicyRule>[]>;
+    readonly securityPolicy: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -166,8 +158,4 @@ export interface SecurityPolicyArgs {
      * The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
      */
     readonly type?: pulumi.Input<string>;
-    /**
-     * If true, the request will not be committed.
-     */
-    readonly validateOnly?: pulumi.Input<boolean>;
 }

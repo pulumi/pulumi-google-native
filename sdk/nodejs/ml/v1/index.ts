@@ -5,37 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudMlV1__Job";
-export * from "./googleCloudMlV1__Model";
-export * from "./googleCloudMlV1__Study";
-export * from "./googleCloudMlV1__Trial";
-export * from "./googleIamV1__Policy";
-export * from "./googleLongrunning__Operation";
+export * from "./job";
+export * from "./jobIamPolicy";
+export * from "./model";
+export * from "./modelIamPolicy";
+export * from "./modelVersion";
+export * from "./study";
+export * from "./studyTrial";
 
 // Import resources to register:
-import { GoogleCloudMlV1__Job } from "./googleCloudMlV1__Job";
-import { GoogleCloudMlV1__Model } from "./googleCloudMlV1__Model";
-import { GoogleCloudMlV1__Study } from "./googleCloudMlV1__Study";
-import { GoogleCloudMlV1__Trial } from "./googleCloudMlV1__Trial";
-import { GoogleIamV1__Policy } from "./googleIamV1__Policy";
-import { GoogleLongrunning__Operation } from "./googleLongrunning__Operation";
+import { Job } from "./job";
+import { JobIamPolicy } from "./jobIamPolicy";
+import { Model } from "./model";
+import { ModelIamPolicy } from "./modelIamPolicy";
+import { ModelVersion } from "./modelVersion";
+import { Study } from "./study";
+import { StudyTrial } from "./studyTrial";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:ml/v1:GoogleCloudMlV1__Job":
-                return new GoogleCloudMlV1__Job(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:GoogleCloudMlV1__Model":
-                return new GoogleCloudMlV1__Model(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:GoogleCloudMlV1__Study":
-                return new GoogleCloudMlV1__Study(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:GoogleCloudMlV1__Trial":
-                return new GoogleCloudMlV1__Trial(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:GoogleIamV1__Policy":
-                return new GoogleIamV1__Policy(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:GoogleLongrunning__Operation":
-                return new GoogleLongrunning__Operation(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:Job":
+                return new Job(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:JobIamPolicy":
+                return new JobIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:Model":
+                return new Model(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:ModelIamPolicy":
+                return new ModelIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:ModelVersion":
+                return new ModelVersion(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:Study":
+                return new Study(name, <any>undefined, { urn })
+            case "google-cloud:ml/v1:StudyTrial":
+                return new StudyTrial(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

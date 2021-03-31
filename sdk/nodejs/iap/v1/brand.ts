@@ -46,13 +46,13 @@ export class Brand extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["orgInternalOnly"] = args ? args.orgInternalOnly : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["supportEmail"] = args ? args.supportEmail : undefined;
         } else {
         }
@@ -79,10 +79,7 @@ export interface BrandArgs {
      * Output only. Whether the brand is only intended for usage inside the G Suite organization only.
      */
     readonly orgInternalOnly?: pulumi.Input<boolean>;
-    /**
-     * Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Support email displayed on the OAuth consent screen.
      */

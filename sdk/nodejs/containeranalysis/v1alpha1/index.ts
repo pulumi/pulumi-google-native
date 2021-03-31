@@ -6,15 +6,21 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./note";
+export * from "./noteIamPolicy";
 export * from "./occurrence";
+export * from "./occurrenceIamPolicy";
 export * from "./operation";
-export * from "./policy";
+export * from "./providerNote";
+export * from "./providerNoteIamPolicy";
 
 // Import resources to register:
 import { Note } from "./note";
+import { NoteIamPolicy } from "./noteIamPolicy";
 import { Occurrence } from "./occurrence";
+import { OccurrenceIamPolicy } from "./occurrenceIamPolicy";
 import { Operation } from "./operation";
-import { Policy } from "./policy";
+import { ProviderNote } from "./providerNote";
+import { ProviderNoteIamPolicy } from "./providerNoteIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,12 +28,18 @@ const _module = {
         switch (type) {
             case "google-cloud:containeranalysis/v1alpha1:Note":
                 return new Note(name, <any>undefined, { urn })
+            case "google-cloud:containeranalysis/v1alpha1:NoteIamPolicy":
+                return new NoteIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:containeranalysis/v1alpha1:Occurrence":
                 return new Occurrence(name, <any>undefined, { urn })
+            case "google-cloud:containeranalysis/v1alpha1:OccurrenceIamPolicy":
+                return new OccurrenceIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:containeranalysis/v1alpha1:Operation":
                 return new Operation(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:containeranalysis/v1alpha1:ProviderNote":
+                return new ProviderNote(name, <any>undefined, { urn })
+            case "google-cloud:containeranalysis/v1alpha1:ProviderNoteIamPolicy":
+                return new ProviderNoteIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

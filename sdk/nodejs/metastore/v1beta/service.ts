@@ -47,24 +47,30 @@ export class Service extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.servicesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'servicesId'");
             }
             inputs["artifactGcsUri"] = args ? args.artifactGcsUri : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["endpointUri"] = args ? args.endpointUri : undefined;
             inputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
             inputs["metadataManagementActivity"] = args ? args.metadataManagementActivity : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
+            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["stateMessage"] = args ? args.stateMessage : undefined;
             inputs["tier"] = args ? args.tier : undefined;
@@ -103,6 +109,7 @@ export interface ServiceArgs {
      * User-defined labels for the metastore service.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
      */
@@ -124,25 +131,15 @@ export interface ServiceArgs {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
     readonly port?: pulumi.Input<number>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
      */
     readonly releaseChannel?: pulumi.Input<string>;
-    /**
-     * Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-     */
-    readonly requestId?: pulumi.Input<string>;
-    /**
-     * Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-     */
-    readonly serviceId?: pulumi.Input<string>;
+    readonly servicesId: pulumi.Input<string>;
     /**
      * Output only. The current state of the metastore service.
      */

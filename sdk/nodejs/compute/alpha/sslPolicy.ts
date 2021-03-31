@@ -50,6 +50,9 @@ export class SslPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            if ((!args || args.sslPolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sslPolicy'");
+            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["customFeatures"] = args ? args.customFeatures : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -61,9 +64,9 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["profile"] = args ? args.profile : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
+            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["tlsSettings"] = args ? args.tlsSettings : undefined;
             inputs["warnings"] = args ? args.warnings : undefined;
         } else {
@@ -122,18 +125,7 @@ export interface SslPolicyArgs {
      * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
      */
     readonly profile?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -142,6 +134,7 @@ export interface SslPolicyArgs {
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
+    readonly sslPolicy: pulumi.Input<string>;
     /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */

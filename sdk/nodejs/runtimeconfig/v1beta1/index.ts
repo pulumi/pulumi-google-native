@@ -5,29 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./policy";
-export * from "./runtimeConfig";
-export * from "./variable";
-export * from "./waiter";
+export * from "./config";
+export * from "./configIamPolicy";
+export * from "./configVariable";
+export * from "./configWaiter";
 
 // Import resources to register:
-import { Policy } from "./policy";
-import { RuntimeConfig } from "./runtimeConfig";
-import { Variable } from "./variable";
-import { Waiter } from "./waiter";
+import { Config } from "./config";
+import { ConfigIamPolicy } from "./configIamPolicy";
+import { ConfigVariable } from "./configVariable";
+import { ConfigWaiter } from "./configWaiter";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:runtimeconfig/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
-            case "google-cloud:runtimeconfig/v1beta1:RuntimeConfig":
-                return new RuntimeConfig(name, <any>undefined, { urn })
-            case "google-cloud:runtimeconfig/v1beta1:Variable":
-                return new Variable(name, <any>undefined, { urn })
-            case "google-cloud:runtimeconfig/v1beta1:Waiter":
-                return new Waiter(name, <any>undefined, { urn })
+            case "google-cloud:runtimeconfig/v1beta1:Config":
+                return new Config(name, <any>undefined, { urn })
+            case "google-cloud:runtimeconfig/v1beta1:ConfigIamPolicy":
+                return new ConfigIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:runtimeconfig/v1beta1:ConfigVariable":
+                return new ConfigVariable(name, <any>undefined, { urn })
+            case "google-cloud:runtimeconfig/v1beta1:ConfigWaiter":
+                return new ConfigWaiter(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

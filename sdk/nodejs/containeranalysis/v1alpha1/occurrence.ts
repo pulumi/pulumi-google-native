@@ -47,8 +47,11 @@ export class Occurrence extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.occurrencesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'occurrencesId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["buildDetails"] = args ? args.buildDetails : undefined;
@@ -60,7 +63,8 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["occurrencesId"] = args ? args.occurrencesId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
             inputs["resourceUrl"] = args ? args.resourceUrl : undefined;
@@ -120,10 +124,8 @@ export interface OccurrenceArgs {
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
     readonly noteName?: pulumi.Input<string>;
-    /**
-     * This field contains the project Id for example: "projects/{project_id}"
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly occurrencesId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the `Note`
      */

@@ -47,10 +47,12 @@ export class ManagedZone extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.managedZone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'managedZone'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
@@ -59,6 +61,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["managedZone"] = args ? args.managedZone : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nameServerSet"] = args ? args.nameServerSet : undefined;
             inputs["nameServers"] = args ? args.nameServers : undefined;
@@ -81,10 +84,6 @@ export class ManagedZone extends pulumi.CustomResource {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
-    /**
-     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     */
-    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
      */
@@ -114,6 +113,7 @@ export interface ManagedZoneArgs {
      * User labels.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly managedZone: pulumi.Input<string>;
     /**
      * User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
      */
@@ -134,9 +134,6 @@ export interface ManagedZoneArgs {
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
     readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePrivateVisibilityConfig>;
-    /**
-     * Identifies the project addressed by this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.

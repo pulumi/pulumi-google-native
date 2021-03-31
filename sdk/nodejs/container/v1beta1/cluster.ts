@@ -47,6 +47,9 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clusterId'");
+            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
@@ -54,6 +57,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
+            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -74,6 +78,7 @@ export interface ClusterArgs {
      * Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1beta1/projects.locations.clusters)
      */
     readonly cluster?: pulumi.Input<inputs.container.v1beta1.Cluster>;
+    readonly clusterId: pulumi.Input<string>;
     /**
      * The parent (project and location) where the cluster will be created. Specified in the format `projects/*&#47;locations/*`.
      */

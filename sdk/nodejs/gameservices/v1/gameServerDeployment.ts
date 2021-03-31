@@ -46,16 +46,23 @@ export class GameServerDeployment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.gameServerDeploymentsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'gameServerDeploymentsId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deploymentId"] = args ? args.deploymentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["gameServerDeploymentsId"] = args ? args.gameServerDeploymentsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
@@ -75,10 +82,6 @@ export interface GameServerDeploymentArgs {
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Required. The ID of the game server delpoyment resource to be created.
-     */
-    readonly deploymentId?: pulumi.Input<string>;
-    /**
      * Human readable description of the game server delpoyment.
      */
     readonly description?: pulumi.Input<string>;
@@ -86,18 +89,17 @@ export interface GameServerDeploymentArgs {
      * ETag of the resource.
      */
     readonly etag?: pulumi.Input<string>;
+    readonly gameServerDeploymentsId: pulumi.Input<string>;
     /**
      * The labels associated with this game server deployment. Each label is a key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent resource name, in the following form: `projects/{project}/locations/{location}`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The last-modified time.
      */

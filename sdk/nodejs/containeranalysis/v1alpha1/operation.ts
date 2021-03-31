@@ -47,12 +47,12 @@ export class Operation extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["operation"] = args ? args.operation : undefined;
             inputs["operationId"] = args ? args.operationId : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -74,8 +74,5 @@ export interface OperationArgs {
      * The ID to use for this operation.
      */
     readonly operationId?: pulumi.Input<string>;
-    /**
-     * The project Id that this operation should be created under.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

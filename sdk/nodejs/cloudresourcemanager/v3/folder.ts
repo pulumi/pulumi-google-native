@@ -42,14 +42,18 @@ export class Folder extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FolderArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.foldersId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'foldersId'");
+            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["foldersId"] = args ? args.foldersId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -83,6 +87,7 @@ export interface FolderArgs {
      * Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     readonly etag?: pulumi.Input<string>;
+    readonly foldersId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
      */

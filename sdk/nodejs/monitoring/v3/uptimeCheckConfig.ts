@@ -47,8 +47,11 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.uptimeCheckConfigsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'uptimeCheckConfigsId'");
             }
             inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -57,12 +60,13 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["isInternal"] = args ? args.isInternal : undefined;
             inputs["monitoredResource"] = args ? args.monitoredResource : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["resourceGroup"] = args ? args.resourceGroup : undefined;
             inputs["selectedRegions"] = args ? args.selectedRegions : undefined;
             inputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
+            inputs["uptimeCheckConfigsId"] = args ? args.uptimeCheckConfigsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -105,13 +109,10 @@ export interface UptimeCheckConfigArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The project in which to create the Uptime check. The format is: projects/[PROJECT_ID_OR_NUMBER] 
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
      */
     readonly period?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The group resource associated with the configuration.
      */
@@ -128,4 +129,5 @@ export interface UptimeCheckConfigArgs {
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
      */
     readonly timeout?: pulumi.Input<string>;
+    readonly uptimeCheckConfigsId: pulumi.Input<string>;
 }

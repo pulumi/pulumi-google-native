@@ -47,18 +47,25 @@ export class Connection extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.connectionsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectionsId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["cloudSql"] = args ? args.cloudSql : undefined;
-            inputs["connectionId"] = args ? args.connectionId : undefined;
+            inputs["connectionsId"] = args ? args.connectionsId : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
             inputs["hasCredential"] = args ? args.hasCredential : undefined;
             inputs["lastModifiedTime"] = args ? args.lastModifiedTime : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -76,10 +83,7 @@ export interface ConnectionArgs {
      * Cloud SQL properties.
      */
     readonly cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlProperties>;
-    /**
-     * Optional. Connection id that should be assigned to the created connection.
-     */
-    readonly connectionId?: pulumi.Input<string>;
+    readonly connectionsId: pulumi.Input<string>;
     /**
      * Output only. The creation timestamp of the connection.
      */
@@ -100,12 +104,10 @@ export interface ConnectionArgs {
      * Output only. The last update timestamp of the connection.
      */
     readonly lastModifiedTime?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. Parent resource name. Must be in the format `projects/{project_id}/locations/{location_id}`
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

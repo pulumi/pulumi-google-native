@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./billingAccount";
-export * from "./policy";
+export * from "./billingAccountIamPolicy";
 
 // Import resources to register:
 import { BillingAccount } from "./billingAccount";
-import { Policy } from "./policy";
+import { BillingAccountIamPolicy } from "./billingAccountIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:cloudbilling/v1:BillingAccount":
                 return new BillingAccount(name, <any>undefined, { urn })
-            case "google-cloud:cloudbilling/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:cloudbilling/v1:BillingAccountIamPolicy":
+                return new BillingAccountIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

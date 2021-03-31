@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
+ * Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
  */
 export class TargetHttpsProxy extends pulumi.CustomResource {
     /**
@@ -49,8 +49,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.targetHttpsProxy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'targetHttpsProxy'");
             }
             inputs["authentication"] = args ? args.authentication : undefined;
             inputs["authorization"] = args ? args.authorization : undefined;
@@ -67,12 +67,12 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["quicOverride"] = args ? args.quicOverride : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            inputs["targetHttpsProxy"] = args ? args.targetHttpsProxy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
         }
@@ -135,9 +135,6 @@ export interface TargetHttpsProxyArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -158,15 +155,7 @@ export interface TargetHttpsProxyArgs {
     /**
      * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -190,6 +179,7 @@ export interface TargetHttpsProxyArgs {
      * URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
      */
     readonly sslPolicy?: pulumi.Input<string>;
+    readonly targetHttpsProxy: pulumi.Input<string>;
     /**
      * A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
      * - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 

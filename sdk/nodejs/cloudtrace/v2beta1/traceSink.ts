@@ -47,12 +47,16 @@ export class TraceSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.traceSinksId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'traceSinksId'");
             }
             inputs["name"] = args ? args.name : undefined;
             inputs["outputConfig"] = args ? args.outputConfig : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["traceSinksId"] = args ? args.traceSinksId : undefined;
             inputs["writerIdentity"] = args ? args.writerIdentity : undefined;
         } else {
         }
@@ -75,10 +79,8 @@ export interface TraceSinkArgs {
      * Required. The export destination.
      */
     readonly outputConfig?: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfig>;
-    /**
-     * Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
+    readonly traceSinksId: pulumi.Input<string>;
     /**
      * Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and write data this account will need the dataEditor role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"
      */

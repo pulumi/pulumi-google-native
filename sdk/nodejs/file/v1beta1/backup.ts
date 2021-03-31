@@ -46,17 +46,24 @@ export class Backup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.backupsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupsId'");
             }
-            inputs["backupId"] = args ? args.backupId : undefined;
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["capacityGb"] = args ? args.capacityGb : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["downloadBytes"] = args ? args.downloadBytes : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             inputs["sourceInstanceTier"] = args ? args.sourceInstanceTier : undefined;
@@ -75,10 +82,7 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
-    /**
-     * Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-     */
-    readonly backupId?: pulumi.Input<string>;
+    readonly backupsId: pulumi.Input<string>;
     /**
      * Output only. Capacity of the source file share when the backup was created.
      */
@@ -99,14 +103,12 @@ export interface BackupArgs {
      * Resource labels to represent user provided metadata.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The backup's project and location, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions, for example **us-west1**.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */

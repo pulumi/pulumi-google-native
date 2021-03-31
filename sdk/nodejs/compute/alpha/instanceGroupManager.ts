@@ -49,6 +49,9 @@ export class InstanceGroupManager extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceGroupManager'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -65,6 +68,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
+            inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
             inputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -72,7 +76,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["namedPorts"] = args ? args.namedPorts : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -140,6 +143,7 @@ export interface InstanceGroupManagerArgs {
      * [Output Only] The URL of the Instance Group resource.
      */
     readonly instanceGroup?: pulumi.Input<string>;
+    readonly instanceGroupManager: pulumi.Input<string>;
     /**
      * Instance lifecycle policy for this Instance Group Manager.
      */
@@ -160,22 +164,11 @@ export interface InstanceGroupManagerArgs {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.alpha.NamedPort>[]>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
      */
     readonly region?: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The URL for this managed instance group. The server defines this URL.
      */

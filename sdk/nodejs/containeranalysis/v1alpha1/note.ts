@@ -47,8 +47,11 @@ export class Note extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.notesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'notesId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
@@ -60,9 +63,9 @@ export class Note extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["longDescription"] = args ? args.longDescription : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["noteId"] = args ? args.noteId : undefined;
+            inputs["notesId"] = args ? args.notesId : undefined;
             inputs["package"] = args ? args.package : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
             inputs["shortDescription"] = args ? args.shortDescription : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -121,18 +124,12 @@ export interface NoteArgs {
      * The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID to use for this note.
-     */
-    readonly noteId?: pulumi.Input<string>;
+    readonly notesId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.
      */
     readonly package?: pulumi.Input<inputs.containeranalysis.v1alpha1.Package>;
-    /**
-     * This field contains the project Id for example: "projects/{project_id}
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * URLs associated with this note
      */

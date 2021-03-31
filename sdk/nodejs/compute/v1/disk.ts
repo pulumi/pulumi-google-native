@@ -47,6 +47,9 @@ export class Disk extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.disk === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'disk'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -55,6 +58,7 @@ export class Disk extends pulumi.CustomResource {
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["disk"] = args ? args.disk : undefined;
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -73,7 +77,6 @@ export class Disk extends pulumi.CustomResource {
             inputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaZones"] = args ? args.replicaZones : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -112,6 +115,7 @@ export interface DiskArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    readonly disk: pulumi.Input<string>;
     /**
      * Encrypts the disk using a customer-supplied encryption key.
      *
@@ -176,9 +180,6 @@ export interface DiskArgs {
      * Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
      */
     readonly physicalBlockSizeBytes?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
@@ -192,14 +193,6 @@ export interface DiskArgs {
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */
     readonly replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      */

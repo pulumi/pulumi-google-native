@@ -46,15 +46,18 @@ export class HmacKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.accessId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accessId'");
+            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
+            inputs["accessId"] = args ? args.accessId : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
         if (!opts.version) {
@@ -68,16 +71,7 @@ export class HmacKey extends pulumi.CustomResource {
  * The set of arguments for constructing a HmacKey resource.
  */
 export interface HmacKeyArgs {
-    /**
-     * Project ID owning the service account.
-     */
+    readonly accessId: pulumi.Input<string>;
     readonly projectId: pulumi.Input<string>;
-    /**
-     * Email address of the service account.
-     */
     readonly serviceAccountEmail: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request.
-     */
-    readonly userProject?: pulumi.Input<string>;
 }

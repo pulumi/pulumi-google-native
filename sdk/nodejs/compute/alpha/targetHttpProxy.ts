@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a TargetHttpProxy resource in the specified project and region using the data included in the request.
+ * Creates a TargetHttpProxy resource in the specified project using the data included in the request.
  */
 export class TargetHttpProxy extends pulumi.CustomResource {
     /**
@@ -49,8 +49,8 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.targetHttpProxy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'targetHttpProxy'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -62,9 +62,9 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
+            inputs["targetHttpProxy"] = args ? args.targetHttpProxy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
         }
@@ -108,9 +108,6 @@ export interface TargetHttpProxyArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -123,15 +120,7 @@ export interface TargetHttpProxyArgs {
     /**
      * [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -140,6 +129,7 @@ export interface TargetHttpProxyArgs {
      * [Output Only] Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId?: pulumi.Input<string>;
+    readonly targetHttpProxy: pulumi.Input<string>;
     /**
      * URL to the UrlMap resource that defines the mapping from URL to the BackendService.
      */

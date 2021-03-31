@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a Cloud Dataflow job from a template.
+ * Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -47,15 +47,37 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            inputs["clientRequestId"] = args ? args.clientRequestId : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["createdFromSnapshotId"] = args ? args.createdFromSnapshotId : undefined;
+            inputs["currentState"] = args ? args.currentState : undefined;
+            inputs["currentStateTime"] = args ? args.currentStateTime : undefined;
             inputs["environment"] = args ? args.environment : undefined;
-            inputs["gcsPath"] = args ? args.gcsPath : undefined;
-            inputs["jobName"] = args ? args.jobName : undefined;
+            inputs["executionInfo"] = args ? args.executionInfo : undefined;
+            inputs["id"] = args ? args.id : undefined;
+            inputs["jobMetadata"] = args ? args.jobMetadata : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
+            inputs["name"] = args ? args.name : undefined;
+            inputs["pipelineDescription"] = args ? args.pipelineDescription : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["replaceJobId"] = args ? args.replaceJobId : undefined;
+            inputs["replacedByJobId"] = args ? args.replacedByJobId : undefined;
+            inputs["requestedState"] = args ? args.requestedState : undefined;
+            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
+            inputs["stageStates"] = args ? args.stageStates : undefined;
+            inputs["startTime"] = args ? args.startTime : undefined;
+            inputs["steps"] = args ? args.steps : undefined;
+            inputs["stepsLocation"] = args ? args.stepsLocation : undefined;
+            inputs["tempFiles"] = args ? args.tempFiles : undefined;
+            inputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
+            inputs["type"] = args ? args.type : undefined;
         } else {
         }
         if (!opts.version) {
@@ -70,27 +92,103 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobArgs {
     /**
-     * The runtime environment for the job.
+     * The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
      */
-    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.RuntimeEnvironment>;
+    readonly clientRequestId?: pulumi.Input<string>;
     /**
-     * Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+     * The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
      */
-    readonly gcsPath?: pulumi.Input<string>;
+    readonly createTime?: pulumi.Input<string>;
     /**
-     * Required. The job name to use for the created job.
+     * If this is specified, the job's initial state is populated from the given snapshot.
      */
-    readonly jobName?: pulumi.Input<string>;
+    readonly createdFromSnapshotId?: pulumi.Input<string>;
     /**
-     * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
+     * The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
      */
-    readonly location?: pulumi.Input<string>;
+    readonly currentState?: pulumi.Input<string>;
     /**
-     * The runtime parameters to pass to the job.
+     * The timestamp associated with the current state.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly currentStateTime?: pulumi.Input<string>;
     /**
-     * Required. The ID of the Cloud Platform project that the job belongs to.
+     * The environment for the job.
+     */
+    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.Environment>;
+    /**
+     * Deprecated.
+     */
+    readonly executionInfo?: pulumi.Input<inputs.dataflow.v1b3.JobExecutionInfo>;
+    /**
+     * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+     */
+    readonly id?: pulumi.Input<string>;
+    /**
+     * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
+     */
+    readonly jobMetadata?: pulumi.Input<inputs.dataflow.v1b3.JobMetadata>;
+    /**
+     * User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
+     */
+    readonly location: pulumi.Input<string>;
+    /**
+     * The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
+     * Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+     */
+    readonly pipelineDescription?: pulumi.Input<inputs.dataflow.v1b3.PipelineDescription>;
+    /**
+     * The ID of the Cloud Platform project that the job belongs to.
      */
     readonly projectId: pulumi.Input<string>;
+    /**
+     * If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+     */
+    readonly replaceJobId?: pulumi.Input<string>;
+    /**
+     * If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
+     */
+    readonly replacedByJobId?: pulumi.Input<string>;
+    /**
+     * The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+     */
+    readonly requestedState?: pulumi.Input<string>;
+    /**
+     * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+     */
+    readonly satisfiesPzs?: pulumi.Input<boolean>;
+    /**
+     * This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+     */
+    readonly stageStates?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.ExecutionStageState>[]>;
+    /**
+     * The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
+     */
+    readonly startTime?: pulumi.Input<string>;
+    /**
+     * Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
+     */
+    readonly steps?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.Step>[]>;
+    /**
+     * The GCS location where the steps are stored.
+     */
+    readonly stepsLocation?: pulumi.Input<string>;
+    /**
+     * A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+     */
+    readonly tempFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
+     */
+    readonly transformNameMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of Cloud Dataflow job.
+     */
+    readonly type?: pulumi.Input<string>;
 }

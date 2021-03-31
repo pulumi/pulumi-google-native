@@ -9,41 +9,67 @@ export * from "./address";
 export * from "./autoscaler";
 export * from "./backendBucket";
 export * from "./backendService";
-export * from "./commitment";
 export * from "./disk";
+export * from "./diskIamPolicy";
 export * from "./externalVpnGateway";
 export * from "./firewall";
 export * from "./firewallPolicy";
+export * from "./firewallPolicyIamPolicy";
 export * from "./forwardingRule";
+export * from "./globalAddress";
+export * from "./globalForwardingRule";
+export * from "./globalNetworkEndpointGroup";
+export * from "./globalPublicDelegatedPrefix";
 export * from "./healthCheck";
-export * from "./healthCheckService";
 export * from "./httpHealthCheck";
 export * from "./httpsHealthCheck";
 export * from "./image";
+export * from "./imageIamPolicy";
 export * from "./instance";
 export * from "./instanceGroup";
 export * from "./instanceGroupManager";
+export * from "./instanceIamPolicy";
 export * from "./instanceTemplate";
+export * from "./instanceTemplateIamPolicy";
 export * from "./interconnect";
 export * from "./interconnectAttachment";
 export * from "./license";
+export * from "./licenseIamPolicy";
 export * from "./network";
 export * from "./networkEndpointGroup";
 export * from "./nodeGroup";
+export * from "./nodeGroupIamPolicy";
 export * from "./nodeTemplate";
-export * from "./notificationEndpoint";
+export * from "./nodeTemplateIamPolicy";
 export * from "./packetMirroring";
-export * from "./policy";
 export * from "./publicAdvertisedPrefix";
 export * from "./publicDelegatedPrefix";
+export * from "./regionAutoscaler";
+export * from "./regionBackendService";
+export * from "./regionCommitment";
+export * from "./regionDisk";
+export * from "./regionDiskIamPolicy";
+export * from "./regionHealthCheck";
+export * from "./regionHealthCheckService";
+export * from "./regionInstanceGroupManager";
+export * from "./regionNetworkEndpointGroup";
+export * from "./regionNotificationEndpoint";
+export * from "./regionSslCertificate";
+export * from "./regionTargetHttpProxy";
+export * from "./regionTargetHttpsProxy";
+export * from "./regionUrlMap";
 export * from "./reservation";
+export * from "./reservationIamPolicy";
 export * from "./resourcePolicy";
+export * from "./resourcePolicyIamPolicy";
 export * from "./route";
 export * from "./router";
 export * from "./securityPolicy";
+export * from "./snapshotIamPolicy";
 export * from "./sslCertificate";
 export * from "./sslPolicy";
 export * from "./subnetwork";
+export * from "./subnetworkIamPolicy";
 export * from "./targetGrpcProxy";
 export * from "./targetHttpProxy";
 export * from "./targetHttpsProxy";
@@ -61,41 +87,67 @@ import { Address } from "./address";
 import { Autoscaler } from "./autoscaler";
 import { BackendBucket } from "./backendBucket";
 import { BackendService } from "./backendService";
-import { Commitment } from "./commitment";
 import { Disk } from "./disk";
+import { DiskIamPolicy } from "./diskIamPolicy";
 import { ExternalVpnGateway } from "./externalVpnGateway";
 import { Firewall } from "./firewall";
 import { FirewallPolicy } from "./firewallPolicy";
+import { FirewallPolicyIamPolicy } from "./firewallPolicyIamPolicy";
 import { ForwardingRule } from "./forwardingRule";
+import { GlobalAddress } from "./globalAddress";
+import { GlobalForwardingRule } from "./globalForwardingRule";
+import { GlobalNetworkEndpointGroup } from "./globalNetworkEndpointGroup";
+import { GlobalPublicDelegatedPrefix } from "./globalPublicDelegatedPrefix";
 import { HealthCheck } from "./healthCheck";
-import { HealthCheckService } from "./healthCheckService";
 import { HttpHealthCheck } from "./httpHealthCheck";
 import { HttpsHealthCheck } from "./httpsHealthCheck";
 import { Image } from "./image";
+import { ImageIamPolicy } from "./imageIamPolicy";
 import { Instance } from "./instance";
 import { InstanceGroup } from "./instanceGroup";
 import { InstanceGroupManager } from "./instanceGroupManager";
+import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { InstanceTemplate } from "./instanceTemplate";
+import { InstanceTemplateIamPolicy } from "./instanceTemplateIamPolicy";
 import { Interconnect } from "./interconnect";
 import { InterconnectAttachment } from "./interconnectAttachment";
 import { License } from "./license";
+import { LicenseIamPolicy } from "./licenseIamPolicy";
 import { Network } from "./network";
 import { NetworkEndpointGroup } from "./networkEndpointGroup";
 import { NodeGroup } from "./nodeGroup";
+import { NodeGroupIamPolicy } from "./nodeGroupIamPolicy";
 import { NodeTemplate } from "./nodeTemplate";
-import { NotificationEndpoint } from "./notificationEndpoint";
+import { NodeTemplateIamPolicy } from "./nodeTemplateIamPolicy";
 import { PacketMirroring } from "./packetMirroring";
-import { Policy } from "./policy";
 import { PublicAdvertisedPrefix } from "./publicAdvertisedPrefix";
 import { PublicDelegatedPrefix } from "./publicDelegatedPrefix";
+import { RegionAutoscaler } from "./regionAutoscaler";
+import { RegionBackendService } from "./regionBackendService";
+import { RegionCommitment } from "./regionCommitment";
+import { RegionDisk } from "./regionDisk";
+import { RegionDiskIamPolicy } from "./regionDiskIamPolicy";
+import { RegionHealthCheck } from "./regionHealthCheck";
+import { RegionHealthCheckService } from "./regionHealthCheckService";
+import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
+import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
+import { RegionNotificationEndpoint } from "./regionNotificationEndpoint";
+import { RegionSslCertificate } from "./regionSslCertificate";
+import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
+import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
+import { RegionUrlMap } from "./regionUrlMap";
 import { Reservation } from "./reservation";
+import { ReservationIamPolicy } from "./reservationIamPolicy";
 import { ResourcePolicy } from "./resourcePolicy";
+import { ResourcePolicyIamPolicy } from "./resourcePolicyIamPolicy";
 import { Route } from "./route";
 import { Router } from "./router";
 import { SecurityPolicy } from "./securityPolicy";
+import { SnapshotIamPolicy } from "./snapshotIamPolicy";
 import { SslCertificate } from "./sslCertificate";
 import { SslPolicy } from "./sslPolicy";
 import { Subnetwork } from "./subnetwork";
+import { SubnetworkIamPolicy } from "./subnetworkIamPolicy";
 import { TargetGrpcProxy } from "./targetGrpcProxy";
 import { TargetHttpProxy } from "./targetHttpProxy";
 import { TargetHttpsProxy } from "./targetHttpsProxy";
@@ -120,76 +172,128 @@ const _module = {
                 return new BackendBucket(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
-            case "google-cloud:compute/v1:Commitment":
-                return new Commitment(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Disk":
                 return new Disk(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:DiskIamPolicy":
+                return new DiskIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:ExternalVpnGateway":
                 return new ExternalVpnGateway(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:FirewallPolicy":
                 return new FirewallPolicy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:FirewallPolicyIamPolicy":
+                return new FirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:GlobalAddress":
+                return new GlobalAddress(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:GlobalForwardingRule":
+                return new GlobalForwardingRule(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:GlobalNetworkEndpointGroup":
+                return new GlobalNetworkEndpointGroup(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:GlobalPublicDelegatedPrefix":
+                return new GlobalPublicDelegatedPrefix(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:HealthCheck":
                 return new HealthCheck(name, <any>undefined, { urn })
-            case "google-cloud:compute/v1:HealthCheckService":
-                return new HealthCheckService(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:HttpHealthCheck":
                 return new HttpHealthCheck(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:HttpsHealthCheck":
                 return new HttpsHealthCheck(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Image":
                 return new Image(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:ImageIamPolicy":
+                return new ImageIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:InstanceGroup":
                 return new InstanceGroup(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:InstanceTemplateIamPolicy":
+                return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Interconnect":
                 return new Interconnect(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:InterconnectAttachment":
                 return new InterconnectAttachment(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:License":
                 return new License(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:LicenseIamPolicy":
+                return new LicenseIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Network":
                 return new Network(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:NodeGroup":
                 return new NodeGroup(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:NodeGroupIamPolicy":
+                return new NodeGroupIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:NodeTemplate":
                 return new NodeTemplate(name, <any>undefined, { urn })
-            case "google-cloud:compute/v1:NotificationEndpoint":
-                return new NotificationEndpoint(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:NodeTemplateIamPolicy":
+                return new NodeTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:PacketMirroring":
                 return new PacketMirroring(name, <any>undefined, { urn })
-            case "google-cloud:compute/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:PublicAdvertisedPrefix":
                 return new PublicAdvertisedPrefix(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:PublicDelegatedPrefix":
                 return new PublicDelegatedPrefix(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionAutoscaler":
+                return new RegionAutoscaler(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionBackendService":
+                return new RegionBackendService(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionCommitment":
+                return new RegionCommitment(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionDisk":
+                return new RegionDisk(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionDiskIamPolicy":
+                return new RegionDiskIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionHealthCheck":
+                return new RegionHealthCheck(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionHealthCheckService":
+                return new RegionHealthCheckService(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionInstanceGroupManager":
+                return new RegionInstanceGroupManager(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionNetworkEndpointGroup":
+                return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionNotificationEndpoint":
+                return new RegionNotificationEndpoint(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionSslCertificate":
+                return new RegionSslCertificate(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionTargetHttpProxy":
+                return new RegionTargetHttpProxy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionTargetHttpsProxy":
+                return new RegionTargetHttpsProxy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:RegionUrlMap":
+                return new RegionUrlMap(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:ReservationIamPolicy":
+                return new ReservationIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:ResourcePolicy":
                 return new ResourcePolicy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:ResourcePolicyIamPolicy":
+                return new ResourcePolicyIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Route":
                 return new Route(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Router":
                 return new Router(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:SnapshotIamPolicy":
+                return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:SslCertificate":
                 return new SslCertificate(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:SslPolicy":
                 return new SslPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
+            case "google-cloud:compute/v1:SubnetworkIamPolicy":
+                return new SubnetworkIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:TargetGrpcProxy":
                 return new TargetGrpcProxy(name, <any>undefined, { urn })
             case "google-cloud:compute/v1:TargetHttpProxy":
