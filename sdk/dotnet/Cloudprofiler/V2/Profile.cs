@@ -65,12 +65,6 @@ namespace Pulumi.GoogleCloud.Cloudprofiler.V2
         [Input("deployment")]
         public Input<Inputs.DeploymentArgs>? Deployment { get; set; }
 
-        /// <summary>
-        /// Parent project to create the profile in.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
         [Input("profileType")]
         private InputList<string>? _profileType;
 
@@ -82,6 +76,9 @@ namespace Pulumi.GoogleCloud.Cloudprofiler.V2
             get => _profileType ?? (_profileType = new InputList<string>());
             set => _profileType = value;
         }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public ProfileArgs()
         {

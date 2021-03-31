@@ -110,8 +110,14 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <summary>
         /// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("notificationChannelsId", required: true)]
+        public Input<string> NotificationChannelsId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.

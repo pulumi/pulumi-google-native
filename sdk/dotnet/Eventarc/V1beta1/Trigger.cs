@@ -89,6 +89,9 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         [Input("matchingCriteria")]
         private InputList<Inputs.MatchingCriteriaArgs>? _matchingCriteria;
 
@@ -107,11 +110,8 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent collection in which to add this trigger.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
@@ -125,23 +125,14 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
         [Input("transport")]
         public Input<Inputs.TransportArgs>? Transport { get; set; }
 
-        /// <summary>
-        /// Required. The user-provided ID to be assigned to the trigger.
-        /// </summary>
-        [Input("triggerId")]
-        public Input<string>? TriggerId { get; set; }
+        [Input("triggersId", required: true)]
+        public Input<string> TriggersId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The last-modified time.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Required. If set, validate the request and preview the review, but do not actually post it.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public TriggerArgs()
         {

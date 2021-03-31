@@ -59,11 +59,11 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 
     public sealed class DatasetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-        /// </summary>
-        [Input("datasetId")]
-        public Input<string>? DatasetId { get; set; }
+        [Input("datasetsId", required: true)]
+        public Input<string> DatasetsId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
@@ -71,11 +71,8 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The name of the project where the server creates the dataset. For example, `projects/{project_id}/locations/{location_id}`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.

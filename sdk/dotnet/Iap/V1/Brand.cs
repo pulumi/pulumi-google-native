@@ -77,11 +77,8 @@ namespace Pulumi.GoogleCloud.Iap.V1
         [Input("orgInternalOnly")]
         public Input<bool>? OrgInternalOnly { get; set; }
 
-        /// <summary>
-        /// Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Support email displayed on the OAuth consent screen.

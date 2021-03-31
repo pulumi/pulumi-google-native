@@ -148,6 +148,9 @@ namespace Pulumi.GoogleCloud.Compute.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#instance for instances.
         /// </summary>
@@ -250,21 +253,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         [Input("privateIpv6GoogleAccess")]
         public Input<string>? PrivateIpv6GoogleAccess { get; set; }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
@@ -321,17 +311,6 @@ namespace Pulumi.GoogleCloud.Compute.V1
 
         [Input("shieldedInstanceIntegrityPolicy")]
         public Input<Inputs.ShieldedInstanceIntegrityPolicyArgs>? ShieldedInstanceIntegrityPolicy { get; set; }
-
-        /// <summary>
-        /// Specifies instance template to create the instance.
-        /// 
-        /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate 
-        /// - projects/project/global/instanceTemplates/instanceTemplate 
-        /// - global/instanceTemplates/instanceTemplate
-        /// </summary>
-        [Input("sourceInstanceTemplate")]
-        public Input<string>? SourceInstanceTemplate { get; set; }
 
         /// <summary>
         /// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.

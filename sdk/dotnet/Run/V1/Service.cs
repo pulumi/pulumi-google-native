@@ -66,16 +66,13 @@ namespace Pulumi.GoogleCloud.Run.V1
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
-        /// </summary>
-        [Input("dryRun")]
-        public Input<string>? DryRun { get; set; }
-
-        /// <summary>
         /// The kind of resource, in this case "Service".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
@@ -83,11 +80,11 @@ namespace Pulumi.GoogleCloud.Run.V1
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        /// <summary>
-        /// The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("servicesId", required: true)]
+        public Input<string> ServicesId { get; set; } = null!;
 
         /// <summary>
         /// Spec holds the desired state of the Service (from the client).

@@ -65,11 +65,8 @@ namespace Pulumi.GoogleCloud.Bigqueryconnection.V1beta1
         [Input("cloudSql")]
         public Input<Inputs.CloudSqlPropertiesArgs>? CloudSql { get; set; }
 
-        /// <summary>
-        /// Optional. Connection id that should be assigned to the created connection.
-        /// </summary>
-        [Input("connectionId")]
-        public Input<string>? ConnectionId { get; set; }
+        [Input("connectionsId", required: true)]
+        public Input<string> ConnectionsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The creation timestamp of the connection.
@@ -101,17 +98,17 @@ namespace Pulumi.GoogleCloud.Bigqueryconnection.V1beta1
         [Input("lastModifiedTime")]
         public Input<string>? LastModifiedTime { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. Parent resource name. Must be in the format `projects/{project_id}/locations/{location_id}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public ConnectionArgs()
         {

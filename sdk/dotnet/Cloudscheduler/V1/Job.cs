@@ -83,11 +83,17 @@ namespace Pulumi.GoogleCloud.Cloudscheduler.V1
         [Input("httpTarget")]
         public Input<Inputs.HttpTargetArgs>? HttpTarget { get; set; }
 
+        [Input("jobsId", required: true)]
+        public Input<string> JobsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The time the last job attempt started.
         /// </summary>
         [Input("lastAttemptTime")]
         public Input<string>? LastAttemptTime { get; set; }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
@@ -95,11 +101,8 @@ namespace Pulumi.GoogleCloud.Cloudscheduler.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Pub/Sub target.

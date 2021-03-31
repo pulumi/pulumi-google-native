@@ -83,17 +83,17 @@ namespace Pulumi.GoogleCloud.Workflows.V1beta
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location}
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The timestamp that the latest revision of the workflow was created.
@@ -131,11 +131,8 @@ namespace Pulumi.GoogleCloud.Workflows.V1beta
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
-        /// <summary>
-        /// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
-        /// </summary>
-        [Input("workflowId")]
-        public Input<string>? WorkflowId { get; set; }
+        [Input("workflowsId", required: true)]
+        public Input<string> WorkflowsId { get; set; } = null!;
 
         public WorkflowArgs()
         {

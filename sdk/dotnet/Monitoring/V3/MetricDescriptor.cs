@@ -95,6 +95,9 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         [Input("metadata")]
         public Input<Inputs.MetricDescriptorMetadataArgs>? Metadata { get; set; }
 
+        [Input("metricDescriptorsId", required: true)]
+        public Input<string> MetricDescriptorsId { get; set; } = null!;
+
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
         /// </summary>
@@ -116,8 +119,11 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <summary>
         /// The resource name of the metric descriptor.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" 

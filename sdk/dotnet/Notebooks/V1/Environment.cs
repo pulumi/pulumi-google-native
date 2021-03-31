@@ -83,11 +83,11 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
-        /// </summary>
-        [Input("environmentId")]
-        public Input<string>? EnvironmentId { get; set; }
+        [Input("environmentsId", required: true)]
+        public Input<string> EnvironmentsId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
@@ -96,16 +96,13 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Format: `projects/{project_id}/locations/{location}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
         /// </summary>
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Use a Compute Engine VM image to start the notebook instance.

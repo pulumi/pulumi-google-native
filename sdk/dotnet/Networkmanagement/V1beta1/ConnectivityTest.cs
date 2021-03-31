@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1beta1
 
     public sealed class ConnectivityTestArgs : Pulumi.ResourceArgs
     {
+        [Input("connectivityTestsId", required: true)]
+        public Input<string> ConnectivityTestsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The time the test was created.
         /// </summary>
@@ -102,16 +105,13 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1beta1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The parent resource of the Connectivity Test to create: `projects/{project_id}/locations/global`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Output only. The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
         /// </summary>
         [Input("probingDetails")]
         public Input<Inputs.ProbingDetailsArgs>? ProbingDetails { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// IP Protocol of the test. When not provided, "TCP" is assumed.
@@ -142,12 +142,6 @@ namespace Pulumi.GoogleCloud.Networkmanagement.V1beta1
         /// </summary>
         [Input("source")]
         public Input<Inputs.EndpointArgs>? Source { get; set; }
-
-        /// <summary>
-        /// Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
-        /// </summary>
-        [Input("testId")]
-        public Input<string>? TestId { get; set; }
 
         /// <summary>
         /// Output only. The time the test's configuration was updated.

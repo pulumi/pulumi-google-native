@@ -71,9 +71,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("creationTime")]
         public Input<string>? CreationTime { get; set; }
 
-        /// <summary>
-        /// Dataset ID of the new table
-        /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
@@ -185,9 +182,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("numRows")]
         public Input<string>? NumRows { get; set; }
 
-        /// <summary>
-        /// Project ID of the new table
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -226,6 +220,9 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         /// </summary>
         [Input("streamingBuffer")]
         public Input<Inputs.StreamingbufferArgs>? StreamingBuffer { get; set; }
+
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
 
         /// <summary>
         /// [Required] Reference describing the ID of this table.

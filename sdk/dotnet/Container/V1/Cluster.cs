@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Cluster(string name, ClusterArgs? args = null, CustomResourceOptions? options = null)
+        public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:container/v1:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -65,6 +65,9 @@ namespace Pulumi.GoogleCloud.Container.V1
         [Input("cluster")]
         public Input<Inputs.ClusterArgs>? Cluster { get; set; }
 
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
         /// <summary>
         /// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         /// </summary>
@@ -74,14 +77,14 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <summary>
         /// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public ClusterArgs()
         {

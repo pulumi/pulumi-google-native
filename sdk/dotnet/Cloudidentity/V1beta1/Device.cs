@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Device(string name, DeviceArgs? args = null, CustomResourceOptions? options = null)
+        public Device(string name, DeviceArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudidentity/v1beta1:Device", name, args ?? new DeviceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -64,6 +64,9 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
         /// </summary>
         [Input("device")]
         public Input<Inputs.DeviceArgs>? Device { get; set; }
+
+        [Input("devicesId", required: true)]
+        public Input<string> DevicesId { get; set; } = null!;
 
         public DeviceArgs()
         {

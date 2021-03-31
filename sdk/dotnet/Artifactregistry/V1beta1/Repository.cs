@@ -95,23 +95,20 @@ namespace Pulumi.GoogleCloud.Artifactregistry.V1beta1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The name of the parent resource where the repository will be created.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
-        /// <summary>
-        /// The repository id to use for this repository.
-        /// </summary>
-        [Input("repositoryId")]
-        public Input<string>? RepositoryId { get; set; }
+        [Input("repositoriesId", required: true)]
+        public Input<string> RepositoriesId { get; set; } = null!;
 
         /// <summary>
         /// The time when the repository was last updated.

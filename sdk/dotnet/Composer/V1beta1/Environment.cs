@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("environmentsId", required: true)]
+        public Input<string> EnvironmentsId { get; set; } = null!;
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -83,17 +86,17 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The parent must be of the form "projects/{projectId}/locations/{locationId}".
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The current state of the environment.

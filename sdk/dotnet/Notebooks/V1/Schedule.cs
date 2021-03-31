@@ -89,17 +89,17 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         [Input("executionTemplate")]
         public Input<Inputs.ExecutionTemplateArgs>? ExecutionTemplate { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. Format: `parent=projects/{project_id}/locations/{location}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("recentExecutions")]
         private InputList<Inputs.ExecutionArgs>? _recentExecutions;
@@ -113,11 +113,8 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
             set => _recentExecutions = value;
         }
 
-        /// <summary>
-        /// Required. User-defined unique ID of this schedule.
-        /// </summary>
-        [Input("scheduleId")]
-        public Input<string>? ScheduleId { get; set; }
+        [Input("schedulesId", required: true)]
+        public Input<string> SchedulesId { get; set; } = null!;
 
         [Input("state")]
         public Input<string>? State { get; set; }

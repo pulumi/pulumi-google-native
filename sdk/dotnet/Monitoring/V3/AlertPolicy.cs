@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
 
     public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("alertPoliciesId", required: true)]
+        public Input<string> AlertPoliciesId { get; set; } = null!;
+
         /// <summary>
         /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         /// </summary>
@@ -110,8 +113,8 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <summary>
         /// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("notificationChannels")]
         private InputList<string>? _notificationChannels;
@@ -124,6 +127,9 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
             get => _notificationChannels ?? (_notificationChannels = new InputList<string>());
             set => _notificationChannels = value;
         }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("userLabels")]
         private InputMap<string>? _userLabels;

@@ -83,11 +83,8 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
@@ -95,11 +92,8 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1beta1
         [Input("replication")]
         public Input<Inputs.ReplicationArgs>? Replication { get; set; }
 
-        /// <summary>
-        /// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-        /// </summary>
-        [Input("secretId")]
-        public Input<string>? SecretId { get; set; }
+        [Input("secretsId", required: true)]
+        public Input<string> SecretsId { get; set; } = null!;
 
         public SecretArgs()
         {

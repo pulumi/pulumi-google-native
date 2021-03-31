@@ -59,23 +59,14 @@ namespace Pulumi.GoogleCloud.Storage.V1
 
     public sealed class HmacKeyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Project ID owning the service account.
-        /// </summary>
+        [Input("accessId", required: true)]
+        public Input<string> AccessId { get; set; } = null!;
+
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// Email address of the service account.
-        /// </summary>
         [Input("serviceAccountEmail", required: true)]
         public Input<string> ServiceAccountEmail { get; set; } = null!;
-
-        /// <summary>
-        /// The project to be billed for this request.
-        /// </summary>
-        [Input("userProject")]
-        public Input<string>? UserProject { get; set; }
 
         public HmacKeyArgs()
         {

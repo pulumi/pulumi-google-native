@@ -102,22 +102,16 @@ namespace Pulumi.GoogleCloud.Osconfig.V1
         public Input<Inputs.OneTimeScheduleArgs>? OneTimeSchedule { get; set; }
 
         /// <summary>
-        /// Required. The project to apply this patch deployment to in the form `projects/*`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Optional. Patch configuration that is applied.
         /// </summary>
         [Input("patchConfig")]
         public Input<Inputs.PatchConfigArgs>? PatchConfig { get; set; }
 
-        /// <summary>
-        /// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-        /// </summary>
-        [Input("patchDeploymentId")]
-        public Input<string>? PatchDeploymentId { get; set; }
+        [Input("patchDeploymentsId", required: true)]
+        public Input<string> PatchDeploymentsId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Required. Schedule recurring executions.

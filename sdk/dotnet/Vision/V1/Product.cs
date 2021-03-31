@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Vision.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         /// </summary>
@@ -78,22 +81,10 @@ namespace Pulumi.GoogleCloud.Vision.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
         /// </summary>
         [Input("productCategory")]
         public Input<string>? ProductCategory { get; set; }
-
-        /// <summary>
-        /// A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-        /// </summary>
-        [Input("productId")]
-        public Input<string>? ProductId { get; set; }
 
         [Input("productLabels")]
         private InputList<Inputs.KeyValueArgs>? _productLabels;
@@ -106,6 +97,12 @@ namespace Pulumi.GoogleCloud.Vision.V1
             get => _productLabels ?? (_productLabels = new InputList<Inputs.KeyValueArgs>());
             set => _productLabels = value;
         }
+
+        [Input("productsId", required: true)]
+        public Input<string> ProductsId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public ProductArgs()
         {

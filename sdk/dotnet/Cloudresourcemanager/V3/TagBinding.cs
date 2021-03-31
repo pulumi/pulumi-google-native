@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TagBinding(string name, TagBindingArgs? args = null, CustomResourceOptions? options = null)
+        public TagBinding(string name, TagBindingArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudresourcemanager/v3:TagBinding", name, args ?? new TagBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -71,17 +71,14 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        [Input("tagBindingsId", required: true)]
+        public Input<string> TagBindingsId { get; set; } = null!;
+
         /// <summary>
         /// The TagValue of the TagBinding. Must be of the form `tagValues/456`.
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
-
-        /// <summary>
-        /// Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public TagBindingArgs()
         {

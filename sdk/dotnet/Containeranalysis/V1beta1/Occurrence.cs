@@ -125,11 +125,11 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1
         [Input("noteName")]
         public Input<string>? NoteName { get; set; }
 
-        /// <summary>
-        /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("occurrencesId", required: true)]
+        public Input<string> OccurrencesId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// A description of actions that can be taken to remedy the note.

@@ -89,9 +89,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        /// <summary>
-        /// Project ID of the project that will be billed for the job
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 

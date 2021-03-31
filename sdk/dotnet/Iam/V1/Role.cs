@@ -59,11 +59,8 @@ namespace Pulumi.GoogleCloud.Iam.V1
 
     public sealed class RoleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The `parent` parameter's value depends on the target resource for the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value format is described below: * [`projects.roles.create()`](/iam/reference/rest/v1/projects.roles/create): `projects/{PROJECT_ID}`. This method creates project-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` * [`organizations.roles.create()`](/iam/reference/rest/v1/organizations.roles/create): `organizations/{ORGANIZATION_ID}`. This method creates organization-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles` Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization ID.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The Role resource to create.
@@ -76,6 +73,9 @@ namespace Pulumi.GoogleCloud.Iam.V1
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
+
+        [Input("rolesId", required: true)]
+        public Input<string> RolesId { get; set; } = null!;
 
         public RoleArgs()
         {

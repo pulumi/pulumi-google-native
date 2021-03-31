@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Group(string name, GroupArgs? args = null, CustomResourceOptions? options = null)
+        public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudidentity/v1:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -89,11 +89,8 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
         [Input("groupKey")]
         public Input<Inputs.EntityKeyArgs>? GroupKey { get; set; }
 
-        /// <summary>
-        /// Optional. The initial configuration option for the `Group`.
-        /// </summary>
-        [Input("initialGroupConfig")]
-        public Input<string>? InitialGroupConfig { get; set; }
+        [Input("groupsId", required: true)]
+        public Input<string> GroupsId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;

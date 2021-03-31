@@ -65,17 +65,17 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the project associated with the service accounts, such as `projects/my-project-123`.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
         /// </summary>
         [Input("serviceAccount")]
         public Input<Inputs.ServiceAccountArgs>? ServiceAccount { get; set; }
+
+        [Input("serviceAccountsId", required: true)]
+        public Input<string> ServiceAccountsId { get; set; } = null!;
 
         public ServiceAccountArgs()
         {

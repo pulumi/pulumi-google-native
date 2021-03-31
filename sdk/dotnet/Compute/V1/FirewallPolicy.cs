@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FirewallPolicy(string name, FirewallPolicyArgs? args = null, CustomResourceOptions? options = null)
+        public FirewallPolicy(string name, FirewallPolicyArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:compute/v1:FirewallPolicy", name, args ?? new FirewallPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -97,6 +97,9 @@ namespace Pulumi.GoogleCloud.Compute.V1
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
+        [Input("firewallPolicy", required: true)]
+        public Input<string> FirewallPolicy { get; set; } = null!;
+
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
@@ -120,22 +123,6 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
-
-        /// <summary>
-        /// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-        /// </summary>
-        [Input("parentId")]
-        public Input<string>? ParentId { get; set; }
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.

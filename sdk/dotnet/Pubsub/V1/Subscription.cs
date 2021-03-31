@@ -116,8 +116,11 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         /// <summary>
         /// Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
@@ -136,6 +139,9 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         /// </summary>
         [Input("retryPolicy")]
         public Input<Inputs.RetryPolicyArgs>? RetryPolicy { get; set; }
+
+        [Input("subscriptionsId", required: true)]
+        public Input<string> SubscriptionsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.

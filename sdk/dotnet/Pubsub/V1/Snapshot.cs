@@ -71,11 +71,11 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the resource name rules. Format is `projects/{project}/snapshots/{snap}`.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("snapshotsId", required: true)]
+        public Input<string> SnapshotsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.

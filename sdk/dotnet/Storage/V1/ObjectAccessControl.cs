@@ -91,8 +91,8 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// - The group example@googlegroups.com would be group-example@googlegroups.com. 
         /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
         /// </summary>
-        [Input("entity")]
-        public Input<string>? Entity { get; set; }
+        [Input("entity", required: true)]
+        public Input<string> Entity { get; set; } = null!;
 
         /// <summary>
         /// The ID for the entity, if any.
@@ -143,12 +143,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
         }
 
         /// <summary>
-        /// The project to be billed for this request if the target bucket is requester-pays bucket.
-        /// </summary>
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
-
-        /// <summary>
         /// The access permission for the entity.
         /// </summary>
         [Input("role")]
@@ -159,12 +153,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
-
-        /// <summary>
-        /// The project to be billed for this request. Required for Requester Pays buckets.
-        /// </summary>
-        [Input("userProject")]
-        public Input<string>? UserProject { get; set; }
 
         public ObjectAccessControlArgs()
         {

@@ -59,9 +59,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
 
     public sealed class NotificationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The parent bucket of the notification.
-        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
@@ -107,6 +104,9 @@ namespace Pulumi.GoogleCloud.Storage.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("notification", required: true)]
+        public Input<string> Notification { get; set; } = null!;
+
         /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.
         /// </summary>
@@ -120,12 +120,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
         public Input<string>? Payload_format { get; set; }
 
         /// <summary>
-        /// The project to be billed for this request if the target bucket is requester-pays bucket.
-        /// </summary>
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
-
-        /// <summary>
         /// The canonical URL of this notification.
         /// </summary>
         [Input("selfLink")]
@@ -136,12 +130,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
-
-        /// <summary>
-        /// The project to be billed for this request. Required for Requester Pays buckets.
-        /// </summary>
-        [Input("userProject")]
-        public Input<string>? UserProject { get; set; }
 
         public NotificationArgs()
         {

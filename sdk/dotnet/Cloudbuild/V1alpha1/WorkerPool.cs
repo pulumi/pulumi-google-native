@@ -78,16 +78,13 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the parent project.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// The project ID of the GCP project for which the `WorkerPool` is created.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("regions")]
         private InputList<string>? _regions;
@@ -130,6 +127,9 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha1
         /// </summary>
         [Input("workerCount")]
         public Input<string>? WorkerCount { get; set; }
+
+        [Input("workerPoolsId", required: true)]
+        public Input<string> WorkerPoolsId { get; set; } = null!;
 
         public WorkerPoolArgs()
         {

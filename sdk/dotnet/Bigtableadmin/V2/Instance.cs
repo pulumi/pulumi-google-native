@@ -83,11 +83,17 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
+
         /// <summary>
         /// Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
         /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public InstanceArgs()
         {

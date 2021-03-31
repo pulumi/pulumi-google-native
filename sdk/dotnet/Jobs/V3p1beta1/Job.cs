@@ -65,11 +65,11 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1
         [Input("job")]
         public Input<Inputs.JobArgs>? Job { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("jobsId", required: true)]
+        public Input<string> JobsId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public JobArgs()
         {

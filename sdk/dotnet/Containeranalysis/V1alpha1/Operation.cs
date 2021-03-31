@@ -71,11 +71,8 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
 
-        /// <summary>
-        /// The project Id that this operation should be created under.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public OperationArgs()
         {

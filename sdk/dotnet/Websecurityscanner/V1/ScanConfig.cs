@@ -107,17 +107,17 @@ namespace Pulumi.GoogleCloud.Websecurityscanner.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource name where the scan is created, which should be a project resource name in the format 'projects/{projectId}'.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The risk level selected for the scan
         /// </summary>
         [Input("riskLevel")]
         public Input<string>? RiskLevel { get; set; }
+
+        [Input("scanConfigsId", required: true)]
+        public Input<string> ScanConfigsId { get; set; } = null!;
 
         /// <summary>
         /// The schedule of the ScanConfig.

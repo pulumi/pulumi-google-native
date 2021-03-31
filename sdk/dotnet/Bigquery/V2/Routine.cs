@@ -77,11 +77,8 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("creationTime")]
         public Input<string>? CreationTime { get; set; }
 
-        /// <summary>
-        /// Required. Dataset ID of the new routine
-        /// </summary>
-        [Input("datasetId", required: true)]
-        public Input<string> DatasetId { get; set; } = null!;
+        [Input("datasetsId", required: true)]
+        public Input<string> DatasetsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
@@ -131,11 +128,8 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("lastModifiedTime")]
         public Input<string>? LastModifiedTime { get; set; }
 
-        /// <summary>
-        /// Required. Project ID of the new routine
-        /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
@@ -160,6 +154,9 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         /// </summary>
         [Input("routineType")]
         public Input<string>? RoutineType { get; set; }
+
+        [Input("routinesId", required: true)]
+        public Input<string> RoutinesId { get; set; } = null!;
 
         public RoutineArgs()
         {

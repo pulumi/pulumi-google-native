@@ -83,6 +83,9 @@ namespace Pulumi.GoogleCloud.Storage.V1
             set => _billing = value;
         }
 
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
         [Input("cors")]
         private InputList<ImmutableDictionary<string, string>>? _cors;
 
@@ -227,21 +230,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
             set => _owner = value;
         }
 
-        /// <summary>
-        /// Apply a predefined set of access controls to this bucket.
-        /// </summary>
-        [Input("predefinedAcl")]
-        public Input<string>? PredefinedAcl { get; set; }
-
-        /// <summary>
-        /// Apply a predefined set of default object access controls to this bucket.
-        /// </summary>
-        [Input("predefinedDefaultObjectAcl")]
-        public Input<string>? PredefinedDefaultObjectAcl { get; set; }
-
-        /// <summary>
-        /// A valid API project identifier.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -250,18 +238,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// </summary>
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
-
-        /// <summary>
-        /// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-        /// </summary>
-        [Input("projection")]
-        public Input<string>? Projection { get; set; }
-
-        /// <summary>
-        /// The project to be billed for this request if the target bucket is requester-pays bucket.
-        /// </summary>
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
 
         [Input("retentionPolicy")]
         private InputMap<string>? _retentionPolicy;
@@ -304,12 +280,6 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
-
-        /// <summary>
-        /// The project to be billed for this request.
-        /// </summary>
-        [Input("userProject")]
-        public Input<string>? UserProject { get; set; }
 
         [Input("versioning")]
         private InputMap<string>? _versioning;

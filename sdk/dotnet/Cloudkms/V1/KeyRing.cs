@@ -65,11 +65,8 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        /// <summary>
-        /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-        /// </summary>
-        [Input("keyRingId")]
-        public Input<string>? KeyRingId { get; set; }
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
@@ -77,11 +74,8 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the location associated with the KeyRings, in the format `projects/*/locations/*`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public KeyRingArgs()
         {

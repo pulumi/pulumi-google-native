@@ -71,11 +71,8 @@ namespace Pulumi.GoogleCloud.Sourcerepo.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The project in which to create the repo. Values are of the form `projects/`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("pubsubConfigs")]
         private InputMap<string>? _pubsubConfigs;
@@ -88,6 +85,9 @@ namespace Pulumi.GoogleCloud.Sourcerepo.V1
             get => _pubsubConfigs ?? (_pubsubConfigs = new InputMap<string>());
             set => _pubsubConfigs = value;
         }
+
+        [Input("reposId", required: true)]
+        public Input<string> ReposId { get; set; } = null!;
 
         /// <summary>
         /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.

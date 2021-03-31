@@ -71,23 +71,20 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1beta1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// </summary>
-        [Input("namespaceId")]
-        public Input<string>? NamespaceId { get; set; }
+        [Input("namespacesId", required: true)]
+        public Input<string> NamespacesId { get; set; } = null!;
 
-        /// <summary>
-        /// Required. The resource name of the project and location the namespace will be created in.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public NamespaceArgs()
         {

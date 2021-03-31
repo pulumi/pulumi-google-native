@@ -83,12 +83,6 @@ namespace Pulumi.GoogleCloud.Memcache.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
         [Input("instanceMessages")]
         private InputList<Inputs.InstanceMessageArgs>? _instanceMessages;
 
@@ -101,6 +95,9 @@ namespace Pulumi.GoogleCloud.Memcache.V1
             set => _instanceMessages = value;
         }
 
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -112,6 +109,9 @@ namespace Pulumi.GoogleCloud.Memcache.V1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
@@ -161,11 +161,8 @@ namespace Pulumi.GoogleCloud.Memcache.V1
         [Input("parameters")]
         public Input<Inputs.MemcacheParametersArgs>? Parameters { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The state of this Memcached instance.

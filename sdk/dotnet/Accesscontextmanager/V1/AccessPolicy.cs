@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessPolicy(string name, AccessPolicyArgs? args = null, CustomResourceOptions? options = null)
+        public AccessPolicy(string name, AccessPolicyArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:accesscontextmanager/v1:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("accessPoliciesId", required: true)]
+        public Input<string> AccessPoliciesId { get; set; } = null!;
+
         /// <summary>
         /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
         /// </summary>

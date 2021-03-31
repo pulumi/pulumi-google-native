@@ -119,11 +119,11 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         [Input("noteName")]
         public Input<string>? NoteName { get; set; }
 
-        /// <summary>
-        /// This field contains the project Id for example: "projects/{project_id}"
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("occurrencesId", required: true)]
+        public Input<string> OccurrencesId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// A description of actions that can be taken to remedy the `Note`

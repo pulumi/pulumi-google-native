@@ -137,15 +137,15 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        [Input("networkEndpointGroup", required: true)]
+        public Input<string> NetworkEndpointGroup { get; set; } = null!;
+
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -158,18 +158,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] The URL of the region where the network endpoint group is located.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
@@ -210,8 +200,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] The URL of the zone where the network endpoint group is located.
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public NetworkEndpointGroupArgs()
         {

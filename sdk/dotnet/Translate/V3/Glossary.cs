@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Translate.V3
         [Input("entryCount")]
         public Input<int>? EntryCount { get; set; }
 
+        [Input("glossariesId", required: true)]
+        public Input<string> GlossariesId { get; set; } = null!;
+
         /// <summary>
         /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         /// </summary>
@@ -89,17 +92,17 @@ namespace Pulumi.GoogleCloud.Translate.V3
         [Input("languagePair")]
         public Input<Inputs.LanguageCodePairArgs>? LanguagePair { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The project name.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. When CreateGlossary was called.

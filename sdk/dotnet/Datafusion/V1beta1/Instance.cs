@@ -137,11 +137,8 @@ namespace Pulumi.GoogleCloud.Datafusion.V1beta1
         [Input("gcsBucket")]
         public Input<string>? GcsBucket { get; set; }
 
-        /// <summary>
-        /// The name of the instance to create.
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -154,6 +151,9 @@ namespace Pulumi.GoogleCloud.Datafusion.V1beta1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The name of this instance is in the form of projects/{project}/locations/{location}/instances/{instance}.
@@ -186,16 +186,13 @@ namespace Pulumi.GoogleCloud.Datafusion.V1beta1
         public Input<string>? P4ServiceAccount { get; set; }
 
         /// <summary>
-        /// The instance's project and location in the format projects/{project}/locations/{location}.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         /// </summary>
         [Input("privateInstance")]
         public Input<bool>? PrivateInstance { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.

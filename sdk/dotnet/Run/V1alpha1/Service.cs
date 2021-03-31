@@ -71,17 +71,20 @@ namespace Pulumi.GoogleCloud.Run.V1alpha1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels, and annotations.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        /// <summary>
-        /// The project ID or project number in which this service should be created.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("servicesId", required: true)]
+        public Input<string> ServicesId { get; set; } = null!;
 
         /// <summary>
         /// Spec holds the desired state of the Service (from the client).

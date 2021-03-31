@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Lien(string name, LienArgs? args = null, CustomResourceOptions? options = null)
+        public Lien(string name, LienArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudresourcemanager/v1:Lien", name, args ?? new LienArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -64,6 +64,9 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V1
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("liensId", required: true)]
+        public Input<string> LiensId { get; set; } = null!;
 
         /// <summary>
         /// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`

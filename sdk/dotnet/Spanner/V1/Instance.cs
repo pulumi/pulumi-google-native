@@ -71,11 +71,11 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
-        /// <summary>
-        /// Required. The name of the project in which to create the instance. Values are of the form `projects/`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public InstanceArgs()
         {

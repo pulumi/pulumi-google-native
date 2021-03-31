@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Folder(string name, FolderArgs? args = null, CustomResourceOptions? options = null)
+        public Folder(string name, FolderArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudresourcemanager/v3:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -82,6 +82,9 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("foldersId", required: true)]
+        public Input<string> FoldersId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".

@@ -65,6 +65,9 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         [Input("cluster")]
         public Input<Inputs.ClusterArgs>? Cluster { get; set; }
 
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
         /// <summary>
         /// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         /// </summary>

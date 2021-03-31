@@ -60,12 +60,6 @@ namespace Pulumi.GoogleCloud.Dns.V1
     public sealed class ManagedZoneArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-        /// </summary>
-        [Input("clientOperationId")]
-        public Input<string>? ClientOperationId { get; set; }
-
-        /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         /// </summary>
         [Input("creationTime")]
@@ -116,6 +110,9 @@ namespace Pulumi.GoogleCloud.Dns.V1
             set => _labels = value;
         }
 
+        [Input("managedZone", required: true)]
+        public Input<string> ManagedZone { get; set; } = null!;
+
         /// <summary>
         /// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
         /// </summary>
@@ -152,9 +149,6 @@ namespace Pulumi.GoogleCloud.Dns.V1
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigArgs>? PrivateVisibilityConfig { get; set; }
 
-        /// <summary>
-        /// Identifies the project addressed by this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
