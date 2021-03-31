@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1beta1
         [Input("ignoreIdleSlots")]
         public Input<bool>? IgnoreIdleSlots { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
         /// </summary>
@@ -83,17 +86,11 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. Project, location. E.g., `projects/myproject/locations/US`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
-        /// <summary>
-        /// The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max length is 64 characters.
-        /// </summary>
-        [Input("reservationId")]
-        public Input<string>? ReservationId { get; set; }
+        [Input("reservationsId", required: true)]
+        public Input<string> ReservationsId { get; set; } = null!;
 
         /// <summary>
         /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.

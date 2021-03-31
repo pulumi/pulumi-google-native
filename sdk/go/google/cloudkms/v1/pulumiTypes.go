@@ -519,7 +519,7 @@ func (o CertificateChainsPtrOutput) GooglePartitionCerts() pulumi.StringArrayOut
 }
 
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
-type CryptoKeyVersionType struct {
+type CryptoKeyVersion struct {
 	// Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm *string `pulumi:"algorithm"`
 	// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
@@ -548,19 +548,19 @@ type CryptoKeyVersionType struct {
 	State *string `pulumi:"state"`
 }
 
-// CryptoKeyVersionTypeInput is an input type that accepts CryptoKeyVersionTypeArgs and CryptoKeyVersionTypeOutput values.
-// You can construct a concrete instance of `CryptoKeyVersionTypeInput` via:
+// CryptoKeyVersionInput is an input type that accepts CryptoKeyVersionArgs and CryptoKeyVersionOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionInput` via:
 //
-//          CryptoKeyVersionTypeArgs{...}
-type CryptoKeyVersionTypeInput interface {
+//          CryptoKeyVersionArgs{...}
+type CryptoKeyVersionInput interface {
 	pulumi.Input
 
-	ToCryptoKeyVersionTypeOutput() CryptoKeyVersionTypeOutput
-	ToCryptoKeyVersionTypeOutputWithContext(context.Context) CryptoKeyVersionTypeOutput
+	ToCryptoKeyVersionOutput() CryptoKeyVersionOutput
+	ToCryptoKeyVersionOutputWithContext(context.Context) CryptoKeyVersionOutput
 }
 
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
-type CryptoKeyVersionTypeArgs struct {
+type CryptoKeyVersionArgs struct {
 	// Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
@@ -589,170 +589,170 @@ type CryptoKeyVersionTypeArgs struct {
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
-func (CryptoKeyVersionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyVersionType)(nil)).Elem()
+func (CryptoKeyVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersion)(nil)).Elem()
 }
 
-func (i CryptoKeyVersionTypeArgs) ToCryptoKeyVersionTypeOutput() CryptoKeyVersionTypeOutput {
-	return i.ToCryptoKeyVersionTypeOutputWithContext(context.Background())
+func (i CryptoKeyVersionArgs) ToCryptoKeyVersionOutput() CryptoKeyVersionOutput {
+	return i.ToCryptoKeyVersionOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyVersionTypeArgs) ToCryptoKeyVersionTypeOutputWithContext(ctx context.Context) CryptoKeyVersionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTypeOutput)
+func (i CryptoKeyVersionArgs) ToCryptoKeyVersionOutputWithContext(ctx context.Context) CryptoKeyVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionOutput)
 }
 
-func (i CryptoKeyVersionTypeArgs) ToCryptoKeyVersionTypePtrOutput() CryptoKeyVersionTypePtrOutput {
-	return i.ToCryptoKeyVersionTypePtrOutputWithContext(context.Background())
+func (i CryptoKeyVersionArgs) ToCryptoKeyVersionPtrOutput() CryptoKeyVersionPtrOutput {
+	return i.ToCryptoKeyVersionPtrOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyVersionTypeArgs) ToCryptoKeyVersionTypePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTypeOutput).ToCryptoKeyVersionTypePtrOutputWithContext(ctx)
+func (i CryptoKeyVersionArgs) ToCryptoKeyVersionPtrOutputWithContext(ctx context.Context) CryptoKeyVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionOutput).ToCryptoKeyVersionPtrOutputWithContext(ctx)
 }
 
-// CryptoKeyVersionTypePtrInput is an input type that accepts CryptoKeyVersionTypeArgs, CryptoKeyVersionTypePtr and CryptoKeyVersionTypePtrOutput values.
-// You can construct a concrete instance of `CryptoKeyVersionTypePtrInput` via:
+// CryptoKeyVersionPtrInput is an input type that accepts CryptoKeyVersionArgs, CryptoKeyVersionPtr and CryptoKeyVersionPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionPtrInput` via:
 //
-//          CryptoKeyVersionTypeArgs{...}
+//          CryptoKeyVersionArgs{...}
 //
 //  or:
 //
 //          nil
-type CryptoKeyVersionTypePtrInput interface {
+type CryptoKeyVersionPtrInput interface {
 	pulumi.Input
 
-	ToCryptoKeyVersionTypePtrOutput() CryptoKeyVersionTypePtrOutput
-	ToCryptoKeyVersionTypePtrOutputWithContext(context.Context) CryptoKeyVersionTypePtrOutput
+	ToCryptoKeyVersionPtrOutput() CryptoKeyVersionPtrOutput
+	ToCryptoKeyVersionPtrOutputWithContext(context.Context) CryptoKeyVersionPtrOutput
 }
 
-type cryptoKeyVersionTypePtrType CryptoKeyVersionTypeArgs
+type cryptoKeyVersionPtrType CryptoKeyVersionArgs
 
-func CryptoKeyVersionTypePtr(v *CryptoKeyVersionTypeArgs) CryptoKeyVersionTypePtrInput {
-	return (*cryptoKeyVersionTypePtrType)(v)
+func CryptoKeyVersionPtr(v *CryptoKeyVersionArgs) CryptoKeyVersionPtrInput {
+	return (*cryptoKeyVersionPtrType)(v)
 }
 
-func (*cryptoKeyVersionTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyVersionType)(nil)).Elem()
+func (*cryptoKeyVersionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersion)(nil)).Elem()
 }
 
-func (i *cryptoKeyVersionTypePtrType) ToCryptoKeyVersionTypePtrOutput() CryptoKeyVersionTypePtrOutput {
-	return i.ToCryptoKeyVersionTypePtrOutputWithContext(context.Background())
+func (i *cryptoKeyVersionPtrType) ToCryptoKeyVersionPtrOutput() CryptoKeyVersionPtrOutput {
+	return i.ToCryptoKeyVersionPtrOutputWithContext(context.Background())
 }
 
-func (i *cryptoKeyVersionTypePtrType) ToCryptoKeyVersionTypePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTypePtrOutput)
+func (i *cryptoKeyVersionPtrType) ToCryptoKeyVersionPtrOutputWithContext(ctx context.Context) CryptoKeyVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionPtrOutput)
 }
 
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
-type CryptoKeyVersionTypeOutput struct{ *pulumi.OutputState }
+type CryptoKeyVersionOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyVersionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyVersionType)(nil)).Elem()
+func (CryptoKeyVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersion)(nil)).Elem()
 }
 
-func (o CryptoKeyVersionTypeOutput) ToCryptoKeyVersionTypeOutput() CryptoKeyVersionTypeOutput {
+func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutput() CryptoKeyVersionOutput {
 	return o
 }
 
-func (o CryptoKeyVersionTypeOutput) ToCryptoKeyVersionTypeOutputWithContext(ctx context.Context) CryptoKeyVersionTypeOutput {
+func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutputWithContext(ctx context.Context) CryptoKeyVersionOutput {
 	return o
 }
 
-func (o CryptoKeyVersionTypeOutput) ToCryptoKeyVersionTypePtrOutput() CryptoKeyVersionTypePtrOutput {
-	return o.ToCryptoKeyVersionTypePtrOutputWithContext(context.Background())
+func (o CryptoKeyVersionOutput) ToCryptoKeyVersionPtrOutput() CryptoKeyVersionPtrOutput {
+	return o.ToCryptoKeyVersionPtrOutputWithContext(context.Background())
 }
 
-func (o CryptoKeyVersionTypeOutput) ToCryptoKeyVersionTypePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTypePtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *CryptoKeyVersionType {
+func (o CryptoKeyVersionOutput) ToCryptoKeyVersionPtrOutputWithContext(ctx context.Context) CryptoKeyVersionPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *CryptoKeyVersion {
 		return &v
-	}).(CryptoKeyVersionTypePtrOutput)
+	}).(CryptoKeyVersionPtrOutput)
 }
 
 // Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-func (o CryptoKeyVersionTypeOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
 // Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-func (o CryptoKeyVersionTypeOutput) Attestation() KeyOperationAttestationPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *KeyOperationAttestation { return v.Attestation }).(KeyOperationAttestationPtrOutput)
+func (o CryptoKeyVersionOutput) Attestation() KeyOperationAttestationPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *KeyOperationAttestation { return v.Attestation }).(KeyOperationAttestationPtrOutput)
 }
 
 // Output only. The time at which this CryptoKeyVersion was created.
-func (o CryptoKeyVersionTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-func (o CryptoKeyVersionTypeOutput) DestroyEventTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.DestroyEventTime }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) DestroyEventTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.DestroyEventTime }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-func (o CryptoKeyVersionTypeOutput) DestroyTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.DestroyTime }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) DestroyTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.DestroyTime }).(pulumi.StringPtrOutput)
 }
 
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-func (o CryptoKeyVersionTypeOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *ExternalProtectionLevelOptions { return v.ExternalProtectionLevelOptions }).(ExternalProtectionLevelOptionsPtrOutput)
+func (o CryptoKeyVersionOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *ExternalProtectionLevelOptions { return v.ExternalProtectionLevelOptions }).(ExternalProtectionLevelOptionsPtrOutput)
 }
 
 // Output only. The time this CryptoKeyVersion's key material was generated.
-func (o CryptoKeyVersionTypeOutput) GenerateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.GenerateTime }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) GenerateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.GenerateTime }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-func (o CryptoKeyVersionTypeOutput) ImportFailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.ImportFailureReason }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) ImportFailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.ImportFailureReason }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-func (o CryptoKeyVersionTypeOutput) ImportJob() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.ImportJob }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) ImportJob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.ImportJob }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The time at which this CryptoKeyVersion's key material was imported.
-func (o CryptoKeyVersionTypeOutput) ImportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.ImportTime }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) ImportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.ImportTime }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-func (o CryptoKeyVersionTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-func (o CryptoKeyVersionTypeOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) ProtectionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
 
 // The current state of the CryptoKeyVersion.
-func (o CryptoKeyVersionTypeOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionType) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersion) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-type CryptoKeyVersionTypePtrOutput struct{ *pulumi.OutputState }
+type CryptoKeyVersionPtrOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyVersionTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyVersionType)(nil)).Elem()
+func (CryptoKeyVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersion)(nil)).Elem()
 }
 
-func (o CryptoKeyVersionTypePtrOutput) ToCryptoKeyVersionTypePtrOutput() CryptoKeyVersionTypePtrOutput {
+func (o CryptoKeyVersionPtrOutput) ToCryptoKeyVersionPtrOutput() CryptoKeyVersionPtrOutput {
 	return o
 }
 
-func (o CryptoKeyVersionTypePtrOutput) ToCryptoKeyVersionTypePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTypePtrOutput {
+func (o CryptoKeyVersionPtrOutput) ToCryptoKeyVersionPtrOutputWithContext(ctx context.Context) CryptoKeyVersionPtrOutput {
 	return o
 }
 
-func (o CryptoKeyVersionTypePtrOutput) Elem() CryptoKeyVersionTypeOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) CryptoKeyVersionType { return *v }).(CryptoKeyVersionTypeOutput)
+func (o CryptoKeyVersionPtrOutput) Elem() CryptoKeyVersionOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) CryptoKeyVersion { return *v }).(CryptoKeyVersionOutput)
 }
 
 // Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-func (o CryptoKeyVersionTypePtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -761,8 +761,8 @@ func (o CryptoKeyVersionTypePtrOutput) Algorithm() pulumi.StringPtrOutput {
 }
 
 // Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-func (o CryptoKeyVersionTypePtrOutput) Attestation() KeyOperationAttestationPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *KeyOperationAttestation {
+func (o CryptoKeyVersionPtrOutput) Attestation() KeyOperationAttestationPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *KeyOperationAttestation {
 		if v == nil {
 			return nil
 		}
@@ -771,8 +771,8 @@ func (o CryptoKeyVersionTypePtrOutput) Attestation() KeyOperationAttestationPtrO
 }
 
 // Output only. The time at which this CryptoKeyVersion was created.
-func (o CryptoKeyVersionTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -781,8 +781,8 @@ func (o CryptoKeyVersionTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
 }
 
 // Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-func (o CryptoKeyVersionTypePtrOutput) DestroyEventTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) DestroyEventTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -791,8 +791,8 @@ func (o CryptoKeyVersionTypePtrOutput) DestroyEventTime() pulumi.StringPtrOutput
 }
 
 // Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-func (o CryptoKeyVersionTypePtrOutput) DestroyTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) DestroyTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -801,8 +801,8 @@ func (o CryptoKeyVersionTypePtrOutput) DestroyTime() pulumi.StringPtrOutput {
 }
 
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-func (o CryptoKeyVersionTypePtrOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *ExternalProtectionLevelOptions {
+func (o CryptoKeyVersionPtrOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *ExternalProtectionLevelOptions {
 		if v == nil {
 			return nil
 		}
@@ -811,8 +811,8 @@ func (o CryptoKeyVersionTypePtrOutput) ExternalProtectionLevelOptions() External
 }
 
 // Output only. The time this CryptoKeyVersion's key material was generated.
-func (o CryptoKeyVersionTypePtrOutput) GenerateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) GenerateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -821,8 +821,8 @@ func (o CryptoKeyVersionTypePtrOutput) GenerateTime() pulumi.StringPtrOutput {
 }
 
 // Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-func (o CryptoKeyVersionTypePtrOutput) ImportFailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) ImportFailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -831,8 +831,8 @@ func (o CryptoKeyVersionTypePtrOutput) ImportFailureReason() pulumi.StringPtrOut
 }
 
 // Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-func (o CryptoKeyVersionTypePtrOutput) ImportJob() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) ImportJob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -841,8 +841,8 @@ func (o CryptoKeyVersionTypePtrOutput) ImportJob() pulumi.StringPtrOutput {
 }
 
 // Output only. The time at which this CryptoKeyVersion's key material was imported.
-func (o CryptoKeyVersionTypePtrOutput) ImportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) ImportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -851,8 +851,8 @@ func (o CryptoKeyVersionTypePtrOutput) ImportTime() pulumi.StringPtrOutput {
 }
 
 // Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-func (o CryptoKeyVersionTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -861,8 +861,8 @@ func (o CryptoKeyVersionTypePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-func (o CryptoKeyVersionTypePtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -871,8 +871,8 @@ func (o CryptoKeyVersionTypePtrOutput) ProtectionLevel() pulumi.StringPtrOutput 
 }
 
 // The current state of the CryptoKeyVersion.
-func (o CryptoKeyVersionTypePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionType) *string {
+func (o CryptoKeyVersionPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) *string {
 		if v == nil {
 			return nil
 		}
@@ -1531,7 +1531,7 @@ func (o KeyOperationAttestationPtrOutput) Format() pulumi.StringPtrOutput {
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyType struct {
+type Policy struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []AuditConfig `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -1542,19 +1542,19 @@ type PolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// PolicyTypeInput is an input type that accepts PolicyTypeArgs and PolicyTypeOutput values.
-// You can construct a concrete instance of `PolicyTypeInput` via:
+// PolicyInput is an input type that accepts PolicyArgs and PolicyOutput values.
+// You can construct a concrete instance of `PolicyInput` via:
 //
-//          PolicyTypeArgs{...}
-type PolicyTypeInput interface {
+//          PolicyArgs{...}
+type PolicyInput interface {
 	pulumi.Input
 
-	ToPolicyTypeOutput() PolicyTypeOutput
-	ToPolicyTypeOutputWithContext(context.Context) PolicyTypeOutput
+	ToPolicyOutput() PolicyOutput
+	ToPolicyOutputWithContext(context.Context) PolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeArgs struct {
+type PolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs AuditConfigArrayInput `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -1565,125 +1565,125 @@ type PolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (PolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutput() PolicyTypeOutput {
-	return i.ToPolicyTypeOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyOutput() PolicyOutput {
+	return i.ToPolicyOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput)
+func (i PolicyArgs) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput).ToPolicyTypePtrOutputWithContext(ctx)
+func (i PolicyArgs) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput).ToPolicyPtrOutputWithContext(ctx)
 }
 
-// PolicyTypePtrInput is an input type that accepts PolicyTypeArgs, PolicyTypePtr and PolicyTypePtrOutput values.
-// You can construct a concrete instance of `PolicyTypePtrInput` via:
+// PolicyPtrInput is an input type that accepts PolicyArgs, PolicyPtr and PolicyPtrOutput values.
+// You can construct a concrete instance of `PolicyPtrInput` via:
 //
-//          PolicyTypeArgs{...}
+//          PolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type PolicyTypePtrInput interface {
+type PolicyPtrInput interface {
 	pulumi.Input
 
-	ToPolicyTypePtrOutput() PolicyTypePtrOutput
-	ToPolicyTypePtrOutputWithContext(context.Context) PolicyTypePtrOutput
+	ToPolicyPtrOutput() PolicyPtrOutput
+	ToPolicyPtrOutputWithContext(context.Context) PolicyPtrOutput
 }
 
-type policyTypePtrType PolicyTypeArgs
+type policyPtrType PolicyArgs
 
-func PolicyTypePtr(v *PolicyTypeArgs) PolicyTypePtrInput {
-	return (*policyTypePtrType)(v)
+func PolicyPtr(v *PolicyArgs) PolicyPtrInput {
+	return (*policyPtrType)(v)
 }
 
-func (*policyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (*policyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i *policyPtrType) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypePtrOutput)
+func (i *policyPtrType) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeOutput struct{ *pulumi.OutputState }
+type PolicyOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutput() PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return o.ToPolicyTypePtrOutputWithContext(context.Background())
+func (o PolicyOutput) ToPolicyPtrOutput() PolicyPtrOutput {
+	return o.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return o.ApplyT(func(v PolicyType) *PolicyType {
+func (o PolicyOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return o.ApplyT(func(v Policy) *Policy {
 		return &v
-	}).(PolicyTypePtrOutput)
+	}).(PolicyPtrOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o PolicyTypeOutput) AuditConfigs() AuditConfigArrayOutput {
-	return o.ApplyT(func(v PolicyType) []AuditConfig { return v.AuditConfigs }).(AuditConfigArrayOutput)
+func (o PolicyOutput) AuditConfigs() AuditConfigArrayOutput {
+	return o.ApplyT(func(v Policy) []AuditConfig { return v.AuditConfigs }).(AuditConfigArrayOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypeOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v PolicyType) []Binding { return v.Bindings }).(BindingArrayOutput)
+func (o PolicyOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v Policy) []Binding { return v.Bindings }).(BindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type PolicyTypePtrOutput struct{ *pulumi.OutputState }
+type PolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutput() PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) Elem() PolicyTypeOutput {
-	return o.ApplyT(func(v *PolicyType) PolicyType { return *v }).(PolicyTypeOutput)
+func (o PolicyPtrOutput) Elem() PolicyOutput {
+	return o.ApplyT(func(v *Policy) Policy { return *v }).(PolicyOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o PolicyTypePtrOutput) AuditConfigs() AuditConfigArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []AuditConfig {
+func (o PolicyPtrOutput) AuditConfigs() AuditConfigArrayOutput {
+	return o.ApplyT(func(v *Policy) []AuditConfig {
 		if v == nil {
 			return nil
 		}
@@ -1692,8 +1692,8 @@ func (o PolicyTypePtrOutput) AuditConfigs() AuditConfigArrayOutput {
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []Binding {
+func (o PolicyPtrOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v *Policy) []Binding {
 		if v == nil {
 			return nil
 		}
@@ -1702,8 +1702,8 @@ func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *string {
+func (o PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) *string {
 		if v == nil {
 			return nil
 		}
@@ -1712,8 +1712,8 @@ func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *int {
+func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Policy) *int {
 		if v == nil {
 			return nil
 		}
@@ -1864,8 +1864,8 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(CertificateChainsOutput{})
 	pulumi.RegisterOutputType(CertificateChainsPtrOutput{})
-	pulumi.RegisterOutputType(CryptoKeyVersionTypeOutput{})
-	pulumi.RegisterOutputType(CryptoKeyVersionTypePtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
@@ -1874,8 +1874,8 @@ func init() {
 	pulumi.RegisterOutputType(ExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(KeyOperationAttestationOutput{})
 	pulumi.RegisterOutputType(KeyOperationAttestationPtrOutput{})
-	pulumi.RegisterOutputType(PolicyTypeOutput{})
-	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyOutput{})
+	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(WrappingPublicKeyOutput{})
 	pulumi.RegisterOutputType(WrappingPublicKeyPtrOutput{})
 }

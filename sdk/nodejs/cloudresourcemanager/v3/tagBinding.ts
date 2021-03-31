@@ -42,14 +42,17 @@ export class TagBinding extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: TagBindingArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TagBindingArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.tagBindingsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tagBindingsId'");
+            }
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["tagBindingsId"] = args ? args.tagBindingsId : undefined;
             inputs["tagValue"] = args ? args.tagValue : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
         }
         if (!opts.version) {
@@ -71,12 +74,9 @@ export interface TagBindingArgs {
      * The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
      */
     readonly parent?: pulumi.Input<string>;
+    readonly tagBindingsId: pulumi.Input<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form `tagValues/456`.
      */
     readonly tagValue?: pulumi.Input<string>;
-    /**
-     * Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action.
-     */
-    readonly validateOnly?: pulumi.Input<boolean>;
 }

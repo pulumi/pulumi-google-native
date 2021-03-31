@@ -22,9 +22,9 @@ class Image(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  family: Optional[pulumi.Input[str]] = None,
-                 force_create: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
                  image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,6 @@ class Image(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
@@ -64,7 +63,6 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-        :param pulumi.Input[bool] force_create: Force image creation if true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
@@ -82,13 +80,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] raw_disk: The parameters of the raw disk image.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['InitialStateConfigArgs']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
@@ -144,9 +136,11 @@ class Image(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disk_size_gb'] = disk_size_gb
             __props__['family'] = family
-            __props__['force_create'] = force_create
             __props__['guest_os_features'] = guest_os_features
             __props__['id'] = id
+            if image is None and not opts.urn:
+                raise TypeError("Missing required property 'image'")
+            __props__['image'] = image
             __props__['image_encryption_key'] = image_encryption_key
             __props__['kind'] = kind
             __props__['label_fingerprint'] = label_fingerprint
@@ -158,7 +152,6 @@ class Image(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['raw_disk'] = raw_disk
-            __props__['request_id'] = request_id
             __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link
             __props__['shielded_instance_initial_state'] = shielded_instance_initial_state

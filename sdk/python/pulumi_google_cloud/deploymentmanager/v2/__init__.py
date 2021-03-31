@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .deployment import *
-from .policy import *
+from .deployment_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:deploymentmanager/v2:Deployment":
                 return Deployment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:deploymentmanager/v2:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:deploymentmanager/v2:DeploymentIamPolicy":
+                return DeploymentIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

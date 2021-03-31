@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type Folder struct {
 func NewFolder(ctx *pulumi.Context,
 	name string, args *FolderArgs, opts ...pulumi.ResourceOption) (*Folder, error) {
 	if args == nil {
-		args = &FolderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.FoldersId == nil {
+		return nil, errors.New("invalid value for required argument 'FoldersId'")
+	}
 	var resource Folder
 	err := ctx.RegisterResource("google-cloud:cloudresourcemanager/v2:Folder", name, args, &resource, opts...)
 	if err != nil {
@@ -58,6 +62,7 @@ type folderArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName *string `pulumi:"displayName"`
+	FoldersId   string  `pulumi:"foldersId"`
 	// Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
@@ -72,6 +77,7 @@ type FolderArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName pulumi.StringPtrInput
+	FoldersId   pulumi.StringInput
 	// Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
 	LifecycleState pulumi.StringPtrInput
 	// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".

@@ -46,17 +46,24 @@ export class Repository extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.repositoriesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'repositoriesId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["format"] = args ? args.format : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["repositoryId"] = args ? args.repositoryId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["repositoriesId"] = args ? args.repositoriesId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
@@ -91,18 +98,13 @@ export interface RepositoryArgs {
      * Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of the parent resource where the repository will be created.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
-     * The repository id to use for this repository.
-     */
-    readonly repositoryId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
+    readonly repositoriesId: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.
      */

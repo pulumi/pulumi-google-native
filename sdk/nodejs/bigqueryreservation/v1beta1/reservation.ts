@@ -46,15 +46,22 @@ export class Reservation extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.reservationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'reservationsId'");
             }
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["maxConcurrency"] = args ? args.maxConcurrency : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["reservationId"] = args ? args.reservationId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["reservationsId"] = args ? args.reservationsId : undefined;
             inputs["slotCapacity"] = args ? args.slotCapacity : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -78,6 +85,7 @@ export interface ReservationArgs {
      * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
      */
     readonly ignoreIdleSlots?: pulumi.Input<boolean>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
      */
@@ -86,14 +94,8 @@ export interface ReservationArgs {
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. Project, location. E.g., `projects/myproject/locations/US`
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
-     * The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max length is 64 characters.
-     */
-    readonly reservationId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
+    readonly reservationsId: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
      */

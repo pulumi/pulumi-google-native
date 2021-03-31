@@ -53,6 +53,9 @@ export class ResourcePolicy extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            if ((!args || args.resourcePolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourcePolicy'");
+            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
@@ -62,7 +65,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["resourcePolicy"] = args ? args.resourcePolicy : undefined;
             inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -107,19 +110,9 @@ export interface ResourcePolicyArgs {
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly resourcePolicy: pulumi.Input<string>;
     /**
      * [Output Only] The system status of the resource policy.
      */

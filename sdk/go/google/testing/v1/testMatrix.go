@@ -72,8 +72,6 @@ type testMatrixArgs struct {
 	OutcomeSummary *string `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
 	ProjectId string `pulumi:"projectId"`
-	// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
-	RequestId *string `pulumi:"requestId"`
 	// Required. Where the results for the matrix are written.
 	ResultStorage *ResultStorage `pulumi:"resultStorage"`
 	// Output only. Indicates the current progress of the test matrix.
@@ -104,8 +102,6 @@ type TestMatrixArgs struct {
 	OutcomeSummary pulumi.StringPtrInput
 	// The cloud project that owns the test matrix.
 	ProjectId pulumi.StringInput
-	// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
-	RequestId pulumi.StringPtrInput
 	// Required. Where the results for the matrix are written.
 	ResultStorage ResultStoragePtrInput
 	// Output only. Indicates the current progress of the test matrix.

@@ -23,8 +23,11 @@ func NewServiceAccount(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.ServiceAccountsId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountsId'")
 	}
 	var resource ServiceAccount
 	err := ctx.RegisterResource("google-cloud:iam/v1:ServiceAccount", name, args, &resource, opts...)
@@ -59,21 +62,21 @@ func (ServiceAccountState) ElementType() reflect.Type {
 
 type serviceAccountArgs struct {
 	// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-	AccountId *string `pulumi:"accountId"`
-	// Required. The resource name of the project associated with the service accounts, such as `projects/my-project-123`.
-	Name string `pulumi:"name"`
+	AccountId  *string `pulumi:"accountId"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
-	ServiceAccount *ServiceAccountType `pulumi:"serviceAccount"`
+	ServiceAccount    *ServiceAccountType `pulumi:"serviceAccount"`
+	ServiceAccountsId string              `pulumi:"serviceAccountsId"`
 }
 
 // The set of arguments for constructing a ServiceAccount resource.
 type ServiceAccountArgs struct {
 	// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-	AccountId pulumi.StringPtrInput
-	// Required. The resource name of the project associated with the service accounts, such as `projects/my-project-123`.
-	Name pulumi.StringInput
+	AccountId  pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
-	ServiceAccount ServiceAccountTypePtrInput
+	ServiceAccount    ServiceAccountTypePtrInput
+	ServiceAccountsId pulumi.StringInput
 }
 
 func (ServiceAccountArgs) ElementType() reflect.Type {

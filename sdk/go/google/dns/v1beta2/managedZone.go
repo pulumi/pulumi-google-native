@@ -23,6 +23,9 @@ func NewManagedZone(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ManagedZone == nil {
+		return nil, errors.New("invalid value for required argument 'ManagedZone'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -58,8 +61,6 @@ func (ManagedZoneState) ElementType() reflect.Type {
 }
 
 type managedZoneArgs struct {
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId *string `pulumi:"clientOperationId"`
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime *string `pulumi:"creationTime"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
@@ -74,7 +75,8 @@ type managedZoneArgs struct {
 	Id   *string `pulumi:"id"`
 	Kind *string `pulumi:"kind"`
 	// User labels.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	ManagedZone string            `pulumi:"managedZone"`
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name *string `pulumi:"name"`
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
@@ -85,8 +87,7 @@ type managedZoneArgs struct {
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
-	// Identifies the project addressed by this request.
-	Project string `pulumi:"project"`
+	Project                 string                              `pulumi:"project"`
 	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig *ManagedZoneReverseLookupConfig `pulumi:"reverseLookupConfig"`
 	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
@@ -97,8 +98,6 @@ type managedZoneArgs struct {
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId pulumi.StringPtrInput
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime pulumi.StringPtrInput
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
@@ -113,7 +112,8 @@ type ManagedZoneArgs struct {
 	Id   pulumi.StringPtrInput
 	Kind pulumi.StringPtrInput
 	// User labels.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	ManagedZone pulumi.StringInput
 	// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
 	Name pulumi.StringPtrInput
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
@@ -124,8 +124,7 @@ type ManagedZoneArgs struct {
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
-	// Identifies the project addressed by this request.
-	Project pulumi.StringInput
+	Project                 pulumi.StringInput
 	// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
 	ReverseLookupConfig ManagedZoneReverseLookupConfigPtrInput
 	// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.

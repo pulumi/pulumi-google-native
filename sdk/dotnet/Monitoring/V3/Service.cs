@@ -107,23 +107,20 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER] 
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
-        /// </summary>
-        [Input("serviceId")]
-        public Input<string>? ServiceId { get; set; }
+        [Input("servicesId", required: true)]
+        public Input<string> ServicesId { get; set; } = null!;
 
         /// <summary>
         /// Configuration for how to query telemetry on a Service.
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.TelemetryArgs>? Telemetry { get; set; }
+
+        [Input("v3Id", required: true)]
+        public Input<string> V3Id { get; set; } = null!;
+
+        [Input("v3Id1", required: true)]
+        public Input<string> V3Id1 { get; set; } = null!;
 
         public ServiceArgs()
         {

@@ -78,16 +78,16 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Required. User-defined unique ID of this execution.
-        /// </summary>
-        [Input("executionId")]
-        public Input<string>? ExecutionId { get; set; }
-
-        /// <summary>
         /// execute metadata including name, hardware spec, region, labels, etc.
         /// </summary>
         [Input("executionTemplate")]
         public Input<Inputs.ExecutionTemplateArgs>? ExecutionTemplate { get; set; }
+
+        [Input("executionsId", required: true)]
+        public Input<string> ExecutionsId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
@@ -101,11 +101,8 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         [Input("outputNotebookFile")]
         public Input<string>? OutputNotebookFile { get; set; }
 
-        /// <summary>
-        /// Required. Format: `parent=projects/{project_id}/locations/{location}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. State of the underlying AI Platform job.

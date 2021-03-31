@@ -83,11 +83,8 @@ namespace Pulumi.GoogleCloud.Osconfig.V1beta
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-        /// </summary>
-        [Input("guestPolicyId")]
-        public Input<string>? GuestPolicyId { get; set; }
+        [Input("guestPoliciesId", required: true)]
+        public Input<string> GuestPoliciesId { get; set; } = null!;
 
         /// <summary>
         /// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
@@ -119,11 +116,8 @@ namespace Pulumi.GoogleCloud.Osconfig.V1beta
             set => _packages = value;
         }
 
-        /// <summary>
-        /// Required. The resource name of the parent using one of the following forms: `projects/{project_number}`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("recipes")]
         private InputList<Inputs.SoftwareRecipeArgs>? _recipes;

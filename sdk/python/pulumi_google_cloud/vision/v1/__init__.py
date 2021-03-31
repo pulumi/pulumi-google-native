@@ -4,8 +4,8 @@
 
 # Export this package's modules as members:
 from .product import *
+from .product_reference_image import *
 from .product_set import *
-from .reference_image import *
 from ._inputs import *
 
 def _register_module():
@@ -22,10 +22,10 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:vision/v1:Product":
                 return Product(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:vision/v1:ProductReferenceImage":
+                return ProductReferenceImage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:vision/v1:ProductSet":
                 return ProductSet(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:vision/v1:ReferenceImage":
-                return ReferenceImage(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

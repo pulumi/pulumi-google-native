@@ -10,5 +10,5 @@ import (
 var providerName = "google-cloud"
 
 func main() {
-	provider.Serve(providerName, version.Version, nil)
+	provider.Serve(providerName, version.Version, pulumiSchema, cloudApiResources)
 }

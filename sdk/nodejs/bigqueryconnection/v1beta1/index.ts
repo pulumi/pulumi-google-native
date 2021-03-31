@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./connection";
-export * from "./policy";
+export * from "./connectionIamPolicy";
 
 // Import resources to register:
 import { Connection } from "./connection";
-import { Policy } from "./policy";
+import { ConnectionIamPolicy } from "./connectionIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:bigqueryconnection/v1beta1:Connection":
                 return new Connection(name, <any>undefined, { urn })
-            case "google-cloud:bigqueryconnection/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:bigqueryconnection/v1beta1:ConnectionIamPolicy":
+                return new ConnectionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:container/v1:Cluster":
 		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:container/v1:NodePool":
-		r, err = NewNodePool(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:container/v1:ClusterNodePool":
+		r, err = NewClusterNodePool(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

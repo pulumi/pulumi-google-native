@@ -47,6 +47,9 @@ export class Interconnect extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.interconnect === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'interconnect'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -59,6 +62,7 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["googleIpAddress"] = args ? args.googleIpAddress : undefined;
             inputs["googleReferenceId"] = args ? args.googleReferenceId : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["interconnect"] = args ? args.interconnect : undefined;
             inputs["interconnectAttachments"] = args ? args.interconnectAttachments : undefined;
             inputs["interconnectType"] = args ? args.interconnectType : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -70,7 +74,6 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["provisionedLinkCount"] = args ? args.provisionedLinkCount : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -123,6 +126,7 @@ export interface InterconnectArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
+    readonly interconnect: pulumi.Input<string>;
     /**
      * [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */
@@ -166,22 +170,11 @@ export interface InterconnectArgs {
      * [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
      */
     readonly peerIpAddress?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] Number of links actually provisioned in this interconnect.
      */
     readonly provisionedLinkCount?: pulumi.Input<number>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */

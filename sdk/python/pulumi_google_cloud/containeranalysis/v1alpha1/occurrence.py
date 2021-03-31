@@ -26,7 +26,8 @@ class Occurrence(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 occurrences_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
@@ -51,7 +52,6 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[str] kind: Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
         :param pulumi.Input[str] name: Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-        :param pulumi.Input[str] parent: This field contains the project Id for example: "projects/{project_id}"
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource:  The resource for which the `Occurrence` applies.
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
@@ -86,9 +86,12 @@ class Occurrence(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['note_name'] = note_name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if occurrences_id is None and not opts.urn:
+                raise TypeError("Missing required property 'occurrences_id'")
+            __props__['occurrences_id'] = occurrences_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['remediation'] = remediation
             __props__['resource'] = resource
             __props__['resource_url'] = resource_url

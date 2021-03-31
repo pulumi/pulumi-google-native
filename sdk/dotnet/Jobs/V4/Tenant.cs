@@ -71,11 +71,11 @@ namespace Pulumi.GoogleCloud.Jobs.V4
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. Resource name of the project under which the tenant is created. The format is "projects/{project_id}", for example, "projects/foo".
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("tenantsId", required: true)]
+        public Input<string> TenantsId { get; set; } = null!;
 
         public TenantArgs()
         {

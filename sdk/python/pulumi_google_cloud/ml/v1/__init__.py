@@ -3,12 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_ml_v1___job import *
-from .google_cloud_ml_v1___model import *
-from .google_cloud_ml_v1___study import *
-from .google_cloud_ml_v1___trial import *
-from .google_iam_v1___policy import *
-from .google_longrunning___operation import *
+from .job import *
+from .job_iam_policy import *
+from .model import *
+from .model_iam_policy import *
+from .model_version import *
+from .study import *
+from .study_trial import *
 from ._inputs import *
 
 def _register_module():
@@ -23,18 +24,20 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:ml/v1:GoogleCloudMlV1__Job":
-                return GoogleCloudMlV1__Job(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:ml/v1:GoogleCloudMlV1__Model":
-                return GoogleCloudMlV1__Model(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:ml/v1:GoogleCloudMlV1__Study":
-                return GoogleCloudMlV1__Study(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:ml/v1:GoogleCloudMlV1__Trial":
-                return GoogleCloudMlV1__Trial(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:ml/v1:GoogleIamV1__Policy":
-                return GoogleIamV1__Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:ml/v1:GoogleLongrunning__Operation":
-                return GoogleLongrunning__Operation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:ml/v1:Job":
+                return Job(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:ml/v1:JobIamPolicy":
+                return JobIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:ml/v1:Model":
+                return Model(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:ml/v1:ModelIamPolicy":
+                return ModelIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:ml/v1:ModelVersion":
+                return ModelVersion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:ml/v1:Study":
+                return Study(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:ml/v1:StudyTrial":
+                return StudyTrial(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

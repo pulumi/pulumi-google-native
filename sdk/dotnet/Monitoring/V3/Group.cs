@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
+        [Input("groupsId", required: true)]
+        public Input<string> GroupsId { get; set; } = null!;
+
         /// <summary>
         /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         /// </summary>
@@ -80,8 +83,8 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <summary>
         /// Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
@@ -89,11 +92,8 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         [Input("parentName")]
         public Input<string>? ParentName { get; set; }
 
-        /// <summary>
-        /// If true, validate this request but do not create the group.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public GroupArgs()
         {

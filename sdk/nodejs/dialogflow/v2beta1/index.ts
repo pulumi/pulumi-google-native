@@ -5,49 +5,65 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudDialogflowV2beta1Context";
-export * from "./googleCloudDialogflowV2beta1Conversation";
-export * from "./googleCloudDialogflowV2beta1ConversationProfile";
-export * from "./googleCloudDialogflowV2beta1EntityType";
-export * from "./googleCloudDialogflowV2beta1Intent";
-export * from "./googleCloudDialogflowV2beta1KnowledgeBase";
-export * from "./googleCloudDialogflowV2beta1Participant";
-export * from "./googleCloudDialogflowV2beta1SessionEntityType";
-export * from "./googleLongrunningOperation";
+export * from "./agentEntityType";
+export * from "./agentEnvironmentUserSessionContext";
+export * from "./agentEnvironmentUserSessionEntityType";
+export * from "./agentIntent";
+export * from "./agentKnowledgeBase";
+export * from "./agentKnowledgeBaseDocument";
+export * from "./agentSessionContext";
+export * from "./agentSessionEntityType";
+export * from "./conversation";
+export * from "./conversationParticipant";
+export * from "./conversationProfile";
+export * from "./knowledgeBase";
+export * from "./knowledgeBaseDocument";
 
 // Import resources to register:
-import { GoogleCloudDialogflowV2beta1Context } from "./googleCloudDialogflowV2beta1Context";
-import { GoogleCloudDialogflowV2beta1Conversation } from "./googleCloudDialogflowV2beta1Conversation";
-import { GoogleCloudDialogflowV2beta1ConversationProfile } from "./googleCloudDialogflowV2beta1ConversationProfile";
-import { GoogleCloudDialogflowV2beta1EntityType } from "./googleCloudDialogflowV2beta1EntityType";
-import { GoogleCloudDialogflowV2beta1Intent } from "./googleCloudDialogflowV2beta1Intent";
-import { GoogleCloudDialogflowV2beta1KnowledgeBase } from "./googleCloudDialogflowV2beta1KnowledgeBase";
-import { GoogleCloudDialogflowV2beta1Participant } from "./googleCloudDialogflowV2beta1Participant";
-import { GoogleCloudDialogflowV2beta1SessionEntityType } from "./googleCloudDialogflowV2beta1SessionEntityType";
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
+import { AgentEntityType } from "./agentEntityType";
+import { AgentEnvironmentUserSessionContext } from "./agentEnvironmentUserSessionContext";
+import { AgentEnvironmentUserSessionEntityType } from "./agentEnvironmentUserSessionEntityType";
+import { AgentIntent } from "./agentIntent";
+import { AgentKnowledgeBase } from "./agentKnowledgeBase";
+import { AgentKnowledgeBaseDocument } from "./agentKnowledgeBaseDocument";
+import { AgentSessionContext } from "./agentSessionContext";
+import { AgentSessionEntityType } from "./agentSessionEntityType";
+import { Conversation } from "./conversation";
+import { ConversationParticipant } from "./conversationParticipant";
+import { ConversationProfile } from "./conversationProfile";
+import { KnowledgeBase } from "./knowledgeBase";
+import { KnowledgeBaseDocument } from "./knowledgeBaseDocument";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Context":
-                return new GoogleCloudDialogflowV2beta1Context(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Conversation":
-                return new GoogleCloudDialogflowV2beta1Conversation(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1ConversationProfile":
-                return new GoogleCloudDialogflowV2beta1ConversationProfile(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1EntityType":
-                return new GoogleCloudDialogflowV2beta1EntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Intent":
-                return new GoogleCloudDialogflowV2beta1Intent(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1KnowledgeBase":
-                return new GoogleCloudDialogflowV2beta1KnowledgeBase(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1Participant":
-                return new GoogleCloudDialogflowV2beta1Participant(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleCloudDialogflowV2beta1SessionEntityType":
-                return new GoogleCloudDialogflowV2beta1SessionEntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v2beta1:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentEntityType":
+                return new AgentEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentEnvironmentUserSessionContext":
+                return new AgentEnvironmentUserSessionContext(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType":
+                return new AgentEnvironmentUserSessionEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentIntent":
+                return new AgentIntent(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentKnowledgeBase":
+                return new AgentKnowledgeBase(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentKnowledgeBaseDocument":
+                return new AgentKnowledgeBaseDocument(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentSessionContext":
+                return new AgentSessionContext(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:AgentSessionEntityType":
+                return new AgentSessionEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:Conversation":
+                return new Conversation(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:ConversationParticipant":
+                return new ConversationParticipant(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:ConversationProfile":
+                return new ConversationProfile(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:KnowledgeBase":
+                return new KnowledgeBase(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v2beta1:KnowledgeBaseDocument":
+                return new KnowledgeBaseDocument(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

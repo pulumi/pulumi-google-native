@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,18 @@ type Cluster struct {
 func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOption) (*Cluster, error) {
 	if args == nil {
-		args = &ClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
+	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-cloud:container/v1:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -55,25 +65,27 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
-	Cluster *ClusterType `pulumi:"cluster"`
+	Cluster   *ClusterType `pulumi:"cluster"`
+	ClusterId string       `pulumi:"clusterId"`
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
 	Parent *string `pulumi:"parent"`
 	// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId string `pulumi:"projectId"`
 	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-	Zone *string `pulumi:"zone"`
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
-	Cluster ClusterTypePtrInput
+	Cluster   ClusterTypePtrInput
+	ClusterId pulumi.StringInput
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
 	Parent pulumi.StringPtrInput
 	// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
-	ProjectId pulumi.StringPtrInput
+	ProjectId pulumi.StringInput
 	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-	Zone pulumi.StringPtrInput
+	Zone pulumi.StringInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

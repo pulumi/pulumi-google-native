@@ -95,6 +95,9 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
         /// </summary>
@@ -126,16 +129,13 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -143,17 +143,8 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
 
-        /// <summary>
-        /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-        /// </summary>
-        [Input("serviceId")]
-        public Input<string>? ServiceId { get; set; }
+        [Input("servicesId", required: true)]
+        public Input<string> ServicesId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The current state of the metastore service.

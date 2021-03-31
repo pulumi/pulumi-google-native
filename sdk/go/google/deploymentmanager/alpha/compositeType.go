@@ -23,6 +23,9 @@ func NewCompositeType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CompositeType == nil {
+		return nil, errors.New("invalid value for required argument 'CompositeType'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -58,6 +61,7 @@ func (CompositeTypeState) ElementType() reflect.Type {
 }
 
 type compositeTypeArgs struct {
+	CompositeType string `pulumi:"compositeType"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
 	Id          *string `pulumi:"id"`
@@ -69,8 +73,7 @@ type compositeTypeArgs struct {
 	Name *string `pulumi:"name"`
 	// Output only. The Operation that most recently ran, or is currently running, on this composite type.
 	Operation *Operation `pulumi:"operation"`
-	// The project ID for this request.
-	Project string `pulumi:"project"`
+	Project   string     `pulumi:"project"`
 	// Output only. Server defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	Status   *string `pulumi:"status"`
@@ -80,6 +83,7 @@ type compositeTypeArgs struct {
 
 // The set of arguments for constructing a CompositeType resource.
 type CompositeTypeArgs struct {
+	CompositeType pulumi.StringInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
 	Id          pulumi.StringPtrInput
@@ -91,8 +95,7 @@ type CompositeTypeArgs struct {
 	Name pulumi.StringPtrInput
 	// Output only. The Operation that most recently ran, or is currently running, on this composite type.
 	Operation OperationPtrInput
-	// The project ID for this request.
-	Project pulumi.StringInput
+	Project   pulumi.StringInput
 	// Output only. Server defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	Status   pulumi.StringPtrInput

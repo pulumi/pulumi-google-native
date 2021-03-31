@@ -23,8 +23,14 @@ func NewServiceAccountKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.KeysId == nil {
+		return nil, errors.New("invalid value for required argument 'KeysId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.ServiceAccountsId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountsId'")
 	}
 	var resource ServiceAccountKey
 	err := ctx.RegisterResource("google-cloud:iam/v1:ServiceAccountKey", name, args, &resource, opts...)
@@ -60,20 +66,22 @@ func (ServiceAccountKeyState) ElementType() reflect.Type {
 type serviceAccountKeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	// Required. The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service account.
-	Name string `pulumi:"name"`
+	KeysId       string  `pulumi:"keysId"`
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType *string `pulumi:"privateKeyType"`
+	PrivateKeyType    *string `pulumi:"privateKeyType"`
+	ProjectsId        string  `pulumi:"projectsId"`
+	ServiceAccountsId string  `pulumi:"serviceAccountsId"`
 }
 
 // The set of arguments for constructing a ServiceAccountKey resource.
 type ServiceAccountKeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 	KeyAlgorithm pulumi.StringPtrInput
-	// Required. The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service account.
-	Name pulumi.StringInput
+	KeysId       pulumi.StringInput
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType pulumi.StringPtrInput
+	PrivateKeyType    pulumi.StringPtrInput
+	ProjectsId        pulumi.StringInput
+	ServiceAccountsId pulumi.StringInput
 }
 
 func (ServiceAccountKeyArgs) ElementType() reflect.Type {

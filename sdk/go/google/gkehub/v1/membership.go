@@ -23,8 +23,14 @@ func NewMembership(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.MembershipsId == nil {
+		return nil, errors.New("invalid value for required argument 'MembershipsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Membership
 	err := ctx.RegisterResource("google-cloud:gkehub/v1:Membership", name, args, &resource, opts...)
@@ -74,14 +80,11 @@ type membershipArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
 	LastConnectionTime *string `pulumi:"lastConnectionTime"`
-	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	MembershipId *string `pulumi:"membershipId"`
+	LocationsId        string  `pulumi:"locationsId"`
+	MembershipsId      string  `pulumi:"membershipsId"`
 	// Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	Name *string `pulumi:"name"`
-	// Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
-	Parent string `pulumi:"parent"`
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. State of the Membership resource.
 	State *MembershipStateType `pulumi:"state"`
 	// Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
@@ -108,14 +111,11 @@ type MembershipArgs struct {
 	Labels pulumi.StringMapInput
 	// Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
 	LastConnectionTime pulumi.StringPtrInput
-	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	MembershipId pulumi.StringPtrInput
+	LocationsId        pulumi.StringInput
+	MembershipsId      pulumi.StringInput
 	// Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	Name pulumi.StringPtrInput
-	// Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
-	Parent pulumi.StringInput
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. State of the Membership resource.
 	State MembershipStateTypePtrInput
 	// Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.

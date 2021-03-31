@@ -47,15 +47,22 @@ export class ProductSet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.productSetsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'productSetsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["indexError"] = args ? args.indexError : undefined;
             inputs["indexTime"] = args ? args.indexTime : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["productSetId"] = args ? args.productSetId : undefined;
+            inputs["productSetsId"] = args ? args.productSetsId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -81,16 +88,11 @@ export interface ProductSetArgs {
      * Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
      */
     readonly indexTime?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
-     * A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-     */
-    readonly productSetId?: pulumi.Input<string>;
+    readonly productSetsId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

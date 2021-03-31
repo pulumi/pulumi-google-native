@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
 
     public sealed class AutoscalerArgs : Pulumi.ResourceArgs
     {
+        [Input("autoscaler", required: true)]
+        public Input<string> Autoscaler { get; set; } = null!;
+
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
         /// 
@@ -97,9 +100,6 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -112,18 +112,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("scalingScheduleStatus")]
         private InputMap<string>? _scalingScheduleStatus;
@@ -180,8 +170,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public AutoscalerArgs()
         {

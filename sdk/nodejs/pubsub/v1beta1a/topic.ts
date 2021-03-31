@@ -42,11 +42,15 @@ export class Topic extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: TopicArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.topicsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'topicsId'");
+            }
             inputs["name"] = args ? args.name : undefined;
+            inputs["topicsId"] = args ? args.topicsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -64,4 +68,5 @@ export interface TopicArgs {
      * Name of the topic.
      */
     readonly name?: pulumi.Input<string>;
+    readonly topicsId: pulumi.Input<string>;
 }

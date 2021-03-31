@@ -119,11 +119,11 @@ namespace Pulumi.GoogleCloud.Gkehub.V1beta1
         [Input("lastConnectionTime")]
         public Input<string>? LastConnectionTime { get; set; }
 
-        /// <summary>
-        /// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        /// </summary>
-        [Input("membershipId")]
-        public Input<string>? MembershipId { get; set; }
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
+        [Input("membershipsId", required: true)]
+        public Input<string> MembershipsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
@@ -131,11 +131,8 @@ namespace Pulumi.GoogleCloud.Gkehub.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. State of the Membership resource.

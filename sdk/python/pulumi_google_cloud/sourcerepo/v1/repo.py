@@ -18,8 +18,9 @@ class Repo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  mirror_config: Optional[pulumi.Input[pulumi.InputType['MirrorConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 repos_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -32,7 +33,6 @@ class Repo(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MirrorConfigArgs']] mirror_config: How this repository mirrors a repository managed by another service. Read-only field.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-        :param pulumi.Input[str] parent: The project in which to create the repo. Values are of the form `projects/`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         :param pulumi.Input[str] size: The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -56,10 +56,13 @@ class Repo(pulumi.CustomResource):
 
             __props__['mirror_config'] = mirror_config
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['pubsub_configs'] = pubsub_configs
+            if repos_id is None and not opts.urn:
+                raise TypeError("Missing required property 'repos_id'")
+            __props__['repos_id'] = repos_id
             __props__['size'] = size
             __props__['url'] = url
         super(Repo, __self__).__init__(

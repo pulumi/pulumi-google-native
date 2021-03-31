@@ -1046,7 +1046,7 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyType struct {
+type Policy struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings []Binding `pulumi:"bindings"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
@@ -1055,19 +1055,19 @@ type PolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// PolicyTypeInput is an input type that accepts PolicyTypeArgs and PolicyTypeOutput values.
-// You can construct a concrete instance of `PolicyTypeInput` via:
+// PolicyInput is an input type that accepts PolicyArgs and PolicyOutput values.
+// You can construct a concrete instance of `PolicyInput` via:
 //
-//          PolicyTypeArgs{...}
-type PolicyTypeInput interface {
+//          PolicyArgs{...}
+type PolicyInput interface {
 	pulumi.Input
 
-	ToPolicyTypeOutput() PolicyTypeOutput
-	ToPolicyTypeOutputWithContext(context.Context) PolicyTypeOutput
+	ToPolicyOutput() PolicyOutput
+	ToPolicyOutputWithContext(context.Context) PolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeArgs struct {
+type PolicyArgs struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings BindingArrayInput `pulumi:"bindings"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
@@ -1076,120 +1076,120 @@ type PolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (PolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutput() PolicyTypeOutput {
-	return i.ToPolicyTypeOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyOutput() PolicyOutput {
+	return i.ToPolicyOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput)
+func (i PolicyArgs) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput).ToPolicyTypePtrOutputWithContext(ctx)
+func (i PolicyArgs) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput).ToPolicyPtrOutputWithContext(ctx)
 }
 
-// PolicyTypePtrInput is an input type that accepts PolicyTypeArgs, PolicyTypePtr and PolicyTypePtrOutput values.
-// You can construct a concrete instance of `PolicyTypePtrInput` via:
+// PolicyPtrInput is an input type that accepts PolicyArgs, PolicyPtr and PolicyPtrOutput values.
+// You can construct a concrete instance of `PolicyPtrInput` via:
 //
-//          PolicyTypeArgs{...}
+//          PolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type PolicyTypePtrInput interface {
+type PolicyPtrInput interface {
 	pulumi.Input
 
-	ToPolicyTypePtrOutput() PolicyTypePtrOutput
-	ToPolicyTypePtrOutputWithContext(context.Context) PolicyTypePtrOutput
+	ToPolicyPtrOutput() PolicyPtrOutput
+	ToPolicyPtrOutputWithContext(context.Context) PolicyPtrOutput
 }
 
-type policyTypePtrType PolicyTypeArgs
+type policyPtrType PolicyArgs
 
-func PolicyTypePtr(v *PolicyTypeArgs) PolicyTypePtrInput {
-	return (*policyTypePtrType)(v)
+func PolicyPtr(v *PolicyArgs) PolicyPtrInput {
+	return (*policyPtrType)(v)
 }
 
-func (*policyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (*policyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i *policyPtrType) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypePtrOutput)
+func (i *policyPtrType) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeOutput struct{ *pulumi.OutputState }
+type PolicyOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutput() PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return o.ToPolicyTypePtrOutputWithContext(context.Background())
+func (o PolicyOutput) ToPolicyPtrOutput() PolicyPtrOutput {
+	return o.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return o.ApplyT(func(v PolicyType) *PolicyType {
+func (o PolicyOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return o.ApplyT(func(v Policy) *Policy {
 		return &v
-	}).(PolicyTypePtrOutput)
+	}).(PolicyPtrOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypeOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v PolicyType) []Binding { return v.Bindings }).(BindingArrayOutput)
+func (o PolicyOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v Policy) []Binding { return v.Bindings }).(BindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type PolicyTypePtrOutput struct{ *pulumi.OutputState }
+type PolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutput() PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) Elem() PolicyTypeOutput {
-	return o.ApplyT(func(v *PolicyType) PolicyType { return *v }).(PolicyTypeOutput)
+func (o PolicyPtrOutput) Elem() PolicyOutput {
+	return o.ApplyT(func(v *Policy) Policy { return *v }).(PolicyOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []Binding {
+func (o PolicyPtrOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v *Policy) []Binding {
 		if v == nil {
 			return nil
 		}
@@ -1198,8 +1198,8 @@ func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *string {
+func (o PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) *string {
 		if v == nil {
 			return nil
 		}
@@ -1208,8 +1208,8 @@ func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *int {
+func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Policy) *int {
 		if v == nil {
 			return nil
 		}
@@ -2269,7 +2269,7 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 }
 
 // A unit of scheduled work.
-type TaskType struct {
+type Task struct {
 	// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
 	AppEngineHttpRequest *AppEngineHttpRequest `pulumi:"appEngineHttpRequest"`
 	// Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
@@ -2286,19 +2286,19 @@ type TaskType struct {
 	View *string `pulumi:"view"`
 }
 
-// TaskTypeInput is an input type that accepts TaskTypeArgs and TaskTypeOutput values.
-// You can construct a concrete instance of `TaskTypeInput` via:
+// TaskInput is an input type that accepts TaskArgs and TaskOutput values.
+// You can construct a concrete instance of `TaskInput` via:
 //
-//          TaskTypeArgs{...}
-type TaskTypeInput interface {
+//          TaskArgs{...}
+type TaskInput interface {
 	pulumi.Input
 
-	ToTaskTypeOutput() TaskTypeOutput
-	ToTaskTypeOutputWithContext(context.Context) TaskTypeOutput
+	ToTaskOutput() TaskOutput
+	ToTaskOutputWithContext(context.Context) TaskOutput
 }
 
 // A unit of scheduled work.
-type TaskTypeArgs struct {
+type TaskArgs struct {
 	// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
 	AppEngineHttpRequest AppEngineHttpRequestPtrInput `pulumi:"appEngineHttpRequest"`
 	// Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
@@ -2315,140 +2315,140 @@ type TaskTypeArgs struct {
 	View pulumi.StringPtrInput `pulumi:"view"`
 }
 
-func (TaskTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaskType)(nil)).Elem()
+func (TaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Task)(nil)).Elem()
 }
 
-func (i TaskTypeArgs) ToTaskTypeOutput() TaskTypeOutput {
-	return i.ToTaskTypeOutputWithContext(context.Background())
+func (i TaskArgs) ToTaskOutput() TaskOutput {
+	return i.ToTaskOutputWithContext(context.Background())
 }
 
-func (i TaskTypeArgs) ToTaskTypeOutputWithContext(ctx context.Context) TaskTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskTypeOutput)
+func (i TaskArgs) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOutput)
 }
 
-func (i TaskTypeArgs) ToTaskTypePtrOutput() TaskTypePtrOutput {
-	return i.ToTaskTypePtrOutputWithContext(context.Background())
+func (i TaskArgs) ToTaskPtrOutput() TaskPtrOutput {
+	return i.ToTaskPtrOutputWithContext(context.Background())
 }
 
-func (i TaskTypeArgs) ToTaskTypePtrOutputWithContext(ctx context.Context) TaskTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskTypeOutput).ToTaskTypePtrOutputWithContext(ctx)
+func (i TaskArgs) ToTaskPtrOutputWithContext(ctx context.Context) TaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOutput).ToTaskPtrOutputWithContext(ctx)
 }
 
-// TaskTypePtrInput is an input type that accepts TaskTypeArgs, TaskTypePtr and TaskTypePtrOutput values.
-// You can construct a concrete instance of `TaskTypePtrInput` via:
+// TaskPtrInput is an input type that accepts TaskArgs, TaskPtr and TaskPtrOutput values.
+// You can construct a concrete instance of `TaskPtrInput` via:
 //
-//          TaskTypeArgs{...}
+//          TaskArgs{...}
 //
 //  or:
 //
 //          nil
-type TaskTypePtrInput interface {
+type TaskPtrInput interface {
 	pulumi.Input
 
-	ToTaskTypePtrOutput() TaskTypePtrOutput
-	ToTaskTypePtrOutputWithContext(context.Context) TaskTypePtrOutput
+	ToTaskPtrOutput() TaskPtrOutput
+	ToTaskPtrOutputWithContext(context.Context) TaskPtrOutput
 }
 
-type taskTypePtrType TaskTypeArgs
+type taskPtrType TaskArgs
 
-func TaskTypePtr(v *TaskTypeArgs) TaskTypePtrInput {
-	return (*taskTypePtrType)(v)
+func TaskPtr(v *TaskArgs) TaskPtrInput {
+	return (*taskPtrType)(v)
 }
 
-func (*taskTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TaskType)(nil)).Elem()
+func (*taskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Task)(nil)).Elem()
 }
 
-func (i *taskTypePtrType) ToTaskTypePtrOutput() TaskTypePtrOutput {
-	return i.ToTaskTypePtrOutputWithContext(context.Background())
+func (i *taskPtrType) ToTaskPtrOutput() TaskPtrOutput {
+	return i.ToTaskPtrOutputWithContext(context.Background())
 }
 
-func (i *taskTypePtrType) ToTaskTypePtrOutputWithContext(ctx context.Context) TaskTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskTypePtrOutput)
+func (i *taskPtrType) ToTaskPtrOutputWithContext(ctx context.Context) TaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskPtrOutput)
 }
 
 // A unit of scheduled work.
-type TaskTypeOutput struct{ *pulumi.OutputState }
+type TaskOutput struct{ *pulumi.OutputState }
 
-func (TaskTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaskType)(nil)).Elem()
+func (TaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Task)(nil)).Elem()
 }
 
-func (o TaskTypeOutput) ToTaskTypeOutput() TaskTypeOutput {
+func (o TaskOutput) ToTaskOutput() TaskOutput {
 	return o
 }
 
-func (o TaskTypeOutput) ToTaskTypeOutputWithContext(ctx context.Context) TaskTypeOutput {
+func (o TaskOutput) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return o
 }
 
-func (o TaskTypeOutput) ToTaskTypePtrOutput() TaskTypePtrOutput {
-	return o.ToTaskTypePtrOutputWithContext(context.Background())
+func (o TaskOutput) ToTaskPtrOutput() TaskPtrOutput {
+	return o.ToTaskPtrOutputWithContext(context.Background())
 }
 
-func (o TaskTypeOutput) ToTaskTypePtrOutputWithContext(ctx context.Context) TaskTypePtrOutput {
-	return o.ApplyT(func(v TaskType) *TaskType {
+func (o TaskOutput) ToTaskPtrOutputWithContext(ctx context.Context) TaskPtrOutput {
+	return o.ApplyT(func(v Task) *Task {
 		return &v
-	}).(TaskTypePtrOutput)
+	}).(TaskPtrOutput)
 }
 
 // App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
-func (o TaskTypeOutput) AppEngineHttpRequest() AppEngineHttpRequestPtrOutput {
-	return o.ApplyT(func(v TaskType) *AppEngineHttpRequest { return v.AppEngineHttpRequest }).(AppEngineHttpRequestPtrOutput)
+func (o TaskOutput) AppEngineHttpRequest() AppEngineHttpRequestPtrOutput {
+	return o.ApplyT(func(v Task) *AppEngineHttpRequest { return v.AppEngineHttpRequest }).(AppEngineHttpRequestPtrOutput)
 }
 
 // Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
-func (o TaskTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TaskType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o TaskOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Task) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-func (o TaskTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TaskType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o TaskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Task) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
-func (o TaskTypeOutput) PullMessage() PullMessagePtrOutput {
-	return o.ApplyT(func(v TaskType) *PullMessage { return v.PullMessage }).(PullMessagePtrOutput)
+func (o TaskOutput) PullMessage() PullMessagePtrOutput {
+	return o.ApplyT(func(v Task) *PullMessage { return v.PullMessage }).(PullMessagePtrOutput)
 }
 
 // The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
-func (o TaskTypeOutput) ScheduleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TaskType) *string { return v.ScheduleTime }).(pulumi.StringPtrOutput)
+func (o TaskOutput) ScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Task) *string { return v.ScheduleTime }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The task status.
-func (o TaskTypeOutput) Status() TaskStatusPtrOutput {
-	return o.ApplyT(func(v TaskType) *TaskStatus { return v.Status }).(TaskStatusPtrOutput)
+func (o TaskOutput) Status() TaskStatusPtrOutput {
+	return o.ApplyT(func(v Task) *TaskStatus { return v.Status }).(TaskStatusPtrOutput)
 }
 
 // Output only. The view specifies which subset of the Task has been returned.
-func (o TaskTypeOutput) View() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TaskType) *string { return v.View }).(pulumi.StringPtrOutput)
+func (o TaskOutput) View() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Task) *string { return v.View }).(pulumi.StringPtrOutput)
 }
 
-type TaskTypePtrOutput struct{ *pulumi.OutputState }
+type TaskPtrOutput struct{ *pulumi.OutputState }
 
-func (TaskTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TaskType)(nil)).Elem()
+func (TaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Task)(nil)).Elem()
 }
 
-func (o TaskTypePtrOutput) ToTaskTypePtrOutput() TaskTypePtrOutput {
+func (o TaskPtrOutput) ToTaskPtrOutput() TaskPtrOutput {
 	return o
 }
 
-func (o TaskTypePtrOutput) ToTaskTypePtrOutputWithContext(ctx context.Context) TaskTypePtrOutput {
+func (o TaskPtrOutput) ToTaskPtrOutputWithContext(ctx context.Context) TaskPtrOutput {
 	return o
 }
 
-func (o TaskTypePtrOutput) Elem() TaskTypeOutput {
-	return o.ApplyT(func(v *TaskType) TaskType { return *v }).(TaskTypeOutput)
+func (o TaskPtrOutput) Elem() TaskOutput {
+	return o.ApplyT(func(v *Task) Task { return *v }).(TaskOutput)
 }
 
 // App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
-func (o TaskTypePtrOutput) AppEngineHttpRequest() AppEngineHttpRequestPtrOutput {
-	return o.ApplyT(func(v *TaskType) *AppEngineHttpRequest {
+func (o TaskPtrOutput) AppEngineHttpRequest() AppEngineHttpRequestPtrOutput {
+	return o.ApplyT(func(v *Task) *AppEngineHttpRequest {
 		if v == nil {
 			return nil
 		}
@@ -2457,8 +2457,8 @@ func (o TaskTypePtrOutput) AppEngineHttpRequest() AppEngineHttpRequestPtrOutput 
 }
 
 // Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
-func (o TaskTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TaskType) *string {
+func (o TaskPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Task) *string {
 		if v == nil {
 			return nil
 		}
@@ -2467,8 +2467,8 @@ func (o TaskTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
 }
 
 // Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-func (o TaskTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TaskType) *string {
+func (o TaskPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Task) *string {
 		if v == nil {
 			return nil
 		}
@@ -2477,8 +2477,8 @@ func (o TaskTypePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
-func (o TaskTypePtrOutput) PullMessage() PullMessagePtrOutput {
-	return o.ApplyT(func(v *TaskType) *PullMessage {
+func (o TaskPtrOutput) PullMessage() PullMessagePtrOutput {
+	return o.ApplyT(func(v *Task) *PullMessage {
 		if v == nil {
 			return nil
 		}
@@ -2487,8 +2487,8 @@ func (o TaskTypePtrOutput) PullMessage() PullMessagePtrOutput {
 }
 
 // The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
-func (o TaskTypePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TaskType) *string {
+func (o TaskPtrOutput) ScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Task) *string {
 		if v == nil {
 			return nil
 		}
@@ -2497,8 +2497,8 @@ func (o TaskTypePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
 }
 
 // Output only. The task status.
-func (o TaskTypePtrOutput) Status() TaskStatusPtrOutput {
-	return o.ApplyT(func(v *TaskType) *TaskStatus {
+func (o TaskPtrOutput) Status() TaskStatusPtrOutput {
+	return o.ApplyT(func(v *Task) *TaskStatus {
 		if v == nil {
 			return nil
 		}
@@ -2507,8 +2507,8 @@ func (o TaskTypePtrOutput) Status() TaskStatusPtrOutput {
 }
 
 // Output only. The view specifies which subset of the Task has been returned.
-func (o TaskTypePtrOutput) View() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TaskType) *string {
+func (o TaskPtrOutput) View() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Task) *string {
 		if v == nil {
 			return nil
 		}
@@ -2720,8 +2720,8 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
-	pulumi.RegisterOutputType(PolicyTypeOutput{})
-	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyOutput{})
+	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(PullMessageOutput{})
 	pulumi.RegisterOutputType(PullMessagePtrOutput{})
 	pulumi.RegisterOutputType(PullTargetOutput{})
@@ -2734,8 +2734,8 @@ func init() {
 	pulumi.RegisterOutputType(RetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
-	pulumi.RegisterOutputType(TaskTypeOutput{})
-	pulumi.RegisterOutputType(TaskTypePtrOutput{})
+	pulumi.RegisterOutputType(TaskOutput{})
+	pulumi.RegisterOutputType(TaskPtrOutput{})
 	pulumi.RegisterOutputType(TaskStatusOutput{})
 	pulumi.RegisterOutputType(TaskStatusPtrOutput{})
 }

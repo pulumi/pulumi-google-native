@@ -4,8 +4,8 @@
 
 # Export this package's modules as members:
 from .brand import *
-from .identity_aware_proxy_client import *
-from .policy import *
+from .brand_identity_aware_proxy_client import *
+from .v1_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -22,10 +22,10 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:iap/v1:Brand":
                 return Brand(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:iap/v1:IdentityAwareProxyClient":
-                return IdentityAwareProxyClient(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:iap/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:iap/v1:BrandIdentityAwareProxyClient":
+                return BrandIdentityAwareProxyClient(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:iap/v1:V1IamPolicy":
+                return V1IamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -23,8 +23,14 @@ func NewRepository(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.RepositoriesId == nil {
+		return nil, errors.New("invalid value for required argument 'RepositoriesId'")
 	}
 	var resource Repository
 	err := ctx.RegisterResource("google-cloud:artifactregistry/v1beta1:Repository", name, args, &resource, opts...)
@@ -67,13 +73,12 @@ type repositoryArgs struct {
 	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name *string `pulumi:"name"`
-	// The name of the parent resource where the repository will be created.
-	Parent string `pulumi:"parent"`
-	// The repository id to use for this repository.
-	RepositoryId *string `pulumi:"repositoryId"`
+	Name           *string `pulumi:"name"`
+	ProjectsId     string  `pulumi:"projectsId"`
+	RepositoriesId string  `pulumi:"repositoriesId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -89,13 +94,12 @@ type RepositoryArgs struct {
 	// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 	KmsKeyName pulumi.StringPtrInput
 	// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name pulumi.StringPtrInput
-	// The name of the parent resource where the repository will be created.
-	Parent pulumi.StringInput
-	// The repository id to use for this repository.
-	RepositoryId pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	ProjectsId     pulumi.StringInput
+	RepositoriesId pulumi.StringInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
 }

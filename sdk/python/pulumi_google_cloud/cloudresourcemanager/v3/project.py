@@ -23,6 +23,7 @@ class Project(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -69,6 +70,9 @@ class Project(pulumi.CustomResource):
             __props__['name'] = name
             __props__['parent'] = parent
             __props__['project_id'] = project_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['state'] = state
             __props__['update_time'] = update_time
         super(Project, __self__).__init__(

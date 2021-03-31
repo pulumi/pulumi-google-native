@@ -16,6 +16,7 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 topics_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,6 +45,9 @@ class Topic(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            if topics_id is None and not opts.urn:
+                raise TypeError("Missing required property 'topics_id'")
+            __props__['topics_id'] = topics_id
         super(Topic, __self__).__init__(
             'google-cloud:pubsub/v1beta1a:Topic',
             resource_name,

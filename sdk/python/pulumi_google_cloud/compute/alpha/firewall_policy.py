@@ -21,13 +21,12 @@ class FirewallPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
+                 firewall_policy: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -37,7 +36,7 @@ class FirewallPolicy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new network firewall policy in the specified project and region.
+        Creates a new policy in the specified project using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -52,13 +51,7 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
         :param pulumi.Input[str] name: [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         :param pulumi.Input[str] parent: [Output Only] The parent of the firewall policy.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[int] rule_tuple_count: [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
@@ -87,17 +80,14 @@ class FirewallPolicy(pulumi.CustomResource):
             __props__['description'] = description
             __props__['display_name'] = display_name
             __props__['fingerprint'] = fingerprint
+            if firewall_policy is None and not opts.urn:
+                raise TypeError("Missing required property 'firewall_policy'")
+            __props__['firewall_policy'] = firewall_policy
             __props__['id'] = id
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['parent'] = parent
-            if project is None and not opts.urn:
-                raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['rule_tuple_count'] = rule_tuple_count
             __props__['rules'] = rules
             __props__['self_link'] = self_link

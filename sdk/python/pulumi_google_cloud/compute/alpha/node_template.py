@@ -25,11 +25,11 @@ class NodeTemplate(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 node_template: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
@@ -54,13 +54,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
                
                This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] The name of the region where the node template resides, such as us-central1.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['ServerBindingArgs']] server_binding: Sets the binding properties for the physical server. Valid values include:  
@@ -97,6 +91,9 @@ class NodeTemplate(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['node_affinity_labels'] = node_affinity_labels
+            if node_template is None and not opts.urn:
+                raise TypeError("Missing required property 'node_template'")
+            __props__['node_template'] = node_template
             __props__['node_type'] = node_type
             __props__['node_type_flexibility'] = node_type_flexibility
             if project is None and not opts.urn:
@@ -105,7 +102,6 @@ class NodeTemplate(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['server_binding'] = server_binding

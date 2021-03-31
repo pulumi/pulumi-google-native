@@ -47,18 +47,21 @@ export class Domain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.domainsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["admin"] = args ? args.admin : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
+            inputs["domainsId"] = args ? args.domainsId : undefined;
             inputs["fqdn"] = args ? args.fqdn : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locations"] = args ? args.locations : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
@@ -89,10 +92,7 @@ export interface DomainArgs {
      * Output only. The time the instance was created.
      */
     readonly createTime?: pulumi.Input<string>;
-    /**
-     * Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segement length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
-     */
-    readonly domainName?: pulumi.Input<string>;
+    readonly domainsId: pulumi.Input<string>;
     /**
      * Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
      */
@@ -109,10 +109,7 @@ export interface DomainArgs {
      * Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The resource project name and location using the form: `projects/{project_id}/locations/global`
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */

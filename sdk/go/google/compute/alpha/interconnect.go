@@ -23,6 +23,9 @@ func NewInterconnect(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Interconnect == nil {
+		return nil, errors.New("invalid value for required argument 'Interconnect'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -75,7 +78,8 @@ type interconnectArgs struct {
 	// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId *string `pulumi:"googleReferenceId"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
+	Id           *string `pulumi:"id"`
+	Interconnect string  `pulumi:"interconnect"`
 	// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments []string `pulumi:"interconnectAttachments"`
 	// Type of interconnect, which can take one of the following values:
@@ -107,16 +111,9 @@ type interconnectArgs struct {
 	OperationalStatus *string `pulumi:"operationalStatus"`
 	// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project       string  `pulumi:"project"`
 	// [Output Only] Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount *int `pulumi:"provisionedLinkCount"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
 	// [Output Only] Server-defined URL for the resource.
@@ -149,7 +146,8 @@ type InterconnectArgs struct {
 	// [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
+	Id           pulumi.StringPtrInput
+	Interconnect pulumi.StringInput
 	// [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments pulumi.StringArrayInput
 	// Type of interconnect, which can take one of the following values:
@@ -181,16 +179,9 @@ type InterconnectArgs struct {
 	OperationalStatus pulumi.StringPtrInput
 	// [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project       pulumi.StringInput
 	// [Output Only] Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount pulumi.IntPtrInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput
 	// [Output Only] Server-defined URL for the resource.

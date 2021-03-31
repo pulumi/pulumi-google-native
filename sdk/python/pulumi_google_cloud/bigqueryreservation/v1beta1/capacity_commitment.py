@@ -16,13 +16,14 @@ class CapacityCommitment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 capacity_commitments_id: Optional[pulumi.Input[str]] = None,
                  commitment_end_time: Optional[pulumi.Input[str]] = None,
                  commitment_start_time: Optional[pulumi.Input[str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  failure_status: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input[str]] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -36,10 +37,8 @@ class CapacityCommitment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] commitment_end_time: Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         :param pulumi.Input[str] commitment_start_time: Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-        :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[pulumi.InputType['StatusArgs']] failure_status: Output only. For FAILED commitment plan, provides the reason of failure.
         :param pulumi.Input[str] name: Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-        :param pulumi.Input[str] parent: Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US`
         :param pulumi.Input[str] plan: Capacity commitment commitment plan.
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
@@ -62,15 +61,20 @@ class CapacityCommitment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if capacity_commitments_id is None and not opts.urn:
+                raise TypeError("Missing required property 'capacity_commitments_id'")
+            __props__['capacity_commitments_id'] = capacity_commitments_id
             __props__['commitment_end_time'] = commitment_end_time
             __props__['commitment_start_time'] = commitment_start_time
-            __props__['enforce_single_admin_project_per_org'] = enforce_single_admin_project_per_org
             __props__['failure_status'] = failure_status
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['plan'] = plan
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['renewal_plan'] = renewal_plan
             __props__['slot_count'] = slot_count
             __props__['state'] = state

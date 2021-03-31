@@ -23,8 +23,14 @@ func NewNode(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.NodesId == nil {
+		return nil, errors.New("invalid value for required argument 'NodesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Node
 	err := ctx.RegisterResource("google-cloud:tpu/v1alpha1:Node", name, args, &resource, opts...)
@@ -73,19 +79,18 @@ type nodeArgs struct {
 	// Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
 	IpAddress *string `pulumi:"ipAddress"`
 	// Resource labels to represent user-provided metadata.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Output only. Immutable. The name of the TPU
 	Name *string `pulumi:"name"`
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network *string `pulumi:"network"`
 	// Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints []NetworkEndpoint `pulumi:"networkEndpoints"`
-	// The unqualified resource name.
-	NodeId *string `pulumi:"nodeId"`
-	// Required. The parent resource name.
-	Parent string `pulumi:"parent"`
+	NodesId          string            `pulumi:"nodesId"`
 	// Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-	Port *string `pulumi:"port"`
+	Port       *string `pulumi:"port"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The scheduling options for this node.
 	SchedulingConfig *SchedulingConfig `pulumi:"schedulingConfig"`
 	// Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -117,19 +122,18 @@ type NodeArgs struct {
 	// Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
 	IpAddress pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Output only. Immutable. The name of the TPU
 	Name pulumi.StringPtrInput
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network pulumi.StringPtrInput
 	// Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints NetworkEndpointArrayInput
-	// The unqualified resource name.
-	NodeId pulumi.StringPtrInput
-	// Required. The parent resource name.
-	Parent pulumi.StringInput
+	NodesId          pulumi.StringInput
 	// Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-	Port pulumi.StringPtrInput
+	Port       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The scheduling options for this node.
 	SchedulingConfig SchedulingConfigPtrInput
 	// Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.

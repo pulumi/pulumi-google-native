@@ -21,16 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:spanner/v1:Backup":
-		r, err = NewBackup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:spanner/v1:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:spanner/v1:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:spanner/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:spanner/v1:Session":
-		r, err = NewSession(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:spanner/v1:InstanceBackup":
+		r, err = NewInstanceBackup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:spanner/v1:InstanceBackupIamPolicy":
+		r, err = NewInstanceBackupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:spanner/v1:InstanceDatabase":
+		r, err = NewInstanceDatabase(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:spanner/v1:InstanceDatabaseIamPolicy":
+		r, err = NewInstanceDatabaseIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:spanner/v1:InstanceDatabaseSession":
+		r, err = NewInstanceDatabaseSession(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:spanner/v1:InstanceIamPolicy":
+		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

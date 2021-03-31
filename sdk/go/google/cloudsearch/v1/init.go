@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:cloudsearch/v1:DataSource":
-		r, err = NewDataSource(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudsearch/v1:SearchApplication":
-		r, err = NewSearchApplication(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudsearch/v1:SettingDatasource":
+		r, err = NewSettingDatasource(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudsearch/v1:SettingSearchapplication":
+		r, err = NewSettingSearchapplication(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

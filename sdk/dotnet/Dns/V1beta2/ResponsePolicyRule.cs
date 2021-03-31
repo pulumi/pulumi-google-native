@@ -66,12 +66,6 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
         public Input<string>? Behavior { get; set; }
 
         /// <summary>
-        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-        /// </summary>
-        [Input("clientOperationId")]
-        public Input<string>? ClientOperationId { get; set; }
-
-        /// <summary>
         /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         /// </summary>
         [Input("dnsName")]
@@ -86,17 +80,14 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
         [Input("localData")]
         public Input<Inputs.ResponsePolicyRuleLocalDataArgs>? LocalData { get; set; }
 
-        /// <summary>
-        /// Identifies the project addressed by this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// User assigned name of the Response Policy containing the Response Policy Rule.
-        /// </summary>
         [Input("responsePolicy", required: true)]
         public Input<string> ResponsePolicy { get; set; } = null!;
+
+        [Input("responsePolicyRule", required: true)]
+        public Input<string> ResponsePolicyRule { get; set; } = null!;
 
         /// <summary>
         /// An identifier for this rule. Must be unique with the ResponsePolicy.

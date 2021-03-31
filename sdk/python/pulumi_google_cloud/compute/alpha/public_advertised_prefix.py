@@ -25,8 +25,8 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_advertised_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicAdvertisedPrefixPublicDelegatedPrefixArgs']]]]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
@@ -49,13 +49,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicAdvertisedPrefixPublicDelegatedPrefixArgs']]]] public_delegated_prefixs: [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL with id for the resource.
         :param pulumi.Input[str] shared_secret: [Output Only] The shared secret to be used for reverse DNS verification.
@@ -89,8 +83,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
+            if public_advertised_prefix is None and not opts.urn:
+                raise TypeError("Missing required property 'public_advertised_prefix'")
+            __props__['public_advertised_prefix'] = public_advertised_prefix
             __props__['public_delegated_prefixs'] = public_delegated_prefixs
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['shared_secret'] = shared_secret

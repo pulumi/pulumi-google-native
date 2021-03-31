@@ -6,11 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./feature";
-export * from "./policy";
+export * from "./featureIamPolicy";
+export * from "./membershipIamPolicy";
 
 // Import resources to register:
 import { Feature } from "./feature";
-import { Policy } from "./policy";
+import { FeatureIamPolicy } from "./featureIamPolicy";
+import { MembershipIamPolicy } from "./membershipIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +20,10 @@ const _module = {
         switch (type) {
             case "google-cloud:gkehub/v1beta:Feature":
                 return new Feature(name, <any>undefined, { urn })
-            case "google-cloud:gkehub/v1beta:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:gkehub/v1beta:FeatureIamPolicy":
+                return new FeatureIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:gkehub/v1beta:MembershipIamPolicy":
+                return new MembershipIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

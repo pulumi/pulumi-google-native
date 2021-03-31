@@ -17,15 +17,18 @@ package gen
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi-google-cloud/provider/pkg/discovery"
+	"github.com/pulumi/pulumi-google-cloud/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v2/codegen"
 	"github.com/pulumi/pulumi/pkg/v2/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/util/contract"
-	"google.golang.org/api/discovery/v1"
 	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
@@ -33,7 +36,7 @@ import (
 const goBasePath = "github.com/pulumi/pulumi-google-cloud/sdk/go/google-cloud"
 
 // PulumiSchema will generate a Pulumi schema for the given Google Cloud discovery documents.
-func PulumiSchema() (*schema.PackageSpec, error) {
+func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	pkg := schema.PackageSpec{
 		Name:        "google-cloud",
 		Description: "A Next Generation Pulumi package for creating and managing Google Cloud resources.",
@@ -54,6 +57,9 @@ func PulumiSchema() (*schema.PackageSpec, error) {
 		Functions: map[string]schema.FunctionSpec{},
 		Language:  map[string]json.RawMessage{},
 	}
+	metadata := resources.CloudAPIMetadata{
+		Resources: map[string]resources.CloudAPIResource{},
+	}
 
 	csharpNamespaces := map[string]string{
 		"google-cloud": "GoogleCloud",
@@ -70,23 +76,29 @@ func PulumiSchema() (*schema.PackageSpec, error) {
 		return nil
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	for _, fileName := range fileNames {
 		document, err := readDiscoveryDocument(fileName)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 
 		module := fmt.Sprintf("%s/%s", document.Name, document.Version)
-		gen := packageGenerator{pkg: &pkg, rest: document, mod: module, visitedTypes: codegen.NewStringSet()}
+		gen := packageGenerator{
+			pkg:          &pkg,
+			metadata:     &metadata,
+			rest:         document,
+			mod:          module,
+			visitedTypes: codegen.NewStringSet(),
+		}
 		csharpNamespaces[module] = fmt.Sprintf("%s.%s", strings.Title(document.Name), strings.Title(document.Version))
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
-		err = gen.findResources(document.Resources)
+		err = gen.findResources("", document.Resources)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 	}
 
@@ -118,7 +130,7 @@ func PulumiSchema() (*schema.PackageSpec, error) {
 		"namespaces": csharpNamespaces,
 	})
 
-	return &pkg, nil
+	return &pkg, &metadata, nil
 }
 
 func readDiscoveryDocument(fileName string) (*discovery.RestDescription, error) {
@@ -143,25 +155,48 @@ func readDiscoveryDocument(fileName string) (*discovery.RestDescription, error) 
 
 type packageGenerator struct {
 	pkg          *schema.PackageSpec
+	metadata     *resources.CloudAPIMetadata
 	rest         *discovery.RestDescription
 	mod          string
 	visitedTypes codegen.StringSet
 }
 
-func (g *packageGenerator) findResources(resources map[string]discovery.RestResource) error {
-	for _, res := range resources {
+func (g *packageGenerator) findResources(parent string, resources map[string]discovery.RestResource) error {
+	for name, res := range resources {
+		name = ToUpperCamel(inflector.Singularize(name))
+		var createMethod, deleteMethod *discovery.RestMethod
 		for methodName, value := range res.Methods {
 			restMethod := value
-			if methodName == "create" || methodName == "insert" || methodName == "setIamPolicy" {
-				typeName := resourceName(restMethod)
-				err := g.genResource(typeName, &restMethod)
+			switch methodName {
+			case "create", "insert":
+				createMethod = &restMethod
+			case "setIamPolicy":
+				typeName := fmt.Sprintf("%s%sIamPolicy", parent, name)
+				err := g.genResource(typeName, &restMethod, nil)
 				if err != nil {
 					return err
 				}
+			case "delete":
+				deleteMethod = &restMethod
 			}
 		}
 
-		err := g.findResources(res.Resources)
+		if createMethod != nil {
+			typeName := fmt.Sprintf("%s%s", parent, name)
+			err := g.genResource(typeName, createMethod, deleteMethod)
+			if err != nil {
+				return err
+			}
+		}
+
+		var newParent string
+		switch name {
+		case "Project", "Location", "Zone", "Global":
+			newParent = parent
+		default:
+			newParent = parent + name
+		}
+		err := g.findResources(newParent, res.Resources)
 		if err != nil {
 			return err
 		}
@@ -169,30 +204,64 @@ func (g *packageGenerator) findResources(resources map[string]discovery.RestReso
 	return nil
 }
 
-func (g *packageGenerator) genResource(typeName string, restMethod *discovery.RestMethod) error {
+var pathRegex = regexp.MustCompile(`{([A-Za-z0-9]*)}`)
+
+func (g *packageGenerator) genResource(typeName string, createMethod, deleteMethod *discovery.RestMethod) error {
 	resourceTok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredProperties := codegen.NewStringSet()
 
-	for name, param := range restMethod.Parameters {
-		if strings.HasPrefix(param.Description, "Deprecated.") {
+	createPath := createMethod.FlatPath
+	if createPath == "" {
+		createPath = createMethod.Path
+	}
+
+	for name, param := range createMethod.Parameters {
+		if param.Location != "query" || !param.Required {
 			continue
 		}
+		createPath += fmt.Sprintf("?%s={%[1]s}", name)
+	}
 
-		// TODO: apply SDK naming consistently and in full.
-		sdkName := makeValidIdentifier(name)
-		inputProperties[sdkName] = schema.PropertySpec{
-			Description: param.Description,
-			TypeSpec:    schema.TypeSpec{Type: param.Type},
+	resourceMeta := resources.CloudAPIResource{
+		BaseUrl:    g.rest.BaseUrl,
+		CreatePath: createPath,
+	}
+
+	subMatches := pathRegex.FindAllStringSubmatch(createPath, -1)
+	for _, names := range subMatches {
+		name := names[1]
+		inputProperties[name] = schema.PropertySpec{
+			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
-		if param.Required {
-			requiredProperties.Add(sdkName)
+		resourceMeta.CreateParams = append(resourceMeta.CreateParams, name)
+		requiredProperties.Add(name)
+	}
+
+	if deleteMethod != nil {
+		deletePath := deleteMethod.FlatPath
+		if deletePath == "" {
+			deletePath = deleteMethod.Path
+		}
+
+		resourceMeta.DeletePath = deletePath
+
+		subMatches := pathRegex.FindAllStringSubmatch(deletePath, -1)
+		for _, names := range subMatches {
+			name := names[1]
+			if _, has := inputProperties[name]; !has {
+				inputProperties[name] = schema.PropertySpec{
+					TypeSpec: schema.TypeSpec{Type: "string"},
+				}
+				requiredProperties.Add(name)
+			}
+			resourceMeta.DeleteParams = append(resourceMeta.DeleteParams, name)
 		}
 	}
 
-	if restMethod.Request != nil {
-		request := g.rest.Schemas[restMethod.Request.Ref]
+	if createMethod.Request != nil {
+		request := g.rest.Schemas[createMethod.Request.Ref]
 		bodyProperties, err := g.genProperties(&request)
 		if err != nil {
 			return err
@@ -203,7 +272,8 @@ func (g *packageGenerator) genResource(typeName string, restMethod *discovery.Re
 		}
 	}
 
-	if typeName == "BucketObject" {
+	if resourceTok == "google-cloud:storage/v1:Object" {
+		resourceTok = "google-cloud:storage/v1:BucketObject"
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
 				Ref: "pulumi.json#/Asset",
@@ -213,7 +283,7 @@ func (g *packageGenerator) genResource(typeName string, restMethod *discovery.Re
 
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
-			Description: restMethod.Description,
+			Description: createMethod.Description,
 			Type:        "object",
 			// TODO: Output properties
 		},
@@ -221,6 +291,7 @@ func (g *packageGenerator) genResource(typeName string, restMethod *discovery.Re
 		RequiredInputs:  requiredProperties.SortedValues(),
 	}
 	g.pkg.Resources[resourceTok] = resourceSpec
+	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
 }
 

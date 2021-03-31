@@ -23,18 +23,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:cloudresourcemanager/v3:Folder":
 		r, err = NewFolder(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v3:FolderIamPolicy":
+		r, err = NewFolderIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudresourcemanager/v3:Lien":
 		r, err = NewLien(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudresourcemanager/v3:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v3:OrganizationIamPolicy":
+		r, err = NewOrganizationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudresourcemanager/v3:Project":
 		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v3:ProjectIamPolicy":
+		r, err = NewProjectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudresourcemanager/v3:TagBinding":
 		r, err = NewTagBinding(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudresourcemanager/v3:TagKey":
 		r, err = NewTagKey(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v3:TagKeyIamPolicy":
+		r, err = NewTagKeyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudresourcemanager/v3:TagValue":
 		r, err = NewTagValue(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v3:TagValueIamPolicy":
+		r, err = NewTagValueIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

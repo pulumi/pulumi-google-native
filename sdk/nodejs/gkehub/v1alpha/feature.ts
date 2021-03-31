@@ -47,18 +47,20 @@ export class Feature extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.featuresId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'featuresId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deleteTime"] = args ? args.deleteTime : undefined;
-            inputs["featureId"] = args ? args.featureId : undefined;
+            inputs["featuresId"] = args ? args.featuresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
             inputs["membershipStates"] = args ? args.membershipStates : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["resourceState"] = args ? args.resourceState : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -84,10 +86,7 @@ export interface FeatureArgs {
      * Output only. When the Feature resource was deleted.
      */
     readonly deleteTime?: pulumi.Input<string>;
-    /**
-     * The ID of the feature to create.
-     */
-    readonly featureId?: pulumi.Input<string>;
+    readonly featuresId: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
      */
@@ -104,14 +103,7 @@ export interface FeatureArgs {
      * Output only. The full, unique name of this Feature resource in the format `projects/*&#47;locations/global/features/*`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The parent (project and location) where the Feature will be created. Specified in the format `projects/*&#47;locations/global`.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
-     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. State of the Feature resource itself.
      */

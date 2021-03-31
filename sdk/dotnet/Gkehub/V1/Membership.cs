@@ -113,11 +113,11 @@ namespace Pulumi.GoogleCloud.Gkehub.V1
         [Input("lastConnectionTime")]
         public Input<string>? LastConnectionTime { get; set; }
 
-        /// <summary>
-        /// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        /// </summary>
-        [Input("membershipId")]
-        public Input<string>? MembershipId { get; set; }
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
+        [Input("membershipsId", required: true)]
+        public Input<string> MembershipsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
@@ -125,17 +125,8 @@ namespace Pulumi.GoogleCloud.Gkehub.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. State of the Membership resource.

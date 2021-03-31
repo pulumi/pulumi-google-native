@@ -29,6 +29,9 @@ func NewVpnTunnel(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	if args.VpnTunnel == nil {
+		return nil, errors.New("invalid value for required argument 'VpnTunnel'")
+	}
 	var resource VpnTunnel
 	err := ctx.RegisterResource("google-cloud:compute/v1:VpnTunnel", name, args, &resource, opts...)
 	if err != nil {
@@ -84,19 +87,12 @@ type vpnTunnelArgs struct {
 	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
 	PeerGcpGateway *string `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
-	PeerIp *string `pulumi:"peerIp"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	PeerIp  *string `pulumi:"peerIp"`
+	Project string  `pulumi:"project"`
 	// [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector []string `pulumi:"remoteTrafficSelector"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// URL of the router resource to be used for dynamic routing.
 	Router *string `pulumi:"router"`
 	// [Output Only] Server-defined URL for the resource.
@@ -127,7 +123,8 @@ type vpnTunnelArgs struct {
 	// URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
 	VpnGateway *string `pulumi:"vpnGateway"`
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
-	VpnGatewayInterface *int `pulumi:"vpnGatewayInterface"`
+	VpnGatewayInterface *int   `pulumi:"vpnGatewayInterface"`
+	VpnTunnel           string `pulumi:"vpnTunnel"`
 }
 
 // The set of arguments for constructing a VpnTunnel resource.
@@ -155,19 +152,12 @@ type VpnTunnelArgs struct {
 	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
 	PeerGcpGateway pulumi.StringPtrInput
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
-	PeerIp pulumi.StringPtrInput
-	// Project ID for this request.
+	PeerIp  pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringInput
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector pulumi.StringArrayInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// URL of the router resource to be used for dynamic routing.
 	Router pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
@@ -199,6 +189,7 @@ type VpnTunnelArgs struct {
 	VpnGateway pulumi.StringPtrInput
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface pulumi.IntPtrInput
+	VpnTunnel           pulumi.StringInput
 }
 
 func (VpnTunnelArgs) ElementType() reflect.Type {

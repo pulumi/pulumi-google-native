@@ -4,13 +4,13 @@
 
 # Export this package's modules as members:
 from .alert_policy import *
-from .create_collectd_time_series_response import *
-from .empty import *
+from .collectd_time_series import *
 from .group import *
 from .metric_descriptor import *
 from .notification_channel import *
 from .service import *
-from .service_level_objective import *
+from .service_service_level_objective import *
+from .time_series import *
 from .uptime_check_config import *
 from ._inputs import *
 
@@ -28,10 +28,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:monitoring/v3:AlertPolicy":
                 return AlertPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:monitoring/v3:CreateCollectdTimeSeriesResponse":
-                return CreateCollectdTimeSeriesResponse(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:monitoring/v3:Empty":
-                return Empty(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:monitoring/v3:CollectdTimeSeries":
+                return CollectdTimeSeries(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:monitoring/v3:Group":
                 return Group(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:monitoring/v3:MetricDescriptor":
@@ -40,8 +38,10 @@ def _register_module():
                 return NotificationChannel(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:monitoring/v3:Service":
                 return Service(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:monitoring/v3:ServiceLevelObjective":
-                return ServiceLevelObjective(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:monitoring/v3:ServiceServiceLevelObjective":
+                return ServiceServiceLevelObjective(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:monitoring/v3:TimeSeries":
+                return TimeSeries(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:monitoring/v3:UptimeCheckConfig":
                 return UptimeCheckConfig(name, pulumi.ResourceOptions(urn=urn))
             else:

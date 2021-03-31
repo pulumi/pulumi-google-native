@@ -21,12 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:securitycenter/v1beta1:GoogleCloudSecuritycenterV1beta1Finding":
-		r, err = NewGoogleCloudSecuritycenterV1beta1Finding(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:securitycenter/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:securitycenter/v1beta1:Source":
-		r, err = NewSource(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:securitycenter/v1beta1:OrganizationSource":
+		r, err = NewOrganizationSource(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:securitycenter/v1beta1:OrganizationSourceFinding":
+		r, err = NewOrganizationSourceFinding(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:securitycenter/v1beta1:OrganizationSourceIamPolicy":
+		r, err = NewOrganizationSourceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

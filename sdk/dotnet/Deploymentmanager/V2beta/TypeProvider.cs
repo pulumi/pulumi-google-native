@@ -143,9 +143,6 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.V2beta
         [Input("options")]
         public Input<Inputs.OptionsArgs>? Options { get; set; }
 
-        /// <summary>
-        /// The project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -154,6 +151,9 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.V2beta
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("typeProvider", required: true)]
+        public Input<string> TypeProvider { get; set; } = null!;
 
         public TypeProviderArgs()
         {

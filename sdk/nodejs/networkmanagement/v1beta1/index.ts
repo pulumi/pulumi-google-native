@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./connectivityTest";
-export * from "./policy";
+export * from "./connectivityTestIamPolicy";
 
 // Import resources to register:
 import { ConnectivityTest } from "./connectivityTest";
-import { Policy } from "./policy";
+import { ConnectivityTestIamPolicy } from "./connectivityTestIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:networkmanagement/v1beta1:ConnectivityTest":
                 return new ConnectivityTest(name, <any>undefined, { urn })
-            case "google-cloud:networkmanagement/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:networkmanagement/v1beta1:ConnectivityTestIamPolicy":
+                return new ConnectivityTestIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

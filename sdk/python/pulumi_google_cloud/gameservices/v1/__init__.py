@@ -3,11 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .game_server_cluster import *
-from .game_server_config import *
 from .game_server_deployment import *
-from .policy import *
+from .game_server_deployment_config import *
+from .game_server_deployment_iam_policy import *
 from .realm import *
+from .realm_game_server_cluster import *
 from ._inputs import *
 
 def _register_module():
@@ -22,16 +22,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:gameservices/v1:GameServerCluster":
-                return GameServerCluster(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:gameservices/v1:GameServerConfig":
-                return GameServerConfig(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:gameservices/v1:GameServerDeployment":
+            if typ == "google-cloud:gameservices/v1:GameServerDeployment":
                 return GameServerDeployment(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:gameservices/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:gameservices/v1:GameServerDeploymentConfig":
+                return GameServerDeploymentConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:gameservices/v1:GameServerDeploymentIamPolicy":
+                return GameServerDeploymentIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:gameservices/v1:Realm":
                 return Realm(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:gameservices/v1:RealmGameServerCluster":
+                return RealmGameServerCluster(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

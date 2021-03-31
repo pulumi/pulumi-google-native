@@ -23,8 +23,14 @@ func NewCapacityCommitment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.CapacityCommitmentsId == nil {
+		return nil, errors.New("invalid value for required argument 'CapacityCommitmentsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource CapacityCommitment
 	err := ctx.RegisterResource("google-cloud:bigqueryreservation/v1:CapacityCommitment", name, args, &resource, opts...)
@@ -58,20 +64,19 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 }
 
 type capacityCommitmentArgs struct {
+	CapacityCommitmentsId string `pulumi:"capacityCommitmentsId"`
 	// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentEndTime *string `pulumi:"commitmentEndTime"`
 	// Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime *string `pulumi:"commitmentStartTime"`
-	// If true, fail the request if another project in the organization has a capacity commitment.
-	EnforceSingleAdminProjectPerOrg *bool `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// Output only. For FAILED commitment plan, provides the reason of failure.
 	FailureStatus *Status `pulumi:"failureStatus"`
+	LocationsId   string  `pulumi:"locationsId"`
 	// Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
 	Name *string `pulumi:"name"`
-	// Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US`
-	Parent string `pulumi:"parent"`
 	// Capacity commitment commitment plan.
-	Plan *string `pulumi:"plan"`
+	Plan       *string `pulumi:"plan"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
@@ -82,20 +87,19 @@ type capacityCommitmentArgs struct {
 
 // The set of arguments for constructing a CapacityCommitment resource.
 type CapacityCommitmentArgs struct {
+	CapacityCommitmentsId pulumi.StringInput
 	// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentEndTime pulumi.StringPtrInput
 	// Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringPtrInput
-	// If true, fail the request if another project in the organization has a capacity commitment.
-	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrInput
 	// Output only. For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusPtrInput
+	LocationsId   pulumi.StringInput
 	// Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
 	Name pulumi.StringPtrInput
-	// Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US`
-	Parent pulumi.StringInput
 	// Capacity commitment commitment plan.
-	Plan pulumi.StringPtrInput
+	Plan       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.

@@ -21,9 +21,11 @@ class MetricDescriptor(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LabelDescriptorArgs']]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
+                 metric_descriptors_id: Optional[pulumi.Input[str]] = None,
                  metric_kind: Optional[pulumi.Input[str]] = None,
                  monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input[str]] = None,
@@ -69,11 +71,15 @@ class MetricDescriptor(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['launch_stage'] = launch_stage
             __props__['metadata'] = metadata
+            if metric_descriptors_id is None and not opts.urn:
+                raise TypeError("Missing required property 'metric_descriptors_id'")
+            __props__['metric_descriptors_id'] = metric_descriptors_id
             __props__['metric_kind'] = metric_kind
             __props__['monitored_resource_types'] = monitored_resource_types
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['type'] = type
             __props__['unit'] = unit
             __props__['value_type'] = value_type

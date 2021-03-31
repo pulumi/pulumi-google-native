@@ -47,12 +47,20 @@ export class CustomClass extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.customClassesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'customClassesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["customClass"] = args ? args.customClass : undefined;
             inputs["customClassId"] = args ? args.customClassId : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["customClassesId"] = args ? args.customClassesId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -74,8 +82,7 @@ export interface CustomClassArgs {
      * The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
      */
     readonly customClassId?: pulumi.Input<string>;
-    /**
-     * Required. The parent resource where this custom class will be created. Format: {api_version}/projects/{project}/locations/{location}/customClasses
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly customClassesId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

@@ -47,18 +47,25 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.instancesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instancesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["tier"] = args ? args.tier : undefined;
@@ -91,14 +98,12 @@ export interface InstanceArgs {
      * File system shares on the instance. For this version, only a single file share is supported.
      */
     readonly fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1.FileShareConfig>[]>;
-    /**
-     * Required. The name of the instance to create. The name must be unique for the specified project and location.
-     */
-    readonly instanceId?: pulumi.Input<string>;
+    readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
      */
@@ -107,10 +112,7 @@ export interface InstanceArgs {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.file.v1.NetworkConfig>[]>;
-    /**
-     * Required. The instance's project and location, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The instance state.
      */

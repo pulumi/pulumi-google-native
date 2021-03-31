@@ -83,11 +83,8 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        /// <summary>
-        /// Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segement length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
-        /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
+        [Input("domainsId", required: true)]
+        public Input<string> DomainsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -125,11 +122,8 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The resource project name and location using the form: `projects/{project_id}/locations/global`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].

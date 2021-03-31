@@ -8238,7 +8238,7 @@ func (o GoogleIamV1__BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1__B
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type GoogleIamV1__PolicyType struct {
+type GoogleIamV1__Policy struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []GoogleIamV1__AuditConfig `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -8249,19 +8249,19 @@ type GoogleIamV1__PolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// GoogleIamV1__PolicyTypeInput is an input type that accepts GoogleIamV1__PolicyTypeArgs and GoogleIamV1__PolicyTypeOutput values.
-// You can construct a concrete instance of `GoogleIamV1__PolicyTypeInput` via:
+// GoogleIamV1__PolicyInput is an input type that accepts GoogleIamV1__PolicyArgs and GoogleIamV1__PolicyOutput values.
+// You can construct a concrete instance of `GoogleIamV1__PolicyInput` via:
 //
-//          GoogleIamV1__PolicyTypeArgs{...}
-type GoogleIamV1__PolicyTypeInput interface {
+//          GoogleIamV1__PolicyArgs{...}
+type GoogleIamV1__PolicyInput interface {
 	pulumi.Input
 
-	ToGoogleIamV1__PolicyTypeOutput() GoogleIamV1__PolicyTypeOutput
-	ToGoogleIamV1__PolicyTypeOutputWithContext(context.Context) GoogleIamV1__PolicyTypeOutput
+	ToGoogleIamV1__PolicyOutput() GoogleIamV1__PolicyOutput
+	ToGoogleIamV1__PolicyOutputWithContext(context.Context) GoogleIamV1__PolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type GoogleIamV1__PolicyTypeArgs struct {
+type GoogleIamV1__PolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs GoogleIamV1__AuditConfigArrayInput `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -8272,125 +8272,125 @@ type GoogleIamV1__PolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (GoogleIamV1__PolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1__PolicyType)(nil)).Elem()
+func (GoogleIamV1__PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1__Policy)(nil)).Elem()
 }
 
-func (i GoogleIamV1__PolicyTypeArgs) ToGoogleIamV1__PolicyTypeOutput() GoogleIamV1__PolicyTypeOutput {
-	return i.ToGoogleIamV1__PolicyTypeOutputWithContext(context.Background())
+func (i GoogleIamV1__PolicyArgs) ToGoogleIamV1__PolicyOutput() GoogleIamV1__PolicyOutput {
+	return i.ToGoogleIamV1__PolicyOutputWithContext(context.Background())
 }
 
-func (i GoogleIamV1__PolicyTypeArgs) ToGoogleIamV1__PolicyTypeOutputWithContext(ctx context.Context) GoogleIamV1__PolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__PolicyTypeOutput)
+func (i GoogleIamV1__PolicyArgs) ToGoogleIamV1__PolicyOutputWithContext(ctx context.Context) GoogleIamV1__PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__PolicyOutput)
 }
 
-func (i GoogleIamV1__PolicyTypeArgs) ToGoogleIamV1__PolicyTypePtrOutput() GoogleIamV1__PolicyTypePtrOutput {
-	return i.ToGoogleIamV1__PolicyTypePtrOutputWithContext(context.Background())
+func (i GoogleIamV1__PolicyArgs) ToGoogleIamV1__PolicyPtrOutput() GoogleIamV1__PolicyPtrOutput {
+	return i.ToGoogleIamV1__PolicyPtrOutputWithContext(context.Background())
 }
 
-func (i GoogleIamV1__PolicyTypeArgs) ToGoogleIamV1__PolicyTypePtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__PolicyTypeOutput).ToGoogleIamV1__PolicyTypePtrOutputWithContext(ctx)
+func (i GoogleIamV1__PolicyArgs) ToGoogleIamV1__PolicyPtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__PolicyOutput).ToGoogleIamV1__PolicyPtrOutputWithContext(ctx)
 }
 
-// GoogleIamV1__PolicyTypePtrInput is an input type that accepts GoogleIamV1__PolicyTypeArgs, GoogleIamV1__PolicyTypePtr and GoogleIamV1__PolicyTypePtrOutput values.
-// You can construct a concrete instance of `GoogleIamV1__PolicyTypePtrInput` via:
+// GoogleIamV1__PolicyPtrInput is an input type that accepts GoogleIamV1__PolicyArgs, GoogleIamV1__PolicyPtr and GoogleIamV1__PolicyPtrOutput values.
+// You can construct a concrete instance of `GoogleIamV1__PolicyPtrInput` via:
 //
-//          GoogleIamV1__PolicyTypeArgs{...}
+//          GoogleIamV1__PolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type GoogleIamV1__PolicyTypePtrInput interface {
+type GoogleIamV1__PolicyPtrInput interface {
 	pulumi.Input
 
-	ToGoogleIamV1__PolicyTypePtrOutput() GoogleIamV1__PolicyTypePtrOutput
-	ToGoogleIamV1__PolicyTypePtrOutputWithContext(context.Context) GoogleIamV1__PolicyTypePtrOutput
+	ToGoogleIamV1__PolicyPtrOutput() GoogleIamV1__PolicyPtrOutput
+	ToGoogleIamV1__PolicyPtrOutputWithContext(context.Context) GoogleIamV1__PolicyPtrOutput
 }
 
-type googleIamV1__PolicyTypePtrType GoogleIamV1__PolicyTypeArgs
+type googleIamV1__PolicyPtrType GoogleIamV1__PolicyArgs
 
-func GoogleIamV1__PolicyTypePtr(v *GoogleIamV1__PolicyTypeArgs) GoogleIamV1__PolicyTypePtrInput {
-	return (*googleIamV1__PolicyTypePtrType)(v)
+func GoogleIamV1__PolicyPtr(v *GoogleIamV1__PolicyArgs) GoogleIamV1__PolicyPtrInput {
+	return (*googleIamV1__PolicyPtrType)(v)
 }
 
-func (*googleIamV1__PolicyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleIamV1__PolicyType)(nil)).Elem()
+func (*googleIamV1__PolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamV1__Policy)(nil)).Elem()
 }
 
-func (i *googleIamV1__PolicyTypePtrType) ToGoogleIamV1__PolicyTypePtrOutput() GoogleIamV1__PolicyTypePtrOutput {
-	return i.ToGoogleIamV1__PolicyTypePtrOutputWithContext(context.Background())
+func (i *googleIamV1__PolicyPtrType) ToGoogleIamV1__PolicyPtrOutput() GoogleIamV1__PolicyPtrOutput {
+	return i.ToGoogleIamV1__PolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *googleIamV1__PolicyTypePtrType) ToGoogleIamV1__PolicyTypePtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__PolicyTypePtrOutput)
+func (i *googleIamV1__PolicyPtrType) ToGoogleIamV1__PolicyPtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1__PolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type GoogleIamV1__PolicyTypeOutput struct{ *pulumi.OutputState }
+type GoogleIamV1__PolicyOutput struct{ *pulumi.OutputState }
 
-func (GoogleIamV1__PolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1__PolicyType)(nil)).Elem()
+func (GoogleIamV1__PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1__Policy)(nil)).Elem()
 }
 
-func (o GoogleIamV1__PolicyTypeOutput) ToGoogleIamV1__PolicyTypeOutput() GoogleIamV1__PolicyTypeOutput {
+func (o GoogleIamV1__PolicyOutput) ToGoogleIamV1__PolicyOutput() GoogleIamV1__PolicyOutput {
 	return o
 }
 
-func (o GoogleIamV1__PolicyTypeOutput) ToGoogleIamV1__PolicyTypeOutputWithContext(ctx context.Context) GoogleIamV1__PolicyTypeOutput {
+func (o GoogleIamV1__PolicyOutput) ToGoogleIamV1__PolicyOutputWithContext(ctx context.Context) GoogleIamV1__PolicyOutput {
 	return o
 }
 
-func (o GoogleIamV1__PolicyTypeOutput) ToGoogleIamV1__PolicyTypePtrOutput() GoogleIamV1__PolicyTypePtrOutput {
-	return o.ToGoogleIamV1__PolicyTypePtrOutputWithContext(context.Background())
+func (o GoogleIamV1__PolicyOutput) ToGoogleIamV1__PolicyPtrOutput() GoogleIamV1__PolicyPtrOutput {
+	return o.ToGoogleIamV1__PolicyPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleIamV1__PolicyTypeOutput) ToGoogleIamV1__PolicyTypePtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyTypePtrOutput {
-	return o.ApplyT(func(v GoogleIamV1__PolicyType) *GoogleIamV1__PolicyType {
+func (o GoogleIamV1__PolicyOutput) ToGoogleIamV1__PolicyPtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1__Policy) *GoogleIamV1__Policy {
 		return &v
-	}).(GoogleIamV1__PolicyTypePtrOutput)
+	}).(GoogleIamV1__PolicyPtrOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o GoogleIamV1__PolicyTypeOutput) AuditConfigs() GoogleIamV1__AuditConfigArrayOutput {
-	return o.ApplyT(func(v GoogleIamV1__PolicyType) []GoogleIamV1__AuditConfig { return v.AuditConfigs }).(GoogleIamV1__AuditConfigArrayOutput)
+func (o GoogleIamV1__PolicyOutput) AuditConfigs() GoogleIamV1__AuditConfigArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1__Policy) []GoogleIamV1__AuditConfig { return v.AuditConfigs }).(GoogleIamV1__AuditConfigArrayOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o GoogleIamV1__PolicyTypeOutput) Bindings() GoogleIamV1__BindingArrayOutput {
-	return o.ApplyT(func(v GoogleIamV1__PolicyType) []GoogleIamV1__Binding { return v.Bindings }).(GoogleIamV1__BindingArrayOutput)
+func (o GoogleIamV1__PolicyOutput) Bindings() GoogleIamV1__BindingArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1__Policy) []GoogleIamV1__Binding { return v.Bindings }).(GoogleIamV1__BindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o GoogleIamV1__PolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleIamV1__PolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GoogleIamV1__PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1__Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o GoogleIamV1__PolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleIamV1__PolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o GoogleIamV1__PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1__Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type GoogleIamV1__PolicyTypePtrOutput struct{ *pulumi.OutputState }
+type GoogleIamV1__PolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleIamV1__PolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleIamV1__PolicyType)(nil)).Elem()
+func (GoogleIamV1__PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamV1__Policy)(nil)).Elem()
 }
 
-func (o GoogleIamV1__PolicyTypePtrOutput) ToGoogleIamV1__PolicyTypePtrOutput() GoogleIamV1__PolicyTypePtrOutput {
+func (o GoogleIamV1__PolicyPtrOutput) ToGoogleIamV1__PolicyPtrOutput() GoogleIamV1__PolicyPtrOutput {
 	return o
 }
 
-func (o GoogleIamV1__PolicyTypePtrOutput) ToGoogleIamV1__PolicyTypePtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyTypePtrOutput {
+func (o GoogleIamV1__PolicyPtrOutput) ToGoogleIamV1__PolicyPtrOutputWithContext(ctx context.Context) GoogleIamV1__PolicyPtrOutput {
 	return o
 }
 
-func (o GoogleIamV1__PolicyTypePtrOutput) Elem() GoogleIamV1__PolicyTypeOutput {
-	return o.ApplyT(func(v *GoogleIamV1__PolicyType) GoogleIamV1__PolicyType { return *v }).(GoogleIamV1__PolicyTypeOutput)
+func (o GoogleIamV1__PolicyPtrOutput) Elem() GoogleIamV1__PolicyOutput {
+	return o.ApplyT(func(v *GoogleIamV1__Policy) GoogleIamV1__Policy { return *v }).(GoogleIamV1__PolicyOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o GoogleIamV1__PolicyTypePtrOutput) AuditConfigs() GoogleIamV1__AuditConfigArrayOutput {
-	return o.ApplyT(func(v *GoogleIamV1__PolicyType) []GoogleIamV1__AuditConfig {
+func (o GoogleIamV1__PolicyPtrOutput) AuditConfigs() GoogleIamV1__AuditConfigArrayOutput {
+	return o.ApplyT(func(v *GoogleIamV1__Policy) []GoogleIamV1__AuditConfig {
 		if v == nil {
 			return nil
 		}
@@ -8399,8 +8399,8 @@ func (o GoogleIamV1__PolicyTypePtrOutput) AuditConfigs() GoogleIamV1__AuditConfi
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o GoogleIamV1__PolicyTypePtrOutput) Bindings() GoogleIamV1__BindingArrayOutput {
-	return o.ApplyT(func(v *GoogleIamV1__PolicyType) []GoogleIamV1__Binding {
+func (o GoogleIamV1__PolicyPtrOutput) Bindings() GoogleIamV1__BindingArrayOutput {
+	return o.ApplyT(func(v *GoogleIamV1__Policy) []GoogleIamV1__Binding {
 		if v == nil {
 			return nil
 		}
@@ -8409,8 +8409,8 @@ func (o GoogleIamV1__PolicyTypePtrOutput) Bindings() GoogleIamV1__BindingArrayOu
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o GoogleIamV1__PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleIamV1__PolicyType) *string {
+func (o GoogleIamV1__PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleIamV1__Policy) *string {
 		if v == nil {
 			return nil
 		}
@@ -8419,8 +8419,8 @@ func (o GoogleIamV1__PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o GoogleIamV1__PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleIamV1__PolicyType) *int {
+func (o GoogleIamV1__PolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleIamV1__Policy) *int {
 		if v == nil {
 			return nil
 		}
@@ -8714,8 +8714,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleIamV1__AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1__BindingOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1__BindingArrayOutput{})
-	pulumi.RegisterOutputType(GoogleIamV1__PolicyTypeOutput{})
-	pulumi.RegisterOutputType(GoogleIamV1__PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1__PolicyOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1__PolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleType__ExprOutput{})
 	pulumi.RegisterOutputType(GoogleType__ExprPtrOutput{})
 }

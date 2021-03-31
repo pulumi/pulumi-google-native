@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .connectivity_test import *
-from .policy import *
+from .connectivity_test_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:networkmanagement/v1beta1:ConnectivityTest":
                 return ConnectivityTest(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:networkmanagement/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:networkmanagement/v1beta1:ConnectivityTestIamPolicy":
+                return ConnectivityTestIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -23,8 +23,14 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.ServicesId == nil {
+		return nil, errors.New("invalid value for required argument 'ServicesId'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("google-cloud:run/v1alpha1:Service", name, args, &resource, opts...)
@@ -61,11 +67,12 @@ type serviceArgs struct {
 	// The API version for this call such as "serving.knative.dev/v1alpha1".
 	ApiVersion *string `pulumi:"apiVersion"`
 	// The kind of resource, in this case "Service".
-	Kind *string `pulumi:"kind"`
+	Kind        *string `pulumi:"kind"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Metadata associated with this Service, including name, namespace, labels, and annotations.
-	Metadata *ObjectMeta `pulumi:"metadata"`
-	// The project ID or project number in which this service should be created.
-	Parent string `pulumi:"parent"`
+	Metadata   *ObjectMeta `pulumi:"metadata"`
+	ProjectsId string      `pulumi:"projectsId"`
+	ServicesId string      `pulumi:"servicesId"`
 	// Spec holds the desired state of the Service (from the client).
 	Spec *ServiceSpec `pulumi:"spec"`
 	// Status communicates the observed state of the Service (from the controller).
@@ -77,11 +84,12 @@ type ServiceArgs struct {
 	// The API version for this call such as "serving.knative.dev/v1alpha1".
 	ApiVersion pulumi.StringPtrInput
 	// The kind of resource, in this case "Service".
-	Kind pulumi.StringPtrInput
+	Kind        pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Metadata associated with this Service, including name, namespace, labels, and annotations.
-	Metadata ObjectMetaPtrInput
-	// The project ID or project number in which this service should be created.
-	Parent pulumi.StringInput
+	Metadata   ObjectMetaPtrInput
+	ProjectsId pulumi.StringInput
+	ServicesId pulumi.StringInput
 	// Spec holds the desired state of the Service (from the client).
 	Spec ServiceSpecPtrInput
 	// Status communicates the observed state of the Service (from the controller).

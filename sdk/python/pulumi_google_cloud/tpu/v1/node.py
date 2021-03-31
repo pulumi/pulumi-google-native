@@ -24,12 +24,13 @@ class Node(pulumi.CustomResource):
                  health_description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointArgs']]]]] = None,
-                 node_id: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 nodes_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -55,8 +56,6 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. Immutable. The name of the TPU
         :param pulumi.Input[str] network: The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkEndpointArgs']]]] network_endpoints: Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
-        :param pulumi.Input[str] node_id: The unqualified resource name.
-        :param pulumi.Input[str] parent: Required. The parent resource name.
         :param pulumi.Input[str] port: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
         :param pulumi.Input[str] service_account: Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -90,14 +89,19 @@ class Node(pulumi.CustomResource):
             __props__['health_description'] = health_description
             __props__['ip_address'] = ip_address
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             __props__['network'] = network
             __props__['network_endpoints'] = network_endpoints
-            __props__['node_id'] = node_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if nodes_id is None and not opts.urn:
+                raise TypeError("Missing required property 'nodes_id'")
+            __props__['nodes_id'] = nodes_id
             __props__['port'] = port
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['scheduling_config'] = scheduling_config
             __props__['service_account'] = service_account
             __props__['state'] = state

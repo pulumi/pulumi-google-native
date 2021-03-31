@@ -49,6 +49,9 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
+            if ((!args || args.entity === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entity'");
+            }
             if ((!args || args.object === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'object'");
             }
@@ -63,10 +66,8 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["object"] = args ? args.object : undefined;
             inputs["projectTeam"] = args ? args.projectTeam : undefined;
-            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
         }
         if (!opts.version) {
@@ -106,7 +107,7 @@ export interface ObjectAccessControlArgs {
      * - The group example@googlegroups.com would be group-example@googlegroups.com. 
      * - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
      */
-    readonly entity?: pulumi.Input<string>;
+    readonly entity: pulumi.Input<string>;
     /**
      * The ID for the entity, if any.
      */
@@ -136,10 +137,6 @@ export interface ObjectAccessControlArgs {
      */
     readonly projectTeam?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    readonly provisionalUserProject?: pulumi.Input<string>;
-    /**
      * The access permission for the entity.
      */
     readonly role?: pulumi.Input<string>;
@@ -147,8 +144,4 @@ export interface ObjectAccessControlArgs {
      * The link to this access-control entry.
      */
     readonly selfLink?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request. Required for Requester Pays buckets.
-     */
-    readonly userProject?: pulumi.Input<string>;
 }

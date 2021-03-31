@@ -8,7 +8,7 @@ import * as utilities from "../../utilities";
 /**
  * Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
  *
- * A regional managed instance group can contain up to 2000 instances.
+ * A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
  */
 export class InstanceGroupManager extends pulumi.CustomResource {
     /**
@@ -49,11 +49,14 @@ export class InstanceGroupManager extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceGroupManager'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
@@ -65,13 +68,13 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["instanceGroup"] = args ? args.instanceGroup : undefined;
+            inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
             inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namedPorts"] = args ? args.namedPorts : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
@@ -136,6 +139,7 @@ export interface InstanceGroupManagerArgs {
      * [Output Only] The URL of the Instance Group resource.
      */
     readonly instanceGroup?: pulumi.Input<string>;
+    readonly instanceGroupManager: pulumi.Input<string>;
     /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
@@ -152,22 +156,11 @@ export interface InstanceGroupManagerArgs {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPort>[]>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output Only] The URL for this managed instance group. The server defines this URL.
      */
@@ -205,5 +198,5 @@ export interface InstanceGroupManagerArgs {
     /**
      * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

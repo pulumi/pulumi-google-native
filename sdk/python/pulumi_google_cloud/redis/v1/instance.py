@@ -24,14 +24,15 @@ class Instance(pulumi.CustomResource):
                  current_location_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  persistence_iam_identity: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  redis_version: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
@@ -56,12 +57,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] current_location_id: Output only. The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[str] host: Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
-        :param pulumi.Input[str] instance_id: Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location_id: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
         :param pulumi.Input[int] memory_size_gb: Required. Redis memory size in GiB.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
-        :param pulumi.Input[str] parent: Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
         :param pulumi.Input[int] port: Output only. The port number of the exposed Redis endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
@@ -98,16 +97,21 @@ class Instance(pulumi.CustomResource):
             __props__['current_location_id'] = current_location_id
             __props__['display_name'] = display_name
             __props__['host'] = host
-            __props__['instance_id'] = instance_id
+            if instances_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instances_id'")
+            __props__['instances_id'] = instances_id
             __props__['labels'] = labels
             __props__['location_id'] = location_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['memory_size_gb'] = memory_size_gb
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['persistence_iam_identity'] = persistence_iam_identity
             __props__['port'] = port
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['redis_configs'] = redis_configs
             __props__['redis_version'] = redis_version
             __props__['reserved_ip_range'] = reserved_ip_range

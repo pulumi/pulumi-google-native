@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
 
     public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("autoscalingPoliciesId", required: true)]
+        public Input<string> AutoscalingPoliciesId { get; set; } = null!;
+
         [Input("basicAlgorithm")]
         public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
 
@@ -68,17 +71,17 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource name has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.create, the resource name has the following format: projects/{project_id}/locations/{location}
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Describes how the autoscaler will operate for secondary workers.

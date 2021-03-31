@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TagValue(string name, TagValueArgs? args = null, CustomResourceOptions? options = null)
+        public TagValue(string name, TagValueArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudresourcemanager/v3:TagValue", name, args ?? new TagValueArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -101,17 +101,14 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }
 
+        [Input("tagValuesId", required: true)]
+        public Input<string> TagValuesId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Update time.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public TagValueArgs()
         {

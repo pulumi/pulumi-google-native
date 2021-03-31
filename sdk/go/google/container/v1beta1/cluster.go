@@ -23,6 +23,9 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -62,7 +65,8 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1beta1/projects.locations.clusters)
-	Cluster *ClusterType `pulumi:"cluster"`
+	Cluster   *ClusterType `pulumi:"cluster"`
+	ClusterId string       `pulumi:"clusterId"`
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
 	Parent *string `pulumi:"parent"`
 	// Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
@@ -74,7 +78,8 @@ type clusterArgs struct {
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1beta1/projects.locations.clusters)
-	Cluster ClusterTypePtrInput
+	Cluster   ClusterTypePtrInput
+	ClusterId pulumi.StringInput
 	// The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
 	Parent pulumi.StringPtrInput
 	// Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.

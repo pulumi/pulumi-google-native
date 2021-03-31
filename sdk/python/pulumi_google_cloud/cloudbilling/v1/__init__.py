@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .billing_account import *
-from .policy import *
+from .billing_account_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,8 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:cloudbilling/v1:BillingAccount":
                 return BillingAccount(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudbilling/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudbilling/v1:BillingAccountIamPolicy":
+                return BillingAccountIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

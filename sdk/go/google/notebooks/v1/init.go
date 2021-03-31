@@ -27,8 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewExecution(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:notebooks/v1:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:notebooks/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:notebooks/v1:InstanceIamPolicy":
+		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:notebooks/v1:Schedule":
 		r, err = NewSchedule(ctx, name, nil, pulumi.URN_(urn))
 	default:

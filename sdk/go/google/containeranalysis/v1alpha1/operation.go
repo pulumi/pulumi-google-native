@@ -23,8 +23,8 @@ func NewOperation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Operation
 	err := ctx.RegisterResource("google-cloud:containeranalysis/v1alpha1:Operation", name, args, &resource, opts...)
@@ -62,8 +62,7 @@ type operationArgs struct {
 	Operation *OperationType `pulumi:"operation"`
 	// The ID to use for this operation.
 	OperationId *string `pulumi:"operationId"`
-	// The project Id that this operation should be created under.
-	Parent string `pulumi:"parent"`
+	ProjectsId  string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Operation resource.
@@ -72,8 +71,7 @@ type OperationArgs struct {
 	Operation OperationTypePtrInput
 	// The ID to use for this operation.
 	OperationId pulumi.StringPtrInput
-	// The project Id that this operation should be created under.
-	Parent pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 }
 
 func (OperationArgs) ElementType() reflect.Type {

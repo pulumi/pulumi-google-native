@@ -29,6 +29,7 @@ class TypeProvider(pulumi.CustomResource):
                  options: Optional[pulumi.Input[pulumi.InputType['OptionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 type_provider: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -48,7 +49,6 @@ class TypeProvider(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: Output only. The Operation that most recently ran, or is currently running, on this type provider.
         :param pulumi.Input[pulumi.InputType['OptionsArgs']] options: Options to apply when handling any resources in this service.
-        :param pulumi.Input[str] project: The project ID for this request.
         :param pulumi.Input[str] self_link: Output only. Self link for the type provider.
         """
         if __name__ is not None:
@@ -83,6 +83,9 @@ class TypeProvider(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['self_link'] = self_link
+            if type_provider is None and not opts.urn:
+                raise TypeError("Missing required property 'type_provider'")
+            __props__['type_provider'] = type_provider
         super(TypeProvider, __self__).__init__(
             'google-cloud:deploymentmanager/v2beta:TypeProvider',
             resource_name,

@@ -77,17 +77,17 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The resource name of the pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource to create the pool in. The only supported location is `global`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The state of the pool.
@@ -95,11 +95,8 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        /// <summary>
-        /// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        /// </summary>
-        [Input("workloadIdentityPoolId")]
-        public Input<string>? WorkloadIdentityPoolId { get; set; }
+        [Input("workloadIdentityPoolsId", required: true)]
+        public Input<string> WorkloadIdentityPoolsId { get; set; } = null!;
 
         public WorkloadIdentityPoolArgs()
         {

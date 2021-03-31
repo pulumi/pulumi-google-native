@@ -25,13 +25,13 @@ class InstanceGroupManager(pulumi.CustomResource):
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 instance_group_manager: Optional[pulumi.Input[str]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']]] = None,
@@ -46,7 +46,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         """
         Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
 
-        A regional managed instance group can contain up to 2000 instances.
+        A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -65,13 +65,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] The URL for this managed instance group. The server defines this URL.
         :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStatusArgs']] status: [Output Only] The status of this managed instance group.
@@ -109,6 +103,9 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['fingerprint'] = fingerprint
             __props__['id'] = id
             __props__['instance_group'] = instance_group
+            if instance_group_manager is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_group_manager'")
+            __props__['instance_group_manager'] = instance_group_manager
             __props__['instance_template'] = instance_template
             __props__['kind'] = kind
             __props__['name'] = name
@@ -116,10 +113,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['stateful_policy'] = stateful_policy
             __props__['status'] = status
@@ -127,6 +121,8 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['target_size'] = target_size
             __props__['update_policy'] = update_policy
             __props__['versions'] = versions
+            if zone is None and not opts.urn:
+                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(InstanceGroupManager, __self__).__init__(
             'google-cloud:compute/v1:InstanceGroupManager',

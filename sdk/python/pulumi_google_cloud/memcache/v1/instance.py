@@ -20,9 +20,10 @@ class Instance(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  discovery_endpoint: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  memcache_full_version: Optional[pulumi.Input[str]] = None,
                  memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeArgs']]]]] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
@@ -30,7 +31,7 @@ class Instance(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -46,7 +47,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time the instance was created.
         :param pulumi.Input[str] discovery_endpoint: Output only. Endpoint for the Discovery API.
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
-        :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] memcache_full_version: Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
@@ -56,7 +56,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Required. Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
         :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: Optional: User defined parameters to apply to the memcached process on each node.
-        :param pulumi.Input[str] parent: Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
         :param pulumi.Input[str] state: Output only. The state of this Memcached instance.
         :param pulumi.Input[str] update_time: Output only. The time the instance was updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
@@ -82,9 +81,14 @@ class Instance(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['discovery_endpoint'] = discovery_endpoint
             __props__['display_name'] = display_name
-            __props__['instance_id'] = instance_id
             __props__['instance_messages'] = instance_messages
+            if instances_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instances_id'")
+            __props__['instances_id'] = instances_id
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['memcache_full_version'] = memcache_full_version
             __props__['memcache_nodes'] = memcache_nodes
             __props__['memcache_version'] = memcache_version
@@ -92,9 +96,9 @@ class Instance(pulumi.CustomResource):
             __props__['node_config'] = node_config
             __props__['node_count'] = node_count
             __props__['parameters'] = parameters
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['state'] = state
             __props__['update_time'] = update_time
             __props__['zones'] = zones

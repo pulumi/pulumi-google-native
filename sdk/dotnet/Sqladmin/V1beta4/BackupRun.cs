@@ -104,8 +104,8 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
         /// <summary>
         /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// Name of the database instance.
@@ -125,9 +125,6 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        /// <summary>
-        /// Project ID of the project that contains the instance.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

@@ -247,6 +247,31 @@ func (i ApigatewayApiConfigGrpcServiceDefinitionArgs) ToApigatewayApiConfigGrpcS
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionOutput)
 }
 
+// ApigatewayApiConfigGrpcServiceDefinitionArrayInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionArray and ApigatewayApiConfigGrpcServiceDefinitionArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionArrayInput` via:
+//
+//          ApigatewayApiConfigGrpcServiceDefinitionArray{ ApigatewayApiConfigGrpcServiceDefinitionArgs{...} }
+type ApigatewayApiConfigGrpcServiceDefinitionArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigGrpcServiceDefinitionArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionArrayOutput
+	ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput
+}
+
+type ApigatewayApiConfigGrpcServiceDefinitionArray []ApigatewayApiConfigGrpcServiceDefinitionInput
+
+func (ApigatewayApiConfigGrpcServiceDefinitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigGrpcServiceDefinition)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionArray) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return i.ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionArray) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionArrayOutput)
+}
+
 // A gRPC service definition.
 type ApigatewayApiConfigGrpcServiceDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -270,6 +295,26 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) FileDescriptorSet() Apig
 // Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.
 func (o ApigatewayApiConfigGrpcServiceDefinitionOutput) Source() ApigatewayApiConfigFileArrayOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigGrpcServiceDefinition) []ApigatewayApiConfigFile { return v.Source }).(ApigatewayApiConfigFileArrayOutput)
+}
+
+type ApigatewayApiConfigGrpcServiceDefinitionArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigGrpcServiceDefinition)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigGrpcServiceDefinitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigGrpcServiceDefinition {
+		return vs[0].([]ApigatewayApiConfigGrpcServiceDefinition)[vs[1].(int)]
+	}).(ApigatewayApiConfigGrpcServiceDefinitionOutput)
 }
 
 // An OpenAPI Specification Document describing an API.
@@ -307,6 +352,31 @@ func (i ApigatewayApiConfigOpenApiDocumentArgs) ToApigatewayApiConfigOpenApiDocu
 	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentOutput)
 }
 
+// ApigatewayApiConfigOpenApiDocumentArrayInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentArray and ApigatewayApiConfigOpenApiDocumentArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentArrayInput` via:
+//
+//          ApigatewayApiConfigOpenApiDocumentArray{ ApigatewayApiConfigOpenApiDocumentArgs{...} }
+type ApigatewayApiConfigOpenApiDocumentArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigOpenApiDocumentArrayOutput() ApigatewayApiConfigOpenApiDocumentArrayOutput
+	ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput
+}
+
+type ApigatewayApiConfigOpenApiDocumentArray []ApigatewayApiConfigOpenApiDocumentInput
+
+func (ApigatewayApiConfigOpenApiDocumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigOpenApiDocument)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentArray) ToApigatewayApiConfigOpenApiDocumentArrayOutput() ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return i.ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentArray) ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentArrayOutput)
+}
+
 // An OpenAPI Specification Document describing an API.
 type ApigatewayApiConfigOpenApiDocumentOutput struct{ *pulumi.OutputState }
 
@@ -325,6 +395,26 @@ func (o ApigatewayApiConfigOpenApiDocumentOutput) ToApigatewayApiConfigOpenApiDo
 // The OpenAPI Specification document file.
 func (o ApigatewayApiConfigOpenApiDocumentOutput) Document() ApigatewayApiConfigFilePtrOutput {
 	return o.ApplyT(func(v ApigatewayApiConfigOpenApiDocument) *ApigatewayApiConfigFile { return v.Document }).(ApigatewayApiConfigFilePtrOutput)
+}
+
+type ApigatewayApiConfigOpenApiDocumentArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigOpenApiDocumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigOpenApiDocument)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToApigatewayApiConfigOpenApiDocumentArrayOutput() ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) ToApigatewayApiConfigOpenApiDocumentArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigOpenApiDocumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigOpenApiDocument {
+		return vs[0].([]ApigatewayApiConfigOpenApiDocument)[vs[1].(int)]
+	}).(ApigatewayApiConfigOpenApiDocumentOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -855,7 +945,7 @@ func (o ApigatewayExprPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type ApigatewayPolicyType struct {
+type ApigatewayPolicy struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []ApigatewayAuditConfig `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -866,19 +956,19 @@ type ApigatewayPolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// ApigatewayPolicyTypeInput is an input type that accepts ApigatewayPolicyTypeArgs and ApigatewayPolicyTypeOutput values.
-// You can construct a concrete instance of `ApigatewayPolicyTypeInput` via:
+// ApigatewayPolicyInput is an input type that accepts ApigatewayPolicyArgs and ApigatewayPolicyOutput values.
+// You can construct a concrete instance of `ApigatewayPolicyInput` via:
 //
-//          ApigatewayPolicyTypeArgs{...}
-type ApigatewayPolicyTypeInput interface {
+//          ApigatewayPolicyArgs{...}
+type ApigatewayPolicyInput interface {
 	pulumi.Input
 
-	ToApigatewayPolicyTypeOutput() ApigatewayPolicyTypeOutput
-	ToApigatewayPolicyTypeOutputWithContext(context.Context) ApigatewayPolicyTypeOutput
+	ToApigatewayPolicyOutput() ApigatewayPolicyOutput
+	ToApigatewayPolicyOutputWithContext(context.Context) ApigatewayPolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type ApigatewayPolicyTypeArgs struct {
+type ApigatewayPolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs ApigatewayAuditConfigArrayInput `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -889,125 +979,125 @@ type ApigatewayPolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (ApigatewayPolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApigatewayPolicyType)(nil)).Elem()
+func (ApigatewayPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayPolicy)(nil)).Elem()
 }
 
-func (i ApigatewayPolicyTypeArgs) ToApigatewayPolicyTypeOutput() ApigatewayPolicyTypeOutput {
-	return i.ToApigatewayPolicyTypeOutputWithContext(context.Background())
+func (i ApigatewayPolicyArgs) ToApigatewayPolicyOutput() ApigatewayPolicyOutput {
+	return i.ToApigatewayPolicyOutputWithContext(context.Background())
 }
 
-func (i ApigatewayPolicyTypeArgs) ToApigatewayPolicyTypeOutputWithContext(ctx context.Context) ApigatewayPolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayPolicyTypeOutput)
+func (i ApigatewayPolicyArgs) ToApigatewayPolicyOutputWithContext(ctx context.Context) ApigatewayPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayPolicyOutput)
 }
 
-func (i ApigatewayPolicyTypeArgs) ToApigatewayPolicyTypePtrOutput() ApigatewayPolicyTypePtrOutput {
-	return i.ToApigatewayPolicyTypePtrOutputWithContext(context.Background())
+func (i ApigatewayPolicyArgs) ToApigatewayPolicyPtrOutput() ApigatewayPolicyPtrOutput {
+	return i.ToApigatewayPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i ApigatewayPolicyTypeArgs) ToApigatewayPolicyTypePtrOutputWithContext(ctx context.Context) ApigatewayPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayPolicyTypeOutput).ToApigatewayPolicyTypePtrOutputWithContext(ctx)
+func (i ApigatewayPolicyArgs) ToApigatewayPolicyPtrOutputWithContext(ctx context.Context) ApigatewayPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayPolicyOutput).ToApigatewayPolicyPtrOutputWithContext(ctx)
 }
 
-// ApigatewayPolicyTypePtrInput is an input type that accepts ApigatewayPolicyTypeArgs, ApigatewayPolicyTypePtr and ApigatewayPolicyTypePtrOutput values.
-// You can construct a concrete instance of `ApigatewayPolicyTypePtrInput` via:
+// ApigatewayPolicyPtrInput is an input type that accepts ApigatewayPolicyArgs, ApigatewayPolicyPtr and ApigatewayPolicyPtrOutput values.
+// You can construct a concrete instance of `ApigatewayPolicyPtrInput` via:
 //
-//          ApigatewayPolicyTypeArgs{...}
+//          ApigatewayPolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type ApigatewayPolicyTypePtrInput interface {
+type ApigatewayPolicyPtrInput interface {
 	pulumi.Input
 
-	ToApigatewayPolicyTypePtrOutput() ApigatewayPolicyTypePtrOutput
-	ToApigatewayPolicyTypePtrOutputWithContext(context.Context) ApigatewayPolicyTypePtrOutput
+	ToApigatewayPolicyPtrOutput() ApigatewayPolicyPtrOutput
+	ToApigatewayPolicyPtrOutputWithContext(context.Context) ApigatewayPolicyPtrOutput
 }
 
-type apigatewayPolicyTypePtrType ApigatewayPolicyTypeArgs
+type apigatewayPolicyPtrType ApigatewayPolicyArgs
 
-func ApigatewayPolicyTypePtr(v *ApigatewayPolicyTypeArgs) ApigatewayPolicyTypePtrInput {
-	return (*apigatewayPolicyTypePtrType)(v)
+func ApigatewayPolicyPtr(v *ApigatewayPolicyArgs) ApigatewayPolicyPtrInput {
+	return (*apigatewayPolicyPtrType)(v)
 }
 
-func (*apigatewayPolicyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApigatewayPolicyType)(nil)).Elem()
+func (*apigatewayPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApigatewayPolicy)(nil)).Elem()
 }
 
-func (i *apigatewayPolicyTypePtrType) ToApigatewayPolicyTypePtrOutput() ApigatewayPolicyTypePtrOutput {
-	return i.ToApigatewayPolicyTypePtrOutputWithContext(context.Background())
+func (i *apigatewayPolicyPtrType) ToApigatewayPolicyPtrOutput() ApigatewayPolicyPtrOutput {
+	return i.ToApigatewayPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *apigatewayPolicyTypePtrType) ToApigatewayPolicyTypePtrOutputWithContext(ctx context.Context) ApigatewayPolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayPolicyTypePtrOutput)
+func (i *apigatewayPolicyPtrType) ToApigatewayPolicyPtrOutputWithContext(ctx context.Context) ApigatewayPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayPolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type ApigatewayPolicyTypeOutput struct{ *pulumi.OutputState }
+type ApigatewayPolicyOutput struct{ *pulumi.OutputState }
 
-func (ApigatewayPolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApigatewayPolicyType)(nil)).Elem()
+func (ApigatewayPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayPolicy)(nil)).Elem()
 }
 
-func (o ApigatewayPolicyTypeOutput) ToApigatewayPolicyTypeOutput() ApigatewayPolicyTypeOutput {
+func (o ApigatewayPolicyOutput) ToApigatewayPolicyOutput() ApigatewayPolicyOutput {
 	return o
 }
 
-func (o ApigatewayPolicyTypeOutput) ToApigatewayPolicyTypeOutputWithContext(ctx context.Context) ApigatewayPolicyTypeOutput {
+func (o ApigatewayPolicyOutput) ToApigatewayPolicyOutputWithContext(ctx context.Context) ApigatewayPolicyOutput {
 	return o
 }
 
-func (o ApigatewayPolicyTypeOutput) ToApigatewayPolicyTypePtrOutput() ApigatewayPolicyTypePtrOutput {
-	return o.ToApigatewayPolicyTypePtrOutputWithContext(context.Background())
+func (o ApigatewayPolicyOutput) ToApigatewayPolicyPtrOutput() ApigatewayPolicyPtrOutput {
+	return o.ToApigatewayPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o ApigatewayPolicyTypeOutput) ToApigatewayPolicyTypePtrOutputWithContext(ctx context.Context) ApigatewayPolicyTypePtrOutput {
-	return o.ApplyT(func(v ApigatewayPolicyType) *ApigatewayPolicyType {
+func (o ApigatewayPolicyOutput) ToApigatewayPolicyPtrOutputWithContext(ctx context.Context) ApigatewayPolicyPtrOutput {
+	return o.ApplyT(func(v ApigatewayPolicy) *ApigatewayPolicy {
 		return &v
-	}).(ApigatewayPolicyTypePtrOutput)
+	}).(ApigatewayPolicyPtrOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o ApigatewayPolicyTypeOutput) AuditConfigs() ApigatewayAuditConfigArrayOutput {
-	return o.ApplyT(func(v ApigatewayPolicyType) []ApigatewayAuditConfig { return v.AuditConfigs }).(ApigatewayAuditConfigArrayOutput)
+func (o ApigatewayPolicyOutput) AuditConfigs() ApigatewayAuditConfigArrayOutput {
+	return o.ApplyT(func(v ApigatewayPolicy) []ApigatewayAuditConfig { return v.AuditConfigs }).(ApigatewayAuditConfigArrayOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o ApigatewayPolicyTypeOutput) Bindings() ApigatewayBindingArrayOutput {
-	return o.ApplyT(func(v ApigatewayPolicyType) []ApigatewayBinding { return v.Bindings }).(ApigatewayBindingArrayOutput)
+func (o ApigatewayPolicyOutput) Bindings() ApigatewayBindingArrayOutput {
+	return o.ApplyT(func(v ApigatewayPolicy) []ApigatewayBinding { return v.Bindings }).(ApigatewayBindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o ApigatewayPolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApigatewayPolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o ApigatewayPolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApigatewayPolicy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o ApigatewayPolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApigatewayPolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o ApigatewayPolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApigatewayPolicy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type ApigatewayPolicyTypePtrOutput struct{ *pulumi.OutputState }
+type ApigatewayPolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (ApigatewayPolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApigatewayPolicyType)(nil)).Elem()
+func (ApigatewayPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApigatewayPolicy)(nil)).Elem()
 }
 
-func (o ApigatewayPolicyTypePtrOutput) ToApigatewayPolicyTypePtrOutput() ApigatewayPolicyTypePtrOutput {
+func (o ApigatewayPolicyPtrOutput) ToApigatewayPolicyPtrOutput() ApigatewayPolicyPtrOutput {
 	return o
 }
 
-func (o ApigatewayPolicyTypePtrOutput) ToApigatewayPolicyTypePtrOutputWithContext(ctx context.Context) ApigatewayPolicyTypePtrOutput {
+func (o ApigatewayPolicyPtrOutput) ToApigatewayPolicyPtrOutputWithContext(ctx context.Context) ApigatewayPolicyPtrOutput {
 	return o
 }
 
-func (o ApigatewayPolicyTypePtrOutput) Elem() ApigatewayPolicyTypeOutput {
-	return o.ApplyT(func(v *ApigatewayPolicyType) ApigatewayPolicyType { return *v }).(ApigatewayPolicyTypeOutput)
+func (o ApigatewayPolicyPtrOutput) Elem() ApigatewayPolicyOutput {
+	return o.ApplyT(func(v *ApigatewayPolicy) ApigatewayPolicy { return *v }).(ApigatewayPolicyOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o ApigatewayPolicyTypePtrOutput) AuditConfigs() ApigatewayAuditConfigArrayOutput {
-	return o.ApplyT(func(v *ApigatewayPolicyType) []ApigatewayAuditConfig {
+func (o ApigatewayPolicyPtrOutput) AuditConfigs() ApigatewayAuditConfigArrayOutput {
+	return o.ApplyT(func(v *ApigatewayPolicy) []ApigatewayAuditConfig {
 		if v == nil {
 			return nil
 		}
@@ -1016,8 +1106,8 @@ func (o ApigatewayPolicyTypePtrOutput) AuditConfigs() ApigatewayAuditConfigArray
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o ApigatewayPolicyTypePtrOutput) Bindings() ApigatewayBindingArrayOutput {
-	return o.ApplyT(func(v *ApigatewayPolicyType) []ApigatewayBinding {
+func (o ApigatewayPolicyPtrOutput) Bindings() ApigatewayBindingArrayOutput {
+	return o.ApplyT(func(v *ApigatewayPolicy) []ApigatewayBinding {
 		if v == nil {
 			return nil
 		}
@@ -1026,8 +1116,8 @@ func (o ApigatewayPolicyTypePtrOutput) Bindings() ApigatewayBindingArrayOutput {
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o ApigatewayPolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApigatewayPolicyType) *string {
+func (o ApigatewayPolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApigatewayPolicy) *string {
 		if v == nil {
 			return nil
 		}
@@ -1036,8 +1126,8 @@ func (o ApigatewayPolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o ApigatewayPolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ApigatewayPolicyType) *int {
+func (o ApigatewayPolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApigatewayPolicy) *int {
 		if v == nil {
 			return nil
 		}
@@ -1050,7 +1140,9 @@ func init() {
 	pulumi.RegisterOutputType(ApigatewayApiConfigFilePtrOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigFileArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditConfigOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditLogConfigOutput{})
@@ -1059,6 +1151,6 @@ func init() {
 	pulumi.RegisterOutputType(ApigatewayBindingArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayExprOutput{})
 	pulumi.RegisterOutputType(ApigatewayExprPtrOutput{})
-	pulumi.RegisterOutputType(ApigatewayPolicyTypeOutput{})
-	pulumi.RegisterOutputType(ApigatewayPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(ApigatewayPolicyOutput{})
+	pulumi.RegisterOutputType(ApigatewayPolicyPtrOutput{})
 }

@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_longrunning_operation import *
+from .database_index import *
 from ._inputs import *
 
 def _register_module():
@@ -18,8 +18,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:firestore/v1beta1:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:firestore/v1beta1:DatabaseIndex":
+                return DatabaseIndex(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

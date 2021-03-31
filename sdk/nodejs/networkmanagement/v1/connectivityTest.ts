@@ -47,21 +47,24 @@ export class ConnectivityTest extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.connectivityTestsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectivityTestsId'");
             }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["connectivityTestsId"] = args ? args.connectivityTestsId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["reachabilityDetails"] = args ? args.reachabilityDetails : undefined;
             inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             inputs["source"] = args ? args.source : undefined;
-            inputs["testId"] = args ? args.testId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
         }
@@ -76,6 +79,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
  * The set of arguments for constructing a ConnectivityTest resource.
  */
 export interface ConnectivityTestArgs {
+    readonly connectivityTestsId: pulumi.Input<string>;
     /**
      * Output only. The time the test was created.
      */
@@ -100,10 +104,7 @@ export interface ConnectivityTestArgs {
      * Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent resource of the Connectivity Test to create: `projects/{project_id}/locations/global`
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * IP Protocol of the test. When not provided, "TCP" is assumed.
      */
@@ -120,10 +121,6 @@ export interface ConnectivityTestArgs {
      * Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
      */
     readonly source?: pulumi.Input<inputs.networkmanagement.v1.Endpoint>;
-    /**
-     * Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
-     */
-    readonly testId?: pulumi.Input<string>;
     /**
      * Output only. The time the test's configuration was updated.
      */

@@ -23,7 +23,6 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 use_legacy_stack: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,7 +38,6 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceIdArgs']] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
-        :param pulumi.Input[bool] use_legacy_stack: A now unused experiment opt-out option.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,9 +61,10 @@ class Project(pulumi.CustomResource):
             __props__['lifecycle_state'] = lifecycle_state
             __props__['name'] = name
             __props__['parent'] = parent
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['project_number'] = project_number
-            __props__['use_legacy_stack'] = use_legacy_stack
         super(Project, __self__).__init__(
             'google-cloud:cloudresourcemanager/v1beta1:Project',
             resource_name,

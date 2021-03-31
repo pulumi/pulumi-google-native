@@ -21,12 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:cloudchannel/v1:GoogleCloudChannelV1ChannelPartnerLink":
-		r, err = NewGoogleCloudChannelV1ChannelPartnerLink(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudchannel/v1:GoogleCloudChannelV1Customer":
-		r, err = NewGoogleCloudChannelV1Customer(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudchannel/v1:GoogleLongrunningOperation":
-		r, err = NewGoogleLongrunningOperation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudchannel/v1:AccountChannelPartnerLink":
+		r, err = NewAccountChannelPartnerLink(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
+		r, err = NewAccountChannelPartnerLinkCustomer(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudchannel/v1:AccountCustomer":
+		r, err = NewAccountCustomer(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudchannel/v1:AccountCustomerEntitlement":
+		r, err = NewAccountCustomerEntitlement(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

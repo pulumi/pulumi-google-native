@@ -24,9 +24,10 @@ class Service(pulumi.CustomResource):
                  istio_canonical_service: Optional[pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']]] = None,
                  mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None,
+                 services_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
+                 v3_id: Optional[pulumi.Input[str]] = None,
+                 v3_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -43,8 +44,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']] istio_canonical_service: Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
         :param pulumi.Input[pulumi.InputType['MeshIstioArgs']] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
-        :param pulumi.Input[str] parent: Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER] 
-        :param pulumi.Input[str] service_id: Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
         :param pulumi.Input[pulumi.InputType['TelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
         """
         if __name__ is not None:
@@ -72,11 +71,16 @@ class Service(pulumi.CustomResource):
             __props__['istio_canonical_service'] = istio_canonical_service
             __props__['mesh_istio'] = mesh_istio
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['service_id'] = service_id
+            if services_id is None and not opts.urn:
+                raise TypeError("Missing required property 'services_id'")
+            __props__['services_id'] = services_id
             __props__['telemetry'] = telemetry
+            if v3_id is None and not opts.urn:
+                raise TypeError("Missing required property 'v3_id'")
+            __props__['v3_id'] = v3_id
+            if v3_id1 is None and not opts.urn:
+                raise TypeError("Missing required property 'v3_id1'")
+            __props__['v3_id1'] = v3_id1
         super(Service, __self__).__init__(
             'google-cloud:monitoring/v3:Service',
             resource_name,

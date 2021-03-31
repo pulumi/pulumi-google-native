@@ -12,121 +12,129 @@ import (
 )
 
 // Creates a new domain mapping.
-type DomainMapping struct {
+type Domainmapping struct {
 	pulumi.CustomResourceState
 }
 
-// NewDomainMapping registers a new resource with the given unique name, arguments, and options.
-func NewDomainMapping(ctx *pulumi.Context,
-	name string, args *DomainMappingArgs, opts ...pulumi.ResourceOption) (*DomainMapping, error) {
+// NewDomainmapping registers a new resource with the given unique name, arguments, and options.
+func NewDomainmapping(ctx *pulumi.Context,
+	name string, args *DomainmappingArgs, opts ...pulumi.ResourceOption) (*Domainmapping, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.DomainmappingsId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainmappingsId'")
 	}
-	var resource DomainMapping
-	err := ctx.RegisterResource("google-cloud:run/v1alpha1:DomainMapping", name, args, &resource, opts...)
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	var resource Domainmapping
+	err := ctx.RegisterResource("google-cloud:run/v1alpha1:Domainmapping", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetDomainMapping gets an existing DomainMapping resource's state with the given name, ID, and optional
+// GetDomainmapping gets an existing Domainmapping resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetDomainMapping(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *DomainMappingState, opts ...pulumi.ResourceOption) (*DomainMapping, error) {
-	var resource DomainMapping
-	err := ctx.ReadResource("google-cloud:run/v1alpha1:DomainMapping", name, id, state, &resource, opts...)
+func GetDomainmapping(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *DomainmappingState, opts ...pulumi.ResourceOption) (*Domainmapping, error) {
+	var resource Domainmapping
+	err := ctx.ReadResource("google-cloud:run/v1alpha1:Domainmapping", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering DomainMapping resources.
-type domainMappingState struct {
+// Input properties used for looking up and filtering Domainmapping resources.
+type domainmappingState struct {
 }
 
-type DomainMappingState struct {
+type DomainmappingState struct {
 }
 
-func (DomainMappingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*domainMappingState)(nil)).Elem()
+func (DomainmappingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*domainmappingState)(nil)).Elem()
 }
 
-type domainMappingArgs struct {
+type domainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1alpha1".
-	ApiVersion *string `pulumi:"apiVersion"`
+	ApiVersion       *string `pulumi:"apiVersion"`
+	DomainmappingsId string  `pulumi:"domainmappingsId"`
 	// The kind of resource, in this case "DomainMapping".
-	Kind *string `pulumi:"kind"`
+	Kind        *string `pulumi:"kind"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Metadata associated with this BuildTemplate.
-	Metadata *ObjectMeta `pulumi:"metadata"`
-	// The project ID or project number in which this domain mapping should be created.
-	Parent string `pulumi:"parent"`
+	Metadata   *ObjectMeta `pulumi:"metadata"`
+	ProjectsId string      `pulumi:"projectsId"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
 	// The current status of the DomainMapping.
 	Status *DomainMappingStatus `pulumi:"status"`
 }
 
-// The set of arguments for constructing a DomainMapping resource.
-type DomainMappingArgs struct {
+// The set of arguments for constructing a Domainmapping resource.
+type DomainmappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1alpha1".
-	ApiVersion pulumi.StringPtrInput
+	ApiVersion       pulumi.StringPtrInput
+	DomainmappingsId pulumi.StringInput
 	// The kind of resource, in this case "DomainMapping".
-	Kind pulumi.StringPtrInput
+	Kind        pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Metadata associated with this BuildTemplate.
-	Metadata ObjectMetaPtrInput
-	// The project ID or project number in which this domain mapping should be created.
-	Parent pulumi.StringInput
+	Metadata   ObjectMetaPtrInput
+	ProjectsId pulumi.StringInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
 	// The current status of the DomainMapping.
 	Status DomainMappingStatusPtrInput
 }
 
-func (DomainMappingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*domainMappingArgs)(nil)).Elem()
+func (DomainmappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*domainmappingArgs)(nil)).Elem()
 }
 
-type DomainMappingInput interface {
+type DomainmappingInput interface {
 	pulumi.Input
 
-	ToDomainMappingOutput() DomainMappingOutput
-	ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput
+	ToDomainmappingOutput() DomainmappingOutput
+	ToDomainmappingOutputWithContext(ctx context.Context) DomainmappingOutput
 }
 
-func (*DomainMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainMapping)(nil))
+func (*Domainmapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*Domainmapping)(nil))
 }
 
-func (i *DomainMapping) ToDomainMappingOutput() DomainMappingOutput {
-	return i.ToDomainMappingOutputWithContext(context.Background())
+func (i *Domainmapping) ToDomainmappingOutput() DomainmappingOutput {
+	return i.ToDomainmappingOutputWithContext(context.Background())
 }
 
-func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
+func (i *Domainmapping) ToDomainmappingOutputWithContext(ctx context.Context) DomainmappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainmappingOutput)
 }
 
-type DomainMappingOutput struct {
+type DomainmappingOutput struct {
 	*pulumi.OutputState
 }
 
-func (DomainMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainMapping)(nil))
+func (DomainmappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Domainmapping)(nil))
 }
 
-func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
+func (o DomainmappingOutput) ToDomainmappingOutput() DomainmappingOutput {
 	return o
 }
 
-func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
+func (o DomainmappingOutput) ToDomainmappingOutputWithContext(ctx context.Context) DomainmappingOutput {
 	return o
 }
 
 func init() {
-	pulumi.RegisterOutputType(DomainMappingOutput{})
+	pulumi.RegisterOutputType(DomainmappingOutput{})
 }

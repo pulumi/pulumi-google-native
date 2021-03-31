@@ -42,10 +42,13 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -54,6 +57,7 @@ export class Project extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -101,6 +105,7 @@ export interface ProjectArgs {
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
     readonly projectId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The project lifecycle state.
      */

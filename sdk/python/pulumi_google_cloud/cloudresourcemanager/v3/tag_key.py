@@ -22,8 +22,8 @@ class TagKey(pulumi.CustomResource):
                  namespaced_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
+                 tag_keys_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -40,7 +40,6 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
         :param pulumi.Input[str] short_name: Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] update_time: Output only. Update time.
-        :param pulumi.Input[bool] validate_only: Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -66,8 +65,10 @@ class TagKey(pulumi.CustomResource):
             __props__['namespaced_name'] = namespaced_name
             __props__['parent'] = parent
             __props__['short_name'] = short_name
+            if tag_keys_id is None and not opts.urn:
+                raise TypeError("Missing required property 'tag_keys_id'")
+            __props__['tag_keys_id'] = tag_keys_id
             __props__['update_time'] = update_time
-            __props__['validate_only'] = validate_only
         super(TagKey, __self__).__init__(
             'google-cloud:cloudresourcemanager/v3:TagKey',
             resource_name,

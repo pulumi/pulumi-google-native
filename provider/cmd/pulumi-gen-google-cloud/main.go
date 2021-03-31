@@ -18,6 +18,7 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/pulumi/pulumi-google-cloud/provider/pkg/gen"
+	"github.com/pulumi/pulumi-google-cloud/provider/pkg/resources"
 	dotnetgen "github.com/pulumi/pulumi/pkg/v2/codegen/dotnet"
 	gogen "github.com/pulumi/pulumi/pkg/v2/codegen/go"
 	nodejsgen "github.com/pulumi/pulumi/pkg/v2/codegen/nodejs"
@@ -35,7 +36,7 @@ func main() {
 		version = os.Args[2]
 	}
 
-	pkgSpec, err := gen.PulumiSchema()
+	pkgSpec, meta, err := gen.PulumiSchema()
 	if err != nil {
 		panic(err)
 	}
@@ -50,6 +51,10 @@ func main() {
 		case "schema":
 			dir := path.Join(".", "provider", "cmd", "pulumi-resource-google-cloud")
 			if err = emitSchema(*pkgSpec, version, dir, "main", true); err != nil {
+				break
+			}
+			// Also, emit the resource metadata for the provider.
+			if err = emitMetadata(meta, dir, "main", true); err != nil {
 				break
 			}
 		default:
@@ -156,6 +161,39 @@ var pulumiSchema = %#v
 
 	if emitJSON {
 		if err := emitFile(outDir, "schema.json", schemaJSON); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func emitMetadata(metadata *resources.CloudAPIMetadata, outDir string, goPackageName string, emitJSON bool) error {
+	compressedMeta := bytes.Buffer{}
+	compressedWriter := gzip.NewWriter(&compressedMeta)
+	err := json.NewEncoder(compressedWriter).Encode(metadata)
+	if err != nil {
+		return errors.Wrap(err, "marshaling metadata")
+	}
+
+	if err = compressedWriter.Close(); err != nil {
+		return err
+	}
+
+	formatted, err := json.MarshalIndent(metadata, "", "    ")
+	if err != nil {
+		return errors.Wrap(err, "marshaling metadata")
+	}
+
+	err = emitFile(outDir, "metadata.go", []byte(fmt.Sprintf(`package %s
+var cloudApiResources = %#v
+`, goPackageName, compressedMeta.Bytes())))
+	if err != nil {
+		return err
+	}
+
+	if emitJSON {
+		err := emitFile(outDir, "metadata.json", formatted)
+		if err != nil {
 			return err
 		}
 	}

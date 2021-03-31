@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:webrisk/v1:GoogleCloudWebriskV1Submission":
-		r, err = NewGoogleCloudWebriskV1Submission(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:webrisk/v1:Submission":
+		r, err = NewSubmission(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

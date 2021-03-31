@@ -16,9 +16,10 @@ class Namespace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace_id: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,8 +30,6 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
         :param pulumi.Input[str] name: Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-        :param pulumi.Input[str] namespace_id: Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] parent: Required. The resource name of the project and location the namespace will be created in.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,11 +49,16 @@ class Namespace(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            __props__['namespace_id'] = namespace_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if namespaces_id is None and not opts.urn:
+                raise TypeError("Missing required property 'namespaces_id'")
+            __props__['namespaces_id'] = namespaces_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Namespace, __self__).__init__(
             'google-cloud:servicedirectory/v1:Namespace',
             resource_name,

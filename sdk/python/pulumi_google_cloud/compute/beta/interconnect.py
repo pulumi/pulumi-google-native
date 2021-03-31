@@ -25,6 +25,7 @@ class Interconnect(pulumi.CustomResource):
                  google_ip_address: Optional[pulumi.Input[str]] = None,
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 interconnect: Optional[pulumi.Input[str]] = None,
                  interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interconnect_type: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -38,7 +39,6 @@ class Interconnect(pulumi.CustomResource):
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_link_count: Optional[pulumi.Input[int]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -79,13 +79,7 @@ class Interconnect(pulumi.CustomResource):
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
         :param pulumi.Input[str] peer_ip_address: [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[int] provisioned_link_count: [Output Only] Number of links actually provisioned in this interconnect.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] state: [Output Only] The current state of Interconnect functionality, which can take one of the following values: 
@@ -119,6 +113,9 @@ class Interconnect(pulumi.CustomResource):
             __props__['google_ip_address'] = google_ip_address
             __props__['google_reference_id'] = google_reference_id
             __props__['id'] = id
+            if interconnect is None and not opts.urn:
+                raise TypeError("Missing required property 'interconnect'")
+            __props__['interconnect'] = interconnect
             __props__['interconnect_attachments'] = interconnect_attachments
             __props__['interconnect_type'] = interconnect_type
             __props__['kind'] = kind
@@ -134,7 +131,6 @@ class Interconnect(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['provisioned_link_count'] = provisioned_link_count
-            __props__['request_id'] = request_id
             __props__['requested_link_count'] = requested_link_count
             __props__['self_link'] = self_link
             __props__['state'] = state

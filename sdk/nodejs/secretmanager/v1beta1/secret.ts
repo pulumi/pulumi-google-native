@@ -47,15 +47,18 @@ export class Secret extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.secretsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'secretsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["replication"] = args ? args.replication : undefined;
-            inputs["secretId"] = args ? args.secretId : undefined;
+            inputs["secretsId"] = args ? args.secretsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -81,16 +84,10 @@ export interface SecretArgs {
      * Output only. The resource name of the Secret in the format `projects/*&#47;secrets/*`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     readonly replication?: pulumi.Input<inputs.secretmanager.v1beta1.Replication>;
-    /**
-     * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-     */
-    readonly secretId?: pulumi.Input<string>;
+    readonly secretsId: pulumi.Input<string>;
 }

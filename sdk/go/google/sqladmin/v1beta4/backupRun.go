@@ -23,6 +23,9 @@ func NewBackupRun(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Id == nil {
+		return nil, errors.New("invalid value for required argument 'Id'")
+	}
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
@@ -76,15 +79,14 @@ type backupRunArgs struct {
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error *OperationError `pulumi:"error"`
 	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-	Id *string `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// Name of the database instance.
 	Instance string `pulumi:"instance"`
 	// This is always *sql#backupRun*.
 	Kind *string `pulumi:"kind"`
 	// Location of the backups.
 	Location *string `pulumi:"location"`
-	// Project ID of the project that contains the instance.
-	Project string `pulumi:"project"`
+	Project  string  `pulumi:"project"`
 	// The URI of this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
@@ -114,15 +116,14 @@ type BackupRunArgs struct {
 	// Information about why the backup operation failed. This is only present if the run has the FAILED status.
 	Error OperationErrorPtrInput
 	// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-	Id pulumi.StringPtrInput
+	Id pulumi.StringInput
 	// Name of the database instance.
 	Instance pulumi.StringInput
 	// This is always *sql#backupRun*.
 	Kind pulumi.StringPtrInput
 	// Location of the backups.
 	Location pulumi.StringPtrInput
-	// Project ID of the project that contains the instance.
-	Project pulumi.StringInput
+	Project  pulumi.StringInput
 	// The URI of this resource.
 	SelfLink pulumi.StringPtrInput
 	// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.

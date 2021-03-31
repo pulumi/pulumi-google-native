@@ -21,16 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:toolresults/v1beta3:Execution":
-		r, err = NewExecution(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:toolresults/v1beta3:History":
 		r, err = NewHistory(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:toolresults/v1beta3:PerfMetricsSummary":
-		r, err = NewPerfMetricsSummary(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:toolresults/v1beta3:PerfSampleSeries":
-		r, err = NewPerfSampleSeries(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:toolresults/v1beta3:Step":
-		r, err = NewStep(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:toolresults/v1beta3:HistoryExecution":
+		r, err = NewHistoryExecution(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:toolresults/v1beta3:HistoryExecutionStep":
+		r, err = NewHistoryExecutionStep(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary":
+		r, err = NewHistoryExecutionStepPerfMetricsSummary(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
+		r, err = NewHistoryExecutionStepPerfSampleSeries(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

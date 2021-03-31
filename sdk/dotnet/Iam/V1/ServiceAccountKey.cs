@@ -65,17 +65,20 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("keyAlgorithm")]
         public Input<string>? KeyAlgorithm { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service account.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("keysId", required: true)]
+        public Input<string> KeysId { get; set; } = null!;
 
         /// <summary>
         /// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         /// </summary>
         [Input("privateKeyType")]
         public Input<string>? PrivateKeyType { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("serviceAccountsId", required: true)]
+        public Input<string> ServiceAccountsId { get; set; } = null!;
 
         public ServiceAccountKeyArgs()
         {

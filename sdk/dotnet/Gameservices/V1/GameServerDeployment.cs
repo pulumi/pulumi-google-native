@@ -66,12 +66,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Required. The ID of the game server delpoyment resource to be created.
-        /// </summary>
-        [Input("deploymentId")]
-        public Input<string>? DeploymentId { get; set; }
-
-        /// <summary>
         /// Human readable description of the game server delpoyment.
         /// </summary>
         [Input("description")]
@@ -82,6 +76,9 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("gameServerDeploymentsId", required: true)]
+        public Input<string> GameServerDeploymentsId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -95,17 +92,17 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource name, in the following form: `projects/{project}/locations/{location}`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The last-modified time.

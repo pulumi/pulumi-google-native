@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessPolicy(string name, AccessPolicyArgs? args = null, CustomResourceOptions? options = null)
+        public AccessPolicy(string name, AccessPolicyArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:accesscontextmanager/v1beta:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1beta
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("accessPoliciesId", required: true)]
+        public Input<string> AccessPoliciesId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
         /// </summary>

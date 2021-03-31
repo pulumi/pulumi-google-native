@@ -89,11 +89,8 @@ namespace Pulumi.GoogleCloud.File.V1beta1
             set => _fileShares = value;
         }
 
-        /// <summary>
-        /// Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -106,6 +103,9 @@ namespace Pulumi.GoogleCloud.File.V1beta1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
@@ -125,11 +125,8 @@ namespace Pulumi.GoogleCloud.File.V1beta1
             set => _networks = value;
         }
 
-        /// <summary>
-        /// Required. The instance's project and location, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The instance state.

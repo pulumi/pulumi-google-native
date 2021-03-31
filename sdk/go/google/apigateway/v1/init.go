@@ -21,10 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:apigateway/v1:ApigatewayOperation":
-		r, err = NewApigatewayOperation(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigateway/v1:ApigatewayPolicy":
-		r, err = NewApigatewayPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigateway/v1:Api":
+		r, err = NewApi(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigateway/v1:ApiConfig":
+		r, err = NewApiConfig(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigateway/v1:ApiConfigIamPolicy":
+		r, err = NewApiConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigateway/v1:ApiIamPolicy":
+		r, err = NewApiIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigateway/v1:Gateway":
+		r, err = NewGateway(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigateway/v1:GatewayIamPolicy":
+		r, err = NewGatewayIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

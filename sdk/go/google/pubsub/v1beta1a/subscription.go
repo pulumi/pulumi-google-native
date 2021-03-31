@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type Subscription struct {
 func NewSubscription(ctx *pulumi.Context,
 	name string, args *SubscriptionArgs, opts ...pulumi.ResourceOption) (*Subscription, error) {
 	if args == nil {
-		args = &SubscriptionArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.SubscriptionsId == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionsId'")
+	}
 	var resource Subscription
 	err := ctx.RegisterResource("google-cloud:pubsub/v1beta1a:Subscription", name, args, &resource, opts...)
 	if err != nil {
@@ -59,7 +63,8 @@ type subscriptionArgs struct {
 	// Name of the subscription.
 	Name *string `pulumi:"name"`
 	// If push delivery is used with this subscription, this field is used to configure it.
-	PushConfig *PushConfig `pulumi:"pushConfig"`
+	PushConfig      *PushConfig `pulumi:"pushConfig"`
+	SubscriptionsId string      `pulumi:"subscriptionsId"`
 	// The name of the topic from which this subscription is receiving messages.
 	Topic *string `pulumi:"topic"`
 }
@@ -71,7 +76,8 @@ type SubscriptionArgs struct {
 	// Name of the subscription.
 	Name pulumi.StringPtrInput
 	// If push delivery is used with this subscription, this field is used to configure it.
-	PushConfig PushConfigPtrInput
+	PushConfig      PushConfigPtrInput
+	SubscriptionsId pulumi.StringInput
 	// The name of the topic from which this subscription is receiving messages.
 	Topic pulumi.StringPtrInput
 }

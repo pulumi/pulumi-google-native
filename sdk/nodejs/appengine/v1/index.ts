@@ -5,33 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./application";
-export * from "./authorizedCertificate";
-export * from "./domainMapping";
-export * from "./firewallRule";
-export * from "./version";
+export * from "./app";
+export * from "./appAuthorizedCertificate";
+export * from "./appDomainMapping";
+export * from "./appFirewallIngressRule";
+export * from "./appServiceVersion";
 
 // Import resources to register:
-import { Application } from "./application";
-import { AuthorizedCertificate } from "./authorizedCertificate";
-import { DomainMapping } from "./domainMapping";
-import { FirewallRule } from "./firewallRule";
-import { Version } from "./version";
+import { App } from "./app";
+import { AppAuthorizedCertificate } from "./appAuthorizedCertificate";
+import { AppDomainMapping } from "./appDomainMapping";
+import { AppFirewallIngressRule } from "./appFirewallIngressRule";
+import { AppServiceVersion } from "./appServiceVersion";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:appengine/v1:Application":
-                return new Application(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:AuthorizedCertificate":
-                return new AuthorizedCertificate(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:DomainMapping":
-                return new DomainMapping(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:FirewallRule":
-                return new FirewallRule(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:Version":
-                return new Version(name, <any>undefined, { urn })
+            case "google-cloud:appengine/v1:App":
+                return new App(name, <any>undefined, { urn })
+            case "google-cloud:appengine/v1:AppAuthorizedCertificate":
+                return new AppAuthorizedCertificate(name, <any>undefined, { urn })
+            case "google-cloud:appengine/v1:AppDomainMapping":
+                return new AppDomainMapping(name, <any>undefined, { urn })
+            case "google-cloud:appengine/v1:AppFirewallIngressRule":
+                return new AppFirewallIngressRule(name, <any>undefined, { urn })
+            case "google-cloud:appengine/v1:AppServiceVersion":
+                return new AppServiceVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

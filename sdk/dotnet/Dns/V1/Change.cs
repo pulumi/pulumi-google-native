@@ -71,12 +71,6 @@ namespace Pulumi.GoogleCloud.Dns.V1
             set => _additions = value;
         }
 
-        /// <summary>
-        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-        /// </summary>
-        [Input("clientOperationId")]
-        public Input<string>? ClientOperationId { get; set; }
-
         [Input("deletions")]
         private InputList<Inputs.ResourceRecordSetArgs>? _deletions;
 
@@ -104,15 +98,9 @@ namespace Pulumi.GoogleCloud.Dns.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        /// <summary>
-        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-        /// </summary>
         [Input("managedZone", required: true)]
         public Input<string> ManagedZone { get; set; } = null!;
 
-        /// <summary>
-        /// Identifies the project addressed by this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

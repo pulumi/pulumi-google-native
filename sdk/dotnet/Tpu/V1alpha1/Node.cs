@@ -113,6 +113,9 @@ namespace Pulumi.GoogleCloud.Tpu.V1alpha1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Immutable. The name of the TPU
         /// </summary>
@@ -137,23 +140,17 @@ namespace Pulumi.GoogleCloud.Tpu.V1alpha1
             set => _networkEndpoints = value;
         }
 
-        /// <summary>
-        /// The unqualified resource name.
-        /// </summary>
-        [Input("nodeId")]
-        public Input<string>? NodeId { get; set; }
-
-        /// <summary>
-        /// Required. The parent resource name.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("nodesId", required: true)]
+        public Input<string> NodesId { get; set; } = null!;
 
         /// <summary>
         /// Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The scheduling options for this node.

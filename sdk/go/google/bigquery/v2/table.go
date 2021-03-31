@@ -29,6 +29,9 @@ func NewTable(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	if args.TableId == nil {
+		return nil, errors.New("invalid value for required argument 'TableId'")
+	}
 	var resource Table
 	err := ctx.RegisterResource("google-cloud:bigquery/v2:Table", name, args, &resource, opts...)
 	if err != nil {
@@ -65,8 +68,7 @@ type tableArgs struct {
 	Clustering *Clustering `pulumi:"clustering"`
 	// [Output-only] The time when this table was created, in milliseconds since the epoch.
 	CreationTime *string `pulumi:"creationTime"`
-	// Dataset ID of the new table
-	DatasetId string `pulumi:"datasetId"`
+	DatasetId    string  `pulumi:"datasetId"`
 	// [Optional] A user-friendly description of this table.
 	Description *string `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -100,9 +102,8 @@ type tableArgs struct {
 	// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes *string `pulumi:"numPhysicalBytes"`
 	// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
-	NumRows *string `pulumi:"numRows"`
-	// Project ID of the new table
-	ProjectId string `pulumi:"projectId"`
+	NumRows   *string `pulumi:"numRows"`
+	ProjectId string  `pulumi:"projectId"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning *RangePartitioning `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -115,6 +116,7 @@ type tableArgs struct {
 	SnapshotDefinition *SnapshotDefinition `pulumi:"snapshotDefinition"`
 	// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer *Streamingbuffer `pulumi:"streamingBuffer"`
+	TableId         string           `pulumi:"tableId"`
 	// [Required] Reference describing the ID of this table.
 	TableReference *TableReference `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -131,8 +133,7 @@ type TableArgs struct {
 	Clustering ClusteringPtrInput
 	// [Output-only] The time when this table was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringPtrInput
-	// Dataset ID of the new table
-	DatasetId pulumi.StringInput
+	DatasetId    pulumi.StringInput
 	// [Optional] A user-friendly description of this table.
 	Description pulumi.StringPtrInput
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -166,8 +167,7 @@ type TableArgs struct {
 	// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes pulumi.StringPtrInput
 	// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
-	NumRows pulumi.StringPtrInput
-	// Project ID of the new table
+	NumRows   pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningPtrInput
@@ -181,6 +181,7 @@ type TableArgs struct {
 	SnapshotDefinition SnapshotDefinitionPtrInput
 	// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferPtrInput
+	TableId         pulumi.StringInput
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferencePtrInput
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

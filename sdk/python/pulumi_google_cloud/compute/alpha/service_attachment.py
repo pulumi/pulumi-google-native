@@ -28,8 +28,8 @@ class ServiceAttachment(pulumi.CustomResource):
                  producer_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 service_attachment: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -48,13 +48,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
         :param pulumi.Input[str] producer_forwarding_rule: The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
         if __name__ is not None:
@@ -90,8 +84,10 @@ class ServiceAttachment(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
+            if service_attachment is None and not opts.urn:
+                raise TypeError("Missing required property 'service_attachment'")
+            __props__['service_attachment'] = service_attachment
         super(ServiceAttachment, __self__).__init__(
             'google-cloud:compute/alpha:ServiceAttachment',
             resource_name,

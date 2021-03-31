@@ -23,8 +23,11 @@ func NewKeyRing(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource KeyRing
 	err := ctx.RegisterResource("google-cloud:cloudkms/v1:KeyRing", name, args, &resource, opts...)
@@ -59,25 +62,21 @@ func (KeyRingState) ElementType() reflect.Type {
 
 type keyRingArgs struct {
 	// Output only. The time at which this KeyRing was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-	KeyRingId *string `pulumi:"keyRingId"`
+	CreateTime  *string `pulumi:"createTime"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name *string `pulumi:"name"`
-	// Required. The resource name of the location associated with the KeyRings, in the format `projects/*/locations/*`.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a KeyRing resource.
 type KeyRingArgs struct {
 	// Output only. The time at which this KeyRing was created.
-	CreateTime pulumi.StringPtrInput
-	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-	KeyRingId pulumi.StringPtrInput
+	CreateTime  pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name pulumi.StringPtrInput
-	// Required. The resource name of the location associated with the KeyRings, in the format `projects/*/locations/*`.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (KeyRingArgs) ElementType() reflect.Type {

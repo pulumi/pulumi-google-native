@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Alpha
 {
     /// <summary>
-    /// Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+    /// Creates a ForwardingRule resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/alpha:ForwardingRule")]
     public partial class ForwardingRule : Pulumi.CustomResource
@@ -133,6 +133,9 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
+
+        [Input("forwardingRule", required: true)]
+        public Input<string> ForwardingRule { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -276,9 +279,6 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
             set => _ports = value;
         }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -291,18 +291,8 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <summary>
         /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.

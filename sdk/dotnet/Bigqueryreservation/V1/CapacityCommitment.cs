@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
 
     public sealed class CapacityCommitmentArgs : Pulumi.ResourceArgs
     {
+        [Input("capacityCommitmentsId", required: true)]
+        public Input<string> CapacityCommitmentsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         /// </summary>
@@ -72,16 +75,13 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
         public Input<string>? CommitmentStartTime { get; set; }
 
         /// <summary>
-        /// If true, fail the request if another project in the organization has a capacity commitment.
-        /// </summary>
-        [Input("enforceSingleAdminProjectPerOrg")]
-        public Input<bool>? EnforceSingleAdminProjectPerOrg { get; set; }
-
-        /// <summary>
         /// Output only. For FAILED commitment plan, provides the reason of failure.
         /// </summary>
         [Input("failureStatus")]
         public Input<Inputs.StatusArgs>? FailureStatus { get; set; }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
@@ -90,16 +90,13 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Capacity commitment commitment plan.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.

@@ -23,8 +23,11 @@ func NewSnapshot(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.SnapshotsId == nil {
+		return nil, errors.New("invalid value for required argument 'SnapshotsId'")
 	}
 	var resource Snapshot
 	err := ctx.RegisterResource("google-cloud:pubsub/v1:Snapshot", name, args, &resource, opts...)
@@ -59,9 +62,9 @@ func (SnapshotState) ElementType() reflect.Type {
 
 type snapshotArgs struct {
 	// See Creating and managing labels.
-	Labels map[string]string `pulumi:"labels"`
-	// Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the resource name rules. Format is `projects/{project}/snapshots/{snap}`.
-	Name string `pulumi:"name"`
+	Labels      map[string]string `pulumi:"labels"`
+	ProjectsId  string            `pulumi:"projectsId"`
+	SnapshotsId string            `pulumi:"snapshotsId"`
 	// Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
 	Subscription *string `pulumi:"subscription"`
 }
@@ -69,9 +72,9 @@ type snapshotArgs struct {
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
 	// See Creating and managing labels.
-	Labels pulumi.StringMapInput
-	// Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the resource name rules. Format is `projects/{project}/snapshots/{snap}`.
-	Name pulumi.StringInput
+	Labels      pulumi.StringMapInput
+	ProjectsId  pulumi.StringInput
+	SnapshotsId pulumi.StringInput
 	// Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
 	Subscription pulumi.StringPtrInput
 }

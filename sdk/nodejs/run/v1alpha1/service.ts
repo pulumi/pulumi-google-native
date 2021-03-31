@@ -47,13 +47,21 @@ export class Service extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.servicesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'servicesId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -77,14 +85,13 @@ export interface ServiceArgs {
      * The kind of resource, in this case "Service".
      */
     readonly kind?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Metadata associated with this Service, including name, namespace, labels, and annotations.
      */
     readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMeta>;
-    /**
-     * The project ID or project number in which this service should be created.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
+    readonly servicesId: pulumi.Input<string>;
     /**
      * Spec holds the desired state of the Service (from the client).
      */

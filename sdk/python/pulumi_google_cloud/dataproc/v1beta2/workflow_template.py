@@ -21,12 +21,14 @@ class WorkflowTemplate(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
+                 workflow_templates_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -42,7 +44,6 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[str] parent: Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location}
         :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
         :param pulumi.Input[int] version: Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
@@ -69,14 +70,20 @@ class WorkflowTemplate(pulumi.CustomResource):
             __props__['id'] = id
             __props__['jobs'] = jobs
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             __props__['parameters'] = parameters
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['placement'] = placement
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['update_time'] = update_time
             __props__['version'] = version
+            if workflow_templates_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workflow_templates_id'")
+            __props__['workflow_templates_id'] = workflow_templates_id
         super(WorkflowTemplate, __self__).__init__(
             'google-cloud:dataproc/v1beta2:WorkflowTemplate',
             resource_name,

@@ -3,7 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .quota_override import *
+from .service_consumer_quota_metric_limit_admin_override import *
+from .service_consumer_quota_metric_limit_consumer_override import *
 
 def _register_module():
     import pulumi
@@ -17,8 +18,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:serviceusage/v1beta1:QuotaOverride":
-                return QuotaOverride(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride":
+                return ServiceConsumerQuotaMetricLimitAdminOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitConsumerOverride":
+                return ServiceConsumerQuotaMetricLimitConsumerOverride(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./connection";
-export * from "./peeredDnsDomain";
+export * from "./serviceConnection";
+export * from "./serviceNetworkPeeredDnsDomain";
 
 // Import resources to register:
-import { Connection } from "./connection";
-import { PeeredDnsDomain } from "./peeredDnsDomain";
+import { ServiceConnection } from "./serviceConnection";
+import { ServiceNetworkPeeredDnsDomain } from "./serviceNetworkPeeredDnsDomain";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:servicenetworking/v1:Connection":
-                return new Connection(name, <any>undefined, { urn })
-            case "google-cloud:servicenetworking/v1:PeeredDnsDomain":
-                return new PeeredDnsDomain(name, <any>undefined, { urn })
+            case "google-cloud:servicenetworking/v1:ServiceConnection":
+                return new ServiceConnection(name, <any>undefined, { urn })
+            case "google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain":
+                return new ServiceNetworkPeeredDnsDomain(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

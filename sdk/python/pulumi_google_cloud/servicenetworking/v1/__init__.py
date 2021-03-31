@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .connection import *
-from .peered_dns_domain import *
+from .service_connection import *
+from .service_network_peered_dns_domain import *
 
 def _register_module():
     import pulumi
@@ -18,10 +18,10 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:servicenetworking/v1:Connection":
-                return Connection(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:servicenetworking/v1:PeeredDnsDomain":
-                return PeeredDnsDomain(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:servicenetworking/v1:ServiceConnection":
+                return ServiceConnection(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain":
+                return ServiceNetworkPeeredDnsDomain(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

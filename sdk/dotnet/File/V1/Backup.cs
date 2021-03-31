@@ -59,11 +59,8 @@ namespace Pulumi.GoogleCloud.File.V1
 
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
-        /// </summary>
-        [Input("backupId")]
-        public Input<string>? BackupId { get; set; }
+        [Input("backupsId", required: true)]
+        public Input<string> BackupsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. Capacity of the source file share when the backup was created.
@@ -101,17 +98,17 @@ namespace Pulumi.GoogleCloud.File.V1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The backup's project and location, in the format projects/{project_number}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions, for example **us-west1**.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.

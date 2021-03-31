@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
 
     public sealed class CompositeTypeArgs : Pulumi.ResourceArgs
     {
+        [Input("compositeType", required: true)]
+        public Input<string> CompositeType { get; set; } = null!;
+
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
@@ -98,9 +101,6 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         [Input("operation")]
         public Input<Inputs.OperationArgs>? Operation { get; set; }
 
-        /// <summary>
-        /// The project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

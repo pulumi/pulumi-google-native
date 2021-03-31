@@ -18,7 +18,9 @@ class CustomClass(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_class: Optional[pulumi.Input[pulumi.InputType['CustomClassArgs']]] = None,
                  custom_class_id: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 custom_classes_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,7 +31,6 @@ class CustomClass(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CustomClassArgs']] custom_class: Required. The custom class to create.
         :param pulumi.Input[str] custom_class_id: The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-        :param pulumi.Input[str] parent: Required. The parent resource where this custom class will be created. Format: {api_version}/projects/{project}/locations/{location}/customClasses
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,9 +51,15 @@ class CustomClass(pulumi.CustomResource):
 
             __props__['custom_class'] = custom_class
             __props__['custom_class_id'] = custom_class_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if custom_classes_id is None and not opts.urn:
+                raise TypeError("Missing required property 'custom_classes_id'")
+            __props__['custom_classes_id'] = custom_classes_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(CustomClass, __self__).__init__(
             'google-cloud:speech/v1p1beta1:CustomClass',
             resource_name,

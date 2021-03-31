@@ -26,6 +26,9 @@ func NewNotification(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
+	if args.Notification == nil {
+		return nil, errors.New("invalid value for required argument 'Notification'")
+	}
 	var resource Notification
 	err := ctx.RegisterResource("google-cloud:storage/v1:Notification", name, args, &resource, opts...)
 	if err != nil {
@@ -58,7 +61,6 @@ func (NotificationState) ElementType() reflect.Type {
 }
 
 type notificationArgs struct {
-	// The parent bucket of the notification.
 	Bucket string `pulumi:"bucket"`
 	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
 	Custom_attributes map[string]string `pulumi:"custom_attributes"`
@@ -69,24 +71,20 @@ type notificationArgs struct {
 	// The ID of the notification.
 	Id *string `pulumi:"id"`
 	// The kind of item this is. For notifications, this is always storage#notification.
-	Kind *string `pulumi:"kind"`
+	Kind         *string `pulumi:"kind"`
+	Notification string  `pulumi:"notification"`
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	Object_name_prefix *string `pulumi:"object_name_prefix"`
 	// The desired content of the Payload.
 	Payload_format *string `pulumi:"payload_format"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The canonical URL of this notification.
 	SelfLink *string `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
 	Topic *string `pulumi:"topic"`
-	// The project to be billed for this request. Required for Requester Pays buckets.
-	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a Notification resource.
 type NotificationArgs struct {
-	// The parent bucket of the notification.
 	Bucket pulumi.StringInput
 	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
 	Custom_attributes pulumi.StringMapInput
@@ -97,19 +95,16 @@ type NotificationArgs struct {
 	// The ID of the notification.
 	Id pulumi.StringPtrInput
 	// The kind of item this is. For notifications, this is always storage#notification.
-	Kind pulumi.StringPtrInput
+	Kind         pulumi.StringPtrInput
+	Notification pulumi.StringInput
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	Object_name_prefix pulumi.StringPtrInput
 	// The desired content of the Payload.
 	Payload_format pulumi.StringPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The canonical URL of this notification.
 	SelfLink pulumi.StringPtrInput
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
 	Topic pulumi.StringPtrInput
-	// The project to be billed for this request. Required for Requester Pays buckets.
-	UserProject pulumi.StringPtrInput
 }
 
 func (NotificationArgs) ElementType() reflect.Type {

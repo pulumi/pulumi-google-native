@@ -89,23 +89,20 @@ namespace Pulumi.GoogleCloud.Gameservices.V1beta
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource name, in the following form: `projects/{project}/locations/{location}`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
-        /// <summary>
-        /// Required. The ID of the realm resource to be created.
-        /// </summary>
-        [Input("realmId")]
-        public Input<string>? RealmId { get; set; }
+        [Input("realmsId", required: true)]
+        public Input<string> RealmsId { get; set; } = null!;
 
         /// <summary>
         /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.

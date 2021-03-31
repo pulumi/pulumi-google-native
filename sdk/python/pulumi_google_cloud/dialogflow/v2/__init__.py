@@ -3,15 +3,19 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_dialogflow_v2_context import *
-from .google_cloud_dialogflow_v2_conversation import *
-from .google_cloud_dialogflow_v2_conversation_profile import *
-from .google_cloud_dialogflow_v2_entity_type import *
-from .google_cloud_dialogflow_v2_intent import *
-from .google_cloud_dialogflow_v2_knowledge_base import *
-from .google_cloud_dialogflow_v2_participant import *
-from .google_cloud_dialogflow_v2_session_entity_type import *
-from .google_longrunning_operation import *
+from .agent_entity_type import *
+from .agent_environment_user_session_context import *
+from .agent_environment_user_session_entity_type import *
+from .agent_intent import *
+from .agent_knowledge_base import *
+from .agent_knowledge_base_document import *
+from .agent_session_context import *
+from .agent_session_entity_type import *
+from .conversation import *
+from .conversation_participant import *
+from .conversation_profile import *
+from .knowledge_base import *
+from .knowledge_base_document import *
 from ._inputs import *
 
 def _register_module():
@@ -26,24 +30,32 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Context":
-                return GoogleCloudDialogflowV2Context(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Conversation":
-                return GoogleCloudDialogflowV2Conversation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2ConversationProfile":
-                return GoogleCloudDialogflowV2ConversationProfile(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2EntityType":
-                return GoogleCloudDialogflowV2EntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Intent":
-                return GoogleCloudDialogflowV2Intent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2KnowledgeBase":
-                return GoogleCloudDialogflowV2KnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Participant":
-                return GoogleCloudDialogflowV2Participant(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2SessionEntityType":
-                return GoogleCloudDialogflowV2SessionEntityType(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dialogflow/v2:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:dialogflow/v2:AgentEntityType":
+                return AgentEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentEnvironmentUserSessionContext":
+                return AgentEnvironmentUserSessionContext(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
+                return AgentEnvironmentUserSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentIntent":
+                return AgentIntent(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentKnowledgeBase":
+                return AgentKnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentKnowledgeBaseDocument":
+                return AgentKnowledgeBaseDocument(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentSessionContext":
+                return AgentSessionContext(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:AgentSessionEntityType":
+                return AgentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:Conversation":
+                return Conversation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:ConversationParticipant":
+                return ConversationParticipant(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:ConversationProfile":
+                return ConversationProfile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:KnowledgeBase":
+                return KnowledgeBase(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dialogflow/v2:KnowledgeBaseDocument":
+                return KnowledgeBaseDocument(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

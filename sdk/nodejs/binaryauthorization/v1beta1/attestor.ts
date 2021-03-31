@@ -47,13 +47,16 @@ export class Attestor extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.attestorsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'attestorsId'");
             }
-            inputs["attestorId"] = args ? args.attestorId : undefined;
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["attestorsId"] = args ? args.attestorsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["userOwnedDrydockNote"] = args ? args.userOwnedDrydockNote : undefined;
         } else {
@@ -69,10 +72,7 @@ export class Attestor extends pulumi.CustomResource {
  * The set of arguments for constructing a Attestor resource.
  */
 export interface AttestorArgs {
-    /**
-     * Required. The attestors ID.
-     */
-    readonly attestorId?: pulumi.Input<string>;
+    readonly attestorsId: pulumi.Input<string>;
     /**
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
@@ -81,10 +81,7 @@ export interface AttestorArgs {
      * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent of this attestor.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. Time when the attestor was last updated.
      */

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleCloud.Compute.Beta
 {
     /// <summary>
-    /// Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
+    /// Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/beta:TargetHttpsProxy")]
     public partial class TargetHttpsProxy : Pulumi.CustomResource
@@ -129,9 +129,6 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -158,18 +155,8 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <summary>
         /// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
@@ -203,6 +190,9 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// </summary>
         [Input("sslPolicy")]
         public Input<string>? SslPolicy { get; set; }
+
+        [Input("targetHttpsProxy", required: true)]
+        public Input<string> TargetHttpsProxy { get; set; } = null!;
 
         /// <summary>
         /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  

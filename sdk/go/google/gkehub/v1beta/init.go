@@ -23,8 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:gkehub/v1beta:Feature":
 		r, err = NewFeature(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:gkehub/v1beta:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:gkehub/v1beta:FeatureIamPolicy":
+		r, err = NewFeatureIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:gkehub/v1beta:MembershipIamPolicy":
+		r, err = NewMembershipIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -17,6 +17,7 @@ class BackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
+                 backend_service: Optional[pulumi.Input[str]] = None,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
@@ -46,7 +47,6 @@ class BackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -57,7 +57,7 @@ class BackendService(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+        Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,18 +132,12 @@ class BackendService(pulumi.CustomResource):
                
                
                Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                
                Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
                
                Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] security_policy: [Output Only] The resource URL for the security policy associated with this backend service.
         :param pulumi.Input[pulumi.InputType['SecuritySettingsArgs']] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either:  
                - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
@@ -178,6 +172,9 @@ class BackendService(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
+            if backend_service is None and not opts.urn:
+                raise TypeError("Missing required property 'backend_service'")
+            __props__['backend_service'] = backend_service
             __props__['backends'] = backends
             __props__['cdn_policy'] = cdn_policy
             __props__['circuit_breakers'] = circuit_breakers
@@ -208,10 +205,7 @@ class BackendService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['protocol'] = protocol
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['security_policy'] = security_policy
             __props__['security_settings'] = security_settings
             __props__['self_link'] = self_link

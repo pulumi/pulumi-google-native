@@ -47,13 +47,20 @@ export class JobTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.jobTemplatesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobTemplatesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["jobTemplateId"] = args ? args.jobTemplateId : undefined;
+            inputs["jobTemplatesId"] = args ? args.jobTemplatesId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -71,16 +78,11 @@ export interface JobTemplateArgs {
      * The configuration for this template.
      */
     readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfig>;
-    /**
-     * Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
-     */
-    readonly jobTemplateId?: pulumi.Input<string>;
+    readonly jobTemplatesId: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

@@ -4124,7 +4124,7 @@ func (o SqlServerUserDetailsPtrOutput) ServerRoles() pulumi.StringArrayOutput {
 }
 
 // SslCerts Resource
-type SslCert struct {
+type SslCertType struct {
 	// PEM representation.
 	Cert *string `pulumi:"cert"`
 	// Serial number, as extracted from the certificate.
@@ -4145,19 +4145,19 @@ type SslCert struct {
 	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
 }
 
-// SslCertInput is an input type that accepts SslCertArgs and SslCertOutput values.
-// You can construct a concrete instance of `SslCertInput` via:
+// SslCertTypeInput is an input type that accepts SslCertTypeArgs and SslCertTypeOutput values.
+// You can construct a concrete instance of `SslCertTypeInput` via:
 //
-//          SslCertArgs{...}
-type SslCertInput interface {
+//          SslCertTypeArgs{...}
+type SslCertTypeInput interface {
 	pulumi.Input
 
-	ToSslCertOutput() SslCertOutput
-	ToSslCertOutputWithContext(context.Context) SslCertOutput
+	ToSslCertTypeOutput() SslCertTypeOutput
+	ToSslCertTypeOutputWithContext(context.Context) SslCertTypeOutput
 }
 
 // SslCerts Resource
-type SslCertArgs struct {
+type SslCertTypeArgs struct {
 	// PEM representation.
 	Cert pulumi.StringPtrInput `pulumi:"cert"`
 	// Serial number, as extracted from the certificate.
@@ -4178,150 +4178,150 @@ type SslCertArgs struct {
 	Sha1Fingerprint pulumi.StringPtrInput `pulumi:"sha1Fingerprint"`
 }
 
-func (SslCertArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslCert)(nil)).Elem()
+func (SslCertTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslCertType)(nil)).Elem()
 }
 
-func (i SslCertArgs) ToSslCertOutput() SslCertOutput {
-	return i.ToSslCertOutputWithContext(context.Background())
+func (i SslCertTypeArgs) ToSslCertTypeOutput() SslCertTypeOutput {
+	return i.ToSslCertTypeOutputWithContext(context.Background())
 }
 
-func (i SslCertArgs) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput)
+func (i SslCertTypeArgs) ToSslCertTypeOutputWithContext(ctx context.Context) SslCertTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertTypeOutput)
 }
 
-func (i SslCertArgs) ToSslCertPtrOutput() SslCertPtrOutput {
-	return i.ToSslCertPtrOutputWithContext(context.Background())
+func (i SslCertTypeArgs) ToSslCertTypePtrOutput() SslCertTypePtrOutput {
+	return i.ToSslCertTypePtrOutputWithContext(context.Background())
 }
 
-func (i SslCertArgs) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput).ToSslCertPtrOutputWithContext(ctx)
+func (i SslCertTypeArgs) ToSslCertTypePtrOutputWithContext(ctx context.Context) SslCertTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertTypeOutput).ToSslCertTypePtrOutputWithContext(ctx)
 }
 
-// SslCertPtrInput is an input type that accepts SslCertArgs, SslCertPtr and SslCertPtrOutput values.
-// You can construct a concrete instance of `SslCertPtrInput` via:
+// SslCertTypePtrInput is an input type that accepts SslCertTypeArgs, SslCertTypePtr and SslCertTypePtrOutput values.
+// You can construct a concrete instance of `SslCertTypePtrInput` via:
 //
-//          SslCertArgs{...}
+//          SslCertTypeArgs{...}
 //
 //  or:
 //
 //          nil
-type SslCertPtrInput interface {
+type SslCertTypePtrInput interface {
 	pulumi.Input
 
-	ToSslCertPtrOutput() SslCertPtrOutput
-	ToSslCertPtrOutputWithContext(context.Context) SslCertPtrOutput
+	ToSslCertTypePtrOutput() SslCertTypePtrOutput
+	ToSslCertTypePtrOutputWithContext(context.Context) SslCertTypePtrOutput
 }
 
-type sslCertPtrType SslCertArgs
+type sslCertTypePtrType SslCertTypeArgs
 
-func SslCertPtr(v *SslCertArgs) SslCertPtrInput {
-	return (*sslCertPtrType)(v)
+func SslCertTypePtr(v *SslCertTypeArgs) SslCertTypePtrInput {
+	return (*sslCertTypePtrType)(v)
 }
 
-func (*sslCertPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslCert)(nil)).Elem()
+func (*sslCertTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslCertType)(nil)).Elem()
 }
 
-func (i *sslCertPtrType) ToSslCertPtrOutput() SslCertPtrOutput {
-	return i.ToSslCertPtrOutputWithContext(context.Background())
+func (i *sslCertTypePtrType) ToSslCertTypePtrOutput() SslCertTypePtrOutput {
+	return i.ToSslCertTypePtrOutputWithContext(context.Background())
 }
 
-func (i *sslCertPtrType) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslCertPtrOutput)
+func (i *sslCertTypePtrType) ToSslCertTypePtrOutputWithContext(ctx context.Context) SslCertTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertTypePtrOutput)
 }
 
 // SslCerts Resource
-type SslCertOutput struct{ *pulumi.OutputState }
+type SslCertTypeOutput struct{ *pulumi.OutputState }
 
-func (SslCertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslCert)(nil)).Elem()
+func (SslCertTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslCertType)(nil)).Elem()
 }
 
-func (o SslCertOutput) ToSslCertOutput() SslCertOutput {
+func (o SslCertTypeOutput) ToSslCertTypeOutput() SslCertTypeOutput {
 	return o
 }
 
-func (o SslCertOutput) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput {
+func (o SslCertTypeOutput) ToSslCertTypeOutputWithContext(ctx context.Context) SslCertTypeOutput {
 	return o
 }
 
-func (o SslCertOutput) ToSslCertPtrOutput() SslCertPtrOutput {
-	return o.ToSslCertPtrOutputWithContext(context.Background())
+func (o SslCertTypeOutput) ToSslCertTypePtrOutput() SslCertTypePtrOutput {
+	return o.ToSslCertTypePtrOutputWithContext(context.Background())
 }
 
-func (o SslCertOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
-	return o.ApplyT(func(v SslCert) *SslCert {
+func (o SslCertTypeOutput) ToSslCertTypePtrOutputWithContext(ctx context.Context) SslCertTypePtrOutput {
+	return o.ApplyT(func(v SslCertType) *SslCertType {
 		return &v
-	}).(SslCertPtrOutput)
+	}).(SslCertTypePtrOutput)
 }
 
 // PEM representation.
-func (o SslCertOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
 // Serial number, as extracted from the certificate.
-func (o SslCertOutput) CertSerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.CertSerialNumber }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) CertSerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.CertSerialNumber }).(pulumi.StringPtrOutput)
 }
 
 // User supplied name. Constrained to [a-zA-Z.-_ ]+.
-func (o SslCertOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
 
 // The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
-func (o SslCertOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-func (o SslCertOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
 
 // Name of the database instance.
-func (o SslCertOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.Instance }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
 // This is always *sql#sslCert*.
-func (o SslCertOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // The URI of this resource.
-func (o SslCertOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 // Sha1 Fingerprint.
-func (o SslCertOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
+func (o SslCertTypeOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslCertType) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
 }
 
-type SslCertPtrOutput struct{ *pulumi.OutputState }
+type SslCertTypePtrOutput struct{ *pulumi.OutputState }
 
-func (SslCertPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslCert)(nil)).Elem()
+func (SslCertTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslCertType)(nil)).Elem()
 }
 
-func (o SslCertPtrOutput) ToSslCertPtrOutput() SslCertPtrOutput {
+func (o SslCertTypePtrOutput) ToSslCertTypePtrOutput() SslCertTypePtrOutput {
 	return o
 }
 
-func (o SslCertPtrOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
+func (o SslCertTypePtrOutput) ToSslCertTypePtrOutputWithContext(ctx context.Context) SslCertTypePtrOutput {
 	return o
 }
 
-func (o SslCertPtrOutput) Elem() SslCertOutput {
-	return o.ApplyT(func(v *SslCert) SslCert { return *v }).(SslCertOutput)
+func (o SslCertTypePtrOutput) Elem() SslCertTypeOutput {
+	return o.ApplyT(func(v *SslCertType) SslCertType { return *v }).(SslCertTypeOutput)
 }
 
 // PEM representation.
-func (o SslCertPtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4330,8 +4330,8 @@ func (o SslCertPtrOutput) Cert() pulumi.StringPtrOutput {
 }
 
 // Serial number, as extracted from the certificate.
-func (o SslCertPtrOutput) CertSerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) CertSerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4340,8 +4340,8 @@ func (o SslCertPtrOutput) CertSerialNumber() pulumi.StringPtrOutput {
 }
 
 // User supplied name. Constrained to [a-zA-Z.-_ ]+.
-func (o SslCertPtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4350,8 +4350,8 @@ func (o SslCertPtrOutput) CommonName() pulumi.StringPtrOutput {
 }
 
 // The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
-func (o SslCertPtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4360,8 +4360,8 @@ func (o SslCertPtrOutput) CreateTime() pulumi.StringPtrOutput {
 }
 
 // The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-func (o SslCertPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4370,8 +4370,8 @@ func (o SslCertPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
 }
 
 // Name of the database instance.
-func (o SslCertPtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4380,8 +4380,8 @@ func (o SslCertPtrOutput) Instance() pulumi.StringPtrOutput {
 }
 
 // This is always *sql#sslCert*.
-func (o SslCertPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4390,8 +4390,8 @@ func (o SslCertPtrOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // The URI of this resource.
-func (o SslCertPtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4400,8 +4400,8 @@ func (o SslCertPtrOutput) SelfLink() pulumi.StringPtrOutput {
 }
 
 // Sha1 Fingerprint.
-func (o SslCertPtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslCert) *string {
+func (o SslCertTypePtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertType) *string {
 		if v == nil {
 			return nil
 		}
@@ -4452,6 +4452,6 @@ func init() {
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerUserDetailsOutput{})
 	pulumi.RegisterOutputType(SqlServerUserDetailsPtrOutput{})
-	pulumi.RegisterOutputType(SslCertOutput{})
-	pulumi.RegisterOutputType(SslCertPtrOutput{})
+	pulumi.RegisterOutputType(SslCertTypeOutput{})
+	pulumi.RegisterOutputType(SslCertTypePtrOutput{})
 }

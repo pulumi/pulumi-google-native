@@ -71,11 +71,14 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
         [Input("customClassId")]
         public Input<string>? CustomClassId { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource where this custom class will be created. Format: {api_version}/projects/{project}/locations/{location}/customClasses
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("customClassesId", required: true)]
+        public Input<string> CustomClassesId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public CustomClassArgs()
         {

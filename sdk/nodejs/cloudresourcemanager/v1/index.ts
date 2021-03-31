@@ -6,13 +6,15 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./lien";
-export * from "./policy";
+export * from "./organizationIamPolicy";
 export * from "./project";
+export * from "./projectIamPolicy";
 
 // Import resources to register:
 import { Lien } from "./lien";
-import { Policy } from "./policy";
+import { OrganizationIamPolicy } from "./organizationIamPolicy";
 import { Project } from "./project";
+import { ProjectIamPolicy } from "./projectIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,10 +22,12 @@ const _module = {
         switch (type) {
             case "google-cloud:cloudresourcemanager/v1:Lien":
                 return new Lien(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v1:OrganizationIamPolicy":
+                return new OrganizationIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:cloudresourcemanager/v1:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v1:ProjectIamPolicy":
+                return new ProjectIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

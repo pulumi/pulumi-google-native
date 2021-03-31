@@ -16,10 +16,10 @@ class Attestor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestor_id: Optional[pulumi.Input[str]] = None,
+                 attestors_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  user_owned_drydock_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedDrydockNoteArgs']]] = None,
                  __props__=None,
@@ -30,10 +30,8 @@ class Attestor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] attestor_id: Required. The attestors ID.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-        :param pulumi.Input[str] parent: Required. The parent of this attestor.
         :param pulumi.Input[str] update_time: Output only. Time when the attestor was last updated.
         :param pulumi.Input[pulumi.InputType['UserOwnedDrydockNoteArgs']] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
         """
@@ -54,12 +52,14 @@ class Attestor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['attestor_id'] = attestor_id
+            if attestors_id is None and not opts.urn:
+                raise TypeError("Missing required property 'attestors_id'")
+            __props__['attestors_id'] = attestors_id
             __props__['description'] = description
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['update_time'] = update_time
             __props__['user_owned_drydock_note'] = user_owned_drydock_note
         super(Attestor, __self__).__init__(

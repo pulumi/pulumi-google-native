@@ -23,10 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:monitoring/v3:AlertPolicy":
 		r, err = NewAlertPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:monitoring/v3:CreateCollectdTimeSeriesResponse":
-		r, err = NewCreateCollectdTimeSeriesResponse(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:monitoring/v3:Empty":
-		r, err = NewEmpty(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:monitoring/v3:CollectdTimeSeries":
+		r, err = NewCollectdTimeSeries(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:monitoring/v3:Group":
 		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:monitoring/v3:MetricDescriptor":
@@ -35,8 +33,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewNotificationChannel(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:monitoring/v3:Service":
 		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:monitoring/v3:ServiceLevelObjective":
-		r, err = NewServiceLevelObjective(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:monitoring/v3:ServiceServiceLevelObjective":
+		r, err = NewServiceServiceLevelObjective(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:monitoring/v3:TimeSeries":
+		r, err = NewTimeSeries(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:monitoring/v3:UptimeCheckConfig":
 		r, err = NewUptimeCheckConfig(ctx, name, nil, pulumi.URN_(urn))
 	default:

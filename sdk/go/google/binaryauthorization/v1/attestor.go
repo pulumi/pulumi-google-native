@@ -23,8 +23,11 @@ func NewAttestor(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.AttestorsId == nil {
+		return nil, errors.New("invalid value for required argument 'AttestorsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Attestor
 	err := ctx.RegisterResource("google-cloud:binaryauthorization/v1:Attestor", name, args, &resource, opts...)
@@ -58,14 +61,12 @@ func (AttestorState) ElementType() reflect.Type {
 }
 
 type attestorArgs struct {
-	// Required. The attestors ID.
-	AttestorId *string `pulumi:"attestorId"`
+	AttestorsId string `pulumi:"attestorsId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name *string `pulumi:"name"`
-	// Required. The parent of this attestor.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. Time when the attestor was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
@@ -74,14 +75,12 @@ type attestorArgs struct {
 
 // The set of arguments for constructing a Attestor resource.
 type AttestorArgs struct {
-	// Required. The attestors ID.
-	AttestorId pulumi.StringPtrInput
+	AttestorsId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name pulumi.StringPtrInput
-	// Required. The parent of this attestor.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. Time when the attestor was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.

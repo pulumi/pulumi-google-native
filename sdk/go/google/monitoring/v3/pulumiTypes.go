@@ -7354,7 +7354,7 @@ func (o TimeIntervalPtrOutput) StartTime() pulumi.StringPtrOutput {
 }
 
 // A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.
-type TimeSeries struct {
+type TimeSeriesType struct {
 	// Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
 	Metadata *MonitoredResourceMetadata `pulumi:"metadata"`
 	// The associated metric. A fully-specified metric used to identify the time series.
@@ -7371,19 +7371,19 @@ type TimeSeries struct {
 	ValueType *string `pulumi:"valueType"`
 }
 
-// TimeSeriesInput is an input type that accepts TimeSeriesArgs and TimeSeriesOutput values.
-// You can construct a concrete instance of `TimeSeriesInput` via:
+// TimeSeriesTypeInput is an input type that accepts TimeSeriesTypeArgs and TimeSeriesTypeOutput values.
+// You can construct a concrete instance of `TimeSeriesTypeInput` via:
 //
-//          TimeSeriesArgs{...}
-type TimeSeriesInput interface {
+//          TimeSeriesTypeArgs{...}
+type TimeSeriesTypeInput interface {
 	pulumi.Input
 
-	ToTimeSeriesOutput() TimeSeriesOutput
-	ToTimeSeriesOutputWithContext(context.Context) TimeSeriesOutput
+	ToTimeSeriesTypeOutput() TimeSeriesTypeOutput
+	ToTimeSeriesTypeOutputWithContext(context.Context) TimeSeriesTypeOutput
 }
 
 // A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.
-type TimeSeriesArgs struct {
+type TimeSeriesTypeArgs struct {
 	// Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
 	Metadata MonitoredResourceMetadataPtrInput `pulumi:"metadata"`
 	// The associated metric. A fully-specified metric used to identify the time series.
@@ -7400,111 +7400,111 @@ type TimeSeriesArgs struct {
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
-func (TimeSeriesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSeries)(nil)).Elem()
+func (TimeSeriesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesType)(nil)).Elem()
 }
 
-func (i TimeSeriesArgs) ToTimeSeriesOutput() TimeSeriesOutput {
-	return i.ToTimeSeriesOutputWithContext(context.Background())
+func (i TimeSeriesTypeArgs) ToTimeSeriesTypeOutput() TimeSeriesTypeOutput {
+	return i.ToTimeSeriesTypeOutputWithContext(context.Background())
 }
 
-func (i TimeSeriesArgs) ToTimeSeriesOutputWithContext(ctx context.Context) TimeSeriesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesOutput)
+func (i TimeSeriesTypeArgs) ToTimeSeriesTypeOutputWithContext(ctx context.Context) TimeSeriesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTypeOutput)
 }
 
-// TimeSeriesArrayInput is an input type that accepts TimeSeriesArray and TimeSeriesArrayOutput values.
-// You can construct a concrete instance of `TimeSeriesArrayInput` via:
+// TimeSeriesTypeArrayInput is an input type that accepts TimeSeriesTypeArray and TimeSeriesTypeArrayOutput values.
+// You can construct a concrete instance of `TimeSeriesTypeArrayInput` via:
 //
-//          TimeSeriesArray{ TimeSeriesArgs{...} }
-type TimeSeriesArrayInput interface {
+//          TimeSeriesTypeArray{ TimeSeriesTypeArgs{...} }
+type TimeSeriesTypeArrayInput interface {
 	pulumi.Input
 
-	ToTimeSeriesArrayOutput() TimeSeriesArrayOutput
-	ToTimeSeriesArrayOutputWithContext(context.Context) TimeSeriesArrayOutput
+	ToTimeSeriesTypeArrayOutput() TimeSeriesTypeArrayOutput
+	ToTimeSeriesTypeArrayOutputWithContext(context.Context) TimeSeriesTypeArrayOutput
 }
 
-type TimeSeriesArray []TimeSeriesInput
+type TimeSeriesTypeArray []TimeSeriesTypeInput
 
-func (TimeSeriesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TimeSeries)(nil)).Elem()
+func (TimeSeriesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TimeSeriesType)(nil)).Elem()
 }
 
-func (i TimeSeriesArray) ToTimeSeriesArrayOutput() TimeSeriesArrayOutput {
-	return i.ToTimeSeriesArrayOutputWithContext(context.Background())
+func (i TimeSeriesTypeArray) ToTimeSeriesTypeArrayOutput() TimeSeriesTypeArrayOutput {
+	return i.ToTimeSeriesTypeArrayOutputWithContext(context.Background())
 }
 
-func (i TimeSeriesArray) ToTimeSeriesArrayOutputWithContext(ctx context.Context) TimeSeriesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesArrayOutput)
+func (i TimeSeriesTypeArray) ToTimeSeriesTypeArrayOutputWithContext(ctx context.Context) TimeSeriesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesTypeArrayOutput)
 }
 
 // A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.
-type TimeSeriesOutput struct{ *pulumi.OutputState }
+type TimeSeriesTypeOutput struct{ *pulumi.OutputState }
 
-func (TimeSeriesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSeries)(nil)).Elem()
+func (TimeSeriesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesType)(nil)).Elem()
 }
 
-func (o TimeSeriesOutput) ToTimeSeriesOutput() TimeSeriesOutput {
+func (o TimeSeriesTypeOutput) ToTimeSeriesTypeOutput() TimeSeriesTypeOutput {
 	return o
 }
 
-func (o TimeSeriesOutput) ToTimeSeriesOutputWithContext(ctx context.Context) TimeSeriesOutput {
+func (o TimeSeriesTypeOutput) ToTimeSeriesTypeOutputWithContext(ctx context.Context) TimeSeriesTypeOutput {
 	return o
 }
 
 // Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
-func (o TimeSeriesOutput) Metadata() MonitoredResourceMetadataPtrOutput {
-	return o.ApplyT(func(v TimeSeries) *MonitoredResourceMetadata { return v.Metadata }).(MonitoredResourceMetadataPtrOutput)
+func (o TimeSeriesTypeOutput) Metadata() MonitoredResourceMetadataPtrOutput {
+	return o.ApplyT(func(v TimeSeriesType) *MonitoredResourceMetadata { return v.Metadata }).(MonitoredResourceMetadataPtrOutput)
 }
 
 // The associated metric. A fully-specified metric used to identify the time series.
-func (o TimeSeriesOutput) Metric() MetricPtrOutput {
-	return o.ApplyT(func(v TimeSeries) *Metric { return v.Metric }).(MetricPtrOutput)
+func (o TimeSeriesTypeOutput) Metric() MetricPtrOutput {
+	return o.ApplyT(func(v TimeSeriesType) *Metric { return v.Metric }).(MetricPtrOutput)
 }
 
 // The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE.
-func (o TimeSeriesOutput) MetricKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeSeries) *string { return v.MetricKind }).(pulumi.StringPtrOutput)
+func (o TimeSeriesTypeOutput) MetricKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimeSeriesType) *string { return v.MetricKind }).(pulumi.StringPtrOutput)
 }
 
 // The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
-func (o TimeSeriesOutput) Points() PointArrayOutput {
-	return o.ApplyT(func(v TimeSeries) []Point { return v.Points }).(PointArrayOutput)
+func (o TimeSeriesTypeOutput) Points() PointArrayOutput {
+	return o.ApplyT(func(v TimeSeriesType) []Point { return v.Points }).(PointArrayOutput)
 }
 
 // The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data.
-func (o TimeSeriesOutput) Resource() MonitoredResourcePtrOutput {
-	return o.ApplyT(func(v TimeSeries) *MonitoredResource { return v.Resource }).(MonitoredResourcePtrOutput)
+func (o TimeSeriesTypeOutput) Resource() MonitoredResourcePtrOutput {
+	return o.ApplyT(func(v TimeSeriesType) *MonitoredResource { return v.Resource }).(MonitoredResourcePtrOutput)
 }
 
 // The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.
-func (o TimeSeriesOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeSeries) *string { return v.Unit }).(pulumi.StringPtrOutput)
+func (o TimeSeriesTypeOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimeSeriesType) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 // The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the type of the data in the points field.
-func (o TimeSeriesOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeSeries) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+func (o TimeSeriesTypeOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimeSeriesType) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
 
-type TimeSeriesArrayOutput struct{ *pulumi.OutputState }
+type TimeSeriesTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (TimeSeriesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TimeSeries)(nil)).Elem()
+func (TimeSeriesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TimeSeriesType)(nil)).Elem()
 }
 
-func (o TimeSeriesArrayOutput) ToTimeSeriesArrayOutput() TimeSeriesArrayOutput {
+func (o TimeSeriesTypeArrayOutput) ToTimeSeriesTypeArrayOutput() TimeSeriesTypeArrayOutput {
 	return o
 }
 
-func (o TimeSeriesArrayOutput) ToTimeSeriesArrayOutputWithContext(ctx context.Context) TimeSeriesArrayOutput {
+func (o TimeSeriesTypeArrayOutput) ToTimeSeriesTypeArrayOutputWithContext(ctx context.Context) TimeSeriesTypeArrayOutput {
 	return o
 }
 
-func (o TimeSeriesArrayOutput) Index(i pulumi.IntInput) TimeSeriesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeSeries {
-		return vs[0].([]TimeSeries)[vs[1].(int)]
-	}).(TimeSeriesOutput)
+func (o TimeSeriesTypeArrayOutput) Index(i pulumi.IntInput) TimeSeriesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeSeriesType {
+		return vs[0].([]TimeSeriesType)[vs[1].(int)]
+	}).(TimeSeriesTypeOutput)
 }
 
 // A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
@@ -8346,8 +8346,8 @@ func init() {
 	pulumi.RegisterOutputType(TelemetryPtrOutput{})
 	pulumi.RegisterOutputType(TimeIntervalOutput{})
 	pulumi.RegisterOutputType(TimeIntervalPtrOutput{})
-	pulumi.RegisterOutputType(TimeSeriesOutput{})
-	pulumi.RegisterOutputType(TimeSeriesArrayOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTypeOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTypeArrayOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioPtrOutput{})
 	pulumi.RegisterOutputType(TriggerOutput{})

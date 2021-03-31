@@ -18,13 +18,12 @@ class Feature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
-                 feature_id: Optional[pulumi.Input[str]] = None,
+                 features_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_states: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  resource_state: Optional[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['CommonFeatureStateArgs']]] = None,
@@ -39,13 +38,10 @@ class Feature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
-        :param pulumi.Input[str] feature_id: The ID of the feature to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_states: Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
         :param pulumi.Input[str] name: Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-        :param pulumi.Input[str] parent: The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/global`.
-        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']] resource_state: Output only. State of the Feature resource itself.
         :param pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         :param pulumi.Input[pulumi.InputType['CommonFeatureStateArgs']] state: Output only. The Hub-wide Feature state.
@@ -70,15 +66,16 @@ class Feature(pulumi.CustomResource):
 
             __props__['create_time'] = create_time
             __props__['delete_time'] = delete_time
-            __props__['feature_id'] = feature_id
+            if features_id is None and not opts.urn:
+                raise TypeError("Missing required property 'features_id'")
+            __props__['features_id'] = features_id
             __props__['labels'] = labels
             __props__['membership_specs'] = membership_specs
             __props__['membership_states'] = membership_states
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['request_id'] = request_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['resource_state'] = resource_state
             __props__['spec'] = spec
             __props__['state'] = state

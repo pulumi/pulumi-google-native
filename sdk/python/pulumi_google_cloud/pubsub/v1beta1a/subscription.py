@@ -19,6 +19,7 @@ class Subscription(pulumi.CustomResource):
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input[pulumi.InputType['PushConfigArgs']]] = None,
+                 subscriptions_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -53,6 +54,9 @@ class Subscription(pulumi.CustomResource):
             __props__['ack_deadline_seconds'] = ack_deadline_seconds
             __props__['name'] = name
             __props__['push_config'] = push_config
+            if subscriptions_id is None and not opts.urn:
+                raise TypeError("Missing required property 'subscriptions_id'")
+            __props__['subscriptions_id'] = subscriptions_id
             __props__['topic'] = topic
         super(Subscription, __self__).__init__(
             'google-cloud:pubsub/v1beta1a:Subscription',

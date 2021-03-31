@@ -114,16 +114,13 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The project in which to create the Uptime check. The format is: projects/[PROJECT_ID_OR_NUMBER] 
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The group resource associated with the configuration.
@@ -154,6 +151,9 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
+
+        [Input("uptimeCheckConfigsId", required: true)]
+        public Input<string> UptimeCheckConfigsId { get; set; } = null!;
 
         public UptimeCheckConfigArgs()
         {

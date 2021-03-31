@@ -24,6 +24,7 @@ class ForwardingRule(pulumi.CustomResource):
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
@@ -40,7 +41,6 @@ class ForwardingRule(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
@@ -52,7 +52,7 @@ class ForwardingRule(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+        Creates a ForwardingRule resource in the specified project and region using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -150,14 +150,8 @@ class ForwardingRule(pulumi.CustomResource):
                For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not specify ports.
                
                For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] psc_connection_id: [Output Only] The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
@@ -202,6 +196,9 @@ class ForwardingRule(pulumi.CustomResource):
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
             __props__['fingerprint'] = fingerprint
+            if forwarding_rule is None and not opts.urn:
+                raise TypeError("Missing required property 'forwarding_rule'")
+            __props__['forwarding_rule'] = forwarding_rule
             __props__['id'] = id
             __props__['ip_version'] = ip_version
             __props__['is_mirroring_collector'] = is_mirroring_collector
@@ -219,8 +216,9 @@ class ForwardingRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['psc_connection_id'] = psc_connection_id
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['service_directory_registrations'] = service_directory_registrations

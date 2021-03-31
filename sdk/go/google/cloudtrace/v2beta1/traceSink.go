@@ -23,8 +23,11 @@ func NewTraceSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.TraceSinksId == nil {
+		return nil, errors.New("invalid value for required argument 'TraceSinksId'")
 	}
 	var resource TraceSink
 	err := ctx.RegisterResource("google-cloud:cloudtrace/v2beta1:TraceSink", name, args, &resource, opts...)
@@ -62,8 +65,8 @@ type traceSinkArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. The export destination.
 	OutputConfig *OutputConfig `pulumi:"outputConfig"`
-	// Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`.
-	Parent string `pulumi:"parent"`
+	ProjectsId   string        `pulumi:"projectsId"`
+	TraceSinksId string        `pulumi:"traceSinksId"`
 	// Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and write data this account will need the dataEditor role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"
 	WriterIdentity *string `pulumi:"writerIdentity"`
 }
@@ -74,8 +77,8 @@ type TraceSinkArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. The export destination.
 	OutputConfig OutputConfigPtrInput
-	// Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`.
-	Parent pulumi.StringInput
+	ProjectsId   pulumi.StringInput
+	TraceSinksId pulumi.StringInput
 	// Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and write data this account will need the dataEditor role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com"
 	WriterIdentity pulumi.StringPtrInput
 }

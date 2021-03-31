@@ -131,12 +131,6 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
 
-        /// <summary>
-        /// Required. User-defined unique ID of this instance.
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
         [Input("instanceOwners")]
         private InputList<string>? _instanceOwners;
 
@@ -148,6 +142,9 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
             get => _instanceOwners ?? (_instanceOwners = new InputList<string>());
             set => _instanceOwners = value;
         }
+
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
 
         /// <summary>
         /// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
@@ -166,6 +163,9 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
@@ -216,16 +216,13 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         public Input<bool>? NoRemoveDataDisk { get; set; }
 
         /// <summary>
-        /// Required. Format: `parent=projects/{project_id}/locations/{location}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
         /// </summary>
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The proxy endpoint that is used to access the Jupyter notebook.

@@ -23,8 +23,11 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.WorkerPoolsId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerPoolsId'")
 	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-cloud:cloudbuild/v1alpha2:WorkerPool", name, args, &resource, opts...)
@@ -66,8 +69,7 @@ type workerPoolArgs struct {
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	// Required. The parent resource where this book will be created. Format: projects/{project}
-	Parent string `pulumi:"parent"`
+	ProjectsId    string         `pulumi:"projectsId"`
 	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region *string `pulumi:"region"`
 	// Output only. WorkerPool state.
@@ -75,9 +77,8 @@ type workerPoolArgs struct {
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
-	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-	WorkerPoolId *string `pulumi:"workerPoolId"`
+	WorkerConfig  *WorkerConfig `pulumi:"workerConfig"`
+	WorkerPoolsId string        `pulumi:"workerPoolsId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
@@ -90,8 +91,7 @@ type WorkerPoolArgs struct {
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
-	// Required. The parent resource where this book will be created. Format: projects/{project}
-	Parent pulumi.StringInput
+	ProjectsId    pulumi.StringInput
 	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringPtrInput
 	// Output only. WorkerPool state.
@@ -99,9 +99,8 @@ type WorkerPoolArgs struct {
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringPtrInput
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig WorkerConfigPtrInput
-	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-	WorkerPoolId pulumi.StringPtrInput
+	WorkerConfig  WorkerConfigPtrInput
+	WorkerPoolsId pulumi.StringInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

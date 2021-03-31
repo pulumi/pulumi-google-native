@@ -77,23 +77,20 @@ namespace Pulumi.GoogleCloud.Vision.V1
         [Input("indexTime")]
         public Input<string>? IndexTime { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("productSetsId", required: true)]
+        public Input<string> ProductSetsId { get; set; } = null!;
 
-        /// <summary>
-        /// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-        /// </summary>
-        [Input("productSetId")]
-        public Input<string>? ProductSetId { get; set; }
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public ProductSetArgs()
         {

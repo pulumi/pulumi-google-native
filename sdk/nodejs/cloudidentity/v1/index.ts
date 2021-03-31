@@ -5,25 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleAppsCloudidentityDevicesV1Device";
+export * from "./device";
 export * from "./group";
-export * from "./membership";
+export * from "./groupMembership";
 
 // Import resources to register:
-import { GoogleAppsCloudidentityDevicesV1Device } from "./googleAppsCloudidentityDevicesV1Device";
+import { Device } from "./device";
 import { Group } from "./group";
-import { Membership } from "./membership";
+import { GroupMembership } from "./groupMembership";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudidentity/v1:GoogleAppsCloudidentityDevicesV1Device":
-                return new GoogleAppsCloudidentityDevicesV1Device(name, <any>undefined, { urn })
+            case "google-cloud:cloudidentity/v1:Device":
+                return new Device(name, <any>undefined, { urn })
             case "google-cloud:cloudidentity/v1:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "google-cloud:cloudidentity/v1:Membership":
-                return new Membership(name, <any>undefined, { urn })
+            case "google-cloud:cloudidentity/v1:GroupMembership":
+                return new GroupMembership(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

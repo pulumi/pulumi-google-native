@@ -23,8 +23,11 @@ func NewNotificationChannel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.NotificationChannelsId == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationChannelsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource NotificationChannel
 	err := ctx.RegisterResource("google-cloud:monitoring/v3:NotificationChannel", name, args, &resource, opts...)
@@ -71,7 +74,9 @@ type notificationChannelArgs struct {
 	// Records of the modification of this channel.
 	MutationRecords []MutationRecord `pulumi:"mutationRecords"`
 	// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
-	Name string `pulumi:"name"`
+	Name                   *string `pulumi:"name"`
+	NotificationChannelsId string  `pulumi:"notificationChannelsId"`
+	ProjectsId             string  `pulumi:"projectsId"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
 	Type *string `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -95,7 +100,9 @@ type NotificationChannelArgs struct {
 	// Records of the modification of this channel.
 	MutationRecords MutationRecordArrayInput
 	// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
-	Name pulumi.StringInput
+	Name                   pulumi.StringPtrInput
+	NotificationChannelsId pulumi.StringInput
+	ProjectsId             pulumi.StringInput
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field.
 	Type pulumi.StringPtrInput
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.

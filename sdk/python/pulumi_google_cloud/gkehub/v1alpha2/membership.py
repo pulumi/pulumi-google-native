@@ -25,9 +25,10 @@ class Membership(pulumi.CustomResource):
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_connection_time: Optional[pulumi.Input[str]] = None,
-                 membership_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 memberships_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['MembershipStateArgs']]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -48,9 +49,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         :param pulumi.Input[str] last_connection_time: Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
-        :param pulumi.Input[str] membership_id: Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
         :param pulumi.Input[str] name: Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        :param pulumi.Input[str] parent: Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`.
         :param pulumi.Input[pulumi.InputType['MembershipStateArgs']] state: Output only. State of the Membership resource.
         :param pulumi.Input[str] unique_id: Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
         :param pulumi.Input[str] update_time: Output only. When the Membership was last updated.
@@ -81,11 +80,16 @@ class Membership(pulumi.CustomResource):
             __props__['infrastructure_type'] = infrastructure_type
             __props__['labels'] = labels
             __props__['last_connection_time'] = last_connection_time
-            __props__['membership_id'] = membership_id
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
+            if memberships_id is None and not opts.urn:
+                raise TypeError("Missing required property 'memberships_id'")
+            __props__['memberships_id'] = memberships_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['state'] = state
             __props__['unique_id'] = unique_id
             __props__['update_time'] = update_time

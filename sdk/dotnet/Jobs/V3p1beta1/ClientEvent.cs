@@ -65,11 +65,8 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1
         [Input("clientEvent")]
         public Input<Inputs.ClientEventArgs>? ClientEvent { get; set; }
 
-        /// <summary>
-        /// Parent project name.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public ClientEventArgs()
         {

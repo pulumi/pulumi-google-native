@@ -6,13 +6,15 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./note";
+export * from "./noteIamPolicy";
 export * from "./occurrence";
-export * from "./policy";
+export * from "./occurrenceIamPolicy";
 
 // Import resources to register:
 import { Note } from "./note";
+import { NoteIamPolicy } from "./noteIamPolicy";
 import { Occurrence } from "./occurrence";
-import { Policy } from "./policy";
+import { OccurrenceIamPolicy } from "./occurrenceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,10 +22,12 @@ const _module = {
         switch (type) {
             case "google-cloud:containeranalysis/v1beta1:Note":
                 return new Note(name, <any>undefined, { urn })
+            case "google-cloud:containeranalysis/v1beta1:NoteIamPolicy":
+                return new NoteIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:containeranalysis/v1beta1:Occurrence":
                 return new Occurrence(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:containeranalysis/v1beta1:OccurrenceIamPolicy":
+                return new OccurrenceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

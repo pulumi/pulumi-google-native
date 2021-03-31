@@ -47,8 +47,14 @@ export class Service extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.servicesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'servicesId'");
+            }
+            if ((!args || args.v3Id === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'v3Id'");
+            }
+            if ((!args || args.v3Id1 === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'v3Id1'");
             }
             inputs["appEngine"] = args ? args.appEngine : undefined;
             inputs["cloudEndpoints"] = args ? args.cloudEndpoints : undefined;
@@ -58,9 +64,10 @@ export class Service extends pulumi.CustomResource {
             inputs["istioCanonicalService"] = args ? args.istioCanonicalService : undefined;
             inputs["meshIstio"] = args ? args.meshIstio : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
+            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["telemetry"] = args ? args.telemetry : undefined;
+            inputs["v3Id"] = args ? args.v3Id : undefined;
+            inputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
         }
         if (!opts.version) {
@@ -106,16 +113,11 @@ export interface ServiceArgs {
      * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER] 
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
-     * Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
-     */
-    readonly serviceId?: pulumi.Input<string>;
+    readonly servicesId: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      */
     readonly telemetry?: pulumi.Input<inputs.monitoring.v3.Telemetry>;
+    readonly v3Id: pulumi.Input<string>;
+    readonly v3Id1: pulumi.Input<string>;
 }

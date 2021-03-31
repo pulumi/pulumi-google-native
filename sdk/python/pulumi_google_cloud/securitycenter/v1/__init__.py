@@ -3,10 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .finding import *
-from .notification_config import *
-from .policy import *
-from .source import *
+from .organization_notification_config import *
+from .organization_source import *
+from .organization_source_finding import *
+from .organization_source_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -21,14 +21,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:securitycenter/v1:Finding":
-                return Finding(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:securitycenter/v1:NotificationConfig":
-                return NotificationConfig(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:securitycenter/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:securitycenter/v1:Source":
-                return Source(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:securitycenter/v1:OrganizationNotificationConfig":
+                return OrganizationNotificationConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:securitycenter/v1:OrganizationSource":
+                return OrganizationSource(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:securitycenter/v1:OrganizationSourceFinding":
+                return OrganizationSourceFinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:securitycenter/v1:OrganizationSourceIamPolicy":
+                return OrganizationSourceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

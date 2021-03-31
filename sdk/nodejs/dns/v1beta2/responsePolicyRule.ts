@@ -53,13 +53,16 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             if ((!args || args.responsePolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicy'");
             }
+            if ((!args || args.responsePolicyRule === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'responsePolicyRule'");
+            }
             inputs["behavior"] = args ? args.behavior : undefined;
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["localData"] = args ? args.localData : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["responsePolicy"] = args ? args.responsePolicy : undefined;
+            inputs["responsePolicyRule"] = args ? args.responsePolicyRule : undefined;
             inputs["ruleName"] = args ? args.ruleName : undefined;
         } else {
         }
@@ -79,10 +82,6 @@ export interface ResponsePolicyRuleArgs {
      */
     readonly behavior?: pulumi.Input<string>;
     /**
-     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     */
-    readonly clientOperationId?: pulumi.Input<string>;
-    /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
     readonly dnsName?: pulumi.Input<string>;
@@ -91,14 +90,9 @@ export interface ResponsePolicyRuleArgs {
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      */
     readonly localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalData>;
-    /**
-     * Identifies the project addressed by this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * User assigned name of the Response Policy containing the Response Policy Rule.
-     */
     readonly responsePolicy: pulumi.Input<string>;
+    readonly responsePolicyRule: pulumi.Input<string>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      */

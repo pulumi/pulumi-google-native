@@ -21,16 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:dlp/v2:GooglePrivacyDlpV2DeidentifyTemplate":
-		r, err = NewGooglePrivacyDlpV2DeidentifyTemplate(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dlp/v2:GooglePrivacyDlpV2DlpJob":
-		r, err = NewGooglePrivacyDlpV2DlpJob(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dlp/v2:GooglePrivacyDlpV2InspectTemplate":
-		r, err = NewGooglePrivacyDlpV2InspectTemplate(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dlp/v2:GooglePrivacyDlpV2JobTrigger":
-		r, err = NewGooglePrivacyDlpV2JobTrigger(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dlp/v2:GooglePrivacyDlpV2StoredInfoType":
-		r, err = NewGooglePrivacyDlpV2StoredInfoType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:DeidentifyTemplate":
+		r, err = NewDeidentifyTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:DlpJob":
+		r, err = NewDlpJob(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:InspectTemplate":
+		r, err = NewInspectTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:JobTrigger":
+		r, err = NewJobTrigger(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:OrganizationDeidentifyTemplate":
+		r, err = NewOrganizationDeidentifyTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:OrganizationInspectTemplate":
+		r, err = NewOrganizationInspectTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:OrganizationJobTrigger":
+		r, err = NewOrganizationJobTrigger(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:OrganizationStoredInfoType":
+		r, err = NewOrganizationStoredInfoType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dlp/v2:StoredInfoType":
+		r, err = NewStoredInfoType(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

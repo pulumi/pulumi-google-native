@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./subscription";
-export * from "./topic";
+export * from "./adminSubscription";
+export * from "./adminTopic";
 
 // Import resources to register:
-import { Subscription } from "./subscription";
-import { Topic } from "./topic";
+import { AdminSubscription } from "./adminSubscription";
+import { AdminTopic } from "./adminTopic";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:pubsublite/v1:Subscription":
-                return new Subscription(name, <any>undefined, { urn })
-            case "google-cloud:pubsublite/v1:Topic":
-                return new Topic(name, <any>undefined, { urn })
+            case "google-cloud:pubsublite/v1:AdminSubscription":
+                return new AdminSubscription(name, <any>undefined, { urn })
+            case "google-cloud:pubsublite/v1:AdminTopic":
+                return new AdminTopic(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

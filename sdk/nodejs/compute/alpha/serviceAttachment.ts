@@ -53,6 +53,9 @@ export class ServiceAttachment extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            if ((!args || args.serviceAttachment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceAttachment'");
+            }
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
             inputs["consumerForwardingRules"] = args ? args.consumerForwardingRules : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -65,8 +68,8 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
         } else {
         }
         if (!opts.version) {
@@ -120,24 +123,14 @@ export interface ServiceAttachmentArgs {
      * The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
      */
     readonly producerForwardingRule?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
     /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
-    /**
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    readonly serviceAttachment: pulumi.Input<string>;
 }

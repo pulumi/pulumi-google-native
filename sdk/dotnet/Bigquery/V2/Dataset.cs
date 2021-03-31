@@ -77,6 +77,9 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("creationTime")]
         public Input<string>? CreationTime { get; set; }
 
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
         /// <summary>
         /// [Required] A reference that identifies the dataset.
         /// </summary>
@@ -152,9 +155,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("location")]
         public Input<string>? Location { get; set; }
 
-        /// <summary>
-        /// Project ID of the new dataset
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 

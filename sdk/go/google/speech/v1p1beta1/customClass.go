@@ -23,8 +23,14 @@ func NewCustomClass(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.CustomClassesId == nil {
+		return nil, errors.New("invalid value for required argument 'CustomClassesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource CustomClass
 	err := ctx.RegisterResource("google-cloud:speech/v1p1beta1:CustomClass", name, args, &resource, opts...)
@@ -61,9 +67,10 @@ type customClassArgs struct {
 	// Required. The custom class to create.
 	CustomClass *CustomClassType `pulumi:"customClass"`
 	// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-	CustomClassId *string `pulumi:"customClassId"`
-	// Required. The parent resource where this custom class will be created. Format: {api_version}/projects/{project}/locations/{location}/customClasses
-	Parent string `pulumi:"parent"`
+	CustomClassId   *string `pulumi:"customClassId"`
+	CustomClassesId string  `pulumi:"customClassesId"`
+	LocationsId     string  `pulumi:"locationsId"`
+	ProjectsId      string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a CustomClass resource.
@@ -71,9 +78,10 @@ type CustomClassArgs struct {
 	// Required. The custom class to create.
 	CustomClass CustomClassTypePtrInput
 	// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-	CustomClassId pulumi.StringPtrInput
-	// Required. The parent resource where this custom class will be created. Format: {api_version}/projects/{project}/locations/{location}/customClasses
-	Parent pulumi.StringInput
+	CustomClassId   pulumi.StringPtrInput
+	CustomClassesId pulumi.StringInput
+	LocationsId     pulumi.StringInput
+	ProjectsId      pulumi.StringInput
 }
 
 func (CustomClassArgs) ElementType() reflect.Type {

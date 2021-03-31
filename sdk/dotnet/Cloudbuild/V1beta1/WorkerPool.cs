@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1beta1
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
         /// </summary>
@@ -83,11 +86,8 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1beta1
         [Input("networkConfig")]
         public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. `WorkerPool` state.
@@ -107,11 +107,8 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1beta1
         [Input("workerConfig")]
         public Input<Inputs.WorkerConfigArgs>? WorkerConfig { get; set; }
 
-        /// <summary>
-        /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-        /// </summary>
-        [Input("workerPoolId")]
-        public Input<string>? WorkerPoolId { get; set; }
+        [Input("workerPoolsId", required: true)]
+        public Input<string> WorkerPoolsId { get; set; } = null!;
 
         public WorkerPoolArgs()
         {

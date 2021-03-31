@@ -5,29 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudDatalabelingV1beta1AnnotationSpecSet";
-export * from "./googleCloudDatalabelingV1beta1Dataset";
-export * from "./googleCloudDatalabelingV1beta1EvaluationJob";
-export * from "./googleLongrunningOperation";
+export * from "./annotationSpecSet";
+export * from "./dataset";
+export * from "./datasetAnnotatedDatasetFeedbackThreadFeedbackMessage";
+export * from "./evaluationJob";
+export * from "./instruction";
 
 // Import resources to register:
-import { GoogleCloudDatalabelingV1beta1AnnotationSpecSet } from "./googleCloudDatalabelingV1beta1AnnotationSpecSet";
-import { GoogleCloudDatalabelingV1beta1Dataset } from "./googleCloudDatalabelingV1beta1Dataset";
-import { GoogleCloudDatalabelingV1beta1EvaluationJob } from "./googleCloudDatalabelingV1beta1EvaluationJob";
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
+import { AnnotationSpecSet } from "./annotationSpecSet";
+import { Dataset } from "./dataset";
+import { DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage } from "./datasetAnnotatedDatasetFeedbackThreadFeedbackMessage";
+import { EvaluationJob } from "./evaluationJob";
+import { Instruction } from "./instruction";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1AnnotationSpecSet":
-                return new GoogleCloudDatalabelingV1beta1AnnotationSpecSet(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1Dataset":
-                return new GoogleCloudDatalabelingV1beta1Dataset(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1EvaluationJob":
-                return new GoogleCloudDatalabelingV1beta1EvaluationJob(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
+            case "google-cloud:datalabeling/v1beta1:AnnotationSpecSet":
+                return new AnnotationSpecSet(name, <any>undefined, { urn })
+            case "google-cloud:datalabeling/v1beta1:Dataset":
+                return new Dataset(name, <any>undefined, { urn })
+            case "google-cloud:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
+                return new DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(name, <any>undefined, { urn })
+            case "google-cloud:datalabeling/v1beta1:EvaluationJob":
+                return new EvaluationJob(name, <any>undefined, { urn })
+            case "google-cloud:datalabeling/v1beta1:Instruction":
+                return new Instruction(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

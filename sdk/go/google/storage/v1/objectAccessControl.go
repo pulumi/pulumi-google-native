@@ -26,6 +26,9 @@ func NewObjectAccessControl(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
+	if args.Entity == nil {
+		return nil, errors.New("invalid value for required argument 'Entity'")
+	}
 	if args.Object == nil {
 		return nil, errors.New("invalid value for required argument 'Object'")
 	}
@@ -79,7 +82,7 @@ type objectAccessControlArgs struct {
 	// - The user liz@example.com would be user-liz@example.com.
 	// - The group example@googlegroups.com would be group-example@googlegroups.com.
 	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-	Entity *string `pulumi:"entity"`
+	Entity string `pulumi:"entity"`
 	// The ID for the entity, if any.
 	EntityId *string `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
@@ -94,14 +97,10 @@ type objectAccessControlArgs struct {
 	Object string `pulumi:"object"`
 	// The project team associated with the entity, if any.
 	ProjectTeam map[string]string `pulumi:"projectTeam"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
 	SelfLink *string `pulumi:"selfLink"`
-	// The project to be billed for this request. Required for Requester Pays buckets.
-	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a ObjectAccessControl resource.
@@ -124,7 +123,7 @@ type ObjectAccessControlArgs struct {
 	// - The user liz@example.com would be user-liz@example.com.
 	// - The group example@googlegroups.com would be group-example@googlegroups.com.
 	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-	Entity pulumi.StringPtrInput
+	Entity pulumi.StringInput
 	// The ID for the entity, if any.
 	EntityId pulumi.StringPtrInput
 	// HTTP 1.1 Entity tag for the access-control entry.
@@ -139,14 +138,10 @@ type ObjectAccessControlArgs struct {
 	Object pulumi.StringInput
 	// The project team associated with the entity, if any.
 	ProjectTeam pulumi.StringMapInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.
 	SelfLink pulumi.StringPtrInput
-	// The project to be billed for this request. Required for Requester Pays buckets.
-	UserProject pulumi.StringPtrInput
 }
 
 func (ObjectAccessControlArgs) ElementType() reflect.Type {

@@ -101,6 +101,12 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
         [Input("inputUri")]
         public Input<string>? InputUri { get; set; }
 
+        [Input("jobsId", required: true)]
+        public Input<string> JobsId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
         /// </summary>
@@ -120,12 +126,6 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
         public Input<string>? OutputUri { get; set; }
 
         /// <summary>
-        /// Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
         /// </summary>
         [Input("priority")]
@@ -136,6 +136,9 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
         /// </summary>
         [Input("progress")]
         public Input<Inputs.ProgressArgs>? Progress { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The time the transcoding started.

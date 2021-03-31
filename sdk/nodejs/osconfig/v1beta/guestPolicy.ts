@@ -47,18 +47,21 @@ export class GuestPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.guestPoliciesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'guestPoliciesId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["assignment"] = args ? args.assignment : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["guestPolicyId"] = args ? args.guestPolicyId : undefined;
+            inputs["guestPoliciesId"] = args ? args.guestPoliciesId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["packageRepositories"] = args ? args.packageRepositories : undefined;
             inputs["packages"] = args ? args.packages : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["recipes"] = args ? args.recipes : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -90,10 +93,7 @@ export interface GuestPolicyArgs {
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-     */
-    readonly guestPolicyId?: pulumi.Input<string>;
+    readonly guestPoliciesId: pulumi.Input<string>;
     /**
      * Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
      */
@@ -106,10 +106,7 @@ export interface GuestPolicyArgs {
      * The software packages to be managed by this policy.
      */
     readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.Package>[]>;
-    /**
-     * Required. The resource name of the parent using one of the following forms: `projects/{project_number}`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
      */

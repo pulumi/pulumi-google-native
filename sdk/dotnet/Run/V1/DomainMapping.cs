@@ -12,23 +12,23 @@ namespace Pulumi.GoogleCloud.Run.V1
     /// <summary>
     /// Create a new domain mapping.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:run/v1:DomainMapping")]
-    public partial class DomainMapping : Pulumi.CustomResource
+    [GoogleCloudResourceType("google-cloud:run/v1:Domainmapping")]
+    public partial class Domainmapping : Pulumi.CustomResource
     {
         /// <summary>
-        /// Create a DomainMapping resource with the given unique name, arguments, and options.
+        /// Create a Domainmapping resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DomainMapping(string name, DomainMappingArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:run/v1:DomainMapping", name, args ?? new DomainMappingArgs(), MakeResourceOptions(options, ""))
+        public Domainmapping(string name, DomainmappingArgs args, CustomResourceOptions? options = null)
+            : base("google-cloud:run/v1:Domainmapping", name, args ?? new DomainmappingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private DomainMapping(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:run/v1:DomainMapping", name, null, MakeResourceOptions(options, id))
+        private Domainmapping(string name, Input<string> id, CustomResourceOptions? options = null)
+            : base("google-cloud:run/v1:Domainmapping", name, null, MakeResourceOptions(options, id))
         {
         }
 
@@ -44,20 +44,20 @@ namespace Pulumi.GoogleCloud.Run.V1
             return merged;
         }
         /// <summary>
-        /// Get an existing DomainMapping resource's state with the given name, ID, and optional extra
+        /// Get an existing Domainmapping resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resulting resource.</param>
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static DomainMapping Get(string name, Input<string> id, CustomResourceOptions? options = null)
+        public static Domainmapping Get(string name, Input<string> id, CustomResourceOptions? options = null)
         {
-            return new DomainMapping(name, id, options);
+            return new Domainmapping(name, id, options);
         }
     }
 
-    public sealed class DomainMappingArgs : Pulumi.ResourceArgs
+    public sealed class DomainmappingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API version for this call such as "domains.cloudrun.com/v1".
@@ -65,11 +65,8 @@ namespace Pulumi.GoogleCloud.Run.V1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
-        /// <summary>
-        /// DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
-        /// </summary>
-        [Input("dryRun")]
-        public Input<string>? DryRun { get; set; }
+        [Input("domainmappingsId", required: true)]
+        public Input<string> DomainmappingsId { get; set; } = null!;
 
         /// <summary>
         /// The kind of resource, in this case "DomainMapping".
@@ -77,17 +74,17 @@ namespace Pulumi.GoogleCloud.Run.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Metadata associated with this BuildTemplate.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        /// <summary>
-        /// The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The spec for this DomainMapping.
@@ -101,7 +98,7 @@ namespace Pulumi.GoogleCloud.Run.V1
         [Input("status")]
         public Input<Inputs.DomainMappingStatusArgs>? Status { get; set; }
 
-        public DomainMappingArgs()
+        public DomainmappingArgs()
         {
         }
     }

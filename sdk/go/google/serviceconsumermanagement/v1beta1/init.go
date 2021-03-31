@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:serviceconsumermanagement/v1beta1:V1Beta1QuotaOverride":
-		r, err = NewV1Beta1QuotaOverride(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride":
+		r, err = NewServiceConsumerQuotaMetricLimitProducerOverride(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

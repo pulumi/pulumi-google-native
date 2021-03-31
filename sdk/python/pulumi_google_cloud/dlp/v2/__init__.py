@@ -3,11 +3,15 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_privacy_dlp_v2_deidentify_template import *
-from .google_privacy_dlp_v2_dlp_job import *
-from .google_privacy_dlp_v2_inspect_template import *
-from .google_privacy_dlp_v2_job_trigger import *
-from .google_privacy_dlp_v2_stored_info_type import *
+from .deidentify_template import *
+from .dlp_job import *
+from .inspect_template import *
+from .job_trigger import *
+from .organization_deidentify_template import *
+from .organization_inspect_template import *
+from .organization_job_trigger import *
+from .organization_stored_info_type import *
+from .stored_info_type import *
 from ._inputs import *
 
 def _register_module():
@@ -22,16 +26,24 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:dlp/v2:GooglePrivacyDlpV2DeidentifyTemplate":
-                return GooglePrivacyDlpV2DeidentifyTemplate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dlp/v2:GooglePrivacyDlpV2DlpJob":
-                return GooglePrivacyDlpV2DlpJob(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dlp/v2:GooglePrivacyDlpV2InspectTemplate":
-                return GooglePrivacyDlpV2InspectTemplate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dlp/v2:GooglePrivacyDlpV2JobTrigger":
-                return GooglePrivacyDlpV2JobTrigger(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:dlp/v2:GooglePrivacyDlpV2StoredInfoType":
-                return GooglePrivacyDlpV2StoredInfoType(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:dlp/v2:DeidentifyTemplate":
+                return DeidentifyTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:DlpJob":
+                return DlpJob(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:InspectTemplate":
+                return InspectTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:JobTrigger":
+                return JobTrigger(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:OrganizationDeidentifyTemplate":
+                return OrganizationDeidentifyTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:OrganizationInspectTemplate":
+                return OrganizationInspectTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:OrganizationJobTrigger":
+                return OrganizationJobTrigger(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:OrganizationStoredInfoType":
+                return OrganizationStoredInfoType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:dlp/v2:StoredInfoType":
+                return StoredInfoType(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

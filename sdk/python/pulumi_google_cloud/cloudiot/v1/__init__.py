@@ -3,9 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .device import *
-from .device_registry import *
-from .policy import *
+from .registry import *
+from .registry_device import *
+from .registry_group_iam_policy import *
+from .registry_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -20,12 +21,14 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:cloudiot/v1:Device":
-                return Device(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudiot/v1:DeviceRegistry":
-                return DeviceRegistry(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudiot/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:cloudiot/v1:Registry":
+                return Registry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudiot/v1:RegistryDevice":
+                return RegistryDevice(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudiot/v1:RegistryGroupIamPolicy":
+                return RegistryGroupIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudiot/v1:RegistryIamPolicy":
+                return RegistryIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -23,8 +23,14 @@ func NewWorkloadIdentityPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.WorkloadIdentityPoolsId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolsId'")
 	}
 	var resource WorkloadIdentityPool
 	err := ctx.RegisterResource("google-cloud:iam/v1:WorkloadIdentityPool", name, args, &resource, opts...)
@@ -64,14 +70,13 @@ type workloadIdentityPoolArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Output only. The resource name of the pool.
-	Name *string `pulumi:"name"`
-	// Required. The parent resource to create the pool in. The only supported location is `global`.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. The state of the pool.
-	State *string `pulumi:"state"`
-	// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	WorkloadIdentityPoolId *string `pulumi:"workloadIdentityPoolId"`
+	State                   *string `pulumi:"state"`
+	WorkloadIdentityPoolsId string  `pulumi:"workloadIdentityPoolsId"`
 }
 
 // The set of arguments for constructing a WorkloadIdentityPool resource.
@@ -82,14 +87,13 @@ type WorkloadIdentityPoolArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name of the pool.
-	Name pulumi.StringPtrInput
-	// Required. The parent resource to create the pool in. The only supported location is `global`.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The state of the pool.
-	State pulumi.StringPtrInput
-	// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	WorkloadIdentityPoolId pulumi.StringPtrInput
+	State                   pulumi.StringPtrInput
+	WorkloadIdentityPoolsId pulumi.StringInput
 }
 
 func (WorkloadIdentityPoolArgs) ElementType() reflect.Type {

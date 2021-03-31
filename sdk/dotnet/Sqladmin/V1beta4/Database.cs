@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
+        [Input("database", required: true)]
+        public Input<string> Database { get; set; } = null!;
+
         /// <summary>
         /// This field is deprecated and will be removed from a future version of the API.
         /// </summary>

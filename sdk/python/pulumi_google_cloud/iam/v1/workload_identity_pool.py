@@ -18,10 +18,11 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
+                 workload_identity_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,9 +35,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: Output only. The resource name of the pool.
-        :param pulumi.Input[str] parent: Required. The parent resource to create the pool in. The only supported location is `global`.
         :param pulumi.Input[str] state: Output only. The state of the pool.
-        :param pulumi.Input[str] workload_identity_pool_id: Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,12 +57,17 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disabled'] = disabled
             __props__['display_name'] = display_name
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['state'] = state
-            __props__['workload_identity_pool_id'] = workload_identity_pool_id
+            if workload_identity_pools_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workload_identity_pools_id'")
+            __props__['workload_identity_pools_id'] = workload_identity_pools_id
         super(WorkloadIdentityPool, __self__).__init__(
             'google-cloud:iam/v1:WorkloadIdentityPool',
             resource_name,

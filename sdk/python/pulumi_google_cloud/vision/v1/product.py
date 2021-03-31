@@ -18,11 +18,12 @@ class Product(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  product_category: Optional[pulumi.Input[str]] = None,
-                 product_id: Optional[pulumi.Input[str]] = None,
                  product_labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyValueArgs']]]]] = None,
+                 products_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,9 +35,7 @@ class Product(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided metadata to be stored with this product. Must be at most 4096 characters long.
         :param pulumi.Input[str] display_name: The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
         :param pulumi.Input[str] name: The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
-        :param pulumi.Input[str] parent: Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
         :param pulumi.Input[str] product_category: Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
-        :param pulumi.Input[str] product_id: A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyValueArgs']]]] product_labels: Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
         """
         if __name__ is not None:
@@ -58,13 +57,18 @@ class Product(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['display_name'] = display_name
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['product_category'] = product_category
-            __props__['product_id'] = product_id
             __props__['product_labels'] = product_labels
+            if products_id is None and not opts.urn:
+                raise TypeError("Missing required property 'products_id'")
+            __props__['products_id'] = products_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Product, __self__).__init__(
             'google-cloud:vision/v1:Product',
             resource_name,

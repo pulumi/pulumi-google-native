@@ -23,6 +23,9 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InterconnectAttachment == nil {
+		return nil, errors.New("invalid value for required argument 'InterconnectAttachment'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -104,7 +107,8 @@ type interconnectAttachmentArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
-	Interconnect *string `pulumi:"interconnect"`
+	Interconnect           *string `pulumi:"interconnect"`
+	InterconnectAttachment string  `pulumi:"interconnectAttachment"`
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
@@ -132,16 +136,9 @@ type interconnectAttachmentArgs struct {
 	PartnerMetadata *InterconnectAttachmentPartnerMetadata `pulumi:"partnerMetadata"`
 	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo *InterconnectAttachmentPrivateInfo `pulumi:"privateInterconnectInfo"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project                 string                             `pulumi:"project"`
 	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router *string `pulumi:"router"`
 	// [Output Only] Server-defined URL for the resource.
@@ -161,8 +158,6 @@ type interconnectAttachmentArgs struct {
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
 	// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type *string `pulumi:"type"`
-	// If true, the request will not be committed.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q *int `pulumi:"vlanTag8021q"`
 }
@@ -212,7 +207,8 @@ type InterconnectAttachmentArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
-	Interconnect pulumi.StringPtrInput
+	Interconnect           pulumi.StringPtrInput
+	InterconnectAttachment pulumi.StringInput
 	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
 	// Not currently available in all Interconnect locations.
 	IpsecInternalAddresses pulumi.StringArrayInput
@@ -240,16 +236,9 @@ type InterconnectAttachmentArgs struct {
 	PartnerMetadata InterconnectAttachmentPartnerMetadataPtrInput
 	// [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project                 pulumi.StringInput
 	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
@@ -269,8 +258,6 @@ type InterconnectAttachmentArgs struct {
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
 	// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type pulumi.StringPtrInput
-	// If true, the request will not be committed.
-	ValidateOnly pulumi.BoolPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntPtrInput
 }

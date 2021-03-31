@@ -47,20 +47,28 @@ export class WorkflowTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.workflowTemplatesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workflowTemplatesId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["dagTimeout"] = args ? args.dagTimeout : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["jobs"] = args ? args.jobs : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["placement"] = args ? args.placement : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["version"] = args ? args.version : undefined;
+            inputs["workflowTemplatesId"] = args ? args.workflowTemplatesId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -91,6 +99,7 @@ export interface WorkflowTemplateArgs {
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
      */
@@ -100,13 +109,10 @@ export interface WorkflowTemplateArgs {
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.v1.TemplateParameter>[]>;
     /**
-     * Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location}
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Required. WorkflowTemplate scheduling information.
      */
     readonly placement?: pulumi.Input<inputs.dataproc.v1.WorkflowTemplatePlacement>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The time template was last updated.
      */
@@ -115,4 +121,5 @@ export interface WorkflowTemplateArgs {
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
      */
     readonly version?: pulumi.Input<number>;
+    readonly workflowTemplatesId: pulumi.Input<string>;
 }

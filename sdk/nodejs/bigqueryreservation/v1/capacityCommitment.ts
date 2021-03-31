@@ -47,16 +47,23 @@ export class CapacityCommitment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.capacityCommitmentsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'capacityCommitmentsId'");
             }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["capacityCommitmentsId"] = args ? args.capacityCommitmentsId : undefined;
             inputs["commitmentEndTime"] = args ? args.commitmentEndTime : undefined;
             inputs["commitmentStartTime"] = args ? args.commitmentStartTime : undefined;
-            inputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
             inputs["failureStatus"] = args ? args.failureStatus : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["plan"] = args ? args.plan : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["renewalPlan"] = args ? args.renewalPlan : undefined;
             inputs["slotCount"] = args ? args.slotCount : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -73,6 +80,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
  * The set of arguments for constructing a CapacityCommitment resource.
  */
 export interface CapacityCommitmentArgs {
+    readonly capacityCommitmentsId: pulumi.Input<string>;
     /**
      * Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
@@ -82,25 +90,19 @@ export interface CapacityCommitmentArgs {
      */
     readonly commitmentStartTime?: pulumi.Input<string>;
     /**
-     * If true, fail the request if another project in the organization has a capacity commitment.
-     */
-    readonly enforceSingleAdminProjectPerOrg?: pulumi.Input<boolean>;
-    /**
      * Output only. For FAILED commitment plan, provides the reason of failure.
      */
     readonly failureStatus?: pulumi.Input<inputs.bigqueryreservation.v1.Status>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US`
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Capacity commitment commitment plan.
      */
     readonly plan?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
      */

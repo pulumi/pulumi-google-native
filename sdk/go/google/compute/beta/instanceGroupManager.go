@@ -13,7 +13,7 @@ import (
 
 // Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
 //
-// A regional managed instance group can contain up to 2000 instances.
+// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 }
@@ -25,11 +25,14 @@ func NewInstanceGroupManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceGroupManager == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource InstanceGroupManager
 	err := ctx.RegisterResource("google-cloud:compute/beta:InstanceGroupManager", name, args, &resource, opts...)
@@ -84,7 +87,8 @@ type instanceGroupManagerArgs struct {
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup *string `pulumi:"instanceGroup"`
+	InstanceGroup        *string `pulumi:"instanceGroup"`
+	InstanceGroupManager string  `pulumi:"instanceGroupManager"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
 	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
@@ -93,16 +97,9 @@ type instanceGroupManagerArgs struct {
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project    string      `pulumi:"project"`
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Region *string `pulumi:"region"`
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -122,7 +119,7 @@ type instanceGroupManagerArgs struct {
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone *string `pulumi:"zone"`
+	Zone string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroupManager resource.
@@ -148,7 +145,8 @@ type InstanceGroupManagerArgs struct {
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup pulumi.StringPtrInput
+	InstanceGroup        pulumi.StringPtrInput
+	InstanceGroupManager pulumi.StringInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate pulumi.StringPtrInput
 	// [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
@@ -157,16 +155,9 @@ type InstanceGroupManagerArgs struct {
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortArrayInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project    pulumi.StringInput
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -186,7 +177,7 @@ type InstanceGroupManagerArgs struct {
 	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionArrayInput
 	// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
-	Zone pulumi.StringPtrInput
+	Zone pulumi.StringInput
 }
 
 func (InstanceGroupManagerArgs) ElementType() reflect.Type {

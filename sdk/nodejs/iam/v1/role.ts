@@ -47,12 +47,16 @@ export class Role extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
-            inputs["parent"] = args ? args.parent : undefined;
+            if ((!args || args.rolesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rolesId'");
+            }
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["roleId"] = args ? args.roleId : undefined;
+            inputs["rolesId"] = args ? args.rolesId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -66,10 +70,7 @@ export class Role extends pulumi.CustomResource {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
-    /**
-     * The `parent` parameter's value depends on the target resource for the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value format is described below: * [`projects.roles.create()`](/iam/reference/rest/v1/projects.roles/create): `projects/{PROJECT_ID}`. This method creates project-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` * [`organizations.roles.create()`](/iam/reference/rest/v1/organizations.roles/create): `organizations/{ORGANIZATION_ID}`. This method creates organization-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles` Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization ID.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The Role resource to create.
      */
@@ -78,4 +79,5 @@ export interface RoleArgs {
      * The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
      */
     readonly roleId?: pulumi.Input<string>;
+    readonly rolesId: pulumi.Input<string>;
 }

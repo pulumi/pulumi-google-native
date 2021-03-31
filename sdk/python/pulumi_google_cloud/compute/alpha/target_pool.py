@@ -26,10 +26,10 @@ class TargetPool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 target_pool: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -55,13 +55,7 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
         :param pulumi.Input[str] kind: [Output Only] Type of the resource. Always compute#targetPool for target pools.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the target pool resides.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] session_affinity: Session affinity option, must be one of the following values:
@@ -101,10 +95,12 @@ class TargetPool(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['session_affinity'] = session_affinity
+            if target_pool is None and not opts.urn:
+                raise TypeError("Missing required property 'target_pool'")
+            __props__['target_pool'] = target_pool
         super(TargetPool, __self__).__init__(
             'google-cloud:compute/alpha:TargetPool',
             resource_name,

@@ -26,10 +26,8 @@ class ObjectAccessControl(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -60,10 +58,8 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] project_team: The project team associated with the entity, if any.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
-        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,6 +83,8 @@ class ObjectAccessControl(pulumi.CustomResource):
             __props__['bucket'] = bucket
             __props__['domain'] = domain
             __props__['email'] = email
+            if entity is None and not opts.urn:
+                raise TypeError("Missing required property 'entity'")
             __props__['entity'] = entity
             __props__['entity_id'] = entity_id
             __props__['etag'] = etag
@@ -97,10 +95,8 @@ class ObjectAccessControl(pulumi.CustomResource):
                 raise TypeError("Missing required property 'object'")
             __props__['object'] = object
             __props__['project_team'] = project_team
-            __props__['provisional_user_project'] = provisional_user_project
             __props__['role'] = role
             __props__['self_link'] = self_link
-            __props__['user_project'] = user_project
         super(ObjectAccessControl, __self__).__init__(
             'google-cloud:storage/v1:ObjectAccessControl',
             resource_name,

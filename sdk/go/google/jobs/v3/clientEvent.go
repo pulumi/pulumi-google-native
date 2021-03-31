@@ -23,8 +23,8 @@ func NewClientEvent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource ClientEvent
 	err := ctx.RegisterResource("google-cloud:jobs/v3:ClientEvent", name, args, &resource, opts...)
@@ -60,16 +60,14 @@ func (ClientEventState) ElementType() reflect.Type {
 type clientEventArgs struct {
 	// Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution.
 	ClientEvent *ClientEventType `pulumi:"clientEvent"`
-	// Parent project name.
-	Parent string `pulumi:"parent"`
+	ProjectsId  string           `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a ClientEvent resource.
 type ClientEventArgs struct {
 	// Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution.
 	ClientEvent ClientEventTypePtrInput
-	// Parent project name.
-	Parent pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 }
 
 func (ClientEventArgs) ElementType() reflect.Type {

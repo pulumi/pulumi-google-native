@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:jobs/v4:ClientEvent":
-		r, err = NewClientEvent(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:jobs/v4:Company":
-		r, err = NewCompany(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:jobs/v4:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:jobs/v4:Tenant":
 		r, err = NewTenant(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:jobs/v4:TenantClientEvent":
+		r, err = NewTenantClientEvent(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:jobs/v4:TenantCompany":
+		r, err = NewTenantCompany(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:jobs/v4:TenantJob":
+		r, err = NewTenantJob(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

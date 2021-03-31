@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./cluster";
-export * from "./nodePool";
+export * from "./clusterNodePool";
 
 // Import resources to register:
 import { Cluster } from "./cluster";
-import { NodePool } from "./nodePool";
+import { ClusterNodePool } from "./clusterNodePool";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:container/v1:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "google-cloud:container/v1:NodePool":
-                return new NodePool(name, <any>undefined, { urn })
+            case "google-cloud:container/v1:ClusterNodePool":
+                return new ClusterNodePool(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

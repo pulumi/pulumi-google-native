@@ -3,6 +3,7 @@ module github.com/pulumi/pulumi-google-cloud/provider
 go 1.16
 
 require (
+	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.4.3
 	github.com/hashicorp/go-cleanhttp v0.5.1

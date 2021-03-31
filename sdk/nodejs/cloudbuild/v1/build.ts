@@ -47,8 +47,8 @@ export class Build extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectId'");
             }
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
@@ -61,7 +61,6 @@ export class Build extends pulumi.CustomResource {
             inputs["logsBucket"] = args ? args.logsBucket : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["options"] = args ? args.options : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["queueTtl"] = args ? args.queueTtl : undefined;
             inputs["results"] = args ? args.results : undefined;
@@ -135,13 +134,9 @@ export interface BuildArgs {
      */
     readonly options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptions>;
     /**
-     * The parent resource where this build will be created. Format: `projects/{project}/locations/{location}`
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Output only. ID of the project.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly projectId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */

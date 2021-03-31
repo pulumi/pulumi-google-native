@@ -21,12 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:privateca/v1beta1:Certificate":
-		r, err = NewCertificate(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:privateca/v1beta1:CertificateAuthority":
 		r, err = NewCertificateAuthority(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:privateca/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:privateca/v1beta1:CertificateAuthorityCertificate":
+		r, err = NewCertificateAuthorityCertificate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy":
+		r, err = NewCertificateAuthorityCertificateRevocationListIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:privateca/v1beta1:CertificateAuthorityIamPolicy":
+		r, err = NewCertificateAuthorityIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:privateca/v1beta1:ReusableConfigIamPolicy":
+		r, err = NewReusableConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

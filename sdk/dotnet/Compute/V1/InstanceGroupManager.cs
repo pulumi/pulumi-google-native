@@ -12,7 +12,7 @@ namespace Pulumi.GoogleCloud.Compute.V1
     /// <summary>
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
     /// 
-    /// A regional managed instance group can contain up to 2000 instances.
+    /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
     /// </summary>
     [GoogleCloudResourceType("google-cloud:compute/v1:InstanceGroupManager")]
     public partial class InstanceGroupManager : Pulumi.CustomResource
@@ -123,6 +123,9 @@ namespace Pulumi.GoogleCloud.Compute.V1
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }
 
+        [Input("instanceGroupManager", required: true)]
+        public Input<string> InstanceGroupManager { get; set; } = null!;
+
         /// <summary>
         /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         /// </summary>
@@ -153,27 +156,14 @@ namespace Pulumi.GoogleCloud.Compute.V1
             set => _namedPorts = value;
         }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-        /// 
-        /// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-        /// 
-        /// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// [Output Only] The URL for this managed instance group. The server defines this URL.
@@ -234,8 +224,8 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <summary>
         /// [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
         /// </summary>
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public InstanceGroupManagerArgs()
         {

@@ -6,11 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./domain";
-export * from "./policy";
+export * from "./domainIamPolicy";
+export * from "./peeringIamPolicy";
 
 // Import resources to register:
 import { Domain } from "./domain";
-import { Policy } from "./policy";
+import { DomainIamPolicy } from "./domainIamPolicy";
+import { PeeringIamPolicy } from "./peeringIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +20,10 @@ const _module = {
         switch (type) {
             case "google-cloud:managedidentities/v1beta1:Domain":
                 return new Domain(name, <any>undefined, { urn })
-            case "google-cloud:managedidentities/v1beta1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:managedidentities/v1beta1:DomainIamPolicy":
+                return new DomainIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:managedidentities/v1beta1:PeeringIamPolicy":
+                return new PeeringIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

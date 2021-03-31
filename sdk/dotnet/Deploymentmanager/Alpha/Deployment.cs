@@ -60,16 +60,13 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
     public sealed class DeploymentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the policy to use for creating new resources.
-        /// </summary>
-        [Input("createPolicy")]
-        public Input<string>? CreatePolicy { get; set; }
-
-        /// <summary>
         /// User provided default credential for the deployment.
         /// </summary>
         [Input("credential")]
         public Input<Inputs.CredentialArgs>? Credential { get; set; }
+
+        [Input("deployment", required: true)]
+        public Input<string> Deployment { get; set; } = null!;
 
         /// <summary>
         /// An optional user-provided description of the deployment.
@@ -134,15 +131,6 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
             set => _outputs = value;
         }
 
-        /// <summary>
-        /// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
-        /// </summary>
-        [Input("preview")]
-        public Input<bool>? Preview { get; set; }
-
-        /// <summary>
-        /// The project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

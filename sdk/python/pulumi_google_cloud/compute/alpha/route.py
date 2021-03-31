@@ -33,7 +33,7 @@ class Route(pulumi.CustomResource):
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
+                 route: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -67,12 +67,6 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[str] next_hop_peering: [Output Only] The network peering name that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[str] next_hop_vpn_tunnel: The URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
-        :param pulumi.Input[str] project: Project ID for this request.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
@@ -115,7 +109,9 @@ class Route(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            __props__['request_id'] = request_id
+            if route is None and not opts.urn:
+                raise TypeError("Missing required property 'route'")
+            __props__['route'] = route
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['tags'] = tags

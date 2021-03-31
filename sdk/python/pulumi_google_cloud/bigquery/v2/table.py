@@ -43,6 +43,7 @@ class Table(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  snapshot_definition: Optional[pulumi.Input[pulumi.InputType['SnapshotDefinitionArgs']]] = None,
                  streaming_buffer: Optional[pulumi.Input[pulumi.InputType['StreamingbufferArgs']]] = None,
+                 table_id: Optional[pulumi.Input[str]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -57,7 +58,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusteringArgs']] clustering: [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[str] creation_time: [Output-only] The time when this table was created, in milliseconds since the epoch.
-        :param pulumi.Input[str] dataset_id: Dataset ID of the new table
         :param pulumi.Input[str] description: [Optional] A user-friendly description of this table.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param pulumi.Input[str] etag: [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
@@ -75,7 +75,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] num_long_term_bytes: [Output-only] The number of bytes in the table that are considered "long-term storage".
         :param pulumi.Input[str] num_physical_bytes: [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
         :param pulumi.Input[str] num_rows: [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
-        :param pulumi.Input[str] project_id: Project ID of the new table
         :param pulumi.Input[pulumi.InputType['RangePartitioningArgs']] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         :param pulumi.Input[pulumi.InputType['TableSchemaArgs']] schema: [Optional] Describes the schema of this table.
@@ -135,6 +134,9 @@ class Table(pulumi.CustomResource):
             __props__['self_link'] = self_link
             __props__['snapshot_definition'] = snapshot_definition
             __props__['streaming_buffer'] = streaming_buffer
+            if table_id is None and not opts.urn:
+                raise TypeError("Missing required property 'table_id'")
+            __props__['table_id'] = table_id
             __props__['table_reference'] = table_reference
             __props__['time_partitioning'] = time_partitioning
             __props__['type'] = type

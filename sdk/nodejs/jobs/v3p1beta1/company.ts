@@ -47,11 +47,15 @@ export class Company extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.companiesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'companiesId'");
             }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["companiesId"] = args ? args.companiesId : undefined;
             inputs["company"] = args ? args.company : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -65,12 +69,10 @@ export class Company extends pulumi.CustomResource {
  * The set of arguments for constructing a Company resource.
  */
 export interface CompanyArgs {
+    readonly companiesId: pulumi.Input<string>;
     /**
      * Required. The company to be created.
      */
     readonly company?: pulumi.Input<inputs.jobs.v3p1beta1.Company>;
-    /**
-     * Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

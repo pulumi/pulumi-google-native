@@ -59,17 +59,17 @@ namespace Pulumi.GoogleCloud.Jobs.V3
 
     public sealed class CompanyArgs : Pulumi.ResourceArgs
     {
+        [Input("companiesId", required: true)]
+        public Input<string> CompaniesId { get; set; } = null!;
+
         /// <summary>
         /// Required. The company to be created.
         /// </summary>
         [Input("company")]
         public Input<Inputs.CompanyArgs>? Company { get; set; }
 
-        /// <summary>
-        /// Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public CompanyArgs()
         {

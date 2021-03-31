@@ -18,13 +18,14 @@ class WorkerPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
-                 worker_pool_id: Optional[pulumi.Input[str]] = None,
+                 worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,11 +38,9 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] name: Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
-        :param pulumi.Input[str] parent: Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`.
         :param pulumi.Input[str] state: Output only. `WorkerPool` state.
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
-        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,15 +61,20 @@ class WorkerPool(pulumi.CustomResource):
 
             __props__['create_time'] = create_time
             __props__['delete_time'] = delete_time
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
             __props__['network_config'] = network_config
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['state'] = state
             __props__['update_time'] = update_time
             __props__['worker_config'] = worker_config
-            __props__['worker_pool_id'] = worker_pool_id
+            if worker_pools_id is None and not opts.urn:
+                raise TypeError("Missing required property 'worker_pools_id'")
+            __props__['worker_pools_id'] = worker_pools_id
         super(WorkerPool, __self__).__init__(
             'google-cloud:cloudbuild/v1beta1:WorkerPool',
             resource_name,

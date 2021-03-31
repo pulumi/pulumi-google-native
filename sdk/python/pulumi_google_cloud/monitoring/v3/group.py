@@ -17,10 +17,11 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
+                 groups_id: Optional[pulumi.Input[str]] = None,
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,7 +35,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         :param pulumi.Input[str] name: Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
-        :param pulumi.Input[bool] validate_only: If true, validate this request but do not create the group.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -55,12 +55,15 @@ class Group(pulumi.CustomResource):
 
             __props__['display_name'] = display_name
             __props__['filter'] = filter
+            if groups_id is None and not opts.urn:
+                raise TypeError("Missing required property 'groups_id'")
+            __props__['groups_id'] = groups_id
             __props__['is_cluster'] = is_cluster
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['parent_name'] = parent_name
-            __props__['validate_only'] = validate_only
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Group, __self__).__init__(
             'google-cloud:monitoring/v3:Group',
             resource_name,

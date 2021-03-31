@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./folder";
-export * from "./policy";
+export * from "./folderIamPolicy";
 
 // Import resources to register:
 import { Folder } from "./folder";
-import { Policy } from "./policy";
+import { FolderIamPolicy } from "./folderIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:cloudresourcemanager/v2:Folder":
                 return new Folder(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v2:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:cloudresourcemanager/v2:FolderIamPolicy":
+                return new FolderIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

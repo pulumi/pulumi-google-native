@@ -18,7 +18,7 @@ class Brand(pulumi.CustomResource):
                  application_title: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_internal_only: Optional[pulumi.Input[bool]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -31,7 +31,6 @@ class Brand(pulumi.CustomResource):
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
         :param pulumi.Input[str] name: Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
         :param pulumi.Input[bool] org_internal_only: Output only. Whether the brand is only intended for usage inside the G Suite organization only.
-        :param pulumi.Input[str] parent: Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}.
         :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen.
         """
         if __name__ is not None:
@@ -54,9 +53,9 @@ class Brand(pulumi.CustomResource):
             __props__['application_title'] = application_title
             __props__['name'] = name
             __props__['org_internal_only'] = org_internal_only
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['support_email'] = support_email
         super(Brand, __self__).__init__(
             'google-cloud:iap/v1:Brand',

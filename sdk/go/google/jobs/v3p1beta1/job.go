@@ -23,8 +23,11 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.JobsId == nil {
+		return nil, errors.New("invalid value for required argument 'JobsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-cloud:jobs/v3p1beta1:Job", name, args, &resource, opts...)
@@ -59,17 +62,17 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// Required. The Job to be created.
-	Job *JobType `pulumi:"job"`
-	// Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-	Parent string `pulumi:"parent"`
+	Job        *JobType `pulumi:"job"`
+	JobsId     string   `pulumi:"jobsId"`
+	ProjectsId string   `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
 	// Required. The Job to be created.
-	Job JobTypePtrInput
-	// Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-	Parent pulumi.StringInput
+	Job        JobTypePtrInput
+	JobsId     pulumi.StringInput
+	ProjectsId pulumi.StringInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

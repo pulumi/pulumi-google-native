@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./deployment";
-export * from "./policy";
+export * from "./deploymentIamPolicy";
 
 // Import resources to register:
 import { Deployment } from "./deployment";
-import { Policy } from "./policy";
+import { DeploymentIamPolicy } from "./deploymentIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:deploymentmanager/v2:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
-            case "google-cloud:deploymentmanager/v2:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:deploymentmanager/v2:DeploymentIamPolicy":
+                return new DeploymentIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

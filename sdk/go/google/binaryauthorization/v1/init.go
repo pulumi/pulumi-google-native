@@ -23,8 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:binaryauthorization/v1:Attestor":
 		r, err = NewAttestor(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:binaryauthorization/v1:IamPolicy":
-		r, err = NewIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:binaryauthorization/v1:AttestorIamPolicy":
+		r, err = NewAttestorIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:binaryauthorization/v1:PolicyIamPolicy":
+		r, err = NewPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

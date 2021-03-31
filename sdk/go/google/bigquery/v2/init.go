@@ -25,12 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:bigquery/v2:Job":
 		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:bigquery/v2:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:bigquery/v2:Routine":
 		r, err = NewRoutine(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigquery/v2:RowAccessPolicyIamPolicy":
+		r, err = NewRowAccessPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:bigquery/v2:Table":
 		r, err = NewTable(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigquery/v2:TableIamPolicy":
+		r, err = NewTableIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

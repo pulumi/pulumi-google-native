@@ -66,12 +66,6 @@ namespace Pulumi.GoogleCloud.Dns.V1
         public Input<Inputs.PolicyAlternativeNameServerConfigArgs>? AlternativeNameServerConfig { get; set; }
 
         /// <summary>
-        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-        /// </summary>
-        [Input("clientOperationId")]
-        public Input<string>? ClientOperationId { get; set; }
-
-        /// <summary>
         /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         /// </summary>
         [Input("description")]
@@ -116,9 +110,9 @@ namespace Pulumi.GoogleCloud.Dns.V1
             set => _networks = value;
         }
 
-        /// <summary>
-        /// Identifies the project addressed by this request.
-        /// </summary>
+        [Input("policy", required: true)]
+        public Input<string> Policy { get; set; } = null!;
+
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

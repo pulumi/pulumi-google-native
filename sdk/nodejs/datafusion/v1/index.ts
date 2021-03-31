@@ -6,11 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./instance";
-export * from "./policy";
+export * from "./instanceIamPolicy";
 
 // Import resources to register:
 import { Instance } from "./instance";
-import { Policy } from "./policy";
+import { InstanceIamPolicy } from "./instanceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +18,8 @@ const _module = {
         switch (type) {
             case "google-cloud:datafusion/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:datafusion/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:datafusion/v1:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

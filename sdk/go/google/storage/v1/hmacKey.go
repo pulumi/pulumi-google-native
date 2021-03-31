@@ -23,6 +23,9 @@ func NewHmacKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccessId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessId'")
+	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -61,22 +64,16 @@ func (HmacKeyState) ElementType() reflect.Type {
 }
 
 type hmacKeyArgs struct {
-	// Project ID owning the service account.
-	ProjectId string `pulumi:"projectId"`
-	// Email address of the service account.
+	AccessId            string `pulumi:"accessId"`
+	ProjectId           string `pulumi:"projectId"`
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
-	// The project to be billed for this request.
-	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a HmacKey resource.
 type HmacKeyArgs struct {
-	// Project ID owning the service account.
-	ProjectId pulumi.StringInput
-	// Email address of the service account.
+	AccessId            pulumi.StringInput
+	ProjectId           pulumi.StringInput
 	ServiceAccountEmail pulumi.StringInput
-	// The project to be billed for this request.
-	UserProject pulumi.StringPtrInput
 }
 
 func (HmacKeyArgs) ElementType() reflect.Type {

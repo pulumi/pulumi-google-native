@@ -23,6 +23,9 @@ func NewNodeTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.NodeTemplate == nil {
+		return nil, errors.New("invalid value for required argument 'NodeTemplate'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -77,22 +80,16 @@ type nodeTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels map[string]string `pulumi:"nodeAffinityLabels"`
+	NodeTemplate       string            `pulumi:"nodeTemplate"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType *string `pulumi:"nodeType"`
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
 	//
 	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project             string                           `pulumi:"project"`
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
 	Region string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Sets the binding properties for the physical server. Valid values include:
@@ -125,22 +122,16 @@ type NodeTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// Labels to use for node affinity, which will be used in instance scheduling.
 	NodeAffinityLabels pulumi.StringMapInput
+	NodeTemplate       pulumi.StringInput
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringPtrInput
 	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
 	//
 	// This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project             pulumi.StringInput
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
 	Region pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Sets the binding properties for the physical server. Valid values include:

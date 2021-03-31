@@ -3,11 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .crypto_key import *
-from .crypto_key_version import *
-from .import_job import *
 from .key_ring import *
-from .policy import *
+from .key_ring_crypto_key import *
+from .key_ring_crypto_key_crypto_key_version import *
+from .key_ring_crypto_key_iam_policy import *
+from .key_ring_iam_policy import *
+from .key_ring_import_job import *
+from .key_ring_import_job_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -22,16 +24,20 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:cloudkms/v1:CryptoKey":
-                return CryptoKey(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudkms/v1:CryptoKeyVersion":
-                return CryptoKeyVersion(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudkms/v1:ImportJob":
-                return ImportJob(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudkms/v1:KeyRing":
+            if typ == "google-cloud:cloudkms/v1:KeyRing":
                 return KeyRing(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudkms/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudkms/v1:KeyRingCryptoKey":
+                return KeyRingCryptoKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion":
+                return KeyRingCryptoKeyCryptoKeyVersion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
+                return KeyRingCryptoKeyIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudkms/v1:KeyRingIamPolicy":
+                return KeyRingIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudkms/v1:KeyRingImportJob":
+                return KeyRingImportJob(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudkms/v1:KeyRingImportJobIamPolicy":
+                return KeyRingImportJobIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

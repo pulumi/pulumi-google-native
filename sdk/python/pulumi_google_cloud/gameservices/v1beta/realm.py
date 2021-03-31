@@ -19,9 +19,10 @@ class Realm(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 realm_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 realms_id: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -37,8 +38,6 @@ class Realm(pulumi.CustomResource):
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this realm. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-        :param pulumi.Input[str] parent: Required. The parent resource name, in the following form: `projects/{project}/locations/{location}`.
-        :param pulumi.Input[str] realm_id: Required. The ID of the realm resource to be created.
         :param pulumi.Input[str] time_zone: Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
@@ -63,11 +62,16 @@ class Realm(pulumi.CustomResource):
             __props__['description'] = description
             __props__['etag'] = etag
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['realm_id'] = realm_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if realms_id is None and not opts.urn:
+                raise TypeError("Missing required property 'realms_id'")
+            __props__['realms_id'] = realms_id
             __props__['time_zone'] = time_zone
             __props__['update_time'] = update_time
         super(Realm, __self__).__init__(

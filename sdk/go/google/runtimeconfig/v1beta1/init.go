@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:runtimeconfig/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:runtimeconfig/v1beta1:RuntimeConfig":
-		r, err = NewRuntimeConfig(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:runtimeconfig/v1beta1:Variable":
-		r, err = NewVariable(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:runtimeconfig/v1beta1:Waiter":
-		r, err = NewWaiter(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:runtimeconfig/v1beta1:Config":
+		r, err = NewConfig(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:runtimeconfig/v1beta1:ConfigIamPolicy":
+		r, err = NewConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:runtimeconfig/v1beta1:ConfigVariable":
+		r, err = NewConfigVariable(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:runtimeconfig/v1beta1:ConfigWaiter":
+		r, err = NewConfigWaiter(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

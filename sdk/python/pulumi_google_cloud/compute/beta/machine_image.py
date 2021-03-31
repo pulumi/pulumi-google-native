@@ -21,10 +21,10 @@ class MachineImage(pulumi.CustomResource):
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 machine_image: Optional[pulumi.Input[str]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]]] = None,
@@ -54,12 +54,6 @@ class MachineImage(pulumi.CustomResource):
                
                If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] project: Project ID for this request.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] The URL for this machine image. The server defines this URL.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]] source_disk_encryption_keys: [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
@@ -93,12 +87,14 @@ class MachineImage(pulumi.CustomResource):
             __props__['guest_flush'] = guest_flush
             __props__['id'] = id
             __props__['kind'] = kind
+            if machine_image is None and not opts.urn:
+                raise TypeError("Missing required property 'machine_image'")
+            __props__['machine_image'] = machine_image
             __props__['machine_image_encryption_key'] = machine_image_encryption_key
             __props__['name'] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            __props__['request_id'] = request_id
             __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link
             __props__['source_disk_encryption_keys'] = source_disk_encryption_keys

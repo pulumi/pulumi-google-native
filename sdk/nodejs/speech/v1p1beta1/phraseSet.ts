@@ -47,12 +47,20 @@ export class PhraseSet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
             }
-            inputs["parent"] = args ? args.parent : undefined;
+            if ((!args || args.phraseSetsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'phraseSetsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["phraseSet"] = args ? args.phraseSet : undefined;
             inputs["phraseSetId"] = args ? args.phraseSetId : undefined;
+            inputs["phraseSetsId"] = args ? args.phraseSetsId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -66,10 +74,7 @@ export class PhraseSet extends pulumi.CustomResource {
  * The set of arguments for constructing a PhraseSet resource.
  */
 export interface PhraseSetArgs {
-    /**
-     * Required. The parent resource where this phrase set will be created. Format: {api_version}/projects/{project}/locations/{location}/phraseSets
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. The phrase set to create.
      */
@@ -78,4 +83,6 @@ export interface PhraseSetArgs {
      * The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
      */
     readonly phraseSetId?: pulumi.Input<string>;
+    readonly phraseSetsId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

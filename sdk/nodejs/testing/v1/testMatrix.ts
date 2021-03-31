@@ -57,7 +57,6 @@ export class TestMatrix extends pulumi.CustomResource {
             inputs["invalidMatrixDetails"] = args ? args.invalidMatrixDetails : undefined;
             inputs["outcomeSummary"] = args ? args.outcomeSummary : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resultStorage"] = args ? args.resultStorage : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["testExecutions"] = args ? args.testExecutions : undefined;
@@ -105,10 +104,6 @@ export interface TestMatrixArgs {
      * The cloud project that owns the test matrix.
      */
     readonly projectId: pulumi.Input<string>;
-    /**
-     * A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * Required. Where the results for the matrix are written.
      */

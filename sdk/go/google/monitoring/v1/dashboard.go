@@ -23,8 +23,11 @@ func NewDashboard(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.DashboardsId == nil {
+		return nil, errors.New("invalid value for required argument 'DashboardsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Dashboard
 	err := ctx.RegisterResource("google-cloud:monitoring/v1:Dashboard", name, args, &resource, opts...)
@@ -60,6 +63,7 @@ func (DashboardState) ElementType() reflect.Type {
 type dashboardArgs struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout *ColumnLayout `pulumi:"columnLayout"`
+	DashboardsId string        `pulumi:"dashboardsId"`
 	// Required. The mutable, human-readable name.
 	DisplayName *string `pulumi:"displayName"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
@@ -69,9 +73,8 @@ type dashboardArgs struct {
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout *MosaicLayout `pulumi:"mosaicLayout"`
 	// Immutable. The resource name of the dashboard.
-	Name *string `pulumi:"name"`
-	// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout *RowLayout `pulumi:"rowLayout"`
 }
@@ -80,6 +83,7 @@ type dashboardArgs struct {
 type DashboardArgs struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout ColumnLayoutPtrInput
+	DashboardsId pulumi.StringInput
 	// Required. The mutable, human-readable name.
 	DisplayName pulumi.StringPtrInput
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
@@ -89,9 +93,8 @@ type DashboardArgs struct {
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutPtrInput
 	// Immutable. The resource name of the dashboard.
-	Name pulumi.StringPtrInput
-	// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout RowLayoutPtrInput
 }

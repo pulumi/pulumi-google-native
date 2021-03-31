@@ -60,12 +60,6 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
     public sealed class ResponsePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-        /// </summary>
-        [Input("clientOperationId")]
-        public Input<string>? ClientOperationId { get; set; }
-
-        /// <summary>
         /// User-provided description for this Response Policy.
         /// </summary>
         [Input("description")]
@@ -92,11 +86,11 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
             set => _networks = value;
         }
 
-        /// <summary>
-        /// Identifies the project addressed by this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        [Input("responsePolicy", required: true)]
+        public Input<string> ResponsePolicy { get; set; } = null!;
 
         /// <summary>
         /// User assigned name for this Response Policy.

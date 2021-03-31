@@ -101,6 +101,9 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
         /// </summary>
@@ -120,16 +123,13 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
         }
 
         /// <summary>
-        /// Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location}
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Required. WorkflowTemplate scheduling information.
         /// </summary>
         [Input("placement")]
         public Input<Inputs.WorkflowTemplatePlacementArgs>? Placement { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The time template was last updated.
@@ -142,6 +142,9 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
+
+        [Input("workflowTemplatesId", required: true)]
+        public Input<string> WorkflowTemplatesId { get; set; } = null!;
 
         public WorkflowTemplateArgs()
         {

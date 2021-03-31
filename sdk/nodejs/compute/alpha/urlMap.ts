@@ -50,8 +50,8 @@ export class UrlMap extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.urlMap === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'urlMap'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
@@ -67,9 +67,9 @@ export class UrlMap extends pulumi.CustomResource {
             inputs["pathMatchers"] = args ? args.pathMatchers : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["tests"] = args ? args.tests : undefined;
+            inputs["urlMap"] = args ? args.urlMap : undefined;
         } else {
         }
         if (!opts.version) {
@@ -143,18 +143,11 @@ export interface UrlMapArgs {
      * The list of named PathMatchers to use against the URL.
      */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.alpha.PathMatcher>[]>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -164,4 +157,5 @@ export interface UrlMapArgs {
      * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.alpha.UrlMapTest>[]>;
+    readonly urlMap: pulumi.Input<string>;
 }

@@ -101,6 +101,9 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The resource name of the provider.
         /// </summary>
@@ -113,11 +116,11 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("oidc")]
         public Input<Inputs.OidcArgs>? Oidc { get; set; }
 
-        /// <summary>
-        /// Required. The pool to create this provider in.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("providersId", required: true)]
+        public Input<string> ProvidersId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The state of the provider.
@@ -125,11 +128,8 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        /// <summary>
-        /// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        /// </summary>
-        [Input("workloadIdentityPoolProviderId")]
-        public Input<string>? WorkloadIdentityPoolProviderId { get; set; }
+        [Input("workloadIdentityPoolsId", required: true)]
+        public Input<string> WorkloadIdentityPoolsId { get; set; } = null!;
 
         public WorkloadIdentityPoolProviderArgs()
         {

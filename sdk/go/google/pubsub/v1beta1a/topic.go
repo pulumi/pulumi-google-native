@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type Topic struct {
 func NewTopic(ctx *pulumi.Context,
 	name string, args *TopicArgs, opts ...pulumi.ResourceOption) (*Topic, error) {
 	if args == nil {
-		args = &TopicArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.TopicsId == nil {
+		return nil, errors.New("invalid value for required argument 'TopicsId'")
+	}
 	var resource Topic
 	err := ctx.RegisterResource("google-cloud:pubsub/v1beta1a:Topic", name, args, &resource, opts...)
 	if err != nil {
@@ -55,13 +59,15 @@ func (TopicState) ElementType() reflect.Type {
 
 type topicArgs struct {
 	// Name of the topic.
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
+	TopicsId string  `pulumi:"topicsId"`
 }
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
 	// Name of the topic.
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
+	TopicsId pulumi.StringInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

@@ -23,6 +23,9 @@ func NewHealthCheck(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.HealthCheck == nil {
+		return nil, errors.New("invalid value for required argument 'HealthCheck'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -65,6 +68,7 @@ type healthCheckArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     *string          `pulumi:"description"`
 	GrpcHealthCheck *GRPCHealthCheck `pulumi:"grpcHealthCheck"`
+	HealthCheck     string           `pulumi:"healthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold *int              `pulumi:"healthyThreshold"`
 	Http2HealthCheck *HTTP2HealthCheck `pulumi:"http2HealthCheck"`
@@ -77,17 +81,10 @@ type healthCheckArgs struct {
 	// Configure logging on this health check.
 	LogConfig *HealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-	Name *string `pulumi:"name"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// [Output Only] Region where the health check resides. Not applicable to global health checks.
 	Region *string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -112,6 +109,7 @@ type HealthCheckArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     pulumi.StringPtrInput
 	GrpcHealthCheck GRPCHealthCheckPtrInput
+	HealthCheck     pulumi.StringInput
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	Http2HealthCheck HTTP2HealthCheckPtrInput
@@ -124,17 +122,10 @@ type HealthCheckArgs struct {
 	// Configure logging on this health check.
 	LogConfig HealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-	Name pulumi.StringPtrInput
-	// Project ID for this request.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] Region where the health check resides. Not applicable to global health checks.
 	Region pulumi.StringPtrInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

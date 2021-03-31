@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./execution";
+export * from "./workflowExecution";
 
 // Import resources to register:
-import { Execution } from "./execution";
+import { WorkflowExecution } from "./workflowExecution";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:workflowexecutions/v1:Execution":
-                return new Execution(name, <any>undefined, { urn })
+            case "google-cloud:workflowexecutions/v1:WorkflowExecution":
+                return new WorkflowExecution(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

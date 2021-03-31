@@ -23,8 +23,14 @@ func NewReservation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.ReservationsId == nil {
+		return nil, errors.New("invalid value for required argument 'ReservationsId'")
 	}
 	var resource Reservation
 	err := ctx.RegisterResource("google-cloud:bigqueryreservation/v1beta1:Reservation", name, args, &resource, opts...)
@@ -61,15 +67,14 @@ type reservationArgs struct {
 	// Output only. Creation time of the reservation.
 	CreationTime *string `pulumi:"creationTime"`
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
-	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
+	IgnoreIdleSlots *bool  `pulumi:"ignoreIdleSlots"`
+	LocationsId     string `pulumi:"locationsId"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
 	MaxConcurrency *string `pulumi:"maxConcurrency"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
-	Name *string `pulumi:"name"`
-	// Required. Project, location. E.g., `projects/myproject/locations/US`
-	Parent string `pulumi:"parent"`
-	// The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max length is 64 characters.
-	ReservationId *string `pulumi:"reservationId"`
+	Name           *string `pulumi:"name"`
+	ProjectsId     string  `pulumi:"projectsId"`
+	ReservationsId string  `pulumi:"reservationsId"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
 	SlotCapacity *string `pulumi:"slotCapacity"`
 	// Output only. Last update time of the reservation.
@@ -82,14 +87,13 @@ type ReservationArgs struct {
 	CreationTime pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
+	LocationsId     pulumi.StringInput
 	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
 	MaxConcurrency pulumi.StringPtrInput
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
-	Name pulumi.StringPtrInput
-	// Required. Project, location. E.g., `projects/myproject/locations/US`
-	Parent pulumi.StringInput
-	// The reservation ID. This field must only contain lower case alphanumeric characters or dash. Max length is 64 characters.
-	ReservationId pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	ProjectsId     pulumi.StringInput
+	ReservationsId pulumi.StringInput
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
 	SlotCapacity pulumi.StringPtrInput
 	// Output only. Last update time of the reservation.

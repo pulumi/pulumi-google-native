@@ -43,11 +43,21 @@ export class Cluster extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clusterId'");
+            }
+            if ((!args || args.projectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectId'");
+            }
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
+            }
             inputs["cluster"] = args ? args.cluster : undefined;
+            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -68,6 +78,7 @@ export interface ClusterArgs {
      * Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
      */
     readonly cluster?: pulumi.Input<inputs.container.v1.Cluster>;
+    readonly clusterId: pulumi.Input<string>;
     /**
      * The parent (project and location) where the cluster will be created. Specified in the format `projects/*&#47;locations/*`.
      */
@@ -75,9 +86,9 @@ export interface ClusterArgs {
     /**
      * Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly projectId: pulumi.Input<string>;
     /**
      * Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

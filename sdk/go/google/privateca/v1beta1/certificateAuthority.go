@@ -23,8 +23,11 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource CertificateAuthority
 	err := ctx.RegisterResource("google-cloud:privateca/v1beta1:CertificateAuthority", name, args, &resource, opts...)
@@ -62,8 +65,6 @@ type certificateAuthorityArgs struct {
 	AccessUrls *AccessUrls `pulumi:"accessUrls"`
 	// Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
 	CaCertificateDescriptions []CertificateDescription `pulumi:"caCertificateDescriptions"`
-	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-	CertificateAuthorityId *string `pulumi:"certificateAuthorityId"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy *CertificateAuthorityPolicy `pulumi:"certificatePolicy"`
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -81,15 +82,13 @@ type certificateAuthorityArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime *string `pulumi:"lifetime"`
+	Lifetime    *string `pulumi:"lifetime"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
 	Name *string `pulumi:"name"`
-	// Required. The resource name of the location associated with the CertificateAuthorities, in the format `projects/*/locations/*`.
-	Parent string `pulumi:"parent"`
 	// Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
 	PemCaCertificates []string `pulumi:"pemCaCertificates"`
-	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	ProjectsId        string   `pulumi:"projectsId"`
 	// Output only. The State for this CertificateAuthority.
 	State *string `pulumi:"state"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
@@ -108,8 +107,6 @@ type CertificateAuthorityArgs struct {
 	AccessUrls AccessUrlsPtrInput
 	// Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
 	CaCertificateDescriptions CertificateDescriptionArrayInput
-	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-	CertificateAuthorityId pulumi.StringPtrInput
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyPtrInput
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -127,15 +124,13 @@ type CertificateAuthorityArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
 	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime pulumi.StringPtrInput
+	Lifetime    pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
 	Name pulumi.StringPtrInput
-	// Required. The resource name of the location associated with the CertificateAuthorities, in the format `projects/*/locations/*`.
-	Parent pulumi.StringInput
 	// Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
 	PemCaCertificates pulumi.StringArrayInput
-	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	ProjectsId        pulumi.StringInput
 	// Output only. The State for this CertificateAuthority.
 	State pulumi.StringPtrInput
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.

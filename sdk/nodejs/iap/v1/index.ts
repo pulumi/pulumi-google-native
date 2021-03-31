@@ -6,13 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./brand";
-export * from "./identityAwareProxyClient";
-export * from "./policy";
+export * from "./brandIdentityAwareProxyClient";
+export * from "./v1iamPolicy";
 
 // Import resources to register:
 import { Brand } from "./brand";
-import { IdentityAwareProxyClient } from "./identityAwareProxyClient";
-import { Policy } from "./policy";
+import { BrandIdentityAwareProxyClient } from "./brandIdentityAwareProxyClient";
+import { V1IamPolicy } from "./v1iamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,10 +20,10 @@ const _module = {
         switch (type) {
             case "google-cloud:iap/v1:Brand":
                 return new Brand(name, <any>undefined, { urn })
-            case "google-cloud:iap/v1:IdentityAwareProxyClient":
-                return new IdentityAwareProxyClient(name, <any>undefined, { urn })
-            case "google-cloud:iap/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:iap/v1:BrandIdentityAwareProxyClient":
+                return new BrandIdentityAwareProxyClient(name, <any>undefined, { urn })
+            case "google-cloud:iap/v1:V1IamPolicy":
+                return new V1IamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

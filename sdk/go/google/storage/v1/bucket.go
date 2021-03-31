@@ -23,6 +23,9 @@ func NewBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -62,6 +65,7 @@ type bucketArgs struct {
 	Acl []BucketAccessControlType `pulumi:"acl"`
 	// The bucket's billing configuration.
 	Billing map[string]string `pulumi:"billing"`
+	Bucket  string            `pulumi:"bucket"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors []map[string]string `pulumi:"cors"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -93,19 +97,10 @@ type bucketArgs struct {
 	// The name of the bucket.
 	Name *string `pulumi:"name"`
 	// The owner of the bucket. This is always the project team's owner group.
-	Owner map[string]string `pulumi:"owner"`
-	// Apply a predefined set of access controls to this bucket.
-	PredefinedAcl *string `pulumi:"predefinedAcl"`
-	// Apply a predefined set of default object access controls to this bucket.
-	PredefinedDefaultObjectAcl *string `pulumi:"predefinedDefaultObjectAcl"`
-	// A valid API project identifier.
-	Project string `pulumi:"project"`
+	Owner   map[string]string `pulumi:"owner"`
+	Project string            `pulumi:"project"`
 	// The project number of the project the bucket belongs to.
 	ProjectNumber *string `pulumi:"projectNumber"`
-	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-	Projection *string `pulumi:"projection"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy map[string]string `pulumi:"retentionPolicy"`
 	// Reserved for future use.
@@ -118,8 +113,6 @@ type bucketArgs struct {
 	TimeCreated *string `pulumi:"timeCreated"`
 	// The modification time of the bucket in RFC 3339 format.
 	Updated *string `pulumi:"updated"`
-	// The project to be billed for this request.
-	UserProject *string `pulumi:"userProject"`
 	// The bucket's versioning configuration.
 	Versioning map[string]string `pulumi:"versioning"`
 	// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
@@ -134,6 +127,7 @@ type BucketArgs struct {
 	Acl BucketAccessControlTypeArrayInput
 	// The bucket's billing configuration.
 	Billing pulumi.StringMapInput
+	Bucket  pulumi.StringInput
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors pulumi.StringMapArrayInput
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -165,19 +159,10 @@ type BucketArgs struct {
 	// The name of the bucket.
 	Name pulumi.StringPtrInput
 	// The owner of the bucket. This is always the project team's owner group.
-	Owner pulumi.StringMapInput
-	// Apply a predefined set of access controls to this bucket.
-	PredefinedAcl pulumi.StringPtrInput
-	// Apply a predefined set of default object access controls to this bucket.
-	PredefinedDefaultObjectAcl pulumi.StringPtrInput
-	// A valid API project identifier.
+	Owner   pulumi.StringMapInput
 	Project pulumi.StringInput
 	// The project number of the project the bucket belongs to.
 	ProjectNumber pulumi.StringPtrInput
-	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-	Projection pulumi.StringPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy pulumi.StringMapInput
 	// Reserved for future use.
@@ -190,8 +175,6 @@ type BucketArgs struct {
 	TimeCreated pulumi.StringPtrInput
 	// The modification time of the bucket in RFC 3339 format.
 	Updated pulumi.StringPtrInput
-	// The project to be billed for this request.
-	UserProject pulumi.StringPtrInput
 	// The bucket's versioning configuration.
 	Versioning pulumi.StringMapInput
 	// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.

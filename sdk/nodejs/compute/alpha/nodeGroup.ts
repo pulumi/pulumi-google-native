@@ -50,6 +50,9 @@ export class NodeGroup extends pulumi.CustomResource {
             if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
+            if ((!args || args.nodeGroup === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nodeGroup'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -67,9 +70,9 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["nodeGroup"] = args ? args.nodeGroup : undefined;
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -105,10 +108,7 @@ export interface NodeGroupArgs {
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
     readonly id?: pulumi.Input<string>;
-    /**
-     * Initial count of nodes in the node group.
-     */
-    readonly initialNodeCount: pulumi.Input<number>;
+    readonly initialNodeCount: pulumi.Input<string>;
     /**
      * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
      */
@@ -126,22 +126,12 @@ export interface NodeGroupArgs {
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
+    readonly nodeGroup: pulumi.Input<string>;
     /**
      * URL of the node template to create the node group from.
      */
     readonly nodeTemplate?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

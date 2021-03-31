@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
+// Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
 type PublicDelegatedPrefix struct {
 	pulumi.CustomResourceState
 }
@@ -25,6 +25,12 @@ func NewPublicDelegatedPrefix(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.PublicDelegatedPrefix == nil {
+		return nil, errors.New("invalid value for required argument 'PublicDelegatedPrefix'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource PublicDelegatedPrefix
 	err := ctx.RegisterResource("google-cloud:compute/alpha:PublicDelegatedPrefix", name, args, &resource, opts...)
@@ -77,19 +83,13 @@ type publicDelegatedPrefixArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
-	ParentPrefix *string `pulumi:"parentPrefix"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	ParentPrefix          *string `pulumi:"parentPrefix"`
+	Project               string  `pulumi:"project"`
+	PublicDelegatedPrefix string  `pulumi:"publicDelegatedPrefix"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs []PublicDelegatedPrefixPublicDelegatedSubPrefix `pulumi:"publicDelegatedSubPrefixs"`
 	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Region string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL with id for the resource.
@@ -119,19 +119,13 @@ type PublicDelegatedPrefixArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
-	ParentPrefix pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	ParentPrefix          pulumi.StringPtrInput
+	Project               pulumi.StringInput
+	PublicDelegatedPrefix pulumi.StringInput
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput
 	// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL with id for the resource.

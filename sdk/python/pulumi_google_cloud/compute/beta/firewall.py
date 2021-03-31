@@ -24,6 +24,7 @@ class Firewall(pulumi.CustomResource):
                  direction: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
+                 firewall: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
@@ -31,7 +32,6 @@ class Firewall(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -65,12 +65,6 @@ class Firewall(pulumi.CustomResource):
                - projects/myproject/global/networks/my-network 
                - global/networks/default
         :param pulumi.Input[int] priority: Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
-        :param pulumi.Input[str] project: Project ID for this request.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ranges: If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall rules apply only to traffic originating from an instance with a service account in this list. Source service accounts cannot be used to control traffic to an instance's external IP address because service accounts are associated with an instance, not an IP address. sourceRanges can be set at the same time as sourceServiceAccounts. If both are set, the firewall applies to traffic that has a source IP address within the sourceRanges OR a source IP that belongs to an instance with service account listed in sourceServiceAccount. The connection does not need to match both fields for the firewall to apply. sourceServiceAccounts cannot be used at the same time as sourceTags or targetTags.
@@ -103,6 +97,9 @@ class Firewall(pulumi.CustomResource):
             __props__['direction'] = direction
             __props__['disabled'] = disabled
             __props__['enable_logging'] = enable_logging
+            if firewall is None and not opts.urn:
+                raise TypeError("Missing required property 'firewall'")
+            __props__['firewall'] = firewall
             __props__['id'] = id
             __props__['kind'] = kind
             __props__['log_config'] = log_config
@@ -112,7 +109,6 @@ class Firewall(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['source_ranges'] = source_ranges
             __props__['source_service_accounts'] = source_service_accounts

@@ -4,8 +4,9 @@
 
 # Export this package's modules as members:
 from .lien import *
-from .policy import *
+from .organization_iam_policy import *
 from .project import *
+from .project_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -22,10 +23,12 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:cloudresourcemanager/v1:Lien":
                 return Lien(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:cloudresourcemanager/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v1:OrganizationIamPolicy":
+                return OrganizationIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:cloudresourcemanager/v1:Project":
                 return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:cloudresourcemanager/v1:ProjectIamPolicy":
+                return ProjectIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

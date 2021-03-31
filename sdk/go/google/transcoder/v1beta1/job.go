@@ -23,8 +23,14 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.JobsId == nil {
+		return nil, errors.New("invalid value for required argument 'JobsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-cloud:transcoder/v1beta1:Job", name, args, &resource, opts...)
@@ -69,19 +75,20 @@ type jobArgs struct {
 	// Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
 	FailureReason *string `pulumi:"failureReason"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
-	InputUri *string `pulumi:"inputUri"`
+	InputUri    *string `pulumi:"inputUri"`
+	JobsId      string  `pulumi:"jobsId"`
+	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
 	// Output only. The origin URI. *Note*: This feature is not yet available.
 	OriginUri *OriginUri `pulumi:"originUri"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri *string `pulumi:"outputUri"`
-	// Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
-	Parent string `pulumi:"parent"`
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
 	Priority *int `pulumi:"priority"`
 	// Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
-	Progress *Progress `pulumi:"progress"`
+	Progress   *Progress `pulumi:"progress"`
+	ProjectsId string    `pulumi:"projectsId"`
 	// Output only. The time the transcoding started.
 	StartTime *string `pulumi:"startTime"`
 	// Output only. The current state of the job.
@@ -105,19 +112,20 @@ type JobArgs struct {
 	// Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
 	FailureReason pulumi.StringPtrInput
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
-	InputUri pulumi.StringPtrInput
+	InputUri    pulumi.StringPtrInput
+	JobsId      pulumi.StringInput
+	LocationsId pulumi.StringInput
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
 	// Output only. The origin URI. *Note*: This feature is not yet available.
 	OriginUri OriginUriPtrInput
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri pulumi.StringPtrInput
-	// Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
-	Parent pulumi.StringInput
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
 	Priority pulumi.IntPtrInput
 	// Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
-	Progress ProgressPtrInput
+	Progress   ProgressPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The time the transcoding started.
 	StartTime pulumi.StringPtrInput
 	// Output only. The current state of the job.

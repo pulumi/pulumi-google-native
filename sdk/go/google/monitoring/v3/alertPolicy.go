@@ -23,8 +23,11 @@ func NewAlertPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.AlertPoliciesId == nil {
+		return nil, errors.New("invalid value for required argument 'AlertPoliciesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource AlertPolicy
 	err := ctx.RegisterResource("google-cloud:monitoring/v3:AlertPolicy", name, args, &resource, opts...)
@@ -58,6 +61,7 @@ func (AlertPolicyState) ElementType() reflect.Type {
 }
 
 type alertPolicyArgs struct {
+	AlertPoliciesId string `pulumi:"alertPoliciesId"`
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner *string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
@@ -73,9 +77,10 @@ type alertPolicyArgs struct {
 	// A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
 	MutationRecord *MutationRecord `pulumi:"mutationRecord"`
 	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	NotificationChannels []string `pulumi:"notificationChannels"`
+	ProjectsId           string   `pulumi:"projectsId"`
 	// User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
 	// Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
@@ -84,6 +89,7 @@ type alertPolicyArgs struct {
 
 // The set of arguments for constructing a AlertPolicy resource.
 type AlertPolicyArgs struct {
+	AlertPoliciesId pulumi.StringInput
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner pulumi.StringPtrInput
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
@@ -99,9 +105,10 @@ type AlertPolicyArgs struct {
 	// A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
 	MutationRecord MutationRecordPtrInput
 	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	NotificationChannels pulumi.StringArrayInput
+	ProjectsId           pulumi.StringInput
 	// User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
 	// Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.

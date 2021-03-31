@@ -5,37 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./appProfile";
-export * from "./backup";
-export * from "./cluster";
 export * from "./instance";
-export * from "./policy";
-export * from "./table";
+export * from "./instanceAppProfile";
+export * from "./instanceCluster";
+export * from "./instanceClusterBackup";
+export * from "./instanceClusterBackupIamPolicy";
+export * from "./instanceIamPolicy";
+export * from "./instanceTable";
+export * from "./instanceTableIamPolicy";
 
 // Import resources to register:
-import { AppProfile } from "./appProfile";
-import { Backup } from "./backup";
-import { Cluster } from "./cluster";
 import { Instance } from "./instance";
-import { Policy } from "./policy";
-import { Table } from "./table";
+import { InstanceAppProfile } from "./instanceAppProfile";
+import { InstanceCluster } from "./instanceCluster";
+import { InstanceClusterBackup } from "./instanceClusterBackup";
+import { InstanceClusterBackupIamPolicy } from "./instanceClusterBackupIamPolicy";
+import { InstanceIamPolicy } from "./instanceIamPolicy";
+import { InstanceTable } from "./instanceTable";
+import { InstanceTableIamPolicy } from "./instanceTableIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:bigtableadmin/v2:AppProfile":
-                return new AppProfile(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:Backup":
-                return new Backup(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:Cluster":
-                return new Cluster(name, <any>undefined, { urn })
             case "google-cloud:bigtableadmin/v2:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:Policy":
-                return new Policy(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:Table":
-                return new Table(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceAppProfile":
+                return new InstanceAppProfile(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceCluster":
+                return new InstanceCluster(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceClusterBackup":
+                return new InstanceClusterBackup(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
+                return new InstanceClusterBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceTable":
+                return new InstanceTable(name, <any>undefined, { urn })
+            case "google-cloud:bigtableadmin/v2:InstanceTableIamPolicy":
+                return new InstanceTableIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -47,12 +47,16 @@ export class Autoscaler extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.autoscaler === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'autoscaler'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
+            inputs["autoscaler"] = args ? args.autoscaler : undefined;
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -62,7 +66,6 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["recommendedSize"] = args ? args.recommendedSize : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["scalingScheduleStatus"] = args ? args.scalingScheduleStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -83,6 +86,7 @@ export class Autoscaler extends pulumi.CustomResource {
  * The set of arguments for constructing a Autoscaler resource.
  */
 export interface AutoscalerArgs {
+    readonly autoscaler: pulumi.Input<string>;
     /**
      * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
      *
@@ -109,9 +113,6 @@ export interface AutoscalerArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
@@ -120,15 +121,7 @@ export interface AutoscalerArgs {
     /**
      * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
      */
-    readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * [Output Only] Status information of existing scaling schedules.
      */
@@ -160,5 +153,5 @@ export interface AutoscalerArgs {
     /**
      * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

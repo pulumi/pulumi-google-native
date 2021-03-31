@@ -4,7 +4,9 @@ package provider
 
 import (
 	"bytes"
+	"compress/gzip"
 	"context"
+	"encoding/json"
 	"fmt"
 	"github.com/golang/glog"
 	"github.com/golang/protobuf/ptypes/empty"
@@ -31,9 +33,16 @@ type googleCloudProvider struct {
 	version     string
 	config      map[string]string
 	schemaBytes []byte
+	resourceMap *resources.CloudAPIMetadata
 }
 
-func makeProvider(host *provider.HostClient, name, version string, schemaBytes []byte) (rpc.ResourceProviderServer, error) {
+func makeProvider(host *provider.HostClient, name, version string, schemaBytes []byte,
+	cloudAPIResourcesBytes []byte) (rpc.ResourceProviderServer, error) {
+	resourceMap, err := loadMetadata(cloudAPIResourcesBytes)
+	if err != nil {
+		return nil, err
+	}
+
 	// Return the new provider
 	return &googleCloudProvider{
 		host:        host,
@@ -41,7 +50,25 @@ func makeProvider(host *provider.HostClient, name, version string, schemaBytes [
 		version:     version,
 		config:      map[string]string{},
 		schemaBytes: schemaBytes,
+		resourceMap: resourceMap,
 	}, nil
+}
+
+// loadMetadata deserializes the provided compressed json byte array into a CloudAPIMetadata struct.
+func loadMetadata(azureAPIResourcesBytes []byte) (*resources.CloudAPIMetadata, error) {
+	var resourceMap resources.CloudAPIMetadata
+
+	uncompressed, err := gzip.NewReader(bytes.NewReader(azureAPIResourcesBytes))
+	if err != nil {
+		return nil, errors.Wrap(err, "expand compressed metadata")
+	}
+	if err = json.NewDecoder(uncompressed).Decode(&resourceMap); err != nil {
+		return nil, errors.Wrap(err, "unmarshalling resource map")
+	}
+	if err = uncompressed.Close(); err != nil {
+		return nil, errors.Wrap(err, "closing uncompress stream for metadata")
+	}
+	return &resourceMap, nil
 }
 
 // Configure configures the resource provider with "globals" that control its behavior.
@@ -133,7 +160,7 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}
 
 	resourceKey := string(urn.Type())
-	res, ok := resources.CloudAPIResources[resourceKey]
+	res, ok := k.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
@@ -186,17 +213,21 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 		resp = map[string]interface{}{}
 	default:
-		uri = fmt.Sprintf("%s/%s", res.BaseUrl, res.CreatePath)
+		uri = fmt.Sprintf("%s%s", res.BaseUrl, res.CreatePath)
 		for _, param := range res.CreateParams {
 			key := resource.PropertyKey(param)
 			value := inputs[key].StringValue()
 			uri = strings.Replace(uri, fmt.Sprintf("{%s}", param), value, 1)
 			delete(inputs, key)
 		}
+		for _, param := range res.DeleteParams {
+			key := resource.PropertyKey(param)
+			delete(inputs, key)
+		}
 
 		op, err := sendRequestWithTimeout(ctx, "POST", uri, inputs.Mappable(), 0)
 		if err != nil {
-			return nil, fmt.Errorf("error sending request: %s", err)
+			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
 
 		resp, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, op)
@@ -304,7 +335,7 @@ func (k *googleCloudProvider) Update(_ context.Context, _ *rpc.UpdateRequest) (*
 func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest) (*empty.Empty, error) {
 	urn := resource.URN(req.GetUrn())
 	resourceKey := string(urn.Type())
-	res, ok := resources.CloudAPIResources[resourceKey]
+	res, ok := k.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}

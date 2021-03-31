@@ -47,12 +47,14 @@ export class CertificateAuthority extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["accessUrls"] = args ? args.accessUrls : undefined;
             inputs["caCertificateDescriptions"] = args ? args.caCertificateDescriptions : undefined;
-            inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             inputs["certificatePolicy"] = args ? args.certificatePolicy : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -62,10 +64,10 @@ export class CertificateAuthority extends pulumi.CustomResource {
             inputs["keySpec"] = args ? args.keySpec : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifetime"] = args ? args.lifetime : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["pemCaCertificates"] = args ? args.pemCaCertificates : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             inputs["tier"] = args ? args.tier : undefined;
@@ -92,10 +94,6 @@ export interface CertificateAuthorityArgs {
      * Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
      */
     readonly caCertificateDescriptions?: pulumi.Input<pulumi.Input<inputs.privateca.v1beta1.CertificateDescription>[]>;
-    /**
-     * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-     */
-    readonly certificateAuthorityId?: pulumi.Input<string>;
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
      */
@@ -132,22 +130,16 @@ export interface CertificateAuthorityArgs {
      * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
     readonly lifetime?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name for this CertificateAuthority in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The resource name of the location associated with the CertificateAuthorities, in the format `projects/*&#47;locations/*`.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
      */
     readonly pemCaCertificates?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. The State for this CertificateAuthority.
      */

@@ -17,7 +17,6 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
-                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -25,6 +24,7 @@ class Policy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -35,14 +35,12 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
-        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[str] name: User-assigned name for this policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
-        :param pulumi.Input[str] project: Identifies the project addressed by this request.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,7 +60,6 @@ class Policy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['alternative_name_server_config'] = alternative_name_server_config
-            __props__['client_operation_id'] = client_operation_id
             __props__['description'] = description
             __props__['enable_inbound_forwarding'] = enable_inbound_forwarding
             __props__['enable_logging'] = enable_logging
@@ -70,6 +67,9 @@ class Policy(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['networks'] = networks
+            if policy is None and not opts.urn:
+                raise TypeError("Missing required property 'policy'")
+            __props__['policy'] = policy
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project

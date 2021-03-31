@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:cloudbuild/v1:Build":
 		r, err = NewBuild(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudbuild/v1:BuildTrigger":
-		r, err = NewBuildTrigger(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudbuild/v1:Trigger":
+		r, err = NewTrigger(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

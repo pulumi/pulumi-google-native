@@ -21,22 +21,30 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Entry":
-		r, err = NewGoogleCloudDatacatalogV1beta1Entry(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1EntryGroup":
-		r, err = NewGoogleCloudDatacatalogV1beta1EntryGroup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1PolicyTag":
-		r, err = NewGoogleCloudDatacatalogV1beta1PolicyTag(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Tag":
-		r, err = NewGoogleCloudDatacatalogV1beta1Tag(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1TagTemplate":
-		r, err = NewGoogleCloudDatacatalogV1beta1TagTemplate(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1TagTemplateField":
-		r, err = NewGoogleCloudDatacatalogV1beta1TagTemplateField(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:GoogleCloudDatacatalogV1beta1Taxonomy":
-		r, err = NewGoogleCloudDatacatalogV1beta1Taxonomy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datacatalog/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:EntryGroup":
+		r, err = NewEntryGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:EntryGroupEntry":
+		r, err = NewEntryGroupEntry(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:EntryGroupEntryTag":
+		r, err = NewEntryGroupEntryTag(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:EntryGroupIamPolicy":
+		r, err = NewEntryGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:EntryGroupTag":
+		r, err = NewEntryGroupTag(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:TagTemplate":
+		r, err = NewTagTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:TagTemplateField":
+		r, err = NewTagTemplateField(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:TagTemplateIamPolicy":
+		r, err = NewTagTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:Taxonomy":
+		r, err = NewTaxonomy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:TaxonomyIamPolicy":
+		r, err = NewTaxonomyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTag":
+		r, err = NewTaxonomyPolicyTag(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
+		r, err = NewTaxonomyPolicyTagIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

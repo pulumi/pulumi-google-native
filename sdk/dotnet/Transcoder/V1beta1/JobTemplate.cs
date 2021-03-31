@@ -65,11 +65,11 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
         [Input("config")]
         public Input<Inputs.JobConfigArgs>? Config { get; set; }
 
-        /// <summary>
-        /// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
-        /// </summary>
-        [Input("jobTemplateId")]
-        public Input<string>? JobTemplateId { get; set; }
+        [Input("jobTemplatesId", required: true)]
+        public Input<string> JobTemplatesId { get; set; } = null!;
+
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
@@ -77,11 +77,8 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public JobTemplateArgs()
         {

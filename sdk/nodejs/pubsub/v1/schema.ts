@@ -46,13 +46,16 @@ export class Schema extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.schemasId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'schemasId'");
             }
             inputs["definition"] = args ? args.definition : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["schemaId"] = args ? args.schemaId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["schemasId"] = args ? args.schemasId : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
         }
@@ -75,14 +78,8 @@ export interface SchemaArgs {
      * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
-     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
-     */
-    readonly schemaId?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
+    readonly schemasId: pulumi.Input<string>;
     /**
      * The type of the schema definition.
      */

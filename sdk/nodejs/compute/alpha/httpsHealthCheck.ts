@@ -46,6 +46,9 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.httpsHealthCheck === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'httpsHealthCheck'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -54,12 +57,12 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             inputs["host"] = args ? args.host : undefined;
+            inputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["requestPath"] = args ? args.requestPath : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -98,6 +101,7 @@ export interface HttpsHealthCheckArgs {
      * The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
      */
     readonly host?: pulumi.Input<string>;
+    readonly httpsHealthCheck: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -114,18 +118,7 @@ export interface HttpsHealthCheckArgs {
      * The TCP port number for the HTTPS health check request. The default value is 443.
      */
     readonly port?: pulumi.Input<number>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * The request path of the HTTPS health check request. The default value is "/".
      */

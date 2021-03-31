@@ -429,141 +429,141 @@ func (o DeviceCredentialArrayOutput) Index(i pulumi.IntInput) DeviceCredentialOu
 }
 
 // The device state, as reported by the device.
-type DeviceStateType struct {
+type DeviceState struct {
 	// The device state data.
 	BinaryData *string `pulumi:"binaryData"`
 	// [Output only] The time at which this state version was updated in Cloud IoT Core.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// DeviceStateTypeInput is an input type that accepts DeviceStateTypeArgs and DeviceStateTypeOutput values.
-// You can construct a concrete instance of `DeviceStateTypeInput` via:
+// DeviceStateInput is an input type that accepts DeviceStateArgs and DeviceStateOutput values.
+// You can construct a concrete instance of `DeviceStateInput` via:
 //
-//          DeviceStateTypeArgs{...}
-type DeviceStateTypeInput interface {
+//          DeviceStateArgs{...}
+type DeviceStateInput interface {
 	pulumi.Input
 
-	ToDeviceStateTypeOutput() DeviceStateTypeOutput
-	ToDeviceStateTypeOutputWithContext(context.Context) DeviceStateTypeOutput
+	ToDeviceStateOutput() DeviceStateOutput
+	ToDeviceStateOutputWithContext(context.Context) DeviceStateOutput
 }
 
 // The device state, as reported by the device.
-type DeviceStateTypeArgs struct {
+type DeviceStateArgs struct {
 	// The device state data.
 	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
 	// [Output only] The time at which this state version was updated in Cloud IoT Core.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
-func (DeviceStateTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
+func (DeviceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceState)(nil)).Elem()
 }
 
-func (i DeviceStateTypeArgs) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
-	return i.ToDeviceStateTypeOutputWithContext(context.Background())
+func (i DeviceStateArgs) ToDeviceStateOutput() DeviceStateOutput {
+	return i.ToDeviceStateOutputWithContext(context.Background())
 }
 
-func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput)
+func (i DeviceStateArgs) ToDeviceStateOutputWithContext(ctx context.Context) DeviceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateOutput)
 }
 
-func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
+func (i DeviceStateArgs) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
+	return i.ToDeviceStatePtrOutputWithContext(context.Background())
 }
 
-func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput).ToDeviceStateTypePtrOutputWithContext(ctx)
+func (i DeviceStateArgs) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateOutput).ToDeviceStatePtrOutputWithContext(ctx)
 }
 
-// DeviceStateTypePtrInput is an input type that accepts DeviceStateTypeArgs, DeviceStateTypePtr and DeviceStateTypePtrOutput values.
-// You can construct a concrete instance of `DeviceStateTypePtrInput` via:
+// DeviceStatePtrInput is an input type that accepts DeviceStateArgs, DeviceStatePtr and DeviceStatePtrOutput values.
+// You can construct a concrete instance of `DeviceStatePtrInput` via:
 //
-//          DeviceStateTypeArgs{...}
+//          DeviceStateArgs{...}
 //
 //  or:
 //
 //          nil
-type DeviceStateTypePtrInput interface {
+type DeviceStatePtrInput interface {
 	pulumi.Input
 
-	ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput
-	ToDeviceStateTypePtrOutputWithContext(context.Context) DeviceStateTypePtrOutput
+	ToDeviceStatePtrOutput() DeviceStatePtrOutput
+	ToDeviceStatePtrOutputWithContext(context.Context) DeviceStatePtrOutput
 }
 
-type deviceStateTypePtrType DeviceStateTypeArgs
+type deviceStatePtrType DeviceStateArgs
 
-func DeviceStateTypePtr(v *DeviceStateTypeArgs) DeviceStateTypePtrInput {
-	return (*deviceStateTypePtrType)(v)
+func DeviceStatePtr(v *DeviceStateArgs) DeviceStatePtrInput {
+	return (*deviceStatePtrType)(v)
 }
 
-func (*deviceStateTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
+func (*deviceStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceState)(nil)).Elem()
 }
 
-func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
+func (i *deviceStatePtrType) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
+	return i.ToDeviceStatePtrOutputWithContext(context.Background())
 }
 
-func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypePtrOutput)
+func (i *deviceStatePtrType) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStatePtrOutput)
 }
 
 // The device state, as reported by the device.
-type DeviceStateTypeOutput struct{ *pulumi.OutputState }
+type DeviceStateOutput struct{ *pulumi.OutputState }
 
-func (DeviceStateTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
+func (DeviceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceState)(nil)).Elem()
 }
 
-func (o DeviceStateTypeOutput) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
+func (o DeviceStateOutput) ToDeviceStateOutput() DeviceStateOutput {
 	return o
 }
 
-func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
+func (o DeviceStateOutput) ToDeviceStateOutputWithContext(ctx context.Context) DeviceStateOutput {
 	return o
 }
 
-func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
-	return o.ToDeviceStateTypePtrOutputWithContext(context.Background())
+func (o DeviceStateOutput) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
+	return o.ToDeviceStatePtrOutputWithContext(context.Background())
 }
 
-func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *DeviceStateType {
+func (o DeviceStateOutput) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
+	return o.ApplyT(func(v DeviceState) *DeviceState {
 		return &v
-	}).(DeviceStateTypePtrOutput)
+	}).(DeviceStatePtrOutput)
 }
 
 // The device state data.
-func (o DeviceStateTypeOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
+func (o DeviceStateOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceState) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
 
 // [Output only] The time at which this state version was updated in Cloud IoT Core.
-func (o DeviceStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o DeviceStateOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceState) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type DeviceStateTypePtrOutput struct{ *pulumi.OutputState }
+type DeviceStatePtrOutput struct{ *pulumi.OutputState }
 
-func (DeviceStateTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
+func (DeviceStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceState)(nil)).Elem()
 }
 
-func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+func (o DeviceStatePtrOutput) ToDeviceStatePtrOutput() DeviceStatePtrOutput {
 	return o
 }
 
-func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+func (o DeviceStatePtrOutput) ToDeviceStatePtrOutputWithContext(ctx context.Context) DeviceStatePtrOutput {
 	return o
 }
 
-func (o DeviceStateTypePtrOutput) Elem() DeviceStateTypeOutput {
-	return o.ApplyT(func(v *DeviceStateType) DeviceStateType { return *v }).(DeviceStateTypeOutput)
+func (o DeviceStatePtrOutput) Elem() DeviceStateOutput {
+	return o.ApplyT(func(v *DeviceState) DeviceState { return *v }).(DeviceStateOutput)
 }
 
 // The device state data.
-func (o DeviceStateTypePtrOutput) BinaryData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceStateType) *string {
+func (o DeviceStatePtrOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceState) *string {
 		if v == nil {
 			return nil
 		}
@@ -572,8 +572,8 @@ func (o DeviceStateTypePtrOutput) BinaryData() pulumi.StringPtrOutput {
 }
 
 // [Output only] The time at which this state version was updated in Cloud IoT Core.
-func (o DeviceStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceStateType) *string {
+func (o DeviceStatePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceState) *string {
 		if v == nil {
 			return nil
 		}
@@ -1341,7 +1341,7 @@ func (o MqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyType struct {
+type Policy struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings []Binding `pulumi:"bindings"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
@@ -1350,19 +1350,19 @@ type PolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// PolicyTypeInput is an input type that accepts PolicyTypeArgs and PolicyTypeOutput values.
-// You can construct a concrete instance of `PolicyTypeInput` via:
+// PolicyInput is an input type that accepts PolicyArgs and PolicyOutput values.
+// You can construct a concrete instance of `PolicyInput` via:
 //
-//          PolicyTypeArgs{...}
-type PolicyTypeInput interface {
+//          PolicyArgs{...}
+type PolicyInput interface {
 	pulumi.Input
 
-	ToPolicyTypeOutput() PolicyTypeOutput
-	ToPolicyTypeOutputWithContext(context.Context) PolicyTypeOutput
+	ToPolicyOutput() PolicyOutput
+	ToPolicyOutputWithContext(context.Context) PolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeArgs struct {
+type PolicyArgs struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings BindingArrayInput `pulumi:"bindings"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
@@ -1371,120 +1371,120 @@ type PolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (PolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutput() PolicyTypeOutput {
-	return i.ToPolicyTypeOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyOutput() PolicyOutput {
+	return i.ToPolicyOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput)
+func (i PolicyArgs) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput).ToPolicyTypePtrOutputWithContext(ctx)
+func (i PolicyArgs) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput).ToPolicyPtrOutputWithContext(ctx)
 }
 
-// PolicyTypePtrInput is an input type that accepts PolicyTypeArgs, PolicyTypePtr and PolicyTypePtrOutput values.
-// You can construct a concrete instance of `PolicyTypePtrInput` via:
+// PolicyPtrInput is an input type that accepts PolicyArgs, PolicyPtr and PolicyPtrOutput values.
+// You can construct a concrete instance of `PolicyPtrInput` via:
 //
-//          PolicyTypeArgs{...}
+//          PolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type PolicyTypePtrInput interface {
+type PolicyPtrInput interface {
 	pulumi.Input
 
-	ToPolicyTypePtrOutput() PolicyTypePtrOutput
-	ToPolicyTypePtrOutputWithContext(context.Context) PolicyTypePtrOutput
+	ToPolicyPtrOutput() PolicyPtrOutput
+	ToPolicyPtrOutputWithContext(context.Context) PolicyPtrOutput
 }
 
-type policyTypePtrType PolicyTypeArgs
+type policyPtrType PolicyArgs
 
-func PolicyTypePtr(v *PolicyTypeArgs) PolicyTypePtrInput {
-	return (*policyTypePtrType)(v)
+func PolicyPtr(v *PolicyArgs) PolicyPtrInput {
+	return (*policyPtrType)(v)
 }
 
-func (*policyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (*policyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i *policyPtrType) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypePtrOutput)
+func (i *policyPtrType) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeOutput struct{ *pulumi.OutputState }
+type PolicyOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutput() PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return o.ToPolicyTypePtrOutputWithContext(context.Background())
+func (o PolicyOutput) ToPolicyPtrOutput() PolicyPtrOutput {
+	return o.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return o.ApplyT(func(v PolicyType) *PolicyType {
+func (o PolicyOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return o.ApplyT(func(v Policy) *Policy {
 		return &v
-	}).(PolicyTypePtrOutput)
+	}).(PolicyPtrOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypeOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v PolicyType) []Binding { return v.Bindings }).(BindingArrayOutput)
+func (o PolicyOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v Policy) []Binding { return v.Bindings }).(BindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type PolicyTypePtrOutput struct{ *pulumi.OutputState }
+type PolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutput() PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) Elem() PolicyTypeOutput {
-	return o.ApplyT(func(v *PolicyType) PolicyType { return *v }).(PolicyTypeOutput)
+func (o PolicyPtrOutput) Elem() PolicyOutput {
+	return o.ApplyT(func(v *Policy) Policy { return *v }).(PolicyOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []Binding {
+func (o PolicyPtrOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v *Policy) []Binding {
 		if v == nil {
 			return nil
 		}
@@ -1493,8 +1493,8 @@ func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *string {
+func (o PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) *string {
 		if v == nil {
 			return nil
 		}
@@ -1503,8 +1503,8 @@ func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *int {
+func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Policy) *int {
 		if v == nil {
 			return nil
 		}
@@ -2479,8 +2479,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialArrayOutput{})
-	pulumi.RegisterOutputType(DeviceStateTypeOutput{})
-	pulumi.RegisterOutputType(DeviceStateTypePtrOutput{})
+	pulumi.RegisterOutputType(DeviceStateOutput{})
+	pulumi.RegisterOutputType(DeviceStatePtrOutput{})
 	pulumi.RegisterOutputType(EventNotificationConfigOutput{})
 	pulumi.RegisterOutputType(EventNotificationConfigArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
@@ -2491,8 +2491,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpConfigPtrOutput{})
 	pulumi.RegisterOutputType(MqttConfigOutput{})
 	pulumi.RegisterOutputType(MqttConfigPtrOutput{})
-	pulumi.RegisterOutputType(PolicyTypeOutput{})
-	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyOutput{})
+	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(PublicKeyCertificateOutput{})
 	pulumi.RegisterOutputType(PublicKeyCertificatePtrOutput{})
 	pulumi.RegisterOutputType(PublicKeyCredentialOutput{})

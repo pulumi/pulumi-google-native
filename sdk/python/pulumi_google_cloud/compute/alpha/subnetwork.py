@@ -42,13 +42,13 @@ class Subnetwork(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None,
                  __name__=None,
@@ -91,14 +91,8 @@ class Subnetwork(pulumi.CustomResource):
                
                This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ipv6_google_access_service_accounts: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[str] region: URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
@@ -156,13 +150,15 @@ class Subnetwork(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['role'] = role
             __props__['secondary_ip_ranges'] = secondary_ip_ranges
             __props__['self_link'] = self_link
             __props__['self_link_with_id'] = self_link_with_id
             __props__['stack_type'] = stack_type
             __props__['state'] = state
+            if subnetwork is None and not opts.urn:
+                raise TypeError("Missing required property 'subnetwork'")
+            __props__['subnetwork'] = subnetwork
             __props__['vlans'] = vlans
         super(Subnetwork, __self__).__init__(
             'google-cloud:compute/alpha:Subnetwork',

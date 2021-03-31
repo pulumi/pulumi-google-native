@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a persistent regional disk in the specified project using the data included in the request.
+ * Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
  */
 export class Disk extends pulumi.CustomResource {
     /**
@@ -47,14 +47,18 @@ export class Disk extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.disk === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'disk'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["disk"] = args ? args.disk : undefined;
             inputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             inputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
@@ -76,7 +80,6 @@ export class Disk extends pulumi.CustomResource {
             inputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaZones"] = args ? args.replicaZones : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -116,6 +119,7 @@ export interface DiskArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    readonly disk: pulumi.Input<string>;
     /**
      * Encrypts the disk using a customer-supplied encryption key.
      *
@@ -192,9 +196,6 @@ export interface DiskArgs {
      * Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
      */
     readonly physicalBlockSizeBytes?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
@@ -203,19 +204,11 @@ export interface DiskArgs {
     /**
      * [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */
     readonly replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      */
@@ -318,5 +311,5 @@ export interface DiskArgs {
     /**
      * [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

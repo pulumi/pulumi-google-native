@@ -59,11 +59,8 @@ namespace Pulumi.GoogleCloud.Binaryauthorization.V1beta1
 
     public sealed class AttestorArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Required. The attestors ID.
-        /// </summary>
-        [Input("attestorId")]
-        public Input<string>? AttestorId { get; set; }
+        [Input("attestorsId", required: true)]
+        public Input<string> AttestorsId { get; set; } = null!;
 
         /// <summary>
         /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
@@ -77,11 +74,8 @@ namespace Pulumi.GoogleCloud.Binaryauthorization.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The parent of this attestor.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. Time when the attestor was last updated.

@@ -71,11 +71,8 @@ namespace Pulumi.GoogleCloud.Gkehub.V1beta
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
-        /// <summary>
-        /// The ID of the feature to create.
-        /// </summary>
-        [Input("featureId")]
-        public Input<string>? FeatureId { get; set; }
+        [Input("featuresId", required: true)]
+        public Input<string> FeaturesId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -119,17 +116,8 @@ namespace Pulumi.GoogleCloud.Gkehub.V1beta
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/global`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Output only. State of the Feature resource itself.

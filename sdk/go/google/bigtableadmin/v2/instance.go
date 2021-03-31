@@ -23,8 +23,11 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.InstancesId == nil {
+		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-cloud:bigtableadmin/v2:Instance", name, args, &resource, opts...)
@@ -63,9 +66,11 @@ type instanceArgs struct {
 	// Required. The instance to create. Fields marked `OutputOnly` must be left blank.
 	Instance *InstanceType `pulumi:"instance"`
 	// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
-	InstanceId *string `pulumi:"instanceId"`
+	InstanceId  *string `pulumi:"instanceId"`
+	InstancesId string  `pulumi:"instancesId"`
 	// Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
-	Parent string `pulumi:"parent"`
+	Parent     *string `pulumi:"parent"`
+	ProjectsId string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -75,9 +80,11 @@ type InstanceArgs struct {
 	// Required. The instance to create. Fields marked `OutputOnly` must be left blank.
 	Instance InstanceTypePtrInput
 	// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
-	InstanceId pulumi.StringPtrInput
+	InstanceId  pulumi.StringPtrInput
+	InstancesId pulumi.StringInput
 	// Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
-	Parent pulumi.StringInput
+	Parent     pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

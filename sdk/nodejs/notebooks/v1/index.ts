@@ -8,14 +8,14 @@ import * as utilities from "../../utilities";
 export * from "./environment";
 export * from "./execution";
 export * from "./instance";
-export * from "./policy";
+export * from "./instanceIamPolicy";
 export * from "./schedule";
 
 // Import resources to register:
 import { Environment } from "./environment";
 import { Execution } from "./execution";
 import { Instance } from "./instance";
-import { Policy } from "./policy";
+import { InstanceIamPolicy } from "./instanceIamPolicy";
 import { Schedule } from "./schedule";
 
 const _module = {
@@ -28,8 +28,8 @@ const _module = {
                 return new Execution(name, <any>undefined, { urn })
             case "google-cloud:notebooks/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:notebooks/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:notebooks/v1:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:notebooks/v1:Schedule":
                 return new Schedule(name, <any>undefined, { urn })
             default:

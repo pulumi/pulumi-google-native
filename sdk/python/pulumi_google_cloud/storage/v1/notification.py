@@ -21,12 +21,11 @@ class Notification(pulumi.CustomResource):
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 notification: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
-                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -35,7 +34,6 @@ class Notification(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The parent bucket of the notification.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for this subscription notification.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: If present, only send notifications about listed event types. If empty, sent notifications for all event types.
@@ -43,10 +41,8 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,12 +69,13 @@ class Notification(pulumi.CustomResource):
             __props__['event_types'] = event_types
             __props__['id'] = id
             __props__['kind'] = kind
+            if notification is None and not opts.urn:
+                raise TypeError("Missing required property 'notification'")
+            __props__['notification'] = notification
             __props__['object_name_prefix'] = object_name_prefix
             __props__['payload_format'] = payload_format
-            __props__['provisional_user_project'] = provisional_user_project
             __props__['self_link'] = self_link
             __props__['topic'] = topic
-            __props__['user_project'] = user_project
         super(Notification, __self__).__init__(
             'google-cloud:storage/v1:Notification',
             resource_name,

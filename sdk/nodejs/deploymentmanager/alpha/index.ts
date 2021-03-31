@@ -7,13 +7,13 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./compositeType";
 export * from "./deployment";
-export * from "./policy";
+export * from "./deploymentIamPolicy";
 export * from "./typeProvider";
 
 // Import resources to register:
 import { CompositeType } from "./compositeType";
 import { Deployment } from "./deployment";
-import { Policy } from "./policy";
+import { DeploymentIamPolicy } from "./deploymentIamPolicy";
 import { TypeProvider } from "./typeProvider";
 
 const _module = {
@@ -24,8 +24,8 @@ const _module = {
                 return new CompositeType(name, <any>undefined, { urn })
             case "google-cloud:deploymentmanager/alpha:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
-            case "google-cloud:deploymentmanager/alpha:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:deploymentmanager/alpha:DeploymentIamPolicy":
+                return new DeploymentIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:deploymentmanager/alpha:TypeProvider":
                 return new TypeProvider(name, <any>undefined, { urn })
             default:

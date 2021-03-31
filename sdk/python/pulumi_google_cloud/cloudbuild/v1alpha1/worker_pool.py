@@ -19,14 +19,15 @@ class WorkerPool(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
+                 worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -38,7 +39,6 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
         :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
-        :param pulumi.Input[str] parent: ID of the parent project.
         :param pulumi.Input[str] project_id: The project ID of the GCP project for which the `WorkerPool` is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
         :param pulumi.Input[str] service_account_email: Output only. The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
@@ -67,16 +67,19 @@ class WorkerPool(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['delete_time'] = delete_time
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['project_id'] = project_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['regions'] = regions
             __props__['service_account_email'] = service_account_email
             __props__['status'] = status
             __props__['update_time'] = update_time
             __props__['worker_config'] = worker_config
             __props__['worker_count'] = worker_count
+            if worker_pools_id is None and not opts.urn:
+                raise TypeError("Missing required property 'worker_pools_id'")
+            __props__['worker_pools_id'] = worker_pools_id
         super(WorkerPool, __self__).__init__(
             'google-cloud:cloudbuild/v1alpha1:WorkerPool',
             resource_name,

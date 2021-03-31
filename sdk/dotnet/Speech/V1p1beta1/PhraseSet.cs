@@ -59,11 +59,8 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
 
     public sealed class PhraseSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Required. The parent resource where this phrase set will be created. Format: {api_version}/projects/{project}/locations/{location}/phraseSets
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
         /// Required. The phrase set to create.
@@ -76,6 +73,12 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
         /// </summary>
         [Input("phraseSetId")]
         public Input<string>? PhraseSetId { get; set; }
+
+        [Input("phraseSetsId", required: true)]
+        public Input<string> PhraseSetsId { get; set; } = null!;
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         public PhraseSetArgs()
         {

@@ -47,8 +47,14 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.networkEndpointGroup === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'networkEndpointGroup'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.zone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zone'");
             }
             inputs["annotations"] = args ? args.annotations : undefined;
             inputs["appEngine"] = args ? args.appEngine : undefined;
@@ -62,10 +68,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
+            inputs["networkEndpointGroup"] = args ? args.networkEndpointGroup : undefined;
             inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
@@ -131,26 +137,16 @@ export interface NetworkEndpointGroupArgs {
      * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
      */
     readonly network?: pulumi.Input<string>;
+    readonly networkEndpointGroup: pulumi.Input<string>;
     /**
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
      */
     readonly networkEndpointType?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The URL of the region where the network endpoint group is located.
      */
     readonly region?: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -166,5 +162,5 @@ export interface NetworkEndpointGroupArgs {
     /**
      * [Output Only] The URL of the zone where the network endpoint group is located.
      */
-    readonly zone?: pulumi.Input<string>;
+    readonly zone: pulumi.Input<string>;
 }

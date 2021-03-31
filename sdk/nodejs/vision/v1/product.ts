@@ -47,16 +47,23 @@ export class Product extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.productsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'productsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
             inputs["productCategory"] = args ? args.productCategory : undefined;
-            inputs["productId"] = args ? args.productId : undefined;
             inputs["productLabels"] = args ? args.productLabels : undefined;
+            inputs["productsId"] = args ? args.productsId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -78,24 +85,19 @@ export interface ProductArgs {
      * The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-     */
-    readonly parent: pulumi.Input<string>;
-    /**
      * Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
      */
     readonly productCategory?: pulumi.Input<string>;
     /**
-     * A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-     */
-    readonly productId?: pulumi.Input<string>;
-    /**
      * Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
      */
     readonly productLabels?: pulumi.Input<pulumi.Input<inputs.vision.v1.KeyValue>[]>;
+    readonly productsId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

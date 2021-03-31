@@ -25,6 +25,9 @@ func NewInstanceGroupManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceGroupManager == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -84,7 +87,8 @@ type instanceGroupManagerArgs struct {
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id *string `pulumi:"id"`
 	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup *string `pulumi:"instanceGroup"`
+	InstanceGroup        *string `pulumi:"instanceGroup"`
+	InstanceGroupManager string  `pulumi:"instanceGroupManager"`
 	// Instance lifecycle policy for this Instance Group Manager.
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -95,16 +99,9 @@ type instanceGroupManagerArgs struct {
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project    string      `pulumi:"project"`
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
 	Region *string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -160,7 +157,8 @@ type InstanceGroupManagerArgs struct {
 	// [Output Only] A unique identifier for this resource type. The server generates this identifier.
 	Id pulumi.StringPtrInput
 	// [Output Only] The URL of the Instance Group resource.
-	InstanceGroup pulumi.StringPtrInput
+	InstanceGroup        pulumi.StringPtrInput
+	InstanceGroupManager pulumi.StringInput
 	// Instance lifecycle policy for this Instance Group Manager.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -171,16 +169,9 @@ type InstanceGroupManagerArgs struct {
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortArrayInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project    pulumi.StringInput
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
 	Region pulumi.StringPtrInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

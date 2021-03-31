@@ -7,20 +7,24 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./bucket";
 export * from "./bucketAccessControl";
+export * from "./bucketIamPolicy";
 export * from "./bucketObject";
+export * from "./defaultObjectAccessControl";
 export * from "./hmacKey";
 export * from "./notification";
 export * from "./objectAccessControl";
-export * from "./policy";
+export * from "./objectIamPolicy";
 
 // Import resources to register:
 import { Bucket } from "./bucket";
 import { BucketAccessControl } from "./bucketAccessControl";
+import { BucketIamPolicy } from "./bucketIamPolicy";
 import { BucketObject } from "./bucketObject";
+import { DefaultObjectAccessControl } from "./defaultObjectAccessControl";
 import { HmacKey } from "./hmacKey";
 import { Notification } from "./notification";
 import { ObjectAccessControl } from "./objectAccessControl";
-import { Policy } from "./policy";
+import { ObjectIamPolicy } from "./objectIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -30,16 +34,20 @@ const _module = {
                 return new Bucket(name, <any>undefined, { urn })
             case "google-cloud:storage/v1:BucketAccessControl":
                 return new BucketAccessControl(name, <any>undefined, { urn })
+            case "google-cloud:storage/v1:BucketIamPolicy":
+                return new BucketIamPolicy(name, <any>undefined, { urn })
             case "google-cloud:storage/v1:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
+            case "google-cloud:storage/v1:DefaultObjectAccessControl":
+                return new DefaultObjectAccessControl(name, <any>undefined, { urn })
             case "google-cloud:storage/v1:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
             case "google-cloud:storage/v1:Notification":
                 return new Notification(name, <any>undefined, { urn })
             case "google-cloud:storage/v1:ObjectAccessControl":
                 return new ObjectAccessControl(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:Policy":
-                return new Policy(name, <any>undefined, { urn })
+            case "google-cloud:storage/v1:ObjectIamPolicy":
+                return new ObjectIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

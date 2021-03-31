@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type Project struct {
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil {
-		args = &ProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
 	var resource Project
 	err := ctx.RegisterResource("google-cloud:cloudresourcemanager/v3:Project", name, args, &resource, opts...)
 	if err != nil {
@@ -69,7 +73,8 @@ type projectArgs struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent *string `pulumi:"parent"`
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId  *string `pulumi:"projectId"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. The project lifecycle state.
 	State *string `pulumi:"state"`
 	// Output only. The most recent time this resource was modified.
@@ -93,7 +98,8 @@ type ProjectArgs struct {
 	// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
 	Parent pulumi.StringPtrInput
 	// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-	ProjectId pulumi.StringPtrInput
+	ProjectId  pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The project lifecycle state.
 	State pulumi.StringPtrInput
 	// Output only. The most recent time this resource was modified.

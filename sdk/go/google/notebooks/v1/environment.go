@@ -23,8 +23,14 @@ func NewEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.EnvironmentsId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Environment
 	err := ctx.RegisterResource("google-cloud:notebooks/v1:Environment", name, args, &resource, opts...)
@@ -65,15 +71,14 @@ type environmentArgs struct {
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
-	DisplayName *string `pulumi:"displayName"`
-	// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
-	EnvironmentId *string `pulumi:"environmentId"`
+	DisplayName    *string `pulumi:"displayName"`
+	EnvironmentsId string  `pulumi:"environmentsId"`
+	LocationsId    string  `pulumi:"locationsId"`
 	// Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
 	Name *string `pulumi:"name"`
-	// Required. Format: `projects/{project_id}/locations/{location}`
-	Parent string `pulumi:"parent"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript *string `pulumi:"postStartupScript"`
+	ProjectsId        string  `pulumi:"projectsId"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage *VmImage `pulumi:"vmImage"`
 }
@@ -87,15 +92,14 @@ type EnvironmentArgs struct {
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
-	DisplayName pulumi.StringPtrInput
-	// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
-	EnvironmentId pulumi.StringPtrInput
+	DisplayName    pulumi.StringPtrInput
+	EnvironmentsId pulumi.StringInput
+	LocationsId    pulumi.StringInput
 	// Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
 	Name pulumi.StringPtrInput
-	// Required. Format: `projects/{project_id}/locations/{location}`
-	Parent pulumi.StringInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript pulumi.StringPtrInput
+	ProjectsId        pulumi.StringInput
 	// Use a Compute Engine VM image to start the notebook instance.
 	VmImage VmImagePtrInput
 }

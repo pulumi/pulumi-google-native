@@ -5,17 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudOrgpolicyV2Policy";
+export * from "./folderPolicy";
+export * from "./organizationPolicy";
+export * from "./policy";
 
 // Import resources to register:
-import { GoogleCloudOrgpolicyV2Policy } from "./googleCloudOrgpolicyV2Policy";
+import { FolderPolicy } from "./folderPolicy";
+import { OrganizationPolicy } from "./organizationPolicy";
+import { Policy } from "./policy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:orgpolicy/v2:GoogleCloudOrgpolicyV2Policy":
-                return new GoogleCloudOrgpolicyV2Policy(name, <any>undefined, { urn })
+            case "google-cloud:orgpolicy/v2:FolderPolicy":
+                return new FolderPolicy(name, <any>undefined, { urn })
+            case "google-cloud:orgpolicy/v2:OrganizationPolicy":
+                return new OrganizationPolicy(name, <any>undefined, { urn })
+            case "google-cloud:orgpolicy/v2:Policy":
+                return new Policy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

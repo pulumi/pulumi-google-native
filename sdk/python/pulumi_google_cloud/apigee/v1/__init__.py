@@ -3,28 +3,39 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_apigee_v1_alias import *
-from .google_cloud_apigee_v1_api_category import *
-from .google_cloud_apigee_v1_api_product import *
-from .google_cloud_apigee_v1_api_proxy_revision import *
-from .google_cloud_apigee_v1_async_query import *
-from .google_cloud_apigee_v1_custom_report import *
-from .google_cloud_apigee_v1_data_collector import *
-from .google_cloud_apigee_v1_datastore import *
-from .google_cloud_apigee_v1_debug_session import *
-from .google_cloud_apigee_v1_developer import *
-from .google_cloud_apigee_v1_developer_app import *
-from .google_cloud_apigee_v1_developer_app_key import *
-from .google_cloud_apigee_v1_export import *
-from .google_cloud_apigee_v1_key_value_map import *
-from .google_cloud_apigee_v1_keystore import *
-from .google_cloud_apigee_v1_reference import *
-from .google_cloud_apigee_v1_resource_file import *
-from .google_cloud_apigee_v1_shared_flow_revision import *
-from .google_cloud_apigee_v1_target_server import *
-from .google_cloud_apigee_v1_trace_config_override import *
-from .google_iam_v1_policy import *
-from .google_longrunning_operation import *
+from .organization import *
+from .organization_analytic_datastore import *
+from .organization_api import *
+from .organization_api_keyvaluemap import *
+from .organization_apiproduct import *
+from .organization_datacollector import *
+from .organization_developer import *
+from .organization_developer_app import *
+from .organization_developer_app_key import *
+from .organization_developer_app_key_create import *
+from .organization_envgroup import *
+from .organization_envgroup_attachment import *
+from .organization_environment import *
+from .organization_environment_analytic_export import *
+from .organization_environment_api_revision_debugsession import *
+from .organization_environment_iam_policy import *
+from .organization_environment_keystore import *
+from .organization_environment_keystore_alias import *
+from .organization_environment_keyvaluemap import *
+from .organization_environment_query import *
+from .organization_environment_reference import *
+from .organization_environment_resourcefile import *
+from .organization_environment_targetserver import *
+from .organization_environment_trace_config_override import *
+from .organization_host_query import *
+from .organization_instance import *
+from .organization_instance_attachment import *
+from .organization_instance_canaryevaluation import *
+from .organization_instance_nat_address import *
+from .organization_keyvaluemap import *
+from .organization_report import *
+from .organization_sharedflow import *
+from .organization_site_apicategory import *
 from ._inputs import *
 
 def _register_module():
@@ -39,50 +50,72 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1Alias":
-                return GoogleCloudApigeeV1Alias(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1ApiCategory":
-                return GoogleCloudApigeeV1ApiCategory(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1ApiProduct":
-                return GoogleCloudApigeeV1ApiProduct(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1ApiProxyRevision":
-                return GoogleCloudApigeeV1ApiProxyRevision(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1AsyncQuery":
-                return GoogleCloudApigeeV1AsyncQuery(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1CustomReport":
-                return GoogleCloudApigeeV1CustomReport(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1DataCollector":
-                return GoogleCloudApigeeV1DataCollector(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1Datastore":
-                return GoogleCloudApigeeV1Datastore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1DebugSession":
-                return GoogleCloudApigeeV1DebugSession(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1Developer":
-                return GoogleCloudApigeeV1Developer(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1DeveloperApp":
-                return GoogleCloudApigeeV1DeveloperApp(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1DeveloperAppKey":
-                return GoogleCloudApigeeV1DeveloperAppKey(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1Export":
-                return GoogleCloudApigeeV1Export(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1KeyValueMap":
-                return GoogleCloudApigeeV1KeyValueMap(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1Keystore":
-                return GoogleCloudApigeeV1Keystore(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1Reference":
-                return GoogleCloudApigeeV1Reference(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1ResourceFile":
-                return GoogleCloudApigeeV1ResourceFile(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1SharedFlowRevision":
-                return GoogleCloudApigeeV1SharedFlowRevision(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1TargetServer":
-                return GoogleCloudApigeeV1TargetServer(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleCloudApigeeV1TraceConfigOverride":
-                return GoogleCloudApigeeV1TraceConfigOverride(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleIamV1Policy":
-                return GoogleIamV1Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:apigee/v1:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:apigee/v1:Organization":
+                return Organization(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationAnalyticDatastore":
+                return OrganizationAnalyticDatastore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationApi":
+                return OrganizationApi(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationApiKeyvaluemap":
+                return OrganizationApiKeyvaluemap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationApiproduct":
+                return OrganizationApiproduct(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationDatacollector":
+                return OrganizationDatacollector(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationDeveloper":
+                return OrganizationDeveloper(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationDeveloperApp":
+                return OrganizationDeveloperApp(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationDeveloperAppKey":
+                return OrganizationDeveloperAppKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationDeveloperAppKeyCreate":
+                return OrganizationDeveloperAppKeyCreate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvgroup":
+                return OrganizationEnvgroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvgroupAttachment":
+                return OrganizationEnvgroupAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironment":
+                return OrganizationEnvironment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport":
+                return OrganizationEnvironmentAnalyticExport(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
+                return OrganizationEnvironmentApiRevisionDebugsession(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentIamPolicy":
+                return OrganizationEnvironmentIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentKeystore":
+                return OrganizationEnvironmentKeystore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentKeystoreAlias":
+                return OrganizationEnvironmentKeystoreAlias(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentKeyvaluemap":
+                return OrganizationEnvironmentKeyvaluemap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentQuery":
+                return OrganizationEnvironmentQuery(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentReference":
+                return OrganizationEnvironmentReference(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentResourcefile":
+                return OrganizationEnvironmentResourcefile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentTargetserver":
+                return OrganizationEnvironmentTargetserver(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
+                return OrganizationEnvironmentTraceConfigOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationHostQuery":
+                return OrganizationHostQuery(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationInstance":
+                return OrganizationInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationInstanceAttachment":
+                return OrganizationInstanceAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationInstanceCanaryevaluation":
+                return OrganizationInstanceCanaryevaluation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationInstanceNatAddress":
+                return OrganizationInstanceNatAddress(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationKeyvaluemap":
+                return OrganizationKeyvaluemap(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationReport":
+                return OrganizationReport(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationSharedflow":
+                return OrganizationSharedflow(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:apigee/v1:OrganizationSiteApicategory":
+                return OrganizationSiteApicategory(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

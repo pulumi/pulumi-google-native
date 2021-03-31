@@ -23,8 +23,11 @@ func NewCompany(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.CompaniesId == nil {
+		return nil, errors.New("invalid value for required argument 'CompaniesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Company
 	err := ctx.RegisterResource("google-cloud:jobs/v3:Company", name, args, &resource, opts...)
@@ -58,18 +61,18 @@ func (CompanyState) ElementType() reflect.Type {
 }
 
 type companyArgs struct {
+	CompaniesId string `pulumi:"companiesId"`
 	// Required. The company to be created.
-	Company *CompanyType `pulumi:"company"`
-	// Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-	Parent string `pulumi:"parent"`
+	Company    *CompanyType `pulumi:"company"`
+	ProjectsId string       `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Company resource.
 type CompanyArgs struct {
+	CompaniesId pulumi.StringInput
 	// Required. The company to be created.
-	Company CompanyTypePtrInput
-	// Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-	Parent pulumi.StringInput
+	Company    CompanyTypePtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (CompanyArgs) ElementType() reflect.Type {

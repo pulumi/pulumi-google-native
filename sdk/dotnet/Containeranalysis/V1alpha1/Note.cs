@@ -119,11 +119,8 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID to use for this note.
-        /// </summary>
-        [Input("noteId")]
-        public Input<string>? NoteId { get; set; }
+        [Input("notesId", required: true)]
+        public Input<string> NotesId { get; set; } = null!;
 
         /// <summary>
         /// A note describing a package hosted by various package managers.
@@ -131,11 +128,8 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         [Input("package")]
         public Input<Inputs.PackageArgs>? Package { get; set; }
 
-        /// <summary>
-        /// This field contains the project Id for example: "projects/{project_id}
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("relatedUrl")]
         private InputList<Inputs.RelatedUrlArgs>? _relatedUrl;

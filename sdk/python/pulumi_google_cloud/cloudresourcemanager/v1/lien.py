@@ -16,6 +16,7 @@ class Lien(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 liens_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,9 @@ class Lien(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['create_time'] = create_time
+            if liens_id is None and not opts.urn:
+                raise TypeError("Missing required property 'liens_id'")
+            __props__['liens_id'] = liens_id
             __props__['name'] = name
             __props__['origin'] = origin
             __props__['parent'] = parent

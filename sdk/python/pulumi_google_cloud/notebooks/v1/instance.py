@@ -27,10 +27,11 @@ class Instance(pulumi.CustomResource):
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskArgs']]]]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,8 +39,8 @@ class Instance(pulumi.CustomResource):
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -69,7 +70,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] disk_encryption: Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskArgs']]]] disks: Output only. Attached disks to notebook instance.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
-        :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
@@ -80,7 +80,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
-        :param pulumi.Input[str] parent: Required. Format: `parent=projects/{project_id}/locations/{location}`
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] proxy_uri: Output only. The proxy endpoint that is used to access the Jupyter notebook.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
@@ -121,10 +120,15 @@ class Instance(pulumi.CustomResource):
             __props__['disk_encryption'] = disk_encryption
             __props__['disks'] = disks
             __props__['install_gpu_driver'] = install_gpu_driver
-            __props__['instance_id'] = instance_id
             __props__['instance_owners'] = instance_owners
+            if instances_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instances_id'")
+            __props__['instances_id'] = instances_id
             __props__['kms_key'] = kms_key
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['machine_type'] = machine_type
             __props__['metadata'] = metadata
             __props__['name'] = name
@@ -132,10 +136,10 @@ class Instance(pulumi.CustomResource):
             __props__['no_proxy_access'] = no_proxy_access
             __props__['no_public_ip'] = no_public_ip
             __props__['no_remove_data_disk'] = no_remove_data_disk
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
             __props__['post_startup_script'] = post_startup_script
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['proxy_uri'] = proxy_uri
             __props__['service_account'] = service_account
             __props__['service_account_scopes'] = service_account_scopes

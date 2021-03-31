@@ -23,6 +23,9 @@ func NewImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -70,12 +73,11 @@ type imageArgs struct {
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family *string `pulumi:"family"`
-	// Force image creation if true.
-	ForceCreate *bool `pulumi:"forceCreate"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
+	Id    *string `pulumi:"id"`
+	Image string  `pulumi:"image"`
 	// Encrypts the image using a customer-supplied encryption key.
 	//
 	// After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
@@ -97,17 +99,10 @@ type imageArgs struct {
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// The parameters of the raw disk image.
 	RawDisk map[string]string `pulumi:"rawDisk"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
 	RolloutOverride *RolloutPolicy `pulumi:"rolloutOverride"`
 	// [Output Only] Reserved for future use.
@@ -174,12 +169,11 @@ type ImageArgs struct {
 	DiskSizeGb pulumi.StringPtrInput
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family pulumi.StringPtrInput
-	// Force image creation if true.
-	ForceCreate pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureArrayInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
+	Id    pulumi.StringPtrInput
+	Image pulumi.StringInput
 	// Encrypts the image using a customer-supplied encryption key.
 	//
 	// After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
@@ -201,17 +195,10 @@ type ImageArgs struct {
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// Project ID for this request.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The parameters of the raw disk image.
 	RawDisk pulumi.StringMapInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
 	RolloutOverride RolloutPolicyPtrInput
 	// [Output Only] Reserved for future use.

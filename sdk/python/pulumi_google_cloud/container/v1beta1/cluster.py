@@ -17,6 +17,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[pulumi.InputType['ClusterArgs']]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,9 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cluster'] = cluster
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
+            __props__['cluster_id'] = cluster_id
             __props__['parent'] = parent
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")

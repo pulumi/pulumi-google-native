@@ -83,11 +83,8 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha2
         [Input("networkConfig")]
         public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }
 
-        /// <summary>
-        /// Required. The parent resource where this book will be created. Format: projects/{project}
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
@@ -113,11 +110,8 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha2
         [Input("workerConfig")]
         public Input<Inputs.WorkerConfigArgs>? WorkerConfig { get; set; }
 
-        /// <summary>
-        /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-        /// </summary>
-        [Input("workerPoolId")]
-        public Input<string>? WorkerPoolId { get; set; }
+        [Input("workerPoolsId", required: true)]
+        public Input<string> WorkerPoolsId { get; set; } = null!;
 
         public WorkerPoolArgs()
         {

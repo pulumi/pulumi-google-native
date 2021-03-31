@@ -23,8 +23,14 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.InstancesId == nil {
+		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-cloud:memcache/v1beta2:Instance", name, args, &resource, opts...)
@@ -66,12 +72,12 @@ type instanceArgs struct {
 	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
-	InstanceId *string `pulumi:"instanceId"`
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages []InstanceMessage `pulumi:"instanceMessages"`
+	InstancesId      string            `pulumi:"instancesId"`
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
 	MemcacheFullVersion *string `pulumi:"memcacheFullVersion"`
 	// Output only. List of Memcached nodes. Refer to Node message for more details.
@@ -86,8 +92,7 @@ type instanceArgs struct {
 	NodeCount *int `pulumi:"nodeCount"`
 	// Optional: User defined parameters to apply to the memcached process on each node.
 	Parameters *MemcacheParameters `pulumi:"parameters"`
-	// Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
-	Parent string `pulumi:"parent"`
+	ProjectsId string              `pulumi:"projectsId"`
 	// Output only. The state of this Memcached instance.
 	State *string `pulumi:"state"`
 	// Output only. Returns true if there is an update waiting to be applied
@@ -108,12 +113,12 @@ type InstanceArgs struct {
 	DiscoveryEndpoint pulumi.StringPtrInput
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName pulumi.StringPtrInput
-	// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
-	InstanceId pulumi.StringPtrInput
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages InstanceMessageArrayInput
+	InstancesId      pulumi.StringInput
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
 	MemcacheFullVersion pulumi.StringPtrInput
 	// Output only. List of Memcached nodes. Refer to Node message for more details.
@@ -128,8 +133,7 @@ type InstanceArgs struct {
 	NodeCount pulumi.IntPtrInput
 	// Optional: User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersPtrInput
-	// Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
-	Parent pulumi.StringInput
+	ProjectsId pulumi.StringInput
 	// Output only. The state of this Memcached instance.
 	State pulumi.StringPtrInput
 	// Output only. Returns true if there is an update waiting to be applied

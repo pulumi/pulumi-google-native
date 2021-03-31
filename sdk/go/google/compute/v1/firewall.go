@@ -23,6 +23,9 @@ func NewFirewall(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Firewall == nil {
+		return nil, errors.New("invalid value for required argument 'Firewall'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -71,7 +74,8 @@ type firewallArgs struct {
 	// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
-	Disabled *bool `pulumi:"disabled"`
+	Disabled *bool  `pulumi:"disabled"`
+	Firewall string `pulumi:"firewall"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
@@ -88,15 +92,8 @@ type firewallArgs struct {
 	// - global/networks/default
 	Network *string `pulumi:"network"`
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
-	Priority *int `pulumi:"priority"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Priority *int   `pulumi:"priority"`
+	Project  string `pulumi:"project"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.
@@ -127,6 +124,7 @@ type FirewallArgs struct {
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
+	Firewall pulumi.StringInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of the resource. Always compute#firewall for firewall rules.
@@ -144,14 +142,7 @@ type FirewallArgs struct {
 	Network pulumi.StringPtrInput
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
 	Priority pulumi.IntPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Project  pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the rule to apply. Only IPv4 is supported.

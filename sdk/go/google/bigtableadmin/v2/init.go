@@ -21,18 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:bigtableadmin/v2:AppProfile":
-		r, err = NewAppProfile(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:bigtableadmin/v2:Backup":
-		r, err = NewBackup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:bigtableadmin/v2:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:bigtableadmin/v2:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:bigtableadmin/v2:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:bigtableadmin/v2:Table":
-		r, err = NewTable(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceAppProfile":
+		r, err = NewInstanceAppProfile(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceCluster":
+		r, err = NewInstanceCluster(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceClusterBackup":
+		r, err = NewInstanceClusterBackup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
+		r, err = NewInstanceClusterBackupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceIamPolicy":
+		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceTable":
+		r, err = NewInstanceTable(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:bigtableadmin/v2:InstanceTableIamPolicy":
+		r, err = NewInstanceTableIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -27,10 +27,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_group: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -55,13 +55,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] The URL of the region where the network endpoint group is located.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[int] size: [Output only] Number of network endpoints in the network endpoint group.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -95,12 +89,14 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__['kind'] = kind
             __props__['name'] = name
             __props__['network'] = network
+            if network_endpoint_group is None and not opts.urn:
+                raise TypeError("Missing required property 'network_endpoint_group'")
+            __props__['network_endpoint_group'] = network_endpoint_group
             __props__['network_endpoint_type'] = network_endpoint_type
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['region'] = region
-            __props__['request_id'] = request_id
             __props__['self_link'] = self_link
             __props__['size'] = size
             __props__['subnetwork'] = subnetwork

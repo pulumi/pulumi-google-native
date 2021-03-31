@@ -71,17 +71,11 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
-        /// </summary>
-        [Input("schemaId")]
-        public Input<string>? SchemaId { get; set; }
+        [Input("schemasId", required: true)]
+        public Input<string> SchemasId { get; set; } = null!;
 
         /// <summary>
         /// The type of the schema definition.

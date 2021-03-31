@@ -5,33 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googlePrivacyDlpV2DeidentifyTemplate";
-export * from "./googlePrivacyDlpV2DlpJob";
-export * from "./googlePrivacyDlpV2InspectTemplate";
-export * from "./googlePrivacyDlpV2JobTrigger";
-export * from "./googlePrivacyDlpV2StoredInfoType";
+export * from "./deidentifyTemplate";
+export * from "./dlpJob";
+export * from "./inspectTemplate";
+export * from "./jobTrigger";
+export * from "./organizationDeidentifyTemplate";
+export * from "./organizationInspectTemplate";
+export * from "./organizationJobTrigger";
+export * from "./organizationStoredInfoType";
+export * from "./storedInfoType";
 
 // Import resources to register:
-import { GooglePrivacyDlpV2DeidentifyTemplate } from "./googlePrivacyDlpV2DeidentifyTemplate";
-import { GooglePrivacyDlpV2DlpJob } from "./googlePrivacyDlpV2DlpJob";
-import { GooglePrivacyDlpV2InspectTemplate } from "./googlePrivacyDlpV2InspectTemplate";
-import { GooglePrivacyDlpV2JobTrigger } from "./googlePrivacyDlpV2JobTrigger";
-import { GooglePrivacyDlpV2StoredInfoType } from "./googlePrivacyDlpV2StoredInfoType";
+import { DeidentifyTemplate } from "./deidentifyTemplate";
+import { DlpJob } from "./dlpJob";
+import { InspectTemplate } from "./inspectTemplate";
+import { JobTrigger } from "./jobTrigger";
+import { OrganizationDeidentifyTemplate } from "./organizationDeidentifyTemplate";
+import { OrganizationInspectTemplate } from "./organizationInspectTemplate";
+import { OrganizationJobTrigger } from "./organizationJobTrigger";
+import { OrganizationStoredInfoType } from "./organizationStoredInfoType";
+import { StoredInfoType } from "./storedInfoType";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dlp/v2:GooglePrivacyDlpV2DeidentifyTemplate":
-                return new GooglePrivacyDlpV2DeidentifyTemplate(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:GooglePrivacyDlpV2DlpJob":
-                return new GooglePrivacyDlpV2DlpJob(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:GooglePrivacyDlpV2InspectTemplate":
-                return new GooglePrivacyDlpV2InspectTemplate(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:GooglePrivacyDlpV2JobTrigger":
-                return new GooglePrivacyDlpV2JobTrigger(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:GooglePrivacyDlpV2StoredInfoType":
-                return new GooglePrivacyDlpV2StoredInfoType(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:DeidentifyTemplate":
+                return new DeidentifyTemplate(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:DlpJob":
+                return new DlpJob(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:InspectTemplate":
+                return new InspectTemplate(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:JobTrigger":
+                return new JobTrigger(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:OrganizationDeidentifyTemplate":
+                return new OrganizationDeidentifyTemplate(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:OrganizationInspectTemplate":
+                return new OrganizationInspectTemplate(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:OrganizationJobTrigger":
+                return new OrganizationJobTrigger(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:OrganizationStoredInfoType":
+                return new OrganizationStoredInfoType(name, <any>undefined, { urn })
+            case "google-cloud:dlp/v2:StoredInfoType":
+                return new StoredInfoType(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

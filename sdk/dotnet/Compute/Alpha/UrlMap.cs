@@ -155,23 +155,14 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
             set => _pathMatchers = value;
         }
 
-        /// <summary>
-        /// Project ID for this request.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
@@ -191,6 +182,9 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
             get => _tests ?? (_tests = new InputList<Inputs.UrlMapTestArgs>());
             set => _tests = value;
         }
+
+        [Input("urlMap", required: true)]
+        public Input<string> UrlMap { get; set; } = null!;
 
         public UrlMapArgs()
         {

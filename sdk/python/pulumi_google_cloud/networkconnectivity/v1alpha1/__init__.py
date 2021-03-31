@@ -3,8 +3,12 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_longrunning_operation import *
-from .policy import *
+from .hub import *
+from .hub_iam_policy import *
+from .internal_range_iam_policy import *
+from .policy_based_route_iam_policy import *
+from .spoke import *
+from .spoke_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -19,10 +23,18 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:networkconnectivity/v1alpha1:GoogleLongrunningOperation":
-                return GoogleLongrunningOperation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:networkconnectivity/v1alpha1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:networkconnectivity/v1alpha1:Hub":
+                return Hub(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:networkconnectivity/v1alpha1:HubIamPolicy":
+                return HubIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
+                return InternalRangeIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy":
+                return PolicyBasedRouteIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:networkconnectivity/v1alpha1:Spoke":
+                return Spoke(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:networkconnectivity/v1alpha1:SpokeIamPolicy":
+                return SpokeIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

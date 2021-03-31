@@ -67,9 +67,8 @@ type jobArgs struct {
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference *JobReference `pulumi:"jobReference"`
 	// [Output-only] The type of the resource.
-	Kind *string `pulumi:"kind"`
-	// Project ID of the project that will be billed for the job
-	ProjectId string `pulumi:"projectId"`
+	Kind      *string `pulumi:"kind"`
+	ProjectId string  `pulumi:"projectId"`
 	// [Output-only] A URL that can be used to access this resource again.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output-only] Information about the job, including starting time and ending time of the job.
@@ -91,8 +90,7 @@ type JobArgs struct {
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferencePtrInput
 	// [Output-only] The type of the resource.
-	Kind pulumi.StringPtrInput
-	// Project ID of the project that will be billed for the job
+	Kind      pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
 	// [Output-only] A URL that can be used to access this resource again.
 	SelfLink pulumi.StringPtrInput

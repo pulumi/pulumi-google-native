@@ -46,12 +46,20 @@ export class ServiceAccountKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.keysId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keysId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.serviceAccountsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceAccountsId'");
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            inputs["keysId"] = args ? args.keysId : undefined;
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["serviceAccountsId"] = args ? args.serviceAccountsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -69,12 +77,11 @@ export interface ServiceAccountKeyArgs {
      * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
      */
     readonly keyAlgorithm?: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the service account in the following format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service account.
-     */
-    readonly name: pulumi.Input<string>;
+    readonly keysId: pulumi.Input<string>;
     /**
      * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
      */
     readonly privateKeyType?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
+    readonly serviceAccountsId: pulumi.Input<string>;
 }

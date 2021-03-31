@@ -26,6 +26,9 @@ func NewPublicAdvertisedPrefix(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.PublicAdvertisedPrefix == nil {
+		return nil, errors.New("invalid value for required argument 'PublicAdvertisedPrefix'")
+	}
 	var resource PublicAdvertisedPrefix
 	err := ctx.RegisterResource("google-cloud:compute/beta:PublicAdvertisedPrefix", name, args, &resource, opts...)
 	if err != nil {
@@ -75,17 +78,11 @@ type publicAdvertisedPrefixArgs struct {
 	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Name                   *string `pulumi:"name"`
+	Project                string  `pulumi:"project"`
+	PublicAdvertisedPrefix string  `pulumi:"publicAdvertisedPrefix"`
 	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs []PublicAdvertisedPrefixPublicDelegatedPrefix `pulumi:"publicDelegatedPrefixs"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] The shared secret to be used for reverse DNS verification.
@@ -113,17 +110,11 @@ type PublicAdvertisedPrefixArgs struct {
 	// [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Name                   pulumi.StringPtrInput
+	Project                pulumi.StringInput
+	PublicAdvertisedPrefix pulumi.StringInput
 	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The shared secret to be used for reverse DNS verification.

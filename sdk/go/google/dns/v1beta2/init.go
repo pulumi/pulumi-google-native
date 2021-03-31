@@ -25,10 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewChange(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dns/v1beta2:ManagedZone":
 		r, err = NewManagedZone(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dns/v1beta2:ManagedZoneRrset":
+		r, err = NewManagedZoneRrset(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dns/v1beta2:Policy":
 		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dns/v1beta2:ResourceRecordSet":
-		r, err = NewResourceRecordSet(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dns/v1beta2:ResponsePolicy":
 		r, err = NewResponsePolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dns/v1beta2:ResponsePolicyRule":

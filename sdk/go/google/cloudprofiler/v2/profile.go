@@ -23,8 +23,8 @@ func NewProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Profile
 	err := ctx.RegisterResource("google-cloud:cloudprofiler/v2:Profile", name, args, &resource, opts...)
@@ -60,20 +60,18 @@ func (ProfileState) ElementType() reflect.Type {
 type profileArgs struct {
 	// Deployment details.
 	Deployment *Deployment `pulumi:"deployment"`
-	// Parent project to create the profile in.
-	Parent string `pulumi:"parent"`
 	// One or more profile types that the agent is capable of providing.
 	ProfileType []string `pulumi:"profileType"`
+	ProjectsId  string   `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Profile resource.
 type ProfileArgs struct {
 	// Deployment details.
 	Deployment DeploymentPtrInput
-	// Parent project to create the profile in.
-	Parent pulumi.StringInput
 	// One or more profile types that the agent is capable of providing.
 	ProfileType pulumi.StringArrayInput
+	ProjectsId  pulumi.StringInput
 }
 
 func (ProfileArgs) ElementType() reflect.Type {

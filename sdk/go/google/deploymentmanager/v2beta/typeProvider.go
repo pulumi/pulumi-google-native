@@ -26,6 +26,9 @@ func NewTypeProvider(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.TypeProvider == nil {
+		return nil, errors.New("invalid value for required argument 'TypeProvider'")
+	}
 	var resource TypeProvider
 	err := ctx.RegisterResource("google-cloud:deploymentmanager/v2beta:TypeProvider", name, args, &resource, opts...)
 	if err != nil {
@@ -80,10 +83,10 @@ type typeProviderArgs struct {
 	Operation *Operation `pulumi:"operation"`
 	// Options to apply when handling any resources in this service.
 	Options *Options `pulumi:"options"`
-	// The project ID for this request.
-	Project string `pulumi:"project"`
+	Project string   `pulumi:"project"`
 	// Output only. Self link for the type provider.
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink     *string `pulumi:"selfLink"`
+	TypeProvider string  `pulumi:"typeProvider"`
 }
 
 // The set of arguments for constructing a TypeProvider resource.
@@ -110,10 +113,10 @@ type TypeProviderArgs struct {
 	Operation OperationPtrInput
 	// Options to apply when handling any resources in this service.
 	Options OptionsPtrInput
-	// The project ID for this request.
 	Project pulumi.StringInput
 	// Output only. Self link for the type provider.
-	SelfLink pulumi.StringPtrInput
+	SelfLink     pulumi.StringPtrInput
+	TypeProvider pulumi.StringInput
 }
 
 func (TypeProviderArgs) ElementType() reflect.Type {

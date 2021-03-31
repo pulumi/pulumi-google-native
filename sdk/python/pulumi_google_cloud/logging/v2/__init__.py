@@ -3,11 +3,23 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .log_bucket import *
-from .log_exclusion import *
-from .log_metric import *
-from .log_sink import *
-from .log_view import *
+from .billing_account_bucket import *
+from .billing_account_bucket_view import *
+from .billing_account_exclusion import *
+from .billing_account_sink import *
+from .bucket import *
+from .bucket_view import *
+from .exclusion import *
+from .folder_bucket import *
+from .folder_bucket_view import *
+from .folder_exclusion import *
+from .folder_sink import *
+from .metric import *
+from .organization_bucket import *
+from .organization_bucket_view import *
+from .organization_exclusion import *
+from .organization_sink import *
+from .sink import *
 from ._inputs import *
 
 def _register_module():
@@ -22,16 +34,40 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:logging/v2:LogBucket":
-                return LogBucket(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:logging/v2:LogExclusion":
-                return LogExclusion(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:logging/v2:LogMetric":
-                return LogMetric(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:logging/v2:LogSink":
-                return LogSink(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:logging/v2:LogView":
-                return LogView(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:logging/v2:BillingAccountBucket":
+                return BillingAccountBucket(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:BillingAccountBucketView":
+                return BillingAccountBucketView(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:BillingAccountExclusion":
+                return BillingAccountExclusion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:BillingAccountSink":
+                return BillingAccountSink(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:Bucket":
+                return Bucket(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:BucketView":
+                return BucketView(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:Exclusion":
+                return Exclusion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:FolderBucket":
+                return FolderBucket(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:FolderBucketView":
+                return FolderBucketView(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:FolderExclusion":
+                return FolderExclusion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:FolderSink":
+                return FolderSink(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:Metric":
+                return Metric(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:OrganizationBucket":
+                return OrganizationBucket(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:OrganizationBucketView":
+                return OrganizationBucketView(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:OrganizationExclusion":
+                return OrganizationExclusion(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:OrganizationSink":
+                return OrganizationSink(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:logging/v2:Sink":
+                return Sink(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

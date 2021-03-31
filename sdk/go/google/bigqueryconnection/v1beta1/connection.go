@@ -23,8 +23,14 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ConnectionsId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Connection
 	err := ctx.RegisterResource("google-cloud:bigqueryconnection/v1beta1:Connection", name, args, &resource, opts...)
@@ -59,9 +65,8 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Cloud SQL properties.
-	CloudSql *CloudSqlProperties `pulumi:"cloudSql"`
-	// Optional. Connection id that should be assigned to the created connection.
-	ConnectionId *string `pulumi:"connectionId"`
+	CloudSql      *CloudSqlProperties `pulumi:"cloudSql"`
+	ConnectionsId string              `pulumi:"connectionsId"`
 	// Output only. The creation timestamp of the connection.
 	CreationTime *string `pulumi:"creationTime"`
 	// User provided description.
@@ -72,18 +77,17 @@ type connectionArgs struct {
 	HasCredential *bool `pulumi:"hasCredential"`
 	// Output only. The last update timestamp of the connection.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
+	LocationsId      string  `pulumi:"locationsId"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name *string `pulumi:"name"`
-	// Required. Parent resource name. Must be in the format `projects/{project_id}/locations/{location_id}`
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Cloud SQL properties.
-	CloudSql CloudSqlPropertiesPtrInput
-	// Optional. Connection id that should be assigned to the created connection.
-	ConnectionId pulumi.StringPtrInput
+	CloudSql      CloudSqlPropertiesPtrInput
+	ConnectionsId pulumi.StringInput
 	// Output only. The creation timestamp of the connection.
 	CreationTime pulumi.StringPtrInput
 	// User provided description.
@@ -94,10 +98,10 @@ type ConnectionArgs struct {
 	HasCredential pulumi.BoolPtrInput
 	// Output only. The last update timestamp of the connection.
 	LastModifiedTime pulumi.StringPtrInput
+	LocationsId      pulumi.StringInput
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name pulumi.StringPtrInput
-	// Required. Parent resource name. Must be in the format `projects/{project_id}/locations/{location_id}`
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

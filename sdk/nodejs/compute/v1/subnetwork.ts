@@ -53,6 +53,9 @@ export class Subnetwork extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            if ((!args || args.subnetwork === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'subnetwork'");
+            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
@@ -70,11 +73,11 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["subnetwork"] = args ? args.subnetwork : undefined;
         } else {
         }
         if (!opts.version) {
@@ -148,9 +151,6 @@ export interface SubnetworkArgs {
      * This field can be both set at resource creation time and updated using patch.
      */
     readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
@@ -160,14 +160,6 @@ export interface SubnetworkArgs {
      * URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
      */
     readonly region: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
      */
@@ -184,4 +176,5 @@ export interface SubnetworkArgs {
      * [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
      */
     readonly state?: pulumi.Input<string>;
+    readonly subnetwork: pulumi.Input<string>;
 }

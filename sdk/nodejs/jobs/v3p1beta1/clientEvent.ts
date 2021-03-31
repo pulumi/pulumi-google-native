@@ -47,11 +47,11 @@ export class ClientEvent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["clientEvent"] = args ? args.clientEvent : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -69,8 +69,5 @@ export interface ClientEventArgs {
      * Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution.
      */
     readonly clientEvent?: pulumi.Input<inputs.jobs.v3p1beta1.ClientEvent>;
-    /**
-     * Parent project name.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

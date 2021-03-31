@@ -18,7 +18,8 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance: Optional[pulumi.Input[pulumi.InputType['InstanceArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -29,7 +30,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceArgs']] instance: Required. The instance to create. The name may be omitted, but if specified must be `/instances/`.
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
-        :param pulumi.Input[str] parent: Required. The name of the project in which to create the instance. Values are of the form `projects/`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,9 +50,12 @@ class Instance(pulumi.CustomResource):
 
             __props__['instance'] = instance
             __props__['instance_id'] = instance_id
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if instances_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instances_id'")
+            __props__['instances_id'] = instances_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(Instance, __self__).__init__(
             'google-cloud:spanner/v1:Instance',
             resource_name,

@@ -65,11 +65,8 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         [Input("cloudsql")]
         public Input<Inputs.CloudSqlConnectionProfileArgs>? Cloudsql { get; set; }
 
-        /// <summary>
-        /// Required. The connection profile identifier.
-        /// </summary>
-        [Input("connectionProfileId")]
-        public Input<string>? ConnectionProfileId { get; set; }
+        [Input("connectionProfilesId", required: true)]
+        public Input<string> ConnectionProfilesId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -101,6 +98,9 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
             set => _labels = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// A MySQL database connection profile.
         /// </summary>
@@ -114,28 +114,19 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The parent, which owns this collection of connection profiles.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// A PostgreSQL database connection profile.
         /// </summary>
         [Input("postgresql")]
         public Input<Inputs.PostgreSqlConnectionProfileArgs>? Postgresql { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The database provider.
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
-
-        /// <summary>
-        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).

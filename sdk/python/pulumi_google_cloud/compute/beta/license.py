@@ -21,10 +21,10 @@ class License(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[pulumi.InputType['LicenseResourceRequirementsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  transferable: Optional[pulumi.Input[bool]] = None,
@@ -43,12 +43,6 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#license for licenses.
         :param pulumi.Input[str] license_code: [Output Only] The unique code used to attach this license to images, snapshots, and disks.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
-        :param pulumi.Input[str] project: Project ID for this request.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[bool] transferable: If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
         """
@@ -74,12 +68,14 @@ class License(pulumi.CustomResource):
             __props__['description'] = description
             __props__['id'] = id
             __props__['kind'] = kind
+            if license is None and not opts.urn:
+                raise TypeError("Missing required property 'license'")
+            __props__['license'] = license
             __props__['license_code'] = license_code
             __props__['name'] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
-            __props__['request_id'] = request_id
             __props__['resource_requirements'] = resource_requirements
             __props__['self_link'] = self_link
             __props__['transferable'] = transferable

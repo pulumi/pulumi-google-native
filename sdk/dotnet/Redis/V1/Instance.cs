@@ -107,11 +107,8 @@ namespace Pulumi.GoogleCloud.Redis.V1
         [Input("host")]
         public Input<string>? Host { get; set; }
 
-        /// <summary>
-        /// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
+        [Input("instancesId", required: true)]
+        public Input<string> InstancesId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -131,6 +128,9 @@ namespace Pulumi.GoogleCloud.Redis.V1
         [Input("locationId")]
         public Input<string>? LocationId { get; set; }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// Required. Redis memory size in GiB.
         /// </summary>
@@ -144,12 +144,6 @@ namespace Pulumi.GoogleCloud.Redis.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
         /// </summary>
         [Input("persistenceIamIdentity")]
@@ -160,6 +154,9 @@ namespace Pulumi.GoogleCloud.Redis.V1
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("redisConfigs")]
         private InputMap<string>? _redisConfigs;

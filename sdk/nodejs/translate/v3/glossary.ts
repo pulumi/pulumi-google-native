@@ -47,16 +47,24 @@ export class Glossary extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.glossariesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'glossariesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["entryCount"] = args ? args.entryCount : undefined;
+            inputs["glossariesId"] = args ? args.glossariesId : undefined;
             inputs["inputConfig"] = args ? args.inputConfig : undefined;
             inputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
             inputs["languagePair"] = args ? args.languagePair : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["submitTime"] = args ? args.submitTime : undefined;
         } else {
         }
@@ -79,6 +87,7 @@ export interface GlossaryArgs {
      * Output only. The number of entries defined in the glossary.
      */
     readonly entryCount?: pulumi.Input<number>;
+    readonly glossariesId: pulumi.Input<string>;
     /**
      * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
@@ -91,14 +100,12 @@ export interface GlossaryArgs {
      * Used with unidirectional glossaries.
      */
     readonly languagePair?: pulumi.Input<inputs.translate.v3.LanguageCodePair>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The project name.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. When CreateGlossary was called.
      */

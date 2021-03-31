@@ -4,8 +4,9 @@
 
 # Export this package's modules as members:
 from .connection_profile import *
+from .connection_profile_iam_policy import *
 from .migration_job import *
-from .policy import *
+from .migration_job_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -22,10 +23,12 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-cloud:datamigration/v1beta1:ConnectionProfile":
                 return ConnectionProfile(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datamigration/v1beta1:ConnectionProfileIamPolicy":
+                return ConnectionProfileIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:datamigration/v1beta1:MigrationJob":
                 return MigrationJob(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:datamigration/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:datamigration/v1beta1:MigrationJobIamPolicy":
+                return MigrationJobIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

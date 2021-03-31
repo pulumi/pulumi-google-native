@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:billingbudgets/v1beta1:GoogleCloudBillingBudgetsV1beta1Budget":
-		r, err = NewGoogleCloudBillingBudgetsV1beta1Budget(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:billingbudgets/v1beta1:BillingAccountBudget":
+		r, err = NewBillingAccountBudget(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

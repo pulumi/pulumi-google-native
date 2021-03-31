@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
+ * Creates a ForwardingRule resource in the specified project and region using the data included in the request.
  */
 export class ForwardingRule extends pulumi.CustomResource {
     /**
@@ -47,8 +47,14 @@ export class ForwardingRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.forwardingRule === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'forwardingRule'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.region === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'region'");
             }
             inputs["IPAddress"] = args ? args.IPAddress : undefined;
             inputs["IPProtocol"] = args ? args.IPProtocol : undefined;
@@ -58,6 +64,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
+            inputs["forwardingRule"] = args ? args.forwardingRule : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
             inputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
@@ -74,7 +81,6 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pscConnectionId"] = args ? args.pscConnectionId : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
@@ -154,6 +160,7 @@ export interface ForwardingRuleArgs {
      * To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
      */
     readonly fingerprint?: pulumi.Input<string>;
+    readonly forwardingRule: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -252,9 +259,6 @@ export interface ForwardingRuleArgs {
      * For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
      */
     readonly ports?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The PSC connection id of the PSC Forwarding Rule.
@@ -263,15 +267,7 @@ export interface ForwardingRuleArgs {
     /**
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
-    readonly region?: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
+    readonly region: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

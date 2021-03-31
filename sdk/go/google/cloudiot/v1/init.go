@@ -21,12 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:cloudiot/v1:Device":
-		r, err = NewDevice(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudiot/v1:DeviceRegistry":
-		r, err = NewDeviceRegistry(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudiot/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudiot/v1:Registry":
+		r, err = NewRegistry(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudiot/v1:RegistryDevice":
+		r, err = NewRegistryDevice(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudiot/v1:RegistryGroupIamPolicy":
+		r, err = NewRegistryGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudiot/v1:RegistryIamPolicy":
+		r, err = NewRegistryIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

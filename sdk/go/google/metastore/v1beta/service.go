@@ -23,8 +23,14 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.ServicesId == nil {
+		return nil, errors.New("invalid value for required argument 'ServicesId'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("google-cloud:metastore/v1beta:Service", name, args, &resource, opts...)
@@ -67,7 +73,8 @@ type serviceArgs struct {
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig *HiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
@@ -78,16 +85,12 @@ type serviceArgs struct {
 	Name *string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
-	// Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
-	Parent string `pulumi:"parent"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port *int `pulumi:"port"`
+	Port       *int   `pulumi:"port"`
+	ProjectsId string `pulumi:"projectsId"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-	RequestId *string `pulumi:"requestId"`
-	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-	ServiceId *string `pulumi:"serviceId"`
+	ServicesId     string  `pulumi:"servicesId"`
 	// Output only. The current state of the metastore service.
 	State *string `pulumi:"state"`
 	// Output only. Additional information about the current state of the metastore service, if available.
@@ -111,7 +114,8 @@ type ServiceArgs struct {
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig HiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
 	MaintenanceWindow MaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
@@ -122,16 +126,12 @@ type ServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput
-	// Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}.
-	Parent pulumi.StringInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port pulumi.IntPtrInput
+	Port       pulumi.IntPtrInput
+	ProjectsId pulumi.StringInput
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel pulumi.StringPtrInput
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-	RequestId pulumi.StringPtrInput
-	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-	ServiceId pulumi.StringPtrInput
+	ServicesId     pulumi.StringInput
 	// Output only. The current state of the metastore service.
 	State pulumi.StringPtrInput
 	// Output only. Additional information about the current state of the metastore service, if available.

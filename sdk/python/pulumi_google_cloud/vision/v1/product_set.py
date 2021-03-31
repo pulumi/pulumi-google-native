@@ -19,9 +19,10 @@ class ProductSet(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  index_error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  index_time: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 product_set_id: Optional[pulumi.Input[str]] = None,
+                 product_sets_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,8 +35,6 @@ class ProductSet(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StatusArgs']] index_error: Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
         :param pulumi.Input[str] index_time: Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
         :param pulumi.Input[str] name: The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-        :param pulumi.Input[str] parent: Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-        :param pulumi.Input[str] product_set_id: A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,11 +56,16 @@ class ProductSet(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['index_error'] = index_error
             __props__['index_time'] = index_time
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
-            __props__['product_set_id'] = product_set_id
+            if product_sets_id is None and not opts.urn:
+                raise TypeError("Missing required property 'product_sets_id'")
+            __props__['product_sets_id'] = product_sets_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
         super(ProductSet, __self__).__init__(
             'google-cloud:vision/v1:ProductSet',
             resource_name,

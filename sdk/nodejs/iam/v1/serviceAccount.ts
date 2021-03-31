@@ -47,12 +47,16 @@ export class ServiceAccount extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
+            }
+            if ((!args || args.serviceAccountsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceAccountsId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["serviceAccountsId"] = args ? args.serviceAccountsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -70,12 +74,10 @@ export interface ServiceAccountArgs {
      * Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
      */
     readonly accountId?: pulumi.Input<string>;
-    /**
-     * Required. The resource name of the project associated with the service accounts, such as `projects/my-project-123`.
-     */
-    readonly name: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
      */
     readonly serviceAccount?: pulumi.Input<inputs.iam.v1.ServiceAccount>;
+    readonly serviceAccountsId: pulumi.Input<string>;
 }

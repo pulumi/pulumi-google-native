@@ -47,11 +47,13 @@ export class Policy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.policy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'policy'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
             inputs["enableLogging"] = args ? args.enableLogging : undefined;
@@ -59,6 +61,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
+            inputs["policy"] = args ? args.policy : undefined;
             inputs["project"] = args ? args.project : undefined;
         } else {
         }
@@ -77,10 +80,6 @@ export interface PolicyArgs {
      * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
      */
     readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.v1.PolicyAlternativeNameServerConfig>;
-    /**
-     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     */
-    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
      */
@@ -106,8 +105,6 @@ export interface PolicyArgs {
      * List of network names specifying networks to which this policy is applied.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1.PolicyNetwork>[]>;
-    /**
-     * Identifies the project addressed by this request.
-     */
+    readonly policy: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
 }

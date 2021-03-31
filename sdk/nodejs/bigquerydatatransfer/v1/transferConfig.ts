@@ -47,10 +47,12 @@ export class TransferConfig extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
-            inputs["authorizationCode"] = args ? args.authorizationCode : undefined;
+            if ((!args || args.transferConfigsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'transferConfigsId'");
+            }
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
             inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
             inputs["datasetRegion"] = args ? args.datasetRegion : undefined;
@@ -62,14 +64,13 @@ export class TransferConfig extends pulumi.CustomResource {
             inputs["nextRunTime"] = args ? args.nextRunTime : undefined;
             inputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
             inputs["params"] = args ? args.params : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
-            inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["transferConfigsId"] = args ? args.transferConfigsId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["userId"] = args ? args.userId : undefined;
-            inputs["versionInfo"] = args ? args.versionInfo : undefined;
         } else {
         }
         if (!opts.version) {
@@ -83,10 +84,6 @@ export class TransferConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a TransferConfig resource.
  */
 export interface TransferConfigArgs {
-    /**
-     * Optional OAuth2 authorization code to use with this transfer configuration. This is required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri is an optional parameter. If not specified, then authorization code is posted to the opener of authorization flow window. Otherwise it will be sent to the redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of the browser, with the page text prompting the user to copy the code and paste it in the application.
-     */
-    readonly authorizationCode?: pulumi.Input<string>;
     /**
      * The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
      */
@@ -131,10 +128,7 @@ export interface TransferConfigArgs {
      * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      */
     readonly params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Required. The BigQuery project id where the transfer configuration should be created. Must be in the format projects/{project_id}/locations/{location_id} or projects/{project_id}. If specified location and location of the destination bigquery dataset do not match - the request will fail.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
      */
@@ -144,13 +138,10 @@ export interface TransferConfigArgs {
      */
     readonly scheduleOptions?: pulumi.Input<inputs.bigquerydatatransfer.v1.ScheduleOptions>;
     /**
-     * Optional service account name. If this field is set, transfer config will be created with this service account credentials. It requires that requesting user calling this API has permissions to act as this service account.
-     */
-    readonly serviceAccountName?: pulumi.Input<string>;
-    /**
      * Output only. State of the most recently updated transfer run.
      */
     readonly state?: pulumi.Input<string>;
+    readonly transferConfigsId: pulumi.Input<string>;
     /**
      * Output only. Data transfer modification time. Ignored by server on input.
      */
@@ -159,8 +150,4 @@ export interface TransferConfigArgs {
      * Deprecated. Unique ID of the user on whose behalf transfer is done.
      */
     readonly userId?: pulumi.Input<string>;
-    /**
-     * Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.
-     */
-    readonly versionInfo?: pulumi.Input<string>;
 }

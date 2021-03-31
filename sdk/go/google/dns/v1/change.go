@@ -62,20 +62,16 @@ func (ChangeState) ElementType() reflect.Type {
 
 type changeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions []ResourceRecordSetType `pulumi:"additions"`
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId *string `pulumi:"clientOperationId"`
+	Additions []ResourceRecordSet `pulumi:"additions"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
-	Deletions []ResourceRecordSetType `pulumi:"deletions"`
+	Deletions []ResourceRecordSet `pulumi:"deletions"`
 	// Unique identifier for the resource; defined by the server (output only).
 	Id *string `pulumi:"id"`
 	// If the DNS queries for the zone will be served.
-	IsServing *bool   `pulumi:"isServing"`
-	Kind      *string `pulumi:"kind"`
-	// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-	ManagedZone string `pulumi:"managedZone"`
-	// Identifies the project addressed by this request.
-	Project string `pulumi:"project"`
+	IsServing   *bool   `pulumi:"isServing"`
+	Kind        *string `pulumi:"kind"`
+	ManagedZone string  `pulumi:"managedZone"`
+	Project     string  `pulumi:"project"`
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime *string `pulumi:"startTime"`
 	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
@@ -85,20 +81,16 @@ type changeArgs struct {
 // The set of arguments for constructing a Change resource.
 type ChangeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions ResourceRecordSetTypeArrayInput
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId pulumi.StringPtrInput
+	Additions ResourceRecordSetArrayInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
-	Deletions ResourceRecordSetTypeArrayInput
+	Deletions ResourceRecordSetArrayInput
 	// Unique identifier for the resource; defined by the server (output only).
 	Id pulumi.StringPtrInput
 	// If the DNS queries for the zone will be served.
-	IsServing pulumi.BoolPtrInput
-	Kind      pulumi.StringPtrInput
-	// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+	IsServing   pulumi.BoolPtrInput
+	Kind        pulumi.StringPtrInput
 	ManagedZone pulumi.StringInput
-	// Identifies the project addressed by this request.
-	Project pulumi.StringInput
+	Project     pulumi.StringInput
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime pulumi.StringPtrInput
 	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.

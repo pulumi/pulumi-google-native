@@ -17,10 +17,11 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 services_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]] = None,
                  __props__=None,
@@ -32,10 +33,8 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: The API version for this call such as "serving.knative.dev/v1".
-        :param pulumi.Input[str] dry_run: DryRun is a query string parameter which indicates that the server should run validation without persisting the request.
         :param pulumi.Input[str] kind: The kind of resource, in this case "Service".
         :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
-        :param pulumi.Input[str] parent: The namespace in which the service should be created. For Cloud Run (fully managed), replace {namespace_id} with the project ID or number.
         :param pulumi.Input[pulumi.InputType['ServiceSpecArgs']] spec: Spec holds the desired state of the Service (from the client).
         :param pulumi.Input[pulumi.InputType['ServiceStatusArgs']] status: Status communicates the observed state of the Service (from the controller).
         """
@@ -57,12 +56,17 @@ class Service(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['api_version'] = api_version
-            __props__['dry_run'] = dry_run
             __props__['kind'] = kind
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['metadata'] = metadata
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
+            if services_id is None and not opts.urn:
+                raise TypeError("Missing required property 'services_id'")
+            __props__['services_id'] = services_id
             __props__['spec'] = spec
             __props__['status'] = status
         super(Service, __self__).__init__(

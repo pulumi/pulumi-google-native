@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .tenancy_unit import *
+from .service_tenancy_unit import *
 
 def _register_module():
     import pulumi
@@ -17,8 +17,8 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:serviceconsumermanagement/v1:TenancyUnit":
-                return TenancyUnit(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:serviceconsumermanagement/v1:ServiceTenancyUnit":
+                return ServiceTenancyUnit(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

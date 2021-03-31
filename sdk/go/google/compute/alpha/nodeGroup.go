@@ -26,6 +26,9 @@ func NewNodeGroup(ctx *pulumi.Context,
 	if args.InitialNodeCount == nil {
 		return nil, errors.New("invalid value for required argument 'InitialNodeCount'")
 	}
+	if args.NodeGroup == nil {
+		return nil, errors.New("invalid value for required argument 'NodeGroup'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -72,9 +75,8 @@ type nodeGroupArgs struct {
 	Description *string `pulumi:"description"`
 	Fingerprint *string `pulumi:"fingerprint"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
-	// Initial count of nodes in the node group.
-	InitialNodeCount int `pulumi:"initialNodeCount"`
+	Id               *string `pulumi:"id"`
+	InitialNodeCount string  `pulumi:"initialNodeCount"`
 	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
 	Kind *string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
@@ -83,17 +85,11 @@ type nodeGroupArgs struct {
 	MaintenancePolicy *string                     `pulumi:"maintenancePolicy"`
 	MaintenanceWindow *NodeGroupMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
+	Name      *string `pulumi:"name"`
+	NodeGroup string  `pulumi:"nodeGroup"`
 	// URL of the node template to create the node group from.
 	NodeTemplate *string `pulumi:"nodeTemplate"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Project      string  `pulumi:"project"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -115,9 +111,8 @@ type NodeGroupArgs struct {
 	Description pulumi.StringPtrInput
 	Fingerprint pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
-	// Initial count of nodes in the node group.
-	InitialNodeCount pulumi.IntInput
+	Id               pulumi.StringPtrInput
+	InitialNodeCount pulumi.StringInput
 	// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
 	Kind pulumi.StringPtrInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
@@ -126,17 +121,11 @@ type NodeGroupArgs struct {
 	MaintenancePolicy pulumi.StringPtrInput
 	MaintenanceWindow NodeGroupMaintenanceWindowPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	NodeGroup pulumi.StringInput
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Project      pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

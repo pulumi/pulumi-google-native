@@ -42,12 +42,16 @@ export class Folder extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FolderArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.foldersId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'foldersId'");
+            }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["foldersId"] = args ? args.foldersId : undefined;
             inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -72,6 +76,7 @@ export interface FolderArgs {
      * The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly foldersId: pulumi.Input<string>;
     /**
      * Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
      */

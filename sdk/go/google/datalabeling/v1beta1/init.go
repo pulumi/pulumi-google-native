@@ -21,14 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1AnnotationSpecSet":
-		r, err = NewGoogleCloudDatalabelingV1beta1AnnotationSpecSet(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1Dataset":
-		r, err = NewGoogleCloudDatalabelingV1beta1Dataset(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datalabeling/v1beta1:GoogleCloudDatalabelingV1beta1EvaluationJob":
-		r, err = NewGoogleCloudDatalabelingV1beta1EvaluationJob(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datalabeling/v1beta1:GoogleLongrunningOperation":
-		r, err = NewGoogleLongrunningOperation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datalabeling/v1beta1:AnnotationSpecSet":
+		r, err = NewAnnotationSpecSet(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datalabeling/v1beta1:Dataset":
+		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
+		r, err = NewDatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datalabeling/v1beta1:EvaluationJob":
+		r, err = NewEvaluationJob(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datalabeling/v1beta1:Instruction":
+		r, err = NewInstruction(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

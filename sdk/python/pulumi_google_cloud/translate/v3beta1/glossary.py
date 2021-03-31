@@ -18,11 +18,13 @@ class Glossary(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  entry_count: Optional[pulumi.Input[int]] = None,
+                 glossaries_id: Optional[pulumi.Input[str]] = None,
                  input_config: Optional[pulumi.Input[pulumi.InputType['GlossaryInputConfigArgs']]] = None,
                  language_codes_set: Optional[pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']]] = None,
                  language_pair: Optional[pulumi.Input[pulumi.InputType['LanguageCodePairArgs']]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  submit_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -38,7 +40,6 @@ class Glossary(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']] language_codes_set: Used with equivalent term set glossaries.
         :param pulumi.Input[pulumi.InputType['LanguageCodePairArgs']] language_pair: Used with unidirectional glossaries.
         :param pulumi.Input[str] name: Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-        :param pulumi.Input[str] parent: Required. The project name.
         :param pulumi.Input[str] submit_time: Output only. When CreateGlossary was called.
         """
         if __name__ is not None:
@@ -60,13 +61,19 @@ class Glossary(pulumi.CustomResource):
 
             __props__['end_time'] = end_time
             __props__['entry_count'] = entry_count
+            if glossaries_id is None and not opts.urn:
+                raise TypeError("Missing required property 'glossaries_id'")
+            __props__['glossaries_id'] = glossaries_id
             __props__['input_config'] = input_config
             __props__['language_codes_set'] = language_codes_set
             __props__['language_pair'] = language_pair
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['submit_time'] = submit_time
         super(Glossary, __self__).__init__(
             'google-cloud:translate/v3beta1:Glossary',

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V1beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
+        public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudresourcemanager/v1beta1:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -98,20 +98,14 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V1beta1
         /// <summary>
         /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// The number uniquely identifying the project. Example: `415104041262` Read-only.
         /// </summary>
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
-
-        /// <summary>
-        /// A now unused experiment opt-out option.
-        /// </summary>
-        [Input("useLegacyStack")]
-        public Input<bool>? UseLegacyStack { get; set; }
 
         public ProjectArgs()
         {

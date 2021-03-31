@@ -20,14 +20,14 @@ class Trigger(pulumi.CustomResource):
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  transport: Optional[pulumi.Input[pulumi.InputType['TransportArgs']]] = None,
-                 trigger_id: Optional[pulumi.Input[str]] = None,
+                 triggers_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -42,12 +42,9 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-        :param pulumi.Input[str] parent: Required. The parent collection in which to add this trigger.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
         :param pulumi.Input[pulumi.InputType['TransportArgs']] transport: Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-        :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
-        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not actually post it.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,16 +67,20 @@ class Trigger(pulumi.CustomResource):
             __props__['destination'] = destination
             __props__['etag'] = etag
             __props__['labels'] = labels
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__['locations_id'] = locations_id
             __props__['matching_criteria'] = matching_criteria
             __props__['name'] = name
-            if parent is None and not opts.urn:
-                raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__['projects_id'] = projects_id
             __props__['service_account'] = service_account
             __props__['transport'] = transport
-            __props__['trigger_id'] = trigger_id
+            if triggers_id is None and not opts.urn:
+                raise TypeError("Missing required property 'triggers_id'")
+            __props__['triggers_id'] = triggers_id
             __props__['update_time'] = update_time
-            __props__['validate_only'] = validate_only
         super(Trigger, __self__).__init__(
             'google-cloud:eventarc/v1beta1:Trigger',
             resource_name,

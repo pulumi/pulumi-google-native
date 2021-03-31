@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Pubsub.V1beta1a
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Topic(string name, TopicArgs? args = null, CustomResourceOptions? options = null)
+        public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:pubsub/v1beta1a:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -64,6 +64,9 @@ namespace Pulumi.GoogleCloud.Pubsub.V1beta1a
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("topicsId", required: true)]
+        public Input<string> TopicsId { get; set; } = null!;
 
         public TopicArgs()
         {

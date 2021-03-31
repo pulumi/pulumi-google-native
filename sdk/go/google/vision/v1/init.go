@@ -23,10 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:vision/v1:Product":
 		r, err = NewProduct(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:vision/v1:ProductReferenceImage":
+		r, err = NewProductReferenceImage(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:vision/v1:ProductSet":
 		r, err = NewProductSet(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:vision/v1:ReferenceImage":
-		r, err = NewReferenceImage(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

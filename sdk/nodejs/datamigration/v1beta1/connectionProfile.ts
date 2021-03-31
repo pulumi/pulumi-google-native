@@ -47,20 +47,26 @@ export class ConnectionProfile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.connectionProfilesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectionProfilesId'");
+            }
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["cloudsql"] = args ? args.cloudsql : undefined;
-            inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
+            inputs["connectionProfilesId"] = args ? args.connectionProfilesId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["error"] = args ? args.error : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["mysql"] = args ? args.mysql : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["provider"] = args ? args.provider : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -80,10 +86,7 @@ export interface ConnectionProfileArgs {
      * A CloudSQL database connection profile.
      */
     readonly cloudsql?: pulumi.Input<inputs.datamigration.v1beta1.CloudSqlConnectionProfile>;
-    /**
-     * Required. The connection profile identifier.
-     */
-    readonly connectionProfileId?: pulumi.Input<string>;
+    readonly connectionProfilesId: pulumi.Input<string>;
     /**
      * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
@@ -100,6 +103,7 @@ export interface ConnectionProfileArgs {
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * A MySQL database connection profile.
      */
@@ -108,18 +112,11 @@ export interface ConnectionProfileArgs {
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent, which owns this collection of connection profiles.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * The database provider.
      */
     readonly provider?: pulumi.Input<string>;
-    /**
-     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */

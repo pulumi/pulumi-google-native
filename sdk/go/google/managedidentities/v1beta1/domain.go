@@ -23,8 +23,11 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.DomainsId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Domain
 	err := ctx.RegisterResource("google-cloud:managedidentities/v1beta1:Domain", name, args, &resource, opts...)
@@ -66,8 +69,7 @@ type domainArgs struct {
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// Output only. The time the instance was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
-	DomainName *string `pulumi:"domainName"`
+	DomainsId  string  `pulumi:"domainsId"`
 	// Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
 	// Optional. Resource labels that can contain user-provided metadata.
@@ -75,9 +77,8 @@ type domainArgs struct {
 	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations []string `pulumi:"locations"`
 	// Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name *string `pulumi:"name"`
-	// Required. The resource project name and location using the form: `projects/{project_id}/locations/global`
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// Output only. The current state of this domain.
@@ -100,8 +101,7 @@ type DomainArgs struct {
 	AuthorizedNetworks pulumi.StringArrayInput
 	// Output only. The time the instance was created.
 	CreateTime pulumi.StringPtrInput
-	// Required. A domain name, e.g. mydomain.myorg.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
-	DomainName pulumi.StringPtrInput
+	DomainsId  pulumi.StringInput
 	// Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn pulumi.StringPtrInput
 	// Optional. Resource labels that can contain user-provided metadata.
@@ -109,9 +109,8 @@ type DomainArgs struct {
 	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayInput
 	// Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name pulumi.StringPtrInput
-	// Required. The resource project name and location using the form: `projects/{project_id}/locations/global`
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringPtrInput
 	// Output only. The current state of this domain.

@@ -3,9 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .google_cloud_securitycenter_v1beta1_finding import *
-from .policy import *
-from .source import *
+from .organization_source import *
+from .organization_source_finding import *
+from .organization_source_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -20,12 +20,12 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:securitycenter/v1beta1:GoogleCloudSecuritycenterV1beta1Finding":
-                return GoogleCloudSecuritycenterV1beta1Finding(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:securitycenter/v1beta1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:securitycenter/v1beta1:Source":
-                return Source(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:securitycenter/v1beta1:OrganizationSource":
+                return OrganizationSource(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:securitycenter/v1beta1:OrganizationSourceFinding":
+                return OrganizationSourceFinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:securitycenter/v1beta1:OrganizationSourceIamPolicy":
+                return OrganizationSourceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

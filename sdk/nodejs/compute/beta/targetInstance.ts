@@ -49,6 +49,9 @@ export class TargetInstance extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            if ((!args || args.targetInstance === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'targetInstance'");
+            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -61,8 +64,8 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["natPolicy"] = args ? args.natPolicy : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["targetInstance"] = args ? args.targetInstance : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
         }
@@ -112,22 +115,12 @@ export interface TargetInstanceArgs {
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
     readonly network?: pulumi.Input<string>;
-    /**
-     * Project ID for this request.
-     */
     readonly project: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
+    readonly targetInstance: pulumi.Input<string>;
     /**
      * [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

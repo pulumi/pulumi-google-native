@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudRecommendationengineV1beta1CatalogItem";
-export * from "./googleCloudRecommendationengineV1beta1PredictionApiKeyRegistration";
+export * from "./catalogCatalogItem";
+export * from "./catalogEventStorePredictionApiKeyRegistration";
 
 // Import resources to register:
-import { GoogleCloudRecommendationengineV1beta1CatalogItem } from "./googleCloudRecommendationengineV1beta1CatalogItem";
-import { GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration } from "./googleCloudRecommendationengineV1beta1PredictionApiKeyRegistration";
+import { CatalogCatalogItem } from "./catalogCatalogItem";
+import { CatalogEventStorePredictionApiKeyRegistration } from "./catalogEventStorePredictionApiKeyRegistration";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:recommendationengine/v1beta1:GoogleCloudRecommendationengineV1beta1CatalogItem":
-                return new GoogleCloudRecommendationengineV1beta1CatalogItem(name, <any>undefined, { urn })
-            case "google-cloud:recommendationengine/v1beta1:GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration":
-                return new GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(name, <any>undefined, { urn })
+            case "google-cloud:recommendationengine/v1beta1:CatalogCatalogItem":
+                return new CatalogCatalogItem(name, <any>undefined, { urn })
+            case "google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
+                return new CatalogEventStorePredictionApiKeyRegistration(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

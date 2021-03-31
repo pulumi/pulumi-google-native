@@ -71,11 +71,14 @@ namespace Pulumi.GoogleCloud.Cloudasset.V1
         [Input("feedId")]
         public Input<string>? FeedId { get; set; }
 
-        /// <summary>
-        /// Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
+        [Input("feedsId", required: true)]
+        public Input<string> FeedsId { get; set; } = null!;
+
+        [Input("v1Id", required: true)]
+        public Input<string> V1Id { get; set; } = null!;
+
+        [Input("v1Id1", required: true)]
+        public Input<string> V1Id1 { get; set; } = null!;
 
         public FeedArgs()
         {

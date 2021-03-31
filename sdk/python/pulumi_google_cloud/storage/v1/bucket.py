@@ -18,6 +18,7 @@ class Bucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
                  billing: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
@@ -34,19 +35,14 @@ class Bucket(pulumi.CustomResource):
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 predefined_acl: Optional[pulumi.Input[str]] = None,
-                 predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
-                 user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  website: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -76,19 +72,13 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] metageneration: The metadata generation of this bucket.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] owner: The owner of the bucket. This is always the project team's owner group.
-        :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
-        :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
-        :param pulumi.Input[str] project: A valid API project identifier.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
-        :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
-        :param pulumi.Input[str] user_project: The project to be billed for this request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] versioning: The bucket's versioning configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_affinity: The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
@@ -112,6 +102,9 @@ class Bucket(pulumi.CustomResource):
 
             __props__['acl'] = acl
             __props__['billing'] = billing
+            if bucket is None and not opts.urn:
+                raise TypeError("Missing required property 'bucket'")
+            __props__['bucket'] = bucket
             __props__['cors'] = cors
             __props__['default_event_based_hold'] = default_event_based_hold
             __props__['default_object_acl'] = default_object_acl
@@ -128,21 +121,16 @@ class Bucket(pulumi.CustomResource):
             __props__['metageneration'] = metageneration
             __props__['name'] = name
             __props__['owner'] = owner
-            __props__['predefined_acl'] = predefined_acl
-            __props__['predefined_default_object_acl'] = predefined_default_object_acl
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['project_number'] = project_number
-            __props__['projection'] = projection
-            __props__['provisional_user_project'] = provisional_user_project
             __props__['retention_policy'] = retention_policy
             __props__['satisfies_pzs'] = satisfies_pzs
             __props__['self_link'] = self_link
             __props__['storage_class'] = storage_class
             __props__['time_created'] = time_created
             __props__['updated'] = updated
-            __props__['user_project'] = user_project
             __props__['versioning'] = versioning
             __props__['website'] = website
             __props__['zone_affinity'] = zone_affinity

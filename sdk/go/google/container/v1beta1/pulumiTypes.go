@@ -1899,7 +1899,7 @@ type ClusterType struct {
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
-	NodePools []NodePoolType `pulumi:"nodePools"`
+	NodePools []NodePool `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	// Configuration for the PodSecurityPolicy feature.
@@ -2034,7 +2034,7 @@ type ClusterTypeArgs struct {
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput `pulumi:"nodeIpv4CidrSize"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
-	NodePools NodePoolTypeArrayInput `pulumi:"nodePools"`
+	NodePools NodePoolArrayInput `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
 	NotificationConfig NotificationConfigPtrInput `pulumi:"notificationConfig"`
 	// Configuration for the PodSecurityPolicy feature.
@@ -2357,8 +2357,8 @@ func (o ClusterTypeOutput) NodeIpv4CidrSize() pulumi.IntPtrOutput {
 }
 
 // The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
-func (o ClusterTypeOutput) NodePools() NodePoolTypeArrayOutput {
-	return o.ApplyT(func(v ClusterType) []NodePoolType { return v.NodePools }).(NodePoolTypeArrayOutput)
+func (o ClusterTypeOutput) NodePools() NodePoolArrayOutput {
+	return o.ApplyT(func(v ClusterType) []NodePool { return v.NodePools }).(NodePoolArrayOutput)
 }
 
 // Notification configuration of the cluster.
@@ -2880,13 +2880,13 @@ func (o ClusterTypePtrOutput) NodeIpv4CidrSize() pulumi.IntPtrOutput {
 }
 
 // The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
-func (o ClusterTypePtrOutput) NodePools() NodePoolTypeArrayOutput {
-	return o.ApplyT(func(v *ClusterType) []NodePoolType {
+func (o ClusterTypePtrOutput) NodePools() NodePoolArrayOutput {
+	return o.ApplyT(func(v *ClusterType) []NodePool {
 		if v == nil {
 			return nil
 		}
 		return v.NodePools
-	}).(NodePoolTypeArrayOutput)
+	}).(NodePoolArrayOutput)
 }
 
 // Notification configuration of the cluster.
@@ -8553,7 +8553,7 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 }
 
 // NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
-type NodePoolType struct {
+type NodePool struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// Which conditions caused the current node pool state.
@@ -8588,19 +8588,19 @@ type NodePoolType struct {
 	Version *string `pulumi:"version"`
 }
 
-// NodePoolTypeInput is an input type that accepts NodePoolTypeArgs and NodePoolTypeOutput values.
-// You can construct a concrete instance of `NodePoolTypeInput` via:
+// NodePoolInput is an input type that accepts NodePoolArgs and NodePoolOutput values.
+// You can construct a concrete instance of `NodePoolInput` via:
 //
-//          NodePoolTypeArgs{...}
-type NodePoolTypeInput interface {
+//          NodePoolArgs{...}
+type NodePoolInput interface {
 	pulumi.Input
 
-	ToNodePoolTypeOutput() NodePoolTypeOutput
-	ToNodePoolTypeOutputWithContext(context.Context) NodePoolTypeOutput
+	ToNodePoolOutput() NodePoolOutput
+	ToNodePoolOutputWithContext(context.Context) NodePoolOutput
 }
 
 // NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
-type NodePoolTypeArgs struct {
+type NodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingPtrInput `pulumi:"autoscaling"`
 	// Which conditions caused the current node pool state.
@@ -8635,210 +8635,210 @@ type NodePoolTypeArgs struct {
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
-func (NodePoolTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePoolType)(nil)).Elem()
+func (NodePoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePool)(nil)).Elem()
 }
 
-func (i NodePoolTypeArgs) ToNodePoolTypeOutput() NodePoolTypeOutput {
-	return i.ToNodePoolTypeOutputWithContext(context.Background())
+func (i NodePoolArgs) ToNodePoolOutput() NodePoolOutput {
+	return i.ToNodePoolOutputWithContext(context.Background())
 }
 
-func (i NodePoolTypeArgs) ToNodePoolTypeOutputWithContext(ctx context.Context) NodePoolTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTypeOutput)
+func (i NodePoolArgs) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
 }
 
-func (i NodePoolTypeArgs) ToNodePoolTypePtrOutput() NodePoolTypePtrOutput {
-	return i.ToNodePoolTypePtrOutputWithContext(context.Background())
+func (i NodePoolArgs) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return i.ToNodePoolPtrOutputWithContext(context.Background())
 }
 
-func (i NodePoolTypeArgs) ToNodePoolTypePtrOutputWithContext(ctx context.Context) NodePoolTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTypeOutput).ToNodePoolTypePtrOutputWithContext(ctx)
+func (i NodePoolArgs) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput).ToNodePoolPtrOutputWithContext(ctx)
 }
 
-// NodePoolTypePtrInput is an input type that accepts NodePoolTypeArgs, NodePoolTypePtr and NodePoolTypePtrOutput values.
-// You can construct a concrete instance of `NodePoolTypePtrInput` via:
+// NodePoolPtrInput is an input type that accepts NodePoolArgs, NodePoolPtr and NodePoolPtrOutput values.
+// You can construct a concrete instance of `NodePoolPtrInput` via:
 //
-//          NodePoolTypeArgs{...}
+//          NodePoolArgs{...}
 //
 //  or:
 //
 //          nil
-type NodePoolTypePtrInput interface {
+type NodePoolPtrInput interface {
 	pulumi.Input
 
-	ToNodePoolTypePtrOutput() NodePoolTypePtrOutput
-	ToNodePoolTypePtrOutputWithContext(context.Context) NodePoolTypePtrOutput
+	ToNodePoolPtrOutput() NodePoolPtrOutput
+	ToNodePoolPtrOutputWithContext(context.Context) NodePoolPtrOutput
 }
 
-type nodePoolTypePtrType NodePoolTypeArgs
+type nodePoolPtrType NodePoolArgs
 
-func NodePoolTypePtr(v *NodePoolTypeArgs) NodePoolTypePtrInput {
-	return (*nodePoolTypePtrType)(v)
+func NodePoolPtr(v *NodePoolArgs) NodePoolPtrInput {
+	return (*nodePoolPtrType)(v)
 }
 
-func (*nodePoolTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodePoolType)(nil)).Elem()
+func (*nodePoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePool)(nil)).Elem()
 }
 
-func (i *nodePoolTypePtrType) ToNodePoolTypePtrOutput() NodePoolTypePtrOutput {
-	return i.ToNodePoolTypePtrOutputWithContext(context.Background())
+func (i *nodePoolPtrType) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return i.ToNodePoolPtrOutputWithContext(context.Background())
 }
 
-func (i *nodePoolTypePtrType) ToNodePoolTypePtrOutputWithContext(ctx context.Context) NodePoolTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTypePtrOutput)
+func (i *nodePoolPtrType) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPtrOutput)
 }
 
-// NodePoolTypeArrayInput is an input type that accepts NodePoolTypeArray and NodePoolTypeArrayOutput values.
-// You can construct a concrete instance of `NodePoolTypeArrayInput` via:
+// NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
+// You can construct a concrete instance of `NodePoolArrayInput` via:
 //
-//          NodePoolTypeArray{ NodePoolTypeArgs{...} }
-type NodePoolTypeArrayInput interface {
+//          NodePoolArray{ NodePoolArgs{...} }
+type NodePoolArrayInput interface {
 	pulumi.Input
 
-	ToNodePoolTypeArrayOutput() NodePoolTypeArrayOutput
-	ToNodePoolTypeArrayOutputWithContext(context.Context) NodePoolTypeArrayOutput
+	ToNodePoolArrayOutput() NodePoolArrayOutput
+	ToNodePoolArrayOutputWithContext(context.Context) NodePoolArrayOutput
 }
 
-type NodePoolTypeArray []NodePoolTypeInput
+type NodePoolArray []NodePoolInput
 
-func (NodePoolTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodePoolType)(nil)).Elem()
+func (NodePoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePool)(nil)).Elem()
 }
 
-func (i NodePoolTypeArray) ToNodePoolTypeArrayOutput() NodePoolTypeArrayOutput {
-	return i.ToNodePoolTypeArrayOutputWithContext(context.Background())
+func (i NodePoolArray) ToNodePoolArrayOutput() NodePoolArrayOutput {
+	return i.ToNodePoolArrayOutputWithContext(context.Background())
 }
 
-func (i NodePoolTypeArray) ToNodePoolTypeArrayOutputWithContext(ctx context.Context) NodePoolTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTypeArrayOutput)
+func (i NodePoolArray) ToNodePoolArrayOutputWithContext(ctx context.Context) NodePoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolArrayOutput)
 }
 
 // NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
-type NodePoolTypeOutput struct{ *pulumi.OutputState }
+type NodePoolOutput struct{ *pulumi.OutputState }
 
-func (NodePoolTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePoolType)(nil)).Elem()
+func (NodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePool)(nil)).Elem()
 }
 
-func (o NodePoolTypeOutput) ToNodePoolTypeOutput() NodePoolTypeOutput {
+func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {
 	return o
 }
 
-func (o NodePoolTypeOutput) ToNodePoolTypeOutputWithContext(ctx context.Context) NodePoolTypeOutput {
+func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
 	return o
 }
 
-func (o NodePoolTypeOutput) ToNodePoolTypePtrOutput() NodePoolTypePtrOutput {
-	return o.ToNodePoolTypePtrOutputWithContext(context.Background())
+func (o NodePoolOutput) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return o.ToNodePoolPtrOutputWithContext(context.Background())
 }
 
-func (o NodePoolTypeOutput) ToNodePoolTypePtrOutputWithContext(ctx context.Context) NodePoolTypePtrOutput {
-	return o.ApplyT(func(v NodePoolType) *NodePoolType {
+func (o NodePoolOutput) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return o.ApplyT(func(v NodePool) *NodePool {
 		return &v
-	}).(NodePoolTypePtrOutput)
+	}).(NodePoolPtrOutput)
 }
 
 // Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-func (o NodePoolTypeOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *NodePoolAutoscaling { return v.Autoscaling }).(NodePoolAutoscalingPtrOutput)
+func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
+	return o.ApplyT(func(v NodePool) *NodePoolAutoscaling { return v.Autoscaling }).(NodePoolAutoscalingPtrOutput)
 }
 
 // Which conditions caused the current node pool state.
-func (o NodePoolTypeOutput) Conditions() StatusConditionArrayOutput {
-	return o.ApplyT(func(v NodePoolType) []StatusCondition { return v.Conditions }).(StatusConditionArrayOutput)
+func (o NodePoolOutput) Conditions() StatusConditionArrayOutput {
+	return o.ApplyT(func(v NodePool) []StatusCondition { return v.Conditions }).(StatusConditionArrayOutput)
 }
 
 // The node configuration of the pool.
-func (o NodePoolTypeOutput) Config() NodeConfigPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *NodeConfig { return v.Config }).(NodeConfigPtrOutput)
+func (o NodePoolOutput) Config() NodeConfigPtrOutput {
+	return o.ApplyT(func(v NodePool) *NodeConfig { return v.Config }).(NodeConfigPtrOutput)
 }
 
 // The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-func (o NodePoolTypeOutput) InitialNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
+func (o NodePoolOutput) InitialNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePool) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
 }
 
 // [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-func (o NodePoolTypeOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NodePoolType) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 // The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-func (o NodePoolTypeOutput) Locations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NodePoolType) []string { return v.Locations }).(pulumi.StringArrayOutput)
+func (o NodePoolOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePool) []string { return v.Locations }).(pulumi.StringArrayOutput)
 }
 
 // NodeManagement configuration for this NodePool.
-func (o NodePoolTypeOutput) Management() NodeManagementPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
+func (o NodePoolOutput) Management() NodeManagementPtrOutput {
+	return o.ApplyT(func(v NodePool) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
 }
 
 // The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-func (o NodePoolTypeOutput) MaxPodsConstraint() MaxPodsConstraintPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *MaxPodsConstraint { return v.MaxPodsConstraint }).(MaxPodsConstraintPtrOutput)
+func (o NodePoolOutput) MaxPodsConstraint() MaxPodsConstraintPtrOutput {
+	return o.ApplyT(func(v NodePool) *MaxPodsConstraint { return v.MaxPodsConstraint }).(MaxPodsConstraintPtrOutput)
 }
 
 // The name of the node pool.
-func (o NodePoolTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o NodePoolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-func (o NodePoolTypeOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *NodeNetworkConfig { return v.NetworkConfig }).(NodeNetworkConfigPtrOutput)
+func (o NodePoolOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
+	return o.ApplyT(func(v NodePool) *NodeNetworkConfig { return v.NetworkConfig }).(NodeNetworkConfigPtrOutput)
 }
 
 // [Output only] The pod CIDR block size per node in this node pool.
-func (o NodePoolTypeOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *int { return v.PodIpv4CidrSize }).(pulumi.IntPtrOutput)
+func (o NodePoolOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePool) *int { return v.PodIpv4CidrSize }).(pulumi.IntPtrOutput)
 }
 
 // [Output only] Server-defined URL for the resource.
-func (o NodePoolTypeOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+func (o NodePoolOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePool) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 // [Output only] The status of the nodes in this pool instance.
-func (o NodePoolTypeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o NodePoolOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePool) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-func (o NodePoolTypeOutput) StatusMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
+func (o NodePoolOutput) StatusMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePool) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
-func (o NodePoolTypeOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *UpgradeSettings { return v.UpgradeSettings }).(UpgradeSettingsPtrOutput)
+func (o NodePoolOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
+	return o.ApplyT(func(v NodePool) *UpgradeSettings { return v.UpgradeSettings }).(UpgradeSettingsPtrOutput)
 }
 
 // The version of the Kubernetes of this node.
-func (o NodePoolTypeOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePoolType) *string { return v.Version }).(pulumi.StringPtrOutput)
+func (o NodePoolOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePool) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type NodePoolTypePtrOutput struct{ *pulumi.OutputState }
+type NodePoolPtrOutput struct{ *pulumi.OutputState }
 
-func (NodePoolTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodePoolType)(nil)).Elem()
+func (NodePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePool)(nil)).Elem()
 }
 
-func (o NodePoolTypePtrOutput) ToNodePoolTypePtrOutput() NodePoolTypePtrOutput {
+func (o NodePoolPtrOutput) ToNodePoolPtrOutput() NodePoolPtrOutput {
 	return o
 }
 
-func (o NodePoolTypePtrOutput) ToNodePoolTypePtrOutputWithContext(ctx context.Context) NodePoolTypePtrOutput {
+func (o NodePoolPtrOutput) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
 	return o
 }
 
-func (o NodePoolTypePtrOutput) Elem() NodePoolTypeOutput {
-	return o.ApplyT(func(v *NodePoolType) NodePoolType { return *v }).(NodePoolTypeOutput)
+func (o NodePoolPtrOutput) Elem() NodePoolOutput {
+	return o.ApplyT(func(v *NodePool) NodePool { return *v }).(NodePoolOutput)
 }
 
 // Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-func (o NodePoolTypePtrOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *NodePoolAutoscaling {
+func (o NodePoolPtrOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
+	return o.ApplyT(func(v *NodePool) *NodePoolAutoscaling {
 		if v == nil {
 			return nil
 		}
@@ -8847,8 +8847,8 @@ func (o NodePoolTypePtrOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
 }
 
 // Which conditions caused the current node pool state.
-func (o NodePoolTypePtrOutput) Conditions() StatusConditionArrayOutput {
-	return o.ApplyT(func(v *NodePoolType) []StatusCondition {
+func (o NodePoolPtrOutput) Conditions() StatusConditionArrayOutput {
+	return o.ApplyT(func(v *NodePool) []StatusCondition {
 		if v == nil {
 			return nil
 		}
@@ -8857,8 +8857,8 @@ func (o NodePoolTypePtrOutput) Conditions() StatusConditionArrayOutput {
 }
 
 // The node configuration of the pool.
-func (o NodePoolTypePtrOutput) Config() NodeConfigPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *NodeConfig {
+func (o NodePoolPtrOutput) Config() NodeConfigPtrOutput {
+	return o.ApplyT(func(v *NodePool) *NodeConfig {
 		if v == nil {
 			return nil
 		}
@@ -8867,8 +8867,8 @@ func (o NodePoolTypePtrOutput) Config() NodeConfigPtrOutput {
 }
 
 // The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-func (o NodePoolTypePtrOutput) InitialNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *int {
+func (o NodePoolPtrOutput) InitialNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) *int {
 		if v == nil {
 			return nil
 		}
@@ -8877,8 +8877,8 @@ func (o NodePoolTypePtrOutput) InitialNodeCount() pulumi.IntPtrOutput {
 }
 
 // [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-func (o NodePoolTypePtrOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NodePoolType) []string {
+func (o NodePoolPtrOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) []string {
 		if v == nil {
 			return nil
 		}
@@ -8887,8 +8887,8 @@ func (o NodePoolTypePtrOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 }
 
 // The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-func (o NodePoolTypePtrOutput) Locations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NodePoolType) []string {
+func (o NodePoolPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) []string {
 		if v == nil {
 			return nil
 		}
@@ -8897,8 +8897,8 @@ func (o NodePoolTypePtrOutput) Locations() pulumi.StringArrayOutput {
 }
 
 // NodeManagement configuration for this NodePool.
-func (o NodePoolTypePtrOutput) Management() NodeManagementPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *NodeManagement {
+func (o NodePoolPtrOutput) Management() NodeManagementPtrOutput {
+	return o.ApplyT(func(v *NodePool) *NodeManagement {
 		if v == nil {
 			return nil
 		}
@@ -8907,8 +8907,8 @@ func (o NodePoolTypePtrOutput) Management() NodeManagementPtrOutput {
 }
 
 // The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-func (o NodePoolTypePtrOutput) MaxPodsConstraint() MaxPodsConstraintPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *MaxPodsConstraint {
+func (o NodePoolPtrOutput) MaxPodsConstraint() MaxPodsConstraintPtrOutput {
+	return o.ApplyT(func(v *NodePool) *MaxPodsConstraint {
 		if v == nil {
 			return nil
 		}
@@ -8917,8 +8917,8 @@ func (o NodePoolTypePtrOutput) MaxPodsConstraint() MaxPodsConstraintPtrOutput {
 }
 
 // The name of the node pool.
-func (o NodePoolTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *string {
+func (o NodePoolPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) *string {
 		if v == nil {
 			return nil
 		}
@@ -8927,8 +8927,8 @@ func (o NodePoolTypePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-func (o NodePoolTypePtrOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *NodeNetworkConfig {
+func (o NodePoolPtrOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *NodePool) *NodeNetworkConfig {
 		if v == nil {
 			return nil
 		}
@@ -8937,8 +8937,8 @@ func (o NodePoolTypePtrOutput) NetworkConfig() NodeNetworkConfigPtrOutput {
 }
 
 // [Output only] The pod CIDR block size per node in this node pool.
-func (o NodePoolTypePtrOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *int {
+func (o NodePoolPtrOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePool) *int {
 		if v == nil {
 			return nil
 		}
@@ -8947,8 +8947,8 @@ func (o NodePoolTypePtrOutput) PodIpv4CidrSize() pulumi.IntPtrOutput {
 }
 
 // [Output only] Server-defined URL for the resource.
-func (o NodePoolTypePtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *string {
+func (o NodePoolPtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) *string {
 		if v == nil {
 			return nil
 		}
@@ -8957,8 +8957,8 @@ func (o NodePoolTypePtrOutput) SelfLink() pulumi.StringPtrOutput {
 }
 
 // [Output only] The status of the nodes in this pool instance.
-func (o NodePoolTypePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *string {
+func (o NodePoolPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) *string {
 		if v == nil {
 			return nil
 		}
@@ -8967,8 +8967,8 @@ func (o NodePoolTypePtrOutput) Status() pulumi.StringPtrOutput {
 }
 
 // [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-func (o NodePoolTypePtrOutput) StatusMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *string {
+func (o NodePoolPtrOutput) StatusMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) *string {
 		if v == nil {
 			return nil
 		}
@@ -8977,8 +8977,8 @@ func (o NodePoolTypePtrOutput) StatusMessage() pulumi.StringPtrOutput {
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
-func (o NodePoolTypePtrOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *UpgradeSettings {
+func (o NodePoolPtrOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
+	return o.ApplyT(func(v *NodePool) *UpgradeSettings {
 		if v == nil {
 			return nil
 		}
@@ -8987,8 +8987,8 @@ func (o NodePoolTypePtrOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
 }
 
 // The version of the Kubernetes of this node.
-func (o NodePoolTypePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePoolType) *string {
+func (o NodePoolPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) *string {
 		if v == nil {
 			return nil
 		}
@@ -8996,24 +8996,24 @@ func (o NodePoolTypePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type NodePoolTypeArrayOutput struct{ *pulumi.OutputState }
+type NodePoolArrayOutput struct{ *pulumi.OutputState }
 
-func (NodePoolTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NodePoolType)(nil)).Elem()
+func (NodePoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePool)(nil)).Elem()
 }
 
-func (o NodePoolTypeArrayOutput) ToNodePoolTypeArrayOutput() NodePoolTypeArrayOutput {
+func (o NodePoolArrayOutput) ToNodePoolArrayOutput() NodePoolArrayOutput {
 	return o
 }
 
-func (o NodePoolTypeArrayOutput) ToNodePoolTypeArrayOutputWithContext(ctx context.Context) NodePoolTypeArrayOutput {
+func (o NodePoolArrayOutput) ToNodePoolArrayOutputWithContext(ctx context.Context) NodePoolArrayOutput {
 	return o
 }
 
-func (o NodePoolTypeArrayOutput) Index(i pulumi.IntInput) NodePoolTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolType {
-		return vs[0].([]NodePoolType)[vs[1].(int)]
-	}).(NodePoolTypeOutput)
+func (o NodePoolArrayOutput) Index(i pulumi.IntInput) NodePoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePool {
+		return vs[0].([]NodePool)[vs[1].(int)]
+	}).(NodePoolOutput)
 }
 
 // NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -12463,9 +12463,9 @@ func init() {
 	pulumi.RegisterOutputType(NodeManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodeNetworkConfigOutput{})
 	pulumi.RegisterOutputType(NodeNetworkConfigPtrOutput{})
-	pulumi.RegisterOutputType(NodePoolTypeOutput{})
-	pulumi.RegisterOutputType(NodePoolTypePtrOutput{})
-	pulumi.RegisterOutputType(NodePoolTypeArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolOutput{})
+	pulumi.RegisterOutputType(NodePoolPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintOutput{})

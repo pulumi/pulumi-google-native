@@ -30,7 +30,6 @@ class VpnTunnel(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
@@ -39,6 +38,7 @@ class VpnTunnel(pulumi.CustomResource):
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None,
+                 vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -59,14 +59,8 @@ class VpnTunnel(pulumi.CustomResource):
         :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
-        :param pulumi.Input[str] project: Project ID for this request.
         :param pulumi.Input[str] region: [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selector: Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
-        :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-               
-               For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-               
-               The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] router: URL of the router resource to be used for dynamic routing.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
@@ -127,7 +121,6 @@ class VpnTunnel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['remote_traffic_selector'] = remote_traffic_selector
-            __props__['request_id'] = request_id
             __props__['router'] = router
             __props__['self_link'] = self_link
             __props__['shared_secret'] = shared_secret
@@ -136,6 +129,9 @@ class VpnTunnel(pulumi.CustomResource):
             __props__['target_vpn_gateway'] = target_vpn_gateway
             __props__['vpn_gateway'] = vpn_gateway
             __props__['vpn_gateway_interface'] = vpn_gateway_interface
+            if vpn_tunnel is None and not opts.urn:
+                raise TypeError("Missing required property 'vpn_tunnel'")
+            __props__['vpn_tunnel'] = vpn_tunnel
         super(VpnTunnel, __self__).__init__(
             'google-cloud:compute/v1:VpnTunnel',
             resource_name,

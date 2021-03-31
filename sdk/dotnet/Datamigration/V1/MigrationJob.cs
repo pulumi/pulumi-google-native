@@ -119,11 +119,11 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Required. The ID of the instance to create.
-        /// </summary>
-        [Input("migrationJobId")]
-        public Input<string>? MigrationJobId { get; set; }
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
+        [Input("migrationJobsId", required: true)]
+        public Input<string> MigrationJobsId { get; set; } = null!;
 
         /// <summary>
         /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
@@ -132,22 +132,13 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The parent, which owns this collection of migration jobs.
-        /// </summary>
-        [Input("parent", required: true)]
-        public Input<string> Parent { get; set; } = null!;
-
-        /// <summary>
         /// Output only. The current migration job phase.
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }
 
-        /// <summary>
-        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// The details needed to communicate to the source over Reverse SSH tunnel connectivity.

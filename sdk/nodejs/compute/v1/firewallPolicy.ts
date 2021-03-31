@@ -43,21 +43,23 @@ export class FirewallPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FirewallPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: FirewallPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.firewallPolicy === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'firewallPolicy'");
+            }
             inputs["associations"] = args ? args.associations : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
+            inputs["firewallPolicy"] = args ? args.firewallPolicy : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -98,6 +100,7 @@ export interface FirewallPolicyArgs {
      * To see the latest fingerprint, make get() request to the firewall policy.
      */
     readonly fingerprint?: pulumi.Input<string>;
+    readonly firewallPolicy: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -114,18 +117,6 @@ export interface FirewallPolicyArgs {
      * [Output Only] The parent of the firewall policy.
      */
     readonly parent?: pulumi.Input<string>;
-    /**
-     * Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-     */
-    readonly parentId?: pulumi.Input<string>;
-    /**
-     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-     *
-     * For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-     *
-     * The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     */
-    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */

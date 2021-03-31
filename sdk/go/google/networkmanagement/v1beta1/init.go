@@ -23,8 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:networkmanagement/v1beta1:ConnectivityTest":
 		r, err = NewConnectivityTest(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:networkmanagement/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:networkmanagement/v1beta1:ConnectivityTestIamPolicy":
+		r, err = NewConnectivityTestIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

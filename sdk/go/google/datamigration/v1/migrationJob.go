@@ -23,8 +23,14 @@ func NewMigrationJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.MigrationJobsId == nil {
+		return nil, errors.New("invalid value for required argument 'MigrationJobsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource MigrationJob
 	err := ctx.RegisterResource("google-cloud:datamigration/v1:MigrationJob", name, args, &resource, opts...)
@@ -75,17 +81,14 @@ type migrationJobArgs struct {
 	// Output only. The error details in case of state FAILED.
 	Error *Status `pulumi:"error"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels map[string]string `pulumi:"labels"`
-	// Required. The ID of the instance to create.
-	MigrationJobId *string `pulumi:"migrationJobId"`
+	Labels          map[string]string `pulumi:"labels"`
+	LocationsId     string            `pulumi:"locationsId"`
+	MigrationJobsId string            `pulumi:"migrationJobsId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name *string `pulumi:"name"`
-	// Required. The parent, which owns this collection of migration jobs.
-	Parent string `pulumi:"parent"`
 	// Output only. The current migration job phase.
-	Phase *string `pulumi:"phase"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId *string `pulumi:"requestId"`
+	Phase      *string `pulumi:"phase"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
 	// Required. The resource name (URI) of the source connection profile.
@@ -123,17 +126,14 @@ type MigrationJobArgs struct {
 	// Output only. The error details in case of state FAILED.
 	Error StatusPtrInput
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels pulumi.StringMapInput
-	// Required. The ID of the instance to create.
-	MigrationJobId pulumi.StringPtrInput
+	Labels          pulumi.StringMapInput
+	LocationsId     pulumi.StringInput
+	MigrationJobsId pulumi.StringInput
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name pulumi.StringPtrInput
-	// Required. The parent, which owns this collection of migration jobs.
-	Parent pulumi.StringInput
 	// Output only. The current migration job phase.
-	Phase pulumi.StringPtrInput
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId pulumi.StringPtrInput
+	Phase      pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput
 	// Required. The resource name (URI) of the source connection profile.

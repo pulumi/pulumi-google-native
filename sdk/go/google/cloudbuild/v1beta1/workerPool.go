@@ -23,8 +23,14 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.WorkerPoolsId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerPoolsId'")
 	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-cloud:cloudbuild/v1beta1:WorkerPool", name, args, &resource, opts...)
@@ -61,21 +67,20 @@ type workerPoolArgs struct {
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime *string `pulumi:"deleteTime"`
+	DeleteTime  *string `pulumi:"deleteTime"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	// Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`.
-	Parent string `pulumi:"parent"`
+	ProjectsId    string         `pulumi:"projectsId"`
 	// Output only. `WorkerPool` state.
 	State *string `pulumi:"state"`
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
-	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-	WorkerPoolId *string `pulumi:"workerPoolId"`
+	WorkerConfig  *WorkerConfig `pulumi:"workerConfig"`
+	WorkerPoolsId string        `pulumi:"workerPoolsId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
@@ -83,21 +88,20 @@ type WorkerPoolArgs struct {
 	// Output only. Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringPtrInput
 	// Output only. Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime pulumi.StringPtrInput
+	DeleteTime  pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
-	// Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`.
-	Parent pulumi.StringInput
+	ProjectsId    pulumi.StringInput
 	// Output only. `WorkerPool` state.
 	State pulumi.StringPtrInput
 	// Output only. Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringPtrInput
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig WorkerConfigPtrInput
-	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-	WorkerPoolId pulumi.StringPtrInput
+	WorkerConfig  WorkerConfigPtrInput
+	WorkerPoolsId pulumi.StringInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

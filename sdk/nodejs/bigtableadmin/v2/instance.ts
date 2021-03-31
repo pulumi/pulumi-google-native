@@ -47,13 +47,18 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.instancesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instancesId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["clusters"] = args ? args.clusters : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -79,8 +84,10 @@ export interface InstanceArgs {
      * Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
      */
     readonly instanceId?: pulumi.Input<string>;
+    readonly instancesId: pulumi.Input<string>;
     /**
      * Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
      */
-    readonly parent: pulumi.Input<string>;
+    readonly parent?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
 }

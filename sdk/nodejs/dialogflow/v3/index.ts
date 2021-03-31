@@ -5,61 +5,69 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./googleCloudDialogflowCxV3Agent";
-export * from "./googleCloudDialogflowCxV3EntityType";
-export * from "./googleCloudDialogflowCxV3Experiment";
-export * from "./googleCloudDialogflowCxV3Flow";
-export * from "./googleCloudDialogflowCxV3Intent";
-export * from "./googleCloudDialogflowCxV3Page";
-export * from "./googleCloudDialogflowCxV3SecuritySettings";
-export * from "./googleCloudDialogflowCxV3SessionEntityType";
-export * from "./googleCloudDialogflowCxV3TestCase";
-export * from "./googleCloudDialogflowCxV3TransitionRouteGroup";
-export * from "./googleCloudDialogflowCxV3Webhook";
-export * from "./googleLongrunningOperation";
+export * from "./agent";
+export * from "./agentEntityType";
+export * from "./agentEnvironment";
+export * from "./agentEnvironmentExperiment";
+export * from "./agentEnvironmentSessionEntityType";
+export * from "./agentFlow";
+export * from "./agentFlowPage";
+export * from "./agentFlowTransitionRouteGroup";
+export * from "./agentFlowVersion";
+export * from "./agentIntent";
+export * from "./agentSessionEntityType";
+export * from "./agentTestCase";
+export * from "./agentWebhook";
+export * from "./securitySetting";
 
 // Import resources to register:
-import { GoogleCloudDialogflowCxV3Agent } from "./googleCloudDialogflowCxV3Agent";
-import { GoogleCloudDialogflowCxV3EntityType } from "./googleCloudDialogflowCxV3EntityType";
-import { GoogleCloudDialogflowCxV3Experiment } from "./googleCloudDialogflowCxV3Experiment";
-import { GoogleCloudDialogflowCxV3Flow } from "./googleCloudDialogflowCxV3Flow";
-import { GoogleCloudDialogflowCxV3Intent } from "./googleCloudDialogflowCxV3Intent";
-import { GoogleCloudDialogflowCxV3Page } from "./googleCloudDialogflowCxV3Page";
-import { GoogleCloudDialogflowCxV3SecuritySettings } from "./googleCloudDialogflowCxV3SecuritySettings";
-import { GoogleCloudDialogflowCxV3SessionEntityType } from "./googleCloudDialogflowCxV3SessionEntityType";
-import { GoogleCloudDialogflowCxV3TestCase } from "./googleCloudDialogflowCxV3TestCase";
-import { GoogleCloudDialogflowCxV3TransitionRouteGroup } from "./googleCloudDialogflowCxV3TransitionRouteGroup";
-import { GoogleCloudDialogflowCxV3Webhook } from "./googleCloudDialogflowCxV3Webhook";
-import { GoogleLongrunningOperation } from "./googleLongrunningOperation";
+import { Agent } from "./agent";
+import { AgentEntityType } from "./agentEntityType";
+import { AgentEnvironment } from "./agentEnvironment";
+import { AgentEnvironmentExperiment } from "./agentEnvironmentExperiment";
+import { AgentEnvironmentSessionEntityType } from "./agentEnvironmentSessionEntityType";
+import { AgentFlow } from "./agentFlow";
+import { AgentFlowPage } from "./agentFlowPage";
+import { AgentFlowTransitionRouteGroup } from "./agentFlowTransitionRouteGroup";
+import { AgentFlowVersion } from "./agentFlowVersion";
+import { AgentIntent } from "./agentIntent";
+import { AgentSessionEntityType } from "./agentSessionEntityType";
+import { AgentTestCase } from "./agentTestCase";
+import { AgentWebhook } from "./agentWebhook";
+import { SecuritySetting } from "./securitySetting";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Agent":
-                return new GoogleCloudDialogflowCxV3Agent(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3EntityType":
-                return new GoogleCloudDialogflowCxV3EntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Experiment":
-                return new GoogleCloudDialogflowCxV3Experiment(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Flow":
-                return new GoogleCloudDialogflowCxV3Flow(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Intent":
-                return new GoogleCloudDialogflowCxV3Intent(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Page":
-                return new GoogleCloudDialogflowCxV3Page(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SecuritySettings":
-                return new GoogleCloudDialogflowCxV3SecuritySettings(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SessionEntityType":
-                return new GoogleCloudDialogflowCxV3SessionEntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3TestCase":
-                return new GoogleCloudDialogflowCxV3TestCase(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3TransitionRouteGroup":
-                return new GoogleCloudDialogflowCxV3TransitionRouteGroup(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Webhook":
-                return new GoogleCloudDialogflowCxV3Webhook(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3:GoogleLongrunningOperation":
-                return new GoogleLongrunningOperation(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:Agent":
+                return new Agent(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentEntityType":
+                return new AgentEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentEnvironment":
+                return new AgentEnvironment(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentEnvironmentExperiment":
+                return new AgentEnvironmentExperiment(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType":
+                return new AgentEnvironmentSessionEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentFlow":
+                return new AgentFlow(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentFlowPage":
+                return new AgentFlowPage(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentFlowTransitionRouteGroup":
+                return new AgentFlowTransitionRouteGroup(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentFlowVersion":
+                return new AgentFlowVersion(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentIntent":
+                return new AgentIntent(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentSessionEntityType":
+                return new AgentSessionEntityType(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentTestCase":
+                return new AgentTestCase(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:AgentWebhook":
+                return new AgentWebhook(name, <any>undefined, { urn })
+            case "google-cloud:dialogflow/v3:SecuritySetting":
+                return new SecuritySetting(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

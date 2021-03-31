@@ -21,50 +21,72 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1Alias":
-		r, err = NewGoogleCloudApigeeV1Alias(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1ApiCategory":
-		r, err = NewGoogleCloudApigeeV1ApiCategory(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1ApiProduct":
-		r, err = NewGoogleCloudApigeeV1ApiProduct(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1ApiProxyRevision":
-		r, err = NewGoogleCloudApigeeV1ApiProxyRevision(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1AsyncQuery":
-		r, err = NewGoogleCloudApigeeV1AsyncQuery(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1CustomReport":
-		r, err = NewGoogleCloudApigeeV1CustomReport(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1DataCollector":
-		r, err = NewGoogleCloudApigeeV1DataCollector(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1Datastore":
-		r, err = NewGoogleCloudApigeeV1Datastore(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1DebugSession":
-		r, err = NewGoogleCloudApigeeV1DebugSession(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1Developer":
-		r, err = NewGoogleCloudApigeeV1Developer(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1DeveloperApp":
-		r, err = NewGoogleCloudApigeeV1DeveloperApp(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1DeveloperAppKey":
-		r, err = NewGoogleCloudApigeeV1DeveloperAppKey(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1Export":
-		r, err = NewGoogleCloudApigeeV1Export(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1KeyValueMap":
-		r, err = NewGoogleCloudApigeeV1KeyValueMap(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1Keystore":
-		r, err = NewGoogleCloudApigeeV1Keystore(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1Reference":
-		r, err = NewGoogleCloudApigeeV1Reference(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1ResourceFile":
-		r, err = NewGoogleCloudApigeeV1ResourceFile(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1SharedFlowRevision":
-		r, err = NewGoogleCloudApigeeV1SharedFlowRevision(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1TargetServer":
-		r, err = NewGoogleCloudApigeeV1TargetServer(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleCloudApigeeV1TraceConfigOverride":
-		r, err = NewGoogleCloudApigeeV1TraceConfigOverride(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleIamV1Policy":
-		r, err = NewGoogleIamV1Policy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:apigee/v1:GoogleLongrunningOperation":
-		r, err = NewGoogleLongrunningOperation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:Organization":
+		r, err = NewOrganization(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationAnalyticDatastore":
+		r, err = NewOrganizationAnalyticDatastore(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationApi":
+		r, err = NewOrganizationApi(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationApiKeyvaluemap":
+		r, err = NewOrganizationApiKeyvaluemap(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationApiproduct":
+		r, err = NewOrganizationApiproduct(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationDatacollector":
+		r, err = NewOrganizationDatacollector(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationDeveloper":
+		r, err = NewOrganizationDeveloper(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationDeveloperApp":
+		r, err = NewOrganizationDeveloperApp(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationDeveloperAppKey":
+		r, err = NewOrganizationDeveloperAppKey(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationDeveloperAppKeyCreate":
+		r, err = NewOrganizationDeveloperAppKeyCreate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvgroup":
+		r, err = NewOrganizationEnvgroup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvgroupAttachment":
+		r, err = NewOrganizationEnvgroupAttachment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironment":
+		r, err = NewOrganizationEnvironment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport":
+		r, err = NewOrganizationEnvironmentAnalyticExport(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
+		r, err = NewOrganizationEnvironmentApiRevisionDebugsession(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentIamPolicy":
+		r, err = NewOrganizationEnvironmentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentKeystore":
+		r, err = NewOrganizationEnvironmentKeystore(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentKeystoreAlias":
+		r, err = NewOrganizationEnvironmentKeystoreAlias(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentKeyvaluemap":
+		r, err = NewOrganizationEnvironmentKeyvaluemap(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentQuery":
+		r, err = NewOrganizationEnvironmentQuery(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentReference":
+		r, err = NewOrganizationEnvironmentReference(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentResourcefile":
+		r, err = NewOrganizationEnvironmentResourcefile(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentTargetserver":
+		r, err = NewOrganizationEnvironmentTargetserver(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
+		r, err = NewOrganizationEnvironmentTraceConfigOverride(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationHostQuery":
+		r, err = NewOrganizationHostQuery(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationInstance":
+		r, err = NewOrganizationInstance(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationInstanceAttachment":
+		r, err = NewOrganizationInstanceAttachment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationInstanceCanaryevaluation":
+		r, err = NewOrganizationInstanceCanaryevaluation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationInstanceNatAddress":
+		r, err = NewOrganizationInstanceNatAddress(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationKeyvaluemap":
+		r, err = NewOrganizationKeyvaluemap(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationReport":
+		r, err = NewOrganizationReport(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationSharedflow":
+		r, err = NewOrganizationSharedflow(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:apigee/v1:OrganizationSiteApicategory":
+		r, err = NewOrganizationSiteApicategory(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

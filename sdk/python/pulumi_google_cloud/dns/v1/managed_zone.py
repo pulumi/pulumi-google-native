@@ -16,7 +16,6 @@ class ManagedZone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -25,6 +24,7 @@ class ManagedZone(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -42,7 +42,6 @@ class ManagedZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
@@ -55,7 +54,6 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server (output only)
         :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
         :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
-        :param pulumi.Input[str] project: Identifies the project addressed by this request.
         :param pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
         :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
@@ -77,7 +75,6 @@ class ManagedZone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['client_operation_id'] = client_operation_id
             __props__['creation_time'] = creation_time
             __props__['description'] = description
             __props__['dns_name'] = dns_name
@@ -86,6 +83,9 @@ class ManagedZone(pulumi.CustomResource):
             __props__['id'] = id
             __props__['kind'] = kind
             __props__['labels'] = labels
+            if managed_zone is None and not opts.urn:
+                raise TypeError("Missing required property 'managed_zone'")
+            __props__['managed_zone'] = managed_zone
             __props__['name'] = name
             __props__['name_server_set'] = name_server_set
             __props__['name_servers'] = name_servers

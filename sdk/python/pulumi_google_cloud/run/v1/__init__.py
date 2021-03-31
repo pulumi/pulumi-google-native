@@ -3,9 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .domain_mapping import *
-from .policy import *
+from .domainmapping import *
+from .namespace_domainmapping import *
+from .namespace_service import *
 from .service import *
+from .service_iam_policy import *
 from ._inputs import *
 
 def _register_module():
@@ -20,12 +22,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "google-cloud:run/v1:DomainMapping":
-                return DomainMapping(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "google-cloud:run/v1:Policy":
-                return Policy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "google-cloud:run/v1:Domainmapping":
+                return Domainmapping(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:run/v1:NamespaceDomainmapping":
+                return NamespaceDomainmapping(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:run/v1:NamespaceService":
+                return NamespaceService(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:run/v1:Service":
                 return Service(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:run/v1:ServiceIamPolicy":
+                return ServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

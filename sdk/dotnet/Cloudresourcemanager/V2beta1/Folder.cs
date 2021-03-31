@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V2beta1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Folder(string name, FolderArgs? args = null, CustomResourceOptions? options = null)
+        public Folder(string name, FolderArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudresourcemanager/v2beta1:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -70,6 +70,9 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V2beta1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("foldersId", required: true)]
+        public Input<string> FoldersId { get; set; } = null!;
 
         /// <summary>
         /// Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.

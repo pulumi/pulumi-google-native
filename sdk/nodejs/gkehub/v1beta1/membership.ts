@@ -47,8 +47,14 @@ export class Membership extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.parent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'parent'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
+            }
+            if ((!args || args.membershipsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'membershipsId'");
+            }
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["authority"] = args ? args.authority : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -59,9 +65,10 @@ export class Membership extends pulumi.CustomResource {
             inputs["infrastructureType"] = args ? args.infrastructureType : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lastConnectionTime"] = args ? args.lastConnectionTime : undefined;
-            inputs["membershipId"] = args ? args.membershipId : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["membershipsId"] = args ? args.membershipsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["uniqueId"] = args ? args.uniqueId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -114,18 +121,13 @@ export interface MembershipArgs {
      * Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
      */
     readonly lastConnectionTime?: pulumi.Input<string>;
-    /**
-     * Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-     */
-    readonly membershipId?: pulumi.Input<string>;
+    readonly locationsId: pulumi.Input<string>;
+    readonly membershipsId: pulumi.Input<string>;
     /**
      * Output only. The full, unique name of this Membership resource in the format `projects/*&#47;locations/*&#47;memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*&#47;locations/*`.
-     */
-    readonly parent: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Output only. State of the Membership resource.
      */

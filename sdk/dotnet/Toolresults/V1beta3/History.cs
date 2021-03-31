@@ -77,17 +77,8 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// A Project id. Required.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
-
-        /// <summary>
-        /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
-        /// </summary>
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
