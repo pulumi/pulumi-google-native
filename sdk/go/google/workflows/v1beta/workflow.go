@@ -23,8 +23,14 @@ func NewWorkflow(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.WorkflowsId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowsId'")
 	}
 	var resource Workflow
 	err := ctx.RegisterResource("google-cloud:workflows/v1beta:Workflow", name, args, &resource, opts...)
@@ -63,11 +69,11 @@ type workflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-	Name *string `pulumi:"name"`
-	// Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location}
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. The timestamp that the latest revision of the workflow was created.
 	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
 	// Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
@@ -79,9 +85,8 @@ type workflowArgs struct {
 	// Output only. State of the workflow deployment.
 	State *string `pulumi:"state"`
 	// Output only. The last update timestamp of the workflow.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
-	WorkflowId *string `pulumi:"workflowId"`
+	UpdateTime  *string `pulumi:"updateTime"`
+	WorkflowsId string  `pulumi:"workflowsId"`
 }
 
 // The set of arguments for constructing a Workflow resource.
@@ -91,11 +96,11 @@ type WorkflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-	Name pulumi.StringPtrInput
-	// Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location}
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The timestamp that the latest revision of the workflow was created.
 	RevisionCreateTime pulumi.StringPtrInput
 	// Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
@@ -107,9 +112,8 @@ type WorkflowArgs struct {
 	// Output only. State of the workflow deployment.
 	State pulumi.StringPtrInput
 	// Output only. The last update timestamp of the workflow.
-	UpdateTime pulumi.StringPtrInput
-	// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
-	WorkflowId pulumi.StringPtrInput
+	UpdateTime  pulumi.StringPtrInput
+	WorkflowsId pulumi.StringInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {

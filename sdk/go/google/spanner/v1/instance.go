@@ -23,8 +23,11 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.InstancesId == nil {
+		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-cloud:spanner/v1:Instance", name, args, &resource, opts...)
@@ -61,9 +64,9 @@ type instanceArgs struct {
 	// Required. The instance to create. The name may be omitted, but if specified must be `/instances/`.
 	Instance *InstanceType `pulumi:"instance"`
 	// Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
-	InstanceId *string `pulumi:"instanceId"`
-	// Required. The name of the project in which to create the instance. Values are of the form `projects/`.
-	Parent string `pulumi:"parent"`
+	InstanceId  *string `pulumi:"instanceId"`
+	InstancesId string  `pulumi:"instancesId"`
+	ProjectsId  string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -71,9 +74,9 @@ type InstanceArgs struct {
 	// Required. The instance to create. The name may be omitted, but if specified must be `/instances/`.
 	Instance InstanceTypePtrInput
 	// Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
-	InstanceId pulumi.StringPtrInput
-	// Required. The name of the project in which to create the instance. Values are of the form `projects/`.
-	Parent pulumi.StringInput
+	InstanceId  pulumi.StringPtrInput
+	InstancesId pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

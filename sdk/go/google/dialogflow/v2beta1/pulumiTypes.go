@@ -147,7 +147,7 @@ func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) Agent() pulum
 }
 
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
-type GoogleCloudDialogflowV2beta1ContextType struct {
+type GoogleCloudDialogflowV2beta1Context struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount *int `pulumi:"lifespanCount"`
 	// Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
@@ -156,19 +156,19 @@ type GoogleCloudDialogflowV2beta1ContextType struct {
 	Parameters map[string]string `pulumi:"parameters"`
 }
 
-// GoogleCloudDialogflowV2beta1ContextTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextTypeArgs and GoogleCloudDialogflowV2beta1ContextTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ContextTypeInput` via:
+// GoogleCloudDialogflowV2beta1ContextInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextArgs and GoogleCloudDialogflowV2beta1ContextOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ContextInput` via:
 //
-//          GoogleCloudDialogflowV2beta1ContextTypeArgs{...}
-type GoogleCloudDialogflowV2beta1ContextTypeInput interface {
+//          GoogleCloudDialogflowV2beta1ContextArgs{...}
+type GoogleCloudDialogflowV2beta1ContextInput interface {
 	pulumi.Input
 
-	ToGoogleCloudDialogflowV2beta1ContextTypeOutput() GoogleCloudDialogflowV2beta1ContextTypeOutput
-	ToGoogleCloudDialogflowV2beta1ContextTypeOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1ContextTypeOutput
+	ToGoogleCloudDialogflowV2beta1ContextOutput() GoogleCloudDialogflowV2beta1ContextOutput
+	ToGoogleCloudDialogflowV2beta1ContextOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1ContextOutput
 }
 
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
-type GoogleCloudDialogflowV2beta1ContextTypeArgs struct {
+type GoogleCloudDialogflowV2beta1ContextArgs struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount pulumi.IntPtrInput `pulumi:"lifespanCount"`
 	// Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
@@ -177,91 +177,91 @@ type GoogleCloudDialogflowV2beta1ContextTypeArgs struct {
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 }
 
-func (GoogleCloudDialogflowV2beta1ContextTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1ContextType)(nil)).Elem()
+func (GoogleCloudDialogflowV2beta1ContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1Context)(nil)).Elem()
 }
 
-func (i GoogleCloudDialogflowV2beta1ContextTypeArgs) ToGoogleCloudDialogflowV2beta1ContextTypeOutput() GoogleCloudDialogflowV2beta1ContextTypeOutput {
-	return i.ToGoogleCloudDialogflowV2beta1ContextTypeOutputWithContext(context.Background())
+func (i GoogleCloudDialogflowV2beta1ContextArgs) ToGoogleCloudDialogflowV2beta1ContextOutput() GoogleCloudDialogflowV2beta1ContextOutput {
+	return i.ToGoogleCloudDialogflowV2beta1ContextOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudDialogflowV2beta1ContextTypeArgs) ToGoogleCloudDialogflowV2beta1ContextTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ContextTypeOutput)
+func (i GoogleCloudDialogflowV2beta1ContextArgs) ToGoogleCloudDialogflowV2beta1ContextOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ContextOutput)
 }
 
-// GoogleCloudDialogflowV2beta1ContextTypeArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextTypeArray and GoogleCloudDialogflowV2beta1ContextTypeArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ContextTypeArrayInput` via:
+// GoogleCloudDialogflowV2beta1ContextArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextArray and GoogleCloudDialogflowV2beta1ContextArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ContextArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1ContextTypeArray{ GoogleCloudDialogflowV2beta1ContextTypeArgs{...} }
-type GoogleCloudDialogflowV2beta1ContextTypeArrayInput interface {
+//          GoogleCloudDialogflowV2beta1ContextArray{ GoogleCloudDialogflowV2beta1ContextArgs{...} }
+type GoogleCloudDialogflowV2beta1ContextArrayInput interface {
 	pulumi.Input
 
-	ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutput() GoogleCloudDialogflowV2beta1ContextTypeArrayOutput
-	ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1ContextTypeArrayOutput
+	ToGoogleCloudDialogflowV2beta1ContextArrayOutput() GoogleCloudDialogflowV2beta1ContextArrayOutput
+	ToGoogleCloudDialogflowV2beta1ContextArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1ContextArrayOutput
 }
 
-type GoogleCloudDialogflowV2beta1ContextTypeArray []GoogleCloudDialogflowV2beta1ContextTypeInput
+type GoogleCloudDialogflowV2beta1ContextArray []GoogleCloudDialogflowV2beta1ContextInput
 
-func (GoogleCloudDialogflowV2beta1ContextTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1ContextType)(nil)).Elem()
+func (GoogleCloudDialogflowV2beta1ContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1Context)(nil)).Elem()
 }
 
-func (i GoogleCloudDialogflowV2beta1ContextTypeArray) ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutput() GoogleCloudDialogflowV2beta1ContextTypeArrayOutput {
-	return i.ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutputWithContext(context.Background())
+func (i GoogleCloudDialogflowV2beta1ContextArray) ToGoogleCloudDialogflowV2beta1ContextArrayOutput() GoogleCloudDialogflowV2beta1ContextArrayOutput {
+	return i.ToGoogleCloudDialogflowV2beta1ContextArrayOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudDialogflowV2beta1ContextTypeArray) ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ContextTypeArrayOutput)
+func (i GoogleCloudDialogflowV2beta1ContextArray) ToGoogleCloudDialogflowV2beta1ContextArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1ContextArrayOutput)
 }
 
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
-type GoogleCloudDialogflowV2beta1ContextTypeOutput struct{ *pulumi.OutputState }
+type GoogleCloudDialogflowV2beta1ContextOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudDialogflowV2beta1ContextTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1ContextType)(nil)).Elem()
+func (GoogleCloudDialogflowV2beta1ContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1Context)(nil)).Elem()
 }
 
-func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) ToGoogleCloudDialogflowV2beta1ContextTypeOutput() GoogleCloudDialogflowV2beta1ContextTypeOutput {
+func (o GoogleCloudDialogflowV2beta1ContextOutput) ToGoogleCloudDialogflowV2beta1ContextOutput() GoogleCloudDialogflowV2beta1ContextOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) ToGoogleCloudDialogflowV2beta1ContextTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextTypeOutput {
+func (o GoogleCloudDialogflowV2beta1ContextOutput) ToGoogleCloudDialogflowV2beta1ContextOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextOutput {
 	return o
 }
 
 // Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
-func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) LifespanCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextType) *int { return v.LifespanCount }).(pulumi.IntPtrOutput)
+func (o GoogleCloudDialogflowV2beta1ContextOutput) LifespanCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Context) *int { return v.LifespanCount }).(pulumi.IntPtrOutput)
 }
 
 // Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2beta1ContextOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Context) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
-func (o GoogleCloudDialogflowV2beta1ContextTypeOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextType) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowV2beta1ContextOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Context) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-type GoogleCloudDialogflowV2beta1ContextTypeArrayOutput struct{ *pulumi.OutputState }
+type GoogleCloudDialogflowV2beta1ContextArrayOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudDialogflowV2beta1ContextTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1ContextType)(nil)).Elem()
+func (GoogleCloudDialogflowV2beta1ContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1Context)(nil)).Elem()
 }
 
-func (o GoogleCloudDialogflowV2beta1ContextTypeArrayOutput) ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutput() GoogleCloudDialogflowV2beta1ContextTypeArrayOutput {
+func (o GoogleCloudDialogflowV2beta1ContextArrayOutput) ToGoogleCloudDialogflowV2beta1ContextArrayOutput() GoogleCloudDialogflowV2beta1ContextArrayOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowV2beta1ContextTypeArrayOutput) ToGoogleCloudDialogflowV2beta1ContextTypeArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextTypeArrayOutput {
+func (o GoogleCloudDialogflowV2beta1ContextArrayOutput) ToGoogleCloudDialogflowV2beta1ContextArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1ContextArrayOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowV2beta1ContextTypeArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2beta1ContextTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1ContextType {
-		return vs[0].([]GoogleCloudDialogflowV2beta1ContextType)[vs[1].(int)]
-	}).(GoogleCloudDialogflowV2beta1ContextTypeOutput)
+func (o GoogleCloudDialogflowV2beta1ContextArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2beta1ContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1Context {
+		return vs[0].([]GoogleCloudDialogflowV2beta1Context)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2beta1ContextOutput)
 }
 
 // Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
@@ -10142,8 +10142,8 @@ func (o GoogleRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ContextTypeOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ContextTypeArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ContextOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ContextArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ConversationPhoneNumberOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1ConversationPhoneNumberPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1DocumentReloadStatusOutput{})

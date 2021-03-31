@@ -25,10 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewChange(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dns/v1:ManagedZone":
 		r, err = NewManagedZone(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dns/v1:ManagedZoneRrset":
+		r, err = NewManagedZoneRrset(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dns/v1:Policy":
 		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dns/v1:ResourceRecordSet":
-		r, err = NewResourceRecordSet(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

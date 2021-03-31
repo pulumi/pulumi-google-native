@@ -23,8 +23,14 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.InstancesId == nil {
+		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-cloud:file/v1beta1:Instance", name, args, &resource, opts...)
@@ -65,17 +71,16 @@ type instanceArgs struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
-	FileShares []FileShareConfig `pulumi:"fileShares"`
-	// Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-	InstanceId *string `pulumi:"instanceId"`
+	FileShares  []FileShareConfig `pulumi:"fileShares"`
+	InstancesId string            `pulumi:"instancesId"`
 	// Resource labels to represent user provided metadata.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Output only. The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
-	Networks []NetworkConfig `pulumi:"networks"`
-	// Required. The instance's project and location, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.
-	Parent string `pulumi:"parent"`
+	Networks   []NetworkConfig `pulumi:"networks"`
+	ProjectsId string          `pulumi:"projectsId"`
 	// Output only. The instance state.
 	State *string `pulumi:"state"`
 	// Output only. Additional information about the instance state, if available.
@@ -93,17 +98,16 @@ type InstanceArgs struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a single file share is supported.
-	FileShares FileShareConfigArrayInput
-	// Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-	InstanceId pulumi.StringPtrInput
+	FileShares  FileShareConfigArrayInput
+	InstancesId pulumi.StringInput
 	// Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
-	Networks NetworkConfigArrayInput
-	// Required. The instance's project and location, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.
-	Parent pulumi.StringInput
+	Networks   NetworkConfigArrayInput
+	ProjectsId pulumi.StringInput
 	// Output only. The instance state.
 	State pulumi.StringPtrInput
 	// Output only. Additional information about the instance state, if available.

@@ -23,6 +23,9 @@ func NewLicense(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.License == nil {
+		return nil, errors.New("invalid value for required argument 'License'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -67,19 +70,13 @@ type licenseArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// [Output Only] Type of resource. Always compute#license for licenses.
-	Kind *string `pulumi:"kind"`
+	Kind    *string `pulumi:"kind"`
+	License string  `pulumi:"license"`
 	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
 	LicenseCode *string `pulumi:"licenseCode"`
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
-	Name *string `pulumi:"name"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId            *string                      `pulumi:"requestId"`
+	Name                 *string                      `pulumi:"name"`
+	Project              string                       `pulumi:"project"`
 	ResourceRequirements *LicenseResourceRequirements `pulumi:"resourceRequirements"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -100,19 +97,13 @@ type LicenseArgs struct {
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// [Output Only] Type of resource. Always compute#license for licenses.
-	Kind pulumi.StringPtrInput
+	Kind    pulumi.StringPtrInput
+	License pulumi.StringInput
 	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
 	LicenseCode pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
-	Name pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId            pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	Project              pulumi.StringInput
 	ResourceRequirements LicenseResourceRequirementsPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput

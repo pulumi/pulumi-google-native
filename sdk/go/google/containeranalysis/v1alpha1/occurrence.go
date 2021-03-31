@@ -23,8 +23,11 @@ func NewOccurrence(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.OccurrencesId == nil {
+		return nil, errors.New("invalid value for required argument 'OccurrencesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Occurrence
 	err := ctx.RegisterResource("google-cloud:containeranalysis/v1alpha1:Occurrence", name, args, &resource, opts...)
@@ -77,9 +80,9 @@ type occurrenceArgs struct {
 	// Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name *string `pulumi:"name"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-	NoteName *string `pulumi:"noteName"`
-	// This field contains the project Id for example: "projects/{project_id}"
-	Parent string `pulumi:"parent"`
+	NoteName      *string `pulumi:"noteName"`
+	OccurrencesId string  `pulumi:"occurrencesId"`
+	ProjectsId    string  `pulumi:"projectsId"`
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation *string `pulumi:"remediation"`
 	//  The resource for which the `Occurrence` applies.
@@ -115,9 +118,9 @@ type OccurrenceArgs struct {
 	// Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name pulumi.StringPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-	NoteName pulumi.StringPtrInput
-	// This field contains the project Id for example: "projects/{project_id}"
-	Parent pulumi.StringInput
+	NoteName      pulumi.StringPtrInput
+	OccurrencesId pulumi.StringInput
+	ProjectsId    pulumi.StringInput
 	// A description of actions that can be taken to remedy the `Note`
 	Remediation pulumi.StringPtrInput
 	//  The resource for which the `Occurrence` applies.

@@ -23,8 +23,11 @@ func NewPatchDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.PatchDeploymentsId == nil {
+		return nil, errors.New("invalid value for required argument 'PatchDeploymentsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource PatchDeployment
 	err := ctx.RegisterResource("google-cloud:osconfig/v1:PatchDeployment", name, args, &resource, opts...)
@@ -72,12 +75,10 @@ type patchDeploymentArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. Schedule a one-time execution.
 	OneTimeSchedule *OneTimeSchedule `pulumi:"oneTimeSchedule"`
-	// Required. The project to apply this patch deployment to in the form `projects/*`.
-	Parent string `pulumi:"parent"`
 	// Optional. Patch configuration that is applied.
-	PatchConfig *PatchConfig `pulumi:"patchConfig"`
-	// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-	PatchDeploymentId *string `pulumi:"patchDeploymentId"`
+	PatchConfig        *PatchConfig `pulumi:"patchConfig"`
+	PatchDeploymentsId string       `pulumi:"patchDeploymentsId"`
+	ProjectsId         string       `pulumi:"projectsId"`
 	// Required. Schedule recurring executions.
 	RecurringSchedule *RecurringSchedule `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
@@ -102,12 +103,10 @@ type PatchDeploymentArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. Schedule a one-time execution.
 	OneTimeSchedule OneTimeSchedulePtrInput
-	// Required. The project to apply this patch deployment to in the form `projects/*`.
-	Parent pulumi.StringInput
 	// Optional. Patch configuration that is applied.
-	PatchConfig PatchConfigPtrInput
-	// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-	PatchDeploymentId pulumi.StringPtrInput
+	PatchConfig        PatchConfigPtrInput
+	PatchDeploymentsId pulumi.StringInput
+	ProjectsId         pulumi.StringInput
 	// Required. Schedule recurring executions.
 	RecurringSchedule RecurringSchedulePtrInput
 	// Optional. Rollout strategy of the patch job.

@@ -21,12 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:iam/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:iam/v1:OrganizationRole":
+		r, err = NewOrganizationRole(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:iam/v1:Role":
 		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:iam/v1:ServiceAccount":
 		r, err = NewServiceAccount(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:iam/v1:ServiceAccountIamPolicy":
+		r, err = NewServiceAccountIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:iam/v1:ServiceAccountKey":
 		r, err = NewServiceAccountKey(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:iam/v1:WorkloadIdentityPool":

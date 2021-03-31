@@ -836,6 +836,47 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs) ToGoogleDevt
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput)
 }
 
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput).ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrInput` via:
+//
+//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput
+	ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput
+}
+
+type googleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrType GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs
+
+func GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtr(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrInput {
+	return (*googleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrType)(v)
+}
+
+func (*googleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance)(nil)).Elem()
+}
+
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return i.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrType) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput)
+}
+
 // Instance conceptually encapsulates all Remote Build Execution resources for remote builds. An instance consists of storage and compute resources (for example, `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for running remote builds. All Remote Build Execution API calls are scoped to an instance.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput struct{ *pulumi.OutputState }
 
@@ -849,6 +890,16 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput) ToGoogleDe
 
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput {
 	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return o.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
+		return &v
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput)
 }
 
 // The policy to define whether or not RBE features can be used or how they can be used.
@@ -876,6 +927,76 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput) Name() pul
 // Output only. State of the instance.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput() GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) Elem() GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
+		return *v
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput)
+}
+
+// The policy to define whether or not RBE features can be used or how they can be used.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) FeaturePolicy() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FeaturePolicy
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput)
+}
+
+// The location is a GCP region. Currently only `us-central1` is supported.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. Whether stack driver logging is enabled for the instance.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) LoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. State of the instance.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the configuration to be used for creating workers in the worker pool.
@@ -1455,6 +1576,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolOutput{})

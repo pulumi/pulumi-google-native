@@ -25,16 +25,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewBucket(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:storage/v1:BucketAccessControl":
 		r, err = NewBucketAccessControl(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:storage/v1:BucketIamPolicy":
+		r, err = NewBucketIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:storage/v1:BucketObject":
 		r, err = NewBucketObject(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:storage/v1:DefaultObjectAccessControl":
+		r, err = NewDefaultObjectAccessControl(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:storage/v1:HmacKey":
 		r, err = NewHmacKey(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:storage/v1:Notification":
 		r, err = NewNotification(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:storage/v1:ObjectAccessControl":
 		r, err = NewObjectAccessControl(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:storage/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:storage/v1:ObjectIamPolicy":
+		r, err = NewObjectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

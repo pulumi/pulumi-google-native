@@ -1610,7 +1610,7 @@ func (o ImageArrayOutput) Index(i pulumi.IntInput) ImageOutput {
 }
 
 // A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.
-type MessageType struct {
+type Message struct {
 	// Output only. The datetime when the message was created. Set by the server.
 	CreateTime *string `pulumi:"createTime"`
 	// Raw message bytes.
@@ -1633,19 +1633,19 @@ type MessageType struct {
 	SendTime *string `pulumi:"sendTime"`
 }
 
-// MessageTypeInput is an input type that accepts MessageTypeArgs and MessageTypeOutput values.
-// You can construct a concrete instance of `MessageTypeInput` via:
+// MessageInput is an input type that accepts MessageArgs and MessageOutput values.
+// You can construct a concrete instance of `MessageInput` via:
 //
-//          MessageTypeArgs{...}
-type MessageTypeInput interface {
+//          MessageArgs{...}
+type MessageInput interface {
 	pulumi.Input
 
-	ToMessageTypeOutput() MessageTypeOutput
-	ToMessageTypeOutputWithContext(context.Context) MessageTypeOutput
+	ToMessageOutput() MessageOutput
+	ToMessageOutputWithContext(context.Context) MessageOutput
 }
 
 // A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.
-type MessageTypeArgs struct {
+type MessageArgs struct {
 	// Output only. The datetime when the message was created. Set by the server.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// Raw message bytes.
@@ -1668,155 +1668,155 @@ type MessageTypeArgs struct {
 	SendTime pulumi.StringPtrInput `pulumi:"sendTime"`
 }
 
-func (MessageTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MessageType)(nil)).Elem()
+func (MessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Message)(nil)).Elem()
 }
 
-func (i MessageTypeArgs) ToMessageTypeOutput() MessageTypeOutput {
-	return i.ToMessageTypeOutputWithContext(context.Background())
+func (i MessageArgs) ToMessageOutput() MessageOutput {
+	return i.ToMessageOutputWithContext(context.Background())
 }
 
-func (i MessageTypeArgs) ToMessageTypeOutputWithContext(ctx context.Context) MessageTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageTypeOutput)
+func (i MessageArgs) ToMessageOutputWithContext(ctx context.Context) MessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageOutput)
 }
 
-func (i MessageTypeArgs) ToMessageTypePtrOutput() MessageTypePtrOutput {
-	return i.ToMessageTypePtrOutputWithContext(context.Background())
+func (i MessageArgs) ToMessagePtrOutput() MessagePtrOutput {
+	return i.ToMessagePtrOutputWithContext(context.Background())
 }
 
-func (i MessageTypeArgs) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageTypeOutput).ToMessageTypePtrOutputWithContext(ctx)
+func (i MessageArgs) ToMessagePtrOutputWithContext(ctx context.Context) MessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageOutput).ToMessagePtrOutputWithContext(ctx)
 }
 
-// MessageTypePtrInput is an input type that accepts MessageTypeArgs, MessageTypePtr and MessageTypePtrOutput values.
-// You can construct a concrete instance of `MessageTypePtrInput` via:
+// MessagePtrInput is an input type that accepts MessageArgs, MessagePtr and MessagePtrOutput values.
+// You can construct a concrete instance of `MessagePtrInput` via:
 //
-//          MessageTypeArgs{...}
+//          MessageArgs{...}
 //
 //  or:
 //
 //          nil
-type MessageTypePtrInput interface {
+type MessagePtrInput interface {
 	pulumi.Input
 
-	ToMessageTypePtrOutput() MessageTypePtrOutput
-	ToMessageTypePtrOutputWithContext(context.Context) MessageTypePtrOutput
+	ToMessagePtrOutput() MessagePtrOutput
+	ToMessagePtrOutputWithContext(context.Context) MessagePtrOutput
 }
 
-type messageTypePtrType MessageTypeArgs
+type messagePtrType MessageArgs
 
-func MessageTypePtr(v *MessageTypeArgs) MessageTypePtrInput {
-	return (*messageTypePtrType)(v)
+func MessagePtr(v *MessageArgs) MessagePtrInput {
+	return (*messagePtrType)(v)
 }
 
-func (*messageTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MessageType)(nil)).Elem()
+func (*messagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Message)(nil)).Elem()
 }
 
-func (i *messageTypePtrType) ToMessageTypePtrOutput() MessageTypePtrOutput {
-	return i.ToMessageTypePtrOutputWithContext(context.Background())
+func (i *messagePtrType) ToMessagePtrOutput() MessagePtrOutput {
+	return i.ToMessagePtrOutputWithContext(context.Background())
 }
 
-func (i *messageTypePtrType) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MessageTypePtrOutput)
+func (i *messagePtrType) ToMessagePtrOutputWithContext(ctx context.Context) MessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessagePtrOutput)
 }
 
 // A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.
-type MessageTypeOutput struct{ *pulumi.OutputState }
+type MessageOutput struct{ *pulumi.OutputState }
 
-func (MessageTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MessageType)(nil)).Elem()
+func (MessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Message)(nil)).Elem()
 }
 
-func (o MessageTypeOutput) ToMessageTypeOutput() MessageTypeOutput {
+func (o MessageOutput) ToMessageOutput() MessageOutput {
 	return o
 }
 
-func (o MessageTypeOutput) ToMessageTypeOutputWithContext(ctx context.Context) MessageTypeOutput {
+func (o MessageOutput) ToMessageOutputWithContext(ctx context.Context) MessageOutput {
 	return o
 }
 
-func (o MessageTypeOutput) ToMessageTypePtrOutput() MessageTypePtrOutput {
-	return o.ToMessageTypePtrOutputWithContext(context.Background())
+func (o MessageOutput) ToMessagePtrOutput() MessagePtrOutput {
+	return o.ToMessagePtrOutputWithContext(context.Background())
 }
 
-func (o MessageTypeOutput) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
-	return o.ApplyT(func(v MessageType) *MessageType {
+func (o MessageOutput) ToMessagePtrOutputWithContext(ctx context.Context) MessagePtrOutput {
+	return o.ApplyT(func(v Message) *Message {
 		return &v
-	}).(MessageTypePtrOutput)
+	}).(MessagePtrOutput)
 }
 
 // Output only. The datetime when the message was created. Set by the server.
-func (o MessageTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MessageType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o MessageOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Message) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // Raw message bytes.
-func (o MessageTypeOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MessageType) *string { return v.Data }).(pulumi.StringPtrOutput)
+func (o MessageOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Message) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-func (o MessageTypeOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MessageType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+func (o MessageOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Message) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The message type for this message. MSH-9.1.
-func (o MessageTypeOutput) MessageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MessageType) *string { return v.MessageType }).(pulumi.StringPtrOutput)
+func (o MessageOutput) MessageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Message) *string { return v.MessageType }).(pulumi.StringPtrOutput)
 }
 
 // Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-func (o MessageTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MessageType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o MessageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Message) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The parsed version of the raw message data.
-func (o MessageTypeOutput) ParsedData() ParsedDataPtrOutput {
-	return o.ApplyT(func(v MessageType) *ParsedData { return v.ParsedData }).(ParsedDataPtrOutput)
+func (o MessageOutput) ParsedData() ParsedDataPtrOutput {
+	return o.ApplyT(func(v Message) *ParsedData { return v.ParsedData }).(ParsedDataPtrOutput)
 }
 
 // All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-func (o MessageTypeOutput) PatientIds() PatientIdArrayOutput {
-	return o.ApplyT(func(v MessageType) []PatientId { return v.PatientIds }).(PatientIdArrayOutput)
+func (o MessageOutput) PatientIds() PatientIdArrayOutput {
+	return o.ApplyT(func(v Message) []PatientId { return v.PatientIds }).(PatientIdArrayOutput)
 }
 
 // The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-func (o MessageTypeOutput) SchematizedData() SchematizedDataPtrOutput {
-	return o.ApplyT(func(v MessageType) *SchematizedData { return v.SchematizedData }).(SchematizedDataPtrOutput)
+func (o MessageOutput) SchematizedData() SchematizedDataPtrOutput {
+	return o.ApplyT(func(v Message) *SchematizedData { return v.SchematizedData }).(SchematizedDataPtrOutput)
 }
 
 // The hospital that this message came from. MSH-4.
-func (o MessageTypeOutput) SendFacility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MessageType) *string { return v.SendFacility }).(pulumi.StringPtrOutput)
+func (o MessageOutput) SendFacility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Message) *string { return v.SendFacility }).(pulumi.StringPtrOutput)
 }
 
 // The datetime the sending application sent this message. MSH-7.
-func (o MessageTypeOutput) SendTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MessageType) *string { return v.SendTime }).(pulumi.StringPtrOutput)
+func (o MessageOutput) SendTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Message) *string { return v.SendTime }).(pulumi.StringPtrOutput)
 }
 
-type MessageTypePtrOutput struct{ *pulumi.OutputState }
+type MessagePtrOutput struct{ *pulumi.OutputState }
 
-func (MessageTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MessageType)(nil)).Elem()
+func (MessagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Message)(nil)).Elem()
 }
 
-func (o MessageTypePtrOutput) ToMessageTypePtrOutput() MessageTypePtrOutput {
+func (o MessagePtrOutput) ToMessagePtrOutput() MessagePtrOutput {
 	return o
 }
 
-func (o MessageTypePtrOutput) ToMessageTypePtrOutputWithContext(ctx context.Context) MessageTypePtrOutput {
+func (o MessagePtrOutput) ToMessagePtrOutputWithContext(ctx context.Context) MessagePtrOutput {
 	return o
 }
 
-func (o MessageTypePtrOutput) Elem() MessageTypeOutput {
-	return o.ApplyT(func(v *MessageType) MessageType { return *v }).(MessageTypeOutput)
+func (o MessagePtrOutput) Elem() MessageOutput {
+	return o.ApplyT(func(v *Message) Message { return *v }).(MessageOutput)
 }
 
 // Output only. The datetime when the message was created. Set by the server.
-func (o MessageTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MessageType) *string {
+func (o MessagePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Message) *string {
 		if v == nil {
 			return nil
 		}
@@ -1825,8 +1825,8 @@ func (o MessageTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
 }
 
 // Raw message bytes.
-func (o MessageTypePtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MessageType) *string {
+func (o MessagePtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Message) *string {
 		if v == nil {
 			return nil
 		}
@@ -1835,8 +1835,8 @@ func (o MessageTypePtrOutput) Data() pulumi.StringPtrOutput {
 }
 
 // User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-func (o MessageTypePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MessageType) map[string]string {
+func (o MessagePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Message) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -1845,8 +1845,8 @@ func (o MessageTypePtrOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The message type for this message. MSH-9.1.
-func (o MessageTypePtrOutput) MessageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MessageType) *string {
+func (o MessagePtrOutput) MessageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Message) *string {
 		if v == nil {
 			return nil
 		}
@@ -1855,8 +1855,8 @@ func (o MessageTypePtrOutput) MessageType() pulumi.StringPtrOutput {
 }
 
 // Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-func (o MessageTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MessageType) *string {
+func (o MessagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Message) *string {
 		if v == nil {
 			return nil
 		}
@@ -1865,8 +1865,8 @@ func (o MessageTypePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Output only. The parsed version of the raw message data.
-func (o MessageTypePtrOutput) ParsedData() ParsedDataPtrOutput {
-	return o.ApplyT(func(v *MessageType) *ParsedData {
+func (o MessagePtrOutput) ParsedData() ParsedDataPtrOutput {
+	return o.ApplyT(func(v *Message) *ParsedData {
 		if v == nil {
 			return nil
 		}
@@ -1875,8 +1875,8 @@ func (o MessageTypePtrOutput) ParsedData() ParsedDataPtrOutput {
 }
 
 // All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-func (o MessageTypePtrOutput) PatientIds() PatientIdArrayOutput {
-	return o.ApplyT(func(v *MessageType) []PatientId {
+func (o MessagePtrOutput) PatientIds() PatientIdArrayOutput {
+	return o.ApplyT(func(v *Message) []PatientId {
 		if v == nil {
 			return nil
 		}
@@ -1885,8 +1885,8 @@ func (o MessageTypePtrOutput) PatientIds() PatientIdArrayOutput {
 }
 
 // The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-func (o MessageTypePtrOutput) SchematizedData() SchematizedDataPtrOutput {
-	return o.ApplyT(func(v *MessageType) *SchematizedData {
+func (o MessagePtrOutput) SchematizedData() SchematizedDataPtrOutput {
+	return o.ApplyT(func(v *Message) *SchematizedData {
 		if v == nil {
 			return nil
 		}
@@ -1895,8 +1895,8 @@ func (o MessageTypePtrOutput) SchematizedData() SchematizedDataPtrOutput {
 }
 
 // The hospital that this message came from. MSH-4.
-func (o MessageTypePtrOutput) SendFacility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MessageType) *string {
+func (o MessagePtrOutput) SendFacility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Message) *string {
 		if v == nil {
 			return nil
 		}
@@ -1905,8 +1905,8 @@ func (o MessageTypePtrOutput) SendFacility() pulumi.StringPtrOutput {
 }
 
 // The datetime the sending application sent this message. MSH-7.
-func (o MessageTypePtrOutput) SendTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MessageType) *string {
+func (o MessagePtrOutput) SendTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Message) *string {
 		if v == nil {
 			return nil
 		}
@@ -2459,7 +2459,7 @@ func (o PatientIdArrayOutput) Index(i pulumi.IntInput) PatientIdOutput {
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyType struct {
+type Policy struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []AuditConfig `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -2470,19 +2470,19 @@ type PolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// PolicyTypeInput is an input type that accepts PolicyTypeArgs and PolicyTypeOutput values.
-// You can construct a concrete instance of `PolicyTypeInput` via:
+// PolicyInput is an input type that accepts PolicyArgs and PolicyOutput values.
+// You can construct a concrete instance of `PolicyInput` via:
 //
-//          PolicyTypeArgs{...}
-type PolicyTypeInput interface {
+//          PolicyArgs{...}
+type PolicyInput interface {
 	pulumi.Input
 
-	ToPolicyTypeOutput() PolicyTypeOutput
-	ToPolicyTypeOutputWithContext(context.Context) PolicyTypeOutput
+	ToPolicyOutput() PolicyOutput
+	ToPolicyOutputWithContext(context.Context) PolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeArgs struct {
+type PolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs AuditConfigArrayInput `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -2493,125 +2493,125 @@ type PolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (PolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutput() PolicyTypeOutput {
-	return i.ToPolicyTypeOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyOutput() PolicyOutput {
+	return i.ToPolicyOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput)
+func (i PolicyArgs) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput).ToPolicyTypePtrOutputWithContext(ctx)
+func (i PolicyArgs) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput).ToPolicyPtrOutputWithContext(ctx)
 }
 
-// PolicyTypePtrInput is an input type that accepts PolicyTypeArgs, PolicyTypePtr and PolicyTypePtrOutput values.
-// You can construct a concrete instance of `PolicyTypePtrInput` via:
+// PolicyPtrInput is an input type that accepts PolicyArgs, PolicyPtr and PolicyPtrOutput values.
+// You can construct a concrete instance of `PolicyPtrInput` via:
 //
-//          PolicyTypeArgs{...}
+//          PolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type PolicyTypePtrInput interface {
+type PolicyPtrInput interface {
 	pulumi.Input
 
-	ToPolicyTypePtrOutput() PolicyTypePtrOutput
-	ToPolicyTypePtrOutputWithContext(context.Context) PolicyTypePtrOutput
+	ToPolicyPtrOutput() PolicyPtrOutput
+	ToPolicyPtrOutputWithContext(context.Context) PolicyPtrOutput
 }
 
-type policyTypePtrType PolicyTypeArgs
+type policyPtrType PolicyArgs
 
-func PolicyTypePtr(v *PolicyTypeArgs) PolicyTypePtrInput {
-	return (*policyTypePtrType)(v)
+func PolicyPtr(v *PolicyArgs) PolicyPtrInput {
+	return (*policyPtrType)(v)
 }
 
-func (*policyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (*policyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i *policyPtrType) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypePtrOutput)
+func (i *policyPtrType) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeOutput struct{ *pulumi.OutputState }
+type PolicyOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutput() PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return o.ToPolicyTypePtrOutputWithContext(context.Background())
+func (o PolicyOutput) ToPolicyPtrOutput() PolicyPtrOutput {
+	return o.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return o.ApplyT(func(v PolicyType) *PolicyType {
+func (o PolicyOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return o.ApplyT(func(v Policy) *Policy {
 		return &v
-	}).(PolicyTypePtrOutput)
+	}).(PolicyPtrOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o PolicyTypeOutput) AuditConfigs() AuditConfigArrayOutput {
-	return o.ApplyT(func(v PolicyType) []AuditConfig { return v.AuditConfigs }).(AuditConfigArrayOutput)
+func (o PolicyOutput) AuditConfigs() AuditConfigArrayOutput {
+	return o.ApplyT(func(v Policy) []AuditConfig { return v.AuditConfigs }).(AuditConfigArrayOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypeOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v PolicyType) []Binding { return v.Bindings }).(BindingArrayOutput)
+func (o PolicyOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v Policy) []Binding { return v.Bindings }).(BindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type PolicyTypePtrOutput struct{ *pulumi.OutputState }
+type PolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutput() PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) Elem() PolicyTypeOutput {
-	return o.ApplyT(func(v *PolicyType) PolicyType { return *v }).(PolicyTypeOutput)
+func (o PolicyPtrOutput) Elem() PolicyOutput {
+	return o.ApplyT(func(v *Policy) Policy { return *v }).(PolicyOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o PolicyTypePtrOutput) AuditConfigs() AuditConfigArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []AuditConfig {
+func (o PolicyPtrOutput) AuditConfigs() AuditConfigArrayOutput {
+	return o.ApplyT(func(v *Policy) []AuditConfig {
 		if v == nil {
 			return nil
 		}
@@ -2620,8 +2620,8 @@ func (o PolicyTypePtrOutput) AuditConfigs() AuditConfigArrayOutput {
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []Binding {
+func (o PolicyPtrOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v *Policy) []Binding {
 		if v == nil {
 			return nil
 		}
@@ -2630,8 +2630,8 @@ func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *string {
+func (o PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) *string {
 		if v == nil {
 			return nil
 		}
@@ -2640,8 +2640,8 @@ func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *int {
+func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Policy) *int {
 		if v == nil {
 			return nil
 		}
@@ -3817,8 +3817,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageOutput{})
 	pulumi.RegisterOutputType(ImagePtrOutput{})
 	pulumi.RegisterOutputType(ImageArrayOutput{})
-	pulumi.RegisterOutputType(MessageTypeOutput{})
-	pulumi.RegisterOutputType(MessageTypePtrOutput{})
+	pulumi.RegisterOutputType(MessageOutput{})
+	pulumi.RegisterOutputType(MessagePtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ParsedDataOutput{})
@@ -3827,8 +3827,8 @@ func init() {
 	pulumi.RegisterOutputType(ParserConfigPtrOutput{})
 	pulumi.RegisterOutputType(PatientIdOutput{})
 	pulumi.RegisterOutputType(PatientIdArrayOutput{})
-	pulumi.RegisterOutputType(PolicyTypeOutput{})
-	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyOutput{})
+	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigOutput{})
 	pulumi.RegisterOutputType(SchemaConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchemaPackageOutput{})

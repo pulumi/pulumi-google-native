@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:accesscontextmanager/v1:AccessLevel":
-		r, err = NewAccessLevel(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:accesscontextmanager/v1:AccessPolicy":
 		r, err = NewAccessPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:accesscontextmanager/v1:GcpUserAccessBinding":
-		r, err = NewGcpUserAccessBinding(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:accesscontextmanager/v1:ServicePerimeter":
-		r, err = NewServicePerimeter(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:accesscontextmanager/v1:AccessPolicyAccessLevel":
+		r, err = NewAccessPolicyAccessLevel(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:accesscontextmanager/v1:AccessPolicyServicePerimeter":
+		r, err = NewAccessPolicyServicePerimeter(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:accesscontextmanager/v1:OrganizationGcpUserAccessBinding":
+		r, err = NewOrganizationGcpUserAccessBinding(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

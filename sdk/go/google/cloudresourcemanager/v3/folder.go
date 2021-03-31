@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type Folder struct {
 func NewFolder(ctx *pulumi.Context,
 	name string, args *FolderArgs, opts ...pulumi.ResourceOption) (*Folder, error) {
 	if args == nil {
-		args = &FolderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.FoldersId == nil {
+		return nil, errors.New("invalid value for required argument 'FoldersId'")
+	}
 	var resource Folder
 	err := ctx.RegisterResource("google-cloud:cloudresourcemanager/v3:Folder", name, args, &resource, opts...)
 	if err != nil {
@@ -61,7 +65,8 @@ type folderArgs struct {
 	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName *string `pulumi:"displayName"`
 	// Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag *string `pulumi:"etag"`
+	Etag      *string `pulumi:"etag"`
+	FoldersId string  `pulumi:"foldersId"`
 	// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name *string `pulumi:"name"`
 	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
@@ -81,7 +86,8 @@ type FolderArgs struct {
 	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName pulumi.StringPtrInput
 	// Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringPtrInput
+	Etag      pulumi.StringPtrInput
+	FoldersId pulumi.StringInput
 	// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name pulumi.StringPtrInput
 	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.

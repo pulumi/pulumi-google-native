@@ -932,7 +932,7 @@ func (o LinearPtrOutput) Width() pulumi.Float64PtrOutput {
 }
 
 // Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
-type LogExclusionType struct {
+type LogExclusion struct {
 	// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A description of this exclusion.
@@ -947,19 +947,19 @@ type LogExclusionType struct {
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// LogExclusionTypeInput is an input type that accepts LogExclusionTypeArgs and LogExclusionTypeOutput values.
-// You can construct a concrete instance of `LogExclusionTypeInput` via:
+// LogExclusionInput is an input type that accepts LogExclusionArgs and LogExclusionOutput values.
+// You can construct a concrete instance of `LogExclusionInput` via:
 //
-//          LogExclusionTypeArgs{...}
-type LogExclusionTypeInput interface {
+//          LogExclusionArgs{...}
+type LogExclusionInput interface {
 	pulumi.Input
 
-	ToLogExclusionTypeOutput() LogExclusionTypeOutput
-	ToLogExclusionTypeOutputWithContext(context.Context) LogExclusionTypeOutput
+	ToLogExclusionOutput() LogExclusionOutput
+	ToLogExclusionOutputWithContext(context.Context) LogExclusionOutput
 }
 
 // Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
-type LogExclusionTypeArgs struct {
+type LogExclusionArgs struct {
 	// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// Optional. A description of this exclusion.
@@ -974,106 +974,106 @@ type LogExclusionTypeArgs struct {
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
-func (LogExclusionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogExclusionType)(nil)).Elem()
+func (LogExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogExclusion)(nil)).Elem()
 }
 
-func (i LogExclusionTypeArgs) ToLogExclusionTypeOutput() LogExclusionTypeOutput {
-	return i.ToLogExclusionTypeOutputWithContext(context.Background())
+func (i LogExclusionArgs) ToLogExclusionOutput() LogExclusionOutput {
+	return i.ToLogExclusionOutputWithContext(context.Background())
 }
 
-func (i LogExclusionTypeArgs) ToLogExclusionTypeOutputWithContext(ctx context.Context) LogExclusionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionTypeOutput)
+func (i LogExclusionArgs) ToLogExclusionOutputWithContext(ctx context.Context) LogExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionOutput)
 }
 
-// LogExclusionTypeArrayInput is an input type that accepts LogExclusionTypeArray and LogExclusionTypeArrayOutput values.
-// You can construct a concrete instance of `LogExclusionTypeArrayInput` via:
+// LogExclusionArrayInput is an input type that accepts LogExclusionArray and LogExclusionArrayOutput values.
+// You can construct a concrete instance of `LogExclusionArrayInput` via:
 //
-//          LogExclusionTypeArray{ LogExclusionTypeArgs{...} }
-type LogExclusionTypeArrayInput interface {
+//          LogExclusionArray{ LogExclusionArgs{...} }
+type LogExclusionArrayInput interface {
 	pulumi.Input
 
-	ToLogExclusionTypeArrayOutput() LogExclusionTypeArrayOutput
-	ToLogExclusionTypeArrayOutputWithContext(context.Context) LogExclusionTypeArrayOutput
+	ToLogExclusionArrayOutput() LogExclusionArrayOutput
+	ToLogExclusionArrayOutputWithContext(context.Context) LogExclusionArrayOutput
 }
 
-type LogExclusionTypeArray []LogExclusionTypeInput
+type LogExclusionArray []LogExclusionInput
 
-func (LogExclusionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogExclusionType)(nil)).Elem()
+func (LogExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogExclusion)(nil)).Elem()
 }
 
-func (i LogExclusionTypeArray) ToLogExclusionTypeArrayOutput() LogExclusionTypeArrayOutput {
-	return i.ToLogExclusionTypeArrayOutputWithContext(context.Background())
+func (i LogExclusionArray) ToLogExclusionArrayOutput() LogExclusionArrayOutput {
+	return i.ToLogExclusionArrayOutputWithContext(context.Background())
 }
 
-func (i LogExclusionTypeArray) ToLogExclusionTypeArrayOutputWithContext(ctx context.Context) LogExclusionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionTypeArrayOutput)
+func (i LogExclusionArray) ToLogExclusionArrayOutputWithContext(ctx context.Context) LogExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionArrayOutput)
 }
 
 // Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
-type LogExclusionTypeOutput struct{ *pulumi.OutputState }
+type LogExclusionOutput struct{ *pulumi.OutputState }
 
-func (LogExclusionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogExclusionType)(nil)).Elem()
+func (LogExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogExclusion)(nil)).Elem()
 }
 
-func (o LogExclusionTypeOutput) ToLogExclusionTypeOutput() LogExclusionTypeOutput {
+func (o LogExclusionOutput) ToLogExclusionOutput() LogExclusionOutput {
 	return o
 }
 
-func (o LogExclusionTypeOutput) ToLogExclusionTypeOutputWithContext(ctx context.Context) LogExclusionTypeOutput {
+func (o LogExclusionOutput) ToLogExclusionOutputWithContext(ctx context.Context) LogExclusionOutput {
 	return o
 }
 
 // Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-func (o LogExclusionTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusionType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o LogExclusionOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogExclusion) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // Optional. A description of this exclusion.
-func (o LogExclusionTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusionType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LogExclusionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-func (o LogExclusionTypeOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogExclusionType) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+func (o LogExclusionOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-func (o LogExclusionTypeOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusionType) *string { return v.Filter }).(pulumi.StringPtrOutput)
+func (o LogExclusionOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogExclusion) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 // Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-func (o LogExclusionTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusionType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LogExclusionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogExclusion) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-func (o LogExclusionTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusionType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o LogExclusionOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogExclusion) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type LogExclusionTypeArrayOutput struct{ *pulumi.OutputState }
+type LogExclusionArrayOutput struct{ *pulumi.OutputState }
 
-func (LogExclusionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogExclusionType)(nil)).Elem()
+func (LogExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogExclusion)(nil)).Elem()
 }
 
-func (o LogExclusionTypeArrayOutput) ToLogExclusionTypeArrayOutput() LogExclusionTypeArrayOutput {
+func (o LogExclusionArrayOutput) ToLogExclusionArrayOutput() LogExclusionArrayOutput {
 	return o
 }
 
-func (o LogExclusionTypeArrayOutput) ToLogExclusionTypeArrayOutputWithContext(ctx context.Context) LogExclusionTypeArrayOutput {
+func (o LogExclusionArrayOutput) ToLogExclusionArrayOutputWithContext(ctx context.Context) LogExclusionArrayOutput {
 	return o
 }
 
-func (o LogExclusionTypeArrayOutput) Index(i pulumi.IntInput) LogExclusionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogExclusionType {
-		return vs[0].([]LogExclusionType)[vs[1].(int)]
-	}).(LogExclusionTypeOutput)
+func (o LogExclusionArrayOutput) Index(i pulumi.IntInput) LogExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogExclusion {
+		return vs[0].([]LogExclusion)[vs[1].(int)]
+	}).(LogExclusionOutput)
 }
 
 // Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
@@ -1585,8 +1585,8 @@ func init() {
 	pulumi.RegisterOutputType(LabelDescriptorArrayOutput{})
 	pulumi.RegisterOutputType(LinearOutput{})
 	pulumi.RegisterOutputType(LinearPtrOutput{})
-	pulumi.RegisterOutputType(LogExclusionTypeOutput{})
-	pulumi.RegisterOutputType(LogExclusionTypeArrayOutput{})
+	pulumi.RegisterOutputType(LogExclusionOutput{})
+	pulumi.RegisterOutputType(LogExclusionArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorPtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})

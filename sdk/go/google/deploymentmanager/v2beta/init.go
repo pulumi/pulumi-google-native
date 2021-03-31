@@ -25,8 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewCompositeType(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:deploymentmanager/v2beta:Deployment":
 		r, err = NewDeployment(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:deploymentmanager/v2beta:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:deploymentmanager/v2beta:DeploymentIamPolicy":
+		r, err = NewDeploymentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:deploymentmanager/v2beta:TypeProvider":
 		r, err = NewTypeProvider(ctx, name, nil, pulumi.URN_(urn))
 	default:

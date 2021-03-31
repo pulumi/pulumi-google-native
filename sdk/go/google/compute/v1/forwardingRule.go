@@ -23,6 +23,9 @@ func NewForwardingRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ForwardingRule == nil {
+		return nil, errors.New("invalid value for required argument 'ForwardingRule'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -103,7 +106,8 @@ type forwardingRuleArgs struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request.
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
-	Fingerprint *string `pulumi:"fingerprint"`
+	Fingerprint    *string `pulumi:"fingerprint"`
+	ForwardingRule string  `pulumi:"forwardingRule"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
@@ -174,19 +178,12 @@ type forwardingRuleArgs struct {
 	// For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not specify ports.
 	//
 	// For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
-	Ports []string `pulumi:"ports"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Ports   []string `pulumi:"ports"`
+	Project string   `pulumi:"project"`
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
@@ -256,7 +253,8 @@ type ForwardingRuleArgs struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request.
 	//
 	// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
-	Fingerprint pulumi.StringPtrInput
+	Fingerprint    pulumi.StringPtrInput
+	ForwardingRule pulumi.StringInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
@@ -327,19 +325,12 @@ type ForwardingRuleArgs struct {
 	// For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not specify ports.
 	//
 	// For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
-	Ports pulumi.StringArrayInput
-	// Project ID for this request.
+	Ports   pulumi.StringArrayInput
 	Project pulumi.StringInput
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.

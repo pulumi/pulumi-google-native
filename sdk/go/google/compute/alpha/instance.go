@@ -23,6 +23,9 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -89,7 +92,8 @@ type instanceArgs struct {
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname *string `pulumi:"hostname"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id *string `pulumi:"id"`
+	Id       *string `pulumi:"id"`
+	Instance string  `pulumi:"instance"`
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key.
 	//
 	// If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
@@ -139,14 +143,7 @@ type instanceArgs struct {
 	PreservedStateSizeGb *string `pulumi:"preservedStateSizeGb"`
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Project                 string  `pulumi:"project"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
@@ -175,13 +172,6 @@ type instanceArgs struct {
 	ShieldedVmConfig *ShieldedVmConfig `pulumi:"shieldedVmConfig"`
 	// Deprecating, please use shielded_instance_integrity_policy.
 	ShieldedVmIntegrityPolicy *ShieldedVmIntegrityPolicy `pulumi:"shieldedVmIntegrityPolicy"`
-	// Specifies instance template to create the instance.
-	//
-	// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate
-	// - projects/project/global/instanceTemplates/instanceTemplate
-	// - global/instanceTemplates/instanceTemplate
-	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// Source machine image
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
 	// Source machine image encryption key when creating an instance from a machine image.
@@ -230,7 +220,8 @@ type InstanceArgs struct {
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringPtrInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
-	Id pulumi.StringPtrInput
+	Id       pulumi.StringPtrInput
+	Instance pulumi.StringInput
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key.
 	//
 	// If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
@@ -280,14 +271,7 @@ type InstanceArgs struct {
 	PreservedStateSizeGb pulumi.StringPtrInput
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Project                 pulumi.StringInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
@@ -316,13 +300,6 @@ type InstanceArgs struct {
 	ShieldedVmConfig ShieldedVmConfigPtrInput
 	// Deprecating, please use shielded_instance_integrity_policy.
 	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyPtrInput
-	// Specifies instance template to create the instance.
-	//
-	// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:
-	// - https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate
-	// - projects/project/global/instanceTemplates/instanceTemplate
-	// - global/instanceTemplates/instanceTemplate
-	SourceInstanceTemplate pulumi.StringPtrInput
 	// Source machine image
 	SourceMachineImage pulumi.StringPtrInput
 	// Source machine image encryption key when creating an instance from a machine image.

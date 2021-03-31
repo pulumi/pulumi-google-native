@@ -23,8 +23,14 @@ func NewProductSet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProductSetsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProductSetsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource ProductSet
 	err := ctx.RegisterResource("google-cloud:vision/v1:ProductSet", name, args, &resource, opts...)
@@ -63,13 +69,12 @@ type productSetArgs struct {
 	// Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
 	IndexError *Status `pulumi:"indexError"`
 	// Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
-	IndexTime *string `pulumi:"indexTime"`
+	IndexTime   *string `pulumi:"indexTime"`
+	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-	Name *string `pulumi:"name"`
-	// Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-	Parent string `pulumi:"parent"`
-	// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-	ProductSetId *string `pulumi:"productSetId"`
+	Name          *string `pulumi:"name"`
+	ProductSetsId string  `pulumi:"productSetsId"`
+	ProjectsId    string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a ProductSet resource.
@@ -79,13 +84,12 @@ type ProductSetArgs struct {
 	// Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
 	IndexError StatusPtrInput
 	// Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
-	IndexTime pulumi.StringPtrInput
+	IndexTime   pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-	Name pulumi.StringPtrInput
-	// Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-	Parent pulumi.StringInput
-	// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-	ProductSetId pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	ProductSetsId pulumi.StringInput
+	ProjectsId    pulumi.StringInput
 }
 
 func (ProductSetArgs) ElementType() reflect.Type {

@@ -206,7 +206,7 @@ func (o GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput) SchemaVersion()
 }
 
 // A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time period is configurable, with options such as month (default), quarter, year, or custom time period.
-type GoogleCloudBillingBudgetsV1beta1BudgetType struct {
+type GoogleCloudBillingBudgetsV1beta1Budget struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule `pulumi:"allUpdatesRule"`
 	// Required. Budgeted amount.
@@ -223,19 +223,19 @@ type GoogleCloudBillingBudgetsV1beta1BudgetType struct {
 	ThresholdRules []GoogleCloudBillingBudgetsV1beta1ThresholdRule `pulumi:"thresholdRules"`
 }
 
-// GoogleCloudBillingBudgetsV1beta1BudgetTypeInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs and GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1BudgetTypeInput` via:
+// GoogleCloudBillingBudgetsV1beta1BudgetInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1BudgetArgs and GoogleCloudBillingBudgetsV1beta1BudgetOutput values.
+// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1BudgetInput` via:
 //
-//          GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs{...}
-type GoogleCloudBillingBudgetsV1beta1BudgetTypeInput interface {
+//          GoogleCloudBillingBudgetsV1beta1BudgetArgs{...}
+type GoogleCloudBillingBudgetsV1beta1BudgetInput interface {
 	pulumi.Input
 
-	ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput
-	ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutputWithContext(context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput
+	ToGoogleCloudBillingBudgetsV1beta1BudgetOutput() GoogleCloudBillingBudgetsV1beta1BudgetOutput
+	ToGoogleCloudBillingBudgetsV1beta1BudgetOutputWithContext(context.Context) GoogleCloudBillingBudgetsV1beta1BudgetOutput
 }
 
 // A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time period is configurable, with options such as month (default), quarter, year, or custom time period.
-type GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs struct {
+type GoogleCloudBillingBudgetsV1beta1BudgetArgs struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrInput `pulumi:"allUpdatesRule"`
 	// Required. Budgeted amount.
@@ -252,150 +252,148 @@ type GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs struct {
 	ThresholdRules GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayInput `pulumi:"thresholdRules"`
 }
 
-func (GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1BudgetType)(nil)).Elem()
+func (GoogleCloudBillingBudgetsV1beta1BudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1Budget)(nil)).Elem()
 }
 
-func (i GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput {
-	return i.ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutputWithContext(context.Background())
+func (i GoogleCloudBillingBudgetsV1beta1BudgetArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetOutput() GoogleCloudBillingBudgetsV1beta1BudgetOutput {
+	return i.ToGoogleCloudBillingBudgetsV1beta1BudgetOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput)
+func (i GoogleCloudBillingBudgetsV1beta1BudgetArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1beta1BudgetOutput)
 }
 
-func (i GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
-	return i.ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(context.Background())
+func (i GoogleCloudBillingBudgetsV1beta1BudgetArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
+	return i.ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput).ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(ctx)
+func (i GoogleCloudBillingBudgetsV1beta1BudgetArgs) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1beta1BudgetOutput).ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(ctx)
 }
 
-// GoogleCloudBillingBudgetsV1beta1BudgetTypePtrInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs, GoogleCloudBillingBudgetsV1beta1BudgetTypePtr and GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1BudgetTypePtrInput` via:
+// GoogleCloudBillingBudgetsV1beta1BudgetPtrInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1BudgetArgs, GoogleCloudBillingBudgetsV1beta1BudgetPtr and GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1BudgetPtrInput` via:
 //
-//          GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs{...}
+//          GoogleCloudBillingBudgetsV1beta1BudgetArgs{...}
 //
 //  or:
 //
 //          nil
-type GoogleCloudBillingBudgetsV1beta1BudgetTypePtrInput interface {
+type GoogleCloudBillingBudgetsV1beta1BudgetPtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput
-	ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput
+	ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput
+	ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(context.Context) GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput
 }
 
-type googleCloudBillingBudgetsV1beta1BudgetTypePtrType GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs
+type googleCloudBillingBudgetsV1beta1BudgetPtrType GoogleCloudBillingBudgetsV1beta1BudgetArgs
 
-func GoogleCloudBillingBudgetsV1beta1BudgetTypePtr(v *GoogleCloudBillingBudgetsV1beta1BudgetTypeArgs) GoogleCloudBillingBudgetsV1beta1BudgetTypePtrInput {
-	return (*googleCloudBillingBudgetsV1beta1BudgetTypePtrType)(v)
+func GoogleCloudBillingBudgetsV1beta1BudgetPtr(v *GoogleCloudBillingBudgetsV1beta1BudgetArgs) GoogleCloudBillingBudgetsV1beta1BudgetPtrInput {
+	return (*googleCloudBillingBudgetsV1beta1BudgetPtrType)(v)
 }
 
-func (*googleCloudBillingBudgetsV1beta1BudgetTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1BudgetType)(nil)).Elem()
+func (*googleCloudBillingBudgetsV1beta1BudgetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1Budget)(nil)).Elem()
 }
 
-func (i *googleCloudBillingBudgetsV1beta1BudgetTypePtrType) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
-	return i.ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(context.Background())
+func (i *googleCloudBillingBudgetsV1beta1BudgetPtrType) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
+	return i.ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(context.Background())
 }
 
-func (i *googleCloudBillingBudgetsV1beta1BudgetTypePtrType) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput)
+func (i *googleCloudBillingBudgetsV1beta1BudgetPtrType) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput)
 }
 
 // A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time period is configurable, with options such as month (default), quarter, year, or custom time period.
-type GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput struct{ *pulumi.OutputState }
+type GoogleCloudBillingBudgetsV1beta1BudgetOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1BudgetType)(nil)).Elem()
+func (GoogleCloudBillingBudgetsV1beta1BudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBillingBudgetsV1beta1Budget)(nil)).Elem()
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetOutput() GoogleCloudBillingBudgetsV1beta1BudgetOutput {
 	return o
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetTypeOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetOutput {
 	return o
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
-	return o.ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(context.Background())
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
+	return o.ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1BudgetType {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1Budget {
 		return &v
-	}).(GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput)
+	}).(GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput)
 }
 
 // Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) AllUpdatesRule() GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) AllUpdatesRule() GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 		return v.AllUpdatesRule
 	}).(GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput)
 }
 
 // Required. Budgeted amount.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) Amount() GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1BudgetAmount {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) Amount() GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1BudgetAmount {
 		return v.Amount
 	}).(GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput)
 }
 
 // Optional. Filters that define which resources are used to compute the actual spend against the budget.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) BudgetFilter() GoogleCloudBillingBudgetsV1beta1FilterPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1Filter {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) BudgetFilter() GoogleCloudBillingBudgetsV1beta1FilterPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1Filter {
 		return v.BudgetFilter
 	}).(GoogleCloudBillingBudgetsV1beta1FilterPtrOutput)
 }
 
 // User data for display name in UI. Validation: <= 60 chars.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput) ThresholdRules() GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1BudgetType) []GoogleCloudBillingBudgetsV1beta1ThresholdRule {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetOutput) ThresholdRules() GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Budget) []GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 		return v.ThresholdRules
 	}).(GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput)
 }
 
-type GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1BudgetType)(nil)).Elem()
+func (GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBillingBudgetsV1beta1Budget)(nil)).Elem()
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutput() GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
 	return o
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) ToGoogleCloudBillingBudgetsV1beta1BudgetPtrOutputWithContext(ctx context.Context) GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput {
 	return o
 }
 
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) GoogleCloudBillingBudgetsV1beta1BudgetType {
-		return *v
-	}).(GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput)
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) Elem() GoogleCloudBillingBudgetsV1beta1BudgetOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) GoogleCloudBillingBudgetsV1beta1Budget { return *v }).(GoogleCloudBillingBudgetsV1beta1BudgetOutput)
 }
 
 // Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) AllUpdatesRule() GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) AllUpdatesRule() GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 		if v == nil {
 			return nil
 		}
@@ -404,8 +402,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) AllUpdatesRule() Go
 }
 
 // Required. Budgeted amount.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Amount() GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1BudgetAmount {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) Amount() GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1BudgetAmount {
 		if v == nil {
 			return nil
 		}
@@ -414,8 +412,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Amount() GoogleClou
 }
 
 // Optional. Filters that define which resources are used to compute the actual spend against the budget.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) BudgetFilter() GoogleCloudBillingBudgetsV1beta1FilterPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) *GoogleCloudBillingBudgetsV1beta1Filter {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) BudgetFilter() GoogleCloudBillingBudgetsV1beta1FilterPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) *GoogleCloudBillingBudgetsV1beta1Filter {
 		if v == nil {
 			return nil
 		}
@@ -424,8 +422,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) BudgetFilter() Goog
 }
 
 // User data for display name in UI. Validation: <= 60 chars.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) *string {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) *string {
 		if v == nil {
 			return nil
 		}
@@ -434,8 +432,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) DisplayName() pulum
 }
 
 // Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) *string {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) *string {
 		if v == nil {
 			return nil
 		}
@@ -444,8 +442,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Etag() pulumi.Strin
 }
 
 // Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) *string {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) *string {
 		if v == nil {
 			return nil
 		}
@@ -454,8 +452,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) Name() pulumi.Strin
 }
 
 // Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
-func (o GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput) ThresholdRules() GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1BudgetType) []GoogleCloudBillingBudgetsV1beta1ThresholdRule {
+func (o GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput) ThresholdRules() GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Budget) []GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 		if v == nil {
 			return nil
 		}
@@ -1617,8 +1615,8 @@ func (o GoogleTypeMoneyPtrOutput) Units() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1BudgetTypeOutput{})
-	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1BudgetTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1BudgetOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1BudgetPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1BudgetAmountOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput{})

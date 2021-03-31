@@ -23,6 +23,9 @@ func NewDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
+	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -62,6 +65,7 @@ type datasetArgs struct {
 	Access []map[string]string `pulumi:"access"`
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *string `pulumi:"creationTime"`
+	DatasetId    string  `pulumi:"datasetId"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               *DatasetReference        `pulumi:"datasetReference"`
 	DefaultEncryptionConfiguration *EncryptionConfiguration `pulumi:"defaultEncryptionConfiguration"`
@@ -84,9 +88,8 @@ type datasetArgs struct {
 	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-	Location *string `pulumi:"location"`
-	// Project ID of the new dataset
-	ProjectId string `pulumi:"projectId"`
+	Location  *string `pulumi:"location"`
+	ProjectId string  `pulumi:"projectId"`
 	// [Output-only] Reserved for future use.
 	SatisfiesPZS *bool `pulumi:"satisfiesPZS"`
 	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
@@ -99,6 +102,7 @@ type DatasetArgs struct {
 	Access pulumi.StringMapArrayInput
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringPtrInput
+	DatasetId    pulumi.StringInput
 	// [Required] A reference that identifies the dataset.
 	DatasetReference               DatasetReferencePtrInput
 	DefaultEncryptionConfiguration EncryptionConfigurationPtrInput
@@ -121,8 +125,7 @@ type DatasetArgs struct {
 	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.StringPtrInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-	Location pulumi.StringPtrInput
-	// Project ID of the new dataset
+	Location  pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
 	// [Output-only] Reserved for future use.
 	SatisfiesPZS pulumi.BoolPtrInput

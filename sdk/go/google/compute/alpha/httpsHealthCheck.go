@@ -23,6 +23,9 @@ func NewHttpsHealthCheck(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.HttpsHealthCheck == nil {
+		return nil, errors.New("invalid value for required argument 'HttpsHealthCheck'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -67,7 +70,8 @@ type httpsHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
-	Host *string `pulumi:"host"`
+	Host             *string `pulumi:"host"`
+	HttpsHealthCheck string  `pulumi:"httpsHealthCheck"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id *string `pulumi:"id"`
 	// Type of the resource.
@@ -75,15 +79,8 @@ type httpsHealthCheckArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request. The default value is 443.
-	Port *int `pulumi:"port"`
-	// Project ID for this request.
+	Port    *int   `pulumi:"port"`
 	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath *string `pulumi:"requestPath"`
 	// [Output Only] Server-defined URL for the resource.
@@ -107,7 +104,8 @@ type HttpsHealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	// The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
-	Host pulumi.StringPtrInput
+	Host             pulumi.StringPtrInput
+	HttpsHealthCheck pulumi.StringInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
 	Id pulumi.StringPtrInput
 	// Type of the resource.
@@ -115,15 +113,8 @@ type HttpsHealthCheckArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request. The default value is 443.
-	Port pulumi.IntPtrInput
-	// Project ID for this request.
+	Port    pulumi.IntPtrInput
 	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.

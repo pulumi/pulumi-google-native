@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.
+// Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation
 type Service struct {
 	pulumi.CustomResourceState
 }
@@ -58,122 +58,18 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
-	Apis []Api `pulumi:"apis"`
-	// Auth configuration.
-	Authentication *Authentication `pulumi:"authentication"`
-	// API backend configuration.
-	Backend *Backend `pulumi:"backend"`
-	// Billing configuration.
-	Billing *Billing `pulumi:"billing"`
-	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
-	ConfigVersion *int `pulumi:"configVersion"`
-	// Context configuration.
-	Context *Context `pulumi:"context"`
-	// Configuration for the service control plane.
-	Control *Control `pulumi:"control"`
-	// Custom error configuration.
-	CustomError *CustomError `pulumi:"customError"`
-	// Additional API documentation.
-	Documentation *Documentation `pulumi:"documentation"`
-	// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-	Endpoints []Endpoint `pulumi:"endpoints"`
-	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
-	Enums []Enum `pulumi:"enums"`
-	// HTTP configuration.
-	Http *Http `pulumi:"http"`
-	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-	Id *string `pulumi:"id"`
-	// Logging configuration.
-	Logging *Logging `pulumi:"logging"`
-	// Defines the logs used by this service.
-	Logs []LogDescriptor `pulumi:"logs"`
-	// Defines the metrics used by this service.
-	Metrics []MetricDescriptor `pulumi:"metrics"`
-	// Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
-	MonitoredResources []MonitoredResourceDescriptor `pulumi:"monitoredResources"`
-	// Monitoring configuration.
-	Monitoring *Monitoring `pulumi:"monitoring"`
-	// The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
-	Name *string `pulumi:"name"`
-	// The Google project that owns this service.
+	// ID of the project that produces and owns this service.
 	ProducerProjectId *string `pulumi:"producerProjectId"`
-	// Quota configuration.
-	Quota *Quota `pulumi:"quota"`
-	// Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.
+	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
 	ServiceName string `pulumi:"serviceName"`
-	// Output only. The source information for this configuration if available.
-	SourceInfo *SourceInfo `pulumi:"sourceInfo"`
-	// System parameter configuration.
-	SystemParameters *SystemParameters `pulumi:"systemParameters"`
-	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
-	SystemTypes []Type `pulumi:"systemTypes"`
-	// The product title for this service.
-	Title *string `pulumi:"title"`
-	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
-	Types []Type `pulumi:"types"`
-	// Configuration controlling usage of this service.
-	Usage *Usage `pulumi:"usage"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
-	Apis ApiArrayInput
-	// Auth configuration.
-	Authentication AuthenticationPtrInput
-	// API backend configuration.
-	Backend BackendPtrInput
-	// Billing configuration.
-	Billing BillingPtrInput
-	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
-	ConfigVersion pulumi.IntPtrInput
-	// Context configuration.
-	Context ContextPtrInput
-	// Configuration for the service control plane.
-	Control ControlPtrInput
-	// Custom error configuration.
-	CustomError CustomErrorPtrInput
-	// Additional API documentation.
-	Documentation DocumentationPtrInput
-	// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-	Endpoints EndpointArrayInput
-	// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
-	Enums EnumArrayInput
-	// HTTP configuration.
-	Http HttpPtrInput
-	// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-	Id pulumi.StringPtrInput
-	// Logging configuration.
-	Logging LoggingPtrInput
-	// Defines the logs used by this service.
-	Logs LogDescriptorArrayInput
-	// Defines the metrics used by this service.
-	Metrics MetricDescriptorArrayInput
-	// Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
-	MonitoredResources MonitoredResourceDescriptorArrayInput
-	// Monitoring configuration.
-	Monitoring MonitoringPtrInput
-	// The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
-	Name pulumi.StringPtrInput
-	// The Google project that owns this service.
+	// ID of the project that produces and owns this service.
 	ProducerProjectId pulumi.StringPtrInput
-	// Quota configuration.
-	Quota QuotaPtrInput
-	// Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.
+	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
 	ServiceName pulumi.StringInput
-	// Output only. The source information for this configuration if available.
-	SourceInfo SourceInfoPtrInput
-	// System parameter configuration.
-	SystemParameters SystemParametersPtrInput
-	// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
-	SystemTypes TypeArrayInput
-	// The product title for this service.
-	Title pulumi.StringPtrInput
-	// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
-	Types TypeArrayInput
-	// Configuration controlling usage of this service.
-	Usage UsagePtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

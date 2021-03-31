@@ -23,8 +23,11 @@ func NewNote(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.NotesId == nil {
+		return nil, errors.New("invalid value for required argument 'NotesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Note
 	err := ctx.RegisterResource("google-cloud:containeranalysis/v1alpha1:Note", name, args, &resource, opts...)
@@ -77,13 +80,11 @@ type noteArgs struct {
 	// A detailed description of this `Note`.
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name *string `pulumi:"name"`
-	// The ID to use for this note.
-	NoteId *string `pulumi:"noteId"`
+	Name    *string `pulumi:"name"`
+	NotesId string  `pulumi:"notesId"`
 	// A note describing a package hosted by various package managers.
-	Package *Package `pulumi:"package"`
-	// This field contains the project Id for example: "projects/{project_id}
-	Parent string `pulumi:"parent"`
+	Package    *Package `pulumi:"package"`
+	ProjectsId string   `pulumi:"projectsId"`
 	// URLs associated with this note
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
 	// A one sentence description of this `Note`.
@@ -117,13 +118,11 @@ type NoteArgs struct {
 	// A detailed description of this `Note`.
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name pulumi.StringPtrInput
-	// The ID to use for this note.
-	NoteId pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	NotesId pulumi.StringInput
 	// A note describing a package hosted by various package managers.
-	Package PackagePtrInput
-	// This field contains the project Id for example: "projects/{project_id}
-	Parent pulumi.StringInput
+	Package    PackagePtrInput
+	ProjectsId pulumi.StringInput
 	// URLs associated with this note
 	RelatedUrl RelatedUrlArrayInput
 	// A one sentence description of this `Note`.

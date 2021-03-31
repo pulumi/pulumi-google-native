@@ -23,8 +23,14 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.JobsId == nil {
+		return nil, errors.New("invalid value for required argument 'JobsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-cloud:cloudscheduler/v1:Job", name, args, &resource, opts...)
@@ -66,12 +72,13 @@ type jobArgs struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	HttpTarget *HttpTarget `pulumi:"httpTarget"`
+	JobsId     string      `pulumi:"jobsId"`
 	// Output only. The time the last job attempt started.
 	LastAttemptTime *string `pulumi:"lastAttemptTime"`
+	LocationsId     string  `pulumi:"locationsId"`
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name *string `pulumi:"name"`
-	// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Pub/Sub target.
 	PubsubTarget *PubsubTarget `pulumi:"pubsubTarget"`
 	// Settings that determine the retry behavior.
@@ -100,12 +107,13 @@ type JobArgs struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	HttpTarget HttpTargetPtrInput
+	JobsId     pulumi.StringInput
 	// Output only. The time the last job attempt started.
 	LastAttemptTime pulumi.StringPtrInput
+	LocationsId     pulumi.StringInput
 	// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name pulumi.StringPtrInput
-	// Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Pub/Sub target.
 	PubsubTarget PubsubTargetPtrInput
 	// Settings that determine the retry behavior.

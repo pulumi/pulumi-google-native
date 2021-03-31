@@ -23,8 +23,14 @@ func NewFeed(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.FeedsId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedsId'")
+	}
+	if args.V1Id == nil {
+		return nil, errors.New("invalid value for required argument 'V1Id'")
+	}
+	if args.V1Id1 == nil {
+		return nil, errors.New("invalid value for required argument 'V1Id1'")
 	}
 	var resource Feed
 	err := ctx.RegisterResource("google-cloud:cloudasset/v1:Feed", name, args, &resource, opts...)
@@ -61,9 +67,10 @@ type feedArgs struct {
 	// Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id
 	Feed *FeedType `pulumi:"feed"`
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId *string `pulumi:"feedId"`
-	// Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
-	Parent string `pulumi:"parent"`
+	FeedId  *string `pulumi:"feedId"`
+	FeedsId string  `pulumi:"feedsId"`
+	V1Id    string  `pulumi:"v1Id"`
+	V1Id1   string  `pulumi:"v1Id1"`
 }
 
 // The set of arguments for constructing a Feed resource.
@@ -71,9 +78,10 @@ type FeedArgs struct {
 	// Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id
 	Feed FeedTypePtrInput
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId pulumi.StringPtrInput
-	// Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").
-	Parent pulumi.StringInput
+	FeedId  pulumi.StringPtrInput
+	FeedsId pulumi.StringInput
+	V1Id    pulumi.StringInput
+	V1Id1   pulumi.StringInput
 }
 
 func (FeedArgs) ElementType() reflect.Type {

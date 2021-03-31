@@ -23,8 +23,17 @@ func NewWorkloadIdentityPoolProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.ProvidersId == nil {
+		return nil, errors.New("invalid value for required argument 'ProvidersId'")
+	}
+	if args.WorkloadIdentityPoolsId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolsId'")
 	}
 	var resource WorkloadIdentityPoolProvider
 	err := ctx.RegisterResource("google-cloud:iam/v1:WorkloadIdentityPoolProvider", name, args, &resource, opts...)
@@ -70,16 +79,16 @@ type workloadIdentityPoolProviderArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Output only. The resource name of the provider.
 	Name *string `pulumi:"name"`
 	// An OpenId Connect 1.0 identity provider.
-	Oidc *Oidc `pulumi:"oidc"`
-	// Required. The pool to create this provider in.
-	Parent string `pulumi:"parent"`
+	Oidc        *Oidc  `pulumi:"oidc"`
+	ProjectsId  string `pulumi:"projectsId"`
+	ProvidersId string `pulumi:"providersId"`
 	// Output only. The state of the provider.
-	State *string `pulumi:"state"`
-	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	WorkloadIdentityPoolProviderId *string `pulumi:"workloadIdentityPoolProviderId"`
+	State                   *string `pulumi:"state"`
+	WorkloadIdentityPoolsId string  `pulumi:"workloadIdentityPoolsId"`
 }
 
 // The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
@@ -96,16 +105,16 @@ type WorkloadIdentityPoolProviderArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name of the provider.
 	Name pulumi.StringPtrInput
 	// An OpenId Connect 1.0 identity provider.
-	Oidc OidcPtrInput
-	// Required. The pool to create this provider in.
-	Parent pulumi.StringInput
+	Oidc        OidcPtrInput
+	ProjectsId  pulumi.StringInput
+	ProvidersId pulumi.StringInput
 	// Output only. The state of the provider.
-	State pulumi.StringPtrInput
-	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	WorkloadIdentityPoolProviderId pulumi.StringPtrInput
+	State                   pulumi.StringPtrInput
+	WorkloadIdentityPoolsId pulumi.StringInput
 }
 
 func (WorkloadIdentityPoolProviderArgs) ElementType() reflect.Type {

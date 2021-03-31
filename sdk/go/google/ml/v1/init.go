@@ -21,18 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:ml/v1:GoogleCloudMlV1__Job":
-		r, err = NewGoogleCloudMlV1__Job(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:ml/v1:GoogleCloudMlV1__Model":
-		r, err = NewGoogleCloudMlV1__Model(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:ml/v1:GoogleCloudMlV1__Study":
-		r, err = NewGoogleCloudMlV1__Study(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:ml/v1:GoogleCloudMlV1__Trial":
-		r, err = NewGoogleCloudMlV1__Trial(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:ml/v1:GoogleIamV1__Policy":
-		r, err = NewGoogleIamV1__Policy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:ml/v1:GoogleLongrunning__Operation":
-		r, err = NewGoogleLongrunning__Operation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:Job":
+		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:JobIamPolicy":
+		r, err = NewJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:Model":
+		r, err = NewModel(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:ModelIamPolicy":
+		r, err = NewModelIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:ModelVersion":
+		r, err = NewModelVersion(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:Study":
+		r, err = NewStudy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:ml/v1:StudyTrial":
+		r, err = NewStudyTrial(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -23,8 +23,14 @@ func NewEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.EnvironmentsId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Environment
 	err := ctx.RegisterResource("google-cloud:composer/v1:Environment", name, args, &resource, opts...)
@@ -61,13 +67,14 @@ type environmentArgs struct {
 	// Configuration parameters for this environment.
 	Config *EnvironmentConfig `pulumi:"config"`
 	// Output only. The time at which this environment was created.
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime     *string `pulumi:"createTime"`
+	EnvironmentsId string  `pulumi:"environmentsId"`
 	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-	Name *string `pulumi:"name"`
-	// The parent must be of the form "projects/{projectId}/locations/{locationId}".
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The current state of the environment.
 	State *string `pulumi:"state"`
 	// Output only. The time at which this environment was last modified.
@@ -81,13 +88,14 @@ type EnvironmentArgs struct {
 	// Configuration parameters for this environment.
 	Config EnvironmentConfigPtrInput
 	// Output only. The time at which this environment was created.
-	CreateTime pulumi.StringPtrInput
+	CreateTime     pulumi.StringPtrInput
+	EnvironmentsId pulumi.StringInput
 	// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-	Name pulumi.StringPtrInput
-	// The parent must be of the form "projects/{projectId}/locations/{locationId}".
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The current state of the environment.
 	State pulumi.StringPtrInput
 	// Output only. The time at which this environment was last modified.

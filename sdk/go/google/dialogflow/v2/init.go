@@ -21,24 +21,32 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Context":
-		r, err = NewGoogleCloudDialogflowV2Context(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Conversation":
-		r, err = NewGoogleCloudDialogflowV2Conversation(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2ConversationProfile":
-		r, err = NewGoogleCloudDialogflowV2ConversationProfile(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2EntityType":
-		r, err = NewGoogleCloudDialogflowV2EntityType(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Intent":
-		r, err = NewGoogleCloudDialogflowV2Intent(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2KnowledgeBase":
-		r, err = NewGoogleCloudDialogflowV2KnowledgeBase(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2Participant":
-		r, err = NewGoogleCloudDialogflowV2Participant(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleCloudDialogflowV2SessionEntityType":
-		r, err = NewGoogleCloudDialogflowV2SessionEntityType(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v2:GoogleLongrunningOperation":
-		r, err = NewGoogleLongrunningOperation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentEntityType":
+		r, err = NewAgentEntityType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentEnvironmentUserSessionContext":
+		r, err = NewAgentEnvironmentUserSessionContext(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
+		r, err = NewAgentEnvironmentUserSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentIntent":
+		r, err = NewAgentIntent(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentKnowledgeBase":
+		r, err = NewAgentKnowledgeBase(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentKnowledgeBaseDocument":
+		r, err = NewAgentKnowledgeBaseDocument(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentSessionContext":
+		r, err = NewAgentSessionContext(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:AgentSessionEntityType":
+		r, err = NewAgentSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:Conversation":
+		r, err = NewConversation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:ConversationParticipant":
+		r, err = NewConversationParticipant(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:ConversationProfile":
+		r, err = NewConversationProfile(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:KnowledgeBase":
+		r, err = NewKnowledgeBase(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v2:KnowledgeBaseDocument":
+		r, err = NewKnowledgeBaseDocument(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -26,6 +26,9 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.SecurityPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityPolicy'")
+	}
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("google-cloud:compute/alpha:SecurityPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -85,27 +88,19 @@ type securityPolicyArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// [Output Only] The parent of the security policy.
-	Parent *string `pulumi:"parent"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Parent  *string `pulumi:"parent"`
+	Project string  `pulumi:"project"`
 	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-	Rules []SecurityPolicyRule `pulumi:"rules"`
+	Rules          []SecurityPolicyRule `pulumi:"rules"`
+	SecurityPolicy string               `pulumi:"securityPolicy"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type *string `pulumi:"type"`
-	// If true, the request will not be committed.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a SecurityPolicy resource.
@@ -137,27 +132,19 @@ type SecurityPolicyArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// [Output Only] The parent of the security policy.
-	Parent pulumi.StringPtrInput
-	// Project ID for this request.
+	Parent  pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-	Rules SecurityPolicyRuleArrayInput
+	Rules          SecurityPolicyRuleArrayInput
+	SecurityPolicy pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
 	Type pulumi.StringPtrInput
-	// If true, the request will not be committed.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (SecurityPolicyArgs) ElementType() reflect.Type {

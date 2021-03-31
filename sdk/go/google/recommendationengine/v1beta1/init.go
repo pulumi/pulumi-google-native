@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:recommendationengine/v1beta1:GoogleCloudRecommendationengineV1beta1CatalogItem":
-		r, err = NewGoogleCloudRecommendationengineV1beta1CatalogItem(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:recommendationengine/v1beta1:GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration":
-		r, err = NewGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:recommendationengine/v1beta1:CatalogCatalogItem":
+		r, err = NewCatalogCatalogItem(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
+		r, err = NewCatalogEventStorePredictionApiKeyRegistration(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

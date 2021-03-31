@@ -26,6 +26,9 @@ func NewTargetInstance(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.TargetInstance == nil {
+		return nil, errors.New("invalid value for required argument 'TargetInstance'")
+	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -80,16 +83,10 @@ type targetInstanceArgs struct {
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Project string  `pulumi:"project"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink       *string `pulumi:"selfLink"`
+	TargetInstance string  `pulumi:"targetInstance"`
 	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone string `pulumi:"zone"`
 }
@@ -115,16 +112,10 @@ type TargetInstanceArgs struct {
 	NatPolicy pulumi.StringPtrInput
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
-	// Project ID for this request.
 	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
+	SelfLink       pulumi.StringPtrInput
+	TargetInstance pulumi.StringInput
 	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Zone pulumi.StringInput
 }

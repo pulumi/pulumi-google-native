@@ -26,6 +26,9 @@ func NewResponsePolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.ResponsePolicy == nil {
+		return nil, errors.New("invalid value for required argument 'ResponsePolicy'")
+	}
 	var resource ResponsePolicy
 	err := ctx.RegisterResource("google-cloud:dns/v1beta2:ResponsePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -58,34 +61,30 @@ func (ResponsePolicyState) ElementType() reflect.Type {
 }
 
 type responsePolicyArgs struct {
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId *string `pulumi:"clientOperationId"`
 	// User-provided description for this Response Policy.
 	Description *string `pulumi:"description"`
 	// Unique identifier for the resource; defined by the server (output only).
 	Id   *string `pulumi:"id"`
 	Kind *string `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
-	Networks []ResponsePolicyNetwork `pulumi:"networks"`
-	// Identifies the project addressed by this request.
-	Project string `pulumi:"project"`
+	Networks       []ResponsePolicyNetwork `pulumi:"networks"`
+	Project        string                  `pulumi:"project"`
+	ResponsePolicy string                  `pulumi:"responsePolicy"`
 	// User assigned name for this Response Policy.
 	ResponsePolicyName *string `pulumi:"responsePolicyName"`
 }
 
 // The set of arguments for constructing a ResponsePolicy resource.
 type ResponsePolicyArgs struct {
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId pulumi.StringPtrInput
 	// User-provided description for this Response Policy.
 	Description pulumi.StringPtrInput
 	// Unique identifier for the resource; defined by the server (output only).
 	Id   pulumi.StringPtrInput
 	Kind pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
-	Networks ResponsePolicyNetworkArrayInput
-	// Identifies the project addressed by this request.
-	Project pulumi.StringInput
+	Networks       ResponsePolicyNetworkArrayInput
+	Project        pulumi.StringInput
+	ResponsePolicy pulumi.StringInput
 	// User assigned name for this Response Policy.
 	ResponsePolicyName pulumi.StringPtrInput
 }

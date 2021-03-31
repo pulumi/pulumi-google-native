@@ -26,6 +26,9 @@ func NewSslPolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.SslPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'SslPolicy'")
+	}
 	var resource SslPolicy
 	err := ctx.RegisterResource("google-cloud:compute/alpha:SslPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -81,18 +84,12 @@ type sslPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 	Profile *string `pulumi:"profile"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Project string  `pulumi:"project"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
+	SslPolicy      string  `pulumi:"sslPolicy"`
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings *ServerTlsSettings `pulumi:"tlsSettings"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
@@ -124,18 +121,12 @@ type SslPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 	Profile pulumi.StringPtrInput
-	// Project ID for this request.
 	Project pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
+	SslPolicy      pulumi.StringInput
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsPtrInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.

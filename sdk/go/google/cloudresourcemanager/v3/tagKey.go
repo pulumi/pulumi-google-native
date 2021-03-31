@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type TagKey struct {
 func NewTagKey(ctx *pulumi.Context,
 	name string, args *TagKeyArgs, opts ...pulumi.ResourceOption) (*TagKey, error) {
 	if args == nil {
-		args = &TagKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.TagKeysId == nil {
+		return nil, errors.New("invalid value for required argument 'TagKeysId'")
+	}
 	var resource TagKey
 	err := ctx.RegisterResource("google-cloud:cloudresourcemanager/v3:TagKey", name, args, &resource, opts...)
 	if err != nil {
@@ -68,10 +72,9 @@ type tagKeyArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName *string `pulumi:"shortName"`
+	TagKeysId string  `pulumi:"tagKeysId"`
 	// Output only. Update time.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a TagKey resource.
@@ -90,10 +93,9 @@ type TagKeyArgs struct {
 	Parent pulumi.StringPtrInput
 	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringPtrInput
+	TagKeysId pulumi.StringInput
 	// Output only. Update time.
 	UpdateTime pulumi.StringPtrInput
-	// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TagKeyArgs) ElementType() reflect.Type {

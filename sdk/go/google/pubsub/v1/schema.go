@@ -23,8 +23,11 @@ func NewSchema(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.SchemasId == nil {
+		return nil, errors.New("invalid value for required argument 'SchemasId'")
 	}
 	var resource Schema
 	err := ctx.RegisterResource("google-cloud:pubsub/v1:Schema", name, args, &resource, opts...)
@@ -61,11 +64,9 @@ type schemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition *string `pulumi:"definition"`
 	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name *string `pulumi:"name"`
-	// Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
-	Parent string `pulumi:"parent"`
-	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
-	SchemaId *string `pulumi:"schemaId"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
+	SchemasId  string  `pulumi:"schemasId"`
 	// The type of the schema definition.
 	Type *string `pulumi:"type"`
 }
@@ -75,11 +76,9 @@ type SchemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringPtrInput
 	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name pulumi.StringPtrInput
-	// Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
-	Parent pulumi.StringInput
-	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
-	SchemaId pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
+	SchemasId  pulumi.StringInput
 	// The type of the schema definition.
 	Type pulumi.StringPtrInput
 }

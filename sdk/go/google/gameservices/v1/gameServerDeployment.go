@@ -23,8 +23,14 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.GameServerDeploymentsId == nil {
+		return nil, errors.New("invalid value for required argument 'GameServerDeploymentsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource GameServerDeployment
 	err := ctx.RegisterResource("google-cloud:gameservices/v1:GameServerDeployment", name, args, &resource, opts...)
@@ -60,18 +66,17 @@ func (GameServerDeploymentState) ElementType() reflect.Type {
 type gameServerDeploymentArgs struct {
 	// Output only. The creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. The ID of the game server delpoyment resource to be created.
-	DeploymentId *string `pulumi:"deploymentId"`
 	// Human readable description of the game server delpoyment.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
-	Etag *string `pulumi:"etag"`
+	Etag                    *string `pulumi:"etag"`
+	GameServerDeploymentsId string  `pulumi:"gameServerDeploymentsId"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-	Name *string `pulumi:"name"`
-	// Required. The parent resource name, in the following form: `projects/{project}/locations/{location}`.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -80,18 +85,17 @@ type gameServerDeploymentArgs struct {
 type GameServerDeploymentArgs struct {
 	// Output only. The creation time.
 	CreateTime pulumi.StringPtrInput
-	// Required. The ID of the game server delpoyment resource to be created.
-	DeploymentId pulumi.StringPtrInput
 	// Human readable description of the game server delpoyment.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
-	Etag pulumi.StringPtrInput
+	Etag                    pulumi.StringPtrInput
+	GameServerDeploymentsId pulumi.StringInput
 	// The labels associated with this game server deployment. Each label is a key-value pair.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-	Name pulumi.StringPtrInput
-	// Required. The parent resource name, in the following form: `projects/{project}/locations/{location}`.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringPtrInput
 }

@@ -23,8 +23,11 @@ func NewGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.GroupsId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Group
 	err := ctx.RegisterResource("google-cloud:monitoring/v3:Group", name, args, &resource, opts...)
@@ -61,15 +64,15 @@ type groupArgs struct {
 	// A user-assigned name for this group, used only for display purposes.
 	DisplayName *string `pulumi:"displayName"`
 	// The filter used to determine which monitored resources belong to this group.
-	Filter *string `pulumi:"filter"`
+	Filter   *string `pulumi:"filter"`
+	GroupsId string  `pulumi:"groupsId"`
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
 	// Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName *string `pulumi:"parentName"`
-	// If true, validate this request but do not create the group.
-	ValidateOnly *bool `pulumi:"validateOnly"`
+	ProjectsId string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -77,15 +80,15 @@ type GroupArgs struct {
 	// A user-assigned name for this group, used only for display purposes.
 	DisplayName pulumi.StringPtrInput
 	// The filter used to determine which monitored resources belong to this group.
-	Filter pulumi.StringPtrInput
+	Filter   pulumi.StringPtrInput
+	GroupsId pulumi.StringInput
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
 	// Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName pulumi.StringPtrInput
-	// If true, validate this request but do not create the group.
-	ValidateOnly pulumi.BoolPtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

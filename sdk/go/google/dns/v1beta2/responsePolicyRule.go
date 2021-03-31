@@ -29,6 +29,9 @@ func NewResponsePolicyRule(ctx *pulumi.Context,
 	if args.ResponsePolicy == nil {
 		return nil, errors.New("invalid value for required argument 'ResponsePolicy'")
 	}
+	if args.ResponsePolicyRule == nil {
+		return nil, errors.New("invalid value for required argument 'ResponsePolicyRule'")
+	}
 	var resource ResponsePolicyRule
 	err := ctx.RegisterResource("google-cloud:dns/v1beta2:ResponsePolicyRule", name, args, &resource, opts...)
 	if err != nil {
@@ -63,17 +66,14 @@ func (ResponsePolicyRuleState) ElementType() reflect.Type {
 type responsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
 	Behavior *string `pulumi:"behavior"`
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId *string `pulumi:"clientOperationId"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName *string `pulumi:"dnsName"`
 	Kind    *string `pulumi:"kind"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData *ResponsePolicyRuleLocalData `pulumi:"localData"`
-	// Identifies the project addressed by this request.
-	Project string `pulumi:"project"`
-	// User assigned name of the Response Policy containing the Response Policy Rule.
-	ResponsePolicy string `pulumi:"responsePolicy"`
+	LocalData          *ResponsePolicyRuleLocalData `pulumi:"localData"`
+	Project            string                       `pulumi:"project"`
+	ResponsePolicy     string                       `pulumi:"responsePolicy"`
+	ResponsePolicyRule string                       `pulumi:"responsePolicyRule"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName *string `pulumi:"ruleName"`
 }
@@ -82,17 +82,14 @@ type responsePolicyRuleArgs struct {
 type ResponsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
 	Behavior pulumi.StringPtrInput
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId pulumi.StringPtrInput
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringPtrInput
 	Kind    pulumi.StringPtrInput
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData ResponsePolicyRuleLocalDataPtrInput
-	// Identifies the project addressed by this request.
-	Project pulumi.StringInput
-	// User assigned name of the Response Policy containing the Response Policy Rule.
-	ResponsePolicy pulumi.StringInput
+	LocalData          ResponsePolicyRuleLocalDataPtrInput
+	Project            pulumi.StringInput
+	ResponsePolicy     pulumi.StringInput
+	ResponsePolicyRule pulumi.StringInput
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringPtrInput
 }

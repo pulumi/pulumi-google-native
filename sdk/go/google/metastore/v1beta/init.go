@@ -21,14 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:metastore/v1beta:Backup":
-		r, err = NewBackup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:metastore/v1beta:MetadataImport":
-		r, err = NewMetadataImport(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:metastore/v1beta:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:metastore/v1beta:Service":
 		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:metastore/v1beta:ServiceBackup":
+		r, err = NewServiceBackup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:metastore/v1beta:ServiceIamPolicy":
+		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:metastore/v1beta:ServiceMetadataImport":
+		r, err = NewServiceMetadataImport(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type TagValue struct {
 func NewTagValue(ctx *pulumi.Context,
 	name string, args *TagValueArgs, opts ...pulumi.ResourceOption) (*TagValue, error) {
 	if args == nil {
-		args = &TagValueArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.TagValuesId == nil {
+		return nil, errors.New("invalid value for required argument 'TagValuesId'")
+	}
 	var resource TagValue
 	err := ctx.RegisterResource("google-cloud:cloudresourcemanager/v3:TagValue", name, args, &resource, opts...)
 	if err != nil {
@@ -67,11 +71,10 @@ type tagValueArgs struct {
 	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
 	Parent *string `pulumi:"parent"`
 	// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName *string `pulumi:"shortName"`
+	ShortName   *string `pulumi:"shortName"`
+	TagValuesId string  `pulumi:"tagValuesId"`
 	// Output only. Update time.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a TagValue resource.
@@ -89,11 +92,10 @@ type TagValueArgs struct {
 	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
 	Parent pulumi.StringPtrInput
 	// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName pulumi.StringPtrInput
+	ShortName   pulumi.StringPtrInput
+	TagValuesId pulumi.StringInput
 	// Output only. Update time.
 	UpdateTime pulumi.StringPtrInput
-	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TagValueArgs) ElementType() reflect.Type {

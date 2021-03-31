@@ -23,8 +23,14 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ServicesId == nil {
+		return nil, errors.New("invalid value for required argument 'ServicesId'")
+	}
+	if args.V3Id == nil {
+		return nil, errors.New("invalid value for required argument 'V3Id'")
+	}
+	if args.V3Id1 == nil {
+		return nil, errors.New("invalid value for required argument 'V3Id1'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("google-cloud:monitoring/v3:Service", name, args, &resource, opts...)
@@ -73,13 +79,12 @@ type serviceArgs struct {
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio *MeshIstio `pulumi:"meshIstio"`
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name *string `pulumi:"name"`
-	// Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
-	Parent string `pulumi:"parent"`
-	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
-	ServiceId *string `pulumi:"serviceId"`
+	Name       *string `pulumi:"name"`
+	ServicesId string  `pulumi:"servicesId"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry *Telemetry `pulumi:"telemetry"`
+	V3Id      string     `pulumi:"v3Id"`
+	V3Id1     string     `pulumi:"v3Id1"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -99,13 +104,12 @@ type ServiceArgs struct {
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioPtrInput
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name pulumi.StringPtrInput
-	// Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
-	Parent pulumi.StringInput
-	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
-	ServiceId pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	ServicesId pulumi.StringInput
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryPtrInput
+	V3Id      pulumi.StringInput
+	V3Id1     pulumi.StringInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

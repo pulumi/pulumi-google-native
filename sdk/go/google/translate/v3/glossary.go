@@ -23,8 +23,14 @@ func NewGlossary(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.GlossariesId == nil {
+		return nil, errors.New("invalid value for required argument 'GlossariesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Glossary
 	err := ctx.RegisterResource("google-cloud:translate/v3:Glossary", name, args, &resource, opts...)
@@ -61,17 +67,18 @@ type glossaryArgs struct {
 	// Output only. When the glossary creation was finished.
 	EndTime *string `pulumi:"endTime"`
 	// Output only. The number of entries defined in the glossary.
-	EntryCount *int `pulumi:"entryCount"`
+	EntryCount   *int   `pulumi:"entryCount"`
+	GlossariesId string `pulumi:"glossariesId"`
 	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig *GlossaryInputConfig `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet *LanguageCodesSet `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair *LanguageCodePair `pulumi:"languagePair"`
+	LocationsId  string            `pulumi:"locationsId"`
 	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name *string `pulumi:"name"`
-	// Required. The project name.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. When CreateGlossary was called.
 	SubmitTime *string `pulumi:"submitTime"`
 }
@@ -81,17 +88,18 @@ type GlossaryArgs struct {
 	// Output only. When the glossary creation was finished.
 	EndTime pulumi.StringPtrInput
 	// Output only. The number of entries defined in the glossary.
-	EntryCount pulumi.IntPtrInput
+	EntryCount   pulumi.IntPtrInput
+	GlossariesId pulumi.StringInput
 	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigPtrInput
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet LanguageCodesSetPtrInput
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairPtrInput
+	LocationsId  pulumi.StringInput
 	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name pulumi.StringPtrInput
-	// Required. The project name.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. When CreateGlossary was called.
 	SubmitTime pulumi.StringPtrInput
 }

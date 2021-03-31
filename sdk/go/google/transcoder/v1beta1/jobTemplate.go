@@ -23,8 +23,14 @@ func NewJobTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.JobTemplatesId == nil {
+		return nil, errors.New("invalid value for required argument 'JobTemplatesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource JobTemplate
 	err := ctx.RegisterResource("google-cloud:transcoder/v1beta1:JobTemplate", name, args, &resource, opts...)
@@ -59,25 +65,23 @@ func (JobTemplateState) ElementType() reflect.Type {
 
 type jobTemplateArgs struct {
 	// The configuration for this template.
-	Config *JobConfig `pulumi:"config"`
-	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
-	JobTemplateId *string `pulumi:"jobTemplateId"`
+	Config         *JobConfig `pulumi:"config"`
+	JobTemplatesId string     `pulumi:"jobTemplatesId"`
+	LocationsId    string     `pulumi:"locationsId"`
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-	Name *string `pulumi:"name"`
-	// Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a JobTemplate resource.
 type JobTemplateArgs struct {
 	// The configuration for this template.
-	Config JobConfigPtrInput
-	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
-	JobTemplateId pulumi.StringPtrInput
+	Config         JobConfigPtrInput
+	JobTemplatesId pulumi.StringInput
+	LocationsId    pulumi.StringInput
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-	Name pulumi.StringPtrInput
-	// Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (JobTemplateArgs) ElementType() reflect.Type {

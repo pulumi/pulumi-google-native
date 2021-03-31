@@ -23,6 +23,9 @@ func NewDisk(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Disk == nil {
+		return nil, errors.New("invalid value for required argument 'Disk'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -65,6 +68,7 @@ type diskArgs struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	Disk        string  `pulumi:"disk"`
 	// Encrypts the disk using a customer-supplied encryption key.
 	//
 	// After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
@@ -101,20 +105,13 @@ type diskArgs struct {
 	Options *string `pulumi:"options"`
 	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
 	PhysicalBlockSizeBytes *string `pulumi:"physicalBlockSizeBytes"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project                string  `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones []string `pulumi:"replicaZones"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// [Output Only] Reserved for future use.
@@ -185,6 +182,7 @@ type DiskArgs struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	Disk        pulumi.StringInput
 	// Encrypts the disk using a customer-supplied encryption key.
 	//
 	// After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
@@ -221,20 +219,13 @@ type DiskArgs struct {
 	Options pulumi.StringPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
 	PhysicalBlockSizeBytes pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project                pulumi.StringInput
 	// Indicates how many IOPS must be provisioned for the disk.
 	ProvisionedIops pulumi.StringPtrInput
 	// [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies pulumi.StringArrayInput
 	// [Output Only] Reserved for future use.

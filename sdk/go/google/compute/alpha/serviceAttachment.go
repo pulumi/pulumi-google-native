@@ -29,6 +29,9 @@ func NewServiceAttachment(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	if args.ServiceAttachment == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAttachment'")
+	}
 	var resource ServiceAttachment
 	err := ctx.RegisterResource("google-cloud:compute/alpha:ServiceAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -81,18 +84,12 @@ type serviceAttachmentArgs struct {
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule *string `pulumi:"producerForwardingRule"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project                string  `pulumi:"project"`
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink          *string `pulumi:"selfLink"`
+	ServiceAttachment string  `pulumi:"serviceAttachment"`
 }
 
 // The set of arguments for constructing a ServiceAttachment resource.
@@ -117,18 +114,12 @@ type ServiceAttachmentArgs struct {
 	NatSubnets pulumi.StringArrayInput
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project                pulumi.StringInput
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
+	SelfLink          pulumi.StringPtrInput
+	ServiceAttachment pulumi.StringInput
 }
 
 func (ServiceAttachmentArgs) ElementType() reflect.Type {

@@ -23,6 +23,9 @@ func NewPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -60,8 +63,6 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId *string `pulumi:"clientOperationId"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description *string `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
@@ -75,16 +76,14 @@ type policyArgs struct {
 	Name *string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []PolicyNetwork `pulumi:"networks"`
-	// Identifies the project addressed by this request.
-	Project string `pulumi:"project"`
+	Policy   string          `pulumi:"policy"`
+	Project  string          `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
 	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-	ClientOperationId pulumi.StringPtrInput
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description pulumi.StringPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
@@ -98,8 +97,8 @@ type PolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks PolicyNetworkArrayInput
-	// Identifies the project addressed by this request.
-	Project pulumi.StringInput
+	Policy   pulumi.StringInput
+	Project  pulumi.StringInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {

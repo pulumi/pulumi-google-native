@@ -23,8 +23,14 @@ func NewBackup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.BackupsId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Backup
 	err := ctx.RegisterResource("google-cloud:file/v1:Backup", name, args, &resource, opts...)
@@ -58,8 +64,7 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
-	// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
-	BackupId *string `pulumi:"backupId"`
+	BackupsId string `pulumi:"backupsId"`
 	// Output only. Capacity of the source file share when the backup was created.
 	CapacityGb *string `pulumi:"capacityGb"`
 	// Output only. The time when the backup was created.
@@ -69,11 +74,11 @@ type backupArgs struct {
 	// Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 	DownloadBytes *string `pulumi:"downloadBytes"`
 	// Resource labels to represent user provided metadata.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
-	Name *string `pulumi:"name"`
-	// Required. The backup's project and location, in the format projects/{project_number}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions, for example **us-west1**.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
@@ -88,8 +93,7 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
-	// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
-	BackupId pulumi.StringPtrInput
+	BackupsId pulumi.StringInput
 	// Output only. Capacity of the source file share when the backup was created.
 	CapacityGb pulumi.StringPtrInput
 	// Output only. The time when the backup was created.
@@ -99,11 +103,11 @@ type BackupArgs struct {
 	// Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 	DownloadBytes pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
-	Name pulumi.StringPtrInput
-	// Required. The backup's project and location, in the format projects/{project_number}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions, for example **us-west1**.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.

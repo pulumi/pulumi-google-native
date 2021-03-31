@@ -23,8 +23,14 @@ func NewConnectionProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ConnectionProfilesId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionProfilesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource ConnectionProfile
 	err := ctx.RegisterResource("google-cloud:datamigration/v1beta1:ConnectionProfile", name, args, &resource, opts...)
@@ -59,9 +65,8 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 
 type connectionProfileArgs struct {
 	// A CloudSQL database connection profile.
-	Cloudsql *CloudSqlConnectionProfile `pulumi:"cloudsql"`
-	// Required. The connection profile identifier.
-	ConnectionProfileId *string `pulumi:"connectionProfileId"`
+	Cloudsql             *CloudSqlConnectionProfile `pulumi:"cloudsql"`
+	ConnectionProfilesId string                     `pulumi:"connectionProfilesId"`
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// The connection profile display name.
@@ -69,17 +74,15 @@ type connectionProfileArgs struct {
 	// Output only. The error details in case of state FAILED.
 	Error *Status `pulumi:"error"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// A MySQL database connection profile.
 	Mysql *MySqlConnectionProfile `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
-	Name *string `pulumi:"name"`
-	// Required. The parent, which owns this collection of connection profiles.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The database provider.
 	Provider *string `pulumi:"provider"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId *string `pulumi:"requestId"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State *string `pulumi:"state"`
 	// Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -89,9 +92,8 @@ type connectionProfileArgs struct {
 // The set of arguments for constructing a ConnectionProfile resource.
 type ConnectionProfileArgs struct {
 	// A CloudSQL database connection profile.
-	Cloudsql CloudSqlConnectionProfilePtrInput
-	// Required. The connection profile identifier.
-	ConnectionProfileId pulumi.StringPtrInput
+	Cloudsql             CloudSqlConnectionProfilePtrInput
+	ConnectionProfilesId pulumi.StringInput
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// The connection profile display name.
@@ -99,17 +101,15 @@ type ConnectionProfileArgs struct {
 	// Output only. The error details in case of state FAILED.
 	Error StatusPtrInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfilePtrInput
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
-	Name pulumi.StringPtrInput
-	// Required. The parent, which owns this collection of connection profiles.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The database provider.
 	Provider pulumi.StringPtrInput
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State pulumi.StringPtrInput
 	// Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".

@@ -21,12 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:cloudidentity/v1:GoogleAppsCloudidentityDevicesV1Device":
-		r, err = NewGoogleAppsCloudidentityDevicesV1Device(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudidentity/v1:Device":
+		r, err = NewDevice(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudidentity/v1:Group":
 		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudidentity/v1:Membership":
-		r, err = NewMembership(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudidentity/v1:GroupMembership":
+		r, err = NewGroupMembership(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

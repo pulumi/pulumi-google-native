@@ -25,10 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewBackupRun(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:sqladmin/v1beta4:Database":
 		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:sqladmin/v1beta4:DatabaseInstance":
-		r, err = NewDatabaseInstance(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:sqladmin/v1beta4:SslCertsInsertResponse":
-		r, err = NewSslCertsInsertResponse(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:sqladmin/v1beta4:Instance":
+		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:sqladmin/v1beta4:SslCert":
+		r, err = NewSslCert(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:sqladmin/v1beta4:User":
 		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
 	default:

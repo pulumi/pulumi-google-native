@@ -23,8 +23,14 @@ func NewPhraseSet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.PhraseSetsId == nil {
+		return nil, errors.New("invalid value for required argument 'PhraseSetsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource PhraseSet
 	err := ctx.RegisterResource("google-cloud:speech/v1p1beta1:PhraseSet", name, args, &resource, opts...)
@@ -58,22 +64,24 @@ func (PhraseSetState) ElementType() reflect.Type {
 }
 
 type phraseSetArgs struct {
-	// Required. The parent resource where this phrase set will be created. Format: {api_version}/projects/{project}/locations/{location}/phraseSets
-	Parent string `pulumi:"parent"`
+	LocationsId string `pulumi:"locationsId"`
 	// Required. The phrase set to create.
 	PhraseSet *PhraseSetType `pulumi:"phraseSet"`
 	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-	PhraseSetId *string `pulumi:"phraseSetId"`
+	PhraseSetId  *string `pulumi:"phraseSetId"`
+	PhraseSetsId string  `pulumi:"phraseSetsId"`
+	ProjectsId   string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a PhraseSet resource.
 type PhraseSetArgs struct {
-	// Required. The parent resource where this phrase set will be created. Format: {api_version}/projects/{project}/locations/{location}/phraseSets
-	Parent pulumi.StringInput
+	LocationsId pulumi.StringInput
 	// Required. The phrase set to create.
 	PhraseSet PhraseSetTypePtrInput
 	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-	PhraseSetId pulumi.StringPtrInput
+	PhraseSetId  pulumi.StringPtrInput
+	PhraseSetsId pulumi.StringInput
+	ProjectsId   pulumi.StringInput
 }
 
 func (PhraseSetArgs) ElementType() reflect.Type {

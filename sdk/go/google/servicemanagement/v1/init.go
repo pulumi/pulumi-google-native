@@ -21,14 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:servicemanagement/v1:ManagedService":
-		r, err = NewManagedService(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:servicemanagement/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:servicemanagement/v1:Rollout":
-		r, err = NewRollout(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:servicemanagement/v1:Service":
 		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:servicemanagement/v1:ServiceConfig":
+		r, err = NewServiceConfig(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:servicemanagement/v1:ServiceConsumerIamPolicy":
+		r, err = NewServiceConsumerIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:servicemanagement/v1:ServiceIamPolicy":
+		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:servicemanagement/v1:ServiceRollout":
+		r, err = NewServiceRollout(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

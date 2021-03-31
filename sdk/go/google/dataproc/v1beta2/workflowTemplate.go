@@ -23,8 +23,14 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.WorkflowTemplatesId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowTemplatesId'")
 	}
 	var resource WorkflowTemplate
 	err := ctx.RegisterResource("google-cloud:dataproc/v1beta2:WorkflowTemplate", name, args, &resource, opts...)
@@ -67,19 +73,20 @@ type workflowTemplateArgs struct {
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []OrderedJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []TemplateParameter `pulumi:"parameters"`
-	// Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location}
-	Parent string `pulumi:"parent"`
 	// Required. WorkflowTemplate scheduling information.
-	Placement *WorkflowTemplatePlacement `pulumi:"placement"`
+	Placement  *WorkflowTemplatePlacement `pulumi:"placement"`
+	ProjectsId string                     `pulumi:"projectsId"`
 	// Output only. The time template was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version *int `pulumi:"version"`
+	Version             *int   `pulumi:"version"`
+	WorkflowTemplatesId string `pulumi:"workflowTemplatesId"`
 }
 
 // The set of arguments for constructing a WorkflowTemplate resource.
@@ -93,19 +100,20 @@ type WorkflowTemplateArgs struct {
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs OrderedJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters TemplateParameterArrayInput
-	// Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location}
-	Parent pulumi.StringInput
 	// Required. WorkflowTemplate scheduling information.
-	Placement WorkflowTemplatePlacementPtrInput
+	Placement  WorkflowTemplatePlacementPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The time template was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version pulumi.IntPtrInput
+	Version             pulumi.IntPtrInput
+	WorkflowTemplatesId pulumi.StringInput
 }
 
 func (WorkflowTemplateArgs) ElementType() reflect.Type {

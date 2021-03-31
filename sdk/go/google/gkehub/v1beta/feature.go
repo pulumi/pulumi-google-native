@@ -23,8 +23,11 @@ func NewFeature(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.FeaturesId == nil {
+		return nil, errors.New("invalid value for required argument 'FeaturesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Feature
 	err := ctx.RegisterResource("google-cloud:gkehub/v1beta:Feature", name, args, &resource, opts...)
@@ -62,8 +65,7 @@ type featureArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. When the Feature resource was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// The ID of the feature to create.
-	FeatureId *string `pulumi:"featureId"`
+	FeaturesId string  `pulumi:"featuresId"`
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
@@ -71,11 +73,8 @@ type featureArgs struct {
 	// Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipStates map[string]string `pulumi:"membershipStates"`
 	// Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-	Name *string `pulumi:"name"`
-	// The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/global`.
-	Parent string `pulumi:"parent"`
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. State of the Feature resource itself.
 	ResourceState *FeatureResourceState `pulumi:"resourceState"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
@@ -92,8 +91,7 @@ type FeatureArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringPtrInput
-	// The ID of the feature to create.
-	FeatureId pulumi.StringPtrInput
+	FeaturesId pulumi.StringInput
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapInput
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
@@ -101,11 +99,8 @@ type FeatureArgs struct {
 	// Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipStates pulumi.StringMapInput
 	// Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-	Name pulumi.StringPtrInput
-	// The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/global`.
-	Parent pulumi.StringInput
-	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. State of the Feature resource itself.
 	ResourceState FeatureResourceStatePtrInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.

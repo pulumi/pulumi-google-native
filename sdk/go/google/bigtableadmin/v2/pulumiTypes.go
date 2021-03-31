@@ -1360,7 +1360,7 @@ func (o MultiClusterRoutingUseAnyPtrOutput) Elem() MultiClusterRoutingUseAnyOutp
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyType struct {
+type Policy struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []AuditConfig `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -1371,19 +1371,19 @@ type PolicyType struct {
 	Version *int `pulumi:"version"`
 }
 
-// PolicyTypeInput is an input type that accepts PolicyTypeArgs and PolicyTypeOutput values.
-// You can construct a concrete instance of `PolicyTypeInput` via:
+// PolicyInput is an input type that accepts PolicyArgs and PolicyOutput values.
+// You can construct a concrete instance of `PolicyInput` via:
 //
-//          PolicyTypeArgs{...}
-type PolicyTypeInput interface {
+//          PolicyArgs{...}
+type PolicyInput interface {
 	pulumi.Input
 
-	ToPolicyTypeOutput() PolicyTypeOutput
-	ToPolicyTypeOutputWithContext(context.Context) PolicyTypeOutput
+	ToPolicyOutput() PolicyOutput
+	ToPolicyOutputWithContext(context.Context) PolicyOutput
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeArgs struct {
+type PolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs AuditConfigArrayInput `pulumi:"auditConfigs"`
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -1394,125 +1394,125 @@ type PolicyTypeArgs struct {
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
-func (PolicyTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutput() PolicyTypeOutput {
-	return i.ToPolicyTypeOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyOutput() PolicyOutput {
+	return i.ToPolicyOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput)
+func (i PolicyArgs) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i PolicyArgs) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i PolicyTypeArgs) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypeOutput).ToPolicyTypePtrOutputWithContext(ctx)
+func (i PolicyArgs) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput).ToPolicyPtrOutputWithContext(ctx)
 }
 
-// PolicyTypePtrInput is an input type that accepts PolicyTypeArgs, PolicyTypePtr and PolicyTypePtrOutput values.
-// You can construct a concrete instance of `PolicyTypePtrInput` via:
+// PolicyPtrInput is an input type that accepts PolicyArgs, PolicyPtr and PolicyPtrOutput values.
+// You can construct a concrete instance of `PolicyPtrInput` via:
 //
-//          PolicyTypeArgs{...}
+//          PolicyArgs{...}
 //
 //  or:
 //
 //          nil
-type PolicyTypePtrInput interface {
+type PolicyPtrInput interface {
 	pulumi.Input
 
-	ToPolicyTypePtrOutput() PolicyTypePtrOutput
-	ToPolicyTypePtrOutputWithContext(context.Context) PolicyTypePtrOutput
+	ToPolicyPtrOutput() PolicyPtrOutput
+	ToPolicyPtrOutputWithContext(context.Context) PolicyPtrOutput
 }
 
-type policyTypePtrType PolicyTypeArgs
+type policyPtrType PolicyArgs
 
-func PolicyTypePtr(v *PolicyTypeArgs) PolicyTypePtrInput {
-	return (*policyTypePtrType)(v)
+func PolicyPtr(v *PolicyArgs) PolicyPtrInput {
+	return (*policyPtrType)(v)
 }
 
-func (*policyTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (*policyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return i.ToPolicyTypePtrOutputWithContext(context.Background())
+func (i *policyPtrType) ToPolicyPtrOutput() PolicyPtrOutput {
+	return i.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *policyTypePtrType) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTypePtrOutput)
+func (i *policyPtrType) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPtrOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-type PolicyTypeOutput struct{ *pulumi.OutputState }
+type PolicyOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyType)(nil)).Elem()
+func (PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutput() PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypeOutputWithContext(ctx context.Context) PolicyTypeOutput {
+func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
-	return o.ToPolicyTypePtrOutputWithContext(context.Background())
+func (o PolicyOutput) ToPolicyPtrOutput() PolicyPtrOutput {
+	return o.ToPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o PolicyTypeOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
-	return o.ApplyT(func(v PolicyType) *PolicyType {
+func (o PolicyOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
+	return o.ApplyT(func(v Policy) *Policy {
 		return &v
-	}).(PolicyTypePtrOutput)
+	}).(PolicyPtrOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o PolicyTypeOutput) AuditConfigs() AuditConfigArrayOutput {
-	return o.ApplyT(func(v PolicyType) []AuditConfig { return v.AuditConfigs }).(AuditConfigArrayOutput)
+func (o PolicyOutput) AuditConfigs() AuditConfigArrayOutput {
+	return o.ApplyT(func(v Policy) []AuditConfig { return v.AuditConfigs }).(AuditConfigArrayOutput)
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypeOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v PolicyType) []Binding { return v.Bindings }).(BindingArrayOutput)
+func (o PolicyOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v Policy) []Binding { return v.Bindings }).(BindingArrayOutput)
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypeOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicyType) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type PolicyTypePtrOutput struct{ *pulumi.OutputState }
+type PolicyPtrOutput struct{ *pulumi.OutputState }
 
-func (PolicyTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyType)(nil)).Elem()
+func (PolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Policy)(nil)).Elem()
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutput() PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
+func (o PolicyPtrOutput) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
 	return o
 }
 
-func (o PolicyTypePtrOutput) Elem() PolicyTypeOutput {
-	return o.ApplyT(func(v *PolicyType) PolicyType { return *v }).(PolicyTypeOutput)
+func (o PolicyPtrOutput) Elem() PolicyOutput {
+	return o.ApplyT(func(v *Policy) Policy { return *v }).(PolicyOutput)
 }
 
 // Specifies cloud audit logging configuration for this policy.
-func (o PolicyTypePtrOutput) AuditConfigs() AuditConfigArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []AuditConfig {
+func (o PolicyPtrOutput) AuditConfigs() AuditConfigArrayOutput {
+	return o.ApplyT(func(v *Policy) []AuditConfig {
 		if v == nil {
 			return nil
 		}
@@ -1521,8 +1521,8 @@ func (o PolicyTypePtrOutput) AuditConfigs() AuditConfigArrayOutput {
 }
 
 // Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
-	return o.ApplyT(func(v *PolicyType) []Binding {
+func (o PolicyPtrOutput) Bindings() BindingArrayOutput {
+	return o.ApplyT(func(v *Policy) []Binding {
 		if v == nil {
 			return nil
 		}
@@ -1531,8 +1531,8 @@ func (o PolicyTypePtrOutput) Bindings() BindingArrayOutput {
 }
 
 // `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *string {
+func (o PolicyPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) *string {
 		if v == nil {
 			return nil
 		}
@@ -1541,8 +1541,8 @@ func (o PolicyTypePtrOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o PolicyTypePtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicyType) *int {
+func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Policy) *int {
 		if v == nil {
 			return nil
 		}
@@ -2129,7 +2129,7 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 }
 
 // A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster.
-type TableType struct {
+type Table struct {
 	// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
 	ClusterStates map[string]string `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
@@ -2142,19 +2142,19 @@ type TableType struct {
 	RestoreInfo *RestoreInfo `pulumi:"restoreInfo"`
 }
 
-// TableTypeInput is an input type that accepts TableTypeArgs and TableTypeOutput values.
-// You can construct a concrete instance of `TableTypeInput` via:
+// TableInput is an input type that accepts TableArgs and TableOutput values.
+// You can construct a concrete instance of `TableInput` via:
 //
-//          TableTypeArgs{...}
-type TableTypeInput interface {
+//          TableArgs{...}
+type TableInput interface {
 	pulumi.Input
 
-	ToTableTypeOutput() TableTypeOutput
-	ToTableTypeOutputWithContext(context.Context) TableTypeOutput
+	ToTableOutput() TableOutput
+	ToTableOutputWithContext(context.Context) TableOutput
 }
 
 // A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster.
-type TableTypeArgs struct {
+type TableArgs struct {
 	// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
 	ClusterStates pulumi.StringMapInput `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
@@ -2167,130 +2167,130 @@ type TableTypeArgs struct {
 	RestoreInfo RestoreInfoPtrInput `pulumi:"restoreInfo"`
 }
 
-func (TableTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableType)(nil)).Elem()
+func (TableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Table)(nil)).Elem()
 }
 
-func (i TableTypeArgs) ToTableTypeOutput() TableTypeOutput {
-	return i.ToTableTypeOutputWithContext(context.Background())
+func (i TableArgs) ToTableOutput() TableOutput {
+	return i.ToTableOutputWithContext(context.Background())
 }
 
-func (i TableTypeArgs) ToTableTypeOutputWithContext(ctx context.Context) TableTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTypeOutput)
+func (i TableArgs) ToTableOutputWithContext(ctx context.Context) TableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableOutput)
 }
 
-func (i TableTypeArgs) ToTableTypePtrOutput() TableTypePtrOutput {
-	return i.ToTableTypePtrOutputWithContext(context.Background())
+func (i TableArgs) ToTablePtrOutput() TablePtrOutput {
+	return i.ToTablePtrOutputWithContext(context.Background())
 }
 
-func (i TableTypeArgs) ToTableTypePtrOutputWithContext(ctx context.Context) TableTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTypeOutput).ToTableTypePtrOutputWithContext(ctx)
+func (i TableArgs) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableOutput).ToTablePtrOutputWithContext(ctx)
 }
 
-// TableTypePtrInput is an input type that accepts TableTypeArgs, TableTypePtr and TableTypePtrOutput values.
-// You can construct a concrete instance of `TableTypePtrInput` via:
+// TablePtrInput is an input type that accepts TableArgs, TablePtr and TablePtrOutput values.
+// You can construct a concrete instance of `TablePtrInput` via:
 //
-//          TableTypeArgs{...}
+//          TableArgs{...}
 //
 //  or:
 //
 //          nil
-type TableTypePtrInput interface {
+type TablePtrInput interface {
 	pulumi.Input
 
-	ToTableTypePtrOutput() TableTypePtrOutput
-	ToTableTypePtrOutputWithContext(context.Context) TableTypePtrOutput
+	ToTablePtrOutput() TablePtrOutput
+	ToTablePtrOutputWithContext(context.Context) TablePtrOutput
 }
 
-type tableTypePtrType TableTypeArgs
+type tablePtrType TableArgs
 
-func TableTypePtr(v *TableTypeArgs) TableTypePtrInput {
-	return (*tableTypePtrType)(v)
+func TablePtr(v *TableArgs) TablePtrInput {
+	return (*tablePtrType)(v)
 }
 
-func (*tableTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableType)(nil)).Elem()
+func (*tablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Table)(nil)).Elem()
 }
 
-func (i *tableTypePtrType) ToTableTypePtrOutput() TableTypePtrOutput {
-	return i.ToTableTypePtrOutputWithContext(context.Background())
+func (i *tablePtrType) ToTablePtrOutput() TablePtrOutput {
+	return i.ToTablePtrOutputWithContext(context.Background())
 }
 
-func (i *tableTypePtrType) ToTableTypePtrOutputWithContext(ctx context.Context) TableTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTypePtrOutput)
+func (i *tablePtrType) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TablePtrOutput)
 }
 
 // A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster.
-type TableTypeOutput struct{ *pulumi.OutputState }
+type TableOutput struct{ *pulumi.OutputState }
 
-func (TableTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableType)(nil)).Elem()
+func (TableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Table)(nil)).Elem()
 }
 
-func (o TableTypeOutput) ToTableTypeOutput() TableTypeOutput {
+func (o TableOutput) ToTableOutput() TableOutput {
 	return o
 }
 
-func (o TableTypeOutput) ToTableTypeOutputWithContext(ctx context.Context) TableTypeOutput {
+func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-func (o TableTypeOutput) ToTableTypePtrOutput() TableTypePtrOutput {
-	return o.ToTableTypePtrOutputWithContext(context.Background())
+func (o TableOutput) ToTablePtrOutput() TablePtrOutput {
+	return o.ToTablePtrOutputWithContext(context.Background())
 }
 
-func (o TableTypeOutput) ToTableTypePtrOutputWithContext(ctx context.Context) TableTypePtrOutput {
-	return o.ApplyT(func(v TableType) *TableType {
+func (o TableOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
+	return o.ApplyT(func(v Table) *Table {
 		return &v
-	}).(TableTypePtrOutput)
+	}).(TablePtrOutput)
 }
 
 // Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-func (o TableTypeOutput) ClusterStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableType) map[string]string { return v.ClusterStates }).(pulumi.StringMapOutput)
+func (o TableOutput) ClusterStates() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Table) map[string]string { return v.ClusterStates }).(pulumi.StringMapOutput)
 }
 
 // The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
-func (o TableTypeOutput) ColumnFamilies() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableType) map[string]string { return v.ColumnFamilies }).(pulumi.StringMapOutput)
+func (o TableOutput) ColumnFamilies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Table) map[string]string { return v.ColumnFamilies }).(pulumi.StringMapOutput)
 }
 
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-func (o TableTypeOutput) Granularity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableType) *string { return v.Granularity }).(pulumi.StringPtrOutput)
+func (o TableOutput) Granularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Table) *string { return v.Granularity }).(pulumi.StringPtrOutput)
 }
 
 // The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-func (o TableTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o TableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Table) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-func (o TableTypeOutput) RestoreInfo() RestoreInfoPtrOutput {
-	return o.ApplyT(func(v TableType) *RestoreInfo { return v.RestoreInfo }).(RestoreInfoPtrOutput)
+func (o TableOutput) RestoreInfo() RestoreInfoPtrOutput {
+	return o.ApplyT(func(v Table) *RestoreInfo { return v.RestoreInfo }).(RestoreInfoPtrOutput)
 }
 
-type TableTypePtrOutput struct{ *pulumi.OutputState }
+type TablePtrOutput struct{ *pulumi.OutputState }
 
-func (TableTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableType)(nil)).Elem()
+func (TablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Table)(nil)).Elem()
 }
 
-func (o TableTypePtrOutput) ToTableTypePtrOutput() TableTypePtrOutput {
+func (o TablePtrOutput) ToTablePtrOutput() TablePtrOutput {
 	return o
 }
 
-func (o TableTypePtrOutput) ToTableTypePtrOutputWithContext(ctx context.Context) TableTypePtrOutput {
+func (o TablePtrOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
 	return o
 }
 
-func (o TableTypePtrOutput) Elem() TableTypeOutput {
-	return o.ApplyT(func(v *TableType) TableType { return *v }).(TableTypeOutput)
+func (o TablePtrOutput) Elem() TableOutput {
+	return o.ApplyT(func(v *Table) Table { return *v }).(TableOutput)
 }
 
 // Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-func (o TableTypePtrOutput) ClusterStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TableType) map[string]string {
+func (o TablePtrOutput) ClusterStates() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -2299,8 +2299,8 @@ func (o TableTypePtrOutput) ClusterStates() pulumi.StringMapOutput {
 }
 
 // The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
-func (o TableTypePtrOutput) ColumnFamilies() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TableType) map[string]string {
+func (o TablePtrOutput) ColumnFamilies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -2309,8 +2309,8 @@ func (o TableTypePtrOutput) ColumnFamilies() pulumi.StringMapOutput {
 }
 
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-func (o TableTypePtrOutput) Granularity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableType) *string {
+func (o TablePtrOutput) Granularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) *string {
 		if v == nil {
 			return nil
 		}
@@ -2319,8 +2319,8 @@ func (o TableTypePtrOutput) Granularity() pulumi.StringPtrOutput {
 }
 
 // The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-func (o TableTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableType) *string {
+func (o TablePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) *string {
 		if v == nil {
 			return nil
 		}
@@ -2329,8 +2329,8 @@ func (o TableTypePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-func (o TableTypePtrOutput) RestoreInfo() RestoreInfoPtrOutput {
-	return o.ApplyT(func(v *TableType) *RestoreInfo {
+func (o TablePtrOutput) RestoreInfo() RestoreInfoPtrOutput {
+	return o.ApplyT(func(v *Table) *RestoreInfo {
 		if v == nil {
 			return nil
 		}
@@ -2357,8 +2357,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyPtrOutput{})
-	pulumi.RegisterOutputType(PolicyTypeOutput{})
-	pulumi.RegisterOutputType(PolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(PolicyOutput{})
+	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(RestoreInfoOutput{})
 	pulumi.RegisterOutputType(RestoreInfoPtrOutput{})
 	pulumi.RegisterOutputType(SingleClusterRoutingOutput{})
@@ -2367,6 +2367,6 @@ func init() {
 	pulumi.RegisterOutputType(SplitArrayOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
-	pulumi.RegisterOutputType(TableTypeOutput{})
-	pulumi.RegisterOutputType(TableTypePtrOutput{})
+	pulumi.RegisterOutputType(TableOutput{})
+	pulumi.RegisterOutputType(TablePtrOutput{})
 }

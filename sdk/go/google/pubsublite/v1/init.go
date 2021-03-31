@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:pubsublite/v1:Subscription":
-		r, err = NewSubscription(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:pubsublite/v1:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:pubsublite/v1:AdminSubscription":
+		r, err = NewAdminSubscription(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:pubsublite/v1:AdminTopic":
+		r, err = NewAdminTopic(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

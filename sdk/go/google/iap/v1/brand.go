@@ -23,8 +23,8 @@ func NewBrand(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Brand
 	err := ctx.RegisterResource("google-cloud:iap/v1:Brand", name, args, &resource, opts...)
@@ -63,9 +63,8 @@ type brandArgs struct {
 	// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
 	Name *string `pulumi:"name"`
 	// Output only. Whether the brand is only intended for usage inside the G Suite organization only.
-	OrgInternalOnly *bool `pulumi:"orgInternalOnly"`
-	// Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}.
-	Parent string `pulumi:"parent"`
+	OrgInternalOnly *bool  `pulumi:"orgInternalOnly"`
+	ProjectsId      string `pulumi:"projectsId"`
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail *string `pulumi:"supportEmail"`
 }
@@ -78,8 +77,7 @@ type BrandArgs struct {
 	Name pulumi.StringPtrInput
 	// Output only. Whether the brand is only intended for usage inside the G Suite organization only.
 	OrgInternalOnly pulumi.BoolPtrInput
-	// Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}.
-	Parent pulumi.StringInput
+	ProjectsId      pulumi.StringInput
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail pulumi.StringPtrInput
 }

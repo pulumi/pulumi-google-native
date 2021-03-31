@@ -25,8 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewDevice(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudidentity/v1beta1:Group":
 		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudidentity/v1beta1:Membership":
-		r, err = NewMembership(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudidentity/v1beta1:GroupMembership":
+		r, err = NewGroupMembership(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

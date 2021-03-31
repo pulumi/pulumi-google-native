@@ -21,30 +21,38 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:healthcare/v1:AttributeDefinition":
-		r, err = NewAttributeDefinition(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:Consent":
-		r, err = NewConsent(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:ConsentArtifact":
-		r, err = NewConsentArtifact(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:ConsentStore":
-		r, err = NewConsentStore(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:healthcare/v1:Dataset":
 		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:DicomStore":
-		r, err = NewDicomStore(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:FhirStore":
-		r, err = NewFhirStore(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:Hl7V2Store":
-		r, err = NewHl7V2Store(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:HttpBody":
-		r, err = NewHttpBody(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:Message":
-		r, err = NewMessage(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:healthcare/v1:UserDataMapping":
-		r, err = NewUserDataMapping(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetConsentStore":
+		r, err = NewDatasetConsentStore(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetConsentStoreAttributeDefinition":
+		r, err = NewDatasetConsentStoreAttributeDefinition(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetConsentStoreConsent":
+		r, err = NewDatasetConsentStoreConsent(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetConsentStoreConsentArtifact":
+		r, err = NewDatasetConsentStoreConsentArtifact(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetConsentStoreIamPolicy":
+		r, err = NewDatasetConsentStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetConsentStoreUserDataMapping":
+		r, err = NewDatasetConsentStoreUserDataMapping(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetDicomStore":
+		r, err = NewDatasetDicomStore(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetDicomStoreIamPolicy":
+		r, err = NewDatasetDicomStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetFhirStore":
+		r, err = NewDatasetFhirStore(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetFhirStoreFhir":
+		r, err = NewDatasetFhirStoreFhir(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetFhirStoreIamPolicy":
+		r, err = NewDatasetFhirStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetHl7V2Store":
+		r, err = NewDatasetHl7V2Store(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetHl7V2StoreIamPolicy":
+		r, err = NewDatasetHl7V2StoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetHl7V2StoreMessage":
+		r, err = NewDatasetHl7V2StoreMessage(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:healthcare/v1:DatasetIamPolicy":
+		r, err = NewDatasetIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

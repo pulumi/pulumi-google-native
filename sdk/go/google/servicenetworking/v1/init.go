@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:servicenetworking/v1:Connection":
-		r, err = NewConnection(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:servicenetworking/v1:PeeredDnsDomain":
-		r, err = NewPeeredDnsDomain(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:servicenetworking/v1:ServiceConnection":
+		r, err = NewServiceConnection(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain":
+		r, err = NewServiceNetworkPeeredDnsDomain(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -23,8 +23,14 @@ func NewNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.NamespacesId == nil {
+		return nil, errors.New("invalid value for required argument 'NamespacesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Namespace
 	err := ctx.RegisterResource("google-cloud:servicedirectory/v1beta1:Namespace", name, args, &resource, opts...)
@@ -59,25 +65,23 @@ func (NamespaceState) ElementType() reflect.Type {
 
 type namespaceArgs struct {
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name *string `pulumi:"name"`
-	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	NamespaceId *string `pulumi:"namespaceId"`
-	// Required. The resource name of the project and location the namespace will be created in.
-	Parent string `pulumi:"parent"`
+	Name         *string `pulumi:"name"`
+	NamespacesId string  `pulumi:"namespacesId"`
+	ProjectsId   string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
 	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name pulumi.StringPtrInput
-	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	NamespaceId pulumi.StringPtrInput
-	// Required. The resource name of the project and location the namespace will be created in.
-	Parent pulumi.StringInput
+	Name         pulumi.StringPtrInput
+	NamespacesId pulumi.StringInput
+	ProjectsId   pulumi.StringInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {

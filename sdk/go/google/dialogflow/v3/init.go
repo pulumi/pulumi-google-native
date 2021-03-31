@@ -21,30 +21,34 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Agent":
-		r, err = NewGoogleCloudDialogflowCxV3Agent(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3EntityType":
-		r, err = NewGoogleCloudDialogflowCxV3EntityType(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Experiment":
-		r, err = NewGoogleCloudDialogflowCxV3Experiment(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Flow":
-		r, err = NewGoogleCloudDialogflowCxV3Flow(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Intent":
-		r, err = NewGoogleCloudDialogflowCxV3Intent(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Page":
-		r, err = NewGoogleCloudDialogflowCxV3Page(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SecuritySettings":
-		r, err = NewGoogleCloudDialogflowCxV3SecuritySettings(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3SessionEntityType":
-		r, err = NewGoogleCloudDialogflowCxV3SessionEntityType(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3TestCase":
-		r, err = NewGoogleCloudDialogflowCxV3TestCase(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3TransitionRouteGroup":
-		r, err = NewGoogleCloudDialogflowCxV3TransitionRouteGroup(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleCloudDialogflowCxV3Webhook":
-		r, err = NewGoogleCloudDialogflowCxV3Webhook(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dialogflow/v3:GoogleLongrunningOperation":
-		r, err = NewGoogleLongrunningOperation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:Agent":
+		r, err = NewAgent(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentEntityType":
+		r, err = NewAgentEntityType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentEnvironment":
+		r, err = NewAgentEnvironment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentEnvironmentExperiment":
+		r, err = NewAgentEnvironmentExperiment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType":
+		r, err = NewAgentEnvironmentSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentFlow":
+		r, err = NewAgentFlow(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentFlowPage":
+		r, err = NewAgentFlowPage(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentFlowTransitionRouteGroup":
+		r, err = NewAgentFlowTransitionRouteGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentFlowVersion":
+		r, err = NewAgentFlowVersion(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentIntent":
+		r, err = NewAgentIntent(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentSessionEntityType":
+		r, err = NewAgentSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentTestCase":
+		r, err = NewAgentTestCase(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:AgentWebhook":
+		r, err = NewAgentWebhook(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dialogflow/v3:SecuritySetting":
+		r, err = NewSecuritySetting(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

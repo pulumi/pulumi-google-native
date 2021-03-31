@@ -23,12 +23,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:dataproc/v1beta2:AutoscalingPolicy":
 		r, err = NewAutoscalingPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dataproc/v1beta2:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:dataproc/v1beta2:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:AutoscalingPolicyIamPolicy":
+		r, err = NewAutoscalingPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionAutoscalingPolicy":
+		r, err = NewRegionAutoscalingPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy":
+		r, err = NewRegionAutoscalingPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionCluster":
+		r, err = NewRegionCluster(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionClusterIamPolicy":
+		r, err = NewRegionClusterIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionJobIamPolicy":
+		r, err = NewRegionJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionOperationIamPolicy":
+		r, err = NewRegionOperationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionWorkflowTemplate":
+		r, err = NewRegionWorkflowTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:RegionWorkflowTemplateIamPolicy":
+		r, err = NewRegionWorkflowTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:dataproc/v1beta2:WorkflowTemplate":
 		r, err = NewWorkflowTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:dataproc/v1beta2:WorkflowTemplateIamPolicy":
+		r, err = NewWorkflowTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

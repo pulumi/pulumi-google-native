@@ -23,8 +23,11 @@ func NewRole(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.RolesId == nil {
+		return nil, errors.New("invalid value for required argument 'RolesId'")
 	}
 	var resource Role
 	err := ctx.RegisterResource("google-cloud:iam/v1:Role", name, args, &resource, opts...)
@@ -58,22 +61,22 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// The `parent` parameter's value depends on the target resource for the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value format is described below: * [`projects.roles.create()`](/iam/reference/rest/v1/projects.roles/create): `projects/{PROJECT_ID}`. This method creates project-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` * [`organizations.roles.create()`](/iam/reference/rest/v1/organizations.roles/create): `organizations/{ORGANIZATION_ID}`. This method creates organization-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles` Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization ID.
-	Parent string `pulumi:"parent"`
+	ProjectsId string `pulumi:"projectsId"`
 	// The Role resource to create.
 	Role *RoleType `pulumi:"role"`
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-	RoleId *string `pulumi:"roleId"`
+	RoleId  *string `pulumi:"roleId"`
+	RolesId string  `pulumi:"rolesId"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// The `parent` parameter's value depends on the target resource for the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value format is described below: * [`projects.roles.create()`](/iam/reference/rest/v1/projects.roles/create): `projects/{PROJECT_ID}`. This method creates project-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` * [`organizations.roles.create()`](/iam/reference/rest/v1/organizations.roles/create): `organizations/{ORGANIZATION_ID}`. This method creates organization-level [custom roles](/iam/docs/understanding-custom-roles). Example request URL: `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles` Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization ID.
-	Parent pulumi.StringInput
+	ProjectsId pulumi.StringInput
 	// The Role resource to create.
 	Role RoleTypePtrInput
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-	RoleId pulumi.StringPtrInput
+	RoleId  pulumi.StringPtrInput
+	RolesId pulumi.StringInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {

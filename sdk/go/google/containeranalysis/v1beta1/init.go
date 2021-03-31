@@ -23,10 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:containeranalysis/v1beta1:Note":
 		r, err = NewNote(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:containeranalysis/v1beta1:NoteIamPolicy":
+		r, err = NewNoteIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:containeranalysis/v1beta1:Occurrence":
 		r, err = NewOccurrence(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:containeranalysis/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:containeranalysis/v1beta1:OccurrenceIamPolicy":
+		r, err = NewOccurrenceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

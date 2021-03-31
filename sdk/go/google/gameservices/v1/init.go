@@ -21,16 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:gameservices/v1:GameServerCluster":
-		r, err = NewGameServerCluster(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:gameservices/v1:GameServerConfig":
-		r, err = NewGameServerConfig(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:gameservices/v1:GameServerDeployment":
 		r, err = NewGameServerDeployment(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:gameservices/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:gameservices/v1:GameServerDeploymentConfig":
+		r, err = NewGameServerDeploymentConfig(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:gameservices/v1:GameServerDeploymentIamPolicy":
+		r, err = NewGameServerDeploymentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:gameservices/v1:Realm":
 		r, err = NewRealm(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:gameservices/v1:RealmGameServerCluster":
+		r, err = NewRealmGameServerCluster(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type Device struct {
 func NewDevice(ctx *pulumi.Context,
 	name string, args *DeviceArgs, opts ...pulumi.ResourceOption) (*Device, error) {
 	if args == nil {
-		args = &DeviceArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DevicesId == nil {
+		return nil, errors.New("invalid value for required argument 'DevicesId'")
+	}
 	var resource Device
 	err := ctx.RegisterResource("google-cloud:cloudidentity/v1beta1:Device", name, args, &resource, opts...)
 	if err != nil {
@@ -55,13 +59,15 @@ func (DeviceState) ElementType() reflect.Type {
 
 type deviceArgs struct {
 	// Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
-	Device *DeviceType `pulumi:"device"`
+	Device    *DeviceType `pulumi:"device"`
+	DevicesId string      `pulumi:"devicesId"`
 }
 
 // The set of arguments for constructing a Device resource.
 type DeviceArgs struct {
 	// Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
-	Device DeviceTypePtrInput
+	Device    DeviceTypePtrInput
+	DevicesId pulumi.StringInput
 }
 
 func (DeviceArgs) ElementType() reflect.Type {

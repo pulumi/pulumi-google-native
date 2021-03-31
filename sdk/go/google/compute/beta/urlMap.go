@@ -26,8 +26,8 @@ func NewUrlMap(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
+	if args.UrlMap == nil {
+		return nil, errors.New("invalid value for required argument 'UrlMap'")
 	}
 	var resource UrlMap
 	err := ctx.RegisterResource("google-cloud:compute/beta:UrlMap", name, args, &resource, opts...)
@@ -97,17 +97,15 @@ type urlMapArgs struct {
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers []PathMatcher `pulumi:"pathMatchers"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	Project      string        `pulumi:"project"`
 	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
-	// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
-	RequestId *string `pulumi:"requestId"`
+	Region *string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-	Tests []UrlMapTest `pulumi:"tests"`
+	Tests  []UrlMapTest `pulumi:"tests"`
+	UrlMap string       `pulumi:"urlMap"`
 }
 
 // The set of arguments for constructing a UrlMap resource.
@@ -148,17 +146,15 @@ type UrlMapArgs struct {
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	PathMatchers PathMatcherArrayInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project      pulumi.StringInput
 	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
-	// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
-	RequestId pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
 	// Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-	Tests UrlMapTestArrayInput
+	Tests  UrlMapTestArrayInput
+	UrlMap pulumi.StringInput
 }
 
 func (UrlMapArgs) ElementType() reflect.Type {

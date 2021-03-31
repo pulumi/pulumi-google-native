@@ -23,10 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:datamigration/v1beta1:ConnectionProfile":
 		r, err = NewConnectionProfile(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datamigration/v1beta1:ConnectionProfileIamPolicy":
+		r, err = NewConnectionProfileIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:datamigration/v1beta1:MigrationJob":
 		r, err = NewMigrationJob(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:datamigration/v1beta1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:datamigration/v1beta1:MigrationJobIamPolicy":
+		r, err = NewMigrationJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

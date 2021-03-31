@@ -23,8 +23,11 @@ func NewTransferConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.TransferConfigsId == nil {
+		return nil, errors.New("invalid value for required argument 'TransferConfigsId'")
 	}
 	var resource TransferConfig
 	err := ctx.RegisterResource("google-cloud:bigquerydatatransfer/v1:TransferConfig", name, args, &resource, opts...)
@@ -58,8 +61,6 @@ func (TransferConfigState) ElementType() reflect.Type {
 }
 
 type transferConfigArgs struct {
-	// Optional OAuth2 authorization code to use with this transfer configuration. This is required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri is an optional parameter. If not specified, then authorization code is posted to the opener of authorization flow window. Otherwise it will be sent to the redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of the browser, with the page text prompting the user to copy the code and paste it in the application.
-	AuthorizationCode *string `pulumi:"authorizationCode"`
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
 	// Data source id. Cannot be changed once data transfer is created.
@@ -81,29 +82,23 @@ type transferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
-	Params map[string]string `pulumi:"params"`
-	// Required. The BigQuery project id where the transfer configuration should be created. Must be in the format projects/{project_id}/locations/{location_id} or projects/{project_id}. If specified location and location of the destination bigquery dataset do not match - the request will fail.
-	Parent string `pulumi:"parent"`
+	Params     map[string]string `pulumi:"params"`
+	ProjectsId string            `pulumi:"projectsId"`
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	ScheduleOptions *ScheduleOptions `pulumi:"scheduleOptions"`
-	// Optional service account name. If this field is set, transfer config will be created with this service account credentials. It requires that requesting user calling this API has permissions to act as this service account.
-	ServiceAccountName *string `pulumi:"serviceAccountName"`
 	// Output only. State of the most recently updated transfer run.
-	State *string `pulumi:"state"`
+	State             *string `pulumi:"state"`
+	TransferConfigsId string  `pulumi:"transferConfigsId"`
 	// Output only. Data transfer modification time. Ignored by server on input.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Deprecated. Unique ID of the user on whose behalf transfer is done.
 	UserId *string `pulumi:"userId"`
-	// Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.
-	VersionInfo *string `pulumi:"versionInfo"`
 }
 
 // The set of arguments for constructing a TransferConfig resource.
 type TransferConfigArgs struct {
-	// Optional OAuth2 authorization code to use with this transfer configuration. This is required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. * redirect_uri is an optional parameter. If not specified, then authorization code is posted to the opener of authorization flow window. Otherwise it will be sent to the redirect uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization code should be returned in the title bar of the browser, with the page text prompting the user to copy the code and paste it in the application.
-	AuthorizationCode pulumi.StringPtrInput
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntPtrInput
 	// Data source id. Cannot be changed once data transfer is created.
@@ -125,23 +120,19 @@ type TransferConfigArgs struct {
 	// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
 	NotificationPubsubTopic pulumi.StringPtrInput
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
-	Params pulumi.StringMapInput
-	// Required. The BigQuery project id where the transfer configuration should be created. Must be in the format projects/{project_id}/locations/{location_id} or projects/{project_id}. If specified location and location of the destination bigquery dataset do not match - the request will fail.
-	Parent pulumi.StringInput
+	Params     pulumi.StringMapInput
+	ProjectsId pulumi.StringInput
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
 	// Options customizing the data transfer schedule.
 	ScheduleOptions ScheduleOptionsPtrInput
-	// Optional service account name. If this field is set, transfer config will be created with this service account credentials. It requires that requesting user calling this API has permissions to act as this service account.
-	ServiceAccountName pulumi.StringPtrInput
 	// Output only. State of the most recently updated transfer run.
-	State pulumi.StringPtrInput
+	State             pulumi.StringPtrInput
+	TransferConfigsId pulumi.StringInput
 	// Output only. Data transfer modification time. Ignored by server on input.
 	UpdateTime pulumi.StringPtrInput
 	// Deprecated. Unique ID of the user on whose behalf transfer is done.
 	UserId pulumi.StringPtrInput
-	// Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.
-	VersionInfo pulumi.StringPtrInput
 }
 
 func (TransferConfigArgs) ElementType() reflect.Type {

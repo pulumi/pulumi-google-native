@@ -23,6 +23,9 @@ func NewAddress(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -62,7 +65,7 @@ func (AddressState) ElementType() reflect.Type {
 
 type addressArgs struct {
 	// The static IP address represented by this resource.
-	Address *string `pulumi:"address"`
+	Address string `pulumi:"address"`
 	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
 	AddressType *string `pulumi:"addressType"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
@@ -90,9 +93,8 @@ type addressArgs struct {
 	// If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
-	PrefixLength *int `pulumi:"prefixLength"`
-	// Project ID for this request.
-	Project string `pulumi:"project"`
+	PrefixLength *int   `pulumi:"prefixLength"`
+	Project      string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
@@ -102,12 +104,6 @@ type addressArgs struct {
 	Purpose *string `pulumi:"purpose"`
 	// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
 	Region string `pulumi:"region"`
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -123,7 +119,7 @@ type addressArgs struct {
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
 	// The static IP address represented by this resource.
-	Address pulumi.StringPtrInput
+	Address pulumi.StringInput
 	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
 	AddressType pulumi.StringPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
@@ -152,8 +148,7 @@ type AddressArgs struct {
 	NetworkTier pulumi.StringPtrInput
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
-	// Project ID for this request.
-	Project pulumi.StringInput
+	Project      pulumi.StringInput
 	// The purpose of this resource, which can be one of the following values:
 	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
 	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
@@ -163,12 +158,6 @@ type AddressArgs struct {
 	Purpose pulumi.StringPtrInput
 	// [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
 	Region pulumi.StringInput
-	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
-	//
-	// For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.
-	//
-	// The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

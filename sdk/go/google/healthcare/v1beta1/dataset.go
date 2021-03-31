@@ -23,8 +23,14 @@ func NewDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.DatasetsId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-cloud:healthcare/v1beta1:Dataset", name, args, &resource, opts...)
@@ -58,24 +64,22 @@ func (DatasetState) ElementType() reflect.Type {
 }
 
 type datasetArgs struct {
-	// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	DatasetId *string `pulumi:"datasetId"`
+	DatasetsId  string `pulumi:"datasetsId"`
+	LocationsId string `pulumi:"locationsId"`
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-	Name *string `pulumi:"name"`
-	// The name of the project where the server creates the dataset. For example, `projects/{project_id}/locations/{location_id}`.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
-	// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	DatasetId pulumi.StringPtrInput
+	DatasetsId  pulumi.StringInput
+	LocationsId pulumi.StringInput
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-	Name pulumi.StringPtrInput
-	// The name of the project where the server creates the dataset. For example, `projects/{project_id}/locations/{location_id}`.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
 	TimeZone pulumi.StringPtrInput
 }

@@ -23,8 +23,11 @@ func NewNote(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.NotesId == nil {
+		return nil, errors.New("invalid value for required argument 'NotesId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Note
 	err := ctx.RegisterResource("google-cloud:containeranalysis/v1beta1:Note", name, args, &resource, opts...)
@@ -79,13 +82,11 @@ type noteArgs struct {
 	// A detailed description of this note.
 	LongDescription *string `pulumi:"longDescription"`
 	// Output only. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-	Name *string `pulumi:"name"`
-	// Required. The ID to use for this note.
-	NoteId *string `pulumi:"noteId"`
+	Name    *string `pulumi:"name"`
+	NotesId string  `pulumi:"notesId"`
 	// A note describing a package hosted by various package managers.
-	Package *Package `pulumi:"package"`
-	// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created.
-	Parent string `pulumi:"parent"`
+	Package    *Package `pulumi:"package"`
+	ProjectsId string   `pulumi:"projectsId"`
 	// Other notes related to this note.
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
@@ -121,13 +122,11 @@ type NoteArgs struct {
 	// A detailed description of this note.
 	LongDescription pulumi.StringPtrInput
 	// Output only. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-	Name pulumi.StringPtrInput
-	// Required. The ID to use for this note.
-	NoteId pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	NotesId pulumi.StringInput
 	// A note describing a package hosted by various package managers.
-	Package PackagePtrInput
-	// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created.
-	Parent pulumi.StringInput
+	Package    PackagePtrInput
+	ProjectsId pulumi.StringInput
 	// Other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayInput
 	// URLs associated with this note.

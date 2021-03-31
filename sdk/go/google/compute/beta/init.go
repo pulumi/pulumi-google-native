@@ -27,68 +27,122 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewAutoscaler(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:BackendBucket":
 		r, err = NewBackendBucket(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:BackendBucketIamPolicy":
+		r, err = NewBackendBucketIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:BackendService":
 		r, err = NewBackendService(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:compute/beta:Commitment":
-		r, err = NewCommitment(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Disk":
 		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:DiskIamPolicy":
+		r, err = NewDiskIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:ExternalVpnGateway":
 		r, err = NewExternalVpnGateway(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Firewall":
 		r, err = NewFirewall(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:FirewallPolicy":
 		r, err = NewFirewallPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:FirewallPolicyIamPolicy":
+		r, err = NewFirewallPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:ForwardingRule":
 		r, err = NewForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:GlobalAddress":
+		r, err = NewGlobalAddress(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:GlobalForwardingRule":
+		r, err = NewGlobalForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:GlobalNetworkEndpointGroup":
+		r, err = NewGlobalNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:GlobalPublicDelegatedPrefix":
+		r, err = NewGlobalPublicDelegatedPrefix(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:HealthCheck":
 		r, err = NewHealthCheck(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:compute/beta:HealthCheckService":
-		r, err = NewHealthCheckService(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:HttpHealthCheck":
 		r, err = NewHttpHealthCheck(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:HttpsHealthCheck":
 		r, err = NewHttpsHealthCheck(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Image":
 		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:ImageIamPolicy":
+		r, err = NewImageIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:InstanceGroup":
 		r, err = NewInstanceGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:InstanceGroupManager":
 		r, err = NewInstanceGroupManager(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:InstanceIamPolicy":
+		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:InstanceTemplate":
 		r, err = NewInstanceTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:InstanceTemplateIamPolicy":
+		r, err = NewInstanceTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Interconnect":
 		r, err = NewInterconnect(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:InterconnectAttachment":
 		r, err = NewInterconnectAttachment(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:License":
 		r, err = NewLicense(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:LicenseIamPolicy":
+		r, err = NewLicenseIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:MachineImage":
 		r, err = NewMachineImage(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:MachineImageIamPolicy":
+		r, err = NewMachineImageIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Network":
 		r, err = NewNetwork(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:NetworkEndpointGroup":
 		r, err = NewNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:NodeGroup":
 		r, err = NewNodeGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:NodeGroupIamPolicy":
+		r, err = NewNodeGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:NodeTemplate":
 		r, err = NewNodeTemplate(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:compute/beta:NotificationEndpoint":
-		r, err = NewNotificationEndpoint(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:NodeTemplateIamPolicy":
+		r, err = NewNodeTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:OrganizationSecurityPolicy":
+		r, err = NewOrganizationSecurityPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:PacketMirroring":
 		r, err = NewPacketMirroring(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:compute/beta:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:PublicAdvertisedPrefix":
 		r, err = NewPublicAdvertisedPrefix(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:PublicDelegatedPrefix":
 		r, err = NewPublicDelegatedPrefix(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionAutoscaler":
+		r, err = NewRegionAutoscaler(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionBackendService":
+		r, err = NewRegionBackendService(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionCommitment":
+		r, err = NewRegionCommitment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionDisk":
+		r, err = NewRegionDisk(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionDiskIamPolicy":
+		r, err = NewRegionDiskIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionHealthCheck":
+		r, err = NewRegionHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionHealthCheckService":
+		r, err = NewRegionHealthCheckService(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionInstanceGroupManager":
+		r, err = NewRegionInstanceGroupManager(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionNetworkEndpointGroup":
+		r, err = NewRegionNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionNotificationEndpoint":
+		r, err = NewRegionNotificationEndpoint(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionSslCertificate":
+		r, err = NewRegionSslCertificate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionTargetHttpProxy":
+		r, err = NewRegionTargetHttpProxy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionTargetHttpsProxy":
+		r, err = NewRegionTargetHttpsProxy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:RegionUrlMap":
+		r, err = NewRegionUrlMap(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Reservation":
 		r, err = NewReservation(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:ReservationIamPolicy":
+		r, err = NewReservationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:ResourcePolicy":
 		r, err = NewResourcePolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:ResourcePolicyIamPolicy":
+		r, err = NewResourcePolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Route":
 		r, err = NewRoute(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Router":
@@ -97,14 +151,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewSecurityPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:ServiceAttachment":
 		r, err = NewServiceAttachment(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:ServiceAttachmentIamPolicy":
+		r, err = NewServiceAttachmentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Snapshot":
 		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:SnapshotIamPolicy":
+		r, err = NewSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:SslCertificate":
 		r, err = NewSslCertificate(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:SslPolicy":
 		r, err = NewSslPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:Subnetwork":
 		r, err = NewSubnetwork(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:compute/beta:SubnetworkIamPolicy":
+		r, err = NewSubnetworkIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:TargetGrpcProxy":
 		r, err = NewTargetGrpcProxy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:compute/beta:TargetHttpProxy":

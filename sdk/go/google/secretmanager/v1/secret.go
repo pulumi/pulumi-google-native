@@ -23,8 +23,11 @@ func NewSecret(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.SecretsId == nil {
+		return nil, errors.New("invalid value for required argument 'SecretsId'")
 	}
 	var resource Secret
 	err := ctx.RegisterResource("google-cloud:secretmanager/v1:Secret", name, args, &resource, opts...)
@@ -65,15 +68,13 @@ type secretArgs struct {
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
-	Name *string `pulumi:"name"`
-	// Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `pulumi:"replication"`
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
-	Rotation *Rotation `pulumi:"rotation"`
-	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-	SecretId *string `pulumi:"secretId"`
+	Rotation  *Rotation `pulumi:"rotation"`
+	SecretsId string    `pulumi:"secretsId"`
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	Topics []Topic `pulumi:"topics"`
 	// Input only. The TTL for the Secret.
@@ -89,15 +90,13 @@ type SecretArgs struct {
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
 	Labels pulumi.StringMapInput
 	// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
-	Name pulumi.StringPtrInput
-	// Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationPtrInput
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
-	Rotation RotationPtrInput
-	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-	SecretId pulumi.StringPtrInput
+	Rotation  RotationPtrInput
+	SecretsId pulumi.StringInput
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	Topics TopicArrayInput
 	// Input only. The TTL for the Secret.

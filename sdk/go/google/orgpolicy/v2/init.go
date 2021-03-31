@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:orgpolicy/v2:GoogleCloudOrgpolicyV2Policy":
-		r, err = NewGoogleCloudOrgpolicyV2Policy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:orgpolicy/v2:FolderPolicy":
+		r, err = NewFolderPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:orgpolicy/v2:OrganizationPolicy":
+		r, err = NewOrganizationPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:orgpolicy/v2:Policy":
+		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

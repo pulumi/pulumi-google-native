@@ -21,16 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:appengine/v1:Application":
-		r, err = NewApplication(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:appengine/v1:AuthorizedCertificate":
-		r, err = NewAuthorizedCertificate(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:appengine/v1:DomainMapping":
-		r, err = NewDomainMapping(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:appengine/v1:FirewallRule":
-		r, err = NewFirewallRule(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:appengine/v1:Version":
-		r, err = NewVersion(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:appengine/v1:App":
+		r, err = NewApp(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:appengine/v1:AppAuthorizedCertificate":
+		r, err = NewAppAuthorizedCertificate(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:appengine/v1:AppDomainMapping":
+		r, err = NewAppDomainMapping(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:appengine/v1:AppFirewallIngressRule":
+		r, err = NewAppFirewallIngressRule(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:appengine/v1:AppServiceVersion":
+		r, err = NewAppServiceVersion(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

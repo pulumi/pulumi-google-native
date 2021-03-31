@@ -23,8 +23,14 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.InstancesId == nil {
+		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	}
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-cloud:notebooks/v1:Instance", name, args, &resource, opts...)
@@ -80,14 +86,14 @@ type instanceArgs struct {
 	Disks []Disk `pulumi:"disks"`
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
-	// Required. User-defined unique ID of this instance.
-	InstanceId *string `pulumi:"instanceId"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners []string `pulumi:"instanceOwners"`
+	InstancesId    string   `pulumi:"instancesId"`
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
 	KmsKey *string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels map[string]string `pulumi:"labels"`
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType *string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
@@ -102,10 +108,9 @@ type instanceArgs struct {
 	NoPublicIp *bool `pulumi:"noPublicIp"`
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
-	// Required. Format: `parent=projects/{project_id}/locations/{location}`
-	Parent string `pulumi:"parent"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
+	ProjectsId        string  `pulumi:"projectsId"`
 	// Output only. The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
@@ -152,14 +157,14 @@ type InstanceArgs struct {
 	Disks DiskArrayInput
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
-	// Required. User-defined unique ID of this instance.
-	InstanceId pulumi.StringPtrInput
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners pulumi.StringArrayInput
+	InstancesId    pulumi.StringInput
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
 	KmsKey pulumi.StringPtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels pulumi.StringMapInput
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
 	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringPtrInput
 	// Custom metadata to apply to this instance.
@@ -174,10 +179,9 @@ type InstanceArgs struct {
 	NoPublicIp pulumi.BoolPtrInput
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolPtrInput
-	// Required. Format: `parent=projects/{project_id}/locations/{location}`
-	Parent pulumi.StringInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput
+	ProjectsId        pulumi.StringInput
 	// Output only. The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringPtrInput
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.

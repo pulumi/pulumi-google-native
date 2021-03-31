@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -19,9 +20,12 @@ type TagBinding struct {
 func NewTagBinding(ctx *pulumi.Context,
 	name string, args *TagBindingArgs, opts ...pulumi.ResourceOption) (*TagBinding, error) {
 	if args == nil {
-		args = &TagBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.TagBindingsId == nil {
+		return nil, errors.New("invalid value for required argument 'TagBindingsId'")
+	}
 	var resource TagBinding
 	err := ctx.RegisterResource("google-cloud:cloudresourcemanager/v3:TagBinding", name, args, &resource, opts...)
 	if err != nil {
@@ -57,11 +61,10 @@ type tagBindingArgs struct {
 	// Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
 	Name *string `pulumi:"name"`
 	// The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
-	Parent *string `pulumi:"parent"`
+	Parent        *string `pulumi:"parent"`
+	TagBindingsId string  `pulumi:"tagBindingsId"`
 	// The TagValue of the TagBinding. Must be of the form `tagValues/456`.
 	TagValue *string `pulumi:"tagValue"`
-	// Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a TagBinding resource.
@@ -69,11 +72,10 @@ type TagBindingArgs struct {
 	// Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
 	Name pulumi.StringPtrInput
 	// The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
-	Parent pulumi.StringPtrInput
+	Parent        pulumi.StringPtrInput
+	TagBindingsId pulumi.StringInput
 	// The TagValue of the TagBinding. Must be of the form `tagValues/456`.
 	TagValue pulumi.StringPtrInput
-	// Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TagBindingArgs) ElementType() reflect.Type {

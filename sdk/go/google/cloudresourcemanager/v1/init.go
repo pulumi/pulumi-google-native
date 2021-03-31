@@ -23,10 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-cloud:cloudresourcemanager/v1:Lien":
 		r, err = NewLien(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:cloudresourcemanager/v1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v1:OrganizationIamPolicy":
+		r, err = NewOrganizationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:cloudresourcemanager/v1:Project":
 		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:cloudresourcemanager/v1:ProjectIamPolicy":
+		r, err = NewProjectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

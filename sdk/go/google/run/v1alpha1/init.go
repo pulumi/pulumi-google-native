@@ -21,14 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-cloud:run/v1alpha1:DomainMapping":
-		r, err = NewDomainMapping(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:run/v1alpha1:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
-	case "google-cloud:run/v1alpha1:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:run/v1alpha1:Domainmapping":
+		r, err = NewDomainmapping(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:run/v1alpha1:NamespaceDomainmapping":
+		r, err = NewNamespaceDomainmapping(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:run/v1alpha1:NamespaceJob":
+		r, err = NewNamespaceJob(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:run/v1alpha1:NamespaceService":
+		r, err = NewNamespaceService(ctx, name, nil, pulumi.URN_(urn))
 	case "google-cloud:run/v1alpha1:Service":
 		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+	case "google-cloud:run/v1alpha1:ServiceIamPolicy":
+		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

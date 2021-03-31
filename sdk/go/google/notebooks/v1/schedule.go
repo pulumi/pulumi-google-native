@@ -23,8 +23,14 @@ func NewSchedule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Parent == nil {
-		return nil, errors.New("invalid value for required argument 'Parent'")
+	if args.LocationsId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	}
+	if args.ProjectsId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	}
+	if args.SchedulesId == nil {
+		return nil, errors.New("invalid value for required argument 'SchedulesId'")
 	}
 	var resource Schedule
 	err := ctx.RegisterResource("google-cloud:notebooks/v1:Schedule", name, args, &resource, opts...)
@@ -68,15 +74,14 @@ type scheduleArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
+	LocationsId       string             `pulumi:"locationsId"`
 	// Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-	Name *string `pulumi:"name"`
-	// Required. Format: `parent=projects/{project_id}/locations/{location}`
-	Parent string `pulumi:"parent"`
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 	// Output only. The most recent execution names triggered from this schedule and their corresponding states.
 	RecentExecutions []ExecutionType `pulumi:"recentExecutions"`
-	// Required. User-defined unique ID of this schedule.
-	ScheduleId *string `pulumi:"scheduleId"`
-	State      *string `pulumi:"state"`
+	SchedulesId      string          `pulumi:"schedulesId"`
+	State            *string         `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone *string `pulumi:"timeZone"`
 	// Output only. Time the schedule was last updated.
@@ -95,15 +100,14 @@ type ScheduleArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplatePtrInput
+	LocationsId       pulumi.StringInput
 	// Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-	Name pulumi.StringPtrInput
-	// Required. Format: `parent=projects/{project_id}/locations/{location}`
-	Parent pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 	// Output only. The most recent execution names triggered from this schedule and their corresponding states.
 	RecentExecutions ExecutionTypeArrayInput
-	// Required. User-defined unique ID of this schedule.
-	ScheduleId pulumi.StringPtrInput
-	State      pulumi.StringPtrInput
+	SchedulesId      pulumi.StringInput
+	State            pulumi.StringPtrInput
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone pulumi.StringPtrInput
 	// Output only. Time the schedule was last updated.

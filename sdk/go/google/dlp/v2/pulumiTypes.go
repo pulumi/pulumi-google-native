@@ -3839,7 +3839,7 @@ func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) TransformationErrorHandling
 }
 
 // DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2DeidentifyTemplateType struct {
+type GooglePrivacyDlpV2DeidentifyTemplate struct {
 	// Output only. The creation timestamp of an inspectTemplate.
 	CreateTime *string `pulumi:"createTime"`
 	// The core content of the template.
@@ -3854,19 +3854,19 @@ type GooglePrivacyDlpV2DeidentifyTemplateType struct {
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// GooglePrivacyDlpV2DeidentifyTemplateTypeInput is an input type that accepts GooglePrivacyDlpV2DeidentifyTemplateTypeArgs and GooglePrivacyDlpV2DeidentifyTemplateTypeOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyTemplateTypeInput` via:
+// GooglePrivacyDlpV2DeidentifyTemplateInput is an input type that accepts GooglePrivacyDlpV2DeidentifyTemplateArgs and GooglePrivacyDlpV2DeidentifyTemplateOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyTemplateInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyTemplateTypeArgs{...}
-type GooglePrivacyDlpV2DeidentifyTemplateTypeInput interface {
+//          GooglePrivacyDlpV2DeidentifyTemplateArgs{...}
+type GooglePrivacyDlpV2DeidentifyTemplateInput interface {
 	pulumi.Input
 
-	ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutput() GooglePrivacyDlpV2DeidentifyTemplateTypeOutput
-	ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypeOutput
+	ToGooglePrivacyDlpV2DeidentifyTemplateOutput() GooglePrivacyDlpV2DeidentifyTemplateOutput
+	ToGooglePrivacyDlpV2DeidentifyTemplateOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyTemplateOutput
 }
 
 // DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2DeidentifyTemplateTypeArgs struct {
+type GooglePrivacyDlpV2DeidentifyTemplateArgs struct {
 	// Output only. The creation timestamp of an inspectTemplate.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// The core content of the template.
@@ -3881,137 +3881,137 @@ type GooglePrivacyDlpV2DeidentifyTemplateTypeArgs struct {
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
-func (GooglePrivacyDlpV2DeidentifyTemplateTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyTemplateType)(nil)).Elem()
+func (GooglePrivacyDlpV2DeidentifyTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyTemplate)(nil)).Elem()
 }
 
-func (i GooglePrivacyDlpV2DeidentifyTemplateTypeArgs) ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutput() GooglePrivacyDlpV2DeidentifyTemplateTypeOutput {
-	return i.ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutputWithContext(context.Background())
+func (i GooglePrivacyDlpV2DeidentifyTemplateArgs) ToGooglePrivacyDlpV2DeidentifyTemplateOutput() GooglePrivacyDlpV2DeidentifyTemplateOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyTemplateOutputWithContext(context.Background())
 }
 
-func (i GooglePrivacyDlpV2DeidentifyTemplateTypeArgs) ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyTemplateTypeOutput)
+func (i GooglePrivacyDlpV2DeidentifyTemplateArgs) ToGooglePrivacyDlpV2DeidentifyTemplateOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyTemplateOutput)
 }
 
-func (i GooglePrivacyDlpV2DeidentifyTemplateTypeArgs) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput() GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(context.Background())
+func (i GooglePrivacyDlpV2DeidentifyTemplateArgs) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutput() GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(context.Background())
 }
 
-func (i GooglePrivacyDlpV2DeidentifyTemplateTypeArgs) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyTemplateTypeOutput).ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(ctx)
+func (i GooglePrivacyDlpV2DeidentifyTemplateArgs) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyTemplateOutput).ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(ctx)
 }
 
-// GooglePrivacyDlpV2DeidentifyTemplateTypePtrInput is an input type that accepts GooglePrivacyDlpV2DeidentifyTemplateTypeArgs, GooglePrivacyDlpV2DeidentifyTemplateTypePtr and GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyTemplateTypePtrInput` via:
+// GooglePrivacyDlpV2DeidentifyTemplatePtrInput is an input type that accepts GooglePrivacyDlpV2DeidentifyTemplateArgs, GooglePrivacyDlpV2DeidentifyTemplatePtr and GooglePrivacyDlpV2DeidentifyTemplatePtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyTemplatePtrInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyTemplateTypeArgs{...}
+//          GooglePrivacyDlpV2DeidentifyTemplateArgs{...}
 //
 //  or:
 //
 //          nil
-type GooglePrivacyDlpV2DeidentifyTemplateTypePtrInput interface {
+type GooglePrivacyDlpV2DeidentifyTemplatePtrInput interface {
 	pulumi.Input
 
-	ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput() GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput
-	ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput
+	ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutput() GooglePrivacyDlpV2DeidentifyTemplatePtrOutput
+	ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyTemplatePtrOutput
 }
 
-type googlePrivacyDlpV2DeidentifyTemplateTypePtrType GooglePrivacyDlpV2DeidentifyTemplateTypeArgs
+type googlePrivacyDlpV2DeidentifyTemplatePtrType GooglePrivacyDlpV2DeidentifyTemplateArgs
 
-func GooglePrivacyDlpV2DeidentifyTemplateTypePtr(v *GooglePrivacyDlpV2DeidentifyTemplateTypeArgs) GooglePrivacyDlpV2DeidentifyTemplateTypePtrInput {
-	return (*googlePrivacyDlpV2DeidentifyTemplateTypePtrType)(v)
+func GooglePrivacyDlpV2DeidentifyTemplatePtr(v *GooglePrivacyDlpV2DeidentifyTemplateArgs) GooglePrivacyDlpV2DeidentifyTemplatePtrInput {
+	return (*googlePrivacyDlpV2DeidentifyTemplatePtrType)(v)
 }
 
-func (*googlePrivacyDlpV2DeidentifyTemplateTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyTemplateType)(nil)).Elem()
+func (*googlePrivacyDlpV2DeidentifyTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyTemplate)(nil)).Elem()
 }
 
-func (i *googlePrivacyDlpV2DeidentifyTemplateTypePtrType) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput() GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(context.Background())
+func (i *googlePrivacyDlpV2DeidentifyTemplatePtrType) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutput() GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(context.Background())
 }
 
-func (i *googlePrivacyDlpV2DeidentifyTemplateTypePtrType) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput)
+func (i *googlePrivacyDlpV2DeidentifyTemplatePtrType) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyTemplatePtrOutput)
 }
 
 // DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2DeidentifyTemplateTypeOutput struct{ *pulumi.OutputState }
+type GooglePrivacyDlpV2DeidentifyTemplateOutput struct{ *pulumi.OutputState }
 
-func (GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyTemplateType)(nil)).Elem()
+func (GooglePrivacyDlpV2DeidentifyTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyTemplate)(nil)).Elem()
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutput() GooglePrivacyDlpV2DeidentifyTemplateTypeOutput {
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) ToGooglePrivacyDlpV2DeidentifyTemplateOutput() GooglePrivacyDlpV2DeidentifyTemplateOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) ToGooglePrivacyDlpV2DeidentifyTemplateTypeOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypeOutput {
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) ToGooglePrivacyDlpV2DeidentifyTemplateOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput() GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
-	return o.ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(context.Background())
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutput() GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
+	return o.ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(context.Background())
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *GooglePrivacyDlpV2DeidentifyTemplateType {
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *GooglePrivacyDlpV2DeidentifyTemplate {
 		return &v
-	}).(GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput)
+	}).(GooglePrivacyDlpV2DeidentifyTemplatePtrOutput)
 }
 
 // Output only. The creation timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // The core content of the template.
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *GooglePrivacyDlpV2DeidentifyConfig {
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *GooglePrivacyDlpV2DeidentifyConfig {
 		return v.DeidentifyConfig
 	}).(GooglePrivacyDlpV2DeidentifyConfigPtrOutput)
 }
 
 // Short description (max 256 chars).
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Display name (max 256 chars).
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The last update timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2DeidentifyTemplateOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplate) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput struct{ *pulumi.OutputState }
+type GooglePrivacyDlpV2DeidentifyTemplatePtrOutput struct{ *pulumi.OutputState }
 
-func (GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyTemplateType)(nil)).Elem()
+func (GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyTemplate)(nil)).Elem()
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput() GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutput() GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) ToGooglePrivacyDlpV2DeidentifyTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) ToGooglePrivacyDlpV2DeidentifyTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplatePtrOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) Elem() GooglePrivacyDlpV2DeidentifyTemplateTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) GooglePrivacyDlpV2DeidentifyTemplateType { return *v }).(GooglePrivacyDlpV2DeidentifyTemplateTypeOutput)
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) Elem() GooglePrivacyDlpV2DeidentifyTemplateOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) GooglePrivacyDlpV2DeidentifyTemplate { return *v }).(GooglePrivacyDlpV2DeidentifyTemplateOutput)
 }
 
 // Output only. The creation timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *string {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -4020,8 +4020,8 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) CreateTime() pulumi.S
 }
 
 // The core content of the template.
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *GooglePrivacyDlpV2DeidentifyConfig {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) *GooglePrivacyDlpV2DeidentifyConfig {
 		if v == nil {
 			return nil
 		}
@@ -4030,8 +4030,8 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) DeidentifyConfig() Go
 }
 
 // Short description (max 256 chars).
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *string {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -4040,8 +4040,8 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) Description() pulumi.
 }
 
 // Display name (max 256 chars).
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *string {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -4050,8 +4050,8 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) DisplayName() pulumi.
 }
 
 // Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *string {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -4060,8 +4060,8 @@ func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) Name() pulumi.StringP
 }
 
 // Output only. The last update timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplateType) *string {
+func (o GooglePrivacyDlpV2DeidentifyTemplatePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -7391,7 +7391,7 @@ func (o GooglePrivacyDlpV2InspectJobConfigPtrOutput) StorageConfig() GooglePriva
 }
 
 // The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2InspectTemplateType struct {
+type GooglePrivacyDlpV2InspectTemplate struct {
 	// Output only. The creation timestamp of an inspectTemplate.
 	CreateTime *string `pulumi:"createTime"`
 	// Short description (max 256 chars).
@@ -7406,19 +7406,19 @@ type GooglePrivacyDlpV2InspectTemplateType struct {
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// GooglePrivacyDlpV2InspectTemplateTypeInput is an input type that accepts GooglePrivacyDlpV2InspectTemplateTypeArgs and GooglePrivacyDlpV2InspectTemplateTypeOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectTemplateTypeInput` via:
+// GooglePrivacyDlpV2InspectTemplateInput is an input type that accepts GooglePrivacyDlpV2InspectTemplateArgs and GooglePrivacyDlpV2InspectTemplateOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2InspectTemplateInput` via:
 //
-//          GooglePrivacyDlpV2InspectTemplateTypeArgs{...}
-type GooglePrivacyDlpV2InspectTemplateTypeInput interface {
+//          GooglePrivacyDlpV2InspectTemplateArgs{...}
+type GooglePrivacyDlpV2InspectTemplateInput interface {
 	pulumi.Input
 
-	ToGooglePrivacyDlpV2InspectTemplateTypeOutput() GooglePrivacyDlpV2InspectTemplateTypeOutput
-	ToGooglePrivacyDlpV2InspectTemplateTypeOutputWithContext(context.Context) GooglePrivacyDlpV2InspectTemplateTypeOutput
+	ToGooglePrivacyDlpV2InspectTemplateOutput() GooglePrivacyDlpV2InspectTemplateOutput
+	ToGooglePrivacyDlpV2InspectTemplateOutputWithContext(context.Context) GooglePrivacyDlpV2InspectTemplateOutput
 }
 
 // The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2InspectTemplateTypeArgs struct {
+type GooglePrivacyDlpV2InspectTemplateArgs struct {
 	// Output only. The creation timestamp of an inspectTemplate.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// Short description (max 256 chars).
@@ -7433,135 +7433,135 @@ type GooglePrivacyDlpV2InspectTemplateTypeArgs struct {
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
-func (GooglePrivacyDlpV2InspectTemplateTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplateType)(nil)).Elem()
+func (GooglePrivacyDlpV2InspectTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplate)(nil)).Elem()
 }
 
-func (i GooglePrivacyDlpV2InspectTemplateTypeArgs) ToGooglePrivacyDlpV2InspectTemplateTypeOutput() GooglePrivacyDlpV2InspectTemplateTypeOutput {
-	return i.ToGooglePrivacyDlpV2InspectTemplateTypeOutputWithContext(context.Background())
+func (i GooglePrivacyDlpV2InspectTemplateArgs) ToGooglePrivacyDlpV2InspectTemplateOutput() GooglePrivacyDlpV2InspectTemplateOutput {
+	return i.ToGooglePrivacyDlpV2InspectTemplateOutputWithContext(context.Background())
 }
 
-func (i GooglePrivacyDlpV2InspectTemplateTypeArgs) ToGooglePrivacyDlpV2InspectTemplateTypeOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateTypeOutput)
+func (i GooglePrivacyDlpV2InspectTemplateArgs) ToGooglePrivacyDlpV2InspectTemplateOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateOutput)
 }
 
-func (i GooglePrivacyDlpV2InspectTemplateTypeArgs) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutput() GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(context.Background())
+func (i GooglePrivacyDlpV2InspectTemplateArgs) ToGooglePrivacyDlpV2InspectTemplatePtrOutput() GooglePrivacyDlpV2InspectTemplatePtrOutput {
+	return i.ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(context.Background())
 }
 
-func (i GooglePrivacyDlpV2InspectTemplateTypeArgs) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateTypeOutput).ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(ctx)
+func (i GooglePrivacyDlpV2InspectTemplateArgs) ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateOutput).ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(ctx)
 }
 
-// GooglePrivacyDlpV2InspectTemplateTypePtrInput is an input type that accepts GooglePrivacyDlpV2InspectTemplateTypeArgs, GooglePrivacyDlpV2InspectTemplateTypePtr and GooglePrivacyDlpV2InspectTemplateTypePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectTemplateTypePtrInput` via:
+// GooglePrivacyDlpV2InspectTemplatePtrInput is an input type that accepts GooglePrivacyDlpV2InspectTemplateArgs, GooglePrivacyDlpV2InspectTemplatePtr and GooglePrivacyDlpV2InspectTemplatePtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2InspectTemplatePtrInput` via:
 //
-//          GooglePrivacyDlpV2InspectTemplateTypeArgs{...}
+//          GooglePrivacyDlpV2InspectTemplateArgs{...}
 //
 //  or:
 //
 //          nil
-type GooglePrivacyDlpV2InspectTemplateTypePtrInput interface {
+type GooglePrivacyDlpV2InspectTemplatePtrInput interface {
 	pulumi.Input
 
-	ToGooglePrivacyDlpV2InspectTemplateTypePtrOutput() GooglePrivacyDlpV2InspectTemplateTypePtrOutput
-	ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InspectTemplateTypePtrOutput
+	ToGooglePrivacyDlpV2InspectTemplatePtrOutput() GooglePrivacyDlpV2InspectTemplatePtrOutput
+	ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InspectTemplatePtrOutput
 }
 
-type googlePrivacyDlpV2InspectTemplateTypePtrType GooglePrivacyDlpV2InspectTemplateTypeArgs
+type googlePrivacyDlpV2InspectTemplatePtrType GooglePrivacyDlpV2InspectTemplateArgs
 
-func GooglePrivacyDlpV2InspectTemplateTypePtr(v *GooglePrivacyDlpV2InspectTemplateTypeArgs) GooglePrivacyDlpV2InspectTemplateTypePtrInput {
-	return (*googlePrivacyDlpV2InspectTemplateTypePtrType)(v)
+func GooglePrivacyDlpV2InspectTemplatePtr(v *GooglePrivacyDlpV2InspectTemplateArgs) GooglePrivacyDlpV2InspectTemplatePtrInput {
+	return (*googlePrivacyDlpV2InspectTemplatePtrType)(v)
 }
 
-func (*googlePrivacyDlpV2InspectTemplateTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectTemplateType)(nil)).Elem()
+func (*googlePrivacyDlpV2InspectTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2InspectTemplate)(nil)).Elem()
 }
 
-func (i *googlePrivacyDlpV2InspectTemplateTypePtrType) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutput() GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(context.Background())
+func (i *googlePrivacyDlpV2InspectTemplatePtrType) ToGooglePrivacyDlpV2InspectTemplatePtrOutput() GooglePrivacyDlpV2InspectTemplatePtrOutput {
+	return i.ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(context.Background())
 }
 
-func (i *googlePrivacyDlpV2InspectTemplateTypePtrType) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateTypePtrOutput)
+func (i *googlePrivacyDlpV2InspectTemplatePtrType) ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplatePtrOutput)
 }
 
 // The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2InspectTemplateTypeOutput struct{ *pulumi.OutputState }
+type GooglePrivacyDlpV2InspectTemplateOutput struct{ *pulumi.OutputState }
 
-func (GooglePrivacyDlpV2InspectTemplateTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplateType)(nil)).Elem()
+func (GooglePrivacyDlpV2InspectTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplate)(nil)).Elem()
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) ToGooglePrivacyDlpV2InspectTemplateTypeOutput() GooglePrivacyDlpV2InspectTemplateTypeOutput {
+func (o GooglePrivacyDlpV2InspectTemplateOutput) ToGooglePrivacyDlpV2InspectTemplateOutput() GooglePrivacyDlpV2InspectTemplateOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) ToGooglePrivacyDlpV2InspectTemplateTypeOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateTypeOutput {
+func (o GooglePrivacyDlpV2InspectTemplateOutput) ToGooglePrivacyDlpV2InspectTemplateOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutput() GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
-	return o.ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(context.Background())
+func (o GooglePrivacyDlpV2InspectTemplateOutput) ToGooglePrivacyDlpV2InspectTemplatePtrOutput() GooglePrivacyDlpV2InspectTemplatePtrOutput {
+	return o.ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(context.Background())
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *GooglePrivacyDlpV2InspectTemplateType {
+func (o GooglePrivacyDlpV2InspectTemplateOutput) ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplatePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *GooglePrivacyDlpV2InspectTemplate {
 		return &v
-	}).(GooglePrivacyDlpV2InspectTemplateTypePtrOutput)
+	}).(GooglePrivacyDlpV2InspectTemplatePtrOutput)
 }
 
 // Output only. The creation timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2InspectTemplateOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // Short description (max 256 chars).
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2InspectTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Display name (max 256 chars).
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2InspectTemplateOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // The core content of the template. Configuration of the scanning process.
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *GooglePrivacyDlpV2InspectConfig { return v.InspectConfig }).(GooglePrivacyDlpV2InspectConfigPtrOutput)
+func (o GooglePrivacyDlpV2InspectTemplateOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *GooglePrivacyDlpV2InspectConfig { return v.InspectConfig }).(GooglePrivacyDlpV2InspectConfigPtrOutput)
 }
 
 // Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2InspectTemplateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Output only. The last update timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2InspectTemplateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2InspectTemplateOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplate) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type GooglePrivacyDlpV2InspectTemplateTypePtrOutput struct{ *pulumi.OutputState }
+type GooglePrivacyDlpV2InspectTemplatePtrOutput struct{ *pulumi.OutputState }
 
-func (GooglePrivacyDlpV2InspectTemplateTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectTemplateType)(nil)).Elem()
+func (GooglePrivacyDlpV2InspectTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2InspectTemplate)(nil)).Elem()
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutput() GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) ToGooglePrivacyDlpV2InspectTemplatePtrOutput() GooglePrivacyDlpV2InspectTemplatePtrOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) ToGooglePrivacyDlpV2InspectTemplateTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateTypePtrOutput {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) ToGooglePrivacyDlpV2InspectTemplatePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplatePtrOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) Elem() GooglePrivacyDlpV2InspectTemplateTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) GooglePrivacyDlpV2InspectTemplateType { return *v }).(GooglePrivacyDlpV2InspectTemplateTypeOutput)
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) Elem() GooglePrivacyDlpV2InspectTemplateOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) GooglePrivacyDlpV2InspectTemplate { return *v }).(GooglePrivacyDlpV2InspectTemplateOutput)
 }
 
 // Output only. The creation timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) *string {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -7570,8 +7570,8 @@ func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) CreateTime() pulumi.Stri
 }
 
 // Short description (max 256 chars).
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) *string {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -7580,8 +7580,8 @@ func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) Description() pulumi.Str
 }
 
 // Display name (max 256 chars).
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) *string {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -7590,8 +7590,8 @@ func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) DisplayName() pulumi.Str
 }
 
 // The core content of the template. Configuration of the scanning process.
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) *GooglePrivacyDlpV2InspectConfig {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) *GooglePrivacyDlpV2InspectConfig {
 		if v == nil {
 			return nil
 		}
@@ -7600,8 +7600,8 @@ func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) InspectConfig() GooglePr
 }
 
 // Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) *string {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -7610,8 +7610,8 @@ func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) Name() pulumi.StringPtrO
 }
 
 // Output only. The last update timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2InspectTemplateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateType) *string {
+func (o GooglePrivacyDlpV2InspectTemplatePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplate) *string {
 		if v == nil {
 			return nil
 		}
@@ -7953,7 +7953,7 @@ func (o GooglePrivacyDlpV2JobNotificationEmailsPtrOutput) Elem() GooglePrivacyDl
 }
 
 // Contains a configuration to make dlp api calls on a repeating basis. See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
-type GooglePrivacyDlpV2JobTriggerType struct {
+type GooglePrivacyDlpV2JobTrigger struct {
 	// Output only. The creation timestamp of a triggeredJob.
 	CreateTime *string `pulumi:"createTime"`
 	// User provided description (max 256 chars)
@@ -7976,19 +7976,19 @@ type GooglePrivacyDlpV2JobTriggerType struct {
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// GooglePrivacyDlpV2JobTriggerTypeInput is an input type that accepts GooglePrivacyDlpV2JobTriggerTypeArgs and GooglePrivacyDlpV2JobTriggerTypeOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2JobTriggerTypeInput` via:
+// GooglePrivacyDlpV2JobTriggerInput is an input type that accepts GooglePrivacyDlpV2JobTriggerArgs and GooglePrivacyDlpV2JobTriggerOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2JobTriggerInput` via:
 //
-//          GooglePrivacyDlpV2JobTriggerTypeArgs{...}
-type GooglePrivacyDlpV2JobTriggerTypeInput interface {
+//          GooglePrivacyDlpV2JobTriggerArgs{...}
+type GooglePrivacyDlpV2JobTriggerInput interface {
 	pulumi.Input
 
-	ToGooglePrivacyDlpV2JobTriggerTypeOutput() GooglePrivacyDlpV2JobTriggerTypeOutput
-	ToGooglePrivacyDlpV2JobTriggerTypeOutputWithContext(context.Context) GooglePrivacyDlpV2JobTriggerTypeOutput
+	ToGooglePrivacyDlpV2JobTriggerOutput() GooglePrivacyDlpV2JobTriggerOutput
+	ToGooglePrivacyDlpV2JobTriggerOutputWithContext(context.Context) GooglePrivacyDlpV2JobTriggerOutput
 }
 
 // Contains a configuration to make dlp api calls on a repeating basis. See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
-type GooglePrivacyDlpV2JobTriggerTypeArgs struct {
+type GooglePrivacyDlpV2JobTriggerArgs struct {
 	// Output only. The creation timestamp of a triggeredJob.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// User provided description (max 256 chars)
@@ -8011,155 +8011,155 @@ type GooglePrivacyDlpV2JobTriggerTypeArgs struct {
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
-func (GooglePrivacyDlpV2JobTriggerTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2JobTriggerType)(nil)).Elem()
+func (GooglePrivacyDlpV2JobTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2JobTrigger)(nil)).Elem()
 }
 
-func (i GooglePrivacyDlpV2JobTriggerTypeArgs) ToGooglePrivacyDlpV2JobTriggerTypeOutput() GooglePrivacyDlpV2JobTriggerTypeOutput {
-	return i.ToGooglePrivacyDlpV2JobTriggerTypeOutputWithContext(context.Background())
+func (i GooglePrivacyDlpV2JobTriggerArgs) ToGooglePrivacyDlpV2JobTriggerOutput() GooglePrivacyDlpV2JobTriggerOutput {
+	return i.ToGooglePrivacyDlpV2JobTriggerOutputWithContext(context.Background())
 }
 
-func (i GooglePrivacyDlpV2JobTriggerTypeArgs) ToGooglePrivacyDlpV2JobTriggerTypeOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobTriggerTypeOutput)
+func (i GooglePrivacyDlpV2JobTriggerArgs) ToGooglePrivacyDlpV2JobTriggerOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobTriggerOutput)
 }
 
-func (i GooglePrivacyDlpV2JobTriggerTypeArgs) ToGooglePrivacyDlpV2JobTriggerTypePtrOutput() GooglePrivacyDlpV2JobTriggerTypePtrOutput {
-	return i.ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(context.Background())
+func (i GooglePrivacyDlpV2JobTriggerArgs) ToGooglePrivacyDlpV2JobTriggerPtrOutput() GooglePrivacyDlpV2JobTriggerPtrOutput {
+	return i.ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(context.Background())
 }
 
-func (i GooglePrivacyDlpV2JobTriggerTypeArgs) ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobTriggerTypeOutput).ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(ctx)
+func (i GooglePrivacyDlpV2JobTriggerArgs) ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobTriggerOutput).ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(ctx)
 }
 
-// GooglePrivacyDlpV2JobTriggerTypePtrInput is an input type that accepts GooglePrivacyDlpV2JobTriggerTypeArgs, GooglePrivacyDlpV2JobTriggerTypePtr and GooglePrivacyDlpV2JobTriggerTypePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2JobTriggerTypePtrInput` via:
+// GooglePrivacyDlpV2JobTriggerPtrInput is an input type that accepts GooglePrivacyDlpV2JobTriggerArgs, GooglePrivacyDlpV2JobTriggerPtr and GooglePrivacyDlpV2JobTriggerPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2JobTriggerPtrInput` via:
 //
-//          GooglePrivacyDlpV2JobTriggerTypeArgs{...}
+//          GooglePrivacyDlpV2JobTriggerArgs{...}
 //
 //  or:
 //
 //          nil
-type GooglePrivacyDlpV2JobTriggerTypePtrInput interface {
+type GooglePrivacyDlpV2JobTriggerPtrInput interface {
 	pulumi.Input
 
-	ToGooglePrivacyDlpV2JobTriggerTypePtrOutput() GooglePrivacyDlpV2JobTriggerTypePtrOutput
-	ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(context.Context) GooglePrivacyDlpV2JobTriggerTypePtrOutput
+	ToGooglePrivacyDlpV2JobTriggerPtrOutput() GooglePrivacyDlpV2JobTriggerPtrOutput
+	ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(context.Context) GooglePrivacyDlpV2JobTriggerPtrOutput
 }
 
-type googlePrivacyDlpV2JobTriggerTypePtrType GooglePrivacyDlpV2JobTriggerTypeArgs
+type googlePrivacyDlpV2JobTriggerPtrType GooglePrivacyDlpV2JobTriggerArgs
 
-func GooglePrivacyDlpV2JobTriggerTypePtr(v *GooglePrivacyDlpV2JobTriggerTypeArgs) GooglePrivacyDlpV2JobTriggerTypePtrInput {
-	return (*googlePrivacyDlpV2JobTriggerTypePtrType)(v)
+func GooglePrivacyDlpV2JobTriggerPtr(v *GooglePrivacyDlpV2JobTriggerArgs) GooglePrivacyDlpV2JobTriggerPtrInput {
+	return (*googlePrivacyDlpV2JobTriggerPtrType)(v)
 }
 
-func (*googlePrivacyDlpV2JobTriggerTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2JobTriggerType)(nil)).Elem()
+func (*googlePrivacyDlpV2JobTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2JobTrigger)(nil)).Elem()
 }
 
-func (i *googlePrivacyDlpV2JobTriggerTypePtrType) ToGooglePrivacyDlpV2JobTriggerTypePtrOutput() GooglePrivacyDlpV2JobTriggerTypePtrOutput {
-	return i.ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(context.Background())
+func (i *googlePrivacyDlpV2JobTriggerPtrType) ToGooglePrivacyDlpV2JobTriggerPtrOutput() GooglePrivacyDlpV2JobTriggerPtrOutput {
+	return i.ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(context.Background())
 }
 
-func (i *googlePrivacyDlpV2JobTriggerTypePtrType) ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobTriggerTypePtrOutput)
+func (i *googlePrivacyDlpV2JobTriggerPtrType) ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobTriggerPtrOutput)
 }
 
 // Contains a configuration to make dlp api calls on a repeating basis. See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
-type GooglePrivacyDlpV2JobTriggerTypeOutput struct{ *pulumi.OutputState }
+type GooglePrivacyDlpV2JobTriggerOutput struct{ *pulumi.OutputState }
 
-func (GooglePrivacyDlpV2JobTriggerTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2JobTriggerType)(nil)).Elem()
+func (GooglePrivacyDlpV2JobTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2JobTrigger)(nil)).Elem()
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) ToGooglePrivacyDlpV2JobTriggerTypeOutput() GooglePrivacyDlpV2JobTriggerTypeOutput {
+func (o GooglePrivacyDlpV2JobTriggerOutput) ToGooglePrivacyDlpV2JobTriggerOutput() GooglePrivacyDlpV2JobTriggerOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) ToGooglePrivacyDlpV2JobTriggerTypeOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerTypeOutput {
+func (o GooglePrivacyDlpV2JobTriggerOutput) ToGooglePrivacyDlpV2JobTriggerOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) ToGooglePrivacyDlpV2JobTriggerTypePtrOutput() GooglePrivacyDlpV2JobTriggerTypePtrOutput {
-	return o.ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(context.Background())
+func (o GooglePrivacyDlpV2JobTriggerOutput) ToGooglePrivacyDlpV2JobTriggerPtrOutput() GooglePrivacyDlpV2JobTriggerPtrOutput {
+	return o.ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(context.Background())
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerTypePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *GooglePrivacyDlpV2JobTriggerType {
+func (o GooglePrivacyDlpV2JobTriggerOutput) ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *GooglePrivacyDlpV2JobTrigger {
 		return &v
-	}).(GooglePrivacyDlpV2JobTriggerTypePtrOutput)
+	}).(GooglePrivacyDlpV2JobTriggerPtrOutput)
 }
 
 // Output only. The creation timestamp of a triggeredJob.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 // User provided description (max 256 chars)
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Display name (max 100 chars)
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) Errors() GooglePrivacyDlpV2ErrorArrayOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) []GooglePrivacyDlpV2Error { return v.Errors }).(GooglePrivacyDlpV2ErrorArrayOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) Errors() GooglePrivacyDlpV2ErrorArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) []GooglePrivacyDlpV2Error { return v.Errors }).(GooglePrivacyDlpV2ErrorArrayOutput)
 }
 
 // For inspect jobs, a snapshot of the configuration.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) InspectJob() GooglePrivacyDlpV2InspectJobConfigPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *GooglePrivacyDlpV2InspectJobConfig { return v.InspectJob }).(GooglePrivacyDlpV2InspectJobConfigPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) InspectJob() GooglePrivacyDlpV2InspectJobConfigPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *GooglePrivacyDlpV2InspectJobConfig { return v.InspectJob }).(GooglePrivacyDlpV2InspectJobConfigPtrOutput)
 }
 
 // Output only. The timestamp of the last time this trigger executed.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) LastRunTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.LastRunTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) LastRunTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.LastRunTime }).(pulumi.StringPtrOutput)
 }
 
 // Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Required. A status for this trigger.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) Triggers() GooglePrivacyDlpV2TriggerArrayOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) []GooglePrivacyDlpV2Trigger { return v.Triggers }).(GooglePrivacyDlpV2TriggerArrayOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) Triggers() GooglePrivacyDlpV2TriggerArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) []GooglePrivacyDlpV2Trigger { return v.Triggers }).(GooglePrivacyDlpV2TriggerArrayOutput)
 }
 
 // Output only. The last update timestamp of a triggeredJob.
-func (o GooglePrivacyDlpV2JobTriggerTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2JobTriggerType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2JobTriggerOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2JobTrigger) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
-type GooglePrivacyDlpV2JobTriggerTypePtrOutput struct{ *pulumi.OutputState }
+type GooglePrivacyDlpV2JobTriggerPtrOutput struct{ *pulumi.OutputState }
 
-func (GooglePrivacyDlpV2JobTriggerTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2JobTriggerType)(nil)).Elem()
+func (GooglePrivacyDlpV2JobTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2JobTrigger)(nil)).Elem()
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) ToGooglePrivacyDlpV2JobTriggerTypePtrOutput() GooglePrivacyDlpV2JobTriggerTypePtrOutput {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) ToGooglePrivacyDlpV2JobTriggerPtrOutput() GooglePrivacyDlpV2JobTriggerPtrOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) ToGooglePrivacyDlpV2JobTriggerTypePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerTypePtrOutput {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) ToGooglePrivacyDlpV2JobTriggerPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobTriggerPtrOutput {
 	return o
 }
 
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Elem() GooglePrivacyDlpV2JobTriggerTypeOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) GooglePrivacyDlpV2JobTriggerType { return *v }).(GooglePrivacyDlpV2JobTriggerTypeOutput)
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) Elem() GooglePrivacyDlpV2JobTriggerOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) GooglePrivacyDlpV2JobTrigger { return *v }).(GooglePrivacyDlpV2JobTriggerOutput)
 }
 
 // Output only. The creation timestamp of a triggeredJob.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -8168,8 +8168,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) CreateTime() pulumi.StringPtr
 }
 
 // User provided description (max 256 chars)
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -8178,8 +8178,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Description() pulumi.StringPt
 }
 
 // Display name (max 100 chars)
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -8188,8 +8188,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) DisplayName() pulumi.StringPt
 }
 
 // Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Errors() GooglePrivacyDlpV2ErrorArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) []GooglePrivacyDlpV2Error {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) Errors() GooglePrivacyDlpV2ErrorArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) []GooglePrivacyDlpV2Error {
 		if v == nil {
 			return nil
 		}
@@ -8198,8 +8198,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Errors() GooglePrivacyDlpV2Er
 }
 
 // For inspect jobs, a snapshot of the configuration.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) InspectJob() GooglePrivacyDlpV2InspectJobConfigPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *GooglePrivacyDlpV2InspectJobConfig {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) InspectJob() GooglePrivacyDlpV2InspectJobConfigPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *GooglePrivacyDlpV2InspectJobConfig {
 		if v == nil {
 			return nil
 		}
@@ -8208,8 +8208,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) InspectJob() GooglePrivacyDlp
 }
 
 // Output only. The timestamp of the last time this trigger executed.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) LastRunTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) LastRunTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -8218,8 +8218,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) LastRunTime() pulumi.StringPt
 }
 
 // Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -8228,8 +8228,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Name() pulumi.StringPtrOutput
 }
 
 // Required. A status for this trigger.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -8238,8 +8238,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Status() pulumi.StringPtrOutp
 }
 
 // A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Triggers() GooglePrivacyDlpV2TriggerArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) []GooglePrivacyDlpV2Trigger {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) Triggers() GooglePrivacyDlpV2TriggerArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) []GooglePrivacyDlpV2Trigger {
 		if v == nil {
 			return nil
 		}
@@ -8248,8 +8248,8 @@ func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) Triggers() GooglePrivacyDlpV2
 }
 
 // Output only. The last update timestamp of a triggeredJob.
-func (o GooglePrivacyDlpV2JobTriggerTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTriggerType) *string {
+func (o GooglePrivacyDlpV2JobTriggerPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2JobTrigger) *string {
 		if v == nil {
 			return nil
 		}
@@ -16086,8 +16086,8 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigPtrOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyTemplateTypeOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyTemplateTypePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyTemplateOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DetectionRuleOutput{})
@@ -16132,16 +16132,16 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectJobConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectJobConfigPtrOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectTemplateTypeOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectTemplateTypePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectTemplateOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectTemplatePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleSetOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleSetArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2JobNotificationEmailsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2JobNotificationEmailsPtrOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2JobTriggerTypeOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2JobTriggerTypePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2JobTriggerOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2JobTriggerPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationConfigOutput{})
