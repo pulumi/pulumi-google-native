@@ -49,6 +49,7 @@ export class OrganizationSource extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["canonicalName"] = args ? args.canonicalName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -66,6 +67,10 @@ export class OrganizationSource extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationSource resource.
  */
 export interface OrganizationSourceArgs {
+    /**
+     * The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+     */
+    readonly canonicalName?: pulumi.Input<string>;
     /**
      * The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated or insecure libraries."
      */

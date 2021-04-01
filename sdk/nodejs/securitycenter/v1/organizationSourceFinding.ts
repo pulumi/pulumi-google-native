@@ -53,6 +53,7 @@ export class OrganizationSourceFinding extends pulumi.CustomResource {
             if ((!args || args.sourcesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourcesId'");
             }
+            inputs["canonicalName"] = args ? args.canonicalName : undefined;
             inputs["category"] = args ? args.category : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["eventTime"] = args ? args.eventTime : undefined;
@@ -80,6 +81,10 @@ export class OrganizationSourceFinding extends pulumi.CustomResource {
  */
 export interface OrganizationSourceFindingArgs {
     /**
+     * The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+     */
+    readonly canonicalName?: pulumi.Input<string>;
+    /**
      * The additional taxonomy group within findings from a given source. This field is immutable after creation time. Example: "XSS_FLASH_INJECTION"
      */
     readonly category?: pulumi.Input<string>;
@@ -88,7 +93,7 @@ export interface OrganizationSourceFindingArgs {
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved.
+     * The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
      */
     readonly eventTime?: pulumi.Input<string>;
     /**

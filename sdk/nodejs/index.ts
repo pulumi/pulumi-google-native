@@ -53,6 +53,12 @@ import * as dns from "./dns";
 import * as domains from "./domains";
 import * as eventarc from "./eventarc";
 import * as file from "./file";
+import * as firebase from "./firebase";
+import * as firebasedatabase from "./firebasedatabase";
+import * as firebasedynamiclinks from "./firebasedynamiclinks";
+import * as firebasehosting from "./firebasehosting";
+import * as firebaseml from "./firebaseml";
+import * as firebaserules from "./firebaserules";
 import * as firestore from "./firestore";
 import * as gameservices from "./gameservices";
 import * as genomics from "./genomics";
@@ -102,6 +108,7 @@ import * as transcoder from "./transcoder";
 import * as translate from "./translate";
 import * as types from "./types";
 import * as vision from "./vision";
+import * as vpcaccess from "./vpcaccess";
 import * as webrisk from "./webrisk";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
@@ -153,6 +160,12 @@ export {
     domains,
     eventarc,
     file,
+    firebase,
+    firebasedatabase,
+    firebasedynamiclinks,
+    firebasehosting,
+    firebaseml,
+    firebaserules,
     firestore,
     gameservices,
     genomics,
@@ -202,6 +215,7 @@ export {
     translate,
     types,
     vision,
+    vpcaccess,
     webrisk,
     websecurityscanner,
     workflowexecutions,

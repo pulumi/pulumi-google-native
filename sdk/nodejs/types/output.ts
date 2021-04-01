@@ -337,6 +337,26 @@ export namespace file {
     }
 }
 
+export namespace firebasedynamiclinks {
+    export namespace v1 {
+    }
+}
+
+export namespace firebasehosting {
+    export namespace v1beta1 {
+    }
+}
+
+export namespace firebaseml {
+    export namespace v1beta2 {
+    }
+}
+
+export namespace firebaserules {
+    export namespace v1 {
+    }
+}
+
 export namespace firestore {
     export namespace v1 {
     }
@@ -487,6 +507,9 @@ export namespace osconfig {
 }
 
 export namespace policysimulator {
+    export namespace v1 {
+    }
+
     export namespace v1beta1 {
     }
 }
@@ -645,6 +668,11 @@ export namespace translate {
 }
 
 export namespace vision {
+    export namespace v1 {
+    }
+}
+
+export namespace vpcaccess {
     export namespace v1 {
     }
 }
