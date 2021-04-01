@@ -666,6 +666,8 @@ func (o GoogleCloudDialogflowV2EntityTypeEntityArrayOutput) Index(i pulumi.IntIn
 
 // Defines the Human Agent Assist to connect to a conversation.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfig struct {
+	// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+	EndUserSuggestionConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig `pulumi:"endUserSuggestionConfig"`
 	// Configuration for agent assistance of human agent participant.
 	HumanAgentSuggestionConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig `pulumi:"humanAgentSuggestionConfig"`
 	// Configuration for message analysis.
@@ -687,6 +689,8 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigInput interface {
 
 // Defines the Human Agent Assist to connect to a conversation.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs struct {
+	// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+	EndUserSuggestionConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrInput `pulumi:"endUserSuggestionConfig"`
 	// Configuration for agent assistance of human agent participant.
 	HumanAgentSuggestionConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrInput `pulumi:"humanAgentSuggestionConfig"`
 	// Configuration for message analysis.
@@ -773,6 +777,13 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput) ToGoogleCloudDia
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput)
 }
 
+// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput) EndUserSuggestionConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
+		return v.EndUserSuggestionConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput)
+}
+
 // Configuration for agent assistance of human agent participant.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput) HumanAgentSuggestionConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
@@ -812,6 +823,16 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput) Elem() Google
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfig {
 		return *v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput)
+}
+
+// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput) EndUserSuggestionConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfig) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EndUserSuggestionConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput)
 }
 
 // Configuration for agent assistance of human agent participant.
@@ -984,6 +1005,8 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigP
 
 // Configuration for analyses to run on each conversation message.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig struct {
+	// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
+	EnableEntityExtraction *bool `pulumi:"enableEntityExtraction"`
 	// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
 	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
 }
@@ -1001,6 +1024,8 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigInput 
 
 // Configuration for analyses to run on each conversation message.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs struct {
+	// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
+	EnableEntityExtraction pulumi.BoolPtrInput `pulumi:"enableEntityExtraction"`
 	// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
 	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
 }
@@ -1083,6 +1108,13 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOut
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput)
 }
 
+// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput) EnableEntityExtraction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		return v.EnableEntityExtraction
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) *bool {
@@ -1108,6 +1140,16 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtr
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
 		return *v
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput)
+}
+
+// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput) EnableEntityExtraction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEntityExtraction
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
@@ -2419,6 +2461,502 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSetting
 		}
 		return v.OnlyEndUser
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
+type GoogleCloudDialogflowV2HumanAgentHandoffConfig struct {
+	// Uses LivePerson (https://www.liveperson.com).
+	LivePersonConfig *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig `pulumi:"livePersonConfig"`
+	// Uses Salesforce Live Agent.
+	SalesforceLiveAgentConfig *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig `pulumi:"salesforceLiveAgentConfig"`
+}
+
+// GoogleCloudDialogflowV2HumanAgentHandoffConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigInput` via:
+//
+//          GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs{...}
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput
+}
+
+// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs struct {
+	// Uses LivePerson (https://www.liveperson.com).
+	LivePersonConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput `pulumi:"livePersonConfig"`
+	// Uses Salesforce Live Agent.
+	SalesforceLiveAgentConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput `pulumi:"salesforceLiveAgentConfig"`
+}
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput).ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs, GoogleCloudDialogflowV2HumanAgentHandoffConfigPtr and GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput
+}
+
+type googleCloudDialogflowV2HumanAgentHandoffConfigPtrType GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs
+
+func GoogleCloudDialogflowV2HumanAgentHandoffConfigPtr(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrInput {
+	return (*googleCloudDialogflowV2HumanAgentHandoffConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2HumanAgentHandoffConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2HumanAgentHandoffConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2HumanAgentHandoffConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput)
+}
+
+// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput)
+}
+
+// Uses LivePerson (https://www.liveperson.com).
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) LivePersonConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
+		return v.LivePersonConfig
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+// Uses Salesforce Live Agent.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput) SalesforceLiveAgentConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
+		return v.SalesforceLiveAgentConfig
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput)
+}
+
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfig) GoogleCloudDialogflowV2HumanAgentHandoffConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput)
+}
+
+// Uses LivePerson (https://www.liveperson.com).
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) LivePersonConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LivePersonConfig
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+// Uses Salesforce Live Agent.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) SalesforceLiveAgentConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceLiveAgentConfig
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput)
+}
+
+// Configuration specific to LivePerson (https://www.liveperson.com).
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig struct {
+	// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+	AccountNumber *string `pulumi:"accountNumber"`
+}
+
+// GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigInput` via:
+//
+//          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs{...}
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput
+}
+
+// Configuration specific to LivePerson (https://www.liveperson.com).
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs struct {
+	// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+	AccountNumber pulumi.StringPtrInput `pulumi:"accountNumber"`
+}
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput).ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs, GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtr and GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput
+}
+
+type googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrType GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs
+
+func GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtr(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput {
+	return (*googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+// Configuration specific to LivePerson (https://www.liveperson.com).
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
+}
+
+// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) AccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *string { return v.AccountNumber }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput)
+}
+
+// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) AccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration specific to Salesforce Live Agent.
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig struct {
+	// Required. Live Agent chat button ID.
+	ButtonId *string `pulumi:"buttonId"`
+	// Required. Live Agent deployment ID.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+	EndpointDomain *string `pulumi:"endpointDomain"`
+	// Required. The organization ID of the Salesforce account.
+	OrganizationId *string `pulumi:"organizationId"`
+}
+
+// GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInput` via:
+//
+//          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{...}
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput
+}
+
+// Configuration specific to Salesforce Live Agent.
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs struct {
+	// Required. Live Agent chat button ID.
+	ButtonId pulumi.StringPtrInput `pulumi:"buttonId"`
+	// Required. Live Agent deployment ID.
+	DeploymentId pulumi.StringPtrInput `pulumi:"deploymentId"`
+	// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+	EndpointDomain pulumi.StringPtrInput `pulumi:"endpointDomain"`
+	// Required. The organization ID of the Salesforce account.
+	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
+}
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput).ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs, GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtr and GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput
+	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput
+}
+
+type googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrType GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs
+
+func GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtr(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput {
+	return (*googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput)
+}
+
+// Configuration specific to Salesforce Live Agent.
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput)
+}
+
+// Required. Live Agent chat button ID.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ButtonId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		return v.ButtonId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Live Agent deployment ID.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		return v.DeploymentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) EndpointDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		return v.EndpointDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The organization ID of the Salesforce account.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		return v.OrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
+		return *v
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput)
+}
+
+// Required. Live Agent chat button ID.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) ButtonId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ButtonId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Live Agent deployment ID.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) EndpointDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The organization ID of the Salesforce account.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a single followup intent in the chain.
@@ -7872,6 +8410,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageOutput{})
