@@ -18,10 +18,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource/plugin"
 	rpc "github.com/pulumi/pulumi/sdk/v2/proto/go"
+	"google.golang.org/api/googleapi"
 	"google.golang.org/api/option"
 	"google.golang.org/api/option/internaloption"
 	"google.golang.org/api/storage/v1"
 	"log"
+	"net/http"
 	"os"
 	"strings"
 	"time"
@@ -165,12 +167,8 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
 
-	id := res.DeletePath
-	idParams := res.DeleteParams
-	if id == "" {
-		id = res.CreatePath
-		idParams = res.CreateParams
-	}
+	id := res.IdPath
+	idParams := res.IdParams
 	for _, param := range idParams {
 		value := evalParam(inputs, param)
 		id = strings.Replace(id, fmt.Sprintf("{%s}", param), value, 1)
@@ -220,7 +218,7 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			uri = strings.Replace(uri, fmt.Sprintf("{%s}", param), value, 1)
 			delete(inputs, key)
 		}
-		for _, param := range res.DeleteParams {
+		for _, param := range res.IdParams {
 			key := resource.PropertyKey(param)
 			delete(inputs, key)
 		}
@@ -321,8 +319,41 @@ func evalParam(inputs resource.PropertyMap, param string) string {
 }
 
 // Read the current live state associated with a resource.
-func (k *googleCloudProvider) Read(_ context.Context, _ *rpc.ReadRequest) (*rpc.ReadResponse, error) {
-	panic("Read not implemented")
+func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*rpc.ReadResponse, error) {
+	urn := resource.URN(req.GetUrn())
+	label := fmt.Sprintf("%s.Read(%s)", k.name, urn)
+	resourceKey := string(urn.Type())
+	res, ok := k.resourceMap.Resources[resourceKey]
+	if !ok {
+		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+	}
+
+	id := req.GetId()
+	if res.NoGet {
+		return &rpc.ReadResponse{Id: id}, nil
+	}
+
+	uri := fmt.Sprintf("%s%s", res.BaseUrl, id)
+
+	resp, err := sendRequestWithTimeout(ctx, "GET", uri, nil, 0)
+	if err != nil {
+		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
+			// 404 means that the resource was deleted.
+			return &rpc.ReadResponse{Id: ""}, nil
+		}
+		return nil, fmt.Errorf("error sending request: %s", err)
+	}
+
+	// Serialize and return RPC outputs.
+	checkpoint, err := plugin.MarshalProperties(
+		resource.NewPropertyMapFromMap(resp),
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), SkipNulls: true},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return &rpc.ReadResponse{Id: id, Properties: checkpoint}, nil
 }
 
 // Update updates an existing resource with new values.
@@ -340,7 +371,7 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
 
-	if res.DeletePath == "" {
+	if res.NoDelete {
 		// TODO: delete with Set (e.g. Policy resources)
 		return &empty.Empty{}, nil
 	}

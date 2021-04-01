@@ -171,17 +171,21 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 	for _, name := range names {
 		res := resources[name]
 		name = ToUpperCamel(inflector.Singularize(name))
-		var createMethod, deleteMethod *discovery.RestMethod
+		var createMethod, getMethod, deleteMethod *discovery.RestMethod
 		for methodName, value := range res.Methods {
 			restMethod := value
 			switch methodName {
 			case "create", "insert":
 				createMethod = &restMethod
+			case "get":
+				getMethod = &restMethod
 			case "setIamPolicy":
 				typeName := fmt.Sprintf("%s%sIamPolicy", parent, name)
-				err := g.genResource(typeName, &restMethod, nil)
-				if err != nil {
-					return err
+				if getIamPolicy, has := res.Methods["getIamPolicy"]; has {
+					err := g.genResource(typeName, &restMethod, &getIamPolicy, nil)
+					if err != nil {
+						return err
+					}
 				}
 			case "delete":
 				deleteMethod = &restMethod
@@ -190,7 +194,7 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 
 		if createMethod != nil {
 			typeName := fmt.Sprintf("%s%s", parent, name)
-			err := g.genResource(typeName, createMethod, deleteMethod)
+			err := g.genResource(typeName, createMethod, getMethod, deleteMethod)
 			if err != nil {
 				return err
 			}
@@ -213,7 +217,7 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 
 var pathRegex = regexp.MustCompile(`{([A-Za-z0-9]*)}`)
 
-func (g *packageGenerator) genResource(typeName string, createMethod, deleteMethod *discovery.RestMethod) error {
+func (g *packageGenerator) genResource(typeName string, createMethod, getMethod, deleteMethod *discovery.RestMethod) error {
 	resourceTok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
@@ -238,6 +242,8 @@ func (g *packageGenerator) genResource(typeName string, createMethod, deleteMeth
 	resourceMeta := resources.CloudAPIResource{
 		BaseUrl:    g.rest.BaseUrl,
 		CreatePath: createPath,
+		NoGet:      getMethod == nil,
+		NoDelete:   deleteMethod == nil,
 	}
 
 	subMatches := pathRegex.FindAllStringSubmatch(createPath, -1)
@@ -250,25 +256,36 @@ func (g *packageGenerator) genResource(typeName string, createMethod, deleteMeth
 		requiredProperties.Add(name)
 	}
 
-	if deleteMethod != nil {
-		deletePath := deleteMethod.FlatPath
-		if deletePath == "" {
-			deletePath = deleteMethod.Path
+	var idPath string
+	switch {
+	case getMethod != nil:
+		idPath = getMethod.FlatPath
+		if idPath == "" {
+			idPath = getMethod.Path
 		}
+	case deleteMethod != nil:
+		idPath = deleteMethod.FlatPath
+		if idPath == "" {
+			idPath = deleteMethod.Path
+		}
+	default:
+		idPath = createMethod.FlatPath
+		if idPath == "" {
+			idPath = createMethod.Path
+		}
+	}
 
-		resourceMeta.DeletePath = deletePath
-
-		subMatches := pathRegex.FindAllStringSubmatch(deletePath, -1)
-		for _, names := range subMatches {
-			name := names[1]
-			if _, has := inputProperties[name]; !has {
-				inputProperties[name] = schema.PropertySpec{
-					TypeSpec: schema.TypeSpec{Type: "string"},
-				}
-				requiredProperties.Add(name)
+	resourceMeta.IdPath = idPath
+	subMatches = pathRegex.FindAllStringSubmatch(idPath, -1)
+	for _, names := range subMatches {
+		name := names[1]
+		if _, has := inputProperties[name]; !has {
+			inputProperties[name] = schema.PropertySpec{
+				TypeSpec: schema.TypeSpec{Type: "string"},
 			}
-			resourceMeta.DeleteParams = append(resourceMeta.DeleteParams, name)
+			requiredProperties.Add(name)
 		}
+		resourceMeta.IdParams = append(resourceMeta.IdParams, name)
 	}
 
 	if createMethod.Request != nil {
