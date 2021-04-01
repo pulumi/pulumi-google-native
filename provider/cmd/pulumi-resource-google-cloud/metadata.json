@@ -7148,6 +7148,164 @@
                 "instancesId"
             ]
         },
+        "google-cloud:firebase/v1beta1:AndroidApp": {
+            "baseUrl": "https://firebase.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/androidApps",
+            "createParams": [
+                "projectsId"
+            ]
+        },
+        "google-cloud:firebase/v1beta1:AndroidAppSha": {
+            "baseUrl": "https://firebase.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha",
+            "createParams": [
+                "projectsId",
+                "androidAppsId"
+            ],
+            "deletePath": "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha/{shaId}",
+            "deleteParams": [
+                "projectsId",
+                "androidAppsId",
+                "shaId"
+            ]
+        },
+        "google-cloud:firebase/v1beta1:IosApp": {
+            "baseUrl": "https://firebase.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/iosApps",
+            "createParams": [
+                "projectsId"
+            ]
+        },
+        "google-cloud:firebase/v1beta1:WebApp": {
+            "baseUrl": "https://firebase.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/webApps",
+            "createParams": [
+                "projectsId"
+            ]
+        },
+        "google-cloud:firebasedatabase/v1beta:Instance": {
+            "baseUrl": "https://firebasedatabase.googleapis.com/",
+            "createPath": "v1beta/projects/{projectsId}/locations/{locationsId}/instances",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "deletePath": "v1beta/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+            "deleteParams": [
+                "projectsId",
+                "locationsId",
+                "instancesId"
+            ]
+        },
+        "google-cloud:firebasedynamiclinks/v1:ManagedShortLink": {
+            "baseUrl": "https://firebasedynamiclinks.googleapis.com/",
+            "createPath": "v1/managedShortLinks:create",
+            "createParams": null
+        },
+        "google-cloud:firebasedynamiclinks/v1:ShortLink": {
+            "baseUrl": "https://firebasedynamiclinks.googleapis.com/",
+            "createPath": "v1/shortLinks",
+            "createParams": null
+        },
+        "google-cloud:firebasehosting/v1beta1:Site": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/sites",
+            "createParams": [
+                "projectsId"
+            ],
+            "deletePath": "v1beta1/projects/{projectsId}/sites/{sitesId}",
+            "deleteParams": [
+                "projectsId",
+                "sitesId"
+            ]
+        },
+        "google-cloud:firebasehosting/v1beta1:SiteChannel": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/sites/{sitesId}/channels",
+            "createParams": [
+                "sitesId"
+            ],
+            "deletePath": "v1beta1/sites/{sitesId}/channels/{channelsId}",
+            "deleteParams": [
+                "sitesId",
+                "channelsId"
+            ]
+        },
+        "google-cloud:firebasehosting/v1beta1:SiteChannelRelease": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/sites/{sitesId}/channels/{channelsId}/releases",
+            "createParams": [
+                "sitesId",
+                "channelsId"
+            ]
+        },
+        "google-cloud:firebasehosting/v1beta1:SiteDomain": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/sites/{sitesId}/domains",
+            "createParams": [
+                "sitesId"
+            ],
+            "deletePath": "v1beta1/sites/{sitesId}/domains/{domainsId}",
+            "deleteParams": [
+                "sitesId",
+                "domainsId"
+            ]
+        },
+        "google-cloud:firebasehosting/v1beta1:SiteRelease": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/sites/{sitesId}/releases",
+            "createParams": [
+                "sitesId"
+            ]
+        },
+        "google-cloud:firebasehosting/v1beta1:SiteVersion": {
+            "baseUrl": "https://firebasehosting.googleapis.com/",
+            "createPath": "v1beta1/sites/{sitesId}/versions",
+            "createParams": [
+                "sitesId"
+            ],
+            "deletePath": "v1beta1/sites/{sitesId}/versions/{versionsId}",
+            "deleteParams": [
+                "sitesId",
+                "versionsId"
+            ]
+        },
+        "google-cloud:firebaseml/v1beta2:Model": {
+            "baseUrl": "https://firebaseml.googleapis.com/",
+            "createPath": "v1beta2/projects/{projectsId}/models",
+            "createParams": [
+                "projectsId"
+            ],
+            "deletePath": "v1beta2/projects/{projectsId}/models/{modelsId}",
+            "deleteParams": [
+                "projectsId",
+                "modelsId"
+            ]
+        },
+        "google-cloud:firebaserules/v1:Release": {
+            "baseUrl": "https://firebaserules.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/releases",
+            "createParams": [
+                "projectsId"
+            ],
+            "deletePath": "v1/projects/{projectsId}/releases/{releasesId}",
+            "deleteParams": [
+                "projectsId",
+                "releasesId"
+            ]
+        },
+        "google-cloud:firebaserules/v1:Ruleset": {
+            "baseUrl": "https://firebaserules.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/rulesets",
+            "createParams": [
+                "projectsId"
+            ],
+            "deletePath": "v1/projects/{projectsId}/rulesets/{rulesetsId}",
+            "deleteParams": [
+                "projectsId",
+                "rulesetsId"
+            ]
+        },
         "google-cloud:firestore/v1:DatabaseCollectionGroupIndex": {
             "baseUrl": "https://firestore.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
@@ -9084,6 +9242,30 @@
                 "patchDeploymentsId"
             ]
         },
+        "google-cloud:policysimulator/v1:FolderReplay": {
+            "baseUrl": "https://policysimulator.googleapis.com/",
+            "createPath": "v1/folders/{foldersId}/locations/{locationsId}/replays",
+            "createParams": [
+                "foldersId",
+                "locationsId"
+            ]
+        },
+        "google-cloud:policysimulator/v1:OrganizationReplay": {
+            "baseUrl": "https://policysimulator.googleapis.com/",
+            "createPath": "v1/organizations/{organizationsId}/locations/{locationsId}/replays",
+            "createParams": [
+                "organizationsId",
+                "locationsId"
+            ]
+        },
+        "google-cloud:policysimulator/v1:Replay": {
+            "baseUrl": "https://policysimulator.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/replays",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ]
+        },
         "google-cloud:policysimulator/v1beta1:FolderReplay": {
             "baseUrl": "https://policysimulator.googleapis.com/",
             "createPath": "v1beta1/folders/{foldersId}/locations/{locationsId}/replays",
@@ -10498,6 +10680,20 @@
                 "projectsId",
                 "locationsId",
                 "productSetsId"
+            ]
+        },
+        "google-cloud:vpcaccess/v1:Connector": {
+            "baseUrl": "https://vpcaccess.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/connectors",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "deletePath": "v1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
+            "deleteParams": [
+                "projectsId",
+                "locationsId",
+                "connectorsId"
             ]
         },
         "google-cloud:webrisk/v1:Submission": {

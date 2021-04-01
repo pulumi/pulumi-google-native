@@ -73,6 +73,8 @@ type conversationProfileArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig `pulumi:"humanAgentAssistantConfig"`
+	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+	HumanAgentHandoffConfig *GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
 	LanguageCode *string `pulumi:"languageCode"`
 	LocationsId  string  `pulumi:"locationsId"`
@@ -102,6 +104,8 @@ type ConversationProfileArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput
+	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
 	LanguageCode pulumi.StringPtrInput
 	LocationsId  pulumi.StringInput

@@ -25,6 +25,9 @@ __all__ = [
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs',
     'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs',
+    'GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs',
     'GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoArgs',
     'GoogleCloudDialogflowV2beta1IntentMessageArgs',
     'GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs',
@@ -265,21 +268,37 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntityArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs:
     def __init__(__self__, *,
+                 end_user_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
                  human_agent_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
                  message_analysis_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs']] = None,
                  notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs']] = None):
         """
         Defines the Human Agent Assistant to connect to a conversation.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs'] end_user_suggestion_config: Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs'] human_agent_suggestion_config: Configuration for agent assistance of human agent participant.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs'] message_analysis_config: Configuration for message analysis.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
         """
+        if end_user_suggestion_config is not None:
+            pulumi.set(__self__, "end_user_suggestion_config", end_user_suggestion_config)
         if human_agent_suggestion_config is not None:
             pulumi.set(__self__, "human_agent_suggestion_config", human_agent_suggestion_config)
         if message_analysis_config is not None:
             pulumi.set(__self__, "message_analysis_config", message_analysis_config)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
+
+    @property
+    @pulumi.getter(name="endUserSuggestionConfig")
+    def end_user_suggestion_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']]:
+        """
+        Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+        """
+        return pulumi.get(self, "end_user_suggestion_config")
+
+    @end_user_suggestion_config.setter
+    def end_user_suggestion_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs']]):
+        pulumi.set(self, "end_user_suggestion_config", value)
 
     @property
     @pulumi.getter(name="humanAgentSuggestionConfig")
@@ -345,13 +364,29 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConf
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs:
     def __init__(__self__, *,
+                 enable_entity_extraction: Optional[pulumi.Input[bool]] = None,
                  enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None):
         """
         Configuration for analyses to run on each conversation message.
+        :param pulumi.Input[bool] enable_entity_extraction: Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
         :param pulumi.Input[bool] enable_sentiment_analysis: Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
         """
+        if enable_entity_extraction is not None:
+            pulumi.set(__self__, "enable_entity_extraction", enable_entity_extraction)
         if enable_sentiment_analysis is not None:
             pulumi.set(__self__, "enable_sentiment_analysis", enable_sentiment_analysis)
+
+    @property
+    @pulumi.getter(name="enableEntityExtraction")
+    def enable_entity_extraction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
+        """
+        return pulumi.get(self, "enable_entity_extraction")
+
+    @enable_entity_extraction.setter
+    def enable_entity_extraction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_entity_extraction", value)
 
     @property
     @pulumi.getter(name="enableSentimentAnalysis")
@@ -764,6 +799,142 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSett
     @only_end_user.setter
     def only_end_user(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "only_end_user", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs:
+    def __init__(__self__, *,
+                 live_person_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs']] = None,
+                 salesforce_live_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']] = None):
+        """
+        Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs'] live_person_config: Uses LivePerson (https://www.liveperson.com).
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs'] salesforce_live_agent_config: Uses Salesforce Live Agent.
+        """
+        if live_person_config is not None:
+            pulumi.set(__self__, "live_person_config", live_person_config)
+        if salesforce_live_agent_config is not None:
+            pulumi.set(__self__, "salesforce_live_agent_config", salesforce_live_agent_config)
+
+    @property
+    @pulumi.getter(name="livePersonConfig")
+    def live_person_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs']]:
+        """
+        Uses LivePerson (https://www.liveperson.com).
+        """
+        return pulumi.get(self, "live_person_config")
+
+    @live_person_config.setter
+    def live_person_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs']]):
+        pulumi.set(self, "live_person_config", value)
+
+    @property
+    @pulumi.getter(name="salesforceLiveAgentConfig")
+    def salesforce_live_agent_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]:
+        """
+        Uses Salesforce Live Agent.
+        """
+        return pulumi.get(self, "salesforce_live_agent_config")
+
+    @salesforce_live_agent_config.setter
+    def salesforce_live_agent_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]):
+        pulumi.set(self, "salesforce_live_agent_config", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs:
+    def __init__(__self__, *,
+                 account_number: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration specific to LivePerson (https://www.liveperson.com).
+        :param pulumi.Input[str] account_number: Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+        """
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_number", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs:
+    def __init__(__self__, *,
+                 button_id: Optional[pulumi.Input[str]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
+                 endpoint_domain: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration specific to Salesforce Live Agent.
+        :param pulumi.Input[str] button_id: Required. Live Agent chat button ID.
+        :param pulumi.Input[str] deployment_id: Required. Live Agent deployment ID.
+        :param pulumi.Input[str] endpoint_domain: Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+        :param pulumi.Input[str] organization_id: Required. The organization ID of the Salesforce account.
+        """
+        if button_id is not None:
+            pulumi.set(__self__, "button_id", button_id)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if endpoint_domain is not None:
+            pulumi.set(__self__, "endpoint_domain", endpoint_domain)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+
+    @property
+    @pulumi.getter(name="buttonId")
+    def button_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Live Agent chat button ID.
+        """
+        return pulumi.get(self, "button_id")
+
+    @button_id.setter
+    def button_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "button_id", value)
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Live Agent deployment ID.
+        """
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_id", value)
+
+    @property
+    @pulumi.getter(name="endpointDomain")
+    def endpoint_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+        """
+        return pulumi.get(self, "endpoint_domain")
+
+    @endpoint_domain.setter
+    def endpoint_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_domain", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The organization ID of the Salesforce account.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_id", value)
 
 
 @pulumi.input_type

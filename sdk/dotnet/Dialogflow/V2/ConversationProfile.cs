@@ -87,6 +87,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         public Input<Inputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs>? HumanAgentAssistantConfig { get; set; }
 
         /// <summary>
+        /// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+        /// </summary>
+        [Input("humanAgentHandoffConfig")]
+        public Input<Inputs.GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs>? HumanAgentHandoffConfig { get; set; }
+
+        /// <summary>
         /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
         /// </summary>
         [Input("languageCode")]

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+        /// </summary>
+        [Input("endUserSuggestionConfig")]
+        public Input<Inputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs>? EndUserSuggestionConfig { get; set; }
+
+        /// <summary>
         /// Configuration for agent assistance of human agent participant.
         /// </summary>
         [Input("humanAgentSuggestionConfig")]

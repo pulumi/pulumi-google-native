@@ -61,6 +61,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
+            inputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
@@ -100,6 +101,10 @@ export interface ConversationProfileArgs {
      * Configuration for agent assistance to use with this profile.
      */
     readonly humanAgentAssistantConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentAssistantConfig>;
+    /**
+     * Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+     */
+    readonly humanAgentHandoffConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentHandoffConfig>;
     /**
      * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
      */

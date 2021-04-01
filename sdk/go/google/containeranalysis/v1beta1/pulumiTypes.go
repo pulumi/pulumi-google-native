@@ -3096,6 +3096,8 @@ type Detail struct {
 	Source *string `pulumi:"source"`
 	// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
 	SourceUpdateTime *string `pulumi:"sourceUpdateTime"`
+	// The name of the vendor of the product.
+	Vendor *string `pulumi:"vendor"`
 }
 
 // DetailInput is an input type that accepts DetailArgs and DetailOutput values.
@@ -3133,6 +3135,8 @@ type DetailArgs struct {
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
 	SourceUpdateTime pulumi.StringPtrInput `pulumi:"sourceUpdateTime"`
+	// The name of the vendor of the product.
+	Vendor pulumi.StringPtrInput `pulumi:"vendor"`
 }
 
 func (DetailArgs) ElementType() reflect.Type {
@@ -3240,6 +3244,11 @@ func (o DetailOutput) Source() pulumi.StringPtrOutput {
 // The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
 func (o DetailOutput) SourceUpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Detail) *string { return v.SourceUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vendor of the product.
+func (o DetailOutput) Vendor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Detail) *string { return v.Vendor }).(pulumi.StringPtrOutput)
 }
 
 type DetailArrayOutput struct{ *pulumi.OutputState }

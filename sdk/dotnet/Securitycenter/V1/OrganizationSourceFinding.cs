@@ -60,6 +60,12 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
     public sealed class OrganizationSourceFindingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+        /// </summary>
+        [Input("canonicalName")]
+        public Input<string>? CanonicalName { get; set; }
+
+        /// <summary>
         /// The additional taxonomy group within findings from a given source. This field is immutable after creation time. Example: "XSS_FLASH_INJECTION"
         /// </summary>
         [Input("category")]
@@ -72,7 +78,7 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved.
+        /// The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
         /// </summary>
         [Input("eventTime")]
         public Input<string>? EventTime { get; set; }

@@ -730,6 +730,8 @@ func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
 
 // User specified security marks that are attached to the parent Security Command Center resource. Security marks are scoped within a Security Command Center organization -- they can be modified and viewed by all users who have proper permissions on the organization.
 type SecurityMarks struct {
+	// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+	CanonicalName *string `pulumi:"canonicalName"`
 	// Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
 	Marks map[string]string `pulumi:"marks"`
 	// The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
@@ -749,6 +751,8 @@ type SecurityMarksInput interface {
 
 // User specified security marks that are attached to the parent Security Command Center resource. Security marks are scoped within a Security Command Center organization -- they can be modified and viewed by all users who have proper permissions on the organization.
 type SecurityMarksArgs struct {
+	// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+	CanonicalName pulumi.StringPtrInput `pulumi:"canonicalName"`
 	// Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
 	Marks pulumi.StringMapInput `pulumi:"marks"`
 	// The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
@@ -833,6 +837,11 @@ func (o SecurityMarksOutput) ToSecurityMarksPtrOutputWithContext(ctx context.Con
 	}).(SecurityMarksPtrOutput)
 }
 
+// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+func (o SecurityMarksOutput) CanonicalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityMarks) *string { return v.CanonicalName }).(pulumi.StringPtrOutput)
+}
+
 // Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
 func (o SecurityMarksOutput) Marks() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SecurityMarks) map[string]string { return v.Marks }).(pulumi.StringMapOutput)
@@ -859,6 +868,16 @@ func (o SecurityMarksPtrOutput) ToSecurityMarksPtrOutputWithContext(ctx context.
 
 func (o SecurityMarksPtrOutput) Elem() SecurityMarksOutput {
 	return o.ApplyT(func(v *SecurityMarks) SecurityMarks { return *v }).(SecurityMarksOutput)
+}
+
+// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+func (o SecurityMarksPtrOutput) CanonicalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityMarks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanonicalName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining characters must be between 1 - 4096 characters (inclusive)

@@ -61,11 +61,13 @@ func (OrganizationSourceFindingState) ElementType() reflect.Type {
 }
 
 type organizationSourceFindingArgs struct {
+	// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+	CanonicalName *string `pulumi:"canonicalName"`
 	// The additional taxonomy group within findings from a given source. This field is immutable after creation time. Example: "XSS_FLASH_INJECTION"
 	Category *string `pulumi:"category"`
 	// The time at which the finding was created in Security Command Center.
 	CreateTime *string `pulumi:"createTime"`
-	// The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved.
+	// The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
 	EventTime *string `pulumi:"eventTime"`
 	// The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL.
 	ExternalUri *string `pulumi:"externalUri"`
@@ -89,11 +91,13 @@ type organizationSourceFindingArgs struct {
 
 // The set of arguments for constructing a OrganizationSourceFinding resource.
 type OrganizationSourceFindingArgs struct {
+	// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+	CanonicalName pulumi.StringPtrInput
 	// The additional taxonomy group within findings from a given source. This field is immutable after creation time. Example: "XSS_FLASH_INJECTION"
 	Category pulumi.StringPtrInput
 	// The time at which the finding was created in Security Command Center.
 	CreateTime pulumi.StringPtrInput
-	// The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved.
+	// The time at which the event took place, or when an update to the finding occurred. For example, if the finding represents an open firewall it would capture the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
 	EventTime pulumi.StringPtrInput
 	// The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL.
 	ExternalUri pulumi.StringPtrInput
