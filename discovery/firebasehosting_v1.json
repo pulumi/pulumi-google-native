@@ -1,32 +1,20 @@
 {
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "See, edit, configure, and delete your Google Cloud Platform data"
-        },
-        "https://www.googleapis.com/auth/cloudruntimeconfig": {
-          "description": "Manage your Google Cloud Platform services' runtime configuration"
-        }
-      }
-    }
-  },
   "basePath": "",
-  "baseUrl": "https://runtimeconfig.googleapis.com/",
+  "baseUrl": "https://firebasehosting.googleapis.com/",
   "batchPath": "batch",
-  "canonicalName": "Cloud RuntimeConfig",
-  "description": "The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.",
+  "canonicalName": "Firebase Hosting",
+  "description": "The Firebase Hosting REST API enables programmatic and customizable management and deployments to your Firebase-hosted sites. Use this REST API to create and manage channels and sites as well as to deploy new or updated hosting configurations and content files.",
   "discoveryVersion": "v1",
-  "documentationLink": "https://cloud.google.com/deployment-manager/runtime-configurator/",
+  "documentationLink": "https://firebase.google.com/docs/hosting/",
   "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "id": "runtimeconfig:v1",
+  "id": "firebasehosting:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://runtimeconfig.mtls.googleapis.com/",
-  "name": "runtimeconfig",
+  "mtlsRootUrl": "https://firebasehosting.mtls.googleapis.com/",
+  "name": "firebasehosting",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
@@ -114,7 +102,7 @@
           "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
           "flatPath": "v1/operations/{operationsId}:cancel",
           "httpMethod": "POST",
-          "id": "runtimeconfig.operations.cancel",
+          "id": "firebasehosting.operations.cancel",
           "parameterOrder": [
             "name"
           ],
@@ -133,17 +121,13 @@
           },
           "response": {
             "$ref": "Empty"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloudruntimeconfig"
-          ]
+          }
         },
         "delete": {
           "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
           "flatPath": "v1/operations/{operationsId}",
           "httpMethod": "DELETE",
-          "id": "runtimeconfig.operations.delete",
+          "id": "firebasehosting.operations.delete",
           "parameterOrder": [
             "name"
           ],
@@ -159,17 +143,13 @@
           "path": "v1/{+name}",
           "response": {
             "$ref": "Empty"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloudruntimeconfig"
-          ]
+          }
         },
         "list": {
           "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
           "flatPath": "v1/operations",
           "httpMethod": "GET",
-          "id": "runtimeconfig.operations.list",
+          "id": "firebasehosting.operations.list",
           "parameterOrder": [
             "name"
           ],
@@ -201,17 +181,13 @@
           "path": "v1/{+name}",
           "response": {
             "$ref": "ListOperationsResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloudruntimeconfig"
-          ]
+          }
         }
       }
     }
   },
-  "revision": "20210329",
-  "rootUrl": "https://runtimeconfig.googleapis.com/",
+  "revision": "20210315",
+  "rootUrl": "https://firebasehosting.googleapis.com/",
   "schemas": {
     "CancelOperationRequest": {
       "description": "The request message for Operations.CancelOperation.",
@@ -307,7 +283,7 @@
     }
   },
   "servicePath": "",
-  "title": "Cloud Runtime Configuration API",
+  "title": "Firebase Hosting API",
   "version": "v1",
   "version_module": true
 }

@@ -4,29 +4,26 @@
       "scopes": {
         "https://www.googleapis.com/auth/cloud-platform": {
           "description": "See, edit, configure, and delete your Google Cloud Platform data"
-        },
-        "https://www.googleapis.com/auth/cloudruntimeconfig": {
-          "description": "Manage your Google Cloud Platform services' runtime configuration"
         }
       }
     }
   },
   "basePath": "",
-  "baseUrl": "https://runtimeconfig.googleapis.com/",
+  "baseUrl": "https://firebaseml.googleapis.com/",
   "batchPath": "batch",
-  "canonicalName": "Cloud RuntimeConfig",
-  "description": "The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.",
+  "canonicalName": "Firebase ML",
+  "description": "Access custom machine learning models hosted via Firebase ML.",
   "discoveryVersion": "v1",
-  "documentationLink": "https://cloud.google.com/deployment-manager/runtime-configurator/",
+  "documentationLink": "https://firebase.google.com",
   "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "id": "runtimeconfig:v1",
+  "id": "firebaseml:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://runtimeconfig.mtls.googleapis.com/",
-  "name": "runtimeconfig",
+  "mtlsRootUrl": "https://firebaseml.mtls.googleapis.com/",
+  "name": "firebaseml",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
@@ -114,7 +111,7 @@
           "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
           "flatPath": "v1/operations/{operationsId}:cancel",
           "httpMethod": "POST",
-          "id": "runtimeconfig.operations.cancel",
+          "id": "firebaseml.operations.cancel",
           "parameterOrder": [
             "name"
           ],
@@ -135,15 +132,14 @@
             "$ref": "Empty"
           },
           "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloudruntimeconfig"
+            "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
         "delete": {
           "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
           "flatPath": "v1/operations/{operationsId}",
           "httpMethod": "DELETE",
-          "id": "runtimeconfig.operations.delete",
+          "id": "firebaseml.operations.delete",
           "parameterOrder": [
             "name"
           ],
@@ -161,15 +157,14 @@
             "$ref": "Empty"
           },
           "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloudruntimeconfig"
+            "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
         "list": {
           "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
           "flatPath": "v1/operations",
           "httpMethod": "GET",
-          "id": "runtimeconfig.operations.list",
+          "id": "firebaseml.operations.list",
           "parameterOrder": [
             "name"
           ],
@@ -203,15 +198,14 @@
             "$ref": "ListOperationsResponse"
           },
           "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloudruntimeconfig"
+            "https://www.googleapis.com/auth/cloud-platform"
           ]
         }
       }
     }
   },
   "revision": "20210329",
-  "rootUrl": "https://runtimeconfig.googleapis.com/",
+  "rootUrl": "https://firebaseml.googleapis.com/",
   "schemas": {
     "CancelOperationRequest": {
       "description": "The request message for Operations.CancelOperation.",
@@ -239,6 +233,30 @@
             "$ref": "Operation"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ModelOperationMetadata": {
+      "description": "This is returned in the longrunning operations for create/update.",
+      "id": "ModelOperationMetadata",
+      "properties": {
+        "basicOperationStatus": {
+          "enum": [
+            "BASIC_OPERATION_STATUS_UNSPECIFIED",
+            "BASIC_OPERATION_STATUS_UPLOADING",
+            "BASIC_OPERATION_STATUS_VERIFYING"
+          ],
+          "enumDescriptions": [
+            "The status is unspecified",
+            "The model file is being uploaded",
+            "The model file is being verified"
+          ],
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the model we are creating/updating The name must have the form `projects/{project_id}/models/{model_id}`",
+          "type": "string"
         }
       },
       "type": "object"
@@ -307,7 +325,7 @@
     }
   },
   "servicePath": "",
-  "title": "Cloud Runtime Configuration API",
+  "title": "Firebase ML API",
   "version": "v1",
   "version_module": true
 }

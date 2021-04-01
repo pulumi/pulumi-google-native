@@ -1552,7 +1552,7 @@
       }
     }
   },
-  "revision": "20210320",
+  "revision": "20210325",
   "rootUrl": "https://deploymentmanager.googleapis.com/",
   "schemas": {
     "AsyncOptions": {
