@@ -23,6 +23,9 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CertificateAuthoritiesId == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateAuthoritiesId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -65,6 +68,7 @@ type certificateAuthorityArgs struct {
 	AccessUrls *AccessUrls `pulumi:"accessUrls"`
 	// Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
 	CaCertificateDescriptions []CertificateDescription `pulumi:"caCertificateDescriptions"`
+	CertificateAuthoritiesId  string                   `pulumi:"certificateAuthoritiesId"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy *CertificateAuthorityPolicy `pulumi:"certificatePolicy"`
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -107,6 +111,7 @@ type CertificateAuthorityArgs struct {
 	AccessUrls AccessUrlsPtrInput
 	// Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
 	CaCertificateDescriptions CertificateDescriptionArrayInput
+	CertificateAuthoritiesId  pulumi.StringInput
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyPtrInput
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.

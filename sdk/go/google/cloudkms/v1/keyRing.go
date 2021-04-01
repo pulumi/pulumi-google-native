@@ -23,6 +23,9 @@ func NewKeyRing(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.KeyRingsId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRingsId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -63,6 +66,7 @@ func (KeyRingState) ElementType() reflect.Type {
 type keyRingArgs struct {
 	// Output only. The time at which this KeyRing was created.
 	CreateTime  *string `pulumi:"createTime"`
+	KeyRingsId  string  `pulumi:"keyRingsId"`
 	LocationsId string  `pulumi:"locationsId"`
 	// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
 	Name       *string `pulumi:"name"`
@@ -73,6 +77,7 @@ type keyRingArgs struct {
 type KeyRingArgs struct {
 	// Output only. The time at which this KeyRing was created.
 	CreateTime  pulumi.StringPtrInput
+	KeyRingsId  pulumi.StringInput
 	LocationsId pulumi.StringInput
 	// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
 	Name       pulumi.StringPtrInput

@@ -23,6 +23,9 @@ func NewBrand(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BrandsId == nil {
+		return nil, errors.New("invalid value for required argument 'BrandsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -60,6 +63,7 @@ func (BrandState) ElementType() reflect.Type {
 type brandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle *string `pulumi:"applicationTitle"`
+	BrandsId         string  `pulumi:"brandsId"`
 	// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
 	Name *string `pulumi:"name"`
 	// Output only. Whether the brand is only intended for usage inside the G Suite organization only.
@@ -73,6 +77,7 @@ type brandArgs struct {
 type BrandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle pulumi.StringPtrInput
+	BrandsId         pulumi.StringInput
 	// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
 	Name pulumi.StringPtrInput
 	// Output only. Whether the brand is only intended for usage inside the G Suite organization only.

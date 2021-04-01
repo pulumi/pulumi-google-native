@@ -23,6 +23,9 @@ func NewKeyRingCryptoKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CryptoKeysId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeysId'")
+	}
 	if args.KeyRingsId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRingsId'")
 	}
@@ -65,8 +68,9 @@ func (KeyRingCryptoKeyState) ElementType() reflect.Type {
 
 type keyRingCryptoKeyArgs struct {
 	// Output only. The time at which this CryptoKey was created.
-	CreateTime *string `pulumi:"createTime"`
-	KeyRingsId string  `pulumi:"keyRingsId"`
+	CreateTime   *string `pulumi:"createTime"`
+	CryptoKeysId string  `pulumi:"cryptoKeysId"`
+	KeyRingsId   string  `pulumi:"keyRingsId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
@@ -88,8 +92,9 @@ type keyRingCryptoKeyArgs struct {
 // The set of arguments for constructing a KeyRingCryptoKey resource.
 type KeyRingCryptoKeyArgs struct {
 	// Output only. The time at which this CryptoKey was created.
-	CreateTime pulumi.StringPtrInput
-	KeyRingsId pulumi.StringInput
+	CreateTime   pulumi.StringPtrInput
+	CryptoKeysId pulumi.StringInput
+	KeyRingsId   pulumi.StringInput
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels      pulumi.StringMapInput
 	LocationsId pulumi.StringInput

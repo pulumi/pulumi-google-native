@@ -26,6 +26,9 @@ func NewCertificateAuthorityCertificate(ctx *pulumi.Context,
 	if args.CertificateAuthoritiesId == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateAuthoritiesId'")
 	}
+	if args.CertificatesId == nil {
+		return nil, errors.New("invalid value for required argument 'CertificatesId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -67,6 +70,7 @@ type certificateAuthorityCertificateArgs struct {
 	CertificateAuthoritiesId string `pulumi:"certificateAuthoritiesId"`
 	// Output only. A structured description of the issued X.509 certificate.
 	CertificateDescription *CertificateDescription `pulumi:"certificateDescription"`
+	CertificatesId         string                  `pulumi:"certificatesId"`
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config *CertificateConfig `pulumi:"config"`
 	// Output only. The time at which this Certificate was created.
@@ -96,6 +100,7 @@ type CertificateAuthorityCertificateArgs struct {
 	CertificateAuthoritiesId pulumi.StringInput
 	// Output only. A structured description of the issued X.509 certificate.
 	CertificateDescription CertificateDescriptionPtrInput
+	CertificatesId         pulumi.StringInput
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config CertificateConfigPtrInput
 	// Output only. The time at which this Certificate was created.

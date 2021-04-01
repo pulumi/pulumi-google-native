@@ -23,6 +23,9 @@ func NewBuild(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BuildsId == nil {
+		return nil, errors.New("invalid value for required argument 'BuildsId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -67,6 +70,7 @@ type buildArgs struct {
 	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
 	// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 	BuildTriggerId *string `pulumi:"buildTriggerId"`
+	BuildsId       string  `pulumi:"buildsId"`
 	// Output only. Time at which the request to create the build was received.
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
@@ -125,6 +129,7 @@ type BuildArgs struct {
 	AvailableSecrets SecretsPtrInput
 	// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 	BuildTriggerId pulumi.StringPtrInput
+	BuildsId       pulumi.StringInput
 	// Output only. Time at which the request to create the build was received.
 	CreateTime pulumi.StringPtrInput
 	// Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.

@@ -29,6 +29,9 @@ func NewConversationParticipant(ctx *pulumi.Context,
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
+	if args.ParticipantsId == nil {
+		return nil, errors.New("invalid value for required argument 'ParticipantsId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -67,8 +70,9 @@ type conversationParticipantArgs struct {
 	ConversationsId string `pulumi:"conversationsId"`
 	LocationsId     string `pulumi:"locationsId"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name           *string `pulumi:"name"`
+	ParticipantsId string  `pulumi:"participantsId"`
+	ProjectsId     string  `pulumi:"projectsId"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role *string `pulumi:"role"`
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
@@ -80,8 +84,9 @@ type ConversationParticipantArgs struct {
 	ConversationsId pulumi.StringInput
 	LocationsId     pulumi.StringInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	ParticipantsId pulumi.StringInput
+	ProjectsId     pulumi.StringInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
 	Role pulumi.StringPtrInput
 	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.

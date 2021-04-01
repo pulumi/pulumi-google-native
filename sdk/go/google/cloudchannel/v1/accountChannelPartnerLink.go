@@ -26,6 +26,9 @@ func NewAccountChannelPartnerLink(ctx *pulumi.Context,
 	if args.AccountsId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountsId'")
 	}
+	if args.ChannelPartnerLinksId == nil {
+		return nil, errors.New("invalid value for required argument 'ChannelPartnerLinksId'")
+	}
 	var resource AccountChannelPartnerLink
 	err := ctx.RegisterResource("google-cloud:cloudchannel/v1:AccountChannelPartnerLink", name, args, &resource, opts...)
 	if err != nil {
@@ -61,6 +64,7 @@ type accountChannelPartnerLinkArgs struct {
 	AccountsId string `pulumi:"accountsId"`
 	// Output only. Cloud Identity info of the channel partner (IR).
 	ChannelPartnerCloudIdentityInfo *GoogleCloudChannelV1CloudIdentityInfo `pulumi:"channelPartnerCloudIdentityInfo"`
+	ChannelPartnerLinksId           string                                 `pulumi:"channelPartnerLinksId"`
 	// Output only. Timestamp of when the channel partner link is created.
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. URI of the web page where partner accepts the link invitation.
@@ -82,6 +86,7 @@ type AccountChannelPartnerLinkArgs struct {
 	AccountsId pulumi.StringInput
 	// Output only. Cloud Identity info of the channel partner (IR).
 	ChannelPartnerCloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoPtrInput
+	ChannelPartnerLinksId           pulumi.StringInput
 	// Output only. Timestamp of when the channel partner link is created.
 	CreateTime pulumi.StringPtrInput
 	// Output only. URI of the web page where partner accepts the link invitation.

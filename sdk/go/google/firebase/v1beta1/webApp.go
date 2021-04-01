@@ -26,6 +26,9 @@ func NewWebApp(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.WebAppsId == nil {
+		return nil, errors.New("invalid value for required argument 'WebAppsId'")
+	}
 	var resource WebApp
 	err := ctx.RegisterResource("google-cloud:firebase/v1beta1:WebApp", name, args, &resource, opts...)
 	if err != nil {
@@ -69,6 +72,7 @@ type webAppArgs struct {
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
 	ProjectId  *string `pulumi:"projectId"`
 	ProjectsId string  `pulumi:"projectsId"`
+	WebAppsId  string  `pulumi:"webAppsId"`
 	// Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
 	WebId *string `pulumi:"webId"`
 }
@@ -86,6 +90,7 @@ type WebAppArgs struct {
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
 	ProjectId  pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	WebAppsId  pulumi.StringInput
 	// Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
 	WebId pulumi.StringPtrInput
 }
