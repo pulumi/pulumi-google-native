@@ -77,6 +77,9 @@ namespace Pulumi.GoogleCloud.Policysimulator.V1
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
 
+        [Input("replaysId", required: true)]
+        public Input<string> ReplaysId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Summary statistics about the replayed log entries.
         /// </summary>

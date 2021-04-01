@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
     public sealed class OrganizationInstanceCanaryevaluationArgs : Pulumi.ResourceArgs
     {
+        [Input("canaryevaluationsId", required: true)]
+        public Input<string> CanaryevaluationsId { get; set; } = null!;
+
         /// <summary>
         /// Required. The stable version that is serving requests.
         /// </summary>

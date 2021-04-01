@@ -95,6 +95,9 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("groupByTimeUnit")]
         public Input<string>? GroupByTimeUnit { get; set; }
 
+        [Input("hostQueriesId", required: true)]
+        public Input<string> HostQueriesId { get; set; } = null!;
+
         /// <summary>
         /// Maximum number of rows that can be returned in the result.
         /// </summary>

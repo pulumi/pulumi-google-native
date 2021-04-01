@@ -68,6 +68,9 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
         [Input("certificateDescription")]
         public Input<Inputs.CertificateDescriptionArgs>? CertificateDescription { get; set; }
 
+        [Input("certificatesId", required: true)]
+        public Input<string> CertificatesId { get; set; } = null!;
+
         /// <summary>
         /// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
         /// </summary>

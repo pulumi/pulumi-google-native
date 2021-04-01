@@ -89,6 +89,9 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         [Input("generateTime")]
         public Input<string>? GenerateTime { get; set; }
 
+        [Input("importJobsId", required: true)]
+        public Input<string> ImportJobsId { get; set; } = null!;
+
         /// <summary>
         /// Required. Immutable. The wrapping method to be used for incoming key material.
         /// </summary>

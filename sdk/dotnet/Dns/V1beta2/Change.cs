@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
             set => _additions = value;
         }
 
+        [Input("changeId", required: true)]
+        public Input<string> ChangeId { get; set; } = null!;
+
         [Input("deletions")]
         private InputList<Inputs.ResourceRecordSetArgs>? _deletions;
 

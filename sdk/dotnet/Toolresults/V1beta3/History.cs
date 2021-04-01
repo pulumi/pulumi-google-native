@@ -68,8 +68,8 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
         /// <summary>
         /// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
         /// </summary>
-        [Input("historyId")]
-        public Input<string>? HistoryId { get; set; }
+        [Input("historyId", required: true)]
+        public Input<string> HistoryId { get; set; } = null!;
 
         /// <summary>
         /// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set

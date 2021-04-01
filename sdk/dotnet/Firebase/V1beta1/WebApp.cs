@@ -98,6 +98,9 @@ namespace Pulumi.GoogleCloud.Firebase.V1beta1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("webAppsId", required: true)]
+        public Input<string> WebAppsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
         /// </summary>

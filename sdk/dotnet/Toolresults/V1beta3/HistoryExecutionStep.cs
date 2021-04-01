@@ -155,8 +155,8 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
         /// <summary>
         /// A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
         /// </summary>
-        [Input("stepId")]
-        public Input<string>? StepId { get; set; }
+        [Input("stepId", required: true)]
+        public Input<string> StepId { get; set; } = null!;
 
         /// <summary>
         /// An execution of a test runner.

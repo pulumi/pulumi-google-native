@@ -122,6 +122,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
             set => _testCaseConversationTurns = value;
         }
 
+        [Input("testCasesId", required: true)]
+        public Input<string> TestCasesId { get; set; } = null!;
+
         /// <summary>
         /// Config for the test case.
         /// </summary>

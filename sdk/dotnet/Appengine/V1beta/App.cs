@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Appengine.V1beta
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public App(string name, AppArgs? args = null, CustomResourceOptions? options = null)
+        public App(string name, AppArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:appengine/v1beta:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Appengine.V1beta
 
     public sealed class AppArgs : Pulumi.ResourceArgs
     {
+        [Input("appsId", required: true)]
+        public Input<string> AppsId { get; set; } = null!;
+
         /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
         /// </summary>

@@ -128,8 +128,8 @@ namespace Pulumi.GoogleCloud.Testing.V1
         /// <summary>
         /// Output only. Unique id set by the service.
         /// </summary>
-        [Input("testMatrixId")]
-        public Input<string>? TestMatrixId { get; set; }
+        [Input("testMatrixId", required: true)]
+        public Input<string> TestMatrixId { get; set; } = null!;
 
         /// <summary>
         /// Required. How to run the test.

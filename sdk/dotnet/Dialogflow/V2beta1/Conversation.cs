@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
         [Input("conversationStage")]
         public Input<string>? ConversationStage { get; set; }
 
+        [Input("conversationsId", required: true)]
+        public Input<string> ConversationsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. The time the conversation was finished.
         /// </summary>

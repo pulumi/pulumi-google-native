@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Storagetransfer.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TransferJob(string name, TransferJobArgs? args = null, CustomResourceOptions? options = null)
+        public TransferJob(string name, TransferJobArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:storagetransfer/v1:TransferJob", name, args ?? new TransferJobArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -118,6 +118,9 @@ namespace Pulumi.GoogleCloud.Storagetransfer.V1
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("transferJobsId", required: true)]
+        public Input<string> TransferJobsId { get; set; } = null!;
 
         /// <summary>
         /// Transfer specification.
