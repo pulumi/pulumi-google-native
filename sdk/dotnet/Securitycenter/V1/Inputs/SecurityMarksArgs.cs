@@ -15,6 +15,12 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1.Inputs
     /// </summary>
     public sealed class SecurityMarksArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// </summary>
+        [Input("canonicalName")]
+        public Input<string>? CanonicalName { get; set; }
+
         [Input("marks")]
         private InputMap<string>? _marks;
 

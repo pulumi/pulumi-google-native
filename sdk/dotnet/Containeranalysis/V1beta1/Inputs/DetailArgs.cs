@@ -81,6 +81,12 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1.Inputs
         [Input("sourceUpdateTime")]
         public Input<string>? SourceUpdateTime { get; set; }
 
+        /// <summary>
+        /// The name of the vendor of the product.
+        /// </summary>
+        [Input("vendor")]
+        public Input<string>? Vendor { get; set; }
+
         public DetailArgs()
         {
         }

@@ -60,6 +60,12 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
     public sealed class OrganizationSourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
+        /// </summary>
+        [Input("canonicalName")]
+        public Input<string>? CanonicalName { get; set; }
+
+        /// <summary>
         /// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated or insecure libraries."
         /// </summary>
         [Input("description")]

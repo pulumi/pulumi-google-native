@@ -107,6 +107,18 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("transitionRouteGroups")]
+        private InputList<string>? _transitionRouteGroups;
+
+        /// <summary>
+        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// </summary>
+        public InputList<string> TransitionRouteGroups
+        {
+            get => _transitionRouteGroups ?? (_transitionRouteGroups = new InputList<string>());
+            set => _transitionRouteGroups = value;
+        }
+
         [Input("transitionRoutes")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1TransitionRouteArgs>? _transitionRoutes;
 
