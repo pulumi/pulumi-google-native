@@ -18,6 +18,7 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accounts_id: Optional[pulumi.Input[str]] = None,
                  channel_partner_cloud_identity_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CloudIdentityInfoArgs']]] = None,
+                 channel_partner_links_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  invite_link_uri: Optional[pulumi.Input[str]] = None,
                  link_state: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,9 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
                 raise TypeError("Missing required property 'accounts_id'")
             __props__['accounts_id'] = accounts_id
             __props__['channel_partner_cloud_identity_info'] = channel_partner_cloud_identity_info
+            if channel_partner_links_id is None and not opts.urn:
+                raise TypeError("Missing required property 'channel_partner_links_id'")
+            __props__['channel_partner_links_id'] = channel_partner_links_id
             __props__['create_time'] = create_time
             __props__['invite_link_uri'] = invite_link_uri
             __props__['link_state'] = link_state

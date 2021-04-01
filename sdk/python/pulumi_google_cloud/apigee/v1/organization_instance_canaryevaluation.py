@@ -16,6 +16,7 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 canaryevaluations_id: Optional[pulumi.Input[str]] = None,
                  control: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,9 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if canaryevaluations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'canaryevaluations_id'")
+            __props__['canaryevaluations_id'] = canaryevaluations_id
             __props__['control'] = control
             __props__['create_time'] = create_time
             __props__['end_time'] = end_time

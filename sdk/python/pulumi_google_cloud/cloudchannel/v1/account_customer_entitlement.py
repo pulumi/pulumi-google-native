@@ -19,6 +19,7 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                  accounts_id: Optional[pulumi.Input[str]] = None,
                  customers_id: Optional[pulumi.Input[str]] = None,
                  entitlement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1EntitlementArgs']]] = None,
+                 entitlements_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -55,6 +56,9 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                 raise TypeError("Missing required property 'customers_id'")
             __props__['customers_id'] = customers_id
             __props__['entitlement'] = entitlement
+            if entitlements_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entitlements_id'")
+            __props__['entitlements_id'] = entitlements_id
             __props__['request_id'] = request_id
         super(AccountCustomerEntitlement, __self__).__init__(
             'google-cloud:cloudchannel/v1:AccountCustomerEntitlement',

@@ -17,6 +17,7 @@ class InstanceDatabase(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_statement: Optional[pulumi.Input[str]] = None,
+                 databases_id: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,9 @@ class InstanceDatabase(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['create_statement'] = create_statement
+            if databases_id is None and not opts.urn:
+                raise TypeError("Missing required property 'databases_id'")
+            __props__['databases_id'] = databases_id
             __props__['encryption_config'] = encryption_config
             __props__['extra_statements'] = extra_statements
             if instances_id is None and not opts.urn:

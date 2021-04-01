@@ -18,6 +18,7 @@ class Conversation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None,
+                 conversations_id: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,9 @@ class Conversation(pulumi.CustomResource):
 
             __props__['conversation_profile'] = conversation_profile
             __props__['conversation_stage'] = conversation_stage
+            if conversations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'conversations_id'")
+            __props__['conversations_id'] = conversations_id
             __props__['end_time'] = end_time
             __props__['lifecycle_state'] = lifecycle_state
             if locations_id is None and not opts.urn:

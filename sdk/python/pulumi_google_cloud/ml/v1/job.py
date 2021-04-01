@@ -21,6 +21,7 @@ class Job(pulumi.CustomResource):
                  error_message: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
+                 jobs_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  prediction_input: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionInputArgs']]] = None,
                  prediction_output: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__PredictionOutputArgs']]] = None,
@@ -72,6 +73,9 @@ class Job(pulumi.CustomResource):
             __props__['error_message'] = error_message
             __props__['etag'] = etag
             __props__['job_id'] = job_id
+            if jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'jobs_id'")
+            __props__['jobs_id'] = jobs_id
             __props__['labels'] = labels
             __props__['prediction_input'] = prediction_input
             __props__['prediction_output'] = prediction_output

@@ -26,6 +26,7 @@ class AgentTestCase(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ConversationTurnArgs']]]]] = None,
+                 test_cases_id: Optional[pulumi.Input[str]] = None,
                  test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TestConfigArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -77,6 +78,9 @@ class AgentTestCase(pulumi.CustomResource):
             __props__['projects_id'] = projects_id
             __props__['tags'] = tags
             __props__['test_case_conversation_turns'] = test_case_conversation_turns
+            if test_cases_id is None and not opts.urn:
+                raise TypeError("Missing required property 'test_cases_id'")
+            __props__['test_cases_id'] = test_cases_id
             __props__['test_config'] = test_config
         super(AgentTestCase, __self__).__init__(
             'google-cloud:dialogflow/v3:AgentTestCase',

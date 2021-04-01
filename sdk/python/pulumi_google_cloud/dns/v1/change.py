@@ -17,6 +17,7 @@ class Change(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
+                 change_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
@@ -58,6 +59,9 @@ class Change(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['additions'] = additions
+            if change_id is None and not opts.urn:
+                raise TypeError("Missing required property 'change_id'")
+            __props__['change_id'] = change_id
             __props__['deletions'] = deletions
             __props__['id'] = id
             __props__['is_serving'] = is_serving

@@ -21,6 +21,7 @@ class WebApp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 web_apps_id: Optional[pulumi.Input[str]] = None,
                  web_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -62,6 +63,9 @@ class WebApp(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            if web_apps_id is None and not opts.urn:
+                raise TypeError("Missing required property 'web_apps_id'")
+            __props__['web_apps_id'] = web_apps_id
             __props__['web_id'] = web_id
         super(WebApp, __self__).__init__(
             'google-cloud:firebase/v1beta1:WebApp',

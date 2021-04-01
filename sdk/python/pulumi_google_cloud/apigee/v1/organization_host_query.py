@@ -21,6 +21,7 @@ class OrganizationHostQuery(pulumi.CustomResource):
                  envgroup_hostname: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  group_by_time_unit: Optional[pulumi.Input[str]] = None,
+                 host_queries_id: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[int]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1QueryMetricArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,9 @@ class OrganizationHostQuery(pulumi.CustomResource):
             __props__['envgroup_hostname'] = envgroup_hostname
             __props__['filter'] = filter
             __props__['group_by_time_unit'] = group_by_time_unit
+            if host_queries_id is None and not opts.urn:
+                raise TypeError("Missing required property 'host_queries_id'")
+            __props__['host_queries_id'] = host_queries_id
             __props__['limit'] = limit
             __props__['metrics'] = metrics
             __props__['name'] = name

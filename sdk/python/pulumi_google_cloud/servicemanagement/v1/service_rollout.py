@@ -59,6 +59,8 @@ class ServiceRollout(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['created_by'] = created_by
             __props__['delete_service_strategy'] = delete_service_strategy
+            if rollout_id is None and not opts.urn:
+                raise TypeError("Missing required property 'rollout_id'")
             __props__['rollout_id'] = rollout_id
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")

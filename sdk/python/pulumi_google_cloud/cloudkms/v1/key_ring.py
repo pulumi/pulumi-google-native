@@ -16,6 +16,7 @@ class KeyRing(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 key_rings_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,9 @@ class KeyRing(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['create_time'] = create_time
+            if key_rings_id is None and not opts.urn:
+                raise TypeError("Missing required property 'key_rings_id'")
+            __props__['key_rings_id'] = key_rings_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id

@@ -20,6 +20,7 @@ class OrganizationReplay(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 replays_id: Optional[pulumi.Input[str]] = None,
                  results_summary: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -60,6 +61,9 @@ class OrganizationReplay(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            if replays_id is None and not opts.urn:
+                raise TypeError("Missing required property 'replays_id'")
+            __props__['replays_id'] = replays_id
             __props__['results_summary'] = results_summary
             __props__['state'] = state
         super(OrganizationReplay, __self__).__init__(

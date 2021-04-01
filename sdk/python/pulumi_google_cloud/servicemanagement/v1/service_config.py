@@ -20,6 +20,7 @@ class ServiceConfig(pulumi.CustomResource):
                  authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
                  backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
                  context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
                  control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
@@ -101,6 +102,9 @@ class ServiceConfig(pulumi.CustomResource):
             __props__['authentication'] = authentication
             __props__['backend'] = backend
             __props__['billing'] = billing
+            if config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'config_id'")
+            __props__['config_id'] = config_id
             __props__['config_version'] = config_version
             __props__['context'] = context
             __props__['control'] = control

@@ -21,6 +21,7 @@ class KeyRingImportJob(pulumi.CustomResource):
                  expire_event_time: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  generate_time: Optional[pulumi.Input[str]] = None,
+                 import_jobs_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,9 @@ class KeyRingImportJob(pulumi.CustomResource):
             __props__['expire_event_time'] = expire_event_time
             __props__['expire_time'] = expire_time
             __props__['generate_time'] = generate_time
+            if import_jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'import_jobs_id'")
+            __props__['import_jobs_id'] = import_jobs_id
             __props__['import_method'] = import_method
             if key_rings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_rings_id'")

@@ -18,6 +18,7 @@ class ConversationParticipant(pulumi.CustomResource):
                  conversations_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 participants_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None,
@@ -57,6 +58,9 @@ class ConversationParticipant(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['name'] = name
+            if participants_id is None and not opts.urn:
+                raise TypeError("Missing required property 'participants_id'")
+            __props__['participants_id'] = participants_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id

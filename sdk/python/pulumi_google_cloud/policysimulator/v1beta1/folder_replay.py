@@ -20,6 +20,7 @@ class FolderReplay(pulumi.CustomResource):
                  folders_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 replays_id: Optional[pulumi.Input[str]] = None,
                  results_summary: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -60,6 +61,9 @@ class FolderReplay(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['name'] = name
+            if replays_id is None and not opts.urn:
+                raise TypeError("Missing required property 'replays_id'")
+            __props__['replays_id'] = replays_id
             __props__['results_summary'] = results_summary
             __props__['state'] = state
         super(FolderReplay, __self__).__init__(

@@ -63,6 +63,8 @@ class HistoryExecution(pulumi.CustomResource):
             __props__['completion_time'] = completion_time
             __props__['creation_time'] = creation_time
             __props__['dimension_definitions'] = dimension_definitions
+            if execution_id is None and not opts.urn:
+                raise TypeError("Missing required property 'execution_id'")
             __props__['execution_id'] = execution_id
             if history_id is None and not opts.urn:
                 raise TypeError("Missing required property 'history_id'")
