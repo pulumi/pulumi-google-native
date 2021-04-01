@@ -46,6 +46,9 @@ export class KeyRing extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.keyRingsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyRingsId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -53,6 +56,7 @@ export class KeyRing extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -73,6 +77,7 @@ export interface KeyRingArgs {
      * Output only. The time at which this KeyRing was created.
      */
     readonly createTime?: pulumi.Input<string>;
+    readonly keyRingsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name for the KeyRing in the format `projects/*&#47;locations/*&#47;keyRings/*`.

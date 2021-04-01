@@ -47,6 +47,9 @@ export class RegionCommitment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.commitment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'commitment'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -54,6 +57,7 @@ export class RegionCommitment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["category"] = args ? args.category : undefined;
+            inputs["commitment"] = args ? args.commitment : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["endTimestamp"] = args ? args.endTimestamp : undefined;
@@ -87,6 +91,7 @@ export interface RegionCommitmentArgs {
      * The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
      */
     readonly category?: pulumi.Input<string>;
+    readonly commitment: pulumi.Input<string>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */

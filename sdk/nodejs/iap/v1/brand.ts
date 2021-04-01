@@ -46,10 +46,14 @@ export class Brand extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.brandsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'brandsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
+            inputs["brandsId"] = args ? args.brandsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["orgInternalOnly"] = args ? args.orgInternalOnly : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -71,6 +75,7 @@ export interface BrandArgs {
      * Application name displayed on OAuth consent screen.
      */
     readonly applicationTitle?: pulumi.Input<string>;
+    readonly brandsId: pulumi.Input<string>;
     /**
      * Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
      */

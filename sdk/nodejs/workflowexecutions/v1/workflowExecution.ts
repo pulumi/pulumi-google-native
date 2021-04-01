@@ -47,6 +47,9 @@ export class WorkflowExecution extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.executionsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'executionsId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -59,6 +62,7 @@ export class WorkflowExecution extends pulumi.CustomResource {
             inputs["argument"] = args ? args.argument : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["error"] = args ? args.error : undefined;
+            inputs["executionsId"] = args ? args.executionsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -92,6 +96,7 @@ export interface WorkflowExecutionArgs {
      * Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
      */
     readonly error?: pulumi.Input<inputs.workflowexecutions.v1.Error>;
+    readonly executionsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}

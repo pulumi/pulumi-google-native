@@ -50,6 +50,9 @@ export class OrganizationEnvironmentAnalyticExport extends pulumi.CustomResource
             if ((!args || args.environmentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentsId'");
             }
+            if ((!args || args.exportsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'exportsId'");
+            }
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
@@ -58,6 +61,7 @@ export class OrganizationEnvironmentAnalyticExport extends pulumi.CustomResource
             inputs["dateRange"] = args ? args.dateRange : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["exportsId"] = args ? args.exportsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
@@ -91,6 +95,7 @@ export interface OrganizationEnvironmentAnalyticExportArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
+    readonly exportsId: pulumi.Input<string>;
     /**
      * Required. Display name of the export job.
      */

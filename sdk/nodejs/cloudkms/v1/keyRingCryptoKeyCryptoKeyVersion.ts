@@ -47,6 +47,9 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.cryptoKeyVersionsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cryptoKeyVersionsId'");
+            }
             if ((!args || args.cryptoKeysId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKeysId'");
             }
@@ -62,6 +65,7 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
             inputs["algorithm"] = args ? args.algorithm : undefined;
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["cryptoKeyVersionsId"] = args ? args.cryptoKeyVersionsId : undefined;
             inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
             inputs["destroyEventTime"] = args ? args.destroyEventTime : undefined;
             inputs["destroyTime"] = args ? args.destroyTime : undefined;
@@ -101,6 +105,7 @@ export interface KeyRingCryptoKeyCryptoKeyVersionArgs {
      * Output only. The time at which this CryptoKeyVersion was created.
      */
     readonly createTime?: pulumi.Input<string>;
+    readonly cryptoKeyVersionsId: pulumi.Input<string>;
     readonly cryptoKeysId: pulumi.Input<string>;
     /**
      * Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.

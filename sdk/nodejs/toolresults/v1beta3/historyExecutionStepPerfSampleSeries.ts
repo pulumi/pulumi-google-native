@@ -56,6 +56,9 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            if ((!args || args.sampleSeriesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sampleSeriesId'");
+            }
             if ((!args || args.stepId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stepId'");
             }
@@ -97,7 +100,7 @@ export interface HistoryExecutionStepPerfSampleSeriesArgs {
     /**
      * A sample series id @OutputOnly
      */
-    readonly sampleSeriesId?: pulumi.Input<string>;
+    readonly sampleSeriesId: pulumi.Input<string>;
     /**
      * A tool results step ID. @OutputOnly
      */

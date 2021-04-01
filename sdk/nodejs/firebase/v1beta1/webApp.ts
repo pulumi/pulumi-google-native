@@ -49,12 +49,16 @@ export class WebApp extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.webAppsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'webAppsId'");
+            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["appUrls"] = args ? args.appUrls : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["webAppsId"] = args ? args.webAppsId : undefined;
             inputs["webId"] = args ? args.webId : undefined;
         } else {
         }
@@ -90,6 +94,7 @@ export interface WebAppArgs {
      */
     readonly projectId?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly webAppsId: pulumi.Input<string>;
     /**
      * Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
      */

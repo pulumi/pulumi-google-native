@@ -47,6 +47,9 @@ export class Build extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.buildsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'buildsId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -56,6 +59,7 @@ export class Build extends pulumi.CustomResource {
             inputs["artifacts"] = args ? args.artifacts : undefined;
             inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
             inputs["buildTriggerId"] = args ? args.buildTriggerId : undefined;
+            inputs["buildsId"] = args ? args.buildsId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["finishTime"] = args ? args.finishTime : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -106,6 +110,7 @@ export interface BuildArgs {
      * Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
      */
     readonly buildTriggerId?: pulumi.Input<string>;
+    readonly buildsId: pulumi.Input<string>;
     /**
      * Output only. Time at which the request to create the build was received.
      */

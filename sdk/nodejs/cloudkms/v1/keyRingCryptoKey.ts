@@ -47,6 +47,9 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.cryptoKeysId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cryptoKeysId'");
+            }
             if ((!args || args.keyRingsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingsId'");
             }
@@ -57,6 +60,7 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -84,6 +88,7 @@ export interface KeyRingCryptoKeyArgs {
      * Output only. The time at which this CryptoKey was created.
      */
     readonly createTime?: pulumi.Input<string>;
+    readonly cryptoKeysId: pulumi.Input<string>;
     readonly keyRingsId: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
