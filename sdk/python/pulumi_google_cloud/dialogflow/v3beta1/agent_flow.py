@@ -25,6 +25,7 @@ class AgentFlow(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  nlu_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1NluSettingsArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
@@ -39,6 +40,7 @@ class AgentFlow(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
         :param pulumi.Input[str] name: The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1NluSettingsArgs']] nlu_settings: NLU related settings of the flow.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] transition_routes: A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
         """
         if __name__ is not None:
@@ -75,6 +77,7 @@ class AgentFlow(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['transition_route_groups'] = transition_route_groups
             __props__['transition_routes'] = transition_routes
         super(AgentFlow, __self__).__init__(
             'google-cloud:dialogflow/v3beta1:AgentFlow',

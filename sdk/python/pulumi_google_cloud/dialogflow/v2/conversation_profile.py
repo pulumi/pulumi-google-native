@@ -21,6 +21,7 @@ class ConversationProfile(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']]] = None,
+                 human_agent_handoff_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']]] = None,
@@ -42,6 +43,7 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Create time of the conversation profile.
         :param pulumi.Input[str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
         :param pulumi.Input[str] language_code: Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']] logging_config: Configuration for logging conversation lifecycle events.
         :param pulumi.Input[str] name: The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
@@ -74,6 +76,7 @@ class ConversationProfile(pulumi.CustomResource):
             __props__['create_time'] = create_time
             __props__['display_name'] = display_name
             __props__['human_agent_assistant_config'] = human_agent_assistant_config
+            __props__['human_agent_handoff_config'] = human_agent_handoff_config
             __props__['language_code'] = language_code
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
