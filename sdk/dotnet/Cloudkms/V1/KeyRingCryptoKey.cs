@@ -65,6 +65,9 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("cryptoKeysId", required: true)]
+        public Input<string> CryptoKeysId { get; set; } = null!;
+
         [Input("keyRingsId", required: true)]
         public Input<string> KeyRingsId { get; set; } = null!;
 

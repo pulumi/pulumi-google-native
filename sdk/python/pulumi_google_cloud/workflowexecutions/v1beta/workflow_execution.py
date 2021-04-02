@@ -19,6 +19,7 @@ class WorkflowExecution(pulumi.CustomResource):
                  argument: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  error: Optional[pulumi.Input[pulumi.InputType['ErrorArgs']]] = None,
+                 executions_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -64,6 +65,9 @@ class WorkflowExecution(pulumi.CustomResource):
             __props__['argument'] = argument
             __props__['end_time'] = end_time
             __props__['error'] = error
+            if executions_id is None and not opts.urn:
+                raise TypeError("Missing required property 'executions_id'")
+            __props__['executions_id'] = executions_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id

@@ -49,6 +49,9 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
             if ((!args || args.apisId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apisId'");
             }
+            if ((!args || args.debugsessionsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'debugsessionsId'");
+            }
             if ((!args || args.environmentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentsId'");
             }
@@ -60,6 +63,7 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
             }
             inputs["apisId"] = args ? args.apisId : undefined;
             inputs["count"] = args ? args.count : undefined;
+            inputs["debugsessionsId"] = args ? args.debugsessionsId : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -86,6 +90,7 @@ export interface OrganizationEnvironmentApiRevisionDebugsessionArgs {
      * Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
      */
     readonly count?: pulumi.Input<number>;
+    readonly debugsessionsId: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
     /**
      * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.

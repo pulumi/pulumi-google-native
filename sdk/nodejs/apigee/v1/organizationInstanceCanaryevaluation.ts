@@ -47,12 +47,16 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.canaryevaluationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'canaryevaluationsId'");
+            }
             if ((!args || args.instancesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instancesId'");
             }
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["canaryevaluationsId"] = args ? args.canaryevaluationsId : undefined;
             inputs["control"] = args ? args.control : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
@@ -77,6 +81,7 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
  * The set of arguments for constructing a OrganizationInstanceCanaryevaluation resource.
  */
 export interface OrganizationInstanceCanaryevaluationArgs {
+    readonly canaryevaluationsId: pulumi.Input<string>;
     /**
      * Required. The stable version that is serving requests.
      */

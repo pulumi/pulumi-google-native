@@ -86,6 +86,9 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("environmentsId", required: true)]
         public Input<string> EnvironmentsId { get; set; } = null!;
 
+        [Input("exportsId", required: true)]
+        public Input<string> ExportsId { get; set; } = null!;
+
         /// <summary>
         /// Required. Display name of the export job.
         /// </summary>

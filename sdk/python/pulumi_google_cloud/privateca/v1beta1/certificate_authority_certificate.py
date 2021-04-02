@@ -18,6 +18,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authorities_id: Optional[pulumi.Input[str]] = None,
                  certificate_description: Optional[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]] = None,
+                 certificates_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -71,6 +72,9 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'certificate_authorities_id'")
             __props__['certificate_authorities_id'] = certificate_authorities_id
             __props__['certificate_description'] = certificate_description
+            if certificates_id is None and not opts.urn:
+                raise TypeError("Missing required property 'certificates_id'")
+            __props__['certificates_id'] = certificates_id
             __props__['config'] = config
             __props__['create_time'] = create_time
             __props__['labels'] = labels

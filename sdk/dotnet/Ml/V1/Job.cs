@@ -89,6 +89,9 @@ namespace Pulumi.GoogleCloud.Ml.V1
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
+        [Input("jobsId", required: true)]
+        public Input<string> JobsId { get; set; } = null!;
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

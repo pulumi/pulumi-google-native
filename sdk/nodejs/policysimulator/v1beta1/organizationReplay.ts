@@ -53,10 +53,14 @@ export class OrganizationReplay extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            if ((!args || args.replaysId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'replaysId'");
+            }
             inputs["config"] = args ? args.config : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["replaysId"] = args ? args.replaysId : undefined;
             inputs["resultsSummary"] = args ? args.resultsSummary : undefined;
             inputs["state"] = args ? args.state : undefined;
         } else {
@@ -82,6 +86,7 @@ export interface OrganizationReplayArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
+    readonly replaysId: pulumi.Input<string>;
     /**
      * Output only. Summary statistics about the replayed log entries.
      */

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudbilling.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public BillingAccount(string name, BillingAccountArgs? args = null, CustomResourceOptions? options = null)
+        public BillingAccount(string name, BillingAccountArgs args, CustomResourceOptions? options = null)
             : base("google-cloud:cloudbilling/v1:BillingAccount", name, args ?? new BillingAccountArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -59,6 +59,9 @@ namespace Pulumi.GoogleCloud.Cloudbilling.V1
 
     public sealed class BillingAccountArgs : Pulumi.ResourceArgs
     {
+        [Input("billingAccountsId", required: true)]
+        public Input<string> BillingAccountsId { get; set; } = null!;
+
         /// <summary>
         /// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         /// </summary>

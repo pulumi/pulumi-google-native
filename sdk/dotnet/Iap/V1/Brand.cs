@@ -65,6 +65,9 @@ namespace Pulumi.GoogleCloud.Iap.V1
         [Input("applicationTitle")]
         public Input<string>? ApplicationTitle { get; set; }
 
+        [Input("brandsId", required: true)]
+        public Input<string> BrandsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
         /// </summary>

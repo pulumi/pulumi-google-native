@@ -68,6 +68,9 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("count")]
         public Input<int>? Count { get; set; }
 
+        [Input("debugsessionsId", required: true)]
+        public Input<string> DebugsessionsId { get; set; } = null!;
+
         [Input("environmentsId", required: true)]
         public Input<string> EnvironmentsId { get; set; } = null!;
 

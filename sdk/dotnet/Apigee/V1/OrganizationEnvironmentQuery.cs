@@ -131,6 +131,9 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("outputFormat")]
         public Input<string>? OutputFormat { get; set; }
 
+        [Input("queriesId", required: true)]
+        public Input<string> QueriesId { get; set; } = null!;
+
         /// <summary>
         /// Asynchronous Report ID.
         /// </summary>

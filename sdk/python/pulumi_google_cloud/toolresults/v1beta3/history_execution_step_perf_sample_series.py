@@ -64,6 +64,8 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
+            if sample_series_id is None and not opts.urn:
+                raise TypeError("Missing required property 'sample_series_id'")
             __props__['sample_series_id'] = sample_series_id
             if step_id is None and not opts.urn:
                 raise TypeError("Missing required property 'step_id'")

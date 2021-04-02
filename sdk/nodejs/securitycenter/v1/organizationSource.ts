@@ -49,11 +49,15 @@ export class OrganizationSource extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            if ((!args || args.sourcesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourcesId'");
+            }
             inputs["canonicalName"] = args ? args.canonicalName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["sourcesId"] = args ? args.sourcesId : undefined;
         } else {
         }
         if (!opts.version) {
@@ -84,4 +88,5 @@ export interface OrganizationSourceArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
+    readonly sourcesId: pulumi.Input<string>;
 }

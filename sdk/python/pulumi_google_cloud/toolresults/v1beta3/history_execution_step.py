@@ -96,6 +96,8 @@ class HistoryExecutionStep(pulumi.CustomResource):
             __props__['project_id'] = project_id
             __props__['run_duration'] = run_duration
             __props__['state'] = state
+            if step_id is None and not opts.urn:
+                raise TypeError("Missing required property 'step_id'")
             __props__['step_id'] = step_id
             __props__['test_execution_step'] = test_execution_step
             __props__['tool_execution_step'] = tool_execution_step

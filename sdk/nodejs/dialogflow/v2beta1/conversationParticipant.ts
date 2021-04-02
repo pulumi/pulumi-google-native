@@ -52,6 +52,9 @@ export class ConversationParticipant extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.participantsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'participantsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -59,6 +62,7 @@ export class ConversationParticipant extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["obfuscatedExternalUserId"] = args ? args.obfuscatedExternalUserId : undefined;
+            inputs["participantsId"] = args ? args.participantsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["role"] = args ? args.role : undefined;
         } else {
@@ -84,6 +88,7 @@ export interface ConversationParticipantArgs {
      * Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
      */
     readonly obfuscatedExternalUserId?: pulumi.Input<string>;
+    readonly participantsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

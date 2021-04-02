@@ -23,6 +23,9 @@ func NewHistory(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.HistoryId == nil {
+		return nil, errors.New("invalid value for required argument 'HistoryId'")
+	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -61,7 +64,7 @@ type historyArgs struct {
 	// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
 	DisplayName *string `pulumi:"displayName"`
 	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
-	HistoryId *string `pulumi:"historyId"`
+	HistoryId string `pulumi:"historyId"`
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      *string `pulumi:"name"`
 	ProjectId string  `pulumi:"projectId"`
@@ -74,7 +77,7 @@ type HistoryArgs struct {
 	// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
 	DisplayName pulumi.StringPtrInput
 	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
-	HistoryId pulumi.StringPtrInput
+	HistoryId pulumi.StringInput
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      pulumi.StringPtrInput
 	ProjectId pulumi.StringInput

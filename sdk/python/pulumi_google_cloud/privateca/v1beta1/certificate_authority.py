@@ -18,6 +18,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_urls: Optional[pulumi.Input[pulumi.InputType['AccessUrlsArgs']]] = None,
                  ca_certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]]]] = None,
+                 certificate_authorities_id: Optional[pulumi.Input[str]] = None,
                  certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityPolicyArgs']]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -82,6 +83,9 @@ class CertificateAuthority(pulumi.CustomResource):
 
             __props__['access_urls'] = access_urls
             __props__['ca_certificate_descriptions'] = ca_certificate_descriptions
+            if certificate_authorities_id is None and not opts.urn:
+                raise TypeError("Missing required property 'certificate_authorities_id'")
+            __props__['certificate_authorities_id'] = certificate_authorities_id
             __props__['certificate_policy'] = certificate_policy
             __props__['config'] = config
             __props__['create_time'] = create_time

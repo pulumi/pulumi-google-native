@@ -17,6 +17,7 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  count: Optional[pulumi.Input[int]] = None,
+                 debugsessions_id: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,9 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
                 raise TypeError("Missing required property 'apis_id'")
             __props__['apis_id'] = apis_id
             __props__['count'] = count
+            if debugsessions_id is None and not opts.urn:
+                raise TypeError("Missing required property 'debugsessions_id'")
+            __props__['debugsessions_id'] = debugsessions_id
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
             __props__['environments_id'] = environments_id

@@ -21,6 +21,7 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
                  date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
+                 exports_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,9 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
             __props__['environments_id'] = environments_id
+            if exports_id is None and not opts.urn:
+                raise TypeError("Missing required property 'exports_id'")
+            __props__['exports_id'] = exports_id
             __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")

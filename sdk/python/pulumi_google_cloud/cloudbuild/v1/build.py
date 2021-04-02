@@ -19,6 +19,7 @@ class Build(pulumi.CustomResource):
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
                  available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
                  build_trigger_id: Optional[pulumi.Input[str]] = None,
+                 builds_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  finish_time: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -99,6 +100,9 @@ class Build(pulumi.CustomResource):
             __props__['artifacts'] = artifacts
             __props__['available_secrets'] = available_secrets
             __props__['build_trigger_id'] = build_trigger_id
+            if builds_id is None and not opts.urn:
+                raise TypeError("Missing required property 'builds_id'")
+            __props__['builds_id'] = builds_id
             __props__['create_time'] = create_time
             __props__['finish_time'] = finish_time
             __props__['id'] = id

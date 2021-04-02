@@ -77,6 +77,9 @@ namespace Pulumi.GoogleCloud.Workflowexecutions.V1beta
         [Input("error")]
         public Input<Inputs.ErrorArgs>? Error { get; set; }
 
+        [Input("executionsId", required: true)]
+        public Input<string> ExecutionsId { get; set; } = null!;
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 

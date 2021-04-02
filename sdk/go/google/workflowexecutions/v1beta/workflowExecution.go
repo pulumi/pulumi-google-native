@@ -23,6 +23,9 @@ func NewWorkflowExecution(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ExecutionsId == nil {
+		return nil, errors.New("invalid value for required argument 'ExecutionsId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -69,8 +72,9 @@ type workflowExecutionArgs struct {
 	// Output only. Marks the end of execution, successful or not.
 	EndTime *string `pulumi:"endTime"`
 	// Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error       *Error `pulumi:"error"`
-	LocationsId string `pulumi:"locationsId"`
+	Error        *Error `pulumi:"error"`
+	ExecutionsId string `pulumi:"executionsId"`
+	LocationsId  string `pulumi:"locationsId"`
 	// Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -92,8 +96,9 @@ type WorkflowExecutionArgs struct {
 	// Output only. Marks the end of execution, successful or not.
 	EndTime pulumi.StringPtrInput
 	// Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error       ErrorPtrInput
-	LocationsId pulumi.StringInput
+	Error        ErrorPtrInput
+	ExecutionsId pulumi.StringInput
+	LocationsId  pulumi.StringInput
 	// Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

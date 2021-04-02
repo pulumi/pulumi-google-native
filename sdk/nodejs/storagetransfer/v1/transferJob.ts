@@ -43,10 +43,13 @@ export class TransferJob extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: TransferJobArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TransferJobArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.transferJobsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'transferJobsId'");
+            }
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["deletionTime"] = args ? args.deletionTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -57,6 +60,7 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["status"] = args ? args.status : undefined;
+            inputs["transferJobsId"] = args ? args.transferJobsId : undefined;
             inputs["transferSpec"] = args ? args.transferSpec : undefined;
         } else {
         }
@@ -111,6 +115,7 @@ export interface TransferJobArgs {
      * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
      */
     readonly status?: pulumi.Input<string>;
+    readonly transferJobsId: pulumi.Input<string>;
     /**
      * Transfer specification.
      */

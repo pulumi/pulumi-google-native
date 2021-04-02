@@ -16,6 +16,7 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apps_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  code_bucket: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
@@ -69,6 +70,9 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if apps_id is None and not opts.urn:
+                raise TypeError("Missing required property 'apps_id'")
+            __props__['apps_id'] = apps_id
             __props__['auth_domain'] = auth_domain
             __props__['code_bucket'] = code_bucket
             __props__['database_type'] = database_type

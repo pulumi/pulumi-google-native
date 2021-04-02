@@ -16,6 +16,7 @@ class Brand(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_title: Optional[pulumi.Input[str]] = None,
+                 brands_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_internal_only: Optional[pulumi.Input[bool]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,9 @@ class Brand(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['application_title'] = application_title
+            if brands_id is None and not opts.urn:
+                raise TypeError("Missing required property 'brands_id'")
+            __props__['brands_id'] = brands_id
             __props__['name'] = name
             __props__['org_internal_only'] = org_internal_only
             if projects_id is None and not opts.urn:

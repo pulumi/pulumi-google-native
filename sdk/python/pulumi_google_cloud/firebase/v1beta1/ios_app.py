@@ -19,6 +19,7 @@ class IosApp(pulumi.CustomResource):
                  app_store_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 ios_apps_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -58,6 +59,9 @@ class IosApp(pulumi.CustomResource):
             __props__['app_store_id'] = app_store_id
             __props__['bundle_id'] = bundle_id
             __props__['display_name'] = display_name
+            if ios_apps_id is None and not opts.urn:
+                raise TypeError("Missing required property 'ios_apps_id'")
+            __props__['ios_apps_id'] = ios_apps_id
             __props__['name'] = name
             __props__['project_id'] = project_id
             if projects_id is None and not opts.urn:

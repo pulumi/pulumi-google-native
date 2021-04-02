@@ -47,6 +47,9 @@ export class ServiceRollout extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.rolloutId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rolloutId'");
+            }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
@@ -85,7 +88,7 @@ export interface ServiceRolloutArgs {
     /**
      * Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
      */
-    readonly rolloutId?: pulumi.Input<string>;
+    readonly rolloutId: pulumi.Input<string>;
     /**
      * The name of the service associated with this Rollout.
      */

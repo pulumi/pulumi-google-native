@@ -89,6 +89,9 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1
         [Input("billing")]
         public Input<Inputs.BillingArgs>? Billing { get; set; }
 
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
         /// <summary>
         /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         /// </summary>

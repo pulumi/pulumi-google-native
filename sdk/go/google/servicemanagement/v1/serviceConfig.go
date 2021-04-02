@@ -23,6 +23,9 @@ func NewServiceConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
+	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
@@ -65,7 +68,8 @@ type serviceConfigArgs struct {
 	// API backend configuration.
 	Backend *Backend `pulumi:"backend"`
 	// Billing configuration.
-	Billing *Billing `pulumi:"billing"`
+	Billing  *Billing `pulumi:"billing"`
+	ConfigId string   `pulumi:"configId"`
 	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
 	ConfigVersion *int `pulumi:"configVersion"`
 	// Context configuration.
@@ -124,7 +128,8 @@ type ServiceConfigArgs struct {
 	// API backend configuration.
 	Backend BackendPtrInput
 	// Billing configuration.
-	Billing BillingPtrInput
+	Billing  BillingPtrInput
+	ConfigId pulumi.StringInput
 	// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
 	ConfigVersion pulumi.IntPtrInput
 	// Context configuration.

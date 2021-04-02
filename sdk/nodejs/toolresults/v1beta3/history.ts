@@ -46,6 +46,9 @@ export class History extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.historyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'historyId'");
+            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
@@ -74,7 +77,7 @@ export interface HistoryArgs {
     /**
      * A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
      */
-    readonly historyId?: pulumi.Input<string>;
+    readonly historyId: pulumi.Input<string>;
     /**
      * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
      */

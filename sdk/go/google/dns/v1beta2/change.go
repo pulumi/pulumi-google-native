@@ -23,6 +23,9 @@ func NewChange(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ChangeId == nil {
+		return nil, errors.New("invalid value for required argument 'ChangeId'")
+	}
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
 	}
@@ -63,6 +66,7 @@ func (ChangeState) ElementType() reflect.Type {
 type changeArgs struct {
 	// Which ResourceRecordSets to add?
 	Additions []ResourceRecordSet `pulumi:"additions"`
+	ChangeId  string              `pulumi:"changeId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions []ResourceRecordSet `pulumi:"deletions"`
 	// Unique identifier for the resource; defined by the server (output only).
@@ -82,6 +86,7 @@ type changeArgs struct {
 type ChangeArgs struct {
 	// Which ResourceRecordSets to add?
 	Additions ResourceRecordSetArrayInput
+	ChangeId  pulumi.StringInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions ResourceRecordSetArrayInput
 	// Unique identifier for the resource; defined by the server (output only).

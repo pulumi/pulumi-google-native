@@ -26,6 +26,9 @@ func NewOrganizationEnvironmentApiRevisionDebugsession(ctx *pulumi.Context,
 	if args.ApisId == nil {
 		return nil, errors.New("invalid value for required argument 'ApisId'")
 	}
+	if args.DebugsessionsId == nil {
+		return nil, errors.New("invalid value for required argument 'DebugsessionsId'")
+	}
 	if args.EnvironmentsId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
 	}
@@ -69,8 +72,9 @@ func (OrganizationEnvironmentApiRevisionDebugsessionState) ElementType() reflect
 type organizationEnvironmentApiRevisionDebugsessionArgs struct {
 	ApisId string `pulumi:"apisId"`
 	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
-	Count          *int   `pulumi:"count"`
-	EnvironmentsId string `pulumi:"environmentsId"`
+	Count           *int   `pulumi:"count"`
+	DebugsessionsId string `pulumi:"debugsessionsId"`
+	EnvironmentsId  string `pulumi:"environmentsId"`
 	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
 	Filter *string `pulumi:"filter"`
 	// A unique ID for this DebugSession.
@@ -89,8 +93,9 @@ type organizationEnvironmentApiRevisionDebugsessionArgs struct {
 type OrganizationEnvironmentApiRevisionDebugsessionArgs struct {
 	ApisId pulumi.StringInput
 	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
-	Count          pulumi.IntPtrInput
-	EnvironmentsId pulumi.StringInput
+	Count           pulumi.IntPtrInput
+	DebugsessionsId pulumi.StringInput
+	EnvironmentsId  pulumi.StringInput
 	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
 	Filter pulumi.StringPtrInput
 	// A unique ID for this DebugSession.

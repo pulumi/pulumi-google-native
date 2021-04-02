@@ -20,6 +20,7 @@ class OrganizationSource(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 sources_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -57,6 +58,9 @@ class OrganizationSource(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            if sources_id is None and not opts.urn:
+                raise TypeError("Missing required property 'sources_id'")
+            __props__['sources_id'] = sources_id
         super(OrganizationSource, __self__).__init__(
             'google-cloud:securitycenter/v1:OrganizationSource',
             resource_name,

@@ -24,6 +24,7 @@ class Job(pulumi.CustomResource):
                  environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
                  execution_info: Optional[pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -100,6 +101,9 @@ class Job(pulumi.CustomResource):
             __props__['environment'] = environment
             __props__['execution_info'] = execution_info
             __props__['id'] = id
+            if job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_id'")
+            __props__['job_id'] = job_id
             __props__['job_metadata'] = job_metadata
             __props__['labels'] = labels
             if location is None and not opts.urn:

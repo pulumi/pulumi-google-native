@@ -86,6 +86,9 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
 
+        [Input("sourcesId", required: true)]
+        public Input<string> SourcesId { get; set; } = null!;
+
         public OrganizationSourceArgs()
         {
         }

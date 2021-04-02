@@ -42,10 +42,14 @@ export class BillingAccount extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: BillingAccountArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: BillingAccountArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.billingAccountsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingAccountsId'");
+            }
+            inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -63,6 +67,7 @@ export class BillingAccount extends pulumi.CustomResource {
  * The set of arguments for constructing a BillingAccount resource.
  */
 export interface BillingAccountArgs {
+    readonly billingAccountsId: pulumi.Input<string>;
     /**
      * The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
      */

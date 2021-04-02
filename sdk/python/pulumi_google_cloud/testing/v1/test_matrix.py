@@ -80,6 +80,8 @@ class TestMatrix(pulumi.CustomResource):
             __props__['result_storage'] = result_storage
             __props__['state'] = state
             __props__['test_executions'] = test_executions
+            if test_matrix_id is None and not opts.urn:
+                raise TypeError("Missing required property 'test_matrix_id'")
             __props__['test_matrix_id'] = test_matrix_id
             __props__['test_specification'] = test_specification
             __props__['timestamp'] = timestamp

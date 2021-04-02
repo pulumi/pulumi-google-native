@@ -20,6 +20,7 @@ class ServiceMetadataImport(pulumi.CustomResource):
                  database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 metadata_imports_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,9 @@ class ServiceMetadataImport(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
+            if metadata_imports_id is None and not opts.urn:
+                raise TypeError("Missing required property 'metadata_imports_id'")
+            __props__['metadata_imports_id'] = metadata_imports_id
             __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")

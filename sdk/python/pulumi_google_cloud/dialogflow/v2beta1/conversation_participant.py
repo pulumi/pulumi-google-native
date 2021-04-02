@@ -19,6 +19,7 @@ class ConversationParticipant(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
+                 participants_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -58,6 +59,9 @@ class ConversationParticipant(pulumi.CustomResource):
             __props__['locations_id'] = locations_id
             __props__['name'] = name
             __props__['obfuscated_external_user_id'] = obfuscated_external_user_id
+            if participants_id is None and not opts.urn:
+                raise TypeError("Missing required property 'participants_id'")
+            __props__['participants_id'] = participants_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id

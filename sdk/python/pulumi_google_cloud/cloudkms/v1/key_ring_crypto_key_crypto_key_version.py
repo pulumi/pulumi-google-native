@@ -19,6 +19,7 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
                  algorithm: Optional[pulumi.Input[str]] = None,
                  attestation: Optional[pulumi.Input[pulumi.InputType['KeyOperationAttestationArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 crypto_key_versions_id: Optional[pulumi.Input[str]] = None,
                  crypto_keys_id: Optional[pulumi.Input[str]] = None,
                  destroy_event_time: Optional[pulumi.Input[str]] = None,
                  destroy_time: Optional[pulumi.Input[str]] = None,
@@ -75,6 +76,9 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
             __props__['algorithm'] = algorithm
             __props__['attestation'] = attestation
             __props__['create_time'] = create_time
+            if crypto_key_versions_id is None and not opts.urn:
+                raise TypeError("Missing required property 'crypto_key_versions_id'")
+            __props__['crypto_key_versions_id'] = crypto_key_versions_id
             if crypto_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_keys_id'")
             __props__['crypto_keys_id'] = crypto_keys_id

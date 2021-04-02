@@ -27,6 +27,7 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
+                 queries_id: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,
                  time_range: Optional[Any] = None,
                  __props__=None,
@@ -81,6 +82,9 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['output_format'] = output_format
+            if queries_id is None and not opts.urn:
+                raise TypeError("Missing required property 'queries_id'")
+            __props__['queries_id'] = queries_id
             __props__['report_definition_id'] = report_definition_id
             __props__['time_range'] = time_range
         super(OrganizationEnvironmentQuery, __self__).__init__(

@@ -47,6 +47,9 @@ export class Conversation extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.conversationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'conversationsId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -55,6 +58,7 @@ export class Conversation extends pulumi.CustomResource {
             }
             inputs["conversationProfile"] = args ? args.conversationProfile : undefined;
             inputs["conversationStage"] = args ? args.conversationStage : undefined;
+            inputs["conversationsId"] = args ? args.conversationsId : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -83,6 +87,7 @@ export interface ConversationArgs {
      * The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
      */
     readonly conversationStage?: pulumi.Input<string>;
+    readonly conversationsId: pulumi.Input<string>;
     /**
      * Output only. The time the conversation was finished.
      */

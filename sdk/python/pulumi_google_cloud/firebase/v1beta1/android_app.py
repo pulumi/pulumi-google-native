@@ -15,6 +15,7 @@ class AndroidApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 android_apps_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,9 @@ class AndroidApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if android_apps_id is None and not opts.urn:
+                raise TypeError("Missing required property 'android_apps_id'")
+            __props__['android_apps_id'] = android_apps_id
             __props__['app_id'] = app_id
             __props__['display_name'] = display_name
             __props__['name'] = name

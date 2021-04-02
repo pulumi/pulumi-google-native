@@ -26,6 +26,9 @@ func NewTestMatrix(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	if args.TestMatrixId == nil {
+		return nil, errors.New("invalid value for required argument 'TestMatrixId'")
+	}
 	var resource TestMatrix
 	err := ctx.RegisterResource("google-cloud:testing/v1:TestMatrix", name, args, &resource, opts...)
 	if err != nil {
@@ -79,7 +82,7 @@ type testMatrixArgs struct {
 	// Output only. The list of test executions that the service creates for this matrix.
 	TestExecutions []TestExecution `pulumi:"testExecutions"`
 	// Output only. Unique id set by the service.
-	TestMatrixId *string `pulumi:"testMatrixId"`
+	TestMatrixId string `pulumi:"testMatrixId"`
 	// Required. How to run the test.
 	TestSpecification *TestSpecification `pulumi:"testSpecification"`
 	// Output only. The time this test matrix was initially created.
@@ -109,7 +112,7 @@ type TestMatrixArgs struct {
 	// Output only. The list of test executions that the service creates for this matrix.
 	TestExecutions TestExecutionArrayInput
 	// Output only. Unique id set by the service.
-	TestMatrixId pulumi.StringPtrInput
+	TestMatrixId pulumi.StringInput
 	// Required. How to run the test.
 	TestSpecification TestSpecificationPtrInput
 	// Output only. The time this test matrix was initially created.

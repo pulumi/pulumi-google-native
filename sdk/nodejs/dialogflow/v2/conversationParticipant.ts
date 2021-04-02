@@ -52,12 +52,16 @@ export class ConversationParticipant extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.participantsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'participantsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["conversationsId"] = args ? args.conversationsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["participantsId"] = args ? args.participantsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["sipRecordingMediaLabel"] = args ? args.sipRecordingMediaLabel : undefined;
@@ -80,6 +84,7 @@ export interface ConversationParticipantArgs {
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
     readonly name?: pulumi.Input<string>;
+    readonly participantsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

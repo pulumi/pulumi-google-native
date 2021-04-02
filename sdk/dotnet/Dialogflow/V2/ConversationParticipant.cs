@@ -71,6 +71,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("participantsId", required: true)]
+        public Input<string> ParticipantsId { get; set; } = null!;
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 

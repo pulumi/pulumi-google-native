@@ -19,6 +19,7 @@ class Job(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -64,6 +65,9 @@ class Job(pulumi.CustomResource):
             __props__['configuration'] = configuration
             __props__['etag'] = etag
             __props__['id'] = id
+            if job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_id'")
+            __props__['job_id'] = job_id
             __props__['job_reference'] = job_reference
             __props__['kind'] = kind
             if project_id is None and not opts.urn:

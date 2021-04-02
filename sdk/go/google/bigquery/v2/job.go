@@ -23,6 +23,9 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.JobId == nil {
+		return nil, errors.New("invalid value for required argument 'JobId'")
+	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -63,7 +66,8 @@ type jobArgs struct {
 	// [Output-only] A hash of this resource.
 	Etag *string `pulumi:"etag"`
 	// [Output-only] Opaque ID field of the job
-	Id *string `pulumi:"id"`
+	Id    *string `pulumi:"id"`
+	JobId string  `pulumi:"jobId"`
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference *JobReference `pulumi:"jobReference"`
 	// [Output-only] The type of the resource.
@@ -86,7 +90,8 @@ type JobArgs struct {
 	// [Output-only] A hash of this resource.
 	Etag pulumi.StringPtrInput
 	// [Output-only] Opaque ID field of the job
-	Id pulumi.StringPtrInput
+	Id    pulumi.StringPtrInput
+	JobId pulumi.StringInput
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferencePtrInput
 	// [Output-only] The type of the resource.

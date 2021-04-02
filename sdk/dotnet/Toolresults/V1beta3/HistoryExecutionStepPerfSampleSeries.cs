@@ -86,8 +86,8 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
         /// <summary>
         /// A sample series id @OutputOnly
         /// </summary>
-        [Input("sampleSeriesId")]
-        public Input<string>? SampleSeriesId { get; set; }
+        [Input("sampleSeriesId", required: true)]
+        public Input<string> SampleSeriesId { get; set; } = null!;
 
         /// <summary>
         /// A tool results step ID. @OutputOnly

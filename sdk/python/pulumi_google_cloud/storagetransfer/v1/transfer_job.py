@@ -26,6 +26,7 @@ class TransferJob(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 transfer_jobs_id: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -74,6 +75,9 @@ class TransferJob(pulumi.CustomResource):
             __props__['project_id'] = project_id
             __props__['schedule'] = schedule
             __props__['status'] = status
+            if transfer_jobs_id is None and not opts.urn:
+                raise TypeError("Missing required property 'transfer_jobs_id'")
+            __props__['transfer_jobs_id'] = transfer_jobs_id
             __props__['transfer_spec'] = transfer_spec
         super(TransferJob, __self__).__init__(
             'google-cloud:storagetransfer/v1:TransferJob',

@@ -77,6 +77,9 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
         [Input("obfuscatedExternalUserId")]
         public Input<string>? ObfuscatedExternalUserId { get; set; }
 
+        [Input("participantsId", required: true)]
+        public Input<string> ParticipantsId { get; set; } = null!;
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 

@@ -50,6 +50,9 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
             if ((!args || args.certificateAuthoritiesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthoritiesId'");
             }
+            if ((!args || args.certificatesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'certificatesId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -58,6 +61,7 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
             }
             inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
             inputs["certificateDescription"] = args ? args.certificateDescription : undefined;
+            inputs["certificatesId"] = args ? args.certificatesId : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -88,6 +92,7 @@ export interface CertificateAuthorityCertificateArgs {
      * Output only. A structured description of the issued X.509 certificate.
      */
     readonly certificateDescription?: pulumi.Input<inputs.privateca.v1beta1.CertificateDescription>;
+    readonly certificatesId: pulumi.Input<string>;
     /**
      * Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
      */

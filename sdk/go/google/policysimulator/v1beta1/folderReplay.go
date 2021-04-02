@@ -29,6 +29,9 @@ func NewFolderReplay(ctx *pulumi.Context,
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
+	if args.ReplaysId == nil {
+		return nil, errors.New("invalid value for required argument 'ReplaysId'")
+	}
 	var resource FolderReplay
 	err := ctx.RegisterResource("google-cloud:policysimulator/v1beta1:FolderReplay", name, args, &resource, opts...)
 	if err != nil {
@@ -66,7 +69,8 @@ type folderReplayArgs struct {
 	FoldersId   string                                         `pulumi:"foldersId"`
 	LocationsId string                                         `pulumi:"locationsId"`
 	// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-	Name *string `pulumi:"name"`
+	Name      *string `pulumi:"name"`
+	ReplaysId string  `pulumi:"replaysId"`
 	// Output only. Summary statistics about the replayed log entries.
 	ResultsSummary *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary `pulumi:"resultsSummary"`
 	// Output only. The current state of the `Replay`.
@@ -80,7 +84,8 @@ type FolderReplayArgs struct {
 	FoldersId   pulumi.StringInput
 	LocationsId pulumi.StringInput
 	// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-	Name pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	ReplaysId pulumi.StringInput
 	// Output only. Summary statistics about the replayed log entries.
 	ResultsSummary GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrInput
 	// Output only. The current state of the `Replay`.

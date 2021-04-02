@@ -12,6 +12,8 @@ type CloudAPIResource struct {
 	BaseUrl      string   `json:"baseUrl"`
 	CreatePath   string   `json:"createPath"`
 	CreateParams []string `json:"createParams"`
-	DeletePath   string   `json:"deletePath,omitempty"`
-	DeleteParams []string `json:"deleteParams,omitempty"`
+	IdPath       string   `json:"idPath,omitempty"`
+	IdParams     []string `json:"idParams,omitempty"`
+	NoGet        bool     `json:"noGet,omitempty"`
+	NoDelete     bool     `json:"noDelete,omitempty"`
 }

@@ -23,6 +23,9 @@ func NewKeyRingCryptoKeyCryptoKeyVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CryptoKeyVersionsId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeyVersionsId'")
+	}
 	if args.CryptoKeysId == nil {
 		return nil, errors.New("invalid value for required argument 'CryptoKeysId'")
 	}
@@ -72,8 +75,9 @@ type keyRingCryptoKeyCryptoKeyVersionArgs struct {
 	// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
 	Attestation *KeyOperationAttestation `pulumi:"attestation"`
 	// Output only. The time at which this CryptoKeyVersion was created.
-	CreateTime   *string `pulumi:"createTime"`
-	CryptoKeysId string  `pulumi:"cryptoKeysId"`
+	CreateTime          *string `pulumi:"createTime"`
+	CryptoKeyVersionsId string  `pulumi:"cryptoKeyVersionsId"`
+	CryptoKeysId        string  `pulumi:"cryptoKeysId"`
 	// Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
 	DestroyEventTime *string `pulumi:"destroyEventTime"`
 	// Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
@@ -106,8 +110,9 @@ type KeyRingCryptoKeyCryptoKeyVersionArgs struct {
 	// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
 	Attestation KeyOperationAttestationPtrInput
 	// Output only. The time at which this CryptoKeyVersion was created.
-	CreateTime   pulumi.StringPtrInput
-	CryptoKeysId pulumi.StringInput
+	CreateTime          pulumi.StringPtrInput
+	CryptoKeyVersionsId pulumi.StringInput
+	CryptoKeysId        pulumi.StringInput
 	// Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
 	DestroyEventTime pulumi.StringPtrInput
 	// Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.

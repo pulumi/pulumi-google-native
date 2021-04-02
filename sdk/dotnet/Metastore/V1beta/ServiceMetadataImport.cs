@@ -80,6 +80,9 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
+        [Input("metadataImportsId", required: true)]
+        public Input<string> MetadataImportsId { get; set; } = null!;
+
         /// <summary>
         /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
         /// </summary>

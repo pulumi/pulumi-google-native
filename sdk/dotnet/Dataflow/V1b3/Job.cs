@@ -107,6 +107,9 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
         /// <summary>
         /// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         /// </summary>

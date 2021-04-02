@@ -68,6 +68,9 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         [Input("channelPartnerCloudIdentityInfo")]
         public Input<Inputs.GoogleCloudChannelV1CloudIdentityInfoArgs>? ChannelPartnerCloudIdentityInfo { get; set; }
 
+        [Input("channelPartnerLinksId", required: true)]
+        public Input<string> ChannelPartnerLinksId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Timestamp of when the channel partner link is created.
         /// </summary>

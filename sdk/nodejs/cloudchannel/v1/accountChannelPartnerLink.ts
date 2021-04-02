@@ -50,8 +50,12 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
             if ((!args || args.accountsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountsId'");
             }
+            if ((!args || args.channelPartnerLinksId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'channelPartnerLinksId'");
+            }
             inputs["accountsId"] = args ? args.accountsId : undefined;
             inputs["channelPartnerCloudIdentityInfo"] = args ? args.channelPartnerCloudIdentityInfo : undefined;
+            inputs["channelPartnerLinksId"] = args ? args.channelPartnerLinksId : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["inviteLinkUri"] = args ? args.inviteLinkUri : undefined;
             inputs["linkState"] = args ? args.linkState : undefined;
@@ -77,6 +81,7 @@ export interface AccountChannelPartnerLinkArgs {
      * Output only. Cloud Identity info of the channel partner (IR).
      */
     readonly channelPartnerCloudIdentityInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfo>;
+    readonly channelPartnerLinksId: pulumi.Input<string>;
     /**
      * Output only. Timestamp of when the channel partner link is created.
      */

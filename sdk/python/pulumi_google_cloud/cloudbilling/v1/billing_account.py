@@ -15,6 +15,7 @@ class BillingAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,9 @@ class BillingAccount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if billing_accounts_id is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_accounts_id'")
+            __props__['billing_accounts_id'] = billing_accounts_id
             __props__['display_name'] = display_name
             __props__['master_billing_account'] = master_billing_account
             __props__['name'] = name

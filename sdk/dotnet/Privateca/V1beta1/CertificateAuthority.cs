@@ -77,6 +77,9 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
             set => _caCertificateDescriptions = value;
         }
 
+        [Input("certificateAuthoritiesId", required: true)]
+        public Input<string> CertificateAuthoritiesId { get; set; } = null!;
+
         /// <summary>
         /// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
         /// </summary>

@@ -47,6 +47,9 @@ export class CertificateAuthority extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.certificateAuthoritiesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'certificateAuthoritiesId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -55,6 +58,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
             }
             inputs["accessUrls"] = args ? args.accessUrls : undefined;
             inputs["caCertificateDescriptions"] = args ? args.caCertificateDescriptions : undefined;
+            inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
             inputs["certificatePolicy"] = args ? args.certificatePolicy : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -94,6 +98,7 @@ export interface CertificateAuthorityArgs {
      * Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
      */
     readonly caCertificateDescriptions?: pulumi.Input<pulumi.Input<inputs.privateca.v1beta1.CertificateDescription>[]>;
+    readonly certificateAuthoritiesId: pulumi.Input<string>;
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
      */

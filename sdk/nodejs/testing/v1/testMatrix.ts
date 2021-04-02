@@ -50,6 +50,9 @@ export class TestMatrix extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            if ((!args || args.testMatrixId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'testMatrixId'");
+            }
             inputs["clientInfo"] = args ? args.clientInfo : undefined;
             inputs["environmentMatrix"] = args ? args.environmentMatrix : undefined;
             inputs["failFast"] = args ? args.failFast : undefined;
@@ -119,7 +122,7 @@ export interface TestMatrixArgs {
     /**
      * Output only. Unique id set by the service.
      */
-    readonly testMatrixId?: pulumi.Input<string>;
+    readonly testMatrixId: pulumi.Input<string>;
     /**
      * Required. How to run the test.
      */

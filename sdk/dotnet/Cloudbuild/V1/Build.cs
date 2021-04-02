@@ -77,6 +77,9 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         [Input("buildTriggerId")]
         public Input<string>? BuildTriggerId { get; set; }
 
+        [Input("buildsId", required: true)]
+        public Input<string> BuildsId { get; set; } = null!;
+
         /// <summary>
         /// Output only. Time at which the request to create the build was received.
         /// </summary>

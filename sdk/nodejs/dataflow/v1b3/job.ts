@@ -47,6 +47,9 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -61,6 +64,7 @@ export class Job extends pulumi.CustomResource {
             inputs["environment"] = args ? args.environment : undefined;
             inputs["executionInfo"] = args ? args.executionInfo : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["jobMetadata"] = args ? args.jobMetadata : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
@@ -123,6 +127,7 @@ export interface JobArgs {
      * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
      */
     readonly id?: pulumi.Input<string>;
+    readonly jobId: pulumi.Input<string>;
     /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */

@@ -53,10 +53,14 @@ export class FolderReplay extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.replaysId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'replaysId'");
+            }
             inputs["config"] = args ? args.config : undefined;
             inputs["foldersId"] = args ? args.foldersId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["replaysId"] = args ? args.replaysId : undefined;
             inputs["resultsSummary"] = args ? args.resultsSummary : undefined;
             inputs["state"] = args ? args.state : undefined;
         } else {
@@ -82,6 +86,7 @@ export interface FolderReplayArgs {
      * Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
      */
     readonly name?: pulumi.Input<string>;
+    readonly replaysId: pulumi.Input<string>;
     /**
      * Output only. Summary statistics about the replayed log entries.
      */

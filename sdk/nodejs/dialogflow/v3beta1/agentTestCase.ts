@@ -56,6 +56,9 @@ export class AgentTestCase extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.testCasesId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'testCasesId'");
+            }
             inputs["agentsId"] = args ? args.agentsId : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -66,6 +69,7 @@ export class AgentTestCase extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["testCaseConversationTurns"] = args ? args.testCaseConversationTurns : undefined;
+            inputs["testCasesId"] = args ? args.testCasesId : undefined;
             inputs["testConfig"] = args ? args.testConfig : undefined;
         } else {
         }
@@ -111,6 +115,7 @@ export interface AgentTestCaseArgs {
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      */
     readonly testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ConversationTurn>[]>;
+    readonly testCasesId: pulumi.Input<string>;
     /**
      * Config for the test case.
      */

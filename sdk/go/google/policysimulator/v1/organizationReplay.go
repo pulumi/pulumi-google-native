@@ -29,6 +29,9 @@ func NewOrganizationReplay(ctx *pulumi.Context,
 	if args.OrganizationsId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
 	}
+	if args.ReplaysId == nil {
+		return nil, errors.New("invalid value for required argument 'ReplaysId'")
+	}
 	var resource OrganizationReplay
 	err := ctx.RegisterResource("google-cloud:policysimulator/v1:OrganizationReplay", name, args, &resource, opts...)
 	if err != nil {
@@ -67,6 +70,7 @@ type organizationReplayArgs struct {
 	// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
+	ReplaysId       string  `pulumi:"replaysId"`
 	// Output only. Summary statistics about the replayed log entries.
 	ResultsSummary *GoogleCloudPolicysimulatorV1ReplayResultsSummary `pulumi:"resultsSummary"`
 	// Output only. The current state of the `Replay`.
@@ -81,6 +85,7 @@ type OrganizationReplayArgs struct {
 	// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
+	ReplaysId       pulumi.StringInput
 	// Output only. Summary statistics about the replayed log entries.
 	ResultsSummary GoogleCloudPolicysimulatorV1ReplayResultsSummaryPtrInput
 	// Output only. The current state of the `Replay`.

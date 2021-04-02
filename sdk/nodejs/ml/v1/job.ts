@@ -47,6 +47,9 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.jobsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobsId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -55,6 +58,7 @@ export class Job extends pulumi.CustomResource {
             inputs["errorMessage"] = args ? args.errorMessage : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
+            inputs["jobsId"] = args ? args.jobsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["predictionInput"] = args ? args.predictionInput : undefined;
             inputs["predictionOutput"] = args ? args.predictionOutput : undefined;
@@ -96,6 +100,7 @@ export interface JobArgs {
      * Required. The user-specified id of the job.
      */
     readonly jobId?: pulumi.Input<string>;
+    readonly jobsId: pulumi.Input<string>;
     /**
      * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
