@@ -35,6 +35,54 @@ export class AccountCustomer extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountCustomer.__pulumiType;
     }
 
+    /**
+     * Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+     */
+    public readonly alternateEmail!: pulumi.Output<string>;
+    /**
+     * Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
+     */
+    public readonly channelPartnerId!: pulumi.Output<string>;
+    /**
+     * Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+     */
+    public /*out*/ readonly cloudIdentityId!: pulumi.Output<string>;
+    /**
+     * Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
+     */
+    public /*out*/ readonly cloudIdentityInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfoResponse>;
+    /**
+     * The time at which the customer is created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     */
+    public readonly domain!: pulumi.Output<string>;
+    /**
+     * Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+     */
+    public readonly languageCode!: pulumi.Output<string>;
+    /**
+     * Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Name of the organization that the customer entity represents.
+     */
+    public readonly orgDisplayName!: pulumi.Output<string>;
+    /**
+     * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     */
+    public readonly orgPostalAddress!: pulumi.Output<outputs.cloudchannel.v1.GoogleTypePostalAddressResponse>;
+    /**
+     * Primary contact info.
+     */
+    public readonly primaryContactInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfoResponse>;
+    /**
+     * The time at which the customer is updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a AccountCustomer resource with the given unique name, arguments, and options.
@@ -56,18 +104,30 @@ export class AccountCustomer extends pulumi.CustomResource {
             inputs["accountsId"] = args ? args.accountsId : undefined;
             inputs["alternateEmail"] = args ? args.alternateEmail : undefined;
             inputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
-            inputs["cloudIdentityId"] = args ? args.cloudIdentityId : undefined;
-            inputs["cloudIdentityInfo"] = args ? args.cloudIdentityInfo : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["customersId"] = args ? args.customersId : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
             inputs["orgPostalAddress"] = args ? args.orgPostalAddress : undefined;
             inputs["primaryContactInfo"] = args ? args.primaryContactInfo : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["cloudIdentityId"] = undefined /*out*/;
+            inputs["cloudIdentityInfo"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["alternateEmail"] = undefined /*out*/;
+            inputs["channelPartnerId"] = undefined /*out*/;
+            inputs["cloudIdentityId"] = undefined /*out*/;
+            inputs["cloudIdentityInfo"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["domain"] = undefined /*out*/;
+            inputs["languageCode"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["orgDisplayName"] = undefined /*out*/;
+            inputs["orgPostalAddress"] = undefined /*out*/;
+            inputs["primaryContactInfo"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -89,18 +149,6 @@ export interface AccountCustomerArgs {
      * Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
      */
     readonly channelPartnerId?: pulumi.Input<string>;
-    /**
-     * Output only. Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
-     */
-    readonly cloudIdentityId?: pulumi.Input<string>;
-    /**
-     * Output only. Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
-     */
-    readonly cloudIdentityInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfo>;
-    /**
-     * Output only. The time at which the customer is created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly customersId: pulumi.Input<string>;
     /**
      * Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
@@ -110,10 +158,6 @@ export interface AccountCustomerArgs {
      * Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
      */
     readonly languageCode?: pulumi.Input<string>;
-    /**
-     * Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Required. Name of the organization that the customer entity represents.
      */
@@ -126,8 +170,4 @@ export interface AccountCustomerArgs {
      * Primary contact info.
      */
     readonly primaryContactInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfo>;
-    /**
-     * Output only. The time at which the customer is updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

@@ -35,6 +35,26 @@ export class InstanceAppProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceAppProfile.__pulumiType;
     }
 
+    /**
+     * Long form description of the use case for this AppProfile.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * Use a multi-cluster routing policy.
+     */
+    public readonly multiClusterRoutingUseAny!: pulumi.Output<outputs.bigtableadmin.v2.MultiClusterRoutingUseAnyResponse>;
+    /**
+     * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Use a single-cluster routing policy.
+     */
+    public readonly singleClusterRouting!: pulumi.Output<outputs.bigtableadmin.v2.SingleClusterRoutingResponse>;
 
     /**
      * Create a InstanceAppProfile resource with the given unique name, arguments, and options.
@@ -65,6 +85,11 @@ export class InstanceAppProfile extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["multiClusterRoutingUseAny"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["singleClusterRouting"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

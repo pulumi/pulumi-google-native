@@ -34,6 +34,26 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkloadIdentityPool.__pulumiType;
     }
 
+    /**
+     * A description of the pool. Cannot exceed 256 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+     */
+    public readonly disabled!: pulumi.Output<boolean>;
+    /**
+     * A display name for the pool. Cannot exceed 32 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The resource name of the pool.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The state of the pool.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a WorkloadIdentityPool resource with the given unique name, arguments, and options.
@@ -59,11 +79,16 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["workloadIdentityPoolsId"] = args ? args.workloadIdentityPoolsId : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["disabled"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -89,14 +114,6 @@ export interface WorkloadIdentityPoolArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the pool.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The state of the pool.
-     */
-    readonly state?: pulumi.Input<string>;
     readonly workloadIdentityPoolsId: pulumi.Input<string>;
 }

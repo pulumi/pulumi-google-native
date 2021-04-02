@@ -35,6 +35,66 @@ export class NodeTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeTemplate.__pulumiType;
     }
 
+    public readonly accelerators!: pulumi.Output<outputs.compute.v1.AcceleratorConfigResponse[]>;
+    /**
+     * CPU overcommit.
+     */
+    public readonly cpuOvercommitType!: pulumi.Output<string>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    public readonly disks!: pulumi.Output<outputs.compute.v1.LocalDiskResponse[]>;
+    /**
+     * [Output Only] The type of the resource. Always compute#nodeTemplate for node templates.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Labels to use for node affinity, which will be used in instance scheduling.
+     */
+    public readonly nodeAffinityLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The node type to use for nodes group that are created from this template.
+     */
+    public readonly nodeType!: pulumi.Output<string>;
+    /**
+     * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
+     *
+     * This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+     */
+    public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.v1.NodeTemplateNodeTypeFlexibilityResponse>;
+    /**
+     * [Output Only] The name of the region where the node template resides, such as us-central1.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Sets the binding properties for the physical server. Valid values include:  
+     * - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
+     * - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
+     *
+     * See Sole-tenant node options for more information.
+     */
+    public readonly serverBinding!: pulumi.Output<outputs.compute.v1.ServerBindingResponse>;
+    /**
+     * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * [Output Only] An optional, human-readable explanation of the status.
+     */
+    public readonly statusMessage!: pulumi.Output<string>;
 
     /**
      * Create a NodeTemplate resource with the given unique name, arguments, and options.
@@ -75,6 +135,21 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
         } else {
+            inputs["accelerators"] = undefined /*out*/;
+            inputs["cpuOvercommitType"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["disks"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["nodeAffinityLabels"] = undefined /*out*/;
+            inputs["nodeType"] = undefined /*out*/;
+            inputs["nodeTypeFlexibility"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["serverBinding"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

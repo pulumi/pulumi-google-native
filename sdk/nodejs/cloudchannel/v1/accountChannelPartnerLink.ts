@@ -35,6 +35,38 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountChannelPartnerLink.__pulumiType;
     }
 
+    /**
+     * Cloud Identity info of the channel partner (IR).
+     */
+    public /*out*/ readonly channelPartnerCloudIdentityInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfoResponse>;
+    /**
+     * Timestamp of when the channel partner link is created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * URI of the web page where partner accepts the link invitation.
+     */
+    public /*out*/ readonly inviteLinkUri!: pulumi.Output<string>;
+    /**
+     * Required. State of the channel partner link.
+     */
+    public readonly linkState!: pulumi.Output<string>;
+    /**
+     * Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+     */
+    public /*out*/ readonly publicId!: pulumi.Output<string>;
+    /**
+     * Required. Cloud Identity ID of the linked reseller.
+     */
+    public readonly resellerCloudIdentityId!: pulumi.Output<string>;
+    /**
+     * Timestamp of when the channel partner link is updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a AccountChannelPartnerLink resource with the given unique name, arguments, and options.
@@ -54,16 +86,24 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'channelPartnerLinksId'");
             }
             inputs["accountsId"] = args ? args.accountsId : undefined;
-            inputs["channelPartnerCloudIdentityInfo"] = args ? args.channelPartnerCloudIdentityInfo : undefined;
             inputs["channelPartnerLinksId"] = args ? args.channelPartnerLinksId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["inviteLinkUri"] = args ? args.inviteLinkUri : undefined;
             inputs["linkState"] = args ? args.linkState : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["publicId"] = args ? args.publicId : undefined;
             inputs["resellerCloudIdentityId"] = args ? args.resellerCloudIdentityId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["inviteLinkUri"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["publicId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["inviteLinkUri"] = undefined /*out*/;
+            inputs["linkState"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["publicId"] = undefined /*out*/;
+            inputs["resellerCloudIdentityId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -77,37 +117,13 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
  */
 export interface AccountChannelPartnerLinkArgs {
     readonly accountsId: pulumi.Input<string>;
-    /**
-     * Output only. Cloud Identity info of the channel partner (IR).
-     */
-    readonly channelPartnerCloudIdentityInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfo>;
     readonly channelPartnerLinksId: pulumi.Input<string>;
-    /**
-     * Output only. Timestamp of when the channel partner link is created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. URI of the web page where partner accepts the link invitation.
-     */
-    readonly inviteLinkUri?: pulumi.Input<string>;
     /**
      * Required. State of the channel partner link.
      */
     readonly linkState?: pulumi.Input<string>;
     /**
-     * Output only. Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-     */
-    readonly publicId?: pulumi.Input<string>;
-    /**
      * Required. Cloud Identity ID of the linked reseller.
      */
     readonly resellerCloudIdentityId?: pulumi.Input<string>;
-    /**
-     * Output only. Timestamp of when the channel partner link is updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

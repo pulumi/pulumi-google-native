@@ -50,9 +50,7 @@ export class ServiceConnection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'servicesId'");
             }
             inputs["network"] = args ? args.network : undefined;
-            inputs["peering"] = args ? args.peering : undefined;
             inputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
-            inputs["service"] = args ? args.service : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
         } else {
         }
@@ -72,16 +70,8 @@ export interface ServiceConnectionArgs {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Output only. The name of the VPC Network Peering connection that was created by the service producer.
-     */
-    readonly peering?: pulumi.Input<string>;
-    /**
      * The name of one or more allocated IP address ranges for this service producer of type `PEERING`. Note that invoking CreateConnection method with a different range when connection is already established will not modify already provisioned service producer subnetworks. If CreateConnection method is invoked repeatedly to reconnect when peering connection had been disconnected on the consumer side, leaving this field empty will restore previously allocated IP ranges.
      */
     readonly reservedPeeringRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
-     */
-    readonly service?: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
 }

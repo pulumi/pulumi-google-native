@@ -49,7 +49,6 @@ export class TagBinding extends pulumi.CustomResource {
             if ((!args || args.tagBindingsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagBindingsId'");
             }
-            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["tagBindingsId"] = args ? args.tagBindingsId : undefined;
             inputs["tagValue"] = args ? args.tagValue : undefined;
@@ -66,10 +65,6 @@ export class TagBinding extends pulumi.CustomResource {
  * The set of arguments for constructing a TagBinding resource.
  */
 export interface TagBindingArgs {
-    /**
-     * Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
      */

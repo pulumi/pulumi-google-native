@@ -35,6 +35,22 @@ export class Template extends pulumi.CustomResource {
         return obj['__pulumiType'] === Template.__pulumiType;
     }
 
+    /**
+     * The template metadata describing the template name, available parameters, etc.
+     */
+    public /*out*/ readonly metadata!: pulumi.Output<outputs.dataflow.v1b3.TemplateMetadataResponse>;
+    /**
+     * Describes the runtime metadata with SDKInfo and available parameters.
+     */
+    public /*out*/ readonly runtimeMetadata!: pulumi.Output<outputs.dataflow.v1b3.RuntimeMetadataResponse>;
+    /**
+     * The status of the get template request. Any problems with the request will be indicated in the error_details.
+     */
+    public /*out*/ readonly status!: pulumi.Output<outputs.dataflow.v1b3.StatusResponse>;
+    /**
+     * Template Type.
+     */
+    public /*out*/ readonly templateType!: pulumi.Output<string>;
 
     /**
      * Create a Template resource with the given unique name, arguments, and options.
@@ -56,7 +72,15 @@ export class Template extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["runtimeMetadata"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["templateType"] = undefined /*out*/;
         } else {
+            inputs["metadata"] = undefined /*out*/;
+            inputs["runtimeMetadata"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["templateType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,22 @@ export class Subscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === Subscription.__pulumiType;
     }
 
+    /**
+     * For either push or pull delivery, the value is the maximum time after a subscriber receives a message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push delivery, this value is used to set the request timeout for the call to the push endpoint. For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will not deliver that message to another pull subscriber (on a best-effort basis).
+     */
+    public readonly ackDeadlineSeconds!: pulumi.Output<number>;
+    /**
+     * Name of the subscription.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * If push delivery is used with this subscription, this field is used to configure it.
+     */
+    public readonly pushConfig!: pulumi.Output<outputs.pubsub.v1beta1a.PushConfigResponse>;
+    /**
+     * The name of the topic from which this subscription is receiving messages.
+     */
+    public readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a Subscription resource with the given unique name, arguments, and options.
@@ -56,6 +72,10 @@ export class Subscription extends pulumi.CustomResource {
             inputs["subscriptionsId"] = args ? args.subscriptionsId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
+            inputs["ackDeadlineSeconds"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pushConfig"] = undefined /*out*/;
+            inputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

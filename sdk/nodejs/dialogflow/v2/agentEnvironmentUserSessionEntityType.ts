@@ -35,6 +35,18 @@ export class AgentEnvironmentUserSessionEntityType extends pulumi.CustomResource
         return obj['__pulumiType'] === AgentEnvironmentUserSessionEntityType.__pulumiType;
     }
 
+    /**
+     * Required. The collection of entities associated with this session entity type.
+     */
+    public readonly entities!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityResponse[]>;
+    /**
+     * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+     */
+    public readonly entityOverrideMode!: pulumi.Output<string>;
+    /**
+     * Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a AgentEnvironmentUserSessionEntityType resource with the given unique name, arguments, and options.
@@ -75,6 +87,9 @@ export class AgentEnvironmentUserSessionEntityType extends pulumi.CustomResource
             inputs["sessionsId"] = args ? args.sessionsId : undefined;
             inputs["usersId"] = args ? args.usersId : undefined;
         } else {
+            inputs["entities"] = undefined /*out*/;
+            inputs["entityOverrideMode"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

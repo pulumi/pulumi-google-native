@@ -34,6 +34,26 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationEnvgroup.__pulumiType;
     }
 
+    /**
+     * The time at which the environment group was created as milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Required. Host names for this environment group.
+     */
+    public readonly hostnames!: pulumi.Output<string[]>;
+    /**
+     * The time at which the environment group was last updated as milliseconds since epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * ID of the environment group.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvgroup resource with the given unique name, arguments, and options.
@@ -52,14 +72,19 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["envgroupsId"] = args ? args.envgroupsId : undefined;
             inputs["hostnames"] = args ? args.hostnames : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["hostnames"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -72,26 +97,14 @@ export class OrganizationEnvgroup extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvgroup resource.
  */
 export interface OrganizationEnvgroupArgs {
-    /**
-     * Output only. The time at which the environment group was created as milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
     readonly envgroupsId: pulumi.Input<string>;
     /**
      * Required. Host names for this environment group.
      */
     readonly hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Output only. The time at which the environment group was last updated as milliseconds since epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
-    /**
      * ID of the environment group.
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-     */
-    readonly state?: pulumi.Input<string>;
 }

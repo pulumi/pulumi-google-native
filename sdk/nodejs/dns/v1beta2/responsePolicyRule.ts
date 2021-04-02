@@ -35,6 +35,23 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResponsePolicyRule.__pulumiType;
     }
 
+    /**
+     * Answer this query with a behavior rather than DNS data.
+     */
+    public readonly behavior!: pulumi.Output<string>;
+    /**
+     * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+     */
+    public readonly dnsName!: pulumi.Output<string>;
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+     */
+    public readonly localData!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyRuleLocalDataResponse>;
+    /**
+     * An identifier for this rule. Must be unique with the ResponsePolicy.
+     */
+    public readonly ruleName!: pulumi.Output<string>;
 
     /**
      * Create a ResponsePolicyRule resource with the given unique name, arguments, and options.
@@ -65,6 +82,11 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             inputs["responsePolicyRule"] = args ? args.responsePolicyRule : undefined;
             inputs["ruleName"] = args ? args.ruleName : undefined;
         } else {
+            inputs["behavior"] = undefined /*out*/;
+            inputs["dnsName"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["localData"] = undefined /*out*/;
+            inputs["ruleName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

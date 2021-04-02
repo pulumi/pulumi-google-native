@@ -34,6 +34,26 @@ export class Reservation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Reservation.__pulumiType;
     }
 
+    /**
+     * Creation time of the reservation.
+     */
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+     */
+    public readonly ignoreIdleSlots!: pulumi.Output<boolean>;
+    /**
+     * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+     */
+    public readonly slotCapacity!: pulumi.Output<string>;
+    /**
+     * Last update time of the reservation.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Reservation resource with the given unique name, arguments, and options.
@@ -55,15 +75,20 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.reservationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservationsId'");
             }
-            inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reservationsId"] = args ? args.reservationsId : undefined;
             inputs["slotCapacity"] = args ? args.slotCapacity : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["ignoreIdleSlots"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["slotCapacity"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,10 +101,6 @@ export class Reservation extends pulumi.CustomResource {
  * The set of arguments for constructing a Reservation resource.
  */
 export interface ReservationArgs {
-    /**
-     * Output only. Creation time of the reservation.
-     */
-    readonly creationTime?: pulumi.Input<string>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
      */
@@ -95,8 +116,4 @@ export interface ReservationArgs {
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
      */
     readonly slotCapacity?: pulumi.Input<string>;
-    /**
-     * Output only. Last update time of the reservation.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

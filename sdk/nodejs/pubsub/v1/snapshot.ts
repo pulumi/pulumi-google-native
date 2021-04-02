@@ -34,6 +34,22 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
+    /**
+     * The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    /**
+     * See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The name of the snapshot.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the topic from which this snapshot is retaining messages.
+     */
+    public /*out*/ readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -56,7 +72,14 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["snapshotsId"] = args ? args.snapshotsId : undefined;
             inputs["subscription"] = args ? args.subscription : undefined;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["topic"] = undefined /*out*/;
         } else {
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

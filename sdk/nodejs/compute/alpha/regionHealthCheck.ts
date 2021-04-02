@@ -35,6 +35,65 @@ export class RegionHealthCheck extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionHealthCheck.__pulumiType;
     }
 
+    /**
+     * How often (in seconds) to send a health check. The default value is 5 seconds.
+     */
+    public readonly checkIntervalSec!: pulumi.Output<number>;
+    /**
+     * [Output Only] Creation timestamp in 3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.alpha.GRPCHealthCheckResponse>;
+    /**
+     * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+     */
+    public readonly healthyThreshold!: pulumi.Output<number>;
+    public readonly http2HealthCheck!: pulumi.Output<outputs.compute.alpha.HTTP2HealthCheckResponse>;
+    public readonly httpHealthCheck!: pulumi.Output<outputs.compute.alpha.HTTPHealthCheckResponse>;
+    public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.alpha.HTTPSHealthCheckResponse>;
+    /**
+     * Type of the resource.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Configure logging on this health check.
+     */
+    public readonly logConfig!: pulumi.Output<outputs.compute.alpha.HealthCheckLogConfigResponse>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * [Output Only] Region where the health check resides. Not applicable to global health checks.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for this resource with the resource id.
+     */
+    public readonly selfLinkWithId!: pulumi.Output<string>;
+    public readonly sslHealthCheck!: pulumi.Output<outputs.compute.alpha.SSLHealthCheckResponse>;
+    public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.alpha.TCPHealthCheckResponse>;
+    /**
+     * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
+     */
+    public readonly timeoutSec!: pulumi.Output<number>;
+    /**
+     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+     */
+    public readonly type!: pulumi.Output<string>;
+    public readonly udpHealthCheck!: pulumi.Output<outputs.compute.alpha.UDPHealthCheckResponse>;
+    /**
+     * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+     */
+    public readonly unhealthyThreshold!: pulumi.Output<number>;
 
     /**
      * Create a RegionHealthCheck resource with the given unique name, arguments, and options.
@@ -80,6 +139,26 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             inputs["udpHealthCheck"] = args ? args.udpHealthCheck : undefined;
             inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
         } else {
+            inputs["checkIntervalSec"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["grpcHealthCheck"] = undefined /*out*/;
+            inputs["healthyThreshold"] = undefined /*out*/;
+            inputs["http2HealthCheck"] = undefined /*out*/;
+            inputs["httpHealthCheck"] = undefined /*out*/;
+            inputs["httpsHealthCheck"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["logConfig"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["sslHealthCheck"] = undefined /*out*/;
+            inputs["tcpHealthCheck"] = undefined /*out*/;
+            inputs["timeoutSec"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["udpHealthCheck"] = undefined /*out*/;
+            inputs["unhealthyThreshold"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

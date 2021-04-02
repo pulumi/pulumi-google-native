@@ -34,6 +34,27 @@ export class ManagedZoneRrset extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedZoneRrset.__pulumiType;
     }
 
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * For example, www.example.com.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+     */
+    public readonly rrdatas!: pulumi.Output<string[]>;
+    /**
+     * As defined in RFC 4034 (section 3.2).
+     */
+    public readonly signatureRrdatas!: pulumi.Output<string[]>;
+    /**
+     * Number of seconds that this ResourceRecordSet can be cached by resolvers.
+     */
+    public readonly ttl!: pulumi.Output<number>;
+    /**
+     * The identifier of a supported record type. See the list of Supported DNS record types.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a ManagedZoneRrset resource with the given unique name, arguments, and options.
@@ -67,6 +88,12 @@ export class ManagedZoneRrset extends pulumi.CustomResource {
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["rrdatas"] = undefined /*out*/;
+            inputs["signatureRrdatas"] = undefined /*out*/;
+            inputs["ttl"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

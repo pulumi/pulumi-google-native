@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -34,6 +35,22 @@ export class OrganizationApi extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationApi.__pulumiType;
     }
 
+    /**
+     * The id of the most recently created revision for this api proxy.
+     */
+    public /*out*/ readonly latestRevisionId!: pulumi.Output<string>;
+    /**
+     * Metadata describing the API proxy.
+     */
+    public /*out*/ readonly metaData!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1EntityMetadataResponse>;
+    /**
+     * Name of the API proxy.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * List of revisons defined for the API proxy.
+     */
+    public /*out*/ readonly revision!: pulumi.Output<string[]>;
 
     /**
      * Create a OrganizationApi resource with the given unique name, arguments, and options.
@@ -57,7 +74,15 @@ export class OrganizationApi extends pulumi.CustomResource {
             inputs["data"] = args ? args.data : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["latestRevisionId"] = undefined /*out*/;
+            inputs["metaData"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["revision"] = undefined /*out*/;
         } else {
+            inputs["latestRevisionId"] = undefined /*out*/;
+            inputs["metaData"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["revision"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

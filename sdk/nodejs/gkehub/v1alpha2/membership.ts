@@ -35,6 +35,58 @@ export class Membership extends pulumi.CustomResource {
         return obj['__pulumiType'] === Membership.__pulumiType;
     }
 
+    /**
+     * Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+     */
+    public readonly authority!: pulumi.Output<outputs.gkehub.v1alpha2.AuthorityResponse>;
+    /**
+     * When the Membership was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * When the Membership was deleted.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*` This field is present for legacy purposes.
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Endpoint information to reach this member.
+     */
+    public readonly endpoint!: pulumi.Output<outputs.gkehub.v1alpha2.MembershipEndpointResponse>;
+    /**
+     * Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
+     */
+    public readonly externalId!: pulumi.Output<string>;
+    /**
+     * Optional. The infrastructure type this Membership is running on.
+     */
+    public readonly infrastructureType!: pulumi.Output<string>;
+    /**
+     * Optional. GCP labels for this membership.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
+     */
+    public /*out*/ readonly lastConnectionTime!: pulumi.Output<string>;
+    /**
+     * The full, unique name of this Membership resource in the format `projects/*&#47;locations/*&#47;memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * State of the Membership resource.
+     */
+    public /*out*/ readonly state!: pulumi.Output<outputs.gkehub.v1alpha2.MembershipStateResponse>;
+    /**
+     * Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
+     */
+    public /*out*/ readonly uniqueId!: pulumi.Output<string>;
+    /**
+     * When the Membership was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Membership resource with the given unique name, arguments, and options.
@@ -57,22 +109,35 @@ export class Membership extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["authority"] = args ? args.authority : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
-            inputs["description"] = args ? args.description : undefined;
             inputs["endpoint"] = args ? args.endpoint : undefined;
             inputs["externalId"] = args ? args.externalId : undefined;
             inputs["infrastructureType"] = args ? args.infrastructureType : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["lastConnectionTime"] = args ? args.lastConnectionTime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["membershipsId"] = args ? args.membershipsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["uniqueId"] = args ? args.uniqueId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["lastConnectionTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["uniqueId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["authority"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["endpoint"] = undefined /*out*/;
+            inputs["externalId"] = undefined /*out*/;
+            inputs["infrastructureType"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["lastConnectionTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["uniqueId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -90,18 +155,6 @@ export interface MembershipArgs {
      */
     readonly authority?: pulumi.Input<inputs.gkehub.v1alpha2.Authority>;
     /**
-     * Output only. When the Membership was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. When the Membership was deleted.
-     */
-    readonly deleteTime?: pulumi.Input<string>;
-    /**
-     * Output only. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*` This field is present for legacy purposes.
-     */
-    readonly description?: pulumi.Input<string>;
-    /**
      * Optional. Endpoint information to reach this member.
      */
     readonly endpoint?: pulumi.Input<inputs.gkehub.v1alpha2.MembershipEndpoint>;
@@ -117,27 +170,7 @@ export interface MembershipArgs {
      * Optional. GCP labels for this membership.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
-     */
-    readonly lastConnectionTime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly membershipsId: pulumi.Input<string>;
-    /**
-     * Output only. The full, unique name of this Membership resource in the format `projects/*&#47;locations/*&#47;memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the Membership resource.
-     */
-    readonly state?: pulumi.Input<inputs.gkehub.v1alpha2.MembershipState>;
-    /**
-     * Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
-     */
-    readonly uniqueId?: pulumi.Input<string>;
-    /**
-     * Output only. When the Membership was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

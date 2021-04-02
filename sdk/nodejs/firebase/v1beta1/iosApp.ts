@@ -34,6 +34,30 @@ export class IosApp extends pulumi.CustomResource {
         return obj['__pulumiType'] === IosApp.__pulumiType;
     }
 
+    /**
+     * Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+     */
+    public readonly appId!: pulumi.Output<string>;
+    /**
+     * The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+     */
+    public readonly appStoreId!: pulumi.Output<string>;
+    /**
+     * Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+     */
+    public readonly bundleId!: pulumi.Output<string>;
+    /**
+     * The user-assigned display name for the `IosApp`.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+     */
+    public readonly projectId!: pulumi.Output<string>;
 
     /**
      * Create a IosApp resource with the given unique name, arguments, and options.
@@ -61,6 +85,12 @@ export class IosApp extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["appId"] = undefined /*out*/;
+            inputs["appStoreId"] = undefined /*out*/;
+            inputs["bundleId"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

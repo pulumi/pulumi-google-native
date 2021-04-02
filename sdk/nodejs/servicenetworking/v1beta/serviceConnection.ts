@@ -72,7 +72,7 @@ export interface ServiceConnectionArgs {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Output only. The name of the VPC Network Peering connection that was created by the service producer.
+     * The name of the VPC Network Peering connection that was created by the service producer.
      */
     readonly peering?: pulumi.Input<string>;
     /**
@@ -80,7 +80,7 @@ export interface ServiceConnectionArgs {
      */
     readonly reservedPeeringRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
+     * The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
      */
     readonly service?: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;

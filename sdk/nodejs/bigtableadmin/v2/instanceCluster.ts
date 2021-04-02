@@ -35,6 +35,30 @@ export class InstanceCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceCluster.__pulumiType;
     }
 
+    /**
+     * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+     */
+    public readonly defaultStorageType!: pulumi.Output<string>;
+    /**
+     * Immutable. The encryption configuration for CMEK-protected clusters.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.bigtableadmin.v2.EncryptionConfigResponse>;
+    /**
+     * Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+     */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+     */
+    public readonly serveNodes!: pulumi.Output<number>;
+    /**
+     * The current state of the cluster.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a InstanceCluster resource with the given unique name, arguments, and options.
@@ -64,8 +88,14 @@ export class InstanceCluster extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["serveNodes"] = args ? args.serveNodes : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["defaultStorageType"] = undefined /*out*/;
+            inputs["encryptionConfig"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["serveNodes"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -101,8 +131,4 @@ export interface InstanceClusterArgs {
      * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
     readonly serveNodes?: pulumi.Input<number>;
-    /**
-     * Output only. The current state of the cluster.
-     */
-    readonly state?: pulumi.Input<string>;
 }

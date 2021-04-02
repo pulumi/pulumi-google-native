@@ -35,6 +35,94 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+     */
+    public readonly alternativeLocationId!: pulumi.Output<string>;
+    /**
+     * Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
+     */
+    public readonly authEnabled!: pulumi.Output<boolean>;
+    /**
+     * Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+     */
+    public readonly authorizedNetwork!: pulumi.Output<string>;
+    /**
+     * Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+     */
+    public readonly connectMode!: pulumi.Output<string>;
+    /**
+     * The time the instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
+     */
+    public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
+    /**
+     * An arbitrary and optional user-provided name for the instance.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     */
+    public /*out*/ readonly host!: pulumi.Output<string>;
+    /**
+     * Resource labels to represent user provided metadata
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+     */
+    public readonly locationId!: pulumi.Output<string>;
+    /**
+     * Required. Redis memory size in GiB.
+     */
+    public readonly memorySizeGb!: pulumi.Output<number>;
+    /**
+     * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
+     */
+    public /*out*/ readonly persistenceIamIdentity!: pulumi.Output<string>;
+    /**
+     * The port number of the exposed Redis endpoint.
+     */
+    public /*out*/ readonly port!: pulumi.Output<number>;
+    /**
+     * Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
+     */
+    public readonly redisConfigs!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+     */
+    public readonly redisVersion!: pulumi.Output<string>;
+    /**
+     * Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+     */
+    public readonly reservedIpRange!: pulumi.Output<string>;
+    /**
+     * List of server CA certificates for the instance.
+     */
+    public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.v1beta1.TlsCertificateResponse[]>;
+    /**
+     * The current state of this instance.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Additional information about the current status of this instance, if available.
+     */
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * Required. The service tier of the instance.
+     */
+    public readonly tier!: pulumi.Output<string>;
+    /**
+     * Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
+     */
+    public readonly transitEncryptionMode!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -60,28 +148,50 @@ export class Instance extends pulumi.CustomResource {
             inputs["authEnabled"] = args ? args.authEnabled : undefined;
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["connectMode"] = args ? args.connectMode : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["currentLocationId"] = args ? args.currentLocationId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["host"] = args ? args.host : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["persistenceIamIdentity"] = args ? args.persistenceIamIdentity : undefined;
-            inputs["port"] = args ? args.port : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["redisConfigs"] = args ? args.redisConfigs : undefined;
             inputs["redisVersion"] = args ? args.redisVersion : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            inputs["serverCaCerts"] = args ? args.serverCaCerts : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["currentLocationId"] = undefined /*out*/;
+            inputs["host"] = undefined /*out*/;
+            inputs["persistenceIamIdentity"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["serverCaCerts"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
         } else {
+            inputs["alternativeLocationId"] = undefined /*out*/;
+            inputs["authEnabled"] = undefined /*out*/;
+            inputs["authorizedNetwork"] = undefined /*out*/;
+            inputs["connectMode"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["currentLocationId"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["host"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["locationId"] = undefined /*out*/;
+            inputs["memorySizeGb"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["persistenceIamIdentity"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["redisConfigs"] = undefined /*out*/;
+            inputs["redisVersion"] = undefined /*out*/;
+            inputs["reservedIpRange"] = undefined /*out*/;
+            inputs["serverCaCerts"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["tier"] = undefined /*out*/;
+            inputs["transitEncryptionMode"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -111,21 +221,9 @@ export interface InstanceArgs {
      */
     readonly connectMode?: pulumi.Input<string>;
     /**
-     * Output only. The time the instance was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
-     */
-    readonly currentLocationId?: pulumi.Input<string>;
-    /**
      * An arbitrary and optional user-provided name for the instance.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
-     */
-    readonly host?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata
@@ -144,14 +242,6 @@ export interface InstanceArgs {
      * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
-     */
-    readonly persistenceIamIdentity?: pulumi.Input<string>;
-    /**
-     * Output only. The port number of the exposed Redis endpoint.
-     */
-    readonly port?: pulumi.Input<number>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
@@ -165,18 +255,6 @@ export interface InstanceArgs {
      * Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
      */
     readonly reservedIpRange?: pulumi.Input<string>;
-    /**
-     * Output only. List of server CA certificates for the instance.
-     */
-    readonly serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.v1beta1.TlsCertificate>[]>;
-    /**
-     * Output only. The current state of this instance.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Additional information about the current status of this instance, if available.
-     */
-    readonly statusMessage?: pulumi.Input<string>;
     /**
      * Required. The service tier of the instance.
      */

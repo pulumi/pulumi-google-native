@@ -35,6 +35,34 @@ export class Conversation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Conversation.__pulumiType;
     }
 
+    /**
+     * Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+     */
+    public readonly conversationProfile!: pulumi.Output<string>;
+    /**
+     * The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+     */
+    public readonly conversationStage!: pulumi.Output<string>;
+    /**
+     * The time the conversation was finished.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * The current state of the Conversation.
+     */
+    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    /**
+     * The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required if the conversation is to be connected over telephony.
+     */
+    public /*out*/ readonly phoneNumber!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse>;
+    /**
+     * The time the conversation was started.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
 
     /**
      * Create a Conversation resource with the given unique name, arguments, and options.
@@ -59,14 +87,21 @@ export class Conversation extends pulumi.CustomResource {
             inputs["conversationProfile"] = args ? args.conversationProfile : undefined;
             inputs["conversationStage"] = args ? args.conversationStage : undefined;
             inputs["conversationsId"] = args ? args.conversationsId : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["phoneNumber"] = args ? args.phoneNumber : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["lifecycleState"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["phoneNumber"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
         } else {
+            inputs["conversationProfile"] = undefined /*out*/;
+            inputs["conversationStage"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["lifecycleState"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["phoneNumber"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -88,26 +123,6 @@ export interface ConversationArgs {
      */
     readonly conversationStage?: pulumi.Input<string>;
     readonly conversationsId: pulumi.Input<string>;
-    /**
-     * Output only. The time the conversation was finished.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the Conversation.
-     */
-    readonly lifecycleState?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The unique identifier of this conversation. Format: `projects//locations//conversations/`.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. Required if the conversation is to be connected over telephony.
-     */
-    readonly phoneNumber?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1ConversationPhoneNumber>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The time the conversation was started.
-     */
-    readonly startTime?: pulumi.Input<string>;
 }

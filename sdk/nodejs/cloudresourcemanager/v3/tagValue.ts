@@ -34,6 +34,38 @@ export class TagValue extends pulumi.CustomResource {
         return obj['__pulumiType'] === TagValue.__pulumiType;
     }
 
+    /**
+     * Creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * Immutable. Resource name for TagValue in the format `tagValues/456`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+     */
+    public /*out*/ readonly namespacedName!: pulumi.Output<string>;
+    /**
+     * Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     */
+    public readonly shortName!: pulumi.Output<string>;
+    /**
+     * Update time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a TagValue resource with the given unique name, arguments, and options.
@@ -49,16 +81,24 @@ export class TagValue extends pulumi.CustomResource {
             if ((!args || args.tagValuesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagValuesId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["namespacedName"] = args ? args.namespacedName : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["shortName"] = args ? args.shortName : undefined;
             inputs["tagValuesId"] = args ? args.tagValuesId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["namespacedName"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["namespacedName"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["shortName"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -72,10 +112,6 @@ export class TagValue extends pulumi.CustomResource {
  */
 export interface TagValueArgs {
     /**
-     * Output only. Creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
      */
     readonly description?: pulumi.Input<string>;
@@ -88,10 +124,6 @@ export interface TagValueArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Output only. Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
-     */
-    readonly namespacedName?: pulumi.Input<string>;
-    /**
      * Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
      */
     readonly parent?: pulumi.Input<string>;
@@ -100,8 +132,4 @@ export interface TagValueArgs {
      */
     readonly shortName?: pulumi.Input<string>;
     readonly tagValuesId: pulumi.Input<string>;
-    /**
-     * Output only. Update time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

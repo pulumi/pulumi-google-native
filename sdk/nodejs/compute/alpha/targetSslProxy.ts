@@ -34,6 +34,46 @@ export class TargetSslProxy extends pulumi.CustomResource {
         return obj['__pulumiType'] === TargetSslProxy.__pulumiType;
     }
 
+    /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    public readonly certificateMap!: pulumi.Output<string>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+     */
+    public readonly proxyHeader!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * URL to the BackendService resource.
+     */
+    public readonly service!: pulumi.Output<string>;
+    /**
+     * URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+     */
+    public readonly sslCertificates!: pulumi.Output<string[]>;
+    /**
+     * URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
+     */
+    public readonly sslPolicy!: pulumi.Output<string>;
 
     /**
      * Create a TargetSslProxy resource with the given unique name, arguments, and options.
@@ -66,6 +106,16 @@ export class TargetSslProxy extends pulumi.CustomResource {
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["targetSslProxy"] = args ? args.targetSslProxy : undefined;
         } else {
+            inputs["certificateMap"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["proxyHeader"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["service"] = undefined /*out*/;
+            inputs["sslCertificates"] = undefined /*out*/;
+            inputs["sslPolicy"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

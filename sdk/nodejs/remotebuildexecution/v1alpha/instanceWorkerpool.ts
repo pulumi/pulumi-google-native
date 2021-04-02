@@ -35,6 +35,30 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceWorkerpool.__pulumiType;
     }
 
+    /**
+     * The autoscale policy to apply on a pool.
+     */
+    public /*out*/ readonly autoscale!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>;
+    /**
+     * Channel specifies the release channel of the pool.
+     */
+    public /*out*/ readonly channel!: pulumi.Output<string>;
+    /**
+     * WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * State of the worker pool.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+     */
+    public /*out*/ readonly workerConfig!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse>;
+    /**
+     * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+     */
+    public /*out*/ readonly workerCount!: pulumi.Output<string>;
 
     /**
      * Create a InstanceWorkerpool resource with the given unique name, arguments, and options.
@@ -62,7 +86,19 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["workerPool"] = args ? args.workerPool : undefined;
             inputs["workerpoolsId"] = args ? args.workerpoolsId : undefined;
+            inputs["autoscale"] = undefined /*out*/;
+            inputs["channel"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["workerConfig"] = undefined /*out*/;
+            inputs["workerCount"] = undefined /*out*/;
         } else {
+            inputs["autoscale"] = undefined /*out*/;
+            inputs["channel"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["workerConfig"] = undefined /*out*/;
+            inputs["workerCount"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

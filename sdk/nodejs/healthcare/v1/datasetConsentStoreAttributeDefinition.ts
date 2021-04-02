@@ -34,6 +34,30 @@ export class DatasetConsentStoreAttributeDefinition extends pulumi.CustomResourc
         return obj['__pulumiType'] === DatasetConsentStoreAttributeDefinition.__pulumiType;
     }
 
+    /**
+     * Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     */
+    public readonly allowedValues!: pulumi.Output<string[]>;
+    /**
+     * Required. The category of the attribute. The value of this field cannot be changed after creation.
+     */
+    public readonly category!: pulumi.Output<string>;
+    /**
+     * Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
+     */
+    public readonly consentDefaultValues!: pulumi.Output<string[]>;
+    /**
+     * Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+     */
+    public readonly dataMappingDefaultValue!: pulumi.Output<string>;
+    /**
+     * Optional. A description of the attribute.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a DatasetConsentStoreAttributeDefinition resource with the given unique name, arguments, and options.
@@ -73,6 +97,12 @@ export class DatasetConsentStoreAttributeDefinition extends pulumi.CustomResourc
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["allowedValues"] = undefined /*out*/;
+            inputs["category"] = undefined /*out*/;
+            inputs["consentDefaultValues"] = undefined /*out*/;
+            inputs["dataMappingDefaultValue"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

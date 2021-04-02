@@ -35,6 +35,34 @@ export class Environment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Environment.__pulumiType;
     }
 
+    /**
+     * Use a container image to start the notebook instance.
+     */
+    public readonly containerImage!: pulumi.Output<outputs.notebooks.v1.ContainerImageResponse>;
+    /**
+     * The time at which this environment was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * A brief description of this environment.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Display name of this environment for the UI.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+     */
+    public readonly postStartupScript!: pulumi.Output<string>;
+    /**
+     * Use a Compute Engine VM image to start the notebook instance.
+     */
+    public readonly vmImage!: pulumi.Output<outputs.notebooks.v1.VmImageResponse>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -57,16 +85,23 @@ export class Environment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["containerImage"] = args ? args.containerImage : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["vmImage"] = args ? args.vmImage : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["containerImage"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["postStartupScript"] = undefined /*out*/;
+            inputs["vmImage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,10 +119,6 @@ export interface EnvironmentArgs {
      */
     readonly containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImage>;
     /**
-     * Output only. The time at which this environment was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * A brief description of this environment.
      */
     readonly description?: pulumi.Input<string>;
@@ -97,10 +128,6 @@ export interface EnvironmentArgs {
     readonly displayName?: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
      */

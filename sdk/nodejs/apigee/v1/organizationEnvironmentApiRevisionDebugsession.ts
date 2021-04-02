@@ -34,6 +34,30 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
         return obj['__pulumiType'] === OrganizationEnvironmentApiRevisionDebugsession.__pulumiType;
     }
 
+    /**
+     * Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+     */
+    public readonly count!: pulumi.Output<number>;
+    /**
+     * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+     */
+    public readonly filter!: pulumi.Output<string>;
+    /**
+     * A unique ID for this DebugSession.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+     */
+    public readonly timeout!: pulumi.Output<string>;
+    /**
+     * Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+     */
+    public readonly tracesize!: pulumi.Output<number>;
+    /**
+     * Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+     */
+    public readonly validity!: pulumi.Output<number>;
 
     /**
      * Create a OrganizationEnvironmentApiRevisionDebugsession resource with the given unique name, arguments, and options.
@@ -73,6 +97,12 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
             inputs["tracesize"] = args ? args.tracesize : undefined;
             inputs["validity"] = args ? args.validity : undefined;
         } else {
+            inputs["count"] = undefined /*out*/;
+            inputs["filter"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["timeout"] = undefined /*out*/;
+            inputs["tracesize"] = undefined /*out*/;
+            inputs["validity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

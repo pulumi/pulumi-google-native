@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -34,6 +35,18 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
         return obj['__pulumiType'] === OrganizationEnvironmentKeystoreAlias.__pulumiType;
     }
 
+    /**
+     * Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+     */
+    public /*out*/ readonly alias!: pulumi.Output<string>;
+    /**
+     * Chain of certificates under this alias.
+     */
+    public /*out*/ readonly certsInfo!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CertificateResponse>;
+    /**
+     * Type of alias.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironmentKeystoreAlias resource with the given unique name, arguments, and options.
@@ -65,7 +78,13 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["keystoresId"] = args ? args.keystoresId : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["alias"] = undefined /*out*/;
+            inputs["certsInfo"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         } else {
+            inputs["alias"] = undefined /*out*/;
+            inputs["certsInfo"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

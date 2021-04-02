@@ -35,6 +35,46 @@ export class WorkerPool extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerPool.__pulumiType;
     }
 
+    /**
+     * Time at which the request to create the `WorkerPool` was received.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * Time at which the request to delete the `WorkerPool` was received.
+     */
+    public readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * User-defined name of the `WorkerPool`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The project ID of the GCP project for which the `WorkerPool` is created.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+     */
+    public readonly regions!: pulumi.Output<string[]>;
+    /**
+     * The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+     */
+    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    /**
+     * WorkerPool Status.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * Time at which the request to update the `WorkerPool` was received.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Configuration to be used for a creating workers in the `WorkerPool`.
+     */
+    public readonly workerConfig!: pulumi.Output<outputs.cloudbuild.v1alpha1.WorkerConfigResponse>;
+    /**
+     * Total number of workers to be created across all requested regions.
+     */
+    public readonly workerCount!: pulumi.Output<string>;
 
     /**
      * Create a WorkerPool resource with the given unique name, arguments, and options.
@@ -66,6 +106,16 @@ export class WorkerPool extends pulumi.CustomResource {
             inputs["workerCount"] = args ? args.workerCount : undefined;
             inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["regions"] = undefined /*out*/;
+            inputs["serviceAccountEmail"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["workerConfig"] = undefined /*out*/;
+            inputs["workerCount"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -79,11 +129,11 @@ export class WorkerPool extends pulumi.CustomResource {
  */
 export interface WorkerPoolArgs {
     /**
-     * Output only. Time at which the request to create the `WorkerPool` was received.
+     * Time at which the request to create the `WorkerPool` was received.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Output only. Time at which the request to delete the `WorkerPool` was received.
+     * Time at which the request to delete the `WorkerPool` was received.
      */
     readonly deleteTime?: pulumi.Input<string>;
     /**
@@ -100,15 +150,15 @@ export interface WorkerPoolArgs {
      */
     readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Output only. The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+     * The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
      */
     readonly serviceAccountEmail?: pulumi.Input<string>;
     /**
-     * Output only. WorkerPool Status.
+     * WorkerPool Status.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Output only. Time at which the request to update the `WorkerPool` was received.
+     * Time at which the request to update the `WorkerPool` was received.
      */
     readonly updateTime?: pulumi.Input<string>;
     /**

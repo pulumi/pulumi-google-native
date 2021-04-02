@@ -34,6 +34,14 @@ export class OrganizationEnvironmentKeystore extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationEnvironmentKeystore.__pulumiType;
     }
 
+    /**
+     * Aliases in this keystore.
+     */
+    public /*out*/ readonly aliases!: pulumi.Output<string[]>;
+    /**
+     * Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironmentKeystore resource with the given unique name, arguments, and options.
@@ -55,12 +63,14 @@ export class OrganizationEnvironmentKeystore extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
-            inputs["aliases"] = args ? args.aliases : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["keystoresId"] = args ? args.keystoresId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["aliases"] = undefined /*out*/;
         } else {
+            inputs["aliases"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -73,10 +83,6 @@ export class OrganizationEnvironmentKeystore extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvironmentKeystore resource.
  */
 export interface OrganizationEnvironmentKeystoreArgs {
-    /**
-     * Output only. Aliases in this keystore.
-     */
-    readonly aliases?: pulumi.Input<pulumi.Input<string>[]>;
     readonly environmentsId: pulumi.Input<string>;
     readonly keystoresId: pulumi.Input<string>;
     /**

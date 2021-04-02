@@ -35,6 +35,26 @@ export class OrganizationNotificationConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationNotificationConfig.__pulumiType;
     }
 
+    /**
+     * The description of the notification config (max of 1024 characters).
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+     */
+    public readonly pubsubTopic!: pulumi.Output<string>;
+    /**
+     * The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+     */
+    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * The config for triggering streaming-based notifications.
+     */
+    public readonly streamingConfig!: pulumi.Output<outputs.securitycenter.v1.StreamingConfigResponse>;
 
     /**
      * Create a OrganizationNotificationConfig resource with the given unique name, arguments, and options.
@@ -58,9 +78,14 @@ export class OrganizationNotificationConfig extends pulumi.CustomResource {
             inputs["notificationConfigsId"] = args ? args.notificationConfigsId : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["streamingConfig"] = args ? args.streamingConfig : undefined;
+            inputs["serviceAccount"] = undefined /*out*/;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pubsubTopic"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
+            inputs["streamingConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -87,10 +112,6 @@ export interface OrganizationNotificationConfigArgs {
      * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
      */
     readonly pubsubTopic?: pulumi.Input<string>;
-    /**
-     * Output only. The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
-     */
-    readonly serviceAccount?: pulumi.Input<string>;
     /**
      * The config for triggering streaming-based notifications.
      */

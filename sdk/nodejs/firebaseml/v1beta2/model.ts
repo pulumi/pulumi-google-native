@@ -35,6 +35,46 @@ export class Model extends pulumi.CustomResource {
         return obj['__pulumiType'] === Model.__pulumiType;
     }
 
+    /**
+     * Lists operation ids associated with this model whose status is NOT done.
+     */
+    public /*out*/ readonly activeOperations!: pulumi.Output<outputs.firebaseml.v1beta2.OperationResponse[]>;
+    /**
+     * Timestamp when this model was created in Firebase ML.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The model_hash will change if a new file is available for download.
+     */
+    public /*out*/ readonly modelHash!: pulumi.Output<string>;
+    /**
+     * The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * State common to all model types. Includes publishing and validation information.
+     */
+    public readonly state!: pulumi.Output<outputs.firebaseml.v1beta2.ModelStateResponse>;
+    /**
+     * User defined tags which can be used to group/filter models during listing
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * A TFLite Model
+     */
+    public readonly tfliteModel!: pulumi.Output<outputs.firebaseml.v1beta2.TfLiteModelResponse>;
+    /**
+     * Timestamp when this model was updated in Firebase ML.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Model resource with the given unique name, arguments, and options.
@@ -53,19 +93,29 @@ export class Model extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["activeOperations"] = args ? args.activeOperations : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["modelHash"] = args ? args.modelHash : undefined;
             inputs["modelsId"] = args ? args.modelsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tfliteModel"] = args ? args.tfliteModel : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["activeOperations"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["modelHash"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["activeOperations"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["modelHash"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["tags"] = undefined /*out*/;
+            inputs["tfliteModel"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -79,25 +129,9 @@ export class Model extends pulumi.CustomResource {
  */
 export interface ModelArgs {
     /**
-     * Output only. Lists operation ids associated with this model whose status is NOT done.
-     */
-    readonly activeOperations?: pulumi.Input<pulumi.Input<inputs.firebaseml.v1beta2.Operation>[]>;
-    /**
-     * Output only. Timestamp when this model was created in Firebase ML.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
-     */
-    readonly etag?: pulumi.Input<string>;
-    /**
-     * Output only. The model_hash will change if a new file is available for download.
-     */
-    readonly modelHash?: pulumi.Input<string>;
     readonly modelsId: pulumi.Input<string>;
     /**
      * The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
@@ -116,8 +150,4 @@ export interface ModelArgs {
      * A TFLite Model
      */
     readonly tfliteModel?: pulumi.Input<inputs.firebaseml.v1beta2.TfLiteModel>;
-    /**
-     * Output only. Timestamp when this model was updated in Firebase ML.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

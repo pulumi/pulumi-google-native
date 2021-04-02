@@ -35,6 +35,18 @@ export class AdminSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === AdminSubscription.__pulumiType;
     }
 
+    /**
+     * The settings for this subscription's message delivery.
+     */
+    public readonly deliveryConfig!: pulumi.Output<outputs.pubsublite.v1.DeliveryConfigResponse>;
+    /**
+     * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+     */
+    public readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a AdminSubscription resource with the given unique name, arguments, and options.
@@ -63,6 +75,9 @@ export class AdminSubscription extends pulumi.CustomResource {
             inputs["subscriptionsId"] = args ? args.subscriptionsId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
+            inputs["deliveryConfig"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,78 @@ export class Node extends pulumi.CustomResource {
         return obj['__pulumiType'] === Node.__pulumiType;
     }
 
+    /**
+     * Required. The type of hardware accelerators associated with this node.
+     */
+    public readonly acceleratorType!: pulumi.Output<string>;
+    /**
+     * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+     */
+    public readonly cidrBlock!: pulumi.Output<string>;
+    /**
+     * The time when the node was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The user-supplied description of the TPU. Maximum of 512 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The health status of the TPU node.
+     */
+    public readonly health!: pulumi.Output<string>;
+    /**
+     * If this field is populated, it contains a description of why the TPU Node is unhealthy.
+     */
+    public /*out*/ readonly healthDescription!: pulumi.Output<string>;
+    /**
+     * DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+     */
+    public readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * Resource labels to represent user-provided metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Immutable. The name of the TPU
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
+     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
+     */
+    public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.v1.NetworkEndpointResponse[]>;
+    /**
+     * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+     */
+    public readonly port!: pulumi.Output<string>;
+    /**
+     * The scheduling options for this node.
+     */
+    public readonly schedulingConfig!: pulumi.Output<outputs.tpu.v1.SchedulingConfigResponse>;
+    /**
+     * The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     */
+    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * The current state for the TPU Node.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The Symptoms that have occurred to the TPU Node.
+     */
+    public /*out*/ readonly symptoms!: pulumi.Output<outputs.tpu.v1.SymptomResponse[]>;
+    /**
+     * Required. The version of Tensorflow running in the Node.
+     */
+    public readonly tensorflowVersion!: pulumi.Output<string>;
+    /**
+     * Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
+     */
+    public readonly useServiceNetworking!: pulumi.Output<boolean>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -58,26 +130,44 @@ export class Node extends pulumi.CustomResource {
             }
             inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["health"] = args ? args.health : undefined;
-            inputs["healthDescription"] = args ? args.healthDescription : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
-            inputs["networkEndpoints"] = args ? args.networkEndpoints : undefined;
             inputs["nodesId"] = args ? args.nodesId : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["symptoms"] = args ? args.symptoms : undefined;
             inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
             inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["healthDescription"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["networkEndpoints"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["symptoms"] = undefined /*out*/;
         } else {
+            inputs["acceleratorType"] = undefined /*out*/;
+            inputs["cidrBlock"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["health"] = undefined /*out*/;
+            inputs["healthDescription"] = undefined /*out*/;
+            inputs["ipAddress"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["networkEndpoints"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["schedulingConfig"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["symptoms"] = undefined /*out*/;
+            inputs["tensorflowVersion"] = undefined /*out*/;
+            inputs["useServiceNetworking"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -99,10 +189,6 @@ export interface NodeArgs {
      */
     readonly cidrBlock?: pulumi.Input<string>;
     /**
-     * Output only. The time when the node was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * The user-supplied description of the TPU. Maximum of 512 characters.
      */
     readonly description?: pulumi.Input<string>;
@@ -111,11 +197,7 @@ export interface NodeArgs {
      */
     readonly health?: pulumi.Input<string>;
     /**
-     * Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy.
-     */
-    readonly healthDescription?: pulumi.Input<string>;
-    /**
-     * Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+     * DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
@@ -124,20 +206,12 @@ export interface NodeArgs {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
     /**
-     * Output only. Immutable. The name of the TPU
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
      */
     readonly network?: pulumi.Input<string>;
-    /**
-     * Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
-     */
-    readonly networkEndpoints?: pulumi.Input<pulumi.Input<inputs.tpu.v1.NetworkEndpoint>[]>;
     readonly nodesId: pulumi.Input<string>;
     /**
-     * Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+     * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
      */
     readonly port?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
@@ -145,18 +219,6 @@ export interface NodeArgs {
      * The scheduling options for this node.
      */
     readonly schedulingConfig?: pulumi.Input<inputs.tpu.v1.SchedulingConfig>;
-    /**
-     * Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
-     */
-    readonly serviceAccount?: pulumi.Input<string>;
-    /**
-     * Output only. The current state for the TPU Node.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The Symptoms that have occurred to the TPU Node.
-     */
-    readonly symptoms?: pulumi.Input<pulumi.Input<inputs.tpu.v1.Symptom>[]>;
     /**
      * Required. The version of Tensorflow running in the Node.
      */

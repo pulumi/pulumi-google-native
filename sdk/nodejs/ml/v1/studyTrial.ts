@@ -35,6 +35,46 @@ export class StudyTrial extends pulumi.CustomResource {
         return obj['__pulumiType'] === StudyTrial.__pulumiType;
     }
 
+    /**
+     * The identifier of the client that originally requested this trial.
+     */
+    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    /**
+     * Time at which the trial's status changed to COMPLETED.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * The final measurement containing the objective value.
+     */
+    public readonly finalMeasurement!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__MeasurementResponse>;
+    /**
+     * A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+     */
+    public /*out*/ readonly infeasibleReason!: pulumi.Output<string>;
+    /**
+     * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+     */
+    public readonly measurements!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__MeasurementResponse[]>;
+    /**
+     * Name of the trial assigned by the service.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The parameters of the trial.
+     */
+    public readonly parameters!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1_Trial_ParameterResponse[]>;
+    /**
+     * Time at which the trial was started.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    /**
+     * The detailed state of a trial.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * If true, the parameters in this trial are not attempted again.
+     */
+    public /*out*/ readonly trialInfeasible!: pulumi.Output<boolean>;
 
     /**
      * Create a StudyTrial resource with the given unique name, arguments, and options.
@@ -59,21 +99,31 @@ export class StudyTrial extends pulumi.CustomResource {
             if ((!args || args.trialsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trialsId'");
             }
-            inputs["clientId"] = args ? args.clientId : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
             inputs["finalMeasurement"] = args ? args.finalMeasurement : undefined;
-            inputs["infeasibleReason"] = args ? args.infeasibleReason : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["measurements"] = args ? args.measurements : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["studiesId"] = args ? args.studiesId : undefined;
-            inputs["trialInfeasible"] = args ? args.trialInfeasible : undefined;
             inputs["trialsId"] = args ? args.trialsId : undefined;
+            inputs["clientId"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["infeasibleReason"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["trialInfeasible"] = undefined /*out*/;
         } else {
+            inputs["clientId"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["finalMeasurement"] = undefined /*out*/;
+            inputs["infeasibleReason"] = undefined /*out*/;
+            inputs["measurements"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parameters"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["trialInfeasible"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -87,47 +137,23 @@ export class StudyTrial extends pulumi.CustomResource {
  */
 export interface StudyTrialArgs {
     /**
-     * Output only. The identifier of the client that originally requested this trial.
-     */
-    readonly clientId?: pulumi.Input<string>;
-    /**
-     * Output only. Time at which the trial's status changed to COMPLETED.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
      * The final measurement containing the objective value.
      */
     readonly finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__Measurement>;
-    /**
-     * Output only. A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
-     */
-    readonly infeasibleReason?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
      */
     readonly measurements?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__Measurement>[]>;
     /**
-     * Output only. Name of the trial assigned by the service.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * The parameters of the trial.
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_Trial_Parameter>[]>;
     readonly projectsId: pulumi.Input<string>;
     /**
-     * Output only. Time at which the trial was started.
-     */
-    readonly startTime?: pulumi.Input<string>;
-    /**
      * The detailed state of a trial.
      */
     readonly state?: pulumi.Input<string>;
     readonly studiesId: pulumi.Input<string>;
-    /**
-     * Output only. If true, the parameters in this trial are not attempted again.
-     */
-    readonly trialInfeasible?: pulumi.Input<boolean>;
     readonly trialsId: pulumi.Input<string>;
 }

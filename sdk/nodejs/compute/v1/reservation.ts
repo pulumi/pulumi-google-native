@@ -35,6 +35,50 @@ export class Reservation extends pulumi.CustomResource {
         return obj['__pulumiType'] === Reservation.__pulumiType;
     }
 
+    /**
+     * [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     */
+    public readonly commitment!: pulumi.Output<string>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#reservations for reservations.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * [Output Only] Reserved for future use.
+     */
+    public readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
+     * [Output Only] Server-defined fully-qualified URL for this resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Reservation for instances with specific machine shapes.
+     */
+    public readonly specificReservation!: pulumi.Output<outputs.compute.v1.AllocationSpecificSKUReservationResponse>;
+    /**
+     * Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
+     */
+    public readonly specificReservationRequired!: pulumi.Output<boolean>;
+    /**
+     * [Output Only] The status of the reservation.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Reservation resource with the given unique name, arguments, and options.
@@ -71,6 +115,17 @@ export class Reservation extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
+            inputs["commitment"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["specificReservation"] = undefined /*out*/;
+            inputs["specificReservationRequired"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

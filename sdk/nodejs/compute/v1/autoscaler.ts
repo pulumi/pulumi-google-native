@@ -35,6 +35,64 @@ export class Autoscaler extends pulumi.CustomResource {
         return obj['__pulumiType'] === Autoscaler.__pulumiType;
     }
 
+    /**
+     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
+     *
+     * If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+     */
+    public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.v1.AutoscalingPolicyResponse>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+     */
+    public readonly recommendedSize!: pulumi.Output<number>;
+    /**
+     * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Status information of existing scaling schedules.
+     */
+    public readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+     * - PENDING: Autoscaler backend hasn't read new/updated configuration. 
+     * - DELETING: Configuration is being deleted. 
+     * - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
+     * - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+     */
+    public readonly statusDetails!: pulumi.Output<outputs.compute.v1.AutoscalerStatusDetailsResponse[]>;
+    /**
+     * URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
+     */
+    public readonly target!: pulumi.Output<string>;
+    /**
+     * [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Autoscaler resource with the given unique name, arguments, and options.
@@ -73,6 +131,19 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["target"] = args ? args.target : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
+            inputs["autoscalingPolicy"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["recommendedSize"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["scalingScheduleStatus"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusDetails"] = undefined /*out*/;
+            inputs["target"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

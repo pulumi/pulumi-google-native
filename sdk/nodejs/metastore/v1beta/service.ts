@@ -35,6 +35,74 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
+    /**
+     * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+     */
+    public /*out*/ readonly artifactGcsUri!: pulumi.Output<string>;
+    /**
+     * The time when the metastore service was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The URI of the endpoint used to access the metastore service.
+     */
+    public /*out*/ readonly endpointUri!: pulumi.Output<string>;
+    /**
+     * Configuration information specific to running Hive metastore software as the metastore service.
+     */
+    public readonly hiveMetastoreConfig!: pulumi.Output<outputs.metastore.v1beta.HiveMetastoreConfigResponse>;
+    /**
+     * User-defined labels for the metastore service.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+     */
+    public readonly maintenanceWindow!: pulumi.Output<outputs.metastore.v1beta.MaintenanceWindowResponse>;
+    /**
+     * The setting that defines how metastore metadata should be integrated with external services and systems.
+     */
+    public readonly metadataIntegration!: pulumi.Output<outputs.metastore.v1beta.MetadataIntegrationResponse>;
+    /**
+     * The metadata management activities of the metastore service.
+     */
+    public /*out*/ readonly metadataManagementActivity!: pulumi.Output<outputs.metastore.v1beta.MetadataManagementActivityResponse>;
+    /**
+     * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
+     * The TCP port at which the metastore service is reached. Default: 9083.
+     */
+    public readonly port!: pulumi.Output<number>;
+    /**
+     * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+     */
+    public readonly releaseChannel!: pulumi.Output<string>;
+    /**
+     * The current state of the metastore service.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Additional information about the current state of the metastore service, if available.
+     */
+    public /*out*/ readonly stateMessage!: pulumi.Output<string>;
+    /**
+     * The tier of the service.
+     */
+    public readonly tier!: pulumi.Output<string>;
+    /**
+     * The globally unique resource identifier of the metastore service.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * The time when the metastore service was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -56,27 +124,44 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.servicesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicesId'");
             }
-            inputs["artifactGcsUri"] = args ? args.artifactGcsUri : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["endpointUri"] = args ? args.endpointUri : undefined;
             inputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
-            inputs["metadataManagementActivity"] = args ? args.metadataManagementActivity : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["stateMessage"] = args ? args.stateMessage : undefined;
             inputs["tier"] = args ? args.tier : undefined;
-            inputs["uid"] = args ? args.uid : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["artifactGcsUri"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endpointUri"] = undefined /*out*/;
+            inputs["metadataManagementActivity"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["stateMessage"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["artifactGcsUri"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endpointUri"] = undefined /*out*/;
+            inputs["hiveMetastoreConfig"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["maintenanceWindow"] = undefined /*out*/;
+            inputs["metadataIntegration"] = undefined /*out*/;
+            inputs["metadataManagementActivity"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["releaseChannel"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["stateMessage"] = undefined /*out*/;
+            inputs["tier"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -89,18 +174,6 @@ export class Service extends pulumi.CustomResource {
  * The set of arguments for constructing a Service resource.
  */
 export interface ServiceArgs {
-    /**
-     * Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-     */
-    readonly artifactGcsUri?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the metastore service was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The URI of the endpoint used to access the metastore service.
-     */
-    readonly endpointUri?: pulumi.Input<string>;
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      */
@@ -118,10 +191,6 @@ export interface ServiceArgs {
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      */
     readonly metadataIntegration?: pulumi.Input<inputs.metastore.v1beta.MetadataIntegration>;
-    /**
-     * Output only. The metadata management activities of the metastore service.
-     */
-    readonly metadataManagementActivity?: pulumi.Input<inputs.metastore.v1beta.MetadataManagementActivity>;
     /**
      * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
@@ -141,23 +210,7 @@ export interface ServiceArgs {
     readonly releaseChannel?: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
     /**
-     * Output only. The current state of the metastore service.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Additional information about the current state of the metastore service, if available.
-     */
-    readonly stateMessage?: pulumi.Input<string>;
-    /**
      * The tier of the service.
      */
     readonly tier?: pulumi.Input<string>;
-    /**
-     * Output only. The globally unique resource identifier of the metastore service.
-     */
-    readonly uid?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the metastore service was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

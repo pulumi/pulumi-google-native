@@ -34,6 +34,42 @@ export class TargetTcpProxy extends pulumi.CustomResource {
         return obj['__pulumiType'] === TargetTcpProxy.__pulumiType;
     }
 
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     *
+     * When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
+     *
+     * The default is false.
+     */
+    public readonly proxyBind!: pulumi.Output<boolean>;
+    /**
+     * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+     */
+    public readonly proxyHeader!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * URL to the BackendService resource.
+     */
+    public readonly service!: pulumi.Output<string>;
 
     /**
      * Create a TargetTcpProxy resource with the given unique name, arguments, and options.
@@ -64,6 +100,14 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["targetTcpProxy"] = args ? args.targetTcpProxy : undefined;
         } else {
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["proxyBind"] = undefined /*out*/;
+            inputs["proxyHeader"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["service"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

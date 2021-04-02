@@ -34,6 +34,53 @@ export class SslPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === SslPolicy.__pulumiType;
     }
 
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * A list of features enabled when the selected profile is CUSTOM. The
+     * - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+     */
+    public readonly customFeatures!: pulumi.Output<string[]>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] The list of features enabled in the SSL policy.
+     */
+    public readonly enabledFeatures!: pulumi.Output<string[]>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
+     *
+     * To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+     */
+    public readonly fingerprint!: pulumi.Output<string>;
+    /**
+     * [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+     */
+    public readonly minTlsVersion!: pulumi.Output<string>;
+    /**
+     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+     */
+    public readonly profile!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+     */
+    public readonly warnings!: pulumi.Output<{[key: string]: string}[]>;
 
     /**
      * Create a SslPolicy resource with the given unique name, arguments, and options.
@@ -67,6 +114,17 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["warnings"] = args ? args.warnings : undefined;
         } else {
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["customFeatures"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["enabledFeatures"] = undefined /*out*/;
+            inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["minTlsVersion"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["profile"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["warnings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -34,6 +34,22 @@ export class History extends pulumi.CustomResource {
         return obj['__pulumiType'] === History.__pulumiType;
     }
 
+    /**
+     * A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
+     */
+    public readonly historyId!: pulumi.Output<string>;
+    /**
+     * A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+     */
+    public readonly testPlatform!: pulumi.Output<string>;
 
     /**
      * Create a History resource with the given unique name, arguments, and options.
@@ -58,6 +74,10 @@ export class History extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["testPlatform"] = args ? args.testPlatform : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["historyId"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["testPlatform"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

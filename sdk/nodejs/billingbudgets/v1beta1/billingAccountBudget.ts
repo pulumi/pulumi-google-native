@@ -35,6 +35,34 @@ export class BillingAccountBudget extends pulumi.CustomResource {
         return obj['__pulumiType'] === BillingAccountBudget.__pulumiType;
     }
 
+    /**
+     * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+     */
+    public /*out*/ readonly allUpdatesRule!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>;
+    /**
+     * Required. Budgeted amount.
+     */
+    public /*out*/ readonly amount!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>;
+    /**
+     * Optional. Filters that define which resources are used to compute the actual spend against the budget.
+     */
+    public /*out*/ readonly budgetFilter!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterResponse>;
+    /**
+     * User data for display name in UI. Validation: <= 60 chars.
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+     */
+    public /*out*/ readonly thresholdRules!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse[]>;
 
     /**
      * Create a BillingAccountBudget resource with the given unique name, arguments, and options.
@@ -56,7 +84,21 @@ export class BillingAccountBudget extends pulumi.CustomResource {
             inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
             inputs["budget"] = args ? args.budget : undefined;
             inputs["budgetsId"] = args ? args.budgetsId : undefined;
+            inputs["allUpdatesRule"] = undefined /*out*/;
+            inputs["amount"] = undefined /*out*/;
+            inputs["budgetFilter"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["thresholdRules"] = undefined /*out*/;
         } else {
+            inputs["allUpdatesRule"] = undefined /*out*/;
+            inputs["amount"] = undefined /*out*/;
+            inputs["budgetFilter"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["thresholdRules"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

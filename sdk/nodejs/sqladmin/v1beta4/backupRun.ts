@@ -35,6 +35,66 @@ export class BackupRun extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackupRun.__pulumiType;
     }
 
+    /**
+     * Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+     */
+    public readonly backupKind!: pulumi.Output<string>;
+    /**
+     * The description of this run, only applicable to on-demand backups.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Encryption configuration specific to a backup. Applies only to Second Generation instances.
+     */
+    public readonly diskEncryptionConfiguration!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionConfigurationResponse>;
+    /**
+     * Encryption status specific to a backup. Applies only to Second Generation instances.
+     */
+    public readonly diskEncryptionStatus!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse>;
+    /**
+     * The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     */
+    public readonly endTime!: pulumi.Output<string>;
+    /**
+     * The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     */
+    public readonly enqueuedTime!: pulumi.Output<string>;
+    /**
+     * Information about why the backup operation failed. This is only present if the run has the FAILED status.
+     */
+    public readonly error!: pulumi.Output<outputs.sqladmin.v1beta4.OperationErrorResponse>;
+    /**
+     * Name of the database instance.
+     */
+    public readonly instance!: pulumi.Output<string>;
+    /**
+     * This is always *sql#backupRun*.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Location of the backups.
+     */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * The URI of this resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     */
+    public readonly startTime!: pulumi.Output<string>;
+    /**
+     * The status of this run.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     */
+    public readonly windowStartTime!: pulumi.Output<string>;
 
     /**
      * Create a BackupRun resource with the given unique name, arguments, and options.
@@ -74,6 +134,21 @@ export class BackupRun extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["windowStartTime"] = args ? args.windowStartTime : undefined;
         } else {
+            inputs["backupKind"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["diskEncryptionConfiguration"] = undefined /*out*/;
+            inputs["diskEncryptionStatus"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["enqueuedTime"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["instance"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["windowStartTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

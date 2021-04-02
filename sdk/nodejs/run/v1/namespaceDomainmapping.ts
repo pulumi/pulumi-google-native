@@ -35,6 +35,26 @@ export class NamespaceDomainmapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === NamespaceDomainmapping.__pulumiType;
     }
 
+    /**
+     * The API version for this call such as "domains.cloudrun.com/v1".
+     */
+    public readonly apiVersion!: pulumi.Output<string>;
+    /**
+     * The kind of resource, in this case "DomainMapping".
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Metadata associated with this BuildTemplate.
+     */
+    public readonly metadata!: pulumi.Output<outputs.run.v1.ObjectMetaResponse>;
+    /**
+     * The spec for this DomainMapping.
+     */
+    public readonly spec!: pulumi.Output<outputs.run.v1.DomainMappingSpecResponse>;
+    /**
+     * The current status of the DomainMapping.
+     */
+    public readonly status!: pulumi.Output<outputs.run.v1.DomainMappingStatusResponse>;
 
     /**
      * Create a NamespaceDomainmapping resource with the given unique name, arguments, and options.
@@ -61,6 +81,11 @@ export class NamespaceDomainmapping extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
+            inputs["apiVersion"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["spec"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

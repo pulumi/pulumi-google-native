@@ -35,6 +35,42 @@ export class SiteChannel extends pulumi.CustomResource {
         return obj['__pulumiType'] === SiteChannel.__pulumiType;
     }
 
+    /**
+     * The time at which the channel was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * Text labels used for extra metadata and/or filtering.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The current release for the channel, if any.
+     */
+    public /*out*/ readonly release!: pulumi.Output<outputs.firebasehosting.v1beta1.ReleaseResponse>;
+    /**
+     * The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+     */
+    public readonly retainedReleaseCount!: pulumi.Output<number>;
+    /**
+     * Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+     */
+    public readonly ttl!: pulumi.Output<string>;
+    /**
+     * The time at which the channel was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
+     */
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a SiteChannel resource with the given unique name, arguments, and options.
@@ -54,17 +90,26 @@ export class SiteChannel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sitesId'");
             }
             inputs["channelsId"] = args ? args.channelsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["release"] = args ? args.release : undefined;
             inputs["retainedReleaseCount"] = args ? args.retainedReleaseCount : undefined;
             inputs["sitesId"] = args ? args.sitesId : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["url"] = args ? args.url : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["release"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["url"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["release"] = undefined /*out*/;
+            inputs["retainedReleaseCount"] = undefined /*out*/;
+            inputs["ttl"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["url"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -79,10 +124,6 @@ export class SiteChannel extends pulumi.CustomResource {
 export interface SiteChannelArgs {
     readonly channelsId: pulumi.Input<string>;
     /**
-     * Output only. The time at which the channel was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
      */
     readonly expireTime?: pulumi.Input<string>;
@@ -95,10 +136,6 @@ export interface SiteChannelArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Output only. The current release for the channel, if any.
-     */
-    readonly release?: pulumi.Input<inputs.firebasehosting.v1beta1.Release>;
-    /**
      * The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
     readonly retainedReleaseCount?: pulumi.Input<number>;
@@ -107,12 +144,4 @@ export interface SiteChannelArgs {
      * Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
      */
     readonly ttl?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which the channel was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
-    /**
-     * Output only. The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
-     */
-    readonly url?: pulumi.Input<string>;
 }

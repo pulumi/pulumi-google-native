@@ -35,6 +35,26 @@ export class InstanceTable extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceTable.__pulumiType;
     }
 
+    /**
+     * Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
+     */
+    public /*out*/ readonly clusterStates!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+     */
+    public /*out*/ readonly columnFamilies!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
+     */
+    public /*out*/ readonly granularity!: pulumi.Output<string>;
+    /**
+     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
+     */
+    public /*out*/ readonly restoreInfo!: pulumi.Output<outputs.bigtableadmin.v2.RestoreInfoResponse>;
 
     /**
      * Create a InstanceTable resource with the given unique name, arguments, and options.
@@ -62,7 +82,17 @@ export class InstanceTable extends pulumi.CustomResource {
             inputs["table"] = args ? args.table : undefined;
             inputs["tableId"] = args ? args.tableId : undefined;
             inputs["tablesId"] = args ? args.tablesId : undefined;
+            inputs["clusterStates"] = undefined /*out*/;
+            inputs["columnFamilies"] = undefined /*out*/;
+            inputs["granularity"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["restoreInfo"] = undefined /*out*/;
         } else {
+            inputs["clusterStates"] = undefined /*out*/;
+            inputs["columnFamilies"] = undefined /*out*/;
+            inputs["granularity"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["restoreInfo"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

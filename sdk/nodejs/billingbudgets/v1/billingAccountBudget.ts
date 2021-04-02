@@ -35,6 +35,34 @@ export class BillingAccountBudget extends pulumi.CustomResource {
         return obj['__pulumiType'] === BillingAccountBudget.__pulumiType;
     }
 
+    /**
+     * Required. Budgeted amount.
+     */
+    public readonly amount!: pulumi.Output<outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountResponse>;
+    /**
+     * Optional. Filters that define which resources are used to compute the actual spend against the budget.
+     */
+    public readonly budgetFilter!: pulumi.Output<outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1FilterResponse>;
+    /**
+     * User data for display name in UI. The name must be less than or equal to 60 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+     */
+    public readonly notificationsRule!: pulumi.Output<outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleResponse>;
+    /**
+     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+     */
+    public readonly thresholdRules!: pulumi.Output<outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleResponse[]>;
 
     /**
      * Create a BillingAccountBudget resource with the given unique name, arguments, and options.
@@ -59,10 +87,17 @@ export class BillingAccountBudget extends pulumi.CustomResource {
             inputs["budgetsId"] = args ? args.budgetsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["notificationsRule"] = args ? args.notificationsRule : undefined;
             inputs["thresholdRules"] = args ? args.thresholdRules : undefined;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["amount"] = undefined /*out*/;
+            inputs["budgetFilter"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["notificationsRule"] = undefined /*out*/;
+            inputs["thresholdRules"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,10 +128,6 @@ export interface BillingAccountBudgetArgs {
      * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
      */
     readonly etag?: pulumi.Input<string>;
-    /**
-     * Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */

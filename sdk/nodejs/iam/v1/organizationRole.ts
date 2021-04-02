@@ -35,6 +35,34 @@ export class OrganizationRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationRole.__pulumiType;
     }
 
+    /**
+     * The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+     */
+    public /*out*/ readonly deleted!: pulumi.Output<boolean>;
+    /**
+     * Optional. A human-readable description for the role.
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Used to perform a consistent read-modify-write.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The names of the permissions this role grants when bound in an IAM policy.
+     */
+    public /*out*/ readonly includedPermissions!: pulumi.Output<string[]>;
+    /**
+     * The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+     */
+    public /*out*/ readonly stage!: pulumi.Output<string>;
+    /**
+     * Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+     */
+    public /*out*/ readonly title!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationRole resource with the given unique name, arguments, and options.
@@ -57,7 +85,21 @@ export class OrganizationRole extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["roleId"] = args ? args.roleId : undefined;
             inputs["rolesId"] = args ? args.rolesId : undefined;
+            inputs["deleted"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["includedPermissions"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["stage"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         } else {
+            inputs["deleted"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["includedPermissions"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["stage"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

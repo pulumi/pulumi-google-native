@@ -35,6 +35,58 @@ export class Domain extends pulumi.CustomResource {
         return obj['__pulumiType'] === Domain.__pulumiType;
     }
 
+    /**
+     * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+     */
+    public readonly auditLogsEnabled!: pulumi.Output<boolean>;
+    /**
+     * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
+     */
+    public readonly authorizedNetworks!: pulumi.Output<string[]>;
+    /**
+     * The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+     */
+    public readonly fqdn!: pulumi.Output<string>;
+    /**
+     * Optional. Resource labels to represent user provided metadata
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+     */
+    public readonly locations!: pulumi.Output<string[]>;
+    /**
+     * Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
+     */
+    public readonly managedIdentitiesAdminName!: pulumi.Output<string>;
+    /**
+     * Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+     */
+    public readonly reservedIpRange!: pulumi.Output<string>;
+    /**
+     * The current state of this domain.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * Additional information about the current status of this domain, if available.
+     */
+    public readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * The current trusts associated with the domain.
+     */
+    public readonly trusts!: pulumi.Output<outputs.managedidentities.v1alpha1.TrustResponse[]>;
+    /**
+     * Last update time. Synthetic field is populated automatically by CCFE.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -69,6 +121,19 @@ export class Domain extends pulumi.CustomResource {
             inputs["trusts"] = args ? args.trusts : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
+            inputs["auditLogsEnabled"] = undefined /*out*/;
+            inputs["authorizedNetworks"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["fqdn"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["locations"] = undefined /*out*/;
+            inputs["managedIdentitiesAdminName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["reservedIpRange"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["trusts"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -90,12 +155,12 @@ export interface DomainArgs {
      */
     readonly authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Output only. The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+     * The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
      */
     readonly createTime?: pulumi.Input<string>;
     readonly domainsId: pulumi.Input<string>;
     /**
-     * Output only. Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+     * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
      */
     readonly fqdn?: pulumi.Input<string>;
     /**
@@ -111,7 +176,7 @@ export interface DomainArgs {
      */
     readonly managedIdentitiesAdminName?: pulumi.Input<string>;
     /**
-     * Output only. Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+     * Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
@@ -120,19 +185,19 @@ export interface DomainArgs {
      */
     readonly reservedIpRange?: pulumi.Input<string>;
     /**
-     * Output only. The current state of this domain.
+     * The current state of this domain.
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * Output only. Additional information about the current status of this domain, if available.
+     * Additional information about the current status of this domain, if available.
      */
     readonly statusMessage?: pulumi.Input<string>;
     /**
-     * Output only. The current trusts associated with the domain.
+     * The current trusts associated with the domain.
      */
     readonly trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1alpha1.Trust>[]>;
     /**
-     * Output only. Last update time. Synthetic field is populated automatically by CCFE.
+     * Last update time. Synthetic field is populated automatically by CCFE.
      */
     readonly updateTime?: pulumi.Input<string>;
 }

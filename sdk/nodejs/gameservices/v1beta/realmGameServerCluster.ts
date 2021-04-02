@@ -35,6 +35,38 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === RealmGameServerCluster.__pulumiType;
     }
 
+    /**
+     * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
+     */
+    public readonly allocationPriority!: pulumi.Output<string>;
+    /**
+     * The game server cluster connection information. This information is used to manage game server clusters.
+     */
+    public readonly connectionInfo!: pulumi.Output<outputs.gameservices.v1beta.GameServerClusterConnectionInfoResponse>;
+    /**
+     * The creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Human readable description of the cluster.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * ETag of the resource.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The labels associated with this game server cluster. Each label is a key-value pair.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a RealmGameServerCluster resource with the given unique name, arguments, and options.
@@ -61,7 +93,6 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
             }
             inputs["allocationPriority"] = args ? args.allocationPriority : undefined;
             inputs["connectionInfo"] = args ? args.connectionInfo : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["gameServerClustersId"] = args ? args.gameServerClustersId : undefined;
@@ -70,8 +101,17 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["realmsId"] = args ? args.realmsId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["allocationPriority"] = undefined /*out*/;
+            inputs["connectionInfo"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,10 +133,6 @@ export interface RealmGameServerClusterArgs {
      */
     readonly connectionInfo?: pulumi.Input<inputs.gameservices.v1beta.GameServerClusterConnectionInfo>;
     /**
-     * Output only. The creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Human readable description of the cluster.
      */
     readonly description?: pulumi.Input<string>;
@@ -116,8 +152,4 @@ export interface RealmGameServerClusterArgs {
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly realmsId: pulumi.Input<string>;
-    /**
-     * Output only. The last-modified time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

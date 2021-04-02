@@ -35,6 +35,22 @@ export class OrganizationReplay extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationReplay.__pulumiType;
     }
 
+    /**
+     * Required. The configuration used for the `Replay`.
+     */
+    public readonly config!: pulumi.Output<outputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigResponse>;
+    /**
+     * The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Summary statistics about the replayed log entries.
+     */
+    public /*out*/ readonly resultsSummary!: pulumi.Output<outputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse>;
+    /**
+     * The current state of the `Replay`.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationReplay resource with the given unique name, arguments, and options.
@@ -58,12 +74,16 @@ export class OrganizationReplay extends pulumi.CustomResource {
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["replaysId"] = args ? args.replaysId : undefined;
-            inputs["resultsSummary"] = args ? args.resultsSummary : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["resultsSummary"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["config"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["resultsSummary"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,18 +101,6 @@ export interface OrganizationReplayArgs {
      */
     readonly config?: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfig>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-     */
-    readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     readonly replaysId: pulumi.Input<string>;
-    /**
-     * Output only. Summary statistics about the replayed log entries.
-     */
-    readonly resultsSummary?: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayResultsSummary>;
-    /**
-     * Output only. The current state of the `Replay`.
-     */
-    readonly state?: pulumi.Input<string>;
 }

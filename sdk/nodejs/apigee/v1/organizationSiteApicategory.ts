@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -34,6 +35,26 @@ export class OrganizationSiteApicategory extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationSiteApicategory.__pulumiType;
     }
 
+    /**
+     * Details of category.
+     */
+    public /*out*/ readonly data!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1ApiCategoryDataResponse>;
+    /**
+     * ID that can be used to find errors in the log files.
+     */
+    public /*out*/ readonly errorCode!: pulumi.Output<string>;
+    /**
+     * Description of the operation.
+     */
+    public /*out*/ readonly message!: pulumi.Output<string>;
+    /**
+     * ID that can be used to find request details in the log files.
+     */
+    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * Status of the operation.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationSiteApicategory resource with the given unique name, arguments, and options.
@@ -62,7 +83,17 @@ export class OrganizationSiteApicategory extends pulumi.CustomResource {
             inputs["siteId"] = args ? args.siteId : undefined;
             inputs["sitesId"] = args ? args.sitesId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["data"] = undefined /*out*/;
+            inputs["errorCode"] = undefined /*out*/;
+            inputs["message"] = undefined /*out*/;
+            inputs["requestId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
+            inputs["data"] = undefined /*out*/;
+            inputs["errorCode"] = undefined /*out*/;
+            inputs["message"] = undefined /*out*/;
+            inputs["requestId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,46 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetConsentStoreConsent.__pulumiType;
     }
 
+    /**
+     * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+     */
+    public readonly consentArtifact!: pulumi.Output<string>;
+    /**
+     * Timestamp in UTC of when this Consent is considered expired.
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+     */
+    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+     */
+    public readonly policies!: pulumi.Output<outputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicyResponse[]>;
+    /**
+     * The timestamp that the revision was created.
+     */
+    public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
+    /**
+     * The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+     */
+    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    /**
+     * Required. Indicates the current state of this Consent.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * Input only. The time to live for this Consent from when it is created.
+     */
+    public readonly ttl!: pulumi.Output<string>;
+    /**
+     * Required. User's UUID provided by the client.
+     */
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a DatasetConsentStoreConsent resource with the given unique name, arguments, and options.
@@ -72,12 +112,22 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["policies"] = args ? args.policies : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["revisionCreateTime"] = args ? args.revisionCreateTime : undefined;
-            inputs["revisionId"] = args ? args.revisionId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["userId"] = args ? args.userId : undefined;
+            inputs["revisionCreateTime"] = undefined /*out*/;
+            inputs["revisionId"] = undefined /*out*/;
         } else {
+            inputs["consentArtifact"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["policies"] = undefined /*out*/;
+            inputs["revisionCreateTime"] = undefined /*out*/;
+            inputs["revisionId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["ttl"] = undefined /*out*/;
+            inputs["userId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -115,14 +165,6 @@ export interface DatasetConsentStoreConsentArgs {
      */
     readonly policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicy>[]>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The timestamp that the revision was created.
-     */
-    readonly revisionCreateTime?: pulumi.Input<string>;
-    /**
-     * Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
-     */
-    readonly revisionId?: pulumi.Input<string>;
     /**
      * Required. Indicates the current state of this Consent.
      */

@@ -34,6 +34,42 @@ export class SslCert extends pulumi.CustomResource {
         return obj['__pulumiType'] === SslCert.__pulumiType;
     }
 
+    /**
+     * PEM representation.
+     */
+    public /*out*/ readonly cert!: pulumi.Output<string>;
+    /**
+     * Serial number, as extracted from the certificate.
+     */
+    public /*out*/ readonly certSerialNumber!: pulumi.Output<string>;
+    /**
+     * User supplied name. Constrained to [a-zA-Z.-_ ]+.
+     */
+    public readonly commonName!: pulumi.Output<string>;
+    /**
+     * The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+     */
+    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
+    /**
+     * Name of the database instance.
+     */
+    public readonly instance!: pulumi.Output<string>;
+    /**
+     * This is always *sql#sslCert*.
+     */
+    public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
+     * The URI of this resource.
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Sha1 Fingerprint.
+     */
+    public readonly sha1Fingerprint!: pulumi.Output<string>;
 
     /**
      * Create a SslCert resource with the given unique name, arguments, and options.
@@ -59,7 +95,22 @@ export class SslCert extends pulumi.CustomResource {
             inputs["instance"] = args ? args.instance : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["sha1Fingerprint"] = args ? args.sha1Fingerprint : undefined;
+            inputs["cert"] = undefined /*out*/;
+            inputs["certSerialNumber"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["expirationTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         } else {
+            inputs["cert"] = undefined /*out*/;
+            inputs["certSerialNumber"] = undefined /*out*/;
+            inputs["commonName"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["expirationTime"] = undefined /*out*/;
+            inputs["instance"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["sha1Fingerprint"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

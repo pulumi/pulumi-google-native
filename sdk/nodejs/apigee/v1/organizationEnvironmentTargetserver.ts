@@ -35,6 +35,30 @@ export class OrganizationEnvironmentTargetserver extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationEnvironmentTargetserver.__pulumiType;
     }
 
+    /**
+     * Optional. A human-readable description of this TargetServer.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+     */
+    public readonly host!: pulumi.Output<string>;
+    /**
+     * Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
+     */
+    public readonly isEnabled!: pulumi.Output<boolean>;
+    /**
+     * Required. The resource id of this target server. Values must match the regular expression 
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+     */
+    public readonly port!: pulumi.Output<number>;
+    /**
+     * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+     */
+    public readonly sSLInfo!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1TlsInfoResponse>;
 
     /**
      * Create a OrganizationEnvironmentTargetserver resource with the given unique name, arguments, and options.
@@ -66,6 +90,12 @@ export class OrganizationEnvironmentTargetserver extends pulumi.CustomResource {
             inputs["sSLInfo"] = args ? args.sSLInfo : undefined;
             inputs["targetserversId"] = args ? args.targetserversId : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["host"] = undefined /*out*/;
+            inputs["isEnabled"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["sSLInfo"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

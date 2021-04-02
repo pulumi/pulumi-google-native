@@ -35,6 +35,114 @@ export class Bucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === Bucket.__pulumiType;
     }
 
+    /**
+     * Access controls on the bucket.
+     */
+    public readonly acl!: pulumi.Output<outputs.storage.v1.BucketAccessControlResponse[]>;
+    /**
+     * The bucket's billing configuration.
+     */
+    public readonly billing!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
+     */
+    public readonly cors!: pulumi.Output<{[key: string]: string}[]>;
+    /**
+     * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
+     */
+    public readonly defaultEventBasedHold!: pulumi.Output<boolean>;
+    /**
+     * Default access controls to apply to new objects when no ACL is provided.
+     */
+    public readonly defaultObjectAcl!: pulumi.Output<outputs.storage.v1.ObjectAccessControlResponse[]>;
+    /**
+     * Encryption configuration for a bucket.
+     */
+    public readonly encryption!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * HTTP 1.1 Entity tag for the bucket.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The bucket's IAM configuration.
+     */
+    public readonly iamConfiguration!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The kind of item this is. For buckets, this is always storage#bucket.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * User-provided labels, in key/value pairs.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The bucket's lifecycle configuration. See lifecycle management for more information.
+     */
+    public readonly lifecycle!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
+     */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * The type of the bucket location.
+     */
+    public readonly locationType!: pulumi.Output<string>;
+    /**
+     * The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+     */
+    public readonly logging!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The metadata generation of this bucket.
+     */
+    public readonly metageneration!: pulumi.Output<string>;
+    /**
+     * The name of the bucket.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The owner of the bucket. This is always the project team's owner group.
+     */
+    public readonly owner!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The project number of the project the bucket belongs to.
+     */
+    public readonly projectNumber!: pulumi.Output<string>;
+    /**
+     * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+     */
+    public readonly retentionPolicy!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Reserved for future use.
+     */
+    public readonly satisfiesPZS!: pulumi.Output<boolean>;
+    /**
+     * The URI of this bucket.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
+     */
+    public readonly storageClass!: pulumi.Output<string>;
+    /**
+     * The creation time of the bucket in RFC 3339 format.
+     */
+    public readonly timeCreated!: pulumi.Output<string>;
+    /**
+     * The modification time of the bucket in RFC 3339 format.
+     */
+    public readonly updated!: pulumi.Output<string>;
+    /**
+     * The bucket's versioning configuration.
+     */
+    public readonly versioning!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+     */
+    public readonly website!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
+     */
+    public readonly zoneAffinity!: pulumi.Output<string[]>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -84,6 +192,33 @@ export class Bucket extends pulumi.CustomResource {
             inputs["website"] = args ? args.website : undefined;
             inputs["zoneAffinity"] = args ? args.zoneAffinity : undefined;
         } else {
+            inputs["acl"] = undefined /*out*/;
+            inputs["billing"] = undefined /*out*/;
+            inputs["cors"] = undefined /*out*/;
+            inputs["defaultEventBasedHold"] = undefined /*out*/;
+            inputs["defaultObjectAcl"] = undefined /*out*/;
+            inputs["encryption"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["iamConfiguration"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["lifecycle"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["locationType"] = undefined /*out*/;
+            inputs["logging"] = undefined /*out*/;
+            inputs["metageneration"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["owner"] = undefined /*out*/;
+            inputs["projectNumber"] = undefined /*out*/;
+            inputs["retentionPolicy"] = undefined /*out*/;
+            inputs["satisfiesPZS"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["storageClass"] = undefined /*out*/;
+            inputs["timeCreated"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
+            inputs["versioning"] = undefined /*out*/;
+            inputs["website"] = undefined /*out*/;
+            inputs["zoneAffinity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

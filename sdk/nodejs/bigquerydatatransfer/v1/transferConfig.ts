@@ -35,6 +35,66 @@ export class TransferConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === TransferConfig.__pulumiType;
     }
 
+    /**
+     * The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+     */
+    public readonly dataRefreshWindowDays!: pulumi.Output<number>;
+    /**
+     * Data source id. Cannot be changed once data transfer is created.
+     */
+    public readonly dataSourceId!: pulumi.Output<string>;
+    /**
+     * Region in which BigQuery dataset is located.
+     */
+    public /*out*/ readonly datasetRegion!: pulumi.Output<string>;
+    /**
+     * The BigQuery target dataset id.
+     */
+    public readonly destinationDatasetId!: pulumi.Output<string>;
+    /**
+     * Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+     */
+    public readonly disabled!: pulumi.Output<boolean>;
+    /**
+     * User specified display name for the data transfer.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
+     */
+    public readonly emailPreferences!: pulumi.Output<outputs.bigquerydatatransfer.v1.EmailPreferencesResponse>;
+    /**
+     * The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Next time when data transfer will run.
+     */
+    public /*out*/ readonly nextRunTime!: pulumi.Output<string>;
+    /**
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+     */
+    public readonly notificationPubsubTopic!: pulumi.Output<string>;
+    /**
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     */
+    public readonly params!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
+     */
+    public readonly schedule!: pulumi.Output<string>;
+    /**
+     * Options customizing the data transfer schedule.
+     */
+    public readonly scheduleOptions!: pulumi.Output<outputs.bigquerydatatransfer.v1.ScheduleOptionsResponse>;
+    /**
+     * State of the most recently updated transfer run.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Data transfer modification time. Ignored by server on input.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -55,23 +115,37 @@ export class TransferConfig extends pulumi.CustomResource {
             }
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
             inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            inputs["datasetRegion"] = args ? args.datasetRegion : undefined;
             inputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["emailPreferences"] = args ? args.emailPreferences : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["nextRunTime"] = args ? args.nextRunTime : undefined;
             inputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
             inputs["params"] = args ? args.params : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["transferConfigsId"] = args ? args.transferConfigsId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            inputs["datasetRegion"] = undefined /*out*/;
+            inputs["nextRunTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["dataRefreshWindowDays"] = undefined /*out*/;
+            inputs["dataSourceId"] = undefined /*out*/;
+            inputs["datasetRegion"] = undefined /*out*/;
+            inputs["destinationDatasetId"] = undefined /*out*/;
+            inputs["disabled"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["emailPreferences"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["nextRunTime"] = undefined /*out*/;
+            inputs["notificationPubsubTopic"] = undefined /*out*/;
+            inputs["params"] = undefined /*out*/;
+            inputs["schedule"] = undefined /*out*/;
+            inputs["scheduleOptions"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,10 +167,6 @@ export interface TransferConfigArgs {
      */
     readonly dataSourceId?: pulumi.Input<string>;
     /**
-     * Output only. Region in which BigQuery dataset is located.
-     */
-    readonly datasetRegion?: pulumi.Input<string>;
-    /**
      * The BigQuery target dataset id.
      */
     readonly destinationDatasetId?: pulumi.Input<string>;
@@ -117,10 +187,6 @@ export interface TransferConfigArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Output only. Next time when data transfer will run.
-     */
-    readonly nextRunTime?: pulumi.Input<string>;
-    /**
      * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
      */
     readonly notificationPubsubTopic?: pulumi.Input<string>;
@@ -137,17 +203,5 @@ export interface TransferConfigArgs {
      * Options customizing the data transfer schedule.
      */
     readonly scheduleOptions?: pulumi.Input<inputs.bigquerydatatransfer.v1.ScheduleOptions>;
-    /**
-     * Output only. State of the most recently updated transfer run.
-     */
-    readonly state?: pulumi.Input<string>;
     readonly transferConfigsId: pulumi.Input<string>;
-    /**
-     * Output only. Data transfer modification time. Ignored by server on input.
-     */
-    readonly updateTime?: pulumi.Input<string>;
-    /**
-     * Deprecated. Unique ID of the user on whose behalf transfer is done.
-     */
-    readonly userId?: pulumi.Input<string>;
 }

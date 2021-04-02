@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -34,6 +35,22 @@ export class OrganizationSharedflow extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationSharedflow.__pulumiType;
     }
 
+    /**
+     * The id of the most recently created revision for this shared flow.
+     */
+    public /*out*/ readonly latestRevisionId!: pulumi.Output<string>;
+    /**
+     * Metadata describing the shared flow.
+     */
+    public /*out*/ readonly metaData!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1EntityMetadataResponse>;
+    /**
+     * The ID of the shared flow.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * A list of revisions of this shared flow.
+     */
+    public /*out*/ readonly revision!: pulumi.Output<string[]>;
 
     /**
      * Create a OrganizationSharedflow resource with the given unique name, arguments, and options.
@@ -57,7 +74,15 @@ export class OrganizationSharedflow extends pulumi.CustomResource {
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["sharedflowsId"] = args ? args.sharedflowsId : undefined;
+            inputs["latestRevisionId"] = undefined /*out*/;
+            inputs["metaData"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["revision"] = undefined /*out*/;
         } else {
+            inputs["latestRevisionId"] = undefined /*out*/;
+            inputs["metaData"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["revision"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

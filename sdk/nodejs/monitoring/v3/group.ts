@@ -34,6 +34,26 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
+    /**
+     * A user-assigned name for this group, used only for display purposes.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The filter used to determine which monitored resources belong to this group.
+     */
+    public readonly filter!: pulumi.Output<string>;
+    /**
+     * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
+     */
+    public readonly isCluster!: pulumi.Output<boolean>;
+    /**
+     * The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+     */
+    public readonly parentName!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -60,6 +80,11 @@ export class Group extends pulumi.CustomResource {
             inputs["parentName"] = args ? args.parentName : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["filter"] = undefined /*out*/;
+            inputs["isCluster"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parentName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -86,7 +111,7 @@ export interface GroupArgs {
      */
     readonly isCluster?: pulumi.Input<boolean>;
     /**
-     * Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+     * The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
      */
     readonly name?: pulumi.Input<string>;
     /**

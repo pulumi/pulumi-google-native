@@ -35,6 +35,38 @@ export class AgentTestCase extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentTestCase.__pulumiType;
     }
 
+    /**
+     * When the test was created.
+     */
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The latest test result.
+     */
+    public readonly lastTestResult!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TestCaseResultResponse>;
+    /**
+     * The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Additional freeform notes about the test case. Limit of 400 characters.
+     */
+    public readonly notes!: pulumi.Output<string>;
+    /**
+     * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+     */
+    public readonly testCaseConversationTurns!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3ConversationTurnResponse[]>;
+    /**
+     * Config for the test case.
+     */
+    public readonly testConfig!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TestConfigResponse>;
 
     /**
      * Create a AgentTestCase resource with the given unique name, arguments, and options.
@@ -60,7 +92,6 @@ export class AgentTestCase extends pulumi.CustomResource {
                 throw new Error("Missing required property 'testCasesId'");
             }
             inputs["agentsId"] = args ? args.agentsId : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["lastTestResult"] = args ? args.lastTestResult : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -71,7 +102,16 @@ export class AgentTestCase extends pulumi.CustomResource {
             inputs["testCaseConversationTurns"] = args ? args.testCaseConversationTurns : undefined;
             inputs["testCasesId"] = args ? args.testCasesId : undefined;
             inputs["testConfig"] = args ? args.testConfig : undefined;
+            inputs["creationTime"] = undefined /*out*/;
         } else {
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["lastTestResult"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["notes"] = undefined /*out*/;
+            inputs["tags"] = undefined /*out*/;
+            inputs["testCaseConversationTurns"] = undefined /*out*/;
+            inputs["testConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -85,10 +125,6 @@ export class AgentTestCase extends pulumi.CustomResource {
  */
 export interface AgentTestCaseArgs {
     readonly agentsId: pulumi.Input<string>;
-    /**
-     * Output only. When the test was created.
-     */
-    readonly creationTime?: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */

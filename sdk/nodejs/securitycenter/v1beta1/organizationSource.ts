@@ -34,6 +34,18 @@ export class OrganizationSource extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationSource.__pulumiType;
     }
 
+    /**
+     * The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationSource resource with the given unique name, arguments, and options.
@@ -58,6 +70,9 @@ export class OrganizationSource extends pulumi.CustomResource {
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["sourcesId"] = args ? args.sourcesId : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

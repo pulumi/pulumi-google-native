@@ -35,6 +35,24 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
         return obj['__pulumiType'] === DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage.__pulumiType;
     }
 
+    /**
+     * String content of the feedback. Maximum of 10000 characters.
+     */
+    public readonly body!: pulumi.Output<string>;
+    /**
+     * Create time.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * The image storing this feedback if the feedback is an image representing operator's comments.
+     */
+    public readonly image!: pulumi.Output<string>;
+    /**
+     * Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+     */
+    public readonly name!: pulumi.Output<string>;
+    public readonly operatorFeedbackMetadata!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse>;
+    public readonly requesterFeedbackMetadata!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse>;
 
     /**
      * Create a DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage resource with the given unique name, arguments, and options.
@@ -74,6 +92,12 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["requesterFeedbackMetadata"] = args ? args.requesterFeedbackMetadata : undefined;
         } else {
+            inputs["body"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["image"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["operatorFeedbackMetadata"] = undefined /*out*/;
+            inputs["requesterFeedbackMetadata"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

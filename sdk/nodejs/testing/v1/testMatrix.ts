@@ -35,6 +35,58 @@ export class TestMatrix extends pulumi.CustomResource {
         return obj['__pulumiType'] === TestMatrix.__pulumiType;
     }
 
+    /**
+     * Information about the client which invoked the test.
+     */
+    public readonly clientInfo!: pulumi.Output<outputs.testing.v1.ClientInfoResponse>;
+    /**
+     * Required. The devices the tests are being executed on.
+     */
+    public readonly environmentMatrix!: pulumi.Output<outputs.testing.v1.EnvironmentMatrixResponse>;
+    /**
+     * If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
+     */
+    public readonly failFast!: pulumi.Output<boolean>;
+    /**
+     * The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
+     */
+    public readonly flakyTestAttempts!: pulumi.Output<number>;
+    /**
+     * Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+     */
+    public readonly invalidMatrixDetails!: pulumi.Output<string>;
+    /**
+     * Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+     */
+    public readonly outcomeSummary!: pulumi.Output<string>;
+    /**
+     * The cloud project that owns the test matrix.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Required. Where the results for the matrix are written.
+     */
+    public readonly resultStorage!: pulumi.Output<outputs.testing.v1.ResultStorageResponse>;
+    /**
+     * Indicates the current progress of the test matrix.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * The list of test executions that the service creates for this matrix.
+     */
+    public readonly testExecutions!: pulumi.Output<outputs.testing.v1.TestExecutionResponse[]>;
+    /**
+     * Unique id set by the service.
+     */
+    public readonly testMatrixId!: pulumi.Output<string>;
+    /**
+     * Required. How to run the test.
+     */
+    public readonly testSpecification!: pulumi.Output<outputs.testing.v1.TestSpecificationResponse>;
+    /**
+     * The time this test matrix was initially created.
+     */
+    public readonly timestamp!: pulumi.Output<string>;
 
     /**
      * Create a TestMatrix resource with the given unique name, arguments, and options.
@@ -67,6 +119,19 @@ export class TestMatrix extends pulumi.CustomResource {
             inputs["testSpecification"] = args ? args.testSpecification : undefined;
             inputs["timestamp"] = args ? args.timestamp : undefined;
         } else {
+            inputs["clientInfo"] = undefined /*out*/;
+            inputs["environmentMatrix"] = undefined /*out*/;
+            inputs["failFast"] = undefined /*out*/;
+            inputs["flakyTestAttempts"] = undefined /*out*/;
+            inputs["invalidMatrixDetails"] = undefined /*out*/;
+            inputs["outcomeSummary"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["resultStorage"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["testExecutions"] = undefined /*out*/;
+            inputs["testMatrixId"] = undefined /*out*/;
+            inputs["testSpecification"] = undefined /*out*/;
+            inputs["timestamp"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -96,7 +161,7 @@ export interface TestMatrixArgs {
      */
     readonly flakyTestAttempts?: pulumi.Input<number>;
     /**
-     * Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+     * Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
      */
     readonly invalidMatrixDetails?: pulumi.Input<string>;
     /**
@@ -112,15 +177,15 @@ export interface TestMatrixArgs {
      */
     readonly resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorage>;
     /**
-     * Output only. Indicates the current progress of the test matrix.
+     * Indicates the current progress of the test matrix.
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * Output only. The list of test executions that the service creates for this matrix.
+     * The list of test executions that the service creates for this matrix.
      */
     readonly testExecutions?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestExecution>[]>;
     /**
-     * Output only. Unique id set by the service.
+     * Unique id set by the service.
      */
     readonly testMatrixId: pulumi.Input<string>;
     /**
@@ -128,7 +193,7 @@ export interface TestMatrixArgs {
      */
     readonly testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecification>;
     /**
-     * Output only. The time this test matrix was initially created.
+     * The time this test matrix was initially created.
      */
     readonly timestamp?: pulumi.Input<string>;
 }

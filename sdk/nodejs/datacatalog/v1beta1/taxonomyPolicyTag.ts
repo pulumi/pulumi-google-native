@@ -34,6 +34,26 @@ export class TaxonomyPolicyTag extends pulumi.CustomResource {
         return obj['__pulumiType'] === TaxonomyPolicyTag.__pulumiType;
     }
 
+    /**
+     * Resource names of child policy tags of this policy tag.
+     */
+    public /*out*/ readonly childPolicyTags!: pulumi.Output<string[]>;
+    /**
+     * Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
+     */
+    public readonly parentPolicyTag!: pulumi.Output<string>;
 
     /**
      * Create a TaxonomyPolicyTag resource with the given unique name, arguments, and options.
@@ -58,16 +78,21 @@ export class TaxonomyPolicyTag extends pulumi.CustomResource {
             if ((!args || args.taxonomiesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taxonomiesId'");
             }
-            inputs["childPolicyTags"] = args ? args.childPolicyTags : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parentPolicyTag"] = args ? args.parentPolicyTag : undefined;
             inputs["policyTagsId"] = args ? args.policyTagsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["taxonomiesId"] = args ? args.taxonomiesId : undefined;
+            inputs["childPolicyTags"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["childPolicyTags"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parentPolicyTag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,10 +106,6 @@ export class TaxonomyPolicyTag extends pulumi.CustomResource {
  */
 export interface TaxonomyPolicyTagArgs {
     /**
-     * Output only. Resource names of child policy tags of this policy tag.
-     */
-    readonly childPolicyTags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
      */
     readonly description?: pulumi.Input<string>;
@@ -93,10 +114,6 @@ export interface TaxonomyPolicyTagArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
      */

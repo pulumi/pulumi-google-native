@@ -35,6 +35,54 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccountCustomerEntitlement.__pulumiType;
     }
 
+    /**
+     * Association information to other entitlements.
+     */
+    public /*out*/ readonly associationInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoResponse>;
+    /**
+     * Commitment settings for a commitment-based Offer. Required for commitment based offers.
+     */
+    public /*out*/ readonly commitmentSettings!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsResponse>;
+    /**
+     * The time at which the entitlement is created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+     */
+    public /*out*/ readonly offer!: pulumi.Output<string>;
+    /**
+     * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+     */
+    public /*out*/ readonly parameters!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ParameterResponse[]>;
+    /**
+     * Service provisioning details for the entitlement.
+     */
+    public /*out*/ readonly provisionedService!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ProvisionedServiceResponse>;
+    /**
+     * Current provisioning state of the entitlement.
+     */
+    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+     */
+    public /*out*/ readonly purchaseOrderId!: pulumi.Output<string>;
+    /**
+     * Enumerable of all current suspension reasons for an entitlement.
+     */
+    public /*out*/ readonly suspensionReasons!: pulumi.Output<string[]>;
+    /**
+     * Settings for trial offers.
+     */
+    public /*out*/ readonly trialSettings!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1TrialSettingsResponse>;
+    /**
+     * The time at which the entitlement is updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a AccountCustomerEntitlement resource with the given unique name, arguments, and options.
@@ -61,7 +109,31 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
             inputs["entitlement"] = args ? args.entitlement : undefined;
             inputs["entitlementsId"] = args ? args.entitlementsId : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["associationInfo"] = undefined /*out*/;
+            inputs["commitmentSettings"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["offer"] = undefined /*out*/;
+            inputs["parameters"] = undefined /*out*/;
+            inputs["provisionedService"] = undefined /*out*/;
+            inputs["provisioningState"] = undefined /*out*/;
+            inputs["purchaseOrderId"] = undefined /*out*/;
+            inputs["suspensionReasons"] = undefined /*out*/;
+            inputs["trialSettings"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["associationInfo"] = undefined /*out*/;
+            inputs["commitmentSettings"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["offer"] = undefined /*out*/;
+            inputs["parameters"] = undefined /*out*/;
+            inputs["provisionedService"] = undefined /*out*/;
+            inputs["provisioningState"] = undefined /*out*/;
+            inputs["purchaseOrderId"] = undefined /*out*/;
+            inputs["suspensionReasons"] = undefined /*out*/;
+            inputs["trialSettings"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

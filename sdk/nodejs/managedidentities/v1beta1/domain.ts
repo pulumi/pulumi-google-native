@@ -35,6 +35,58 @@ export class Domain extends pulumi.CustomResource {
         return obj['__pulumiType'] === Domain.__pulumiType;
     }
 
+    /**
+     * Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+     */
+    public readonly admin!: pulumi.Output<string>;
+    /**
+     * Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+     */
+    public readonly auditLogsEnabled!: pulumi.Output<boolean>;
+    /**
+     * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
+     */
+    public readonly authorizedNetworks!: pulumi.Output<string[]>;
+    /**
+     * The time the instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
+     */
+    public /*out*/ readonly fqdn!: pulumi.Output<string>;
+    /**
+     * Optional. Resource labels that can contain user-provided metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+     */
+    public readonly locations!: pulumi.Output<string[]>;
+    /**
+     * The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+     */
+    public readonly reservedIpRange!: pulumi.Output<string>;
+    /**
+     * The current state of this domain.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Additional information about the current status of this domain, if available.
+     */
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * The current trusts associated with the domain.
+     */
+    public /*out*/ readonly trusts!: pulumi.Output<outputs.managedidentities.v1beta1.TrustResponse[]>;
+    /**
+     * The last update time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -56,19 +108,32 @@ export class Domain extends pulumi.CustomResource {
             inputs["admin"] = args ? args.admin : undefined;
             inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["domainsId"] = args ? args.domainsId : undefined;
-            inputs["fqdn"] = args ? args.fqdn : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locations"] = args ? args.locations : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
-            inputs["trusts"] = args ? args.trusts : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["fqdn"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["trusts"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["admin"] = undefined /*out*/;
+            inputs["auditLogsEnabled"] = undefined /*out*/;
+            inputs["authorizedNetworks"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["fqdn"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["locations"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["reservedIpRange"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["trusts"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,15 +158,7 @@ export interface DomainArgs {
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */
     readonly authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Output only. The time the instance was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly domainsId: pulumi.Input<string>;
-    /**
-     * Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
-     */
-    readonly fqdn?: pulumi.Input<string>;
     /**
      * Optional. Resource labels that can contain user-provided metadata.
      */
@@ -110,29 +167,9 @@ export interface DomainArgs {
      * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
     readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
     readonly reservedIpRange?: pulumi.Input<string>;
-    /**
-     * Output only. The current state of this domain.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Additional information about the current status of this domain, if available.
-     */
-    readonly statusMessage?: pulumi.Input<string>;
-    /**
-     * Output only. The current trusts associated with the domain.
-     */
-    readonly trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1beta1.Trust>[]>;
-    /**
-     * Output only. The last update time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

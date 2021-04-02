@@ -34,6 +34,46 @@ export class TargetVpnGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === TargetVpnGateway.__pulumiType;
     }
 
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
+     */
+    public readonly forwardingRules!: pulumi.Output<string[]>;
+    /**
+     * [Output Only] Type of resource. Always compute#targetVpnGateway for target VPN gateways.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
+     * [Output Only] URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
+     */
+    public readonly tunnels!: pulumi.Output<string[]>;
 
     /**
      * Create a TargetVpnGateway resource with the given unique name, arguments, and options.
@@ -69,6 +109,16 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
             inputs["tunnels"] = args ? args.tunnels : undefined;
         } else {
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["forwardingRules"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["tunnels"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

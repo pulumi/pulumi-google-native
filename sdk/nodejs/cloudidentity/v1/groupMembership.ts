@@ -35,6 +35,30 @@ export class GroupMembership extends pulumi.CustomResource {
         return obj['__pulumiType'] === GroupMembership.__pulumiType;
     }
 
+    /**
+     * The time when the `Membership` was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. The `EntityKey` of the member.
+     */
+    public readonly preferredMemberKey!: pulumi.Output<outputs.cloudidentity.v1.EntityKeyResponse>;
+    /**
+     * The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+     */
+    public readonly roles!: pulumi.Output<outputs.cloudidentity.v1.MembershipRoleResponse[]>;
+    /**
+     * The type of the membership.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * The time when the `Membership` was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a GroupMembership resource with the given unique name, arguments, and options.
@@ -53,15 +77,21 @@ export class GroupMembership extends pulumi.CustomResource {
             if ((!args || args.membershipsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["groupsId"] = args ? args.groupsId : undefined;
             inputs["membershipsId"] = args ? args.membershipsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             inputs["roles"] = args ? args.roles : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["preferredMemberKey"] = undefined /*out*/;
+            inputs["roles"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -74,16 +104,8 @@ export class GroupMembership extends pulumi.CustomResource {
  * The set of arguments for constructing a GroupMembership resource.
  */
 export interface GroupMembershipArgs {
-    /**
-     * Output only. The time when the `Membership` was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly groupsId: pulumi.Input<string>;
     readonly membershipsId: pulumi.Input<string>;
-    /**
-     * Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the member.
      */
@@ -92,12 +114,4 @@ export interface GroupMembershipArgs {
      * The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
      */
     readonly roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1.MembershipRole>[]>;
-    /**
-     * Output only. The type of the membership.
-     */
-    readonly type?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the `Membership` was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

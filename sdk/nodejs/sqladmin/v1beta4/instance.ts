@@ -35,6 +35,130 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     *  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+     */
+    public readonly backendType!: pulumi.Output<string>;
+    /**
+     * Connection name of the Cloud SQL instance used in connection strings.
+     */
+    public readonly connectionName!: pulumi.Output<string>;
+    /**
+     * The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
+     */
+    public readonly currentDiskSize!: pulumi.Output<string>;
+    /**
+     * The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+     */
+    public readonly databaseVersion!: pulumi.Output<string>;
+    /**
+     * Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+     */
+    public readonly diskEncryptionConfiguration!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionConfigurationResponse>;
+    /**
+     * Disk encryption status specific to an instance. Applies only to Second Generation instances.
+     */
+    public readonly diskEncryptionStatus!: pulumi.Output<outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse>;
+    /**
+     * This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+     */
+    public readonly failoverReplica!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+     */
+    public readonly gceZone!: pulumi.Output<string>;
+    /**
+     * The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+     */
+    public readonly instanceType!: pulumi.Output<string>;
+    /**
+     * The assigned IP addresses for the instance.
+     */
+    public readonly ipAddresses!: pulumi.Output<outputs.sqladmin.v1beta4.IpMappingResponse[]>;
+    /**
+     * The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+     */
+    public readonly ipv6Address!: pulumi.Output<string>;
+    /**
+     * This is always *sql#instance*.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The name of the instance which will act as primary in the replication setup.
+     */
+    public readonly masterInstanceName!: pulumi.Output<string>;
+    /**
+     * The maximum disk size of the instance in bytes.
+     */
+    public readonly maxDiskSize!: pulumi.Output<string>;
+    /**
+     * Name of the Cloud SQL instance. This does not include the project ID.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Configuration specific to on-premises instances.
+     */
+    public readonly onPremisesConfiguration!: pulumi.Output<outputs.sqladmin.v1beta4.OnPremisesConfigurationResponse>;
+    /**
+     * The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
+     */
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * The geographical region. Can be *us-central* (*FIRST_GEN* instances only) *us-central1* (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*. Defaults to *us-central* or *us-central1* depending on the instance type. The region cannot be changed after instance creation.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * Configuration specific to failover replicas and read replicas.
+     */
+    public readonly replicaConfiguration!: pulumi.Output<outputs.sqladmin.v1beta4.ReplicaConfigurationResponse>;
+    /**
+     * The replicas of the instance.
+     */
+    public readonly replicaNames!: pulumi.Output<string[]>;
+    /**
+     * Initial root password. Use only on creation.
+     */
+    public readonly rootPassword!: pulumi.Output<string>;
+    /**
+     * The status indicating if instance satisfiesPzs. Reserved for future use.
+     */
+    public readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
+     * The start time of any upcoming scheduled maintenance for this instance.
+     */
+    public readonly scheduledMaintenance!: pulumi.Output<outputs.sqladmin.v1beta4.SqlScheduledMaintenanceResponse>;
+    /**
+     * The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
+     */
+    public readonly secondaryGceZone!: pulumi.Output<string>;
+    /**
+     * The URI of this resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * SSL configuration.
+     */
+    public readonly serverCaCert!: pulumi.Output<outputs.sqladmin.v1beta4.SslCertResponse>;
+    /**
+     * The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
+     */
+    public readonly serviceAccountEmailAddress!: pulumi.Output<string>;
+    /**
+     * The user settings.
+     */
+    public readonly settings!: pulumi.Output<outputs.sqladmin.v1beta4.SettingsResponse>;
+    /**
+     * The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * If the instance state is SUSPENDED, the reason for the suspension.
+     */
+    public readonly suspensionReason!: pulumi.Output<string[]>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -86,6 +210,37 @@ export class Instance extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["suspensionReason"] = args ? args.suspensionReason : undefined;
         } else {
+            inputs["backendType"] = undefined /*out*/;
+            inputs["connectionName"] = undefined /*out*/;
+            inputs["currentDiskSize"] = undefined /*out*/;
+            inputs["databaseVersion"] = undefined /*out*/;
+            inputs["diskEncryptionConfiguration"] = undefined /*out*/;
+            inputs["diskEncryptionStatus"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["failoverReplica"] = undefined /*out*/;
+            inputs["gceZone"] = undefined /*out*/;
+            inputs["instanceType"] = undefined /*out*/;
+            inputs["ipAddresses"] = undefined /*out*/;
+            inputs["ipv6Address"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["masterInstanceName"] = undefined /*out*/;
+            inputs["maxDiskSize"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["onPremisesConfiguration"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["replicaConfiguration"] = undefined /*out*/;
+            inputs["replicaNames"] = undefined /*out*/;
+            inputs["rootPassword"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
+            inputs["scheduledMaintenance"] = undefined /*out*/;
+            inputs["secondaryGceZone"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["serverCaCert"] = undefined /*out*/;
+            inputs["serviceAccountEmailAddress"] = undefined /*out*/;
+            inputs["settings"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["suspensionReason"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

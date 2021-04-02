@@ -35,6 +35,50 @@ export class PatchDeployment extends pulumi.CustomResource {
         return obj['__pulumiType'] === PatchDeployment.__pulumiType;
     }
 
+    /**
+     * Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Duration of the patch. After the duration ends, the patch times out.
+     */
+    public readonly duration!: pulumi.Output<string>;
+    /**
+     * Required. VM instances to patch.
+     */
+    public readonly instanceFilter!: pulumi.Output<outputs.osconfig.v1.PatchInstanceFilterResponse>;
+    /**
+     * The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     */
+    public /*out*/ readonly lastExecuteTime!: pulumi.Output<string>;
+    /**
+     * Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Schedule a one-time execution.
+     */
+    public readonly oneTimeSchedule!: pulumi.Output<outputs.osconfig.v1.OneTimeScheduleResponse>;
+    /**
+     * Optional. Patch configuration that is applied.
+     */
+    public readonly patchConfig!: pulumi.Output<outputs.osconfig.v1.PatchConfigResponse>;
+    /**
+     * Required. Schedule recurring executions.
+     */
+    public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.v1.RecurringScheduleResponse>;
+    /**
+     * Optional. Rollout strategy of the patch job.
+     */
+    public readonly rollout!: pulumi.Output<outputs.osconfig.v1.PatchRolloutResponse>;
+    /**
+     * Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a PatchDeployment resource with the given unique name, arguments, and options.
@@ -53,11 +97,9 @@ export class PatchDeployment extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["duration"] = args ? args.duration : undefined;
             inputs["instanceFilter"] = args ? args.instanceFilter : undefined;
-            inputs["lastExecuteTime"] = args ? args.lastExecuteTime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
             inputs["patchConfig"] = args ? args.patchConfig : undefined;
@@ -65,8 +107,21 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
             inputs["rollout"] = args ? args.rollout : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["lastExecuteTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["duration"] = undefined /*out*/;
+            inputs["instanceFilter"] = undefined /*out*/;
+            inputs["lastExecuteTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["oneTimeSchedule"] = undefined /*out*/;
+            inputs["patchConfig"] = undefined /*out*/;
+            inputs["recurringSchedule"] = undefined /*out*/;
+            inputs["rollout"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,10 +135,6 @@ export class PatchDeployment extends pulumi.CustomResource {
  */
 export interface PatchDeploymentArgs {
     /**
-     * Output only. Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
      */
     readonly description?: pulumi.Input<string>;
@@ -95,10 +146,6 @@ export interface PatchDeploymentArgs {
      * Required. VM instances to patch.
      */
     readonly instanceFilter?: pulumi.Input<inputs.osconfig.v1.PatchInstanceFilter>;
-    /**
-     * Output only. The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-     */
-    readonly lastExecuteTime?: pulumi.Input<string>;
     /**
      * Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
      */
@@ -121,8 +168,4 @@ export interface PatchDeploymentArgs {
      * Optional. Rollout strategy of the patch job.
      */
     readonly rollout?: pulumi.Input<inputs.osconfig.v1.PatchRollout>;
-    /**
-     * Output only. Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

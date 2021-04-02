@@ -35,6 +35,38 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRingCryptoKey.__pulumiType;
     }
 
+    /**
+     * The time at which this CryptoKey was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name for this CryptoKey in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+     */
+    public readonly nextRotationTime!: pulumi.Output<string>;
+    /**
+     * A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
+     */
+    public /*out*/ readonly primary!: pulumi.Output<outputs.cloudkms.v1.CryptoKeyVersionResponse>;
+    /**
+     * Immutable. The immutable purpose of this CryptoKey.
+     */
+    public readonly purpose!: pulumi.Output<string>;
+    /**
+     * next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+     */
+    public readonly rotationPeriod!: pulumi.Output<string>;
+    /**
+     * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+     */
+    public readonly versionTemplate!: pulumi.Output<outputs.cloudkms.v1.CryptoKeyVersionTemplateResponse>;
 
     /**
      * Create a KeyRingCryptoKey resource with the given unique name, arguments, and options.
@@ -59,19 +91,27 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["nextRotationTime"] = args ? args.nextRotationTime : undefined;
-            inputs["primary"] = args ? args.primary : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["primary"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["nextRotationTime"] = undefined /*out*/;
+            inputs["primary"] = undefined /*out*/;
+            inputs["purpose"] = undefined /*out*/;
+            inputs["rotationPeriod"] = undefined /*out*/;
+            inputs["versionTemplate"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,10 +124,6 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRingCryptoKey resource.
  */
 export interface KeyRingCryptoKeyArgs {
-    /**
-     * Output only. The time at which this CryptoKey was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly cryptoKeysId: pulumi.Input<string>;
     readonly keyRingsId: pulumi.Input<string>;
     /**
@@ -96,17 +132,9 @@ export interface KeyRingCryptoKeyArgs {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
     /**
-     * Output only. The resource name for this CryptoKey in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
     readonly nextRotationTime?: pulumi.Input<string>;
-    /**
-     * Output only. A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
-     */
-    readonly primary?: pulumi.Input<inputs.cloudkms.v1.CryptoKeyVersion>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Immutable. The immutable purpose of this CryptoKey.

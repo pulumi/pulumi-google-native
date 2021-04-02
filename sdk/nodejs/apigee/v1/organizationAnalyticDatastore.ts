@@ -35,6 +35,34 @@ export class OrganizationAnalyticDatastore extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationAnalyticDatastore.__pulumiType;
     }
 
+    /**
+     * Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Datastore Configurations.
+     */
+    public readonly datastoreConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigResponse>;
+    /**
+     * Required. Display name in UI
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+     */
+    public /*out*/ readonly lastUpdateTime!: pulumi.Output<string>;
+    /**
+     * Organization that the datastore belongs to
+     */
+    public /*out*/ readonly org!: pulumi.Output<string>;
+    /**
+     * Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+     */
+    public /*out*/ readonly self!: pulumi.Output<string>;
+    /**
+     * Destination storage type. Supported types `gcs` or `bigquery`.
+     */
+    public readonly targetType!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationAnalyticDatastore resource with the given unique name, arguments, and options.
@@ -53,16 +81,23 @@ export class OrganizationAnalyticDatastore extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["datastoreConfig"] = args ? args.datastoreConfig : undefined;
             inputs["datastoresId"] = args ? args.datastoresId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
-            inputs["org"] = args ? args.org : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["self"] = args ? args.self : undefined;
             inputs["targetType"] = args ? args.targetType : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["lastUpdateTime"] = undefined /*out*/;
+            inputs["org"] = undefined /*out*/;
+            inputs["self"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["datastoreConfig"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["lastUpdateTime"] = undefined /*out*/;
+            inputs["org"] = undefined /*out*/;
+            inputs["self"] = undefined /*out*/;
+            inputs["targetType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,10 +111,6 @@ export class OrganizationAnalyticDatastore extends pulumi.CustomResource {
  */
 export interface OrganizationAnalyticDatastoreArgs {
     /**
-     * Output only. Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Datastore Configurations.
      */
     readonly datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfig>;
@@ -88,19 +119,7 @@ export interface OrganizationAnalyticDatastoreArgs {
      * Required. Display name in UI
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-     */
-    readonly lastUpdateTime?: pulumi.Input<string>;
-    /**
-     * Output only. Organization that the datastore belongs to
-     */
-    readonly org?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
-    /**
-     * Output only. Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-     */
-    readonly self?: pulumi.Input<string>;
     /**
      * Destination storage type. Supported types `gcs` or `bigquery`.
      */

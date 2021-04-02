@@ -34,6 +34,58 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
         return obj['__pulumiType'] === HttpsHealthCheck.__pulumiType;
     }
 
+    /**
+     * How often (in seconds) to send a health check. The default value is 5 seconds.
+     */
+    public readonly checkIntervalSec!: pulumi.Output<number>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+     */
+    public readonly healthyThreshold!: pulumi.Output<number>;
+    /**
+     * The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
+     */
+    public readonly host!: pulumi.Output<string>;
+    /**
+     * Type of the resource.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The TCP port number for the HTTPS health check request. The default value is 443.
+     */
+    public readonly port!: pulumi.Output<number>;
+    /**
+     * The request path of the HTTPS health check request. The default value is "/".
+     */
+    public readonly requestPath!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for this resource with the resource id.
+     */
+    public readonly selfLinkWithId!: pulumi.Output<string>;
+    /**
+     * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
+     */
+    public readonly timeoutSec!: pulumi.Output<number>;
+    /**
+     * A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+     */
+    public readonly unhealthyThreshold!: pulumi.Output<number>;
 
     /**
      * Create a HttpsHealthCheck resource with the given unique name, arguments, and options.
@@ -69,6 +121,19 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
         } else {
+            inputs["checkIntervalSec"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["healthyThreshold"] = undefined /*out*/;
+            inputs["host"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["requestPath"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["timeoutSec"] = undefined /*out*/;
+            inputs["unhealthyThreshold"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

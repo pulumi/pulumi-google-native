@@ -35,6 +35,30 @@ export class Topic extends pulumi.CustomResource {
         return obj['__pulumiType'] === Topic.__pulumiType;
     }
 
+    /**
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string>;
+    /**
+     * See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+     */
+    public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.v1.MessageStoragePolicyResponse>;
+    /**
+     * Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+     */
+    public readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
+     * Settings for validating messages published against a schema.
+     */
+    public readonly schemaSettings!: pulumi.Output<outputs.pubsub.v1.SchemaSettingsResponse>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -62,6 +86,12 @@ export class Topic extends pulumi.CustomResource {
             inputs["schemaSettings"] = args ? args.schemaSettings : undefined;
             inputs["topicsId"] = args ? args.topicsId : undefined;
         } else {
+            inputs["kmsKeyName"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["messageStoragePolicy"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
+            inputs["schemaSettings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

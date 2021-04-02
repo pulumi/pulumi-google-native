@@ -35,6 +35,58 @@ export class PacketMirroring extends pulumi.CustomResource {
         return obj['__pulumiType'] === PacketMirroring.__pulumiType;
     }
 
+    /**
+     * The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
+     */
+    public readonly collectorIlb!: pulumi.Output<outputs.compute.v1.PacketMirroringForwardingRuleInfoResponse>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
+     *
+     * The default is TRUE.
+     */
+    public readonly enable!: pulumi.Output<string>;
+    /**
+     * Filter for mirrored traffic. If unspecified, all traffic is mirrored.
+     */
+    public readonly filter!: pulumi.Output<outputs.compute.v1.PacketMirroringFilterResponse>;
+    /**
+     * [Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
+     */
+    public readonly mirroredResources!: pulumi.Output<outputs.compute.v1.PacketMirroringMirroredResourceInfoResponse>;
+    /**
+     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
+     */
+    public readonly network!: pulumi.Output<outputs.compute.v1.PacketMirroringNetworkInfoResponse>;
+    /**
+     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
+     *
+     * Default value is 1000. Valid range is 0 through 65535.
+     */
+    public readonly priority!: pulumi.Output<number>;
+    /**
+     * [Output Only] URI of the region where the packetMirroring resides.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a PacketMirroring resource with the given unique name, arguments, and options.
@@ -72,6 +124,18 @@ export class PacketMirroring extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
+            inputs["collectorIlb"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["enable"] = undefined /*out*/;
+            inputs["filter"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["mirroredResources"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["priority"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

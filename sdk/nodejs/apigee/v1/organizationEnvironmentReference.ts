@@ -34,6 +34,22 @@ export class OrganizationEnvironmentReference extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationEnvironmentReference.__pulumiType;
     }
 
+    /**
+     * Optional. A human-readable description of this reference.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+     */
+    public readonly refers!: pulumi.Output<string>;
+    /**
+     * The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+     */
+    public readonly resourceType!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironmentReference resource with the given unique name, arguments, and options.
@@ -63,6 +79,10 @@ export class OrganizationEnvironmentReference extends pulumi.CustomResource {
             inputs["refers"] = args ? args.refers : undefined;
             inputs["resourceType"] = args ? args.resourceType : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["refers"] = undefined /*out*/;
+            inputs["resourceType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

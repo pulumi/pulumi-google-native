@@ -35,6 +35,50 @@ export class ConnectivityTest extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConnectivityTest.__pulumiType;
     }
 
+    /**
+     * The time the test was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
+     */
+    public readonly destination!: pulumi.Output<outputs.networkmanagement.v1.EndpointResponse>;
+    /**
+     * The display name of a Connectivity Test.
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * Resource labels to represent user-provided metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * IP Protocol of the test. When not provided, "TCP" is assumed.
+     */
+    public readonly protocol!: pulumi.Output<string>;
+    /**
+     * The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+     */
+    public /*out*/ readonly reachabilityDetails!: pulumi.Output<outputs.networkmanagement.v1.ReachabilityDetailsResponse>;
+    /**
+     * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
+     */
+    public readonly relatedProjects!: pulumi.Output<string[]>;
+    /**
+     * Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
+     */
+    public readonly source!: pulumi.Output<outputs.networkmanagement.v1.EndpointResponse>;
+    /**
+     * The time the test's configuration was updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ConnectivityTest resource with the given unique name, arguments, and options.
@@ -54,19 +98,30 @@ export class ConnectivityTest extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["connectivityTestsId"] = args ? args.connectivityTestsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["reachabilityDetails"] = args ? args.reachabilityDetails : undefined;
             inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             inputs["source"] = args ? args.source : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["reachabilityDetails"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["destination"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["protocol"] = undefined /*out*/;
+            inputs["reachabilityDetails"] = undefined /*out*/;
+            inputs["relatedProjects"] = undefined /*out*/;
+            inputs["source"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,10 +136,6 @@ export class ConnectivityTest extends pulumi.CustomResource {
 export interface ConnectivityTestArgs {
     readonly connectivityTestsId: pulumi.Input<string>;
     /**
-     * Output only. The time the test was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */
     readonly description?: pulumi.Input<string>;
@@ -92,10 +143,6 @@ export interface ConnectivityTestArgs {
      * Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
      */
     readonly destination?: pulumi.Input<inputs.networkmanagement.v1.Endpoint>;
-    /**
-     * Output only. The display name of a Connectivity Test.
-     */
-    readonly displayName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
      */
@@ -110,10 +157,6 @@ export interface ConnectivityTestArgs {
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * Output only. The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
-     */
-    readonly reachabilityDetails?: pulumi.Input<inputs.networkmanagement.v1.ReachabilityDetails>;
-    /**
      * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
      */
     readonly relatedProjects?: pulumi.Input<pulumi.Input<string>[]>;
@@ -121,8 +164,4 @@ export interface ConnectivityTestArgs {
      * Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
      */
     readonly source?: pulumi.Input<inputs.networkmanagement.v1.Endpoint>;
-    /**
-     * Output only. The time the test's configuration was updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

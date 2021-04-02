@@ -35,6 +35,58 @@ export class SslCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === SslCertificate.__pulumiType;
     }
 
+    /**
+     * A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
+     */
+    public readonly certificate!: pulumi.Output<string>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Expire time of the certificate. RFC3339
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Configuration and status of a managed SSL certificate.
+     */
+    public readonly managed!: pulumi.Output<outputs.compute.v1.SslCertificateManagedSslCertificateResponse>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
+     */
+    public readonly privateKey!: pulumi.Output<string>;
+    /**
+     * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Configuration and status of a self-managed SSL certificate.
+     */
+    public readonly selfManaged!: pulumi.Output<outputs.compute.v1.SslCertificateSelfManagedSslCertificateResponse>;
+    /**
+     * [Output Only] Domains associated with the certificate via Subject Alternative Name.
+     */
+    public readonly subjectAlternativeNames!: pulumi.Output<string[]>;
+    /**
+     * (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a SslCertificate resource with the given unique name, arguments, and options.
@@ -70,6 +122,19 @@ export class SslCertificate extends pulumi.CustomResource {
             inputs["subjectAlternativeNames"] = args ? args.subjectAlternativeNames : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
+            inputs["certificate"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["managed"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["privateKey"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfManaged"] = undefined /*out*/;
+            inputs["subjectAlternativeNames"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -34,6 +34,30 @@ export class GameServerDeployment extends pulumi.CustomResource {
         return obj['__pulumiType'] === GameServerDeployment.__pulumiType;
     }
 
+    /**
+     * The creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Human readable description of the game server delpoyment.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * ETag of the resource.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The labels associated with this game server deployment. Each label is a key-value pair.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a GameServerDeployment resource with the given unique name, arguments, and options.
@@ -55,7 +79,6 @@ export class GameServerDeployment extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["gameServerDeploymentsId"] = args ? args.gameServerDeploymentsId : undefined;
@@ -63,8 +86,15 @@ export class GameServerDeployment extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -77,10 +107,6 @@ export class GameServerDeployment extends pulumi.CustomResource {
  * The set of arguments for constructing a GameServerDeployment resource.
  */
 export interface GameServerDeploymentArgs {
-    /**
-     * Output only. The creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Human readable description of the game server delpoyment.
      */
@@ -100,8 +126,4 @@ export interface GameServerDeploymentArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The last-modified time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

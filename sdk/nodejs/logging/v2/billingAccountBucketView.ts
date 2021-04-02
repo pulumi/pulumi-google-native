@@ -60,12 +60,10 @@ export class BillingAccountBucketView extends pulumi.CustomResource {
             }
             inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
             inputs["bucketsId"] = args ? args.bucketsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["viewsId"] = args ? args.viewsId : undefined;
         } else {
         }
@@ -83,10 +81,6 @@ export interface BillingAccountBucketViewArgs {
     readonly billingAccountsId: pulumi.Input<string>;
     readonly bucketsId: pulumi.Input<string>;
     /**
-     * Output only. The creation timestamp of the view.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Describes this view.
      */
     readonly description?: pulumi.Input<string>;
@@ -99,9 +93,5 @@ export interface BillingAccountBucketViewArgs {
      * The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. The last update timestamp of the view.
-     */
-    readonly updateTime?: pulumi.Input<string>;
     readonly viewsId: pulumi.Input<string>;
 }

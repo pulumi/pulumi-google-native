@@ -34,6 +34,34 @@ export class OrganizationBucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationBucket.__pulumiType;
     }
 
+    /**
+     * The creation timestamp of the bucket. This is not set for any of the default buckets.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Describes this bucket.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The bucket lifecycle state.
+     */
+    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    /**
+     * Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+     */
+    public readonly locked!: pulumi.Output<boolean>;
+    /**
+     * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     */
+    public readonly retentionDays!: pulumi.Output<number>;
+    /**
+     * The last update timestamp of the bucket.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationBucket resource with the given unique name, arguments, and options.
@@ -56,16 +84,23 @@ export class OrganizationBucket extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationsId'");
             }
             inputs["bucketsId"] = args ? args.bucketsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["locked"] = args ? args.locked : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["lifecycleState"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["lifecycleState"] = undefined /*out*/;
+            inputs["locked"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["retentionDays"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,33 +115,17 @@ export class OrganizationBucket extends pulumi.CustomResource {
 export interface OrganizationBucketArgs {
     readonly bucketsId: pulumi.Input<string>;
     /**
-     * Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Describes this bucket.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Output only. The bucket lifecycle state.
-     */
-    readonly lifecycleState?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
      */
     readonly locked?: pulumi.Input<boolean>;
-    /**
-     * Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
     readonly retentionDays?: pulumi.Input<number>;
-    /**
-     * Output only. The last update timestamp of the bucket.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

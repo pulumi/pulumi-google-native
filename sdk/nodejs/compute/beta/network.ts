@@ -35,6 +35,60 @@ export class Network extends pulumi.CustomResource {
         return obj['__pulumiType'] === Network.__pulumiType;
     }
 
+    /**
+     * Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     */
+    public readonly IPv4Range!: pulumi.Output<string>;
+    /**
+     * Must be set to create a VPC network. If not set, a legacy network is created.
+     *
+     * When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
+     *
+     * An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
+     *
+     * For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+     */
+    public readonly autoCreateSubnetworks!: pulumi.Output<boolean>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this field when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] The gateway address for default routing out of the network, selected by GCP.
+     */
+    public readonly gatewayIPv4!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#network for networks.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+     */
+    public readonly mtu!: pulumi.Output<number>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * [Output Only] A list of network peerings for the resource.
+     */
+    public readonly peerings!: pulumi.Output<outputs.compute.beta.NetworkPeeringResponse[]>;
+    /**
+     * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
+     */
+    public readonly routingConfig!: pulumi.Output<outputs.compute.beta.NetworkRoutingConfigResponse>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+     */
+    public readonly subnetworks!: pulumi.Output<string[]>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -69,6 +123,18 @@ export class Network extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["subnetworks"] = args ? args.subnetworks : undefined;
         } else {
+            inputs["IPv4Range"] = undefined /*out*/;
+            inputs["autoCreateSubnetworks"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["gatewayIPv4"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["mtu"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["peerings"] = undefined /*out*/;
+            inputs["routingConfig"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["subnetworks"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,26 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * The policy to define whether or not RBE features can be used or how they can be used.
+     */
+    public /*out*/ readonly featurePolicy!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>;
+    /**
+     * The location is a GCP region. Currently only `us-central1` is supported.
+     */
+    public /*out*/ readonly location!: pulumi.Output<string>;
+    /**
+     * Whether stack driver logging is enabled for the instance.
+     */
+    public /*out*/ readonly loggingEnabled!: pulumi.Output<boolean>;
+    /**
+     * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * State of the instance.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -58,7 +78,17 @@ export class Instance extends pulumi.CustomResource {
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["featurePolicy"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["loggingEnabled"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["featurePolicy"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["loggingEnabled"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -34,6 +34,46 @@ export class Workflow extends pulumi.CustomResource {
         return obj['__pulumiType'] === Workflow.__pulumiType;
     }
 
+    /**
+     * The timestamp of when the workflow was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The timestamp that the latest revision of the workflow was created.
+     */
+    public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
+    /**
+     * The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+     */
+    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    /**
+     * Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * Workflow code to be executed. The size limit is 128KB.
+     */
+    public readonly sourceContents!: pulumi.Output<string>;
+    /**
+     * State of the workflow deployment.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The last update timestamp of the workflow.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Workflow resource with the given unique name, arguments, and options.
@@ -55,20 +95,30 @@ export class Workflow extends pulumi.CustomResource {
             if ((!args || args.workflowsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["revisionCreateTime"] = args ? args.revisionCreateTime : undefined;
-            inputs["revisionId"] = args ? args.revisionId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["sourceContents"] = args ? args.sourceContents : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["workflowsId"] = args ? args.workflowsId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["revisionCreateTime"] = undefined /*out*/;
+            inputs["revisionId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["revisionCreateTime"] = undefined /*out*/;
+            inputs["revisionId"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
+            inputs["sourceContents"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,10 +131,6 @@ export class Workflow extends pulumi.CustomResource {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
-    /**
-     * Output only. The timestamp of when the workflow was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -100,14 +146,6 @@ export interface WorkflowArgs {
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
-     * Output only. The timestamp that the latest revision of the workflow was created.
-     */
-    readonly revisionCreateTime?: pulumi.Input<string>;
-    /**
-     * Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
-     */
-    readonly revisionId?: pulumi.Input<string>;
-    /**
      * Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
      */
     readonly serviceAccount?: pulumi.Input<string>;
@@ -115,13 +153,5 @@ export interface WorkflowArgs {
      * Workflow code to be executed. The size limit is 128KB.
      */
     readonly sourceContents?: pulumi.Input<string>;
-    /**
-     * Output only. State of the workflow deployment.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The last update timestamp of the workflow.
-     */
-    readonly updateTime?: pulumi.Input<string>;
     readonly workflowsId: pulumi.Input<string>;
 }

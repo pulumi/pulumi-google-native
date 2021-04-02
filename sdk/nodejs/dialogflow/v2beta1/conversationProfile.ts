@@ -35,6 +35,54 @@ export class ConversationProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConversationProfile.__pulumiType;
     }
 
+    /**
+     * Configuration for an automated agent to use with this profile.
+     */
+    public readonly automatedAgentConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse>;
+    /**
+     * Create time of the conversation profile.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. Human readable name for this profile. Max length 1024 bytes.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Configuration for agent assistance to use with this profile.
+     */
+    public readonly humanAgentAssistantConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse>;
+    /**
+     * Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+     */
+    public readonly humanAgentHandoffConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse>;
+    /**
+     * Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+     */
+    public readonly languageCode!: pulumi.Output<string>;
+    /**
+     * Configuration for logging conversation lifecycle events.
+     */
+    public readonly loggingConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1LoggingConfigResponse>;
+    /**
+     * The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+     */
+    public readonly newMessageEventNotificationConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1NotificationConfigResponse>;
+    /**
+     * Configuration for publishing conversation lifecycle events.
+     */
+    public readonly notificationConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1NotificationConfigResponse>;
+    /**
+     * Settings for speech transcription.
+     */
+    public readonly sttConfig!: pulumi.Output<outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse>;
+    /**
+     * Update time of the conversation profile.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ConversationProfile resource with the given unique name, arguments, and options.
@@ -58,7 +106,6 @@ export class ConversationProfile extends pulumi.CustomResource {
             }
             inputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
             inputs["conversationProfilesId"] = args ? args.conversationProfilesId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
             inputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
@@ -70,8 +117,21 @@ export class ConversationProfile extends pulumi.CustomResource {
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["sttConfig"] = args ? args.sttConfig : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["automatedAgentConfig"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["humanAgentAssistantConfig"] = undefined /*out*/;
+            inputs["humanAgentHandoffConfig"] = undefined /*out*/;
+            inputs["languageCode"] = undefined /*out*/;
+            inputs["loggingConfig"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["newMessageEventNotificationConfig"] = undefined /*out*/;
+            inputs["notificationConfig"] = undefined /*out*/;
+            inputs["sttConfig"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -89,10 +149,6 @@ export interface ConversationProfileArgs {
      */
     readonly automatedAgentConfig?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1AutomatedAgentConfig>;
     readonly conversationProfilesId: pulumi.Input<string>;
-    /**
-     * Output only. Create time of the conversation profile.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
@@ -131,8 +187,4 @@ export interface ConversationProfileArgs {
      * Settings for speech transcription.
      */
     readonly sttConfig?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1SpeechToTextConfig>;
-    /**
-     * Output only. Update time of the conversation profile.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

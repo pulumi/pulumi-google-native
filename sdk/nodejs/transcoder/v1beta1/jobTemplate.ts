@@ -35,6 +35,14 @@ export class JobTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === JobTemplate.__pulumiType;
     }
 
+    /**
+     * The configuration for this template.
+     */
+    public readonly config!: pulumi.Output<outputs.transcoder.v1beta1.JobConfigResponse>;
+    /**
+     * The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a JobTemplate resource with the given unique name, arguments, and options.
@@ -62,6 +70,8 @@ export class JobTemplate extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["config"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

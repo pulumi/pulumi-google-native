@@ -35,6 +35,83 @@ export class Organization extends pulumi.CustomResource {
         return obj['__pulumiType'] === Organization.__pulumiType;
     }
 
+    /**
+     * Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     */
+    public readonly analyticsRegion!: pulumi.Output<string>;
+    /**
+     * Not used by Apigee.
+     */
+    public readonly attributes!: pulumi.Output<string[]>;
+    /**
+     * Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
+     */
+    public readonly authorizedNetwork!: pulumi.Output<string>;
+    /**
+     * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+     */
+    public readonly billingType!: pulumi.Output<string>;
+    /**
+     * Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
+     */
+    public /*out*/ readonly caCertificate!: pulumi.Output<string>;
+    /**
+     * Time that the Apigee organization was created in milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Not used by Apigee.
+     */
+    public readonly customerName!: pulumi.Output<string>;
+    /**
+     * Description of the Apigee organization.
+     */
+    public readonly description!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * List of environments in the Apigee organization.
+     */
+    public /*out*/ readonly environments!: pulumi.Output<string[]>;
+    /**
+     * Time that the Apigee organization is scheduled for deletion.
+     */
+    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    /**
+     * Time that the Apigee organization was last modified in milliseconds since epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * Name of the Apigee organization.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Project ID associated with the Apigee organization.
+     */
+    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    /**
+     * Properties defined in the Apigee organization profile.
+     */
+    public readonly properties!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1PropertiesResponse>;
+    /**
+     * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+     */
+    public readonly runtimeDatabaseEncryptionKeyName!: pulumi.Output<string>;
+    /**
+     * Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+     */
+    public readonly runtimeType!: pulumi.Output<string>;
+    /**
+     * State of the organization. Values other than ACTIVE means the resource is not ready to use.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+     */
+    public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
+    /**
+     * Not used by Apigee.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -54,24 +131,44 @@ export class Organization extends pulumi.CustomResource {
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["billingType"] = args ? args.billingType : undefined;
-            inputs["caCertificate"] = args ? args.caCertificate : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["customerName"] = args ? args.customerName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environments"] = args ? args.environments : undefined;
-            inputs["expiresAt"] = args ? args.expiresAt : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
             inputs["properties"] = args ? args.properties : undefined;
             inputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
             inputs["runtimeType"] = args ? args.runtimeType : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["subscriptionType"] = args ? args.subscriptionType : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["caCertificate"] = undefined /*out*/;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["environments"] = undefined /*out*/;
+            inputs["expiresAt"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["subscriptionType"] = undefined /*out*/;
         } else {
+            inputs["analyticsRegion"] = undefined /*out*/;
+            inputs["attributes"] = undefined /*out*/;
+            inputs["authorizedNetwork"] = undefined /*out*/;
+            inputs["billingType"] = undefined /*out*/;
+            inputs["caCertificate"] = undefined /*out*/;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["customerName"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["environments"] = undefined /*out*/;
+            inputs["expiresAt"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["properties"] = undefined /*out*/;
+            inputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
+            inputs["runtimeType"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["subscriptionType"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -101,14 +198,6 @@ export interface OrganizationArgs {
      */
     readonly billingType?: pulumi.Input<string>;
     /**
-     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
-     */
-    readonly caCertificate?: pulumi.Input<string>;
-    /**
-     * Output only. Time that the Apigee organization was created in milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
-    /**
      * Not used by Apigee.
      */
     readonly customerName?: pulumi.Input<string>;
@@ -117,27 +206,7 @@ export interface OrganizationArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. List of environments in the Apigee organization.
-     */
-    readonly environments?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Output only. Time that the Apigee organization is scheduled for deletion.
-     */
-    readonly expiresAt?: pulumi.Input<string>;
-    /**
-     * Output only. Time that the Apigee organization was last modified in milliseconds since epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
-    /**
-     * Output only. Name of the Apigee organization.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
-    /**
-     * Output only. Project ID associated with the Apigee organization.
-     */
-    readonly projectId?: pulumi.Input<string>;
     /**
      * Properties defined in the Apigee organization profile.
      */
@@ -150,14 +219,6 @@ export interface OrganizationArgs {
      * Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
      */
     readonly runtimeType?: pulumi.Input<string>;
-    /**
-     * Output only. State of the organization. Values other than ACTIVE means the resource is not ready to use.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-     */
-    readonly subscriptionType?: pulumi.Input<string>;
     /**
      * Not used by Apigee.
      */

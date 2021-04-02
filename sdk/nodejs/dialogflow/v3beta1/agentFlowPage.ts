@@ -35,6 +35,34 @@ export class AgentFlowPage extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentFlowPage.__pulumiType;
     }
 
+    /**
+     * Required. The human-readable name of the page, unique within the agent.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The fulfillment to call when the session is entering the page.
+     */
+    public readonly entryFulfillment!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FulfillmentResponse>;
+    /**
+     * Handlers associated with the page to handle events such as webhook errors, no match or no input.
+     */
+    public readonly eventHandlers!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EventHandlerResponse[]>;
+    /**
+     * The form associated with the page, used for collecting parameters relevant to the page.
+     */
+    public readonly form!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormResponse>;
+    /**
+     * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+     */
+    public readonly transitionRouteGroups!: pulumi.Output<string[]>;
+    /**
+     * A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
+     */
+    public readonly transitionRoutes!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse[]>;
 
     /**
      * Create a AgentFlowPage resource with the given unique name, arguments, and options.
@@ -75,6 +103,13 @@ export class AgentFlowPage extends pulumi.CustomResource {
             inputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["entryFulfillment"] = undefined /*out*/;
+            inputs["eventHandlers"] = undefined /*out*/;
+            inputs["form"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["transitionRouteGroups"] = undefined /*out*/;
+            inputs["transitionRoutes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

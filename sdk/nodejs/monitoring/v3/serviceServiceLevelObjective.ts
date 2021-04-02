@@ -35,6 +35,30 @@ export class ServiceServiceLevelObjective extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceServiceLevelObjective.__pulumiType;
     }
 
+    /**
+     * A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+     */
+    public readonly calendarPeriod!: pulumi.Output<string>;
+    /**
+     * Name used for UI elements listing this SLO.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
+     */
+    public readonly goal!: pulumi.Output<number>;
+    /**
+     * Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
+     */
+    public readonly rollingPeriod!: pulumi.Output<string>;
+    /**
+     * The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+     */
+    public readonly serviceLevelIndicator!: pulumi.Output<outputs.monitoring.v3.ServiceLevelIndicatorResponse>;
 
     /**
      * Create a ServiceServiceLevelObjective resource with the given unique name, arguments, and options.
@@ -70,6 +94,12 @@ export class ServiceServiceLevelObjective extends pulumi.CustomResource {
             inputs["v3Id"] = args ? args.v3Id : undefined;
             inputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
+            inputs["calendarPeriod"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["goal"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["rollingPeriod"] = undefined /*out*/;
+            inputs["serviceLevelIndicator"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

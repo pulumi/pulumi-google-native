@@ -34,6 +34,18 @@ export class BrandIdentityAwareProxyClient extends pulumi.CustomResource {
         return obj['__pulumiType'] === BrandIdentityAwareProxyClient.__pulumiType;
     }
 
+    /**
+     * Human-friendly name given to the OAuth client.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Unique identifier of the OAuth client.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Client secret of the OAuth client.
+     */
+    public /*out*/ readonly secret!: pulumi.Output<string>;
 
     /**
      * Create a BrandIdentityAwareProxyClient resource with the given unique name, arguments, and options.
@@ -58,10 +70,13 @@ export class BrandIdentityAwareProxyClient extends pulumi.CustomResource {
             inputs["brandsId"] = args ? args.brandsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["identityAwareProxyClientsId"] = args ? args.identityAwareProxyClientsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["secret"] = args ? args.secret : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["secret"] = undefined /*out*/;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["secret"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,13 +95,5 @@ export interface BrandIdentityAwareProxyClientArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly identityAwareProxyClientsId: pulumi.Input<string>;
-    /**
-     * Output only. Unique identifier of the OAuth client.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. Client secret of the OAuth client.
-     */
-    readonly secret?: pulumi.Input<string>;
 }

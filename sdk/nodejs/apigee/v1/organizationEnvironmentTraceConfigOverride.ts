@@ -35,6 +35,18 @@ export class OrganizationEnvironmentTraceConfigOverride extends pulumi.CustomRes
         return obj['__pulumiType'] === OrganizationEnvironmentTraceConfigOverride.__pulumiType;
     }
 
+    /**
+     * ID of the API proxy that will have its trace configuration overridden.
+     */
+    public readonly apiProxy!: pulumi.Output<string>;
+    /**
+     * ID of the trace configuration override specified as a system-generated UUID.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Trace configuration to override.
+     */
+    public readonly samplingConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfigResponse>;
 
     /**
      * Create a OrganizationEnvironmentTraceConfigOverride resource with the given unique name, arguments, and options.
@@ -63,6 +75,9 @@ export class OrganizationEnvironmentTraceConfigOverride extends pulumi.CustomRes
             inputs["overridesId"] = args ? args.overridesId : undefined;
             inputs["samplingConfig"] = args ? args.samplingConfig : undefined;
         } else {
+            inputs["apiProxy"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["samplingConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

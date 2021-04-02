@@ -35,6 +35,50 @@ export class BackendBucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackendBucket.__pulumiType;
     }
 
+    /**
+     * Cloud Storage bucket name.
+     */
+    public readonly bucketName!: pulumi.Output<string>;
+    /**
+     * Cloud CDN configuration for this BackendBucket.
+     */
+    public readonly cdnPolicy!: pulumi.Output<outputs.compute.alpha.BackendBucketCdnPolicyResponse>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied responses.
+     */
+    public readonly customResponseHeaders!: pulumi.Output<string[]>;
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+     */
+    public readonly edgeSecurityPolicy!: pulumi.Output<string>;
+    /**
+     * If true, enable Cloud CDN for this BackendBucket.
+     */
+    public readonly enableCdn!: pulumi.Output<boolean>;
+    /**
+     * Type of the resource.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for this resource with the resource id.
+     */
+    public readonly selfLinkWithId!: pulumi.Output<string>;
 
     /**
      * Create a BackendBucket resource with the given unique name, arguments, and options.
@@ -68,6 +112,17 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
         } else {
+            inputs["bucketName"] = undefined /*out*/;
+            inputs["cdnPolicy"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["customResponseHeaders"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["edgeSecurityPolicy"] = undefined /*out*/;
+            inputs["enableCdn"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

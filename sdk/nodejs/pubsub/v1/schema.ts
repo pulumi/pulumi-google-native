@@ -34,6 +34,18 @@ export class Schema extends pulumi.CustomResource {
         return obj['__pulumiType'] === Schema.__pulumiType;
     }
 
+    /**
+     * The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+     */
+    public readonly definition!: pulumi.Output<string>;
+    /**
+     * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The type of the schema definition.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -58,6 +70,9 @@ export class Schema extends pulumi.CustomResource {
             inputs["schemasId"] = args ? args.schemasId : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
+            inputs["definition"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

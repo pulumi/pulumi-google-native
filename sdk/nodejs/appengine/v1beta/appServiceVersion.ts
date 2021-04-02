@@ -35,6 +35,162 @@ export class AppServiceVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === AppServiceVersion.__pulumiType;
     }
 
+    /**
+     * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+     */
+    public readonly apiConfig!: pulumi.Output<outputs.appengine.v1beta.ApiConfigHandlerResponse>;
+    /**
+     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     */
+    public readonly appEngineApis!: pulumi.Output<boolean>;
+    /**
+     * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
+     */
+    public readonly automaticScaling!: pulumi.Output<outputs.appengine.v1beta.AutomaticScalingResponse>;
+    /**
+     * A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+     */
+    public readonly basicScaling!: pulumi.Output<outputs.appengine.v1beta.BasicScalingResponse>;
+    /**
+     * Metadata settings that are supplied to this version to enable beta runtime features.
+     */
+    public readonly betaSettings!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly buildEnvVariables!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Time that this version was created.@OutputOnly
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * Email address of the user who created this version.@OutputOnly
+     */
+    public readonly createdBy!: pulumi.Output<string>;
+    /**
+     * Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly defaultExpiration!: pulumi.Output<string>;
+    /**
+     * Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly deployment!: pulumi.Output<outputs.appengine.v1beta.DeploymentResponse>;
+    /**
+     * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+     */
+    public readonly diskUsageBytes!: pulumi.Output<string>;
+    /**
+     * Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
+     */
+    public readonly endpointsApiService!: pulumi.Output<outputs.appengine.v1beta.EndpointsApiServiceResponse>;
+    /**
+     * The entrypoint for the application.
+     */
+    public readonly entrypoint!: pulumi.Output<outputs.appengine.v1beta.EntrypointResponse>;
+    /**
+     * App Engine execution environment for this version.Defaults to standard.
+     */
+    public readonly env!: pulumi.Output<string>;
+    /**
+     * Environment variables available to the application.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly envVariables!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly errorHandlers!: pulumi.Output<outputs.appengine.v1beta.ErrorHandlerResponse[]>;
+    /**
+     * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly handlers!: pulumi.Output<outputs.appengine.v1beta.UrlMapResponse[]>;
+    /**
+     * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly healthCheck!: pulumi.Output<outputs.appengine.v1beta.HealthCheckResponse>;
+    /**
+     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     */
+    public readonly inboundServices!: pulumi.Output<string[]>;
+    /**
+     * Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
+     */
+    public readonly instanceClass!: pulumi.Output<string>;
+    /**
+     * Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly libraries!: pulumi.Output<outputs.appengine.v1beta.LibraryResponse[]>;
+    /**
+     * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+     */
+    public readonly livenessCheck!: pulumi.Output<outputs.appengine.v1beta.LivenessCheckResponse>;
+    /**
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
+     */
+    public readonly manualScaling!: pulumi.Output<outputs.appengine.v1beta.ManualScalingResponse>;
+    /**
+     * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Extra network settings. Only applicable in the App Engine flexible environment.
+     */
+    public readonly network!: pulumi.Output<outputs.appengine.v1beta.NetworkResponse>;
+    /**
+     * Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly nobuildFilesRegex!: pulumi.Output<string>;
+    /**
+     * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+     */
+    public readonly readinessCheck!: pulumi.Output<outputs.appengine.v1beta.ReadinessCheckResponse>;
+    /**
+     * Machine resources for this version. Only applicable in the App Engine flexible environment.
+     */
+    public readonly resources!: pulumi.Output<outputs.appengine.v1beta.ResourcesResponse>;
+    /**
+     * Desired runtime. Example: python27.
+     */
+    public readonly runtime!: pulumi.Output<string>;
+    /**
+     * The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+     */
+    public readonly runtimeApiVersion!: pulumi.Output<string>;
+    /**
+     * The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
+     */
+    public readonly runtimeChannel!: pulumi.Output<string>;
+    /**
+     * The path or name of the app's main executable.
+     */
+    public readonly runtimeMainExecutablePath!: pulumi.Output<string>;
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
+     */
+    public readonly servingStatus!: pulumi.Output<string>;
+    /**
+     * Whether multiple requests can be dispatched to this version at once.
+     */
+    public readonly threadsafe!: pulumi.Output<boolean>;
+    /**
+     * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+     */
+    public readonly versionUrl!: pulumi.Output<string>;
+    /**
+     * Whether to deploy this version in a container on a virtual machine.
+     */
+    public readonly vm!: pulumi.Output<boolean>;
+    /**
+     * Enables VPC connectivity for standard apps.
+     */
+    public readonly vpcAccessConnector!: pulumi.Output<outputs.appengine.v1beta.VpcAccessConnectorResponse>;
+    /**
+     * The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     */
+    public readonly zones!: pulumi.Output<string[]>;
 
     /**
      * Create a AppServiceVersion resource with the given unique name, arguments, and options.
@@ -100,6 +256,45 @@ export class AppServiceVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
             inputs["zones"] = args ? args.zones : undefined;
         } else {
+            inputs["apiConfig"] = undefined /*out*/;
+            inputs["appEngineApis"] = undefined /*out*/;
+            inputs["automaticScaling"] = undefined /*out*/;
+            inputs["basicScaling"] = undefined /*out*/;
+            inputs["betaSettings"] = undefined /*out*/;
+            inputs["buildEnvVariables"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["createdBy"] = undefined /*out*/;
+            inputs["defaultExpiration"] = undefined /*out*/;
+            inputs["deployment"] = undefined /*out*/;
+            inputs["diskUsageBytes"] = undefined /*out*/;
+            inputs["endpointsApiService"] = undefined /*out*/;
+            inputs["entrypoint"] = undefined /*out*/;
+            inputs["env"] = undefined /*out*/;
+            inputs["envVariables"] = undefined /*out*/;
+            inputs["errorHandlers"] = undefined /*out*/;
+            inputs["handlers"] = undefined /*out*/;
+            inputs["healthCheck"] = undefined /*out*/;
+            inputs["inboundServices"] = undefined /*out*/;
+            inputs["instanceClass"] = undefined /*out*/;
+            inputs["libraries"] = undefined /*out*/;
+            inputs["livenessCheck"] = undefined /*out*/;
+            inputs["manualScaling"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["nobuildFilesRegex"] = undefined /*out*/;
+            inputs["readinessCheck"] = undefined /*out*/;
+            inputs["resources"] = undefined /*out*/;
+            inputs["runtime"] = undefined /*out*/;
+            inputs["runtimeApiVersion"] = undefined /*out*/;
+            inputs["runtimeChannel"] = undefined /*out*/;
+            inputs["runtimeMainExecutablePath"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
+            inputs["servingStatus"] = undefined /*out*/;
+            inputs["threadsafe"] = undefined /*out*/;
+            inputs["versionUrl"] = undefined /*out*/;
+            inputs["vm"] = undefined /*out*/;
+            inputs["vpcAccessConnector"] = undefined /*out*/;
+            inputs["zones"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

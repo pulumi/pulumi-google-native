@@ -35,6 +35,46 @@ export class Feature extends pulumi.CustomResource {
         return obj['__pulumiType'] === Feature.__pulumiType;
     }
 
+    /**
+     * When the Feature resource was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * When the Feature resource was deleted.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * GCP labels for this Feature.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+     */
+    public readonly membershipSpecs!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+     */
+    public /*out*/ readonly membershipStates!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The full, unique name of this Feature resource in the format `projects/*&#47;locations/global/features/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * State of the Feature resource itself.
+     */
+    public /*out*/ readonly resourceState!: pulumi.Output<outputs.gkehub.v1alpha.FeatureResourceStateResponse>;
+    /**
+     * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     */
+    public readonly spec!: pulumi.Output<outputs.gkehub.v1alpha.CommonFeatureSpecResponse>;
+    /**
+     * The Hub-wide Feature state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<outputs.gkehub.v1alpha.CommonFeatureStateResponse>;
+    /**
+     * When the Feature resource was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Feature resource with the given unique name, arguments, and options.
@@ -53,19 +93,29 @@ export class Feature extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["featuresId"] = args ? args.featuresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
-            inputs["membershipStates"] = args ? args.membershipStates : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["resourceState"] = args ? args.resourceState : undefined;
             inputs["spec"] = args ? args.spec : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["membershipStates"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceState"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["membershipSpecs"] = undefined /*out*/;
+            inputs["membershipStates"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceState"] = undefined /*out*/;
+            inputs["spec"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -78,14 +128,6 @@ export class Feature extends pulumi.CustomResource {
  * The set of arguments for constructing a Feature resource.
  */
 export interface FeatureArgs {
-    /**
-     * Output only. When the Feature resource was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. When the Feature resource was deleted.
-     */
-    readonly deleteTime?: pulumi.Input<string>;
     readonly featuresId: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
@@ -95,29 +137,9 @@ export interface FeatureArgs {
      * Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
      */
     readonly membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-     */
-    readonly membershipStates?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Output only. The full, unique name of this Feature resource in the format `projects/*&#47;locations/global/features/*`.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the Feature resource itself.
-     */
-    readonly resourceState?: pulumi.Input<inputs.gkehub.v1alpha.FeatureResourceState>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
     readonly spec?: pulumi.Input<inputs.gkehub.v1alpha.CommonFeatureSpec>;
-    /**
-     * Output only. The Hub-wide Feature state.
-     */
-    readonly state?: pulumi.Input<inputs.gkehub.v1alpha.CommonFeatureState>;
-    /**
-     * Output only. When the Feature resource was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

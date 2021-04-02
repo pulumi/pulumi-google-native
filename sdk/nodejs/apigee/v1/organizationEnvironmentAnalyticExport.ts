@@ -35,6 +35,42 @@ export class OrganizationEnvironmentAnalyticExport extends pulumi.CustomResource
         return obj['__pulumiType'] === OrganizationEnvironmentAnalyticExport.__pulumiType;
     }
 
+    /**
+     * Time the export job was created.
+     */
+    public /*out*/ readonly created!: pulumi.Output<string>;
+    /**
+     * Name of the datastore that is the destination of the export job [datastore]
+     */
+    public readonly datastoreName!: pulumi.Output<string>;
+    /**
+     * Description of the export job.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Error is set when export fails
+     */
+    public /*out*/ readonly error!: pulumi.Output<string>;
+    /**
+     * Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+     */
+    public /*out*/ readonly executionTime!: pulumi.Output<string>;
+    /**
+     * Display name of the export job.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+     */
+    public /*out*/ readonly self!: pulumi.Output<string>;
+    /**
+     * Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Time the export job was last updated.
+     */
+    public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironmentAnalyticExport resource with the given unique name, arguments, and options.
@@ -65,7 +101,22 @@ export class OrganizationEnvironmentAnalyticExport extends pulumi.CustomResource
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
+            inputs["created"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["executionTime"] = undefined /*out*/;
+            inputs["self"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
         } else {
+            inputs["created"] = undefined /*out*/;
+            inputs["datastoreName"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["executionTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["self"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

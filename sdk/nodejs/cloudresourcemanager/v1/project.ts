@@ -35,6 +35,34 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
+    /**
+     * Creation time. Read-only.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: "environment" : "dev" Read-write.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The Project lifecycle state. Read-only.
+     */
+    public readonly lifecycleState!: pulumi.Output<string>;
+    /**
+     * The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
+     */
+    public readonly parent!: pulumi.Output<outputs.cloudresourcemanager.v1.ResourceIdResponse>;
+    /**
+     * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * The number uniquely identifying the project. Example: `415104041262` Read-only.
+     */
+    public readonly projectNumber!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -58,6 +86,13 @@ export class Project extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectNumber"] = args ? args.projectNumber : undefined;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["lifecycleState"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["projectNumber"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

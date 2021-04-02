@@ -35,6 +35,38 @@ export class RegionCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionCluster.__pulumiType;
     }
 
+    /**
+     * Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+     */
+    public readonly clusterName!: pulumi.Output<string>;
+    /**
+     * A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
+     */
+    public /*out*/ readonly clusterUuid!: pulumi.Output<string>;
+    /**
+     * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+     */
+    public readonly config!: pulumi.Output<outputs.dataproc.v1.ClusterConfigResponse>;
+    /**
+     * Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+     */
+    public /*out*/ readonly metrics!: pulumi.Output<outputs.dataproc.v1.ClusterMetricsResponse>;
+    /**
+     * Required. The Google Cloud Platform project ID that the cluster belongs to.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Cluster status.
+     */
+    public /*out*/ readonly status!: pulumi.Output<outputs.dataproc.v1.ClusterStatusResponse>;
+    /**
+     * The previous cluster status.
+     */
+    public /*out*/ readonly statusHistory!: pulumi.Output<outputs.dataproc.v1.ClusterStatusResponse[]>;
 
     /**
      * Create a RegionCluster resource with the given unique name, arguments, and options.
@@ -57,15 +89,23 @@ export class RegionCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["clusterName"] = args ? args.clusterName : undefined;
-            inputs["clusterUuid"] = args ? args.clusterUuid : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["metrics"] = args ? args.metrics : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["statusHistory"] = args ? args.statusHistory : undefined;
+            inputs["clusterUuid"] = undefined /*out*/;
+            inputs["metrics"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusHistory"] = undefined /*out*/;
         } else {
+            inputs["clusterName"] = undefined /*out*/;
+            inputs["clusterUuid"] = undefined /*out*/;
+            inputs["config"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["metrics"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusHistory"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -83,10 +123,6 @@ export interface RegionClusterArgs {
      */
     readonly clusterName: pulumi.Input<string>;
     /**
-     * Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
-     */
-    readonly clusterUuid?: pulumi.Input<string>;
-    /**
      * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
     readonly config?: pulumi.Input<inputs.dataproc.v1.ClusterConfig>;
@@ -95,20 +131,8 @@ export interface RegionClusterArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-     */
-    readonly metrics?: pulumi.Input<inputs.dataproc.v1.ClusterMetrics>;
-    /**
      * Required. The Google Cloud Platform project ID that the cluster belongs to.
      */
     readonly projectId: pulumi.Input<string>;
     readonly region: pulumi.Input<string>;
-    /**
-     * Output only. Cluster status.
-     */
-    readonly status?: pulumi.Input<inputs.dataproc.v1.ClusterStatus>;
-    /**
-     * Output only. The previous cluster status.
-     */
-    readonly statusHistory?: pulumi.Input<pulumi.Input<inputs.dataproc.v1.ClusterStatus>[]>;
 }

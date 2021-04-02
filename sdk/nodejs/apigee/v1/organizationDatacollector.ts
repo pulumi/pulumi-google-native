@@ -34,6 +34,26 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationDatacollector.__pulumiType;
     }
 
+    /**
+     * The time at which the data collector was created in milliseconds since the epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * A description of the data collector.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The time at which the Data Collector was last updated in milliseconds since the epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * ID of the data collector. Must begin with `dc_`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Immutable. The type of data this data collector will collect.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationDatacollector resource with the given unique name, arguments, and options.
@@ -52,14 +72,19 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["datacollectorsId"] = args ? args.datacollectorsId : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
         } else {
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -72,19 +97,11 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationDatacollector resource.
  */
 export interface OrganizationDatacollectorArgs {
-    /**
-     * Output only. The time at which the data collector was created in milliseconds since the epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
     readonly datacollectorsId: pulumi.Input<string>;
     /**
      * A description of the data collector.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which the Data Collector was last updated in milliseconds since the epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
     /**
      * ID of the data collector. Must begin with `dc_`.
      */

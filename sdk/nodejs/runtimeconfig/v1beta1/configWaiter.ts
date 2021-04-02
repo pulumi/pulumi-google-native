@@ -35,6 +35,34 @@ export class ConfigWaiter extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigWaiter.__pulumiType;
     }
 
+    /**
+     * The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
+     */
+    public readonly done!: pulumi.Output<boolean>;
+    /**
+     * If the waiter ended due to a failure or timeout, this value will be set.
+     */
+    public readonly error!: pulumi.Output<outputs.runtimeconfig.v1beta1.StatusResponse>;
+    /**
+     * [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
+     */
+    public readonly failure!: pulumi.Output<outputs.runtimeconfig.v1beta1.EndConditionResponse>;
+    /**
+     * The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
+     */
+    public readonly success!: pulumi.Output<outputs.runtimeconfig.v1beta1.EndConditionResponse>;
+    /**
+     * [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
+     */
+    public readonly timeout!: pulumi.Output<string>;
 
     /**
      * Create a ConfigWaiter resource with the given unique name, arguments, and options.
@@ -67,6 +95,13 @@ export class ConfigWaiter extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["waitersId"] = args ? args.waitersId : undefined;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["done"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["failure"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["success"] = undefined /*out*/;
+            inputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,15 +116,15 @@ export class ConfigWaiter extends pulumi.CustomResource {
 export interface ConfigWaiterArgs {
     readonly configsId: pulumi.Input<string>;
     /**
-     * Output only. The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
+     * The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Output only. If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
+     * If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
      */
     readonly done?: pulumi.Input<boolean>;
     /**
-     * Output only. If the waiter ended due to a failure or timeout, this value will be set.
+     * If the waiter ended due to a failure or timeout, this value will be set.
      */
     readonly error?: pulumi.Input<inputs.runtimeconfig.v1beta1.Status>;
     /**

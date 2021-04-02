@@ -35,6 +35,86 @@ export class AgentIntent extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentIntent.__pulumiType;
     }
 
+    /**
+     * Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+     */
+    public readonly action!: pulumi.Output<string>;
+    /**
+     * Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+     */
+    public readonly defaultResponsePlatforms!: pulumi.Output<string[]>;
+    /**
+     * Required. The name of this intent.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+     */
+    public readonly endInteraction!: pulumi.Output<boolean>;
+    /**
+     * Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
+     */
+    public readonly events!: pulumi.Output<string[]>;
+    /**
+     * Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
+     */
+    public readonly followupIntentInfo!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse[]>;
+    /**
+     * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
+     */
+    public readonly inputContextNames!: pulumi.Output<string[]>;
+    /**
+     * Optional. Indicates whether this is a fallback intent.
+     */
+    public readonly isFallback!: pulumi.Output<boolean>;
+    /**
+     * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+     */
+    public readonly liveAgentHandoff!: pulumi.Output<boolean>;
+    /**
+     * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
+     */
+    public readonly messages!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageResponse[]>;
+    /**
+     * Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
+     */
+    public readonly mlDisabled!: pulumi.Output<boolean>;
+    /**
+     * Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
+     */
+    public readonly outputContexts!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2ContextResponse[]>;
+    /**
+     * Optional. The collection of parameters associated with the intent.
+     */
+    public readonly parameters!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentParameterResponse[]>;
+    /**
+     * Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
+     */
+    public readonly parentFollowupIntentName!: pulumi.Output<string>;
+    /**
+     * Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+     */
+    public readonly priority!: pulumi.Output<number>;
+    /**
+     * Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
+     */
+    public readonly resetContexts!: pulumi.Output<boolean>;
+    /**
+     * Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
+     */
+    public readonly rootFollowupIntentName!: pulumi.Output<string>;
+    /**
+     * Optional. The collection of examples that the agent is trained on.
+     */
+    public readonly trainingPhrases!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhraseResponse[]>;
+    /**
+     * Optional. Indicates whether webhooks are enabled for the intent.
+     */
+    public readonly webhookState!: pulumi.Output<string>;
 
     /**
      * Create a AgentIntent resource with the given unique name, arguments, and options.
@@ -80,6 +160,26 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
             inputs["webhookState"] = args ? args.webhookState : undefined;
         } else {
+            inputs["action"] = undefined /*out*/;
+            inputs["defaultResponsePlatforms"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["endInteraction"] = undefined /*out*/;
+            inputs["events"] = undefined /*out*/;
+            inputs["followupIntentInfo"] = undefined /*out*/;
+            inputs["inputContextNames"] = undefined /*out*/;
+            inputs["isFallback"] = undefined /*out*/;
+            inputs["liveAgentHandoff"] = undefined /*out*/;
+            inputs["messages"] = undefined /*out*/;
+            inputs["mlDisabled"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["outputContexts"] = undefined /*out*/;
+            inputs["parameters"] = undefined /*out*/;
+            inputs["parentFollowupIntentName"] = undefined /*out*/;
+            inputs["priority"] = undefined /*out*/;
+            inputs["resetContexts"] = undefined /*out*/;
+            inputs["rootFollowupIntentName"] = undefined /*out*/;
+            inputs["trainingPhrases"] = undefined /*out*/;
+            inputs["webhookState"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,30 @@ export class Taxonomy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Taxonomy.__pulumiType;
     }
 
+    /**
+     * Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
+     */
+    public readonly activatedPolicyTypes!: pulumi.Output<string[]>;
+    /**
+     * Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Number of policy tags contained in this taxonomy.
+     */
+    public /*out*/ readonly policyTagCount!: pulumi.Output<number>;
+    /**
+     * Timestamps about this taxonomy. Only create_time and update_time are used.
+     */
+    public /*out*/ readonly taxonomyTimestamps!: pulumi.Output<outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>;
 
     /**
      * Create a Taxonomy resource with the given unique name, arguments, and options.
@@ -60,12 +84,18 @@ export class Taxonomy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["policyTagCount"] = args ? args.policyTagCount : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["taxonomiesId"] = args ? args.taxonomiesId : undefined;
-            inputs["taxonomyTimestamps"] = args ? args.taxonomyTimestamps : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["policyTagCount"] = undefined /*out*/;
+            inputs["taxonomyTimestamps"] = undefined /*out*/;
         } else {
+            inputs["activatedPolicyTypes"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["policyTagCount"] = undefined /*out*/;
+            inputs["taxonomyTimestamps"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -91,18 +121,6 @@ export interface TaxonomyArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. Number of policy tags contained in this taxonomy.
-     */
-    readonly policyTagCount?: pulumi.Input<number>;
     readonly projectsId: pulumi.Input<string>;
     readonly taxonomiesId: pulumi.Input<string>;
-    /**
-     * Output only. Timestamps about this taxonomy. Only create_time and update_time are used.
-     */
-    readonly taxonomyTimestamps?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestamps>;
 }

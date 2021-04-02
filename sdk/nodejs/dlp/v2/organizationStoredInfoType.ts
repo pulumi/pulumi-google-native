@@ -35,6 +35,18 @@ export class OrganizationStoredInfoType extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationStoredInfoType.__pulumiType;
     }
 
+    /**
+     * Current version of the stored info type.
+     */
+    public /*out*/ readonly currentVersion!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse>;
+    /**
+     * Resource name.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Pending versions of the stored info type. Empty if no versions are pending.
+     */
+    public /*out*/ readonly pendingVersions!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse[]>;
 
     /**
      * Create a OrganizationStoredInfoType resource with the given unique name, arguments, and options.
@@ -54,11 +66,16 @@ export class OrganizationStoredInfoType extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storedInfoTypesId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
             inputs["storedInfoTypesId"] = args ? args.storedInfoTypesId : undefined;
+            inputs["currentVersion"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pendingVersions"] = undefined /*out*/;
         } else {
+            inputs["currentVersion"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pendingVersions"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -75,10 +92,6 @@ export interface OrganizationStoredInfoTypeArgs {
      * Required. Configuration of the storedInfoType to create.
      */
     readonly config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfig>;
-    /**
-     * Deprecated. This field has no effect.
-     */
-    readonly locationId?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

@@ -86,31 +86,31 @@ export interface SiteVersionArgs {
      */
     readonly config?: pulumi.Input<inputs.firebasehosting.v1beta1.ServingConfig>;
     /**
-     * Output only. The time at which the version was created.
+     * The time at which the version was created.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Output only. Identifies the user who created the version.
+     * Identifies the user who created the version.
      */
     readonly createUser?: pulumi.Input<inputs.firebasehosting.v1beta1.ActingUser>;
     /**
-     * Output only. The time at which the version was `DELETED`.
+     * The time at which the version was `DELETED`.
      */
     readonly deleteTime?: pulumi.Input<string>;
     /**
-     * Output only. Identifies the user who `DELETED` the version.
+     * Identifies the user who `DELETED` the version.
      */
     readonly deleteUser?: pulumi.Input<inputs.firebasehosting.v1beta1.ActingUser>;
     /**
-     * Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+     * The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
      */
     readonly fileCount?: pulumi.Input<string>;
     /**
-     * Output only. The time at which the version was `FINALIZED`.
+     * The time at which the version was `FINALIZED`.
      */
     readonly finalizeTime?: pulumi.Input<string>;
     /**
-     * Output only. Identifies the user who `FINALIZED` the version.
+     * Identifies the user who `FINALIZED` the version.
      */
     readonly finalizeUser?: pulumi.Input<inputs.firebasehosting.v1beta1.ActingUser>;
     /**
@@ -131,7 +131,7 @@ export interface SiteVersionArgs {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+     * The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
      */
     readonly versionBytes?: pulumi.Input<string>;
     readonly versionsId: pulumi.Input<string>;

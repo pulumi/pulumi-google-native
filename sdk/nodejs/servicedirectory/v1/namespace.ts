@@ -34,6 +34,14 @@ export class Namespace extends pulumi.CustomResource {
         return obj['__pulumiType'] === Namespace.__pulumiType;
     }
 
+    /**
+     * Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -61,6 +69,8 @@ export class Namespace extends pulumi.CustomResource {
             inputs["namespacesId"] = args ? args.namespacesId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -34,6 +34,18 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationInstanceNatAddress.__pulumiType;
     }
 
+    /**
+     * The static IPV4 address.
+     */
+    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * Required. Resource ID of the NAT address.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * State of the nat address.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationInstanceNatAddress resource with the given unique name, arguments, and options.
@@ -56,12 +68,15 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationsId'");
             }
             inputs["instancesId"] = args ? args.instancesId : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["natAddressesId"] = args ? args.natAddressesId : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["ipAddress"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["ipAddress"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,17 +91,9 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
 export interface OrganizationInstanceNatAddressArgs {
     readonly instancesId: pulumi.Input<string>;
     /**
-     * Output only. The static IPV4 address.
-     */
-    readonly ipAddress?: pulumi.Input<string>;
-    /**
      * Required. Resource ID of the NAT address.
      */
     readonly name?: pulumi.Input<string>;
     readonly natAddressesId: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the nat address.
-     */
-    readonly state?: pulumi.Input<string>;
 }

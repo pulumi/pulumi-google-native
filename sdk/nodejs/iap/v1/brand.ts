@@ -34,6 +34,22 @@ export class Brand extends pulumi.CustomResource {
         return obj['__pulumiType'] === Brand.__pulumiType;
     }
 
+    /**
+     * Application name displayed on OAuth consent screen.
+     */
+    public readonly applicationTitle!: pulumi.Output<string>;
+    /**
+     * Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Whether the brand is only intended for usage inside the G Suite organization only.
+     */
+    public /*out*/ readonly orgInternalOnly!: pulumi.Output<boolean>;
+    /**
+     * Support email displayed on the OAuth consent screen.
+     */
+    public readonly supportEmail!: pulumi.Output<string>;
 
     /**
      * Create a Brand resource with the given unique name, arguments, and options.
@@ -54,11 +70,15 @@ export class Brand extends pulumi.CustomResource {
             }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
             inputs["brandsId"] = args ? args.brandsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orgInternalOnly"] = args ? args.orgInternalOnly : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["supportEmail"] = args ? args.supportEmail : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["orgInternalOnly"] = undefined /*out*/;
         } else {
+            inputs["applicationTitle"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["orgInternalOnly"] = undefined /*out*/;
+            inputs["supportEmail"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,14 +96,6 @@ export interface BrandArgs {
      */
     readonly applicationTitle?: pulumi.Input<string>;
     readonly brandsId: pulumi.Input<string>;
-    /**
-     * Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. Whether the brand is only intended for usage inside the G Suite organization only.
-     */
-    readonly orgInternalOnly?: pulumi.Input<boolean>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Support email displayed on the OAuth consent screen.

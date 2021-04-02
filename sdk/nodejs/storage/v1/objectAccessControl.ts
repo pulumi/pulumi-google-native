@@ -34,6 +34,65 @@ export class ObjectAccessControl extends pulumi.CustomResource {
         return obj['__pulumiType'] === ObjectAccessControl.__pulumiType;
     }
 
+    /**
+     * The name of the bucket.
+     */
+    public readonly bucket!: pulumi.Output<string>;
+    /**
+     * The domain associated with the entity, if any.
+     */
+    public readonly domain!: pulumi.Output<string>;
+    /**
+     * The email address associated with the entity, if any.
+     */
+    public readonly email!: pulumi.Output<string>;
+    /**
+     * The entity holding the permission, in one of the following forms: 
+     * - user-userId 
+     * - user-email 
+     * - group-groupId 
+     * - group-email 
+     * - domain-domain 
+     * - project-team-projectId 
+     * - allUsers 
+     * - allAuthenticatedUsers Examples: 
+     * - The user liz@example.com would be user-liz@example.com. 
+     * - The group example@googlegroups.com would be group-example@googlegroups.com. 
+     * - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+     */
+    public readonly entity!: pulumi.Output<string>;
+    /**
+     * The ID for the entity, if any.
+     */
+    public readonly entityId!: pulumi.Output<string>;
+    /**
+     * HTTP 1.1 Entity tag for the access-control entry.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The content generation of the object, if applied to an object.
+     */
+    public readonly generation!: pulumi.Output<string>;
+    /**
+     * The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The name of the object, if applied to an object.
+     */
+    public readonly object!: pulumi.Output<string>;
+    /**
+     * The project team associated with the entity, if any.
+     */
+    public readonly projectTeam!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The access permission for the entity.
+     */
+    public readonly role!: pulumi.Output<string>;
+    /**
+     * The link to this access-control entry.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a ObjectAccessControl resource with the given unique name, arguments, and options.
@@ -69,6 +128,18 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
+            inputs["bucket"] = undefined /*out*/;
+            inputs["domain"] = undefined /*out*/;
+            inputs["email"] = undefined /*out*/;
+            inputs["entity"] = undefined /*out*/;
+            inputs["entityId"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["generation"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["object"] = undefined /*out*/;
+            inputs["projectTeam"] = undefined /*out*/;
+            inputs["role"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

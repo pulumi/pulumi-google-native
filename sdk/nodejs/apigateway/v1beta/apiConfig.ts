@@ -35,6 +35,54 @@ export class ApiConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiConfig.__pulumiType;
     }
 
+    /**
+     * Created time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. Display name.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Immutable. Gateway specific configuration.
+     */
+    public readonly gatewayConfig!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayGatewayConfigResponse>;
+    /**
+     * Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+     */
+    public readonly gatewayServiceAccount!: pulumi.Output<string>;
+    /**
+     * Optional. gRPC service definition files. If specified, openapi_documents must not be included.
+     */
+    public readonly grpcServices!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayApiConfigGrpcServiceDefinitionResponse[]>;
+    /**
+     * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+     */
+    public readonly managedServiceConfigs!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayApiConfigFileResponse[]>;
+    /**
+     * Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+     */
+    public readonly openapiDocuments!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocumentResponse[]>;
+    /**
+     * The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+     */
+    public /*out*/ readonly serviceConfigId!: pulumi.Output<string>;
+    /**
+     * State of the API Config.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Updated time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ApiConfig resource with the given unique name, arguments, and options.
@@ -61,7 +109,6 @@ export class ApiConfig extends pulumi.CustomResource {
             }
             inputs["apisId"] = args ? args.apisId : undefined;
             inputs["configsId"] = args ? args.configsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["gatewayServiceAccount"] = args ? args.gatewayServiceAccount : undefined;
@@ -69,13 +116,26 @@ export class ApiConfig extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["serviceConfigId"] = args ? args.serviceConfigId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["serviceConfigId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["gatewayConfig"] = undefined /*out*/;
+            inputs["gatewayServiceAccount"] = undefined /*out*/;
+            inputs["grpcServices"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["managedServiceConfigs"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["openapiDocuments"] = undefined /*out*/;
+            inputs["serviceConfigId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -90,10 +150,6 @@ export class ApiConfig extends pulumi.CustomResource {
 export interface ApiConfigArgs {
     readonly apisId: pulumi.Input<string>;
     readonly configsId: pulumi.Input<string>;
-    /**
-     * Output only. Created time.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Optional. Display name.
      */
@@ -120,24 +176,8 @@ export interface ApiConfigArgs {
      */
     readonly managedServiceConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigFile>[]>;
     /**
-     * Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
      */
     readonly openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocument>[]>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
-     */
-    readonly serviceConfigId?: pulumi.Input<string>;
-    /**
-     * Output only. State of the API Config.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Updated time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

@@ -35,6 +35,50 @@ export class TransferJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === TransferJob.__pulumiType;
     }
 
+    /**
+     * The time that the transfer job was created.
+     */
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * The time that the transfer job was deleted.
+     */
+    public /*out*/ readonly deletionTime!: pulumi.Output<string>;
+    /**
+     * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The time that the transfer job was last modified.
+     */
+    public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
+    /**
+     * The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+     */
+    public readonly latestOperationName!: pulumi.Output<string>;
+    /**
+     * A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Notification configuration.
+     */
+    public readonly notificationConfig!: pulumi.Output<outputs.storagetransfer.v1.NotificationConfigResponse>;
+    /**
+     * The ID of the Google Cloud Platform Project that owns the job.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
+     */
+    public readonly schedule!: pulumi.Output<outputs.storagetransfer.v1.ScheduleResponse>;
+    /**
+     * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * Transfer specification.
+     */
+    public readonly transferSpec!: pulumi.Output<outputs.storagetransfer.v1.TransferSpecResponse>;
 
     /**
      * Create a TransferJob resource with the given unique name, arguments, and options.
@@ -50,10 +94,7 @@ export class TransferJob extends pulumi.CustomResource {
             if ((!args || args.transferJobsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transferJobsId'");
             }
-            inputs["creationTime"] = args ? args.creationTime : undefined;
-            inputs["deletionTime"] = args ? args.deletionTime : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["lastModificationTime"] = args ? args.lastModificationTime : undefined;
             inputs["latestOperationName"] = args ? args.latestOperationName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
@@ -62,7 +103,21 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["transferJobsId"] = args ? args.transferJobsId : undefined;
             inputs["transferSpec"] = args ? args.transferSpec : undefined;
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["deletionTime"] = undefined /*out*/;
+            inputs["lastModificationTime"] = undefined /*out*/;
         } else {
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["deletionTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["lastModificationTime"] = undefined /*out*/;
+            inputs["latestOperationName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["notificationConfig"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["schedule"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["transferSpec"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,21 +131,9 @@ export class TransferJob extends pulumi.CustomResource {
  */
 export interface TransferJobArgs {
     /**
-     * Output only. The time that the transfer job was created.
-     */
-    readonly creationTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time that the transfer job was deleted.
-     */
-    readonly deletionTime?: pulumi.Input<string>;
-    /**
      * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Output only. The time that the transfer job was last modified.
-     */
-    readonly lastModificationTime?: pulumi.Input<string>;
     /**
      * The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
      */

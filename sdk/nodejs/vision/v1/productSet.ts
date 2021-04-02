@@ -35,6 +35,22 @@ export class ProductSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProductSet.__pulumiType;
     }
 
+    /**
+     * The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+     */
+    public /*out*/ readonly indexError!: pulumi.Output<outputs.vision.v1.StatusResponse>;
+    /**
+     * The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+     */
+    public /*out*/ readonly indexTime!: pulumi.Output<string>;
+    /**
+     * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a ProductSet resource with the given unique name, arguments, and options.
@@ -57,13 +73,17 @@ export class ProductSet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["indexError"] = args ? args.indexError : undefined;
-            inputs["indexTime"] = args ? args.indexTime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["productSetsId"] = args ? args.productSetsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["indexError"] = undefined /*out*/;
+            inputs["indexTime"] = undefined /*out*/;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["indexError"] = undefined /*out*/;
+            inputs["indexTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,14 +100,6 @@ export interface ProductSetArgs {
      * The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
-     */
-    readonly indexError?: pulumi.Input<inputs.vision.v1.Status>;
-    /**
-     * Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
-     */
-    readonly indexTime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
