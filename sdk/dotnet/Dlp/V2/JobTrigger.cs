@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public partial class JobTrigger : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation timestamp of a triggeredJob.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User provided description (max 256 chars)
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name (max 100 chars)
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+        /// </summary>
+        [Output("errors")]
+        public Output<ImmutableArray<Outputs.GooglePrivacyDlpV2ErrorResponse>> Errors { get; private set; } = null!;
+
+        /// <summary>
+        /// For inspect jobs, a snapshot of the configuration.
+        /// </summary>
+        [Output("inspectJob")]
+        public Output<Outputs.GooglePrivacyDlpV2InspectJobConfigResponse> InspectJob { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp of the last time this trigger executed.
+        /// </summary>
+        [Output("lastRunTime")]
+        public Output<string> LastRunTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. A status for this trigger.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+        /// </summary>
+        [Output("triggers")]
+        public Output<ImmutableArray<Outputs.GooglePrivacyDlpV2TriggerResponse>> Triggers { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of a triggeredJob.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a JobTrigger resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -67,12 +128,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2
 
         [Input("jobTriggersId", required: true)]
         public Input<string> JobTriggersId { get; set; } = null!;
-
-        /// <summary>
-        /// Deprecated. This field has no effect.
-        /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

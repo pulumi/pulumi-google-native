@@ -16,24 +16,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1.Inputs
     public sealed class CloudSqlConnectionProfileArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The Cloud SQL instance ID that this connection profile is associated with.
-        /// </summary>
-        [Input("cloudSqlId")]
-        public Input<string>? CloudSqlId { get; set; }
-
-        /// <summary>
-        /// Output only. The Cloud SQL database instance's private IP.
-        /// </summary>
-        [Input("privateIp")]
-        public Input<string>? PrivateIp { get; set; }
-
-        /// <summary>
-        /// Output only. The Cloud SQL database instance's public IP.
-        /// </summary>
-        [Input("publicIp")]
-        public Input<string>? PublicIp { get; set; }
-
-        /// <summary>
         /// Immutable. Metadata used to create the destination Cloud SQL database.
         /// </summary>
         [Input("settings")]

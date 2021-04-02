@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
     public partial class AgentTestCase : Pulumi.CustomResource
     {
         /// <summary>
+        /// When the test was created.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The latest test result.
+        /// </summary>
+        [Output("lastTestResult")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1TestCaseResultResponse> LastTestResult { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional freeform notes about the test case. Limit of 400 characters.
+        /// </summary>
+        [Output("notes")]
+        public Output<string> Notes { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        /// </summary>
+        [Output("testCaseConversationTurns")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>> TestCaseConversationTurns { get; private set; } = null!;
+
+        /// <summary>
+        /// Config for the test case.
+        /// </summary>
+        [Output("testConfig")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1TestConfigResponse> TestConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentTestCase resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -61,12 +110,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
     {
         [Input("agentsId", required: true)]
         public Input<string> AgentsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. When the test was created.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
 
         /// <summary>
         /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.

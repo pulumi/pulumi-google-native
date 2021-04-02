@@ -27,18 +27,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1.Inputs
             set => _filePatterns = value;
         }
 
-        [Input("sampleGcsFileSpecs")]
-        private InputList<Inputs.GoogleCloudDatacatalogV1beta1GcsFileSpecArgs>? _sampleGcsFileSpecs;
-
-        /// <summary>
-        /// Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudDatacatalogV1beta1GcsFileSpecArgs> SampleGcsFileSpecs
-        {
-            get => _sampleGcsFileSpecs ?? (_sampleGcsFileSpecs = new InputList<Inputs.GoogleCloudDatacatalogV1beta1GcsFileSpecArgs>());
-            set => _sampleGcsFileSpecs = value;
-        }
-
         public GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs()
         {
         }

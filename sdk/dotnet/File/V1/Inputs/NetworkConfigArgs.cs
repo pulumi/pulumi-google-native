@@ -15,18 +15,6 @@ namespace Pulumi.GoogleCloud.File.V1.Inputs
     /// </summary>
     public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("ipAddresses")]
-        private InputList<string>? _ipAddresses;
-
-        /// <summary>
-        /// Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
-        /// </summary>
-        public InputList<string> IpAddresses
-        {
-            get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
-            set => _ipAddresses = value;
-        }
-
         [Input("modes")]
         private InputList<string>? _modes;
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2.Inputs
     public sealed class AppEngineRoutingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
+        /// The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

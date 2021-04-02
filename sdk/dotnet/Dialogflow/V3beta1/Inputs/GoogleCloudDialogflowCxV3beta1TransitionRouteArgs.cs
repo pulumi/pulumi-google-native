@@ -28,12 +28,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1.Inputs
         public Input<string>? Intent { get; set; }
 
         /// <summary>
-        /// Output only. The unique identifier of this transition route.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
         /// </summary>
         [Input("targetFlow")]

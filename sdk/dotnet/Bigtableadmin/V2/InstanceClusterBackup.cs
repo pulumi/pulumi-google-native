@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
     public partial class InstanceClusterBackup : Pulumi.CustomResource
     {
         /// <summary>
+        /// The encryption information for the backup.
+        /// </summary>
+        [Output("encryptionInfo")]
+        public Output<Outputs.EncryptionInfoResponse> EncryptionInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Size of the backup in bytes.
+        /// </summary>
+        [Output("sizeBytes")]
+        public Output<string> SizeBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+        /// </summary>
+        [Output("sourceTable")]
+        public Output<string> SourceTable { get; private set; } = null!;
+
+        /// <summary>
+        /// `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the backup.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceClusterBackup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,18 +115,6 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         public Input<string> ClustersId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The encryption information for the backup.
-        /// </summary>
-        [Input("encryptionInfo")]
-        public Input<Inputs.EncryptionInfoArgs>? EncryptionInfo { get; set; }
-
-        /// <summary>
-        /// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
         /// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
         /// </summary>
         [Input("expireTime")]
@@ -96,28 +133,10 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Size of the backup in bytes.
-        /// </summary>
-        [Input("sizeBytes")]
-        public Input<string>? SizeBytes { get; set; }
-
-        /// <summary>
         /// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         /// </summary>
         [Input("sourceTable")]
         public Input<string>? SourceTable { get; set; }
-
-        /// <summary>
-        /// Output only. `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of the backup.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public InstanceClusterBackupArgs()
         {

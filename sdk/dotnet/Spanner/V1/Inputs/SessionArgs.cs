@@ -15,18 +15,6 @@ namespace Pulumi.GoogleCloud.Spanner.V1.Inputs
     /// </summary>
     public sealed class SessionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
-        /// </summary>
-        [Input("approximateLastUseTime")]
-        public Input<string>? ApproximateLastUseTime { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp when the session is created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -38,12 +26,6 @@ namespace Pulumi.GoogleCloud.Spanner.V1.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// Output only. The name of the session. This is always system-assigned.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         public SessionArgs()
         {

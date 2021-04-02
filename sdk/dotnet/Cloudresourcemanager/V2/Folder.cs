@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V2
     public partial class Folder : Pulumi.CustomResource
     {
         /// <summary>
+        /// Timestamp when the Folder was created. Assigned by the server.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
+        /// </summary>
+        [Output("lifecycleState")]
+        public Output<string> LifecycleState { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Folder resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +91,6 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V2
     public sealed class FolderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Timestamp when the Folder was created. Assigned by the server.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
         /// </summary>
         [Input("displayName")]
@@ -73,18 +98,6 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V2
 
         [Input("foldersId", required: true)]
         public Input<string> FoldersId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
-        /// </summary>
-        [Input("lifecycleState")]
-        public Input<string>? LifecycleState { get; set; }
-
-        /// <summary>
-        /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.

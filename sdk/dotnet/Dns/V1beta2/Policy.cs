@@ -16,6 +16,46 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        /// </summary>
+        [Output("alternativeNameServerConfig")]
+        public Output<Outputs.PolicyAlternativeNameServerConfigResponse> AlternativeNameServerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
+        /// </summary>
+        [Output("enableInboundForwarding")]
+        public Output<bool> EnableInboundForwarding { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+        /// </summary>
+        [Output("enableLogging")]
+        public Output<bool> EnableLogging { get; private set; } = null!;
+
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// User-assigned name for this policy.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// List of network names specifying networks to which this policy is applied.
+        /// </summary>
+        [Output("networks")]
+        public Output<ImmutableArray<Outputs.PolicyNetworkResponse>> Networks { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Policy resource with the given unique name, arguments, and options.
         /// </summary>
         ///

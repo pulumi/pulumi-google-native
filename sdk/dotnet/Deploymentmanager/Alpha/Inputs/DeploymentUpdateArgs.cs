@@ -13,13 +13,13 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha.Inputs
     public sealed class DeploymentUpdateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The user-provided default credential to use when deploying this preview.
+        /// The user-provided default credential to use when deploying this preview.
         /// </summary>
         [Input("credential")]
         public Input<Inputs.CredentialArgs>? Credential { get; set; }
 
         /// <summary>
-        /// Output only. An optional user-provided description of the deployment after the current update has been applied.
+        /// An optional user-provided description of the deployment after the current update has been applied.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha.Inputs
         }
 
         /// <summary>
-        /// Output only. URL of the manifest representing the update configuration of this deployment.
+        /// URL of the manifest representing the update configuration of this deployment.
         /// </summary>
         [Input("manifest")]
         public Input<string>? Manifest { get; set; }

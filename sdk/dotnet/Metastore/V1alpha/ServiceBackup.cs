@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha
     public partial class ServiceBackup : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the backup was started.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the backup.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the backup finished creating.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The revision of the service at the time of backup.
+        /// </summary>
+        [Output("serviceRevision")]
+        public Output<Outputs.ServiceResponse> ServiceRevision { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the backup.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ServiceBackup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,22 +100,10 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha
         public Input<string> BackupsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The time when the backup was started.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The description of the backup.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the backup finished creating.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
@@ -92,20 +117,8 @@ namespace Pulumi.GoogleCloud.Metastore.V1alpha
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The revision of the service at the time of backup.
-        /// </summary>
-        [Input("serviceRevision")]
-        public Input<Inputs.ServiceArgs>? ServiceRevision { get; set; }
-
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The current state of the backup.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public ServiceBackupArgs()
         {

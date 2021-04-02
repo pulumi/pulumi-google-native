@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public partial class InspectTemplate : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation timestamp of an inspectTemplate.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Short description (max 256 chars).
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name (max 256 chars).
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The core content of the template. Configuration of the scanning process.
+        /// </summary>
+        [Output("inspectConfig")]
+        public Output<Outputs.GooglePrivacyDlpV2InspectConfigResponse> InspectConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of an inspectTemplate.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InspectTemplate resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -67,12 +104,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2
 
         [Input("inspectTemplatesId", required: true)]
         public Input<string> InspectTemplatesId { get; set; } = null!;
-
-        /// <summary>
-        /// Deprecated. This field has no effect.
-        /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

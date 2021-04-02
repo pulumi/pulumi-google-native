@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
     public partial class AgentEnvironmentSessionEntityType : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The collection of entities to override or supplement the custom entity type.
+        /// </summary>
+        [Output("entities")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EntityTypeEntityResponse>> Entities { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        /// </summary>
+        [Output("entityOverrideMode")]
+        public Output<string> EntityOverrideMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentEnvironmentSessionEntityType resource with the given unique name, arguments, and options.
         /// </summary>
         ///

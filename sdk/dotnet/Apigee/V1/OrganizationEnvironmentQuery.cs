@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentQuery : Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of the query.
+        /// </summary>
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        /// <summary>
+        /// Hostname is available only when query is executed at host level.
+        /// </summary>
+        [Output("envgroupHostname")]
+        public Output<string> EnvgroupHostname { get; private set; } = null!;
+
+        /// <summary>
+        /// Error is set when query fails.
+        /// </summary>
+        [Output("error")]
+        public Output<string> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// ExecutionTime is available only after the query is completed.
+        /// </summary>
+        [Output("executionTime")]
+        public Output<string> ExecutionTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Asynchronous Query Name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains information like metrics, dimenstions etc of the AsyncQuery.
+        /// </summary>
+        [Output("queryParams")]
+        public Output<Outputs.GoogleCloudApigeeV1QueryMetadataResponse> QueryParams { get; private set; } = null!;
+
+        /// <summary>
+        /// Asynchronous Report ID.
+        /// </summary>
+        [Output("reportDefinitionId")]
+        public Output<string> ReportDefinitionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Result is available only after the query is completed.
+        /// </summary>
+        [Output("result")]
+        public Output<Outputs.GoogleCloudApigeeV1AsyncQueryResultResponse> Result { get; private set; } = null!;
+
+        /// <summary>
+        /// ResultFileSize is available only after the query is completed.
+        /// </summary>
+        [Output("resultFileSize")]
+        public Output<string> ResultFileSize { get; private set; } = null!;
+
+        /// <summary>
+        /// ResultRows is available only after the query is completed.
+        /// </summary>
+        [Output("resultRows")]
+        public Output<string> ResultRows { get; private set; } = null!;
+
+        /// <summary>
+        /// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+        /// </summary>
+        [Output("self")]
+        public Output<string> Self { get; private set; } = null!;
+
+        /// <summary>
+        /// Query state could be "enqueued", "running", "completed", "failed".
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Last updated timestamp for the query.
+        /// </summary>
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentQuery resource with the given unique name, arguments, and options.
         /// </summary>
         ///

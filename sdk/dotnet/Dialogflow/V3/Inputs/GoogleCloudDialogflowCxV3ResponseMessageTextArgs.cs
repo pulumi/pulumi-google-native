@@ -15,12 +15,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowCxV3ResponseMessageTextArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        /// </summary>
-        [Input("allowPlaybackInterruption")]
-        public Input<bool>? AllowPlaybackInterruption { get; set; }
-
         [Input("text")]
         private InputList<string>? _text;
 

@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Firestore.V1beta1
     public partial class DatabaseIndex : Pulumi.CustomResource
     {
         /// <summary>
+        /// The collection ID to which this index applies. Required.
+        /// </summary>
+        [Output("collectionId")]
+        public Output<string> CollectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The fields to index.
+        /// </summary>
+        [Output("fields")]
+        public Output<ImmutableArray<Outputs.GoogleFirestoreAdminV1beta1IndexFieldResponse>> Fields { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the index. Output only.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the index. Output only.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatabaseIndex resource with the given unique name, arguments, and options.
         /// </summary>
         ///

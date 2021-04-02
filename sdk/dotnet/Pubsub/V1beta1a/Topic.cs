@@ -16,6 +16,13 @@ namespace Pulumi.GoogleCloud.Pubsub.V1beta1a
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
+        /// Name of the topic.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Topic resource with the given unique name, arguments, and options.
         /// </summary>
         ///

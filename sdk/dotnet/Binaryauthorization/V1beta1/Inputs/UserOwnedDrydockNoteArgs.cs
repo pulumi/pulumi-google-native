@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Binaryauthorization.V1beta1.Inputs
     public sealed class UserOwnedDrydockNoteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-        /// </summary>
-        [Input("delegationServiceAccountEmail")]
-        public Input<string>? DelegationServiceAccountEmail { get; set; }
-
-        /// <summary>
         /// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
         /// </summary>
         [Input("noteReference")]

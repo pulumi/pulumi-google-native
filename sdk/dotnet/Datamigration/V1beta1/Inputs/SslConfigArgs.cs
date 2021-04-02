@@ -33,12 +33,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1.Inputs
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
-        /// <summary>
-        /// Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
         public SslConfigArgs()
         {
         }

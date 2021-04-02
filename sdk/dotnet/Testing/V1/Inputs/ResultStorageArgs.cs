@@ -22,13 +22,13 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
         public Input<Inputs.GoogleCloudStorageArgs>? GoogleCloudStorage { get; set; }
 
         /// <summary>
-        /// Output only. URL to the results in the Firebase Web Console.
+        /// URL to the results in the Firebase Web Console.
         /// </summary>
         [Input("resultsUrl")]
         public Input<string>? ResultsUrl { get; set; }
 
         /// <summary>
-        /// Output only. The tool results execution that results are written to.
+        /// The tool results execution that results are written to.
         /// </summary>
         [Input("toolResultsExecution")]
         public Input<Inputs.ToolResultsExecutionArgs>? ToolResultsExecution { get; set; }

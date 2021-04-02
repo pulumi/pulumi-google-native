@@ -16,6 +16,163 @@ namespace Pulumi.GoogleCloud.Cloudfunctions.V1
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>
+        /// The amount of memory in MB available for a function. Defaults to 256MB.
+        /// </summary>
+        [Output("availableMemoryMb")]
+        public Output<int> AvailableMemoryMb { get; private set; } = null!;
+
+        /// <summary>
+        /// Build environment variables that shall be available during build time.
+        /// </summary>
+        [Output("buildEnvironmentVariables")]
+        public Output<ImmutableDictionary<string, string>> BuildEnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// The Cloud Build ID of the latest successful deployment of the function.
+        /// </summary>
+        [Output("buildId")]
+        public Output<string> BuildId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
+        /// </summary>
+        [Output("buildWorkerPool")]
+        public Output<string> BuildWorkerPool { get; private set; } = null!;
+
+        /// <summary>
+        /// User-provided description of a function.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+        /// </summary>
+        [Output("entryPoint")]
+        public Output<string> EntryPoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment variables that shall be available during function execution.
+        /// </summary>
+        [Output("environmentVariables")]
+        public Output<ImmutableDictionary<string, string>> EnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// A source that fires events in response to a condition in another service.
+        /// </summary>
+        [Output("eventTrigger")]
+        public Output<Outputs.EventTriggerResponse> EventTrigger { get; private set; } = null!;
+
+        /// <summary>
+        /// An HTTPS endpoint type of source that can be triggered via URL.
+        /// </summary>
+        [Output("httpsTrigger")]
+        public Output<Outputs.HttpsTriggerResponse> HttpsTrigger { get; private set; } = null!;
+
+        /// <summary>
+        /// The ingress settings for the function, controlling what traffic can reach it.
+        /// </summary>
+        [Output("ingressSettings")]
+        public Output<string> IngressSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels associated with this Cloud Function.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+        /// </summary>
+        [Output("maxInstances")]
+        public Output<int> MaxInstances { get; private set; } = null!;
+
+        /// <summary>
+        /// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+        /// </summary>
+        [Output("runtime")]
+        public Output<string> Runtime { get; private set; } = null!;
+
+        /// <summary>
+        /// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
+        /// </summary>
+        [Output("serviceAccountEmail")]
+        public Output<string> ServiceAccountEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the function.
+        /// </summary>
+        [Output("sourceArchiveUrl")]
+        public Output<string> SourceArchiveUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// **Beta Feature** The source repository where a function is hosted.
+        /// </summary>
+        [Output("sourceRepository")]
+        public Output<Outputs.SourceRepositoryResponse> SourceRepository { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+        /// </summary>
+        [Output("sourceToken")]
+        public Output<string> SourceToken { get; private set; } = null!;
+
+        /// <summary>
+        /// The Google Cloud Storage signed URL used for source uploading, generated by google.cloud.functions.v1.GenerateUploadUrl
+        /// </summary>
+        [Output("sourceUploadUrl")]
+        public Output<string> SourceUploadUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the function deployment.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+        /// </summary>
+        [Output("timeout")]
+        public Output<string> Timeout { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of a Cloud Function.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
+        /// </summary>
+        [Output("versionId")]
+        public Output<string> VersionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+        /// </summary>
+        [Output("vpcConnector")]
+        public Output<string> VpcConnector { get; private set; } = null!;
+
+        /// <summary>
+        /// The egress settings for the connector, controlling what traffic is diverted through it.
+        /// </summary>
+        [Output("vpcConnectorEgressSettings")]
+        public Output<string> VpcConnectorEgressSettings { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Function resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -76,12 +233,6 @@ namespace Pulumi.GoogleCloud.Cloudfunctions.V1
             get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<string>());
             set => _buildEnvironmentVariables = value;
         }
-
-        /// <summary>
-        /// Output only. The Cloud Build ID of the latest successful deployment of the function.
-        /// </summary>
-        [Input("buildId")]
-        public Input<string>? BuildId { get; set; }
 
         /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
@@ -207,28 +358,10 @@ namespace Pulumi.GoogleCloud.Cloudfunctions.V1
         public Input<string>? SourceUploadUrl { get; set; }
 
         /// <summary>
-        /// Output only. Status of the function deployment.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        /// <summary>
         /// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of a Cloud Function.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
-        /// </summary>
-        [Input("versionId")]
-        public Input<string>? VersionId { get; set; }
 
         /// <summary>
         /// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.

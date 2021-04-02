@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Healthcare.V1
     public partial class DatasetConsentStoreConsent : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// </summary>
+        [Output("consentArtifact")]
+        public Output<string> ConsentArtifact { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp in UTC of when this Consent is considered expired.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+        /// </summary>
+        [Output("metadata")]
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+        /// </summary>
+        [Output("policies")]
+        public Output<ImmutableArray<Outputs.GoogleCloudHealthcareV1ConsentPolicyResponse>> Policies { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp that the revision was created.
+        /// </summary>
+        [Output("revisionCreateTime")]
+        public Output<string> RevisionCreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+        /// </summary>
+        [Output("revisionId")]
+        public Output<string> RevisionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Indicates the current state of this Consent.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. The time to live for this Consent from when it is created.
+        /// </summary>
+        [Output("ttl")]
+        public Output<string> Ttl { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User's UUID provided by the client.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetConsentStoreConsent resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -115,18 +176,6 @@ namespace Pulumi.GoogleCloud.Healthcare.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The timestamp that the revision was created.
-        /// </summary>
-        [Input("revisionCreateTime")]
-        public Input<string>? RevisionCreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
-        /// </summary>
-        [Input("revisionId")]
-        public Input<string>? RevisionId { get; set; }
 
         /// <summary>
         /// Required. Indicates the current state of this Consent.

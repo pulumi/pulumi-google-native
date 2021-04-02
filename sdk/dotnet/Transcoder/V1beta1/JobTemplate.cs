@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Transcoder.V1beta1
     public partial class JobTemplate : Pulumi.CustomResource
     {
         /// <summary>
+        /// The configuration for this template.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.JobConfigResponse> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a JobTemplate resource with the given unique name, arguments, and options.
         /// </summary>
         ///

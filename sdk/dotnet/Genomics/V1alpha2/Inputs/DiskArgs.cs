@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Genomics.V1alpha2.Inputs
     public sealed class DiskArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
-        /// </summary>
-        [Input("autoDelete")]
-        public Input<bool>? AutoDelete { get; set; }
-
-        /// <summary>
         /// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
         /// </summary>
         [Input("mountPoint")]

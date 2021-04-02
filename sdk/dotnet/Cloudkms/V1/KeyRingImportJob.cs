@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
     public partial class KeyRingImportJob : Pulumi.CustomResource
     {
         /// <summary>
+        /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
+        /// </summary>
+        [Output("attestation")]
+        public Output<Outputs.KeyOperationAttestationResponse> Attestation { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this ImportJob was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this ImportJob expired. Only present if state is EXPIRED.
+        /// </summary>
+        [Output("expireEventTime")]
+        public Output<string> ExpireEventTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this ImportJob's key material was generated.
+        /// </summary>
+        [Output("generateTime")]
+        public Output<string> GenerateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The wrapping method to be used for incoming key material.
+        /// </summary>
+        [Output("importMethod")]
+        public Output<string> ImportMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        /// </summary>
+        [Output("protectionLevel")]
+        public Output<string> ProtectionLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
+        /// </summary>
+        [Output("publicKey")]
+        public Output<Outputs.WrappingPublicKeyResponse> PublicKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the ImportJob, indicating if it can be used.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a KeyRingImportJob resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,36 +120,6 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
 
     public sealed class KeyRingImportJobArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
-        /// </summary>
-        [Input("attestation")]
-        public Input<Inputs.KeyOperationAttestationArgs>? Attestation { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this ImportJob was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The time this ImportJob expired. Only present if state is EXPIRED.
-        /// </summary>
-        [Input("expireEventTime")]
-        public Input<string>? ExpireEventTime { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
-        /// </summary>
-        [Input("expireTime")]
-        public Input<string>? ExpireTime { get; set; }
-
-        /// <summary>
-        /// Output only. The time this ImportJob's key material was generated.
-        /// </summary>
-        [Input("generateTime")]
-        public Input<string>? GenerateTime { get; set; }
-
         [Input("importJobsId", required: true)]
         public Input<string> ImportJobsId { get; set; } = null!;
 
@@ -104,12 +135,6 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
@@ -118,18 +143,6 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
-
-        /// <summary>
-        /// Output only. The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
-        /// </summary>
-        [Input("publicKey")]
-        public Input<Inputs.WrappingPublicKeyArgs>? PublicKey { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of the ImportJob, indicating if it can be used.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public KeyRingImportJobArgs()
         {

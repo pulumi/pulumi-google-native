@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Logging.V2
     public partial class OrganizationExclusion : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A description of this exclusion.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity&lt;ERROR sample(insertId, 0.99)"
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationExclusion resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +97,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
     public sealed class OrganizationExclusionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Optional. A description of this exclusion.
         /// </summary>
         [Input("description")]
@@ -94,12 +125,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public OrganizationExclusionArgs()
         {

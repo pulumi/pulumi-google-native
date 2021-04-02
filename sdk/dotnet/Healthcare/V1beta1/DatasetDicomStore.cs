@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public partial class DatasetDicomStore : Pulumi.CustomResource
     {
         /// <summary>
+        /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Notification destination for new DICOM instances. Supplied by the client.
+        /// </summary>
+        [Output("notificationConfig")]
+        public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        /// </summary>
+        [Output("streamConfigs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudHealthcareV1beta1DicomStreamConfigResponse>> StreamConfigs { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetDicomStore resource with the given unique name, arguments, and options.
         /// </summary>
         ///

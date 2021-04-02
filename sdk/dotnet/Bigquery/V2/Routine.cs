@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
     public partial class Routine : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional.
+        /// </summary>
+        [Output("arguments")]
+        public Output<ImmutableArray<Outputs.ArgumentResponse>> Arguments { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when this routine was created, in milliseconds since the epoch.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        /// </summary>
+        [Output("definitionBody")]
+        public Output<string> DefinitionBody { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. [Experimental] The description of the routine if defined.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        /// </summary>
+        [Output("determinismLevel")]
+        public Output<string> DeterminismLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// A hash of this resource.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
+        /// </summary>
+        [Output("importedLibraries")]
+        public Output<ImmutableArray<string>> ImportedLibraries { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Defaults to "SQL".
+        /// </summary>
+        [Output("language")]
+        public Output<string> Language { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when this routine was last modified, in milliseconds since the epoch.
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
+        /// </summary>
+        [Output("returnTableType")]
+        public Output<Outputs.StandardSqlTableTypeResponse> ReturnTableType { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        /// </summary>
+        [Output("returnType")]
+        public Output<Outputs.StandardSqlDataTypeResponse> ReturnType { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Reference describing the ID of this routine.
+        /// </summary>
+        [Output("routineReference")]
+        public Output<Outputs.RoutineReferenceResponse> RoutineReference { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The type of routine.
+        /// </summary>
+        [Output("routineType")]
+        public Output<string> RoutineType { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Routine resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -71,12 +150,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
             set => _arguments = value;
         }
 
-        /// <summary>
-        /// Output only. The time when this routine was created, in milliseconds since the epoch.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
-
         [Input("datasetsId", required: true)]
         public Input<string> DatasetsId { get; set; } = null!;
 
@@ -98,12 +171,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         [Input("determinismLevel")]
         public Input<string>? DeterminismLevel { get; set; }
 
-        /// <summary>
-        /// Output only. A hash of this resource.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
         [Input("importedLibraries")]
         private InputList<string>? _importedLibraries;
 
@@ -121,12 +188,6 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
-
-        /// <summary>
-        /// Output only. The time when this routine was last modified, in milliseconds since the epoch.
-        /// </summary>
-        [Input("lastModifiedTime")]
-        public Input<string>? LastModifiedTime { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

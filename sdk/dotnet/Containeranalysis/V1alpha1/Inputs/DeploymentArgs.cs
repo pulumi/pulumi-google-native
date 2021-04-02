@@ -43,7 +43,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1.Inputs
         private InputList<string>? _resourceUri;
 
         /// <summary>
-        /// Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+        /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
         /// </summary>
         public InputList<string> ResourceUri
         {

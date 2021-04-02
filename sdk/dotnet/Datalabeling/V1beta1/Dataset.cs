@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
+        /// The names of any related resources that are blocking changes to the dataset.
+        /// </summary>
+        [Output("blockingResources")]
+        public Output<ImmutableArray<string>> BlockingResources { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the dataset is created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of data items in the dataset.
+        /// </summary>
+        [Output("dataItemCount")]
+        public Output<string> DataItemCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The display name of the dataset. Maximum of 64 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+        /// </summary>
+        [Output("inputConfigs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDatalabelingV1beta1InputConfigResponse>> InputConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
+        /// </summary>
+        [Output("lastMigrateTime")]
+        public Output<string> LastMigrateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Dataset resource with the given unique name, arguments, and options.
         /// </summary>
         ///

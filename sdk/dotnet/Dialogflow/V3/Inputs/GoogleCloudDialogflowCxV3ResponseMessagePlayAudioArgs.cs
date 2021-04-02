@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        /// </summary>
-        [Input("allowPlaybackInterruption")]
-        public Input<bool>? AllowPlaybackInterruption { get; set; }
-
-        /// <summary>
         /// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         /// </summary>
         [Input("audioUri")]

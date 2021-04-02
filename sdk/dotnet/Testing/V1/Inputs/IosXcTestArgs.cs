@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
     public sealed class IosXcTestArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The bundle id for the application under test.
+        /// The bundle id for the application under test.
         /// </summary>
         [Input("appBundleId")]
         public Input<string>? AppBundleId { get; set; }

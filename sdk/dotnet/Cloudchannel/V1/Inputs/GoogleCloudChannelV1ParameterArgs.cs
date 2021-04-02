@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
     public sealed class GoogleCloudChannelV1ParameterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
-        /// </summary>
-        [Input("editable")]
-        public Input<bool>? Editable { get; set; }
-
-        /// <summary>
         /// Name of the parameter.
         /// </summary>
         [Input("name")]

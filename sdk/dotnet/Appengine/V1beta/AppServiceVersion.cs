@@ -16,6 +16,241 @@ namespace Pulumi.GoogleCloud.Appengine.V1beta
     public partial class AppServiceVersion : Pulumi.CustomResource
     {
         /// <summary>
+        /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("apiConfig")]
+        public Output<Outputs.ApiConfigHandlerResponse> ApiConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        /// </summary>
+        [Output("appEngineApis")]
+        public Output<bool> AppEngineApis { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
+        /// </summary>
+        [Output("automaticScaling")]
+        public Output<Outputs.AutomaticScalingResponse> AutomaticScaling { get; private set; } = null!;
+
+        /// <summary>
+        /// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+        /// </summary>
+        [Output("basicScaling")]
+        public Output<Outputs.BasicScalingResponse> BasicScaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata settings that are supplied to this version to enable beta runtime features.
+        /// </summary>
+        [Output("betaSettings")]
+        public Output<ImmutableDictionary<string, string>> BetaSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("buildEnvVariables")]
+        public Output<ImmutableDictionary<string, string>> BuildEnvVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Time that this version was created.@OutputOnly
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Email address of the user who created this version.@OutputOnly
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("defaultExpiration")]
+        public Output<string> DefaultExpiration { get; private set; } = null!;
+
+        /// <summary>
+        /// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("deployment")]
+        public Output<Outputs.DeploymentResponse> Deployment { get; private set; } = null!;
+
+        /// <summary>
+        /// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+        /// </summary>
+        [Output("diskUsageBytes")]
+        public Output<string> DiskUsageBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
+        /// </summary>
+        [Output("endpointsApiService")]
+        public Output<Outputs.EndpointsApiServiceResponse> EndpointsApiService { get; private set; } = null!;
+
+        /// <summary>
+        /// The entrypoint for the application.
+        /// </summary>
+        [Output("entrypoint")]
+        public Output<Outputs.EntrypointResponse> Entrypoint { get; private set; } = null!;
+
+        /// <summary>
+        /// App Engine execution environment for this version.Defaults to standard.
+        /// </summary>
+        [Output("env")]
+        public Output<string> Env { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment variables available to the application.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("envVariables")]
+        public Output<ImmutableDictionary<string, string>> EnvVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("errorHandlers")]
+        public Output<ImmutableArray<Outputs.ErrorHandlerResponse>> ErrorHandlers { get; private set; } = null!;
+
+        /// <summary>
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("handlers")]
+        public Output<ImmutableArray<Outputs.UrlMapResponse>> Handlers { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("healthCheck")]
+        public Output<Outputs.HealthCheckResponse> HealthCheck { get; private set; } = null!;
+
+        /// <summary>
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// </summary>
+        [Output("inboundServices")]
+        public Output<ImmutableArray<string>> InboundServices { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
+        /// </summary>
+        [Output("instanceClass")]
+        public Output<string> InstanceClass { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("libraries")]
+        public Output<ImmutableArray<Outputs.LibraryResponse>> Libraries { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("livenessCheck")]
+        public Output<Outputs.LivenessCheckResponse> LivenessCheck { get; private set; } = null!;
+
+        /// <summary>
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
+        /// </summary>
+        [Output("manualScaling")]
+        public Output<Outputs.ManualScalingResponse> ManualScaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Extra network settings. Only applicable in the App Engine flexible environment.
+        /// </summary>
+        [Output("network")]
+        public Output<Outputs.NetworkResponse> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("nobuildFilesRegex")]
+        public Output<string> NobuildFilesRegex { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        /// </summary>
+        [Output("readinessCheck")]
+        public Output<Outputs.ReadinessCheckResponse> ReadinessCheck { get; private set; } = null!;
+
+        /// <summary>
+        /// Machine resources for this version. Only applicable in the App Engine flexible environment.
+        /// </summary>
+        [Output("resources")]
+        public Output<Outputs.ResourcesResponse> Resources { get; private set; } = null!;
+
+        /// <summary>
+        /// Desired runtime. Example: python27.
+        /// </summary>
+        [Output("runtime")]
+        public Output<string> Runtime { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// </summary>
+        [Output("runtimeApiVersion")]
+        public Output<string> RuntimeApiVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
+        /// </summary>
+        [Output("runtimeChannel")]
+        public Output<string> RuntimeChannel { get; private set; } = null!;
+
+        /// <summary>
+        /// The path or name of the app's main executable.
+        /// </summary>
+        [Output("runtimeMainExecutablePath")]
+        public Output<string> RuntimeMainExecutablePath { get; private set; } = null!;
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
+        /// </summary>
+        [Output("servingStatus")]
+        public Output<string> ServingStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether multiple requests can be dispatched to this version at once.
+        /// </summary>
+        [Output("threadsafe")]
+        public Output<bool> Threadsafe { get; private set; } = null!;
+
+        /// <summary>
+        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        /// </summary>
+        [Output("versionUrl")]
+        public Output<string> VersionUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to deploy this version in a container on a virtual machine.
+        /// </summary>
+        [Output("vm")]
+        public Output<bool> Vm { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables VPC connectivity for standard apps.
+        /// </summary>
+        [Output("vpcAccessConnector")]
+        public Output<Outputs.VpcAccessConnectorResponse> VpcAccessConnector { get; private set; } = null!;
+
+        /// <summary>
+        /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AppServiceVersion resource with the given unique name, arguments, and options.
         /// </summary>
         ///

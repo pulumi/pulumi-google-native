@@ -16,6 +16,81 @@ namespace Pulumi.GoogleCloud.Compute.Beta
     public partial class GlobalPublicDelegatedPrefix : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet.
+        /// 
+        /// To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
+        /// </summary>
+        [Output("ipCidrRange")]
+        public Output<string> IpCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the prefix will be live migrated.
+        /// </summary>
+        [Output("isLiveMigration")]
+        public Output<bool> IsLiveMigration { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
+        /// </summary>
+        [Output("parentPrefix")]
+        public Output<string> ParentPrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of sub public delegated prefixes that exist for this public delegated prefix.
+        /// </summary>
+        [Output("publicDelegatedSubPrefixs")]
+        public Output<ImmutableArray<Outputs.PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>> PublicDelegatedSubPrefixs { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The status of the public delegated prefix.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a GlobalPublicDelegatedPrefix resource with the given unique name, arguments, and options.
         /// </summary>
         ///

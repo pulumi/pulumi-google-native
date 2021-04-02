@@ -16,6 +16,97 @@ namespace Pulumi.GoogleCloud.Bigquerydatatransfer.V1
     public partial class TransferConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+        /// </summary>
+        [Output("dataRefreshWindowDays")]
+        public Output<int> DataRefreshWindowDays { get; private set; } = null!;
+
+        /// <summary>
+        /// Data source id. Cannot be changed once data transfer is created.
+        /// </summary>
+        [Output("dataSourceId")]
+        public Output<string> DataSourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Region in which BigQuery dataset is located.
+        /// </summary>
+        [Output("datasetRegion")]
+        public Output<string> DatasetRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// The BigQuery target dataset id.
+        /// </summary>
+        [Output("destinationDatasetId")]
+        public Output<string> DestinationDatasetId { get; private set; } = null!;
+
+        /// <summary>
+        /// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// User specified display name for the data transfer.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
+        /// </summary>
+        [Output("emailPreferences")]
+        public Output<Outputs.EmailPreferencesResponse> EmailPreferences { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Next time when data transfer will run.
+        /// </summary>
+        [Output("nextRunTime")]
+        public Output<string> NextRunTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+        /// </summary>
+        [Output("notificationPubsubTopic")]
+        public Output<string> NotificationPubsubTopic { get; private set; } = null!;
+
+        /// <summary>
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// </summary>
+        [Output("params")]
+        public Output<ImmutableDictionary<string, string>> Params { get; private set; } = null!;
+
+        /// <summary>
+        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
+        /// </summary>
+        [Output("schedule")]
+        public Output<string> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Options customizing the data transfer schedule.
+        /// </summary>
+        [Output("scheduleOptions")]
+        public Output<Outputs.ScheduleOptionsResponse> ScheduleOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the most recently updated transfer run.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Data transfer modification time. Ignored by server on input.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a TransferConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -72,12 +163,6 @@ namespace Pulumi.GoogleCloud.Bigquerydatatransfer.V1
         public Input<string>? DataSourceId { get; set; }
 
         /// <summary>
-        /// Output only. Region in which BigQuery dataset is located.
-        /// </summary>
-        [Input("datasetRegion")]
-        public Input<string>? DatasetRegion { get; set; }
-
-        /// <summary>
         /// The BigQuery target dataset id.
         /// </summary>
         [Input("destinationDatasetId")]
@@ -106,12 +191,6 @@ namespace Pulumi.GoogleCloud.Bigquerydatatransfer.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. Next time when data transfer will run.
-        /// </summary>
-        [Input("nextRunTime")]
-        public Input<string>? NextRunTime { get; set; }
 
         /// <summary>
         /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
@@ -146,26 +225,8 @@ namespace Pulumi.GoogleCloud.Bigquerydatatransfer.V1
         [Input("scheduleOptions")]
         public Input<Inputs.ScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
-        /// <summary>
-        /// Output only. State of the most recently updated transfer run.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
         [Input("transferConfigsId", required: true)]
         public Input<string> TransferConfigsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Data transfer modification time. Ignored by server on input.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
-        /// </summary>
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
 
         public TransferConfigArgs()
         {

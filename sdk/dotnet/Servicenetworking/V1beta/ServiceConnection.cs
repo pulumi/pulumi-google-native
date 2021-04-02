@@ -66,7 +66,7 @@ namespace Pulumi.GoogleCloud.Servicenetworking.V1beta
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Output only. The name of the VPC Network Peering connection that was created by the service producer.
+        /// The name of the VPC Network Peering connection that was created by the service producer.
         /// </summary>
         [Input("peering")]
         public Input<string>? Peering { get; set; }
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleCloud.Servicenetworking.V1beta
         }
 
         /// <summary>
-        /// Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
+        /// The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

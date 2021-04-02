@@ -45,12 +45,6 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1beta1.Inputs
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("thresholdRules")]
         private InputList<Inputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>? _thresholdRules;
 

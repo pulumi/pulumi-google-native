@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Logging.V2.Inputs
     public sealed class LogExclusionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Optional. A description of this exclusion.
         /// </summary>
         [Input("description")]
@@ -44,12 +38,6 @@ namespace Pulumi.GoogleCloud.Logging.V2.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public LogExclusionArgs()
         {

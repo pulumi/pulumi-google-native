@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationInstanceCanaryevaluation : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The stable version that is serving requests.
+        /// </summary>
+        [Output("control")]
+        public Output<string> Control { get; private set; } = null!;
+
+        /// <summary>
+        /// Create time of the canary evaluation.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. End time for the evaluation's analysis.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Labels used to filter the metrics used for a canary evaluation.
+        /// </summary>
+        [Output("metricLabels")]
+        public Output<Outputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse> MetricLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the canary evalution.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Start time for the canary evaluation's analysis.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the canary evaluation.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The newer version that is serving requests.
+        /// </summary>
+        [Output("treatment")]
+        public Output<string> Treatment { get; private set; } = null!;
+
+        /// <summary>
+        /// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+        /// </summary>
+        [Output("verdict")]
+        public Output<string> Verdict { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationInstanceCanaryevaluation resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -69,12 +124,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? Control { get; set; }
 
         /// <summary>
-        /// Output only. Create time of the canary evaluation.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Required. End time for the evaluation's analysis.
         /// </summary>
         [Input("endTime")]
@@ -89,12 +138,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("metricLabels")]
         public Input<Inputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>? MetricLabels { get; set; }
 
-        /// <summary>
-        /// Output only. Name of the canary evalution.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
 
@@ -105,22 +148,10 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Output only. The current state of the canary evaluation.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
         /// Required. The newer version that is serving requests.
         /// </summary>
         [Input("treatment")]
         public Input<string>? Treatment { get; set; }
-
-        /// <summary>
-        /// Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-        /// </summary>
-        [Input("verdict")]
-        public Input<string>? Verdict { get; set; }
 
         public OrganizationInstanceCanaryevaluationArgs()
         {

@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
     public partial class NamespaceService : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
+        /// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
+        /// </summary>
+        [Output("endpoints")]
+        public Output<ImmutableArray<Outputs.EndpointResponse>> Endpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a NamespaceService resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -69,18 +88,6 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
         {
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
-        }
-
-        [Input("endpoints")]
-        private InputList<Inputs.EndpointArgs>? _endpoints;
-
-        /// <summary>
-        /// Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
-        /// </summary>
-        public InputList<Inputs.EndpointArgs> Endpoints
-        {
-            get => _endpoints ?? (_endpoints = new InputList<Inputs.EndpointArgs>());
-            set => _endpoints = value;
         }
 
         [Input("locationsId", required: true)]

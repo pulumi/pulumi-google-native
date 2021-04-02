@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentApiRevisionDebugsession : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+        /// </summary>
+        [Output("count")]
+        public Output<int> Count { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique ID for this DebugSession.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+        /// </summary>
+        [Output("timeout")]
+        public Output<string> Timeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+        /// </summary>
+        [Output("tracesize")]
+        public Output<int> Tracesize { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+        /// </summary>
+        [Output("validity")]
+        public Output<int> Validity { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentApiRevisionDebugsession resource with the given unique name, arguments, and options.
         /// </summary>
         ///

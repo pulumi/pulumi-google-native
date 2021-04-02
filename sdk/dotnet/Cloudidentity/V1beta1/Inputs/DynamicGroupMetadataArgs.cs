@@ -27,12 +27,6 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1.Inputs
             set => _queries = value;
         }
 
-        /// <summary>
-        /// Output only. Status of the dynamic group.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.DynamicGroupStatusArgs>? Status { get; set; }
-
         public DynamicGroupMetadataArgs()
         {
         }

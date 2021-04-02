@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<Inputs.GoogleCloudMlV1__BuiltInAlgorithmOutputArgs>? BuiltInAlgorithmOutput { get; set; }
 
         /// <summary>
-        /// Output only. End time for the trial.
+        /// End time for the trial.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -64,13 +64,13 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<bool>? IsTrialStoppedEarly { get; set; }
 
         /// <summary>
-        /// Output only. Start time for the trial.
+        /// Start time for the trial.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Output only. The detailed state of the trial.
+        /// The detailed state of the trial.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

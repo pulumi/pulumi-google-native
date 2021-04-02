@@ -16,6 +16,28 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
     public partial class ResponsePolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// User-provided description for this Response Policy.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// List of network names specifying networks to which this policy is applied.
+        /// </summary>
+        [Output("networks")]
+        public Output<ImmutableArray<Outputs.ResponsePolicyNetworkResponse>> Networks { get; private set; } = null!;
+
+        /// <summary>
+        /// User assigned name for this Response Policy.
+        /// </summary>
+        [Output("responsePolicyName")]
+        public Output<string> ResponsePolicyName { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ResponsePolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///

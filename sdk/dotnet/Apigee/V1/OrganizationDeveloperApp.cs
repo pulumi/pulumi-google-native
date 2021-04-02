@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationDeveloperApp : Pulumi.CustomResource
     {
         /// <summary>
+        /// List of API products associated with the developer app.
+        /// </summary>
+        [Output("apiProducts")]
+        public Output<ImmutableArray<string>> ApiProducts { get; private set; } = null!;
+
+        /// <summary>
+        /// Developer app family.
+        /// </summary>
+        [Output("appFamily")]
+        public Output<string> AppFamily { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the developer app.
+        /// </summary>
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
+        /// <summary>
+        /// List of attributes for the developer app.
+        /// </summary>
+        [Output("attributes")]
+        public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1AttributeResponse>> Attributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+        /// </summary>
+        [Output("callbackUrl")]
+        public Output<string> CallbackUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the developer app was created in milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+        /// </summary>
+        [Output("credentials")]
+        public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1CredentialResponse>> Credentials { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the developer.
+        /// </summary>
+        [Output("developerId")]
+        public Output<string> DeveloperId { get; private set; } = null!;
+
+        /// <summary>
+        /// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+        /// </summary>
+        [Output("keyExpiresIn")]
+        public Output<string> KeyExpiresIn { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the developer app was modified in milliseconds since epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the developer app.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+        /// </summary>
+        [Output("scopes")]
+        public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the credential. Valid values include `approved` or `revoked`.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationDeveloperApp resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -105,24 +184,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? CallbackUrl { get; set; }
 
         /// <summary>
-        /// Output only. Time the developer app was created in milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        [Input("credentials")]
-        private InputList<Inputs.GoogleCloudApigeeV1CredentialArgs>? _credentials;
-
-        /// <summary>
-        /// Output only. Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudApigeeV1CredentialArgs> Credentials
-        {
-            get => _credentials ?? (_credentials = new InputList<Inputs.GoogleCloudApigeeV1CredentialArgs>());
-            set => _credentials = value;
-        }
-
-        /// <summary>
         /// ID of the developer.
         /// </summary>
         [Input("developerId")]
@@ -136,12 +197,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("keyExpiresIn")]
         public Input<string>? KeyExpiresIn { get; set; }
-
-        /// <summary>
-        /// Output only. Time the developer app was modified in milliseconds since epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
 
         /// <summary>
         /// Name of the developer app.

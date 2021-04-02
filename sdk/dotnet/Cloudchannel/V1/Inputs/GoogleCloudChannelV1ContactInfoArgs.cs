@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
     public sealed class GoogleCloudChannelV1ContactInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Display name of the contact in the customer account. Populated by combining customer first name and last name.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
         /// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
         /// </summary>
         [Input("email")]

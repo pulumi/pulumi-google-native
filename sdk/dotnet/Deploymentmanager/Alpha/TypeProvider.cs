@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
     public partial class TypeProvider : Pulumi.CustomResource
     {
         /// <summary>
+        /// Allows resource handling overrides for specific collections
+        /// </summary>
+        [Output("collectionOverrides")]
+        public Output<ImmutableArray<Outputs.CollectionOverrideResponse>> CollectionOverrides { get; private set; } = null!;
+
+        /// <summary>
+        /// Credential used when interacting with this type.
+        /// </summary>
+        [Output("credential")]
+        public Output<Outputs.CredentialResponse> Credential { get; private set; } = null!;
+
+        /// <summary>
+        /// List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
+        /// </summary>
+        [Output("customCertificateAuthorityRoots")]
+        public Output<ImmutableArray<string>> CustomCertificateAuthorityRoots { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional textual description of the resource; provided by the client when the resource is created.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Descriptor Url for the this type provider.
+        /// </summary>
+        [Output("descriptorUrl")]
+        public Output<string> DescriptorUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("insertTime")]
+        public Output<string> InsertTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.TypeProviderLabelEntryResponse>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The Operation that most recently ran, or is currently running, on this type provider.
+        /// </summary>
+        [Output("operation")]
+        public Output<Outputs.OperationResponse> Operation { get; private set; } = null!;
+
+        /// <summary>
+        /// Options to apply when handling any resources in this service.
+        /// </summary>
+        [Output("options")]
+        public Output<Outputs.OptionsResponse> Options { get; private set; } = null!;
+
+        /// <summary>
+        /// Self link for the type provider.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a TypeProvider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -102,13 +169,13 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         public Input<string>? DescriptorUrl { get; set; }
 
         /// <summary>
-        /// Output only. Unique identifier for the resource defined by the server.
+        /// Unique identifier for the resource defined by the server.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Output only. Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Input("insertTime")]
         public Input<string>? InsertTime { get; set; }
@@ -132,7 +199,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. The Operation that most recently ran, or is currently running, on this type provider.
+        /// The Operation that most recently ran, or is currently running, on this type provider.
         /// </summary>
         [Input("operation")]
         public Input<Inputs.OperationArgs>? Operation { get; set; }
@@ -147,7 +214,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Self link for the type provider.
+        /// Self link for the type provider.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

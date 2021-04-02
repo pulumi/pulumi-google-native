@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         private InputList<string>? _blockingResources;
 
         /// <summary>
-        /// Output only. The names of any related resources that are blocking changes to the dataset.
+        /// The names of any related resources that are blocking changes to the dataset.
         /// </summary>
         public InputList<string> BlockingResources
         {
@@ -28,13 +28,13 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         }
 
         /// <summary>
-        /// Output only. Time the dataset is created.
+        /// Time the dataset is created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The number of data items in the dataset.
+        /// The number of data items in the dataset.
         /// </summary>
         [Input("dataItemCount")]
         public Input<string>? DataItemCount { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         private InputList<Inputs.GoogleCloudDatalabelingV1beta1InputConfigArgs>? _inputConfigs;
 
         /// <summary>
-        /// Output only. This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+        /// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
         /// </summary>
         public InputList<Inputs.GoogleCloudDatalabelingV1beta1InputConfigArgs> InputConfigs
         {
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         public Input<string>? LastMigrateTime { get; set; }
 
         /// <summary>
-        /// Output only. Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+        /// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

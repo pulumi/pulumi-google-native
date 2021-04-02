@@ -16,6 +16,88 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public partial class NodeGroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies how autoscaling should behave.
+        /// </summary>
+        [Output("autoscalingPolicy")]
+        public Output<Outputs.NodeGroupAutoscalingPolicyResponse> AutoscalingPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        /// </summary>
+        [Output("locationHint")]
+        public Output<string> LocationHint { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<string> MaintenancePolicy { get; private set; } = null!;
+
+        [Output("maintenanceWindow")]
+        public Output<Outputs.NodeGroupMaintenanceWindowResponse> MaintenanceWindow { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the node template to create the node group from.
+        /// </summary>
+        [Output("nodeTemplate")]
+        public Output<string> NodeTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// </summary>
+        [Output("selfLinkWithId")]
+        public Output<string> SelfLinkWithId { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The total number of nodes in the node group.
+        /// </summary>
+        [Output("size")]
+        public Output<int> Size { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a NodeGroup resource with the given unique name, arguments, and options.
         /// </summary>
         ///

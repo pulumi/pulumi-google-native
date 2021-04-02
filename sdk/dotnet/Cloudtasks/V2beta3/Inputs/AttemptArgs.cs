@@ -16,25 +16,25 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
     public sealed class AttemptArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
+        /// The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
         /// </summary>
         [Input("dispatchTime")]
         public Input<string>? DispatchTime { get; set; }
 
         /// <summary>
-        /// Output only. The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
+        /// The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
         /// </summary>
         [Input("responseStatus")]
         public Input<Inputs.StatusArgs>? ResponseStatus { get; set; }
 
         /// <summary>
-        /// Output only. The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
+        /// The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
         /// </summary>
         [Input("responseTime")]
         public Input<string>? ResponseTime { get; set; }
 
         /// <summary>
-        /// Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
+        /// The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
         /// </summary>
         [Input("scheduleTime")]
         public Input<string>? ScheduleTime { get; set; }

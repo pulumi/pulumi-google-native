@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationInstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time the attachment was created in milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the attached environment.
+        /// </summary>
+        [Output("environment")]
+        public Output<string> Environment { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the attachment.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationInstanceAttachment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,12 +82,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string> AttachmentsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Time the attachment was created in milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// ID of the attached environment.
         /// </summary>
         [Input("environment")]
@@ -76,12 +89,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. ID of the attachment.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;

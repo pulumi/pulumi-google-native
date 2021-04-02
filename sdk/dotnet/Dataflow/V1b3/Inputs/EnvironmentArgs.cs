@@ -100,12 +100,6 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Inputs
         }
 
         /// <summary>
-        /// Output only. The shuffle mode used for the job.
-        /// </summary>
-        [Input("shuffleMode")]
-        public Input<string>? ShuffleMode { get; set; }
-
-        /// <summary>
         /// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         /// </summary>
         [Input("tempStoragePrefix")]

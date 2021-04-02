@@ -34,12 +34,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1.Inputs
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Output only. Indicates If this connection profile password is stored.
-        /// </summary>
-        [Input("passwordSet")]
-        public Input<bool>? PasswordSet { get; set; }
-
-        /// <summary>
         /// Required. The network port of the source MySQL database.
         /// </summary>
         [Input("port")]

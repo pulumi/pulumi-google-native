@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
     public partial class ServiceMetadataImport : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the metadata import was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. A database dump from a pre-existing metastore's database.
+        /// </summary>
+        [Output("databaseDump")]
+        public Output<Outputs.DatabaseDumpResponse> DatabaseDump { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the metadata import.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the metadata import.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the metadata import was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ServiceMetadataImport resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +97,6 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
     public sealed class ServiceMetadataImportArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The time when the metadata import was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Immutable. A database dump from a pre-existing metastore's database.
         /// </summary>
         [Input("databaseDump")]
@@ -94,18 +125,6 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
 
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The current state of the metadata import.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the metadata import was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ServiceMetadataImportArgs()
         {

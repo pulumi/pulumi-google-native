@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationAnalyticDatastore : Pulumi.CustomResource
     {
         /// <summary>
+        /// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Datastore Configurations.
+        /// </summary>
+        [Output("datastoreConfig")]
+        public Output<Outputs.GoogleCloudApigeeV1DatastoreConfigResponse> DatastoreConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Display name in UI
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+        /// </summary>
+        [Output("lastUpdateTime")]
+        public Output<string> LastUpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Organization that the datastore belongs to
+        /// </summary>
+        [Output("org")]
+        public Output<string> Org { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+        /// </summary>
+        [Output("self")]
+        public Output<string> Self { get; private set; } = null!;
+
+        /// <summary>
+        /// Destination storage type. Supported types `gcs` or `bigquery`.
+        /// </summary>
+        [Output("targetType")]
+        public Output<string> TargetType { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationAnalyticDatastore resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +103,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public sealed class OrganizationAnalyticDatastoreArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Datastore Configurations.
         /// </summary>
         [Input("datastoreConfig")]
@@ -80,26 +117,8 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// Output only. Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-        /// </summary>
-        [Input("lastUpdateTime")]
-        public Input<string>? LastUpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. Organization that the datastore belongs to
-        /// </summary>
-        [Input("org")]
-        public Input<string>? Org { get; set; }
-
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-        /// </summary>
-        [Input("self")]
-        public Input<string>? Self { get; set; }
 
         /// <summary>
         /// Destination storage type. Supported types `gcs` or `bigquery`.

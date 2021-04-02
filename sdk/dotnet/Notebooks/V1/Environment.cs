@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Use a container image to start the notebook instance.
+        /// </summary>
+        [Output("containerImage")]
+        public Output<Outputs.ContainerImageResponse> ContainerImage { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this environment was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A brief description of this environment.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name of this environment for the UI.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+        /// </summary>
+        [Output("postStartupScript")]
+        public Output<string> PostStartupScript { get; private set; } = null!;
+
+        /// <summary>
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// </summary>
+        [Output("vmImage")]
+        public Output<Outputs.VmImageResponse> VmImage { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Environment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,12 +109,6 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         public Input<Inputs.ContainerImageArgs>? ContainerImage { get; set; }
 
         /// <summary>
-        /// Output only. The time at which this environment was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// A brief description of this environment.
         /// </summary>
         [Input("description")]
@@ -88,12 +125,6 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`

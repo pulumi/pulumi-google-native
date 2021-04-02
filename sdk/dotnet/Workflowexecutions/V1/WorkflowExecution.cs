@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Workflowexecutions.V1
     public partial class WorkflowExecution : Pulumi.CustomResource
     {
         /// <summary>
+        /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+        /// </summary>
+        [Output("argument")]
+        public Output<string> Argument { get; private set; } = null!;
+
+        /// <summary>
+        /// Marks the end of execution, successful or not.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+        /// </summary>
+        [Output("error")]
+        public Output<Outputs.ErrorResponse> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+        /// </summary>
+        [Output("result")]
+        public Output<string> Result { get; private set; } = null!;
+
+        /// <summary>
+        /// Marks the beginning of execution.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Current state of the execution.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Revision of the workflow this execution is using.
+        /// </summary>
+        [Output("workflowRevisionId")]
+        public Output<string> WorkflowRevisionId { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a WorkflowExecution resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -65,56 +114,14 @@ namespace Pulumi.GoogleCloud.Workflowexecutions.V1
         [Input("argument")]
         public Input<string>? Argument { get; set; }
 
-        /// <summary>
-        /// Output only. Marks the end of execution, successful or not.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-        /// </summary>
-        [Input("error")]
-        public Input<Inputs.ErrorArgs>? Error { get; set; }
-
         [Input("executionsId", required: true)]
         public Input<string> ExecutionsId { get; set; } = null!;
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-        /// </summary>
-        [Input("result")]
-        public Input<string>? Result { get; set; }
-
-        /// <summary>
-        /// Output only. Marks the beginning of execution.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
-        /// Output only. Current state of the execution.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Revision of the workflow this execution is using.
-        /// </summary>
-        [Input("workflowRevisionId")]
-        public Input<string>? WorkflowRevisionId { get; set; }
 
         [Input("workflowsId", required: true)]
         public Input<string> WorkflowsId { get; set; } = null!;

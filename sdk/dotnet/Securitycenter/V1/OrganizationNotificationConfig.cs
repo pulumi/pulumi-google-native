@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
     public partial class OrganizationNotificationConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// The description of the notification config (max of 1024 characters).
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        /// </summary>
+        [Output("pubsubTopic")]
+        public Output<string> PubsubTopic { get; private set; } = null!;
+
+        /// <summary>
+        /// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The config for triggering streaming-based notifications.
+        /// </summary>
+        [Output("streamingConfig")]
+        public Output<Outputs.StreamingConfigResponse> StreamingConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationNotificationConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -82,12 +113,6 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
         /// </summary>
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }
-
-        /// <summary>
-        /// Output only. The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
-        /// </summary>
-        [Input("serviceAccount")]
-        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// The config for triggering streaming-based notifications.

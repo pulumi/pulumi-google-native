@@ -16,6 +16,109 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        /// </summary>
+        [Output("authorizedNetwork")]
+        public Output<string> AuthorizedNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Endpoint for the Discovery API.
+        /// </summary>
+        [Output("discoveryEndpoint")]
+        public Output<string> DiscoveryEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// List of messages that describe the current state of the Memcached instance.
+        /// </summary>
+        [Output("instanceMessages")]
+        public Output<ImmutableArray<Outputs.InstanceMessageResponse>> InstanceMessages { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
+        /// </summary>
+        [Output("memcacheFullVersion")]
+        public Output<string> MemcacheFullVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// List of Memcached nodes. Refer to Node message for more details.
+        /// </summary>
+        [Output("memcacheNodes")]
+        public Output<ImmutableArray<Outputs.NodeResponse>> MemcacheNodes { get; private set; } = null!;
+
+        /// <summary>
+        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+        /// </summary>
+        [Output("memcacheVersion")]
+        public Output<string> MemcacheVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Configuration for Memcached nodes.
+        /// </summary>
+        [Output("nodeConfig")]
+        public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Number of nodes in the Memcached instance.
+        /// </summary>
+        [Output("nodeCount")]
+        public Output<int> NodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional: User defined parameters to apply to the memcached process on each node.
+        /// </summary>
+        [Output("parameters")]
+        public Output<Outputs.MemcacheParametersResponse> Parameters { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of this Memcached instance.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Returns true if there is an update waiting to be applied
+        /// </summary>
+        [Output("updateAvailable")]
+        public Output<bool> UpdateAvailable { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the instance was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,18 +169,6 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         public Input<string>? AuthorizedNetwork { get; set; }
 
         /// <summary>
-        /// Output only. The time the instance was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. Endpoint for the Discovery API.
-        /// </summary>
-        [Input("discoveryEndpoint")]
-        public Input<string>? DiscoveryEndpoint { get; set; }
-
-        /// <summary>
         /// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         /// </summary>
         [Input("displayName")]
@@ -114,24 +205,6 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
         public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
-        /// </summary>
-        [Input("memcacheFullVersion")]
-        public Input<string>? MemcacheFullVersion { get; set; }
-
-        [Input("memcacheNodes")]
-        private InputList<Inputs.NodeArgs>? _memcacheNodes;
-
-        /// <summary>
-        /// Output only. List of Memcached nodes. Refer to Node message for more details.
-        /// </summary>
-        public InputList<Inputs.NodeArgs> MemcacheNodes
-        {
-            get => _memcacheNodes ?? (_memcacheNodes = new InputList<Inputs.NodeArgs>());
-            set => _memcacheNodes = value;
-        }
-
-        /// <summary>
         /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         /// </summary>
         [Input("memcacheVersion")]
@@ -163,24 +236,6 @@ namespace Pulumi.GoogleCloud.Memcache.V1beta2
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The state of this Memcached instance.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Returns true if there is an update waiting to be applied
-        /// </summary>
-        [Input("updateAvailable")]
-        public Input<bool>? UpdateAvailable { get; set; }
-
-        /// <summary>
-        /// Output only. The time the instance was updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;

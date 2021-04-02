@@ -104,12 +104,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
         [Input("template")]
         public Input<string>? Template { get; set; }
 
-        /// <summary>
-        /// Output only. The display name of the tag template.
-        /// </summary>
-        [Input("templateDisplayName")]
-        public Input<string>? TemplateDisplayName { get; set; }
-
         public EntryGroupEntryTagArgs()
         {
         }

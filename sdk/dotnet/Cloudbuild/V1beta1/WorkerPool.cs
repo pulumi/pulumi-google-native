@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1beta1
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time at which the request to create the `WorkerPool` was received.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the request to delete the `WorkerPool` was received.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Network configuration for the `WorkerPool`.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.NetworkConfigResponse> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// `WorkerPool` state.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the request to update the `WorkerPool` was received.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Worker configuration for the `WorkerPool`.
+        /// </summary>
+        [Output("workerConfig")]
+        public Output<Outputs.WorkerConfigResponse> WorkerConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a WorkerPool resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,26 +102,8 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1beta1
 
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. Time at which the request to create the `WorkerPool` was received.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. Time at which the request to delete the `WorkerPool` was received.
-        /// </summary>
-        [Input("deleteTime")]
-        public Input<string>? DeleteTime { get; set; }
-
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Network configuration for the `WorkerPool`.
@@ -88,18 +113,6 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1beta1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. `WorkerPool` state.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Time at which the request to update the `WorkerPool` was received.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// Worker configuration for the `WorkerPool`.

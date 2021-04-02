@@ -22,43 +22,43 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1.Inputs
         public Input<Inputs.ServingConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the version was created.
+        /// The time at which the version was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. Identifies the user who created the version.
+        /// Identifies the user who created the version.
         /// </summary>
         [Input("createUser")]
         public Input<Inputs.ActingUserArgs>? CreateUser { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the version was `DELETED`.
+        /// The time at which the version was `DELETED`.
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
-        /// Output only. Identifies the user who `DELETED` the version.
+        /// Identifies the user who `DELETED` the version.
         /// </summary>
         [Input("deleteUser")]
         public Input<Inputs.ActingUserArgs>? DeleteUser { get; set; }
 
         /// <summary>
-        /// Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+        /// The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
         /// </summary>
         [Input("fileCount")]
         public Input<string>? FileCount { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the version was `FINALIZED`.
+        /// The time at which the version was `FINALIZED`.
         /// </summary>
         [Input("finalizeTime")]
         public Input<string>? FinalizeTime { get; set; }
 
         /// <summary>
-        /// Output only. Identifies the user who `FINALIZED` the version.
+        /// Identifies the user who `FINALIZED` the version.
         /// </summary>
         [Input("finalizeUser")]
         public Input<Inputs.ActingUserArgs>? FinalizeUser { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1.Inputs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+        /// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
         /// </summary>
         [Input("versionBytes")]
         public Input<string>? VersionBytes { get; set; }

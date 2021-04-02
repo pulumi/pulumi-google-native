@@ -16,25 +16,25 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta2.Inputs
     public sealed class TaskStatusArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
+        /// The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
         /// </summary>
         [Input("attemptDispatchCount")]
         public Input<int>? AttemptDispatchCount { get; set; }
 
         /// <summary>
-        /// Output only. The number of attempts which have received a response. This field is not calculated for pull tasks.
+        /// The number of attempts which have received a response. This field is not calculated for pull tasks.
         /// </summary>
         [Input("attemptResponseCount")]
         public Input<int>? AttemptResponseCount { get; set; }
 
         /// <summary>
-        /// Output only. The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks.
+        /// The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks.
         /// </summary>
         [Input("firstAttemptStatus")]
         public Input<Inputs.AttemptStatusArgs>? FirstAttemptStatus { get; set; }
 
         /// <summary>
-        /// Output only. The status of the task's last attempt. This field is not calculated for pull tasks.
+        /// The status of the task's last attempt. This field is not calculated for pull tasks.
         /// </summary>
         [Input("lastAttemptStatus")]
         public Input<Inputs.AttemptStatusArgs>? LastAttemptStatus { get; set; }

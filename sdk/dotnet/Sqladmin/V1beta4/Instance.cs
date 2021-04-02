@@ -16,6 +16,193 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        ///  *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+        /// </summary>
+        [Output("backendType")]
+        public Output<string> BackendType { get; private set; } = null!;
+
+        /// <summary>
+        /// Connection name of the Cloud SQL instance used in connection strings.
+        /// </summary>
+        [Output("connectionName")]
+        public Output<string> ConnectionName { get; private set; } = null!;
+
+        /// <summary>
+        /// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
+        /// </summary>
+        [Output("currentDiskSize")]
+        public Output<string> CurrentDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        /// </summary>
+        [Output("databaseVersion")]
+        public Output<string> DatabaseVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+        /// </summary>
+        [Output("diskEncryptionConfiguration")]
+        public Output<Outputs.DiskEncryptionConfigurationResponse> DiskEncryptionConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// Disk encryption status specific to an instance. Applies only to Second Generation instances.
+        /// </summary>
+        [Output("diskEncryptionStatus")]
+        public Output<Outputs.DiskEncryptionStatusResponse> DiskEncryptionStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        /// </summary>
+        [Output("failoverReplica")]
+        public Output<ImmutableDictionary<string, string>> FailoverReplica { get; private set; } = null!;
+
+        /// <summary>
+        /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        /// </summary>
+        [Output("gceZone")]
+        public Output<string> GceZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The assigned IP addresses for the instance.
+        /// </summary>
+        [Output("ipAddresses")]
+        public Output<ImmutableArray<Outputs.IpMappingResponse>> IpAddresses { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+        /// </summary>
+        [Output("ipv6Address")]
+        public Output<string> Ipv6Address { get; private set; } = null!;
+
+        /// <summary>
+        /// This is always *sql#instance*.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the instance which will act as primary in the replication setup.
+        /// </summary>
+        [Output("masterInstanceName")]
+        public Output<string> MasterInstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum disk size of the instance in bytes.
+        /// </summary>
+        [Output("maxDiskSize")]
+        public Output<string> MaxDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Cloud SQL instance. This does not include the project ID.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration specific to on-premises instances.
+        /// </summary>
+        [Output("onPremisesConfiguration")]
+        public Output<Outputs.OnPremisesConfigurationResponse> OnPremisesConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The geographical region. Can be *us-central* (*FIRST_GEN* instances only) *us-central1* (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*. Defaults to *us-central* or *us-central1* depending on the instance type. The region cannot be changed after instance creation.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration specific to failover replicas and read replicas.
+        /// </summary>
+        [Output("replicaConfiguration")]
+        public Output<Outputs.ReplicaConfigurationResponse> ReplicaConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// The replicas of the instance.
+        /// </summary>
+        [Output("replicaNames")]
+        public Output<ImmutableArray<string>> ReplicaNames { get; private set; } = null!;
+
+        /// <summary>
+        /// Initial root password. Use only on creation.
+        /// </summary>
+        [Output("rootPassword")]
+        public Output<string> RootPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The status indicating if instance satisfiesPzs. Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of any upcoming scheduled maintenance for this instance.
+        /// </summary>
+        [Output("scheduledMaintenance")]
+        public Output<Outputs.SqlScheduledMaintenanceResponse> ScheduledMaintenance { get; private set; } = null!;
+
+        /// <summary>
+        /// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
+        /// </summary>
+        [Output("secondaryGceZone")]
+        public Output<string> SecondaryGceZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of this resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// SSL configuration.
+        /// </summary>
+        [Output("serverCaCert")]
+        public Output<Outputs.SslCertResponse> ServerCaCert { get; private set; } = null!;
+
+        /// <summary>
+        /// The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
+        /// </summary>
+        [Output("serviceAccountEmailAddress")]
+        public Output<string> ServiceAccountEmailAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The user settings.
+        /// </summary>
+        [Output("settings")]
+        public Output<Outputs.SettingsResponse> Settings { get; private set; } = null!;
+
+        /// <summary>
+        /// The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// If the instance state is SUSPENDED, the reason for the suspension.
+        /// </summary>
+        [Output("suspensionReason")]
+        public Output<ImmutableArray<string>> SuspensionReason { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
         /// </summary>
         ///

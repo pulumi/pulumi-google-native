@@ -16,6 +16,84 @@ namespace Pulumi.GoogleCloud.Compute.V1
     public partial class TargetPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// The server-defined URL for the resource. This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool, and its failoverRatio field is properly set to a value between [0, 1].
+        /// 
+        /// backupPool and failoverRatio together define the fallback behavior of the primary target pool: if the ratio of the healthy instances in the primary pool is at or below failoverRatio, traffic arriving at the load-balanced IP will be directed to the backup pool.
+        /// 
+        /// In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
+        /// </summary>
+        [Output("backupPool")]
+        public Output<string> BackupPool { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool (i.e., not as a backup pool to some other target pool). The value of the field must be in [0, 1].
+        /// 
+        /// If set, backupPool must also be set. They together define the fallback behavior of the primary target pool: if the ratio of the healthy instances in the primary pool is at or below this number, traffic arriving at the load-balanced IP will be directed to the backup pool.
+        /// 
+        /// In case where failoverRatio is not set or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
+        /// </summary>
+        [Output("failoverRatio")]
+        public Output<double> FailoverRatio { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
+        /// </summary>
+        [Output("healthChecks")]
+        public Output<ImmutableArray<string>> HealthChecks { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
+        /// </summary>
+        [Output("instances")]
+        public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#targetPool for target pools.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] URL of the region where the target pool resides.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Session affinity option, must be one of the following values:
+        /// NONE: Connections from the same client IP may go to any instance in the pool.
+        /// CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.
+        /// CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
+        /// </summary>
+        [Output("sessionAffinity")]
+        public Output<string> SessionAffinity { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a TargetPool resource with the given unique name, arguments, and options.
         /// </summary>
         ///

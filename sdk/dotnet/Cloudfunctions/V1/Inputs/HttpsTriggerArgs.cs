@@ -21,12 +21,6 @@ namespace Pulumi.GoogleCloud.Cloudfunctions.V1.Inputs
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
-        /// <summary>
-        /// Output only. The deployed url for the function.
-        /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
-
         public HttpsTriggerArgs()
         {
         }

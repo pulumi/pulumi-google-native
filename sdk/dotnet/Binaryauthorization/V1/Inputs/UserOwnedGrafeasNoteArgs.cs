@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Binaryauthorization.V1.Inputs
     public sealed class UserOwnedGrafeasNoteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-        /// </summary>
-        [Input("delegationServiceAccountEmail")]
-        public Input<string>? DelegationServiceAccountEmail { get; set; }
-
-        /// <summary>
         /// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
         /// </summary>
         [Input("noteReference")]

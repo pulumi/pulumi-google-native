@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
     public partial class RealmGameServerCluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// The game server cluster connection information. This information is used to manage game server clusters.
+        /// </summary>
+        [Output("connectionInfo")]
+        public Output<Outputs.GameServerClusterConnectionInfoResponse> ConnectionInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable description of the cluster.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// ETag of the resource.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels associated with this game server cluster. Each label is a key-value pair.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a RealmGameServerCluster resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,12 +109,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
         public Input<Inputs.GameServerClusterConnectionInfoArgs>? ConnectionInfo { get; set; }
 
         /// <summary>
-        /// Output only. The creation time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Human readable description of the cluster.
         /// </summary>
         [Input("description")]
@@ -112,12 +149,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
 
         [Input("realmsId", required: true)]
         public Input<string> RealmsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The last-modified time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public RealmGameServerClusterArgs()
         {

@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvgroupAttachment : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time at which the environment group attachment was created as milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. ID of the attached environment.
+        /// </summary>
+        [Output("environment")]
+        public Output<string> Environment { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the environment group attachment.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvgroupAttachment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -61,12 +80,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     {
         [Input("attachmentsId", required: true)]
         public Input<string> AttachmentsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The time at which the environment group attachment was created as milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
 
         [Input("envgroupsId", required: true)]
         public Input<string> EnvgroupsId { get; set; } = null!;

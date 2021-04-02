@@ -39,12 +39,6 @@ namespace Pulumi.GoogleCloud.Composer.V1.Inputs
         [Input("webServerIpv4CidrBlock")]
         public Input<string>? WebServerIpv4CidrBlock { get; set; }
 
-        /// <summary>
-        /// Output only. The IP range reserved for the tenant project's App Engine VMs.
-        /// </summary>
-        [Input("webServerIpv4ReservedRange")]
-        public Input<string>? WebServerIpv4ReservedRange { get; set; }
-
         public PrivateEnvironmentConfigArgs()
         {
         }

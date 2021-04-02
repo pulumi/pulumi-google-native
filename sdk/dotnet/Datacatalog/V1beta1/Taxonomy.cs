@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
     public partial class Taxonomy : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
+        /// </summary>
+        [Output("activatedPolicyTypes")]
+        public Output<ImmutableArray<string>> ActivatedPolicyTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of policy tags contained in this taxonomy.
+        /// </summary>
+        [Output("policyTagCount")]
+        public Output<int> PolicyTagCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamps about this taxonomy. Only create_time and update_time are used.
+        /// </summary>
+        [Output("taxonomyTimestamps")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse> TaxonomyTimestamps { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Taxonomy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -86,29 +123,11 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. Number of policy tags contained in this taxonomy.
-        /// </summary>
-        [Input("policyTagCount")]
-        public Input<int>? PolicyTagCount { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("taxonomiesId", required: true)]
         public Input<string> TaxonomiesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Timestamps about this taxonomy. Only create_time and update_time are used.
-        /// </summary>
-        [Input("taxonomyTimestamps")]
-        public Input<Inputs.GoogleCloudDatacatalogV1beta1SystemTimestampsArgs>? TaxonomyTimestamps { get; set; }
 
         public TaxonomyArgs()
         {

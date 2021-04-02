@@ -16,6 +16,91 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationDeveloper : Pulumi.CustomResource
     {
         /// <summary>
+        /// Access type.
+        /// </summary>
+        [Output("accessType")]
+        public Output<string> AccessType { get; private set; } = null!;
+
+        /// <summary>
+        /// Developer app family.
+        /// </summary>
+        [Output("appFamily")]
+        public Output<string> AppFamily { get; private set; } = null!;
+
+        /// <summary>
+        /// List of apps associated with the developer.
+        /// </summary>
+        [Output("apps")]
+        public Output<ImmutableArray<string>> Apps { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
+        /// </summary>
+        [Output("attributes")]
+        public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1AttributeResponse>> Attributes { get; private set; } = null!;
+
+        /// <summary>
+        /// List of companies associated with the developer.
+        /// </summary>
+        [Output("companies")]
+        public Output<ImmutableArray<string>> Companies { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the developer was created in milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
+        /// </summary>
+        [Output("developerId")]
+        public Output<string> DeveloperId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+        /// </summary>
+        [Output("email")]
+        public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. First name of the developer.
+        /// </summary>
+        [Output("firstName")]
+        public Output<string> FirstName { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the developer was last modified in milliseconds since epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Last name of the developer.
+        /// </summary>
+        [Output("lastName")]
+        public Output<string> LastName { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Apigee organization in which the developer resides.
+        /// </summary>
+        [Output("organizationName")]
+        public Output<string> OrganizationName { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the developer. Valid values are `active` and `inactive`.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User name of the developer. Not used by Apigee hybrid.
+        /// </summary>
+        [Output("userName")]
+        public Output<string> UserName { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationDeveloper resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -108,12 +193,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         }
 
         /// <summary>
-        /// Output only. Time at which the developer was created in milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
         /// </summary>
         [Input("developerId")]
@@ -135,31 +214,13 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// Output only. Time at which the developer was last modified in milliseconds since epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
-
-        /// <summary>
         /// Required. Last name of the developer.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
-        /// <summary>
-        /// Output only. Name of the Apigee organization in which the developer resides.
-        /// </summary>
-        [Input("organizationName")]
-        public Input<string>? OrganizationName { get; set; }
-
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Status of the developer. Valid values are `active` and `inactive`.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Required. User name of the developer. Not used by Apigee hybrid.

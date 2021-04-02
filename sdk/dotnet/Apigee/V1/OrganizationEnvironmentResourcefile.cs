@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentResourcefile : Pulumi.CustomResource
     {
         /// <summary>
+        /// The HTTP Content-Type header value specifying the content type of the body.
+        /// </summary>
+        [Output("contentType")]
+        public Output<string> ContentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The HTTP request/response body as raw binary.
+        /// </summary>
+        [Output("data")]
+        public Output<string> Data { get; private set; } = null!;
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Output("extensions")]
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Extensions { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentResourcefile resource with the given unique name, arguments, and options.
         /// </summary>
         ///

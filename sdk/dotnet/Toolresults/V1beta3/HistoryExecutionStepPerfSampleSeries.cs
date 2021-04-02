@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
     public partial class HistoryExecutionStepPerfSampleSeries : Pulumi.CustomResource
     {
         /// <summary>
+        /// Basic series represented by a line chart
+        /// </summary>
+        [Output("basicPerfSampleSeries")]
+        public Output<Outputs.BasicPerfSampleSeriesResponse> BasicPerfSampleSeries { get; private set; } = null!;
+
+        /// <summary>
+        /// A tool results execution ID. @OutputOnly
+        /// </summary>
+        [Output("executionId")]
+        public Output<string> ExecutionId { get; private set; } = null!;
+
+        /// <summary>
+        /// A tool results history ID. @OutputOnly
+        /// </summary>
+        [Output("historyId")]
+        public Output<string> HistoryId { get; private set; } = null!;
+
+        /// <summary>
+        /// The cloud project @OutputOnly
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// A sample series id @OutputOnly
+        /// </summary>
+        [Output("sampleSeriesId")]
+        public Output<string> SampleSeriesId { get; private set; } = null!;
+
+        /// <summary>
+        /// A tool results step ID. @OutputOnly
+        /// </summary>
+        [Output("stepId")]
+        public Output<string> StepId { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a HistoryExecutionStepPerfSampleSeries resource with the given unique name, arguments, and options.
         /// </summary>
         ///

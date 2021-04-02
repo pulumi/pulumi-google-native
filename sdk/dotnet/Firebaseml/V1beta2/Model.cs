@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Firebaseml.V1beta2
     public partial class Model : Pulumi.CustomResource
     {
         /// <summary>
+        /// Lists operation ids associated with this model whose status is NOT done.
+        /// </summary>
+        [Output("activeOperations")]
+        public Output<ImmutableArray<Outputs.OperationResponse>> ActiveOperations { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp when this model was created in Firebase ML.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The model_hash will change if a new file is available for download.
+        /// </summary>
+        [Output("modelHash")]
+        public Output<string> ModelHash { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// State common to all model types. Includes publishing and validation information.
+        /// </summary>
+        [Output("state")]
+        public Output<Outputs.ModelStateResponse> State { get; private set; } = null!;
+
+        /// <summary>
+        /// User defined tags which can be used to group/filter models during listing
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// A TFLite Model
+        /// </summary>
+        [Output("tfliteModel")]
+        public Output<Outputs.TfLiteModelResponse> TfliteModel { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp when this model was updated in Firebase ML.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Model resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,41 +120,11 @@ namespace Pulumi.GoogleCloud.Firebaseml.V1beta2
 
     public sealed class ModelArgs : Pulumi.ResourceArgs
     {
-        [Input("activeOperations")]
-        private InputList<Inputs.OperationArgs>? _activeOperations;
-
-        /// <summary>
-        /// Output only. Lists operation ids associated with this model whose status is NOT done.
-        /// </summary>
-        public InputList<Inputs.OperationArgs> ActiveOperations
-        {
-            get => _activeOperations ?? (_activeOperations = new InputList<Inputs.OperationArgs>());
-            set => _activeOperations = value;
-        }
-
-        /// <summary>
-        /// Output only. Timestamp when this model was created in Firebase ML.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         /// <summary>
         /// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
-        /// <summary>
-        /// Output only. The model_hash will change if a new file is available for download.
-        /// </summary>
-        [Input("modelHash")]
-        public Input<string>? ModelHash { get; set; }
 
         [Input("modelsId", required: true)]
         public Input<string> ModelsId { get; set; } = null!;
@@ -130,12 +161,6 @@ namespace Pulumi.GoogleCloud.Firebaseml.V1beta2
         /// </summary>
         [Input("tfliteModel")]
         public Input<Inputs.TfLiteModelArgs>? TfliteModel { get; set; }
-
-        /// <summary>
-        /// Output only. Timestamp when this model was updated in Firebase ML.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ModelArgs()
         {

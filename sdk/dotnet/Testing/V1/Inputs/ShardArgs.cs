@@ -16,19 +16,19 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
     public sealed class ShardArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The total number of shards.
+        /// The total number of shards.
         /// </summary>
         [Input("numShards")]
         public Input<int>? NumShards { get; set; }
 
         /// <summary>
-        /// Output only. The index of the shard among all the shards.
+        /// The index of the shard among all the shards.
         /// </summary>
         [Input("shardIndex")]
         public Input<int>? ShardIndex { get; set; }
 
         /// <summary>
-        /// Output only. Test targets for each shard.
+        /// Test targets for each shard.
         /// </summary>
         [Input("testTargetsForShard")]
         public Input<Inputs.TestTargetsForShardArgs>? TestTargetsForShard { get; set; }

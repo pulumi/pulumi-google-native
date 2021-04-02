@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
     public partial class History : Pulumi.CustomResource
     {
         /// <summary>
+        /// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
+        /// </summary>
+        [Output("historyId")]
+        public Output<string> HistoryId { get; private set; } = null!;
+
+        /// <summary>
+        /// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+        /// </summary>
+        [Output("testPlatform")]
+        public Output<string> TestPlatform { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a History resource with the given unique name, arguments, and options.
         /// </summary>
         ///

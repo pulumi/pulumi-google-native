@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
     public sealed class GooglePrivacyDlpV2InspectTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The creation timestamp of an inspectTemplate.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Short description (max 256 chars).
         /// </summary>
         [Input("description")]
@@ -38,18 +32,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
         /// </summary>
         [Input("inspectConfig")]
         public Input<Inputs.GooglePrivacyDlpV2InspectConfigArgs>? InspectConfig { get; set; }
-
-        /// <summary>
-        /// Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of an inspectTemplate.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GooglePrivacyDlpV2InspectTemplateArgs()
         {

@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Iam.V1
     public partial class WorkloadIdentityPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// A description of the pool. Cannot exceed 256 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// A display name for the pool. Cannot exceed 32 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the pool.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the pool.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a WorkloadIdentityPool resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -80,20 +111,8 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name of the pool.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The state of the pool.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         [Input("workloadIdentityPoolsId", required: true)]
         public Input<string> WorkloadIdentityPoolsId { get; set; } = null!;

@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
     public partial class Conversation : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        /// </summary>
+        [Output("conversationProfile")]
+        public Output<string> ConversationProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+        /// </summary>
+        [Output("conversationStage")]
+        public Output<string> ConversationStage { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the conversation was finished.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the Conversation.
+        /// </summary>
+        [Output("lifecycleState")]
+        public Output<string> LifecycleState { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// It will not be empty if the conversation is to be connected over telephony.
+        /// </summary>
+        [Output("phoneNumber")]
+        public Output<Outputs.GoogleCloudDialogflowV2ConversationPhoneNumberResponse> PhoneNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the conversation was started.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Conversation resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -74,41 +117,11 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         [Input("conversationsId", required: true)]
         public Input<string> ConversationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The time the conversation was finished.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of the Conversation.
-        /// </summary>
-        [Input("lifecycleState")]
-        public Input<string>? LifecycleState { get; set; }
-
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The unique identifier of this conversation. Format: `projects//locations//conversations/`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. It will not be empty if the conversation is to be connected over telephony.
-        /// </summary>
-        [Input("phoneNumber")]
-        public Input<Inputs.GoogleCloudDialogflowV2ConversationPhoneNumberArgs>? PhoneNumber { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The time the conversation was started.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
 
         public ConversationArgs()
         {

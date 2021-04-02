@@ -77,23 +77,11 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1beta1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("reservationsId", required: true)]
         public Input<string> ReservationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. State of the assignment.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public ReservationAssignmentArgs()
         {

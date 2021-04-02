@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationApi : Pulumi.CustomResource
     {
         /// <summary>
+        /// The id of the most recently created revision for this api proxy.
+        /// </summary>
+        [Output("latestRevisionId")]
+        public Output<string> LatestRevisionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata describing the API proxy.
+        /// </summary>
+        [Output("metaData")]
+        public Output<Outputs.GoogleCloudApigeeV1EntityMetadataResponse> MetaData { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the API proxy.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// List of revisons defined for the API proxy.
+        /// </summary>
+        [Output("revision")]
+        public Output<ImmutableArray<string>> Revision { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationApi resource with the given unique name, arguments, and options.
         /// </summary>
         ///

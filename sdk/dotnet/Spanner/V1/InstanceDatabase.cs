@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Spanner.V1
     public partial class InstanceDatabase : Pulumi.CustomResource
     {
         /// <summary>
+        /// If exists, the time at which the database creation started.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        /// </summary>
+        [Output("earliestVersionTime")]
+        public Output<string> EarliestVersionTime { get; private set; } = null!;
+
+        /// <summary>
+        /// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.EncryptionConfigResponse> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
+        /// </summary>
+        [Output("encryptionInfo")]
+        public Output<ImmutableArray<Outputs.EncryptionInfoResponse>> EncryptionInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Applicable only for restored databases. Contains information about the restore source.
+        /// </summary>
+        [Output("restoreInfo")]
+        public Output<Outputs.RestoreInfoResponse> RestoreInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The current database state.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The period in which Cloud Spanner retains all versions of data for the database. This is the same as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
+        /// </summary>
+        [Output("versionRetentionPeriod")]
+        public Output<string> VersionRetentionPeriod { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceDatabase resource with the given unique name, arguments, and options.
         /// </summary>
         ///

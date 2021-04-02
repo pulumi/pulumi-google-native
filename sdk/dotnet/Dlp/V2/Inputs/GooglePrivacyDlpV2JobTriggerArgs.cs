@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
     public sealed class GooglePrivacyDlpV2JobTriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The creation timestamp of a triggeredJob.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// User provided description (max 256 chars)
         /// </summary>
         [Input("description")]
@@ -33,29 +27,11 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("errors")]
-        private InputList<Inputs.GooglePrivacyDlpV2ErrorArgs>? _errors;
-
-        /// <summary>
-        /// Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-        /// </summary>
-        public InputList<Inputs.GooglePrivacyDlpV2ErrorArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.GooglePrivacyDlpV2ErrorArgs>());
-            set => _errors = value;
-        }
-
         /// <summary>
         /// For inspect jobs, a snapshot of the configuration.
         /// </summary>
         [Input("inspectJob")]
         public Input<Inputs.GooglePrivacyDlpV2InspectJobConfigArgs>? InspectJob { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp of the last time this trigger executed.
-        /// </summary>
-        [Input("lastRunTime")]
-        public Input<string>? LastRunTime { get; set; }
 
         /// <summary>
         /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
@@ -80,12 +56,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
             get => _triggers ?? (_triggers = new InputList<Inputs.GooglePrivacyDlpV2TriggerArgs>());
             set => _triggers = value;
         }
-
-        /// <summary>
-        /// Output only. The last update timestamp of a triggeredJob.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GooglePrivacyDlpV2JobTriggerArgs()
         {

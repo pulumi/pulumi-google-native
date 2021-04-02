@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Vision.V1
     public partial class Product : Pulumi.CustomResource
     {
         /// <summary>
+        /// User-provided metadata to be stored with this product. Must be at most 4096 characters long.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
+        /// </summary>
+        [Output("productCategory")]
+        public Output<string> ProductCategory { get; private set; } = null!;
+
+        /// <summary>
+        /// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
+        /// </summary>
+        [Output("productLabels")]
+        public Output<ImmutableArray<Outputs.KeyValueResponse>> ProductLabels { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Product resource with the given unique name, arguments, and options.
         /// </summary>
         ///

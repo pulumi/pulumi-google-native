@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
     public partial class ServiceServiceLevelObjective : Pulumi.CustomResource
     {
         /// <summary>
+        /// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+        /// </summary>
+        [Output("calendarPeriod")]
+        public Output<string> CalendarPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Name used for UI elements listing this SLO.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The fraction of service that must be good in order for this objective to be met. 0 &lt; goal &lt;= 0.999.
+        /// </summary>
+        [Output("goal")]
+        public Output<double> Goal { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
+        /// </summary>
+        [Output("rollingPeriod")]
+        public Output<string> RollingPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+        /// </summary>
+        [Output("serviceLevelIndicator")]
+        public Output<Outputs.ServiceLevelIndicatorResponse> ServiceLevelIndicator { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ServiceServiceLevelObjective resource with the given unique name, arguments, and options.
         /// </summary>
         ///

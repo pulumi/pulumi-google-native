@@ -16,6 +16,91 @@ namespace Pulumi.GoogleCloud.Compute.V1
     public partial class Autoscaler : Pulumi.CustomResource
     {
         /// <summary>
+        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
+        /// 
+        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// </summary>
+        [Output("autoscalingPolicy")]
+        public Output<Outputs.AutoscalingPolicyResponse> AutoscalingPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+        /// </summary>
+        [Output("recommendedSize")]
+        public Output<int> RecommendedSize { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Status information of existing scaling schedules.
+        /// </summary>
+        [Output("scalingScheduleStatus")]
+        public Output<ImmutableDictionary<string, string>> ScalingScheduleStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+        /// - PENDING: Autoscaler backend hasn't read new/updated configuration. 
+        /// - DELETING: Configuration is being deleted. 
+        /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
+        /// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+        /// </summary>
+        [Output("statusDetails")]
+        public Output<ImmutableArray<Outputs.AutoscalerStatusDetailsResponse>> StatusDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
+        /// </summary>
+        [Output("target")]
+        public Output<string> Target { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Autoscaler resource with the given unique name, arguments, and options.
         /// </summary>
         ///

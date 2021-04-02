@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Cloudsearch.V1
     public partial class SettingSearchapplication : Pulumi.CustomResource
     {
         /// <summary>
+        /// Retrictions applied to the configurations. The maximum number of elements is 10.
+        /// </summary>
+        [Output("dataSourceRestrictions")]
+        public Output<ImmutableArray<Outputs.DataSourceRestrictionResponse>> DataSourceRestrictions { get; private set; } = null!;
+
+        /// <summary>
+        /// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+        /// </summary>
+        [Output("defaultFacetOptions")]
+        public Output<ImmutableArray<Outputs.FacetOptionsResponse>> DefaultFacetOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// The default options for sorting the search results
+        /// </summary>
+        [Output("defaultSortOptions")]
+        public Output<Outputs.SortOptionsResponse> DefaultSortOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name of the Search Application. The maximum length is 300 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Search Application. Format: searchapplications/{application_id}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+        /// </summary>
+        [Output("operationIds")]
+        public Output<ImmutableArray<string>> OperationIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for ranking results.
+        /// </summary>
+        [Output("scoringConfig")]
+        public Output<Outputs.ScoringConfigResponse> ScoringConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for a sources specified in data_source_restrictions.
+        /// </summary>
+        [Output("sourceConfig")]
+        public Output<ImmutableArray<Outputs.SourceConfigResponse>> SourceConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a SettingSearchapplication resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -100,18 +149,6 @@ namespace Pulumi.GoogleCloud.Cloudsearch.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("operationIds")]
-        private InputList<string>? _operationIds;
-
-        /// <summary>
-        /// Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
-        /// </summary>
-        public InputList<string> OperationIds
-        {
-            get => _operationIds ?? (_operationIds = new InputList<string>());
-            set => _operationIds = value;
-        }
 
         /// <summary>
         /// Configuration for ranking results.

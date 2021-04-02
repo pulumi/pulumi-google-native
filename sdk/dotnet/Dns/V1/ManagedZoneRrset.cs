@@ -15,6 +15,40 @@ namespace Pulumi.GoogleCloud.Dns.V1
     [GoogleCloudResourceType("google-cloud:dns/v1:ManagedZoneRrset")]
     public partial class ManagedZoneRrset : Pulumi.CustomResource
     {
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// For example, www.example.com.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+        /// </summary>
+        [Output("rrdatas")]
+        public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
+
+        /// <summary>
+        /// As defined in RFC 4034 (section 3.2).
+        /// </summary>
+        [Output("signatureRrdatas")]
+        public Output<ImmutableArray<string>> SignatureRrdatas { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+        /// </summary>
+        [Output("ttl")]
+        public Output<int> Ttl { get; private set; } = null!;
+
+        /// <summary>
+        /// The identifier of a supported record type. See the list of Supported DNS record types.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a ManagedZoneRrset resource with the given unique name, arguments, and options.
         /// </summary>

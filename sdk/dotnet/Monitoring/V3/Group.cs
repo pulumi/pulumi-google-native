@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
+        /// A user-assigned name for this group, used only for display purposes.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The filter used to determine which monitored resources belong to this group.
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
+        /// </summary>
+        [Output("isCluster")]
+        public Output<bool> IsCluster { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+        /// </summary>
+        [Output("parentName")]
+        public Output<string> ParentName { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Group resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -81,7 +112,7 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         public Input<bool>? IsCluster { get; set; }
 
         /// <summary>
-        /// Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+        /// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

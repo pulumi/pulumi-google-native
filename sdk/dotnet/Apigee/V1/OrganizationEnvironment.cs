@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of this environment as milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Description of the environment.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Display name for this environment.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Last modification time of this environment as milliseconds since epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Key-value pairs that may be used for customizing the environment.
+        /// </summary>
+        [Output("properties")]
+        public Output<Outputs.GoogleCloudApigeeV1PropertiesResponse> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the environment. Values other than ACTIVE means the resource is not ready to use.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +103,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public sealed class OrganizationEnvironmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Creation time of this environment as milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// Optional. Description of the environment.
         /// </summary>
         [Input("description")]
@@ -81,12 +118,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string> EnvironmentsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Last modification time of this environment as milliseconds since epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
-
-        /// <summary>
         /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         /// </summary>
         [Input("name")]
@@ -100,12 +131,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("properties")]
         public Input<Inputs.GoogleCloudApigeeV1PropertiesArgs>? Properties { get; set; }
-
-        /// <summary>
-        /// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public OrganizationEnvironmentArgs()
         {

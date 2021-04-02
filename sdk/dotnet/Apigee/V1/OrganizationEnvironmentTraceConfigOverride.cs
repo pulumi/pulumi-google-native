@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentTraceConfigOverride : Pulumi.CustomResource
     {
         /// <summary>
+        /// ID of the API proxy that will have its trace configuration overridden.
+        /// </summary>
+        [Output("apiProxy")]
+        public Output<string> ApiProxy { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the trace configuration override specified as a system-generated UUID.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Trace configuration to override.
+        /// </summary>
+        [Output("samplingConfig")]
+        public Output<Outputs.GoogleCloudApigeeV1TraceSamplingConfigResponse> SamplingConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentTraceConfigOverride resource with the given unique name, arguments, and options.
         /// </summary>
         ///

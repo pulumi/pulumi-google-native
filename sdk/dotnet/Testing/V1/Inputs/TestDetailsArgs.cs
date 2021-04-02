@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
     public sealed class TestDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. If the TestState is ERROR, then this string will contain human-readable details about the error.
+        /// If the TestState is ERROR, then this string will contain human-readable details about the error.
         /// </summary>
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
         private InputList<string>? _progressMessages;
 
         /// <summary>
-        /// Output only. Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
+        /// Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
         /// </summary>
         public InputList<string> ProgressMessages
         {

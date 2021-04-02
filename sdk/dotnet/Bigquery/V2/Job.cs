@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Required] Describes the job configuration.
+        /// </summary>
+        [Output("configuration")]
+        public Output<Outputs.JobConfigurationResponse> Configuration { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] A hash of this resource.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] Reference describing the unique-per-user name of the job.
+        /// </summary>
+        [Output("jobReference")]
+        public Output<Outputs.JobReferenceResponse> JobReference { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The type of the resource.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] A URL that can be used to access this resource again.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] Information about the job, including starting time and ending time of the job.
+        /// </summary>
+        [Output("statistics")]
+        public Output<Outputs.JobStatisticsResponse> Statistics { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.JobStatusResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] Email address of the user who ran the job.
+        /// </summary>
+        [Output("user_email")]
+        public Output<string> User_email { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
         /// </summary>
         ///

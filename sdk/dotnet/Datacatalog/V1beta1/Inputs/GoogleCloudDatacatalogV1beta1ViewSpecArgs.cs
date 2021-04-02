@@ -15,12 +15,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDatacatalogV1beta1ViewSpecArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The query that defines the table view.
-        /// </summary>
-        [Input("viewQuery")]
-        public Input<string>? ViewQuery { get; set; }
-
         public GoogleCloudDatacatalogV1beta1ViewSpecArgs()
         {
         }

@@ -16,6 +16,109 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
+        /// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+        /// </summary>
+        [Output("artifactGcsUri")]
+        public Output<string> ArtifactGcsUri { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the metastore service was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of the endpoint used to access the metastore service.
+        /// </summary>
+        [Output("endpointUri")]
+        public Output<string> EndpointUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration information specific to running Hive metastore software as the metastore service.
+        /// </summary>
+        [Output("hiveMetastoreConfig")]
+        public Output<Outputs.HiveMetastoreConfigResponse> HiveMetastoreConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined labels for the metastore service.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+        /// </summary>
+        [Output("maintenanceWindow")]
+        public Output<Outputs.MaintenanceWindowResponse> MaintenanceWindow { get; private set; } = null!;
+
+        /// <summary>
+        /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// </summary>
+        [Output("metadataIntegration")]
+        public Output<Outputs.MetadataIntegrationResponse> MetadataIntegration { get; private set; } = null!;
+
+        /// <summary>
+        /// The metadata management activities of the metastore service.
+        /// </summary>
+        [Output("metadataManagementActivity")]
+        public Output<Outputs.MetadataManagementActivityResponse> MetadataManagementActivity { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The TCP port at which the metastore service is reached. Default: 9083.
+        /// </summary>
+        [Output("port")]
+        public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        /// </summary>
+        [Output("releaseChannel")]
+        public Output<string> ReleaseChannel { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the metastore service.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the current state of the metastore service, if available.
+        /// </summary>
+        [Output("stateMessage")]
+        public Output<string> StateMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// The tier of the service.
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
+
+        /// <summary>
+        /// The globally unique resource identifier of the metastore service.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the metastore service was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,24 +163,6 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-        /// </summary>
-        [Input("artifactGcsUri")]
-        public Input<string>? ArtifactGcsUri { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the metastore service was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The URI of the endpoint used to access the metastore service.
-        /// </summary>
-        [Input("endpointUri")]
-        public Input<string>? EndpointUri { get; set; }
-
-        /// <summary>
         /// Configuration information specific to running Hive metastore software as the metastore service.
         /// </summary>
         [Input("hiveMetastoreConfig")]
@@ -111,12 +196,6 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         public Input<Inputs.MetadataIntegrationArgs>? MetadataIntegration { get; set; }
 
         /// <summary>
-        /// Output only. The metadata management activities of the metastore service.
-        /// </summary>
-        [Input("metadataManagementActivity")]
-        public Input<Inputs.MetadataManagementActivityArgs>? MetadataManagementActivity { get; set; }
-
-        /// <summary>
         /// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         /// </summary>
         [Input("name")]
@@ -147,34 +226,10 @@ namespace Pulumi.GoogleCloud.Metastore.V1beta
         public Input<string> ServicesId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The current state of the metastore service.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Additional information about the current state of the metastore service, if available.
-        /// </summary>
-        [Input("stateMessage")]
-        public Input<string>? StateMessage { get; set; }
-
-        /// <summary>
         /// The tier of the service.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
-
-        /// <summary>
-        /// Output only. The globally unique resource identifier of the metastore service.
-        /// </summary>
-        [Input("uid")]
-        public Input<string>? Uid { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the metastore service was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ServiceArgs()
         {

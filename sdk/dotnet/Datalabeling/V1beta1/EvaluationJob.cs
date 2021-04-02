@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
     public partial class EvaluationJob : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        /// </summary>
+        [Output("annotationSpecSet")]
+        public Output<string> AnnotationSpecSet { get; private set; } = null!;
+
+        /// <summary>
+        /// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+        /// </summary>
+        [Output("attempts")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDatalabelingV1beta1AttemptResponse>> Attempts { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when this evaluation job was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Description of the job. The description can be up to 25,000 characters long.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Configuration details for the evaluation job.
+        /// </summary>
+        [Output("evaluationJobConfig")]
+        public Output<Outputs.GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse> EvaluationJobConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+        /// </summary>
+        [Output("labelMissingGroundTruth")]
+        public Output<bool> LabelMissingGroundTruth { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+        /// </summary>
+        [Output("modelVersion")]
+        public Output<string> ModelVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+        /// </summary>
+        [Output("schedule")]
+        public Output<string> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the current state of the job.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a EvaluationJob resource with the given unique name, arguments, and options.
         /// </summary>
         ///

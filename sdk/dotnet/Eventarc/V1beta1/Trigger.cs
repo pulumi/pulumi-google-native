@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Destination specifies where the events should be sent to.
+        /// </summary>
+        [Output("destination")]
+        public Output<Outputs.DestinationResponse> Destination { get; private set; } = null!;
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User labels attached to the triggers that can be used to group resources.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// </summary>
+        [Output("matchingCriteria")]
+        public Output<ImmutableArray<Outputs.MatchingCriteriaResponse>> MatchingCriteria { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        /// </summary>
+        [Output("transport")]
+        public Output<Outputs.TransportResponse> Transport { get; private set; } = null!;
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Trigger resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,22 +115,10 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The creation time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Required. Destination specifies where the events should be sent to.
         /// </summary>
         [Input("destination")]
         public Input<Inputs.DestinationArgs>? Destination { get; set; }
-
-        /// <summary>
-        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -119,20 +162,8 @@ namespace Pulumi.GoogleCloud.Eventarc.V1beta1
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
-        /// <summary>
-        /// Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-        /// </summary>
-        [Input("transport")]
-        public Input<Inputs.TransportArgs>? Transport { get; set; }
-
         [Input("triggersId", required: true)]
         public Input<string> TriggersId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The last-modified time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public TriggerArgs()
         {

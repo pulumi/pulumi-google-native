@@ -16,13 +16,13 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1.Inputs
     public sealed class DerivedArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. This contains the base image URL for the derived image occurrence.
+        /// This contains the base image URL for the derived image occurrence.
         /// </summary>
         [Input("baseResourceUrl")]
         public Input<string>? BaseResourceUrl { get; set; }
 
         /// <summary>
-        /// Output only. The number of layers by which this image differs from the associated image basis.
+        /// The number of layers by which this image differs from the associated image basis.
         /// </summary>
         [Input("distance")]
         public Input<int>? Distance { get; set; }

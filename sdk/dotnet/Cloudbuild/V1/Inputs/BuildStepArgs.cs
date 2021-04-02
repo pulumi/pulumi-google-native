@@ -63,12 +63,6 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Output only. Stores timing information for pulling this build step's builder image only.
-        /// </summary>
-        [Input("pullTiming")]
-        public Input<Inputs.TimeSpanArgs>? PullTiming { get; set; }
-
         [Input("secretEnv")]
         private InputList<string>? _secretEnv;
 
@@ -82,22 +76,10 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1.Inputs
         }
 
         /// <summary>
-        /// Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        /// <summary>
         /// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
-
-        /// <summary>
-        /// Output only. Stores timing information for executing this build step.
-        /// </summary>
-        [Input("timing")]
-        public Input<Inputs.TimeSpanArgs>? Timing { get; set; }
 
         [Input("volumes")]
         private InputList<Inputs.VolumeArgs>? _volumes;

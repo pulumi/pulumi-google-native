@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentTargetserver : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. A human-readable description of this TargetServer.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        /// </summary>
+        [Output("host")]
+        public Output<string> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
+        /// </summary>
+        [Output("isEnabled")]
+        public Output<bool> IsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource id of this target server. Values must match the regular expression 
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        /// </summary>
+        [Output("port")]
+        public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+        /// </summary>
+        [Output("sSLInfo")]
+        public Output<Outputs.GoogleCloudApigeeV1TlsInfoResponse> SSLInfo { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentTargetserver resource with the given unique name, arguments, and options.
         /// </summary>
         ///

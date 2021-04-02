@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
     public partial class AgentKnowledgeBaseDocument : Pulumi.CustomResource
     {
         /// <summary>
+        /// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
+        /// </summary>
+        [Output("contentUri")]
+        public Output<string> ContentUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+        /// </summary>
+        [Output("enableAutoReload")]
+        public Output<bool> EnableAutoReload { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The knowledge type of document content.
+        /// </summary>
+        [Output("knowledgeTypes")]
+        public Output<ImmutableArray<string>> KnowledgeTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
+        /// </summary>
+        [Output("latestReloadStatus")]
+        public Output<Outputs.GoogleCloudDialogflowV2DocumentReloadStatusResponse> LatestReloadStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+        /// </summary>
+        [Output("metadata")]
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The MIME type of this document.
+        /// </summary>
+        [Output("mimeType")]
+        public Output<string> MimeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
+        /// </summary>
+        [Output("rawContent")]
+        public Output<string> RawContent { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentKnowledgeBaseDocument resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -94,12 +149,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
             get => _knowledgeTypes ?? (_knowledgeTypes = new InputList<string>());
             set => _knowledgeTypes = value;
         }
-
-        /// <summary>
-        /// Output only. The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
-        /// </summary>
-        [Input("latestReloadStatus")]
-        public Input<Inputs.GoogleCloudDialogflowV2DocumentReloadStatusArgs>? LatestReloadStatus { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1.Inputs
         }
 
         /// <summary>
-        /// Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+        /// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
         /// </summary>
         [Input("v2Name")]
         public Input<string>? V2Name { get; set; }

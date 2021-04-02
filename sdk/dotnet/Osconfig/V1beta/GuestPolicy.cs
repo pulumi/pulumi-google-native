@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Osconfig.V1beta
     public partial class GuestPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        /// </summary>
+        [Output("assignment")]
+        public Output<Outputs.AssignmentResponse> Assignment { get; private set; } = null!;
+
+        /// <summary>
+        /// Time this guest policy was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the guest policy. Length of the description is limited to 1024 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+        /// </summary>
+        [Output("packageRepositories")]
+        public Output<ImmutableArray<Outputs.PackageRepositoryResponse>> PackageRepositories { get; private set; } = null!;
+
+        /// <summary>
+        /// The software packages to be managed by this policy.
+        /// </summary>
+        [Output("packages")]
+        public Output<ImmutableArray<Outputs.PackageResponse>> Packages { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of Recipes to install on the VM instance.
+        /// </summary>
+        [Output("recipes")]
+        public Output<ImmutableArray<Outputs.SoftwareRecipeResponse>> Recipes { get; private set; } = null!;
+
+        /// <summary>
+        /// Last time this guest policy was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a GuestPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -64,12 +119,6 @@ namespace Pulumi.GoogleCloud.Osconfig.V1beta
         /// </summary>
         [Input("assignment")]
         public Input<Inputs.AssignmentArgs>? Assignment { get; set; }
-
-        /// <summary>
-        /// Output only. Time this guest policy was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Description of the guest policy. Length of the description is limited to 1024 characters.
@@ -130,12 +179,6 @@ namespace Pulumi.GoogleCloud.Osconfig.V1beta
             get => _recipes ?? (_recipes = new InputList<Inputs.SoftwareRecipeArgs>());
             set => _recipes = value;
         }
-
-        /// <summary>
-        /// Output only. Last time this guest policy was updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GuestPolicyArgs()
         {

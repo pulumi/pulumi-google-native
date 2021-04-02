@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentKeystore : Pulumi.CustomResource
     {
         /// <summary>
+        /// Aliases in this keystore.
+        /// </summary>
+        [Output("aliases")]
+        public Output<ImmutableArray<string>> Aliases { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentKeystore resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,18 +72,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
     public sealed class OrganizationEnvironmentKeystoreArgs : Pulumi.ResourceArgs
     {
-        [Input("aliases")]
-        private InputList<string>? _aliases;
-
-        /// <summary>
-        /// Output only. Aliases in this keystore.
-        /// </summary>
-        public InputList<string> Aliases
-        {
-            get => _aliases ?? (_aliases = new InputList<string>());
-            set => _aliases = value;
-        }
-
         [Input("environmentsId", required: true)]
         public Input<string> EnvironmentsId { get; set; } = null!;
 

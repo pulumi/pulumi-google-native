@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
     public partial class CapacityCommitment : Pulumi.CustomResource
     {
         /// <summary>
+        /// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        /// </summary>
+        [Output("commitmentEndTime")]
+        public Output<string> CommitmentEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        /// </summary>
+        [Output("commitmentStartTime")]
+        public Output<string> CommitmentStartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// For FAILED commitment plan, provides the reason of failure.
+        /// </summary>
+        [Output("failureStatus")]
+        public Output<Outputs.StatusResponse> FailureStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Capacity commitment commitment plan.
+        /// </summary>
+        [Output("plan")]
+        public Output<string> Plan { get; private set; } = null!;
+
+        /// <summary>
+        /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        /// </summary>
+        [Output("renewalPlan")]
+        public Output<string> RenewalPlan { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of slots in this commitment.
+        /// </summary>
+        [Output("slotCount")]
+        public Output<string> SlotCount { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the commitment.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a CapacityCommitment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -62,32 +111,8 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
         [Input("capacityCommitmentsId", required: true)]
         public Input<string> CapacityCommitmentsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-        /// </summary>
-        [Input("commitmentEndTime")]
-        public Input<string>? CommitmentEndTime { get; set; }
-
-        /// <summary>
-        /// Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-        /// </summary>
-        [Input("commitmentStartTime")]
-        public Input<string>? CommitmentStartTime { get; set; }
-
-        /// <summary>
-        /// Output only. For FAILED commitment plan, provides the reason of failure.
-        /// </summary>
-        [Input("failureStatus")]
-        public Input<Inputs.StatusArgs>? FailureStatus { get; set; }
-
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Capacity commitment commitment plan.
@@ -109,12 +134,6 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
         /// </summary>
         [Input("slotCount")]
         public Input<string>? SlotCount { get; set; }
-
-        /// <summary>
-        /// Output only. State of the commitment.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public CapacityCommitmentArgs()
         {

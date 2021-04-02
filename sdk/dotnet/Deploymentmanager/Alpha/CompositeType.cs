@@ -16,6 +16,52 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
     public partial class CompositeType : Pulumi.CustomResource
     {
         /// <summary>
+        /// An optional textual description of the resource; provided by the client when the resource is created.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("insertTime")]
+        public Output<string> InsertTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.CompositeTypeLabelEntryResponse>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The Operation that most recently ran, or is currently running, on this composite type.
+        /// </summary>
+        [Output("operation")]
+        public Output<Outputs.OperationResponse> Operation { get; private set; } = null!;
+
+        /// <summary>
+        /// Server defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Files for the template type.
+        /// </summary>
+        [Output("templateContents")]
+        public Output<Outputs.TemplateContentsResponse> TemplateContents { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a CompositeType resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -72,7 +118,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Output only. Creation timestamp in RFC3339 text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Input("insertTime")]
         public Input<string>? InsertTime { get; set; }
@@ -96,7 +142,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. The Operation that most recently ran, or is currently running, on this composite type.
+        /// The Operation that most recently ran, or is currently running, on this composite type.
         /// </summary>
         [Input("operation")]
         public Input<Inputs.OperationArgs>? Operation { get; set; }
@@ -105,7 +151,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.Alpha
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Server defined URL for the resource.
+        /// Server defined URL for the resource.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }

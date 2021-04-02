@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
     public partial class AccountCustomerEntitlement : Pulumi.CustomResource
     {
         /// <summary>
+        /// Association information to other entitlements.
+        /// </summary>
+        [Output("associationInfo")]
+        public Output<Outputs.GoogleCloudChannelV1AssociationInfoResponse> AssociationInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Commitment settings for a commitment-based Offer. Required for commitment based offers.
+        /// </summary>
+        [Output("commitmentSettings")]
+        public Output<Outputs.GoogleCloudChannelV1CommitmentSettingsResponse> CommitmentSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the entitlement is created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        /// </summary>
+        [Output("offer")]
+        public Output<string> Offer { get; private set; } = null!;
+
+        /// <summary>
+        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        /// </summary>
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.GoogleCloudChannelV1ParameterResponse>> Parameters { get; private set; } = null!;
+
+        /// <summary>
+        /// Service provisioning details for the entitlement.
+        /// </summary>
+        [Output("provisionedService")]
+        public Output<Outputs.GoogleCloudChannelV1ProvisionedServiceResponse> ProvisionedService { get; private set; } = null!;
+
+        /// <summary>
+        /// Current provisioning state of the entitlement.
+        /// </summary>
+        [Output("provisioningState")]
+        public Output<string> ProvisioningState { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+        /// </summary>
+        [Output("purchaseOrderId")]
+        public Output<string> PurchaseOrderId { get; private set; } = null!;
+
+        /// <summary>
+        /// Enumerable of all current suspension reasons for an entitlement.
+        /// </summary>
+        [Output("suspensionReasons")]
+        public Output<ImmutableArray<string>> SuspensionReasons { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for trial offers.
+        /// </summary>
+        [Output("trialSettings")]
+        public Output<Outputs.GoogleCloudChannelV1TrialSettingsResponse> TrialSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the entitlement is updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccountCustomerEntitlement resource with the given unique name, arguments, and options.
         /// </summary>
         ///

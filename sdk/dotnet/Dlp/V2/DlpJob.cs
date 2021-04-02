@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public partial class DlpJob : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time when the job was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the job finished.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A stream of errors encountered running the job.
+        /// </summary>
+        [Output("errors")]
+        public Output<ImmutableArray<Outputs.GooglePrivacyDlpV2ErrorResponse>> Errors { get; private set; } = null!;
+
+        /// <summary>
+        /// Results from inspecting a data source.
+        /// </summary>
+        [Output("inspectDetails")]
+        public Output<Outputs.GooglePrivacyDlpV2InspectDataSourceDetailsResponse> InspectDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// If created by a job trigger, the resource name of the trigger that instantiated the job.
+        /// </summary>
+        [Output("jobTriggerName")]
+        public Output<string> JobTriggerName { get; private set; } = null!;
+
+        /// <summary>
+        /// The server-assigned name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Results from analyzing risk of a data source.
+        /// </summary>
+        [Output("riskDetails")]
+        public Output<Outputs.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse> RiskDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the job started.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// State of a job.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of job.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DlpJob resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -73,12 +134,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2
         /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
-
-        /// <summary>
-        /// Deprecated. This field has no effect.
-        /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

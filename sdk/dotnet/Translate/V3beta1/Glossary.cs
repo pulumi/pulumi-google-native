@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Translate.V3beta1
     public partial class Glossary : Pulumi.CustomResource
     {
         /// <summary>
+        /// When the glossary creation was finished.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of entries defined in the glossary.
+        /// </summary>
+        [Output("entryCount")]
+        public Output<int> EntryCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+        /// </summary>
+        [Output("inputConfig")]
+        public Output<Outputs.GlossaryInputConfigResponse> InputConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Used with equivalent term set glossaries.
+        /// </summary>
+        [Output("languageCodesSet")]
+        public Output<Outputs.LanguageCodesSetResponse> LanguageCodesSet { get; private set; } = null!;
+
+        /// <summary>
+        /// Used with unidirectional glossaries.
+        /// </summary>
+        [Output("languagePair")]
+        public Output<Outputs.LanguageCodePairResponse> LanguagePair { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// When CreateGlossary was called.
+        /// </summary>
+        [Output("submitTime")]
+        public Output<string> SubmitTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Glossary resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,18 +102,6 @@ namespace Pulumi.GoogleCloud.Translate.V3beta1
 
     public sealed class GlossaryArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. When the glossary creation was finished.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. The number of entries defined in the glossary.
-        /// </summary>
-        [Input("entryCount")]
-        public Input<int>? EntryCount { get; set; }
-
         [Input("glossariesId", required: true)]
         public Input<string> GlossariesId { get; set; } = null!;
 
@@ -103,12 +134,6 @@ namespace Pulumi.GoogleCloud.Translate.V3beta1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. When CreateGlossary was called.
-        /// </summary>
-        [Input("submitTime")]
-        public Input<string>? SubmitTime { get; set; }
 
         public GlossaryArgs()
         {

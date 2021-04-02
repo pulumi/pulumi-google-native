@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.Osconfig.V1
     public partial class PatchDeployment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Duration of the patch. After the duration ends, the patch times out.
+        /// </summary>
+        [Output("duration")]
+        public Output<string> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. VM instances to patch.
+        /// </summary>
+        [Output("instanceFilter")]
+        public Output<Outputs.PatchInstanceFilterResponse> InstanceFilter { get; private set; } = null!;
+
+        /// <summary>
+        /// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
+        [Output("lastExecuteTime")]
+        public Output<string> LastExecuteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Schedule a one-time execution.
+        /// </summary>
+        [Output("oneTimeSchedule")]
+        public Output<Outputs.OneTimeScheduleResponse> OneTimeSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Patch configuration that is applied.
+        /// </summary>
+        [Output("patchConfig")]
+        public Output<Outputs.PatchConfigResponse> PatchConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Schedule recurring executions.
+        /// </summary>
+        [Output("recurringSchedule")]
+        public Output<Outputs.RecurringScheduleResponse> RecurringSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Rollout strategy of the patch job.
+        /// </summary>
+        [Output("rollout")]
+        public Output<Outputs.PatchRolloutResponse> Rollout { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a PatchDeployment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +127,6 @@ namespace Pulumi.GoogleCloud.Osconfig.V1
     public sealed class PatchDeploymentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
@@ -82,12 +143,6 @@ namespace Pulumi.GoogleCloud.Osconfig.V1
         /// </summary>
         [Input("instanceFilter")]
         public Input<Inputs.PatchInstanceFilterArgs>? InstanceFilter { get; set; }
-
-        /// <summary>
-        /// Output only. The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        /// </summary>
-        [Input("lastExecuteTime")]
-        public Input<string>? LastExecuteTime { get; set; }
 
         /// <summary>
         /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
@@ -124,12 +179,6 @@ namespace Pulumi.GoogleCloud.Osconfig.V1
         /// </summary>
         [Input("rollout")]
         public Input<Inputs.PatchRolloutArgs>? Rollout { get; set; }
-
-        /// <summary>
-        /// Output only. Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public PatchDeploymentArgs()
         {

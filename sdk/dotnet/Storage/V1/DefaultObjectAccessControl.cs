@@ -16,6 +16,90 @@ namespace Pulumi.GoogleCloud.Storage.V1
     public partial class DefaultObjectAccessControl : Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the bucket.
+        /// </summary>
+        [Output("bucket")]
+        public Output<string> Bucket { get; private set; } = null!;
+
+        /// <summary>
+        /// The domain associated with the entity, if any.
+        /// </summary>
+        [Output("domain")]
+        public Output<string> Domain { get; private set; } = null!;
+
+        /// <summary>
+        /// The email address associated with the entity, if any.
+        /// </summary>
+        [Output("email")]
+        public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// The entity holding the permission, in one of the following forms: 
+        /// - user-userId 
+        /// - user-email 
+        /// - group-groupId 
+        /// - group-email 
+        /// - domain-domain 
+        /// - project-team-projectId 
+        /// - allUsers 
+        /// - allAuthenticatedUsers Examples: 
+        /// - The user liz@example.com would be user-liz@example.com. 
+        /// - The group example@googlegroups.com would be group-example@googlegroups.com. 
+        /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+        /// </summary>
+        [Output("entity")]
+        public Output<string> Entity { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID for the entity, if any.
+        /// </summary>
+        [Output("entityId")]
+        public Output<string> EntityId { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP 1.1 Entity tag for the access-control entry.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The content generation of the object, if applied to an object.
+        /// </summary>
+        [Output("generation")]
+        public Output<string> Generation { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the object, if applied to an object.
+        /// </summary>
+        [Output("object")]
+        public Output<string> Object { get; private set; } = null!;
+
+        /// <summary>
+        /// The project team associated with the entity, if any.
+        /// </summary>
+        [Output("projectTeam")]
+        public Output<ImmutableDictionary<string, string>> ProjectTeam { get; private set; } = null!;
+
+        /// <summary>
+        /// The access permission for the entity.
+        /// </summary>
+        [Output("role")]
+        public Output<string> Role { get; private set; } = null!;
+
+        /// <summary>
+        /// The link to this access-control entry.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DefaultObjectAccessControl resource with the given unique name, arguments, and options.
         /// </summary>
         ///

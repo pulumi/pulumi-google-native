@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
     public partial class SiteDomain : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The domain name of the association.
+        /// </summary>
+        [Output("domainName")]
+        public Output<string> DomainName { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, the domain should redirect with the provided parameters.
+        /// </summary>
+        [Output("domainRedirect")]
+        public Output<Outputs.DomainRedirectResponse> DomainRedirect { get; private set; } = null!;
+
+        /// <summary>
+        /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+        /// </summary>
+        [Output("provisioning")]
+        public Output<Outputs.DomainProvisioningResponse> Provisioning { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The site name of the association.
+        /// </summary>
+        [Output("site")]
+        public Output<string> Site { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional status of the domain association.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the domain was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a SiteDomain resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -75,7 +112,7 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
         public Input<string> DomainsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+        /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
         /// </summary>
         [Input("provisioning")]
         public Input<Inputs.DomainProvisioningArgs>? Provisioning { get; set; }
@@ -90,13 +127,13 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
         public Input<string> SitesId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Additional status of the domain association.
+        /// Additional status of the domain association.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the domain was last updated.
+        /// The time at which the domain was last updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -15,12 +15,6 @@ namespace Pulumi.GoogleCloud.Memcache.V1.Inputs
     /// </summary>
     public sealed class MemcacheParametersArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("params")]
         private InputMap<string>? _params;
 

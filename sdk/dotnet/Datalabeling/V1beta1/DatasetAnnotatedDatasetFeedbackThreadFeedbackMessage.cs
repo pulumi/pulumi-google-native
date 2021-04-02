@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
     public partial class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage : Pulumi.CustomResource
     {
         /// <summary>
+        /// String content of the feedback. Maximum of 10000 characters.
+        /// </summary>
+        [Output("body")]
+        public Output<string> Body { get; private set; } = null!;
+
+        /// <summary>
+        /// Create time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The image storing this feedback if the feedback is an image representing operator's comments.
+        /// </summary>
+        [Output("image")]
+        public Output<string> Image { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        [Output("operatorFeedbackMetadata")]
+        public Output<Outputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse> OperatorFeedbackMetadata { get; private set; } = null!;
+
+        [Output("requesterFeedbackMetadata")]
+        public Output<Outputs.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse> RequesterFeedbackMetadata { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage resource with the given unique name, arguments, and options.
         /// </summary>
         ///

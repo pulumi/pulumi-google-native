@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
     public partial class AgentEntityType : Pulumi.CustomResource
     {
         /// <summary>
+        /// Indicates whether the entity type can be automatically expanded.
+        /// </summary>
+        [Output("autoExpansionMode")]
+        public Output<string> AutoExpansionMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The human-readable name of the entity type, unique within the agent.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables fuzzy entity extraction during classification.
+        /// </summary>
+        [Output("enableFuzzyExtraction")]
+        public Output<bool> EnableFuzzyExtraction { get; private set; } = null!;
+
+        /// <summary>
+        /// The collection of entity entries associated with the entity type.
+        /// </summary>
+        [Output("entities")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse>> Entities { get; private set; } = null!;
+
+        /// <summary>
+        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// </summary>
+        [Output("excludedPhrases")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse>> ExcludedPhrases { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Indicates the kind of entity type.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
+        /// </summary>
+        [Output("redact")]
+        public Output<bool> Redact { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentEntityType resource with the given unique name, arguments, and options.
         /// </summary>
         ///

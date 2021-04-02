@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.File.V1beta1
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Capacity of the source file share when the backup was created.
+        /// </summary>
+        [Output("capacityGb")]
+        public Output<string> CapacityGb { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the backup was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Amount of bytes that will be downloaded if the backup is restored
+        /// </summary>
+        [Output("downloadBytes")]
+        public Output<string> DownloadBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource labels to represent user provided metadata.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        /// </summary>
+        [Output("sourceFileShare")]
+        public Output<string> SourceFileShare { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        /// </summary>
+        [Output("sourceInstance")]
+        public Output<string> SourceInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The service tier of the source Cloud Filestore instance that this backup is created from.
+        /// </summary>
+        [Output("sourceInstanceTier")]
+        public Output<string> SourceInstanceTier { get; private set; } = null!;
+
+        /// <summary>
+        /// The backup state.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+        /// </summary>
+        [Output("storageBytes")]
+        public Output<string> StorageBytes { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Backup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,28 +130,10 @@ namespace Pulumi.GoogleCloud.File.V1beta1
         public Input<string> BackupsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Capacity of the source file share when the backup was created.
-        /// </summary>
-        [Input("capacityGb")]
-        public Input<string>? CapacityGb { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the backup was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Output only. Amount of bytes that will be downloaded if the backup is restored
-        /// </summary>
-        [Input("downloadBytes")]
-        public Input<string>? DownloadBytes { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -101,12 +150,6 @@ namespace Pulumi.GoogleCloud.File.V1beta1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
@@ -121,24 +164,6 @@ namespace Pulumi.GoogleCloud.File.V1beta1
         /// </summary>
         [Input("sourceInstance")]
         public Input<string>? SourceInstance { get; set; }
-
-        /// <summary>
-        /// Output only. The service tier of the source Cloud Filestore instance that this backup is created from.
-        /// </summary>
-        [Input("sourceInstanceTier")]
-        public Input<string>? SourceInstanceTier { get; set; }
-
-        /// <summary>
-        /// Output only. The backup state.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
-        /// </summary>
-        [Input("storageBytes")]
-        public Input<string>? StorageBytes { get; set; }
 
         public BackupArgs()
         {

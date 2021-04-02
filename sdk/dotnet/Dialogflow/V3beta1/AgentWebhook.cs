@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
     public partial class AgentWebhook : Pulumi.CustomResource
     {
         /// <summary>
+        /// Indicates whether the webhook is disabled.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The human-readable name of the webhook, unique within the agent.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for a generic web service.
+        /// </summary>
+        [Output("genericWebService")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse> GenericWebService { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+        /// </summary>
+        [Output("timeout")]
+        public Output<string> Timeout { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentWebhook resource with the given unique name, arguments, and options.
         /// </summary>
         ///

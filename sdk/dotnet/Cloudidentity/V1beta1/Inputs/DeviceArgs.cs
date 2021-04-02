@@ -16,166 +16,16 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1.Inputs
     public sealed class DeviceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Attributes specific to Android devices.
-        /// </summary>
-        [Input("androidSpecificAttributes")]
-        public Input<Inputs.AndroidAttributesArgs>? AndroidSpecificAttributes { get; set; }
-
-        /// <summary>
         /// Asset tag of the device.
         /// </summary>
         [Input("assetTag")]
         public Input<string>? AssetTag { get; set; }
 
         /// <summary>
-        /// Output only. Baseband version of the device.
-        /// </summary>
-        [Input("basebandVersion")]
-        public Input<string>? BasebandVersion { get; set; }
-
-        /// <summary>
-        /// Output only. Device bootloader version. Example: 0.6.7.
-        /// </summary>
-        [Input("bootloaderVersion")]
-        public Input<string>? BootloaderVersion { get; set; }
-
-        /// <summary>
-        /// Output only. Device brand. Example: Samsung.
-        /// </summary>
-        [Input("brand")]
-        public Input<string>? Brand { get; set; }
-
-        /// <summary>
-        /// Output only. Build number of the device.
-        /// </summary>
-        [Input("buildNumber")]
-        public Input<string>? BuildNumber { get; set; }
-
-        /// <summary>
-        /// Output only. Represents whether the Device is compromised.
-        /// </summary>
-        [Input("compromisedState")]
-        public Input<string>? CompromisedState { get; set; }
-
-        /// <summary>
-        /// Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. Type of device.
-        /// </summary>
-        [Input("deviceType")]
-        public Input<string>? DeviceType { get; set; }
-
-        /// <summary>
-        /// Output only. Whether developer options is enabled on device.
-        /// </summary>
-        [Input("enabledDeveloperOptions")]
-        public Input<bool>? EnabledDeveloperOptions { get; set; }
-
-        /// <summary>
-        /// Output only. Whether USB debugging is enabled on device.
-        /// </summary>
-        [Input("enabledUsbDebugging")]
-        public Input<bool>? EnabledUsbDebugging { get; set; }
-
-        /// <summary>
-        /// Output only. Device encryption state.
-        /// </summary>
-        [Input("encryptionState")]
-        public Input<string>? EncryptionState { get; set; }
-
-        /// <summary>
-        /// Output only. IMEI number of device if GSM device; empty otherwise.
-        /// </summary>
-        [Input("imei")]
-        public Input<string>? Imei { get; set; }
-
-        /// <summary>
-        /// Output only. Kernel version of the device.
-        /// </summary>
-        [Input("kernelVersion")]
-        public Input<string>? KernelVersion { get; set; }
-
-        /// <summary>
         /// Most recent time when device synced with this service.
         /// </summary>
         [Input("lastSyncTime")]
         public Input<string>? LastSyncTime { get; set; }
-
-        /// <summary>
-        /// Output only. Management state of the device
-        /// </summary>
-        [Input("managementState")]
-        public Input<string>? ManagementState { get; set; }
-
-        /// <summary>
-        /// Output only. Device manufacturer. Example: Motorola.
-        /// </summary>
-        [Input("manufacturer")]
-        public Input<string>? Manufacturer { get; set; }
-
-        /// <summary>
-        /// Output only. MEID number of device if CDMA device; empty otherwise.
-        /// </summary>
-        [Input("meid")]
-        public Input<string>? Meid { get; set; }
-
-        /// <summary>
-        /// Output only. Model name of device. Example: Pixel 3.
-        /// </summary>
-        [Input("model")]
-        public Input<string>? Model { get; set; }
-
-        /// <summary>
-        /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. Mobile or network operator of device, if available.
-        /// </summary>
-        [Input("networkOperator")]
-        public Input<string>? NetworkOperator { get; set; }
-
-        /// <summary>
-        /// Output only. OS version of the device. Example: Android 8.1.0.
-        /// </summary>
-        [Input("osVersion")]
-        public Input<string>? OsVersion { get; set; }
-
-        [Input("otherAccounts")]
-        private InputList<string>? _otherAccounts;
-
-        /// <summary>
-        /// Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com".
-        /// </summary>
-        public InputList<string> OtherAccounts
-        {
-            get => _otherAccounts ?? (_otherAccounts = new InputList<string>());
-            set => _otherAccounts = value;
-        }
-
-        /// <summary>
-        /// Output only. Whether the device is owned by the company or an individual
-        /// </summary>
-        [Input("ownerType")]
-        public Input<string>? OwnerType { get; set; }
-
-        /// <summary>
-        /// Output only. OS release version. Example: 6.0.
-        /// </summary>
-        [Input("releaseVersion")]
-        public Input<string>? ReleaseVersion { get; set; }
-
-        /// <summary>
-        /// Output only. OS security patch update time on device.
-        /// </summary>
-        [Input("securityPatchTime")]
-        public Input<string>? SecurityPatchTime { get; set; }
 
         /// <summary>
         /// Serial Number of device. Example: HT82V1A01076.

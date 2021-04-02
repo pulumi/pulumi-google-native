@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Human readable title. Does not affect behavior.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccessPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,13 +88,13 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1
         public Input<string> AccessPoliciesId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
+        /// An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

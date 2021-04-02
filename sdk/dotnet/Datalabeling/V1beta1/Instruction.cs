@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
     public partial class Instruction : Pulumi.CustomResource
     {
         /// <summary>
+        /// The names of any related resources that are blocking changes to the instruction.
+        /// </summary>
+        [Output("blockingResources")]
+        public Output<ImmutableArray<string>> BlockingResources { get; private set; } = null!;
+
+        /// <summary>
+        /// Creation time of instruction.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        /// </summary>
+        [Output("csvInstruction")]
+        public Output<Outputs.GoogleCloudDatalabelingV1beta1CsvInstructionResponse> CsvInstruction { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The data type of this instruction.
+        /// </summary>
+        [Output("dataType")]
+        public Output<string> DataType { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The display name of the instruction. Maximum of 64 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        /// </summary>
+        [Output("pdfInstruction")]
+        public Output<Outputs.GoogleCloudDatalabelingV1beta1PdfInstructionResponse> PdfInstruction { get; private set; } = null!;
+
+        /// <summary>
+        /// Last update time of instruction.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instruction resource with the given unique name, arguments, and options.
         /// </summary>
         ///

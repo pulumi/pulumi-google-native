@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Monitoring.V3.Inputs
     public sealed class TimeSeriesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
+        /// The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.MonitoredResourceMetadataArgs>? Metadata { get; set; }

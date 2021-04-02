@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentKeystoreAlias : Pulumi.CustomResource
     {
         /// <summary>
+        /// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+        /// </summary>
+        [Output("alias")]
+        public Output<string> Alias { get; private set; } = null!;
+
+        /// <summary>
+        /// Chain of certificates under this alias.
+        /// </summary>
+        [Output("certsInfo")]
+        public Output<Outputs.GoogleCloudApigeeV1CertificateResponse> CertsInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of alias.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentKeystoreAlias resource with the given unique name, arguments, and options.
         /// </summary>
         ///

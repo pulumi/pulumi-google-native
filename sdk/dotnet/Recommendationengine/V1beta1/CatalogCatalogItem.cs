@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Recommendationengine.V1beta1
     public partial class CatalogCatalogItem : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
+        /// </summary>
+        [Output("categoryHierarchies")]
+        public Output<ImmutableArray<Outputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>> CategoryHierarchies { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
+        /// </summary>
+        [Output("itemAttributes")]
+        public Output<Outputs.GoogleCloudRecommendationengineV1beta1FeatureMapResponse> ItemAttributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+        /// </summary>
+        [Output("itemGroupId")]
+        public Output<string> ItemGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Metadata specific to retail products.
+        /// </summary>
+        [Output("productMetadata")]
+        public Output<Outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse> ProductMetadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a CatalogCatalogItem resource with the given unique name, arguments, and options.
         /// </summary>
         ///

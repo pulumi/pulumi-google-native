@@ -16,6 +16,97 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
     public partial class BackupRun : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+        /// </summary>
+        [Output("backupKind")]
+        public Output<string> BackupKind { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of this run, only applicable to on-demand backups.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        /// </summary>
+        [Output("diskEncryptionConfiguration")]
+        public Output<Outputs.DiskEncryptionConfigurationResponse> DiskEncryptionConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// Encryption status specific to a backup. Applies only to Second Generation instances.
+        /// </summary>
+        [Output("diskEncryptionStatus")]
+        public Output<Outputs.DiskEncryptionStatusResponse> DiskEncryptionStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// </summary>
+        [Output("enqueuedTime")]
+        public Output<string> EnqueuedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
+        /// </summary>
+        [Output("error")]
+        public Output<Outputs.OperationErrorResponse> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the database instance.
+        /// </summary>
+        [Output("instance")]
+        public Output<string> Instance { get; private set; } = null!;
+
+        /// <summary>
+        /// This is always *sql#backupRun*.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Location of the backups.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of this resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of this run.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// </summary>
+        [Output("windowStartTime")]
+        public Output<string> WindowStartTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a BackupRun resource with the given unique name, arguments, and options.
         /// </summary>
         ///

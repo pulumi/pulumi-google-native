@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public partial class OrganizationDeidentifyTemplate : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation timestamp of an inspectTemplate.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The core content of the template.
+        /// </summary>
+        [Output("deidentifyConfig")]
+        public Output<Outputs.GooglePrivacyDlpV2DeidentifyConfigResponse> DeidentifyConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Short description (max 256 chars).
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name (max 256 chars).
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of an inspectTemplate.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationDeidentifyTemplate resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -67,12 +104,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2
 
         [Input("deidentifyTemplatesId", required: true)]
         public Input<string> DeidentifyTemplatesId { get; set; } = null!;
-
-        /// <summary>
-        /// Deprecated. This field has no effect.
-        /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

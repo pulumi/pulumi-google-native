@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1
     public partial class AccessPolicyAccessLevel : Pulumi.CustomResource
     {
         /// <summary>
+        /// A `BasicLevel` composed of `Conditions`.
+        /// </summary>
+        [Output("basic")]
+        public Output<Outputs.BasicLevelResponse> Basic { get; private set; } = null!;
+
+        /// <summary>
+        /// A `CustomLevel` written in the Common Expression Language.
+        /// </summary>
+        [Output("custom")]
+        public Output<Outputs.CustomLevelResponse> Custom { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the `AccessLevel` and its use. Does not affect behavior.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccessPolicyAccessLevel resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -16,6 +16,145 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
+        /// The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it.
+        /// </summary>
+        [Output("clientRequestId")]
+        public Output<string> ClientRequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// If this is specified, the job's initial state is populated from the given snapshot.
+        /// </summary>
+        [Output("createdFromSnapshotId")]
+        public Output<string> CreatedFromSnapshotId { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        /// </summary>
+        [Output("currentState")]
+        public Output<string> CurrentState { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp associated with the current state.
+        /// </summary>
+        [Output("currentStateTime")]
+        public Output<string> CurrentStateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The environment for the job.
+        /// </summary>
+        [Output("environment")]
+        public Output<Outputs.EnvironmentResponse> Environment { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
+        /// </summary>
+        [Output("jobMetadata")]
+        public Output<Outputs.JobMetadataResponse> JobMetadata { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be &lt;= 128 bytes in size.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+        /// </summary>
+        [Output("pipelineDescription")]
+        public Output<Outputs.PipelineDescriptionResponse> PipelineDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Cloud Platform project that the job belongs to.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
+        /// </summary>
+        [Output("replaceJobId")]
+        public Output<string> ReplaceJobId { get; private set; } = null!;
+
+        /// <summary>
+        /// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
+        /// </summary>
+        [Output("replacedByJobId")]
+        public Output<string> ReplacedByJobId { get; private set; } = null!;
+
+        /// <summary>
+        /// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        /// </summary>
+        [Output("requestedState")]
+        public Output<string> RequestedState { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
+        /// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        /// </summary>
+        [Output("stageStates")]
+        public Output<ImmutableArray<Outputs.ExecutionStageStateResponse>> StageStates { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
+        /// </summary>
+        [Output("steps")]
+        public Output<ImmutableArray<Outputs.StepResponse>> Steps { get; private set; } = null!;
+
+        /// <summary>
+        /// The GCS location where the steps are stored.
+        /// </summary>
+        [Output("stepsLocation")]
+        public Output<string> StepsLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+        /// </summary>
+        [Output("tempFiles")]
+        public Output<ImmutableArray<string>> TempFiles { get; private set; } = null!;
+
+        /// <summary>
+        /// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
+        /// </summary>
+        [Output("transformNameMapping")]
+        public Output<ImmutableDictionary<string, string>> TransformNameMapping { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of Cloud Dataflow job.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -94,12 +233,6 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3
         /// </summary>
         [Input("environment")]
         public Input<Inputs.EnvironmentArgs>? Environment { get; set; }
-
-        /// <summary>
-        /// Deprecated.
-        /// </summary>
-        [Input("executionInfo")]
-        public Input<Inputs.JobExecutionInfoArgs>? ExecutionInfo { get; set; }
 
         /// <summary>
         /// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.

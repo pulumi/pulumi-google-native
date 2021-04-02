@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+        /// </summary>
+        [Output("admin")]
+        public Output<string> Admin { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
+        /// </summary>
+        [Output("authorizedNetworks")]
+        public Output<ImmutableArray<string>> AuthorizedNetworks { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
+        /// </summary>
+        [Output("fqdn")]
+        public Output<string> Fqdn { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Resource labels that can contain user-provided metadata.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<string>> Locations { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        /// </summary>
+        [Output("reservedIpRange")]
+        public Output<string> ReservedIpRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of this domain.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the current status of this domain, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// The current trusts associated with the domain.
+        /// </summary>
+        [Output("trusts")]
+        public Output<ImmutableArray<Outputs.TrustResponse>> Trusts { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Domain resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -77,20 +150,8 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1
             set => _authorizedNetworks = value;
         }
 
-        /// <summary>
-        /// Output only. The time the instance was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("domainsId", required: true)]
         public Input<string> DomainsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
-        /// </summary>
-        [Input("fqdn")]
-        public Input<string>? Fqdn { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -130,36 +191,6 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of this domain.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Additional information about the current status of this domain, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
-
-        [Input("trusts")]
-        private InputList<Inputs.TrustArgs>? _trusts;
-
-        /// <summary>
-        /// Output only. The current trusts associated with the domain.
-        /// </summary>
-        public InputList<Inputs.TrustArgs> Trusts
-        {
-            get => _trusts ?? (_trusts = new InputList<Inputs.TrustArgs>());
-            set => _trusts = value;
-        }
-
-        /// <summary>
-        /// Output only. The last update time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public DomainArgs()
         {

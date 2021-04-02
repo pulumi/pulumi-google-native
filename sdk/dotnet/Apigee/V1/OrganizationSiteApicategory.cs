@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationSiteApicategory : Pulumi.CustomResource
     {
         /// <summary>
+        /// Details of category.
+        /// </summary>
+        [Output("data")]
+        public Output<Outputs.GoogleCloudApigeeV1ApiCategoryDataResponse> Data { get; private set; } = null!;
+
+        /// <summary>
+        /// ID that can be used to find errors in the log files.
+        /// </summary>
+        [Output("errorCode")]
+        public Output<string> ErrorCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the operation.
+        /// </summary>
+        [Output("message")]
+        public Output<string> Message { get; private set; } = null!;
+
+        /// <summary>
+        /// ID that can be used to find request details in the log files.
+        /// </summary>
+        [Output("requestId")]
+        public Output<string> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the operation.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationSiteApicategory resource with the given unique name, arguments, and options.
         /// </summary>
         ///

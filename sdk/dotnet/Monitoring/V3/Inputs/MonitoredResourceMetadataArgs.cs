@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Monitoring.V3.Inputs
         private InputMap<string>? _systemLabels;
 
         /// <summary>
-        /// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } 
+        /// Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } 
         /// </summary>
         public InputMap<string> SystemLabels
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleCloud.Monitoring.V3.Inputs
         private InputMap<string>? _userLabels;
 
         /// <summary>
-        /// Output only. A map of user-defined metadata labels.
+        /// A map of user-defined metadata labels.
         /// </summary>
         public InputMap<string> UserLabels
         {

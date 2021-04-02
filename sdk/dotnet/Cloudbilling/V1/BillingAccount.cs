@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Cloudbilling.V1
     public partial class BillingAccount : Pulumi.CustomResource
     {
         /// <summary>
+        /// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+        /// </summary>
+        [Output("masterBillingAccount")]
+        public Output<string> MasterBillingAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+        /// </summary>
+        [Output("open")]
+        public Output<bool> Open { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a BillingAccount resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -73,18 +98,6 @@ namespace Pulumi.GoogleCloud.Cloudbilling.V1
         /// </summary>
         [Input("masterBillingAccount")]
         public Input<string>? MasterBillingAccount { get; set; }
-
-        /// <summary>
-        /// Output only. The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
-        /// </summary>
-        [Input("open")]
-        public Input<bool>? Open { get; set; }
 
         public BillingAccountArgs()
         {

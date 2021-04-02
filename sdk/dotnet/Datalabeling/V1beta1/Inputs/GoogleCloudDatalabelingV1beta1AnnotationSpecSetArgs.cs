@@ -31,7 +31,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         private InputList<string>? _blockingResources;
 
         /// <summary>
-        /// Output only. The names of any related resources that are blocking changes to the annotation spec set.
+        /// The names of any related resources that are blocking changes to the annotation spec set.
         /// </summary>
         public InputList<string> BlockingResources
         {
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        /// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

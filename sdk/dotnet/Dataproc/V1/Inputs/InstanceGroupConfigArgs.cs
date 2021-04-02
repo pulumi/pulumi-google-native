@@ -39,47 +39,11 @@ namespace Pulumi.GoogleCloud.Dataproc.V1.Inputs
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
-        [Input("instanceNames")]
-        private InputList<string>? _instanceNames;
-
-        /// <summary>
-        /// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-        /// </summary>
-        public InputList<string> InstanceNames
-        {
-            get => _instanceNames ?? (_instanceNames = new InputList<string>());
-            set => _instanceNames = value;
-        }
-
-        [Input("instanceReferences")]
-        private InputList<Inputs.InstanceReferenceArgs>? _instanceReferences;
-
-        /// <summary>
-        /// Output only. List of references to Compute Engine instances.
-        /// </summary>
-        public InputList<Inputs.InstanceReferenceArgs> InstanceReferences
-        {
-            get => _instanceReferences ?? (_instanceReferences = new InputList<Inputs.InstanceReferenceArgs>());
-            set => _instanceReferences = value;
-        }
-
-        /// <summary>
-        /// Output only. Specifies that this instance group contains preemptible instances.
-        /// </summary>
-        [Input("isPreemptible")]
-        public Input<bool>? IsPreemptible { get; set; }
-
         /// <summary>
         /// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
         /// </summary>
         [Input("machineTypeUri")]
         public Input<string>? MachineTypeUri { get; set; }
-
-        /// <summary>
-        /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        /// </summary>
-        [Input("managedGroupConfig")]
-        public Input<Inputs.ManagedGroupConfigArgs>? ManagedGroupConfig { get; set; }
 
         /// <summary>
         /// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -&gt; Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).

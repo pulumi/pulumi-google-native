@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Cloudasset.V1
     public partial class Feed : Pulumi.CustomResource
     {
         /// <summary>
+        /// A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+        /// </summary>
+        [Output("assetNames")]
+        public Output<ImmutableArray<string>> AssetNames { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
+        /// </summary>
+        [Output("assetTypes")]
+        public Output<ImmutableArray<string>> AssetTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
+        /// </summary>
+        [Output("condition")]
+        public Output<Outputs.ExprResponse> Condition { get; private set; } = null!;
+
+        /// <summary>
+        /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// </summary>
+        [Output("contentType")]
+        public Output<string> ContentType { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Feed output configuration defining where the asset updates are published to.
+        /// </summary>
+        [Output("feedOutputConfig")]
+        public Output<Outputs.FeedOutputConfigResponse> FeedOutputConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Feed resource with the given unique name, arguments, and options.
         /// </summary>
         ///

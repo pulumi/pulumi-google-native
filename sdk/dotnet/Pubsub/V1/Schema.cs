@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
     public partial class Schema : Pulumi.CustomResource
     {
         /// <summary>
+        /// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+        /// </summary>
+        [Output("definition")]
+        public Output<string> Definition { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the schema definition.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Schema resource with the given unique name, arguments, and options.
         /// </summary>
         ///

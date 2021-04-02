@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Datastore.V1
     public partial class Index : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        /// </summary>
+        [Output("ancestor")]
+        public Output<string> Ancestor { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource ID of the index.
+        /// </summary>
+        [Output("indexId")]
+        public Output<string> IndexId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The entity kind to which this index applies.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Project ID.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. An ordered sequence of property names and their index attributes.
+        /// </summary>
+        [Output("properties")]
+        public Output<ImmutableArray<Outputs.GoogleDatastoreAdminV1IndexedPropertyResponse>> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the index.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Index resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -65,9 +102,6 @@ namespace Pulumi.GoogleCloud.Datastore.V1
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
 
-        /// <summary>
-        /// Output only. The resource ID of the index.
-        /// </summary>
         [Input("indexId", required: true)]
         public Input<string> IndexId { get; set; } = null!;
 
@@ -77,9 +111,6 @@ namespace Pulumi.GoogleCloud.Datastore.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        /// <summary>
-        /// Output only. Project ID.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -94,12 +125,6 @@ namespace Pulumi.GoogleCloud.Datastore.V1
             get => _properties ?? (_properties = new InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs>());
             set => _properties = value;
         }
-
-        /// <summary>
-        /// Output only. The state of the index.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public IndexArgs()
         {

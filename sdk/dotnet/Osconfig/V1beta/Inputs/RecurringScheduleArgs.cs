@@ -28,22 +28,10 @@ namespace Pulumi.GoogleCloud.Osconfig.V1beta.Inputs
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
-        /// Output only. The time the last patch job ran successfully.
-        /// </summary>
-        [Input("lastExecuteTime")]
-        public Input<string>? LastExecuteTime { get; set; }
-
-        /// <summary>
         /// Required. Schedule with monthly executions.
         /// </summary>
         [Input("monthly")]
         public Input<Inputs.MonthlyScheduleArgs>? Monthly { get; set; }
-
-        /// <summary>
-        /// Output only. The time the next patch job is scheduled to run.
-        /// </summary>
-        [Input("nextExecuteTime")]
-        public Input<string>? NextExecuteTime { get; set; }
 
         /// <summary>
         /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.

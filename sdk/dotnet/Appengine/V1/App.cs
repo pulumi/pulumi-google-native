@@ -16,6 +16,82 @@ namespace Pulumi.GoogleCloud.Appengine.V1
     public partial class App : Pulumi.CustomResource
     {
         /// <summary>
+        /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
+        /// </summary>
+        [Output("authDomain")]
+        public Output<string> AuthDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        /// </summary>
+        [Output("codeBucket")]
+        public Output<string> CodeBucket { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        /// </summary>
+        [Output("databaseType")]
+        public Output<string> DatabaseType { get; private set; } = null!;
+
+        /// <summary>
+        /// Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        /// </summary>
+        [Output("defaultBucket")]
+        public Output<string> DefaultBucket { get; private set; } = null!;
+
+        /// <summary>
+        /// Cookie expiration policy for this application.
+        /// </summary>
+        [Output("defaultCookieExpiration")]
+        public Output<string> DefaultCookieExpiration { get; private set; } = null!;
+
+        /// <summary>
+        /// Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        /// </summary>
+        [Output("defaultHostname")]
+        public Output<string> DefaultHostname { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
+        /// </summary>
+        [Output("dispatchRules")]
+        public Output<ImmutableArray<Outputs.UrlDispatchRuleResponse>> DispatchRules { get; private set; } = null!;
+
+        /// <summary>
+        /// The feature specific settings to be used in the application.
+        /// </summary>
+        [Output("featureSettings")]
+        public Output<Outputs.FeatureSettingsResponse> FeatureSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// The Google Container Registry domain used for storing managed build docker images for this application.
+        /// </summary>
+        [Output("gcrDomain")]
+        public Output<string> GcrDomain { get; private set; } = null!;
+
+        [Output("iap")]
+        public Output<Outputs.IdentityAwareProxyResponse> Iap { get; private set; } = null!;
+
+        /// <summary>
+        /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+        /// </summary>
+        [Output("locationId")]
+        public Output<string> LocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Serving status of this application.
+        /// </summary>
+        [Output("servingStatus")]
+        public Output<string> ServingStatus { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a App resource with the given unique name, arguments, and options.
         /// </summary>
         ///

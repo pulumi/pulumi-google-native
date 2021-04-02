@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1.Inputs
         public Input<string>? Cpe { get; set; }
 
         /// <summary>
-        /// Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+        /// An operation that indicates the status of the current scan. This field is deprecated, do not use.
         /// </summary>
         [Input("operation")]
         public Input<Inputs.OperationArgs>? Operation { get; set; }

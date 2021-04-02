@@ -16,61 +16,61 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
     public sealed class TestExecutionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. How the host machine(s) are configured.
+        /// How the host machine(s) are configured.
         /// </summary>
         [Input("environment")]
         public Input<Inputs.EnvironmentArgs>? Environment { get; set; }
 
         /// <summary>
-        /// Output only. Unique id set by the service.
+        /// Unique id set by the service.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Output only. Id of the containing TestMatrix.
+        /// Id of the containing TestMatrix.
         /// </summary>
         [Input("matrixId")]
         public Input<string>? MatrixId { get; set; }
 
         /// <summary>
-        /// Output only. The cloud project that owns the test execution.
+        /// The cloud project that owns the test execution.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Output only. Details about the shard.
+        /// Details about the shard.
         /// </summary>
         [Input("shard")]
         public Input<Inputs.ShardArgs>? Shard { get; set; }
 
         /// <summary>
-        /// Output only. Indicates the current progress of the test execution (e.g., FINISHED).
+        /// Indicates the current progress of the test execution (e.g., FINISHED).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. Additional details about the running test.
+        /// Additional details about the running test.
         /// </summary>
         [Input("testDetails")]
         public Input<Inputs.TestDetailsArgs>? TestDetails { get; set; }
 
         /// <summary>
-        /// Output only. How to run the test.
+        /// How to run the test.
         /// </summary>
         [Input("testSpecification")]
         public Input<Inputs.TestSpecificationArgs>? TestSpecification { get; set; }
 
         /// <summary>
-        /// Output only. The time this test execution was initially created.
+        /// The time this test execution was initially created.
         /// </summary>
         [Input("timestamp")]
         public Input<string>? Timestamp { get; set; }
 
         /// <summary>
-        /// Output only. Where the results for this execution are written.
+        /// Where the results for this execution are written.
         /// </summary>
         [Input("toolResultsStep")]
         public Input<Inputs.ToolResultsStepArgs>? ToolResultsStep { get; set; }

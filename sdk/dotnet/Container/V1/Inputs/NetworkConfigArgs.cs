@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
         public Input<bool>? EnableIntraNodeVisibility { get; set; }
 
         /// <summary>
-        /// Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
+        /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
         public Input<string>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
-        /// Output only. The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        /// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

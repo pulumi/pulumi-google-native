@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Vision.V1
     public partial class ProductSet : Pulumi.CustomResource
     {
         /// <summary>
+        /// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+        /// </summary>
+        [Output("indexError")]
+        public Output<Outputs.StatusResponse> IndexError { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+        /// </summary>
+        [Output("indexTime")]
+        public Output<string> IndexTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ProductSet resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -64,18 +89,6 @@ namespace Pulumi.GoogleCloud.Vision.V1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
-        /// </summary>
-        [Input("indexError")]
-        public Input<Inputs.StatusArgs>? IndexError { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
-        /// </summary>
-        [Input("indexTime")]
-        public Input<string>? IndexTime { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

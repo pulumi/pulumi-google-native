@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.Apigateway.V1
     public partial class ApiConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// Created time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Display name.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+        /// </summary>
+        [Output("gatewayServiceAccount")]
+        public Output<string> GatewayServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
+        /// </summary>
+        [Output("grpcServices")]
+        public Output<ImmutableArray<Outputs.ApigatewayApiConfigGrpcServiceDefinitionResponse>> GrpcServices { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+        /// </summary>
+        [Output("managedServiceConfigs")]
+        public Output<ImmutableArray<Outputs.ApigatewayApiConfigFileResponse>> ManagedServiceConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+        /// </summary>
+        [Output("openapiDocuments")]
+        public Output<ImmutableArray<Outputs.ApigatewayApiConfigOpenApiDocumentResponse>> OpenapiDocuments { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        /// </summary>
+        [Output("serviceConfigId")]
+        public Output<string> ServiceConfigId { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the API Config.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Updated time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ApiConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -64,12 +131,6 @@ namespace Pulumi.GoogleCloud.Apigateway.V1
 
         [Input("configsId", required: true)]
         public Input<string> ConfigsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Created time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Optional. Display name.
@@ -122,12 +183,6 @@ namespace Pulumi.GoogleCloud.Apigateway.V1
             set => _managedServiceConfigs = value;
         }
 
-        /// <summary>
-        /// Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("openapiDocuments")]
         private InputList<Inputs.ApigatewayApiConfigOpenApiDocumentArgs>? _openapiDocuments;
 
@@ -142,24 +197,6 @@ namespace Pulumi.GoogleCloud.Apigateway.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
-        /// </summary>
-        [Input("serviceConfigId")]
-        public Input<string>? ServiceConfigId { get; set; }
-
-        /// <summary>
-        /// Output only. State of the API Config.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Updated time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ApiConfigArgs()
         {

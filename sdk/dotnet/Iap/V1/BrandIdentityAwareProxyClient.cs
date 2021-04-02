@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Iap.V1
     public partial class BrandIdentityAwareProxyClient : Pulumi.CustomResource
     {
         /// <summary>
+        /// Human-friendly name given to the OAuth client.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique identifier of the OAuth client.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Client secret of the OAuth client.
+        /// </summary>
+        [Output("secret")]
+        public Output<string> Secret { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a BrandIdentityAwareProxyClient resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -71,20 +90,8 @@ namespace Pulumi.GoogleCloud.Iap.V1
         [Input("identityAwareProxyClientsId", required: true)]
         public Input<string> IdentityAwareProxyClientsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. Unique identifier of the OAuth client.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Client secret of the OAuth client.
-        /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
 
         public BrandIdentityAwareProxyClientArgs()
         {

@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Toolresults.V1beta3
     public partial class HistoryExecution : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
+        /// </summary>
+        [Output("completionTime")]
+        public Output<Outputs.TimestampResponse> CompletionTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
+        /// </summary>
+        [Output("creationTime")]
+        public Output<Outputs.TimestampResponse> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
+        /// </summary>
+        [Output("dimensionDefinitions")]
+        public Output<ImmutableArray<Outputs.MatrixDimensionDefinitionResponse>> DimensionDefinitions { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
+        /// </summary>
+        [Output("executionId")]
+        public Output<string> ExecutionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
+        /// </summary>
+        [Output("outcome")]
+        public Output<Outputs.OutcomeResponse> Outcome { get; private set; } = null!;
+
+        /// <summary>
+        /// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
+        /// </summary>
+        [Output("specification")]
+        public Output<Outputs.SpecificationResponse> Specification { get; private set; } = null!;
+
+        /// <summary>
+        /// The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
+        /// </summary>
+        [Output("testExecutionMatrixId")]
+        public Output<string> TestExecutionMatrixId { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a HistoryExecution resource with the given unique name, arguments, and options.
         /// </summary>
         ///

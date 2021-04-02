@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the `Membership` was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        /// </summary>
+        [Output("memberKey")]
+        public Output<Outputs.EntityKeyResponse> MemberKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        /// </summary>
+        [Output("preferredMemberKey")]
+        public Output<Outputs.EntityKeyResponse> PreferredMemberKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+        /// </summary>
+        [Output("roles")]
+        public Output<ImmutableArray<Outputs.MembershipRoleResponse>> Roles { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the membership.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the `Membership` was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a GroupMembership resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,12 +102,6 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
 
     public sealed class GroupMembershipArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The time when the `Membership` was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("groupsId", required: true)]
         public Input<string> GroupsId { get; set; } = null!;
 
@@ -76,12 +113,6 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
 
         [Input("membershipsId", required: true)]
         public Input<string> MembershipsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
@@ -100,18 +131,6 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
             get => _roles ?? (_roles = new InputList<Inputs.MembershipRoleArgs>());
             set => _roles = value;
         }
-
-        /// <summary>
-        /// Output only. The type of the membership.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the `Membership` was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GroupMembershipArgs()
         {

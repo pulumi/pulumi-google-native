@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Iam.V1
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>
+        /// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+        /// </summary>
+        [Output("deleted")]
+        public Output<bool> Deleted { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A human-readable description for the role.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to perform a consistent read-modify-write.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The names of the permissions this role grants when bound in an IAM policy.
+        /// </summary>
+        [Output("includedPermissions")]
+        public Output<ImmutableArray<string>> IncludedPermissions { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        /// </summary>
+        [Output("stage")]
+        public Output<string> Stage { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Role resource with the given unique name, arguments, and options.
         /// </summary>
         ///

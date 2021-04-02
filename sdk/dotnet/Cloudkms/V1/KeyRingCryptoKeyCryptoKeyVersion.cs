@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
     public partial class KeyRingCryptoKeyCryptoKeyVersion : Pulumi.CustomResource
     {
         /// <summary>
+        /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        /// </summary>
+        [Output("algorithm")]
+        public Output<string> Algorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+        /// </summary>
+        [Output("attestation")]
+        public Output<Outputs.KeyOperationAttestationResponse> Attestation { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this CryptoKeyVersion was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+        /// </summary>
+        [Output("destroyEventTime")]
+        public Output<string> DestroyEventTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+        /// </summary>
+        [Output("destroyTime")]
+        public Output<string> DestroyTime { get; private set; } = null!;
+
+        /// <summary>
+        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        /// </summary>
+        [Output("externalProtectionLevelOptions")]
+        public Output<Outputs.ExternalProtectionLevelOptionsResponse> ExternalProtectionLevelOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this CryptoKeyVersion's key material was generated.
+        /// </summary>
+        [Output("generateTime")]
+        public Output<string> GenerateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        /// </summary>
+        [Output("importFailureReason")]
+        public Output<string> ImportFailureReason { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        /// </summary>
+        [Output("importJob")]
+        public Output<string> ImportJob { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this CryptoKeyVersion's key material was imported.
+        /// </summary>
+        [Output("importTime")]
+        public Output<string> ImportTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+        /// </summary>
+        [Output("protectionLevel")]
+        public Output<string> ProtectionLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the CryptoKeyVersion.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a KeyRingCryptoKeyCryptoKeyVersion resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,24 +138,6 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
 
     public sealed class KeyRingCryptoKeyCryptoKeyVersionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        /// </summary>
-        [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
-
-        /// <summary>
-        /// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-        /// </summary>
-        [Input("attestation")]
-        public Input<Inputs.KeyOperationAttestationArgs>? Attestation { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this CryptoKeyVersion was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("cryptoKeyVersionsId", required: true)]
         public Input<string> CryptoKeyVersionsId { get; set; } = null!;
 
@@ -84,46 +145,10 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         public Input<string> CryptoKeysId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-        /// </summary>
-        [Input("destroyEventTime")]
-        public Input<string>? DestroyEventTime { get; set; }
-
-        /// <summary>
-        /// Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-        /// </summary>
-        [Input("destroyTime")]
-        public Input<string>? DestroyTime { get; set; }
-
-        /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
         /// </summary>
         [Input("externalProtectionLevelOptions")]
         public Input<Inputs.ExternalProtectionLevelOptionsArgs>? ExternalProtectionLevelOptions { get; set; }
-
-        /// <summary>
-        /// Output only. The time this CryptoKeyVersion's key material was generated.
-        /// </summary>
-        [Input("generateTime")]
-        public Input<string>? GenerateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-        /// </summary>
-        [Input("importFailureReason")]
-        public Input<string>? ImportFailureReason { get; set; }
-
-        /// <summary>
-        /// Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-        /// </summary>
-        [Input("importJob")]
-        public Input<string>? ImportJob { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this CryptoKeyVersion's key material was imported.
-        /// </summary>
-        [Input("importTime")]
-        public Input<string>? ImportTime { get; set; }
 
         [Input("keyRingsId", required: true)]
         public Input<string> KeyRingsId { get; set; } = null!;
@@ -131,20 +156,8 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-        /// </summary>
-        [Input("protectionLevel")]
-        public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
         /// The current state of the CryptoKeyVersion.

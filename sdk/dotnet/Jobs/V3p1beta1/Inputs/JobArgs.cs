@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1.Inputs
         public Input<Inputs.ApplicationInfoArgs>? ApplicationInfo { get; set; }
 
         /// <summary>
-        /// Output only. Display name of the company listing the job.
+        /// Display name of the company listing the job.
         /// </summary>
         [Input("companyDisplayName")]
         public Input<string>? CompanyDisplayName { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1.Inputs
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// Output only. Derived details about the job posting.
+        /// Derived details about the job posting.
         /// </summary>
         [Input("derivedInfo")]
         public Input<Inputs.JobDerivedInfoArgs>? DerivedInfo { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. The timestamp when this job posting was created.
+        /// The timestamp when this job posting was created.
         /// </summary>
         [Input("postingCreateTime")]
         public Input<string>? PostingCreateTime { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1.Inputs
         public Input<string>? PostingRegion { get; set; }
 
         /// <summary>
-        /// Output only. The timestamp when this job posting was last updated.
+        /// The timestamp when this job posting was last updated.
         /// </summary>
         [Input("postingUpdateTime")]
         public Input<string>? PostingUpdateTime { get; set; }
@@ -218,12 +218,6 @@ namespace Pulumi.GoogleCloud.Jobs.V3p1beta1.Inputs
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
-
-        /// <summary>
-        /// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-        /// </summary>
-        [Input("visibility")]
-        public Input<string>? Visibility { get; set; }
 
         public JobArgs()
         {

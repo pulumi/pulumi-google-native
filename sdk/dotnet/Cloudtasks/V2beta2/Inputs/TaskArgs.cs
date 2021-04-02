@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta2.Inputs
         public Input<Inputs.AppEngineHttpRequestArgs>? AppEngineHttpRequest { get; set; }
 
         /// <summary>
-        /// Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
+        /// The time that the task was created. `create_time` will be truncated to the nearest second.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -46,13 +46,13 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta2.Inputs
         public Input<string>? ScheduleTime { get; set; }
 
         /// <summary>
-        /// Output only. The task status.
+        /// The task status.
         /// </summary>
         [Input("status")]
         public Input<Inputs.TaskStatusArgs>? Status { get; set; }
 
         /// <summary>
-        /// Output only. The view specifies which subset of the Task has been returned.
+        /// The view specifies which subset of the Task has been returned.
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }

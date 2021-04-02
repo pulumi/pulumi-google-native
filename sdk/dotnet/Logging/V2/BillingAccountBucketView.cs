@@ -66,12 +66,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
         public Input<string> BucketsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The creation timestamp of the view.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Describes this view.
         /// </summary>
         [Input("description")]
@@ -91,12 +85,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of the view.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         [Input("viewsId", required: true)]
         public Input<string> ViewsId { get; set; } = null!;

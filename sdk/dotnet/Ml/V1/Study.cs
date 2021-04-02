@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public partial class Study : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time at which the study was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
+        /// </summary>
+        [Output("inactiveReason")]
+        public Output<string> InactiveReason { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of a study.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The detailed state of a study.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Configuration of the study.
+        /// </summary>
+        [Output("studyConfig")]
+        public Output<Outputs.GoogleCloudMlV1__StudyConfigResponse> StudyConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Study resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,35 +90,11 @@ namespace Pulumi.GoogleCloud.Ml.V1
 
     public sealed class StudyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. Time at which the study was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
-        /// </summary>
-        [Input("inactiveReason")]
-        public Input<string>? InactiveReason { get; set; }
-
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The name of a study.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The detailed state of a study.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         [Input("studiesId", required: true)]
         public Input<string> StudiesId { get; set; } = null!;

@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public partial class DatasetAnnotationStoreAnnotation : Pulumi.CustomResource
     {
         /// <summary>
+        /// Details of the source.
+        /// </summary>
+        [Output("annotationSource")]
+        public Output<Outputs.AnnotationSourceResponse> AnnotationSource { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information for this annotation record, such as annotator and verifier information or study campaign.
+        /// </summary>
+        [Output("customData")]
+        public Output<ImmutableDictionary<string, string>> CustomData { get; private set; } = null!;
+
+        /// <summary>
+        /// Annotations for images. For example, bounding polygons.
+        /// </summary>
+        [Output("imageAnnotation")]
+        public Output<Outputs.ImageAnnotationResponse> ImageAnnotation { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Annotations for resource. For example, classification tags.
+        /// </summary>
+        [Output("resourceAnnotation")]
+        public Output<Outputs.ResourceAnnotationResponse> ResourceAnnotation { get; private set; } = null!;
+
+        /// <summary>
+        /// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+        /// </summary>
+        [Output("textAnnotation")]
+        public Output<Outputs.SensitiveTextAnnotationResponse> TextAnnotation { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetAnnotationStoreAnnotation resource with the given unique name, arguments, and options.
         /// </summary>
         ///

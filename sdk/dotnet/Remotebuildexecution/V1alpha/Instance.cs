@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The policy to define whether or not RBE features can be used or how they can be used.
+        /// </summary>
+        [Output("featurePolicy")]
+        public Output<Outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse> FeaturePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The location is a GCP region. Currently only `us-central1` is supported.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether stack driver logging is enabled for the instance.
+        /// </summary>
+        [Output("loggingEnabled")]
+        public Output<bool> LoggingEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the instance.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
         /// </summary>
         ///

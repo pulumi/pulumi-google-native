@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Logging.V2
     public partial class OrganizationBucketView : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation timestamp of the view.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes this view.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of the view.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationBucketView resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,12 +94,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
         public Input<string> BucketsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The creation timestamp of the view.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Describes this view.
         /// </summary>
         [Input("description")]
@@ -91,12 +116,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The last update timestamp of the view.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         [Input("viewsId", required: true)]
         public Input<string> ViewsId { get; set; } = null!;

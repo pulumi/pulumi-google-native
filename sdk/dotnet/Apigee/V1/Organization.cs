@@ -16,6 +16,124 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class Organization : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// </summary>
+        [Output("analyticsRegion")]
+        public Output<string> AnalyticsRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// Not used by Apigee.
+        /// </summary>
+        [Output("attributes")]
+        public Output<ImmutableArray<string>> Attributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
+        /// </summary>
+        [Output("authorizedNetwork")]
+        public Output<string> AuthorizedNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        /// </summary>
+        [Output("billingType")]
+        public Output<string> BillingType { get; private set; } = null!;
+
+        /// <summary>
+        /// Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
+        /// </summary>
+        [Output("caCertificate")]
+        public Output<string> CaCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Time that the Apigee organization was created in milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Not used by Apigee.
+        /// </summary>
+        [Output("customerName")]
+        public Output<string> CustomerName { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the Apigee organization.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// List of environments in the Apigee organization.
+        /// </summary>
+        [Output("environments")]
+        public Output<ImmutableArray<string>> Environments { get; private set; } = null!;
+
+        /// <summary>
+        /// Time that the Apigee organization is scheduled for deletion.
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string> ExpiresAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Time that the Apigee organization was last modified in milliseconds since epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Apigee organization.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Project ID associated with the Apigee organization.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Properties defined in the Apigee organization profile.
+        /// </summary>
+        [Output("properties")]
+        public Output<Outputs.GoogleCloudApigeeV1PropertiesResponse> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
+        /// </summary>
+        [Output("runtimeDatabaseEncryptionKeyName")]
+        public Output<string> RuntimeDatabaseEncryptionKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        /// </summary>
+        [Output("runtimeType")]
+        public Output<string> RuntimeType { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the organization. Values other than ACTIVE means the resource is not ready to use.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+        /// </summary>
+        [Output("subscriptionType")]
+        public Output<string> SubscriptionType { get; private set; } = null!;
+
+        /// <summary>
+        /// Not used by Apigee.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Organization resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -90,18 +208,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? BillingType { get; set; }
 
         /// <summary>
-        /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
-        /// </summary>
-        [Input("caCertificate")]
-        public Input<string>? CaCertificate { get; set; }
-
-        /// <summary>
-        /// Output only. Time that the Apigee organization was created in milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Input("customerName")]
@@ -116,44 +222,8 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("environments")]
-        private InputList<string>? _environments;
-
-        /// <summary>
-        /// Output only. List of environments in the Apigee organization.
-        /// </summary>
-        public InputList<string> Environments
-        {
-            get => _environments ?? (_environments = new InputList<string>());
-            set => _environments = value;
-        }
-
-        /// <summary>
-        /// Output only. Time that the Apigee organization is scheduled for deletion.
-        /// </summary>
-        [Input("expiresAt")]
-        public Input<string>? ExpiresAt { get; set; }
-
-        /// <summary>
-        /// Output only. Time that the Apigee organization was last modified in milliseconds since epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
-
-        /// <summary>
-        /// Output only. Name of the Apigee organization.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Project ID associated with the Apigee organization.
-        /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// Properties defined in the Apigee organization profile.
@@ -172,18 +242,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("runtimeType")]
         public Input<string>? RuntimeType { get; set; }
-
-        /// <summary>
-        /// Output only. State of the organization. Values other than ACTIVE means the resource is not ready to use.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
-        /// </summary>
-        [Input("subscriptionType")]
-        public Input<string>? SubscriptionType { get; set; }
 
         /// <summary>
         /// Not used by Apigee.

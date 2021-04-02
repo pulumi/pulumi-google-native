@@ -16,6 +16,103 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
     public partial class Note : Pulumi.CustomResource
     {
         /// <summary>
+        /// A note describing an attestation role.
+        /// </summary>
+        [Output("attestationAuthority")]
+        public Output<Outputs.AttestationAuthorityResponse> AttestationAuthority { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing a base image.
+        /// </summary>
+        [Output("baseImage")]
+        public Output<Outputs.BasisResponse> BaseImage { get; private set; } = null!;
+
+        /// <summary>
+        /// Build provenance type for a verifiable build.
+        /// </summary>
+        [Output("buildType")]
+        public Output<Outputs.BuildTypeResponse> BuildType { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this note was created. This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing something that can be deployed.
+        /// </summary>
+        [Output("deployable")]
+        public Output<Outputs.DeployableResponse> Deployable { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing a provider/analysis type.
+        /// </summary>
+        [Output("discovery")]
+        public Output<Outputs.DiscoveryResponse> Discovery { get; private set; } = null!;
+
+        /// <summary>
+        /// Time of expiration for this note, null if note does not expire.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<string> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// A detailed description of this `Note`.
+        /// </summary>
+        [Output("longDescription")]
+        public Output<string> LongDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing a package hosted by various package managers.
+        /// </summary>
+        [Output("package")]
+        public Output<Outputs.PackageResponse> Package { get; private set; } = null!;
+
+        /// <summary>
+        /// URLs associated with this note
+        /// </summary>
+        [Output("relatedUrl")]
+        public Output<ImmutableArray<Outputs.RelatedUrlResponse>> RelatedUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A one sentence description of this `Note`.
+        /// </summary>
+        [Output("shortDescription")]
+        public Output<string> ShortDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this note was last updated. This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing an upgrade.
+        /// </summary>
+        [Output("upgrade")]
+        public Output<Outputs.UpgradeNoteResponse> Upgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// A package vulnerability type of note.
+        /// </summary>
+        [Output("vulnerabilityType")]
+        public Output<Outputs.VulnerabilityTypeResponse> VulnerabilityType { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Note resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -78,7 +175,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         public Input<Inputs.BuildTypeArgs>? BuildType { get; set; }
 
         /// <summary>
-        /// Output only. The time this note was created. This field can be used as a filter in list requests.
+        /// The time this note was created. This field can be used as a filter in list requests.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -102,7 +199,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         public Input<string>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// Output only. This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+        /// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -150,7 +247,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         public Input<string>? ShortDescription { get; set; }
 
         /// <summary>
-        /// Output only. The time this note was last updated. This field can be used as a filter in list requests.
+        /// The time this note was last updated. This field can be used as a filter in list requests.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

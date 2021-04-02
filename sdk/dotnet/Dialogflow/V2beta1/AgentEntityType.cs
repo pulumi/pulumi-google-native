@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
     public partial class AgentEntityType : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Indicates whether the entity type can be automatically expanded.
+        /// </summary>
+        [Output("autoExpansionMode")]
+        public Output<string> AutoExpansionMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The name of the entity type.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Enables fuzzy entity extraction during classification.
+        /// </summary>
+        [Output("enableFuzzyExtraction")]
+        public Output<bool> EnableFuzzyExtraction { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The collection of entity entries associated with the entity type.
+        /// </summary>
+        [Output("entities")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>> Entities { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Indicates the kind of entity type.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentEntityType resource with the given unique name, arguments, and options.
         /// </summary>
         ///

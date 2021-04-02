@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
     public partial class InstanceAppProfile : Pulumi.CustomResource
     {
         /// <summary>
+        /// Long form description of the use case for this AppProfile.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Use a multi-cluster routing policy.
+        /// </summary>
+        [Output("multiClusterRoutingUseAny")]
+        public Output<Outputs.MultiClusterRoutingUseAnyResponse> MultiClusterRoutingUseAny { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Use a single-cluster routing policy.
+        /// </summary>
+        [Output("singleClusterRouting")]
+        public Output<Outputs.SingleClusterRoutingResponse> SingleClusterRouting { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceAppProfile resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -33,12 +33,6 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1.Inputs
             set => _paths = value;
         }
 
-        /// <summary>
-        /// Output only. Stores timing information for pushing all artifact objects.
-        /// </summary>
-        [Input("timing")]
-        public Input<Inputs.TimeSpanArgs>? Timing { get; set; }
-
         public ArtifactObjectsArgs()
         {
         }

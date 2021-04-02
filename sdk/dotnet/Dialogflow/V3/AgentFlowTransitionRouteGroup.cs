@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
     public partial class AgentFlowTransitionRouteGroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Transition routes associated with the TransitionRouteGroup.
+        /// </summary>
+        [Output("transitionRoutes")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3TransitionRouteResponse>> TransitionRoutes { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentFlowTransitionRouteGroup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
