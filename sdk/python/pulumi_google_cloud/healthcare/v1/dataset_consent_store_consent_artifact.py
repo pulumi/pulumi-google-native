@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetConsentStoreConsentArtifact']
@@ -108,7 +109,79 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["consent_content_screenshots"] = None
+        __props__["consent_content_version"] = None
+        __props__["guardian_signature"] = None
+        __props__["metadata"] = None
+        __props__["name"] = None
+        __props__["user_id"] = None
+        __props__["user_signature"] = None
+        __props__["witness_signature"] = None
         return DatasetConsentStoreConsentArtifact(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="consentContentScreenshots")
+    def consent_content_screenshots(self) -> pulumi.Output[Sequence['outputs.ImageResponse']]:
+        """
+        Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
+        """
+        return pulumi.get(self, "consent_content_screenshots")
+
+    @property
+    @pulumi.getter(name="consentContentVersion")
+    def consent_content_version(self) -> pulumi.Output[str]:
+        """
+        Optional. An string indicating the version of the consent information shown to the user.
+        """
+        return pulumi.get(self, "consent_content_version")
+
+    @property
+    @pulumi.getter(name="guardianSignature")
+    def guardian_signature(self) -> pulumi.Output['outputs.SignatureResponse']:
+        """
+        Optional. A signature from a guardian.
+        """
+        return pulumi.get(self, "guardian_signature")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        """
+        Required. User's UUID provided by the client.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userSignature")
+    def user_signature(self) -> pulumi.Output['outputs.SignatureResponse']:
+        """
+        Optional. User's signature.
+        """
+        return pulumi.get(self, "user_signature")
+
+    @property
+    @pulumi.getter(name="witnessSignature")
+    def witness_signature(self) -> pulumi.Output['outputs.SignatureResponse']:
+        """
+        Optional. A signature from a witness.
+        """
+        return pulumi.get(self, "witness_signature")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

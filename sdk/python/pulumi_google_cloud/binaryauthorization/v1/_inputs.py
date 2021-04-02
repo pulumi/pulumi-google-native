@@ -316,33 +316,17 @@ class PkixPublicKeyArgs:
 @pulumi.input_type
 class UserOwnedGrafeasNoteArgs:
     def __init__(__self__, *,
-                 delegation_service_account_email: Optional[pulumi.Input[str]] = None,
                  note_reference: Optional[pulumi.Input[str]] = None,
                  public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['AttestorPublicKeyArgs']]]] = None):
         """
         An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
-        :param pulumi.Input[str] delegation_service_account_email: Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
         :param pulumi.Input[str] note_reference: Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
         :param pulumi.Input[Sequence[pulumi.Input['AttestorPublicKeyArgs']]] public_keys: Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
         """
-        if delegation_service_account_email is not None:
-            pulumi.set(__self__, "delegation_service_account_email", delegation_service_account_email)
         if note_reference is not None:
             pulumi.set(__self__, "note_reference", note_reference)
         if public_keys is not None:
             pulumi.set(__self__, "public_keys", public_keys)
-
-    @property
-    @pulumi.getter(name="delegationServiceAccountEmail")
-    def delegation_service_account_email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-        """
-        return pulumi.get(self, "delegation_service_account_email")
-
-    @delegation_service_account_email.setter
-    def delegation_service_account_email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "delegation_service_account_email", value)
 
     @property
     @pulumi.getter(name="noteReference")

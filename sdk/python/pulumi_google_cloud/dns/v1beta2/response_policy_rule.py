@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ResponsePolicyRule']
@@ -90,7 +91,49 @@ class ResponsePolicyRule(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["behavior"] = None
+        __props__["dns_name"] = None
+        __props__["kind"] = None
+        __props__["local_data"] = None
+        __props__["rule_name"] = None
         return ResponsePolicyRule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> pulumi.Output[str]:
+        """
+        Answer this query with a behavior rather than DNS data.
+        """
+        return pulumi.get(self, "behavior")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> pulumi.Output[str]:
+        """
+        The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="localData")
+    def local_data(self) -> pulumi.Output['outputs.ResponsePolicyRuleLocalDataResponse']:
+        """
+        Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+        """
+        return pulumi.get(self, "local_data")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> pulumi.Output[str]:
+        """
+        An identifier for this rule. Must be unique with the ResponsePolicy.
+        """
+        return pulumi.get(self, "rule_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

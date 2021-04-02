@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['CertificateAuthorityCertificate']
@@ -17,20 +18,13 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authorities_id: Optional[pulumi.Input[str]] = None,
-                 certificate_description: Optional[pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']]] = None,
                  certificates_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 pem_certificate: Optional[pulumi.Input[str]] = None,
-                 pem_certificate_chain: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 revocation_details: Optional[pulumi.Input[pulumi.InputType['RevocationDetailsArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,17 +33,10 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CertificateDescriptionArgs']] certificate_description: Output only. A structured description of the issued X.509 certificate.
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
-        :param pulumi.Input[str] create_time: Output only. The time at which this Certificate was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-        :param pulumi.Input[str] name: Output only. The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
-        :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chain: Output only. The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
-        :param pulumi.Input[pulumi.InputType['RevocationDetailsArgs']] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
-        :param pulumi.Input[str] update_time: Output only. The time at which this Certificate was updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,26 +58,26 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
             if certificate_authorities_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authorities_id'")
             __props__['certificate_authorities_id'] = certificate_authorities_id
-            __props__['certificate_description'] = certificate_description
             if certificates_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificates_id'")
             __props__['certificates_id'] = certificates_id
             __props__['config'] = config
-            __props__['create_time'] = create_time
             __props__['labels'] = labels
             __props__['lifetime'] = lifetime
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
-            __props__['pem_certificate'] = pem_certificate
-            __props__['pem_certificate_chain'] = pem_certificate_chain
             __props__['pem_csr'] = pem_csr
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['revocation_details'] = revocation_details
-            __props__['update_time'] = update_time
+            __props__['certificate_description'] = None
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['pem_certificate'] = None
+            __props__['pem_certificate_chain'] = None
+            __props__['revocation_details'] = None
+            __props__['update_time'] = None
         super(CertificateAuthorityCertificate, __self__).__init__(
             'google-cloud:privateca/v1beta1:CertificateAuthorityCertificate',
             resource_name,
@@ -113,7 +100,106 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["certificate_description"] = None
+        __props__["config"] = None
+        __props__["create_time"] = None
+        __props__["labels"] = None
+        __props__["lifetime"] = None
+        __props__["name"] = None
+        __props__["pem_certificate"] = None
+        __props__["pem_certificate_chain"] = None
+        __props__["pem_csr"] = None
+        __props__["revocation_details"] = None
+        __props__["update_time"] = None
         return CertificateAuthorityCertificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateDescription")
+    def certificate_description(self) -> pulumi.Output['outputs.CertificateDescriptionResponse']:
+        """
+        A structured description of the issued X.509 certificate.
+        """
+        return pulumi.get(self, "certificate_description")
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output['outputs.CertificateConfigResponse']:
+        """
+        Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this Certificate was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Labels with user-defined metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        """
+        return pulumi.get(self, "lifetime")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> pulumi.Output[str]:
+        """
+        The pem-encoded, signed X.509 certificate.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @property
+    @pulumi.getter(name="pemCertificateChain")
+    def pem_certificate_chain(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
+        """
+        return pulumi.get(self, "pem_certificate_chain")
+
+    @property
+    @pulumi.getter(name="pemCsr")
+    def pem_csr(self) -> pulumi.Output[str]:
+        """
+        Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        """
+        return pulumi.get(self, "pem_csr")
+
+    @property
+    @pulumi.getter(name="revocationDetails")
+    def revocation_details(self) -> pulumi.Output['outputs.RevocationDetailsResponse']:
+        """
+        Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        """
+        return pulumi.get(self, "revocation_details")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this Certificate was updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

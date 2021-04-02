@@ -8,6 +8,7 @@ from .service_backup import *
 from .service_iam_policy import *
 from .service_metadata_import import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

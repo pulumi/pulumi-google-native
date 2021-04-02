@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['CustomClass']
@@ -60,6 +61,8 @@ class CustomClass(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['items'] = None
+            __props__['name'] = None
         super(CustomClass, __self__).__init__(
             'google-cloud:speech/v1p1beta1:CustomClass',
             resource_name,
@@ -82,7 +85,34 @@ class CustomClass(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["custom_class_id"] = None
+        __props__["items"] = None
+        __props__["name"] = None
         return CustomClass(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customClassId")
+    def custom_class_id(self) -> pulumi.Output[str]:
+        """
+        If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+        """
+        return pulumi.get(self, "custom_class_id")
+
+    @property
+    @pulumi.getter
+    def items(self) -> pulumi.Output[Sequence['outputs.ClassItemResponse']]:
+        """
+        A collection of class items.
+        """
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the custom class.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

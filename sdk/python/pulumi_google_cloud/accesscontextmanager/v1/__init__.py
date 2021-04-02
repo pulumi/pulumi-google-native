@@ -8,6 +8,7 @@ from .access_policy_access_level import *
 from .access_policy_service_perimeter import *
 from .organization_gcp_user_access_binding import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

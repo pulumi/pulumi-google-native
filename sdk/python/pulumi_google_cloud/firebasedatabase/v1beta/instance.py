@@ -90,7 +90,52 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["database_url"] = None
+        __props__["name"] = None
+        __props__["project"] = None
+        __props__["state"] = None
+        __props__["type"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="databaseUrl")
+    def database_url(self) -> pulumi.Output[str]:
+        """
+        Immutable. The globally unique hostname of the database.
+        """
+        return pulumi.get(self, "database_url")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        """
+        The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The database's lifecycle state. Read-only.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

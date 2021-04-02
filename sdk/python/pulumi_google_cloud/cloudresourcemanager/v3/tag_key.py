@@ -15,15 +15,12 @@ class TagKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespaced_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  tag_keys_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,14 +29,11 @@ class TagKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Creation time.
         :param pulumi.Input[str] description: Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
         :param pulumi.Input[str] name: Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
-        :param pulumi.Input[str] namespaced_name: Output only. Immutable. Namespaced name of the TagKey.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
         :param pulumi.Input[str] short_name: Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[str] update_time: Output only. Update time.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,17 +52,17 @@ class TagKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['etag'] = etag
             __props__['name'] = name
-            __props__['namespaced_name'] = namespaced_name
             __props__['parent'] = parent
             __props__['short_name'] = short_name
             if tag_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_keys_id'")
             __props__['tag_keys_id'] = tag_keys_id
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['namespaced_name'] = None
+            __props__['update_time'] = None
         super(TagKey, __self__).__init__(
             'google-cloud:cloudresourcemanager/v3:TagKey',
             resource_name,
@@ -91,7 +85,79 @@ class TagKey(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["name"] = None
+        __props__["namespaced_name"] = None
+        __props__["parent"] = None
+        __props__["short_name"] = None
+        __props__["update_time"] = None
         return TagKey(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespacedName")
+    def namespaced_name(self) -> pulumi.Output[str]:
+        """
+        Immutable. Namespaced name of the TagKey.
+        """
+        return pulumi.get(self, "namespaced_name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        """
+        return pulumi.get(self, "short_name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Update time.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

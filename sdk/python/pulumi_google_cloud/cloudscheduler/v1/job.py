@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Job']
@@ -45,16 +46,16 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] attempt_deadline: The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
         :param pulumi.Input[str] description: Optionally caller-specified in CreateJob or UpdateJob. A human-readable description for the job. This string must not contain more than 500 characters.
         :param pulumi.Input[pulumi.InputType['HttpTargetArgs']] http_target: HTTP target.
-        :param pulumi.Input[str] last_attempt_time: Output only. The time the last job attempt started.
+        :param pulumi.Input[str] last_attempt_time: The time the last job attempt started.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         :param pulumi.Input[pulumi.InputType['PubsubTargetArgs']] pubsub_target: Pub/Sub target.
         :param pulumi.Input[pulumi.InputType['RetryConfigArgs']] retry_config: Settings that determine the retry behavior.
         :param pulumi.Input[str] schedule: Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
-        :param pulumi.Input[str] schedule_time: Output only. The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
-        :param pulumi.Input[str] state: Output only. State of the job.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] status: Output only. The response from the target for the last attempted execution.
+        :param pulumi.Input[str] schedule_time: The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
+        :param pulumi.Input[str] state: State of the job.
+        :param pulumi.Input[pulumi.InputType['StatusArgs']] status: The response from the target for the last attempted execution.
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
-        :param pulumi.Input[str] user_update_time: Output only. The creation time of the job.
+        :param pulumi.Input[str] user_update_time: The creation time of the job.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,7 +119,133 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_engine_http_target"] = None
+        __props__["attempt_deadline"] = None
+        __props__["description"] = None
+        __props__["http_target"] = None
+        __props__["last_attempt_time"] = None
+        __props__["name"] = None
+        __props__["pubsub_target"] = None
+        __props__["retry_config"] = None
+        __props__["schedule"] = None
+        __props__["schedule_time"] = None
+        __props__["state"] = None
+        __props__["status"] = None
+        __props__["time_zone"] = None
+        __props__["user_update_time"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appEngineHttpTarget")
+    def app_engine_http_target(self) -> pulumi.Output['outputs.AppEngineHttpTargetResponse']:
+        """
+        App Engine HTTP target.
+        """
+        return pulumi.get(self, "app_engine_http_target")
+
+    @property
+    @pulumi.getter(name="attemptDeadline")
+    def attempt_deadline(self) -> pulumi.Output[str]:
+        """
+        The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        """
+        return pulumi.get(self, "attempt_deadline")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optionally caller-specified in CreateJob or UpdateJob. A human-readable description for the job. This string must not contain more than 500 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> pulumi.Output['outputs.HttpTargetResponse']:
+        """
+        HTTP target.
+        """
+        return pulumi.get(self, "http_target")
+
+    @property
+    @pulumi.getter(name="lastAttemptTime")
+    def last_attempt_time(self) -> pulumi.Output[str]:
+        """
+        The time the last job attempt started.
+        """
+        return pulumi.get(self, "last_attempt_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pubsubTarget")
+    def pubsub_target(self) -> pulumi.Output['outputs.PubsubTargetResponse']:
+        """
+        Pub/Sub target.
+        """
+        return pulumi.get(self, "pubsub_target")
+
+    @property
+    @pulumi.getter(name="retryConfig")
+    def retry_config(self) -> pulumi.Output['outputs.RetryConfigResponse']:
+        """
+        Settings that determine the retry behavior.
+        """
+        return pulumi.get(self, "retry_config")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Output[str]:
+        """
+        Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="scheduleTime")
+    def schedule_time(self) -> pulumi.Output[str]:
+        """
+        The next time the job is scheduled. Note that this may be a retry of a previously failed attempt or the next execution time according to the schedule.
+        """
+        return pulumi.get(self, "schedule_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the job.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        The response from the target for the last attempted execution.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[str]:
+        """
+        Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="userUpdateTime")
+    def user_update_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the job.
+        """
+        return pulumi.get(self, "user_update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

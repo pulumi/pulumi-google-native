@@ -8,6 +8,7 @@ from .connection_profile_iam_policy import *
 from .migration_job import *
 from .migration_job_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

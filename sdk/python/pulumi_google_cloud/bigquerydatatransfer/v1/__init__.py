@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .transfer_config import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

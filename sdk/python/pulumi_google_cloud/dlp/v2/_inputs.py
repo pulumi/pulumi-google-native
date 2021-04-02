@@ -38,7 +38,6 @@ __all__ = [
     'GooglePrivacyDlpV2DetectionRuleArgs',
     'GooglePrivacyDlpV2DictionaryArgs',
     'GooglePrivacyDlpV2EntityIdArgs',
-    'GooglePrivacyDlpV2ErrorArgs',
     'GooglePrivacyDlpV2ExcludeInfoTypesArgs',
     'GooglePrivacyDlpV2ExclusionRuleArgs',
     'GooglePrivacyDlpV2ExpressionsArgs',
@@ -109,7 +108,6 @@ __all__ = [
     'GooglePrivacyDlpV2ValueArgs',
     'GooglePrivacyDlpV2WordListArgs',
     'GoogleProtobufEmptyArgs',
-    'GoogleRpcStatusArgs',
     'GoogleTypeDateArgs',
     'GoogleTypeTimeOfDayArgs',
 ]
@@ -1517,45 +1515,21 @@ class GooglePrivacyDlpV2DeidentifyConfigArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2DeidentifyTemplateArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  deidentify_config: Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 display_name: Optional[pulumi.Input[str]] = None):
         """
         DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of an inspectTemplate.
         :param pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs'] deidentify_config: The core content of the template.
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
-        :param pulumi.Input[str] name: Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of an inspectTemplate.
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if deidentify_config is not None:
             pulumi.set(__self__, "deidentify_config", deidentify_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The creation timestamp of an inspectTemplate.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="deidentifyConfig")
@@ -1592,30 +1566,6 @@ class GooglePrivacyDlpV2DeidentifyTemplateArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The last update timestamp of an inspectTemplate.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
@@ -1760,46 +1710,6 @@ class GooglePrivacyDlpV2EntityIdArgs:
     @field.setter
     def field(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
         pulumi.set(self, "field", value)
-
-
-@pulumi.input_type
-class GooglePrivacyDlpV2ErrorArgs:
-    def __init__(__self__, *,
-                 details: Optional[pulumi.Input['GoogleRpcStatusArgs']] = None,
-                 timestamps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
-        :param pulumi.Input['GoogleRpcStatusArgs'] details: Detailed error codes and messages.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] timestamps: The times the error occurred.
-        """
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if timestamps is not None:
-            pulumi.set(__self__, "timestamps", timestamps)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['GoogleRpcStatusArgs']]:
-        """
-        Detailed error codes and messages.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input['GoogleRpcStatusArgs']]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def timestamps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The times the error occurred.
-        """
-        return pulumi.get(self, "timestamps")
-
-    @timestamps.setter
-    def timestamps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "timestamps", value)
 
 
 @pulumi.input_type
@@ -2653,45 +2563,21 @@ class GooglePrivacyDlpV2InspectJobConfigArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2InspectTemplateArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 inspect_config: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']] = None):
         """
         The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of an inspectTemplate.
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs'] inspect_config: The core content of the template. Configuration of the scanning process.
-        :param pulumi.Input[str] name: Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of an inspectTemplate.
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_config is not None:
             pulumi.set(__self__, "inspect_config", inspect_config)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The creation timestamp of an inspectTemplate.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -2728,30 +2614,6 @@ class GooglePrivacyDlpV2InspectTemplateArgs:
     @inspect_config.setter
     def inspect_config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']]):
         pulumi.set(self, "inspect_config", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The last update timestamp of an inspectTemplate.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
@@ -2846,61 +2708,33 @@ class GooglePrivacyDlpV2JobNotificationEmailsArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2JobTriggerArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ErrorArgs']]]] = None,
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
-                 last_run_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]] = None):
         """
         Contains a configuration to make dlp api calls on a repeating basis. See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of a triggeredJob.
         :param pulumi.Input[str] description: User provided description (max 256 chars)
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ErrorArgs']]] errors: Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
         :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: For inspect jobs, a snapshot of the configuration.
-        :param pulumi.Input[str] last_run_time: Output only. The timestamp of the last time this trigger executed.
         :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
         :param pulumi.Input[str] status: Required. A status for this trigger.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of a triggeredJob.
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if errors is not None:
-            pulumi.set(__self__, "errors", errors)
         if inspect_job is not None:
             pulumi.set(__self__, "inspect_job", inspect_job)
-        if last_run_time is not None:
-            pulumi.set(__self__, "last_run_time", last_run_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if triggers is not None:
             pulumi.set(__self__, "triggers", triggers)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The creation timestamp of a triggeredJob.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -2927,18 +2761,6 @@ class GooglePrivacyDlpV2JobTriggerArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ErrorArgs']]]]:
-        """
-        Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-        """
-        return pulumi.get(self, "errors")
-
-    @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ErrorArgs']]]]):
-        pulumi.set(self, "errors", value)
-
-    @property
     @pulumi.getter(name="inspectJob")
     def inspect_job(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]:
         """
@@ -2949,18 +2771,6 @@ class GooglePrivacyDlpV2JobTriggerArgs:
     @inspect_job.setter
     def inspect_job(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]):
         pulumi.set(self, "inspect_job", value)
-
-    @property
-    @pulumi.getter(name="lastRunTime")
-    def last_run_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The timestamp of the last time this trigger executed.
-        """
-        return pulumi.get(self, "last_run_time")
-
-    @last_run_time.setter
-    def last_run_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_run_time", value)
 
     @property
     @pulumi.getter
@@ -2997,18 +2807,6 @@ class GooglePrivacyDlpV2JobTriggerArgs:
     @triggers.setter
     def triggers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]]):
         pulumi.set(self, "triggers", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The last update timestamp of a triggeredJob.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
@@ -5007,62 +4805,6 @@ class GoogleProtobufEmptyArgs:
         A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
         """
         pass
-
-
-@pulumi.input_type
-class GoogleRpcStatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
 
 
 @pulumi.input_type

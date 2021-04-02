@@ -20,7 +20,6 @@ __all__ = [
     'OidcTokenArgs',
     'PolicyArgs',
     'PullMessageArgs',
-    'QueueStatsArgs',
     'RateLimitsArgs',
     'RetryConfigArgs',
     'StackdriverLoggingConfigArgs',
@@ -149,7 +148,7 @@ class AppEngineRoutingArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-        :param pulumi.Input[str] host: Output only. The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
+        :param pulumi.Input[str] host: The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
         :param pulumi.Input[str] instance: App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
         :param pulumi.Input[str] service: App service. By default, the task is sent to the service which is the default service when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
         :param pulumi.Input[str] version: App version. By default, the task is sent to the version which is the default version when the task is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into service, version, and instance. For example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service, version, and instance are the empty string.
@@ -167,7 +166,7 @@ class AppEngineRoutingArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
+        The host that the task is sent to. The host is constructed from the domain name of the app associated with the queue's project ID (for example .appspot.com), and the service, version, and instance. Tasks which were created using the App Engine SDK might have a custom domain name. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
         """
         return pulumi.get(self, "host")
 
@@ -221,10 +220,10 @@ class AttemptArgs:
                  schedule_time: Optional[pulumi.Input[str]] = None):
         """
         The status of a task attempt.
-        :param pulumi.Input[str] dispatch_time: Output only. The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input['StatusArgs'] response_status: Output only. The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
-        :param pulumi.Input[str] response_time: Output only. The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input[str] schedule_time: Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
+        :param pulumi.Input[str] dispatch_time: The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
+        :param pulumi.Input['StatusArgs'] response_status: The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
+        :param pulumi.Input[str] response_time: The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
+        :param pulumi.Input[str] schedule_time: The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
         """
         if dispatch_time is not None:
             pulumi.set(__self__, "dispatch_time", dispatch_time)
@@ -239,7 +238,7 @@ class AttemptArgs:
     @pulumi.getter(name="dispatchTime")
     def dispatch_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
+        The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest microsecond.
         """
         return pulumi.get(self, "dispatch_time")
 
@@ -251,7 +250,7 @@ class AttemptArgs:
     @pulumi.getter(name="responseStatus")
     def response_status(self) -> Optional[pulumi.Input['StatusArgs']]:
         """
-        Output only. The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
+        The response from the worker for this attempt. If `response_time` is unset, then the task has not been attempted or is currently running and the `response_status` field is meaningless.
         """
         return pulumi.get(self, "response_status")
 
@@ -263,7 +262,7 @@ class AttemptArgs:
     @pulumi.getter(name="responseTime")
     def response_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
+        The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
         """
         return pulumi.get(self, "response_time")
 
@@ -275,7 +274,7 @@ class AttemptArgs:
     @pulumi.getter(name="scheduleTime")
     def schedule_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
+        The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
         """
         return pulumi.get(self, "schedule_time")
 
@@ -693,94 +692,6 @@ class PullMessageArgs:
 
 
 @pulumi.input_type
-class QueueStatsArgs:
-    def __init__(__self__, *,
-                 concurrent_dispatches_count: Optional[pulumi.Input[str]] = None,
-                 effective_execution_rate: Optional[pulumi.Input[float]] = None,
-                 executed_last_minute_count: Optional[pulumi.Input[str]] = None,
-                 oldest_estimated_arrival_time: Optional[pulumi.Input[str]] = None,
-                 tasks_count: Optional[pulumi.Input[str]] = None):
-        """
-        Statistics for a queue.
-        :param pulumi.Input[str] concurrent_dispatches_count: Output only. The number of requests that the queue has dispatched but has not received a reply for yet.
-        :param pulumi.Input[float] effective_execution_rate: Output only. The current maximum number of tasks per second executed by the queue. The maximum value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to avoid overloading the endpoints tasks in the queue are targeting.
-        :param pulumi.Input[str] executed_last_minute_count: Output only. The number of tasks that the queue has dispatched and received a reply for during the last minute. This variable counts both successful and non-successful executions.
-        :param pulumi.Input[str] oldest_estimated_arrival_time: Output only. An estimation of the nearest time in the future where a task in the queue is scheduled to be executed.
-        :param pulumi.Input[str] tasks_count: Output only. An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying.
-        """
-        if concurrent_dispatches_count is not None:
-            pulumi.set(__self__, "concurrent_dispatches_count", concurrent_dispatches_count)
-        if effective_execution_rate is not None:
-            pulumi.set(__self__, "effective_execution_rate", effective_execution_rate)
-        if executed_last_minute_count is not None:
-            pulumi.set(__self__, "executed_last_minute_count", executed_last_minute_count)
-        if oldest_estimated_arrival_time is not None:
-            pulumi.set(__self__, "oldest_estimated_arrival_time", oldest_estimated_arrival_time)
-        if tasks_count is not None:
-            pulumi.set(__self__, "tasks_count", tasks_count)
-
-    @property
-    @pulumi.getter(name="concurrentDispatchesCount")
-    def concurrent_dispatches_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The number of requests that the queue has dispatched but has not received a reply for yet.
-        """
-        return pulumi.get(self, "concurrent_dispatches_count")
-
-    @concurrent_dispatches_count.setter
-    def concurrent_dispatches_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "concurrent_dispatches_count", value)
-
-    @property
-    @pulumi.getter(name="effectiveExecutionRate")
-    def effective_execution_rate(self) -> Optional[pulumi.Input[float]]:
-        """
-        Output only. The current maximum number of tasks per second executed by the queue. The maximum value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to avoid overloading the endpoints tasks in the queue are targeting.
-        """
-        return pulumi.get(self, "effective_execution_rate")
-
-    @effective_execution_rate.setter
-    def effective_execution_rate(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "effective_execution_rate", value)
-
-    @property
-    @pulumi.getter(name="executedLastMinuteCount")
-    def executed_last_minute_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The number of tasks that the queue has dispatched and received a reply for during the last minute. This variable counts both successful and non-successful executions.
-        """
-        return pulumi.get(self, "executed_last_minute_count")
-
-    @executed_last_minute_count.setter
-    def executed_last_minute_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "executed_last_minute_count", value)
-
-    @property
-    @pulumi.getter(name="oldestEstimatedArrivalTime")
-    def oldest_estimated_arrival_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. An estimation of the nearest time in the future where a task in the queue is scheduled to be executed.
-        """
-        return pulumi.get(self, "oldest_estimated_arrival_time")
-
-    @oldest_estimated_arrival_time.setter
-    def oldest_estimated_arrival_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "oldest_estimated_arrival_time", value)
-
-    @property
-    @pulumi.getter(name="tasksCount")
-    def tasks_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying.
-        """
-        return pulumi.get(self, "tasks_count")
-
-    @tasks_count.setter
-    def tasks_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tasks_count", value)
-
-
-@pulumi.input_type
 class RateLimitsArgs:
     def __init__(__self__, *,
                  max_burst_size: Optional[pulumi.Input[int]] = None,
@@ -1022,17 +933,17 @@ class TaskArgs:
         """
         A unit of scheduled work.
         :param pulumi.Input['AppEngineHttpRequestArgs'] app_engine_http_request: HTTP request that is sent to the App Engine app handler. An App Engine task is a task that has AppEngineHttpRequest set.
-        :param pulumi.Input[str] create_time: Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
-        :param pulumi.Input[int] dispatch_count: Output only. The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
+        :param pulumi.Input[str] create_time: The time that the task was created. `create_time` will be truncated to the nearest second.
+        :param pulumi.Input[int] dispatch_count: The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
         :param pulumi.Input[str] dispatch_deadline: The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline.
-        :param pulumi.Input['AttemptArgs'] first_attempt: Output only. The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
+        :param pulumi.Input['AttemptArgs'] first_attempt: The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
         :param pulumi.Input['HttpRequestArgs'] http_request: HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
-        :param pulumi.Input['AttemptArgs'] last_attempt: Output only. The status of the task's last attempt.
+        :param pulumi.Input['AttemptArgs'] last_attempt: The status of the task's last attempt.
         :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         :param pulumi.Input['PullMessageArgs'] pull_message: Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
-        :param pulumi.Input[int] response_count: Output only. The number of attempts which have received a response.
+        :param pulumi.Input[int] response_count: The number of attempts which have received a response.
         :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
-        :param pulumi.Input[str] view: Output only. The view specifies which subset of the Task has been returned.
+        :param pulumi.Input[str] view: The view specifies which subset of the Task has been returned.
         """
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
@@ -1075,7 +986,7 @@ class TaskArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
+        The time that the task was created. `create_time` will be truncated to the nearest second.
         """
         return pulumi.get(self, "create_time")
 
@@ -1087,7 +998,7 @@ class TaskArgs:
     @pulumi.getter(name="dispatchCount")
     def dispatch_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
+        The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
         """
         return pulumi.get(self, "dispatch_count")
 
@@ -1111,7 +1022,7 @@ class TaskArgs:
     @pulumi.getter(name="firstAttempt")
     def first_attempt(self) -> Optional[pulumi.Input['AttemptArgs']]:
         """
-        Output only. The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
+        The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
         """
         return pulumi.get(self, "first_attempt")
 
@@ -1135,7 +1046,7 @@ class TaskArgs:
     @pulumi.getter(name="lastAttempt")
     def last_attempt(self) -> Optional[pulumi.Input['AttemptArgs']]:
         """
-        Output only. The status of the task's last attempt.
+        The status of the task's last attempt.
         """
         return pulumi.get(self, "last_attempt")
 
@@ -1171,7 +1082,7 @@ class TaskArgs:
     @pulumi.getter(name="responseCount")
     def response_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. The number of attempts which have received a response.
+        The number of attempts which have received a response.
         """
         return pulumi.get(self, "response_count")
 
@@ -1195,7 +1106,7 @@ class TaskArgs:
     @pulumi.getter
     def view(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The view specifies which subset of the Task has been returned.
+        The view specifies which subset of the Task has been returned.
         """
         return pulumi.get(self, "view")
 

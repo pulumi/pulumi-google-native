@@ -15,11 +15,9 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 child_policy_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parent_policy_tag: Optional[pulumi.Input[str]] = None,
                  policy_tags_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -32,10 +30,8 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] child_policy_tags: Output only. Resource names of child policy tags of this policy tag.
         :param pulumi.Input[str] description: Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
         :param pulumi.Input[str] display_name: Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-        :param pulumi.Input[str] name: Output only. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
         :param pulumi.Input[str] parent_policy_tag: Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
         """
         if __name__ is not None:
@@ -55,13 +51,11 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['child_policy_tags'] = child_policy_tags
             __props__['description'] = description
             __props__['display_name'] = display_name
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             __props__['parent_policy_tag'] = parent_policy_tag
             if policy_tags_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_tags_id'")
@@ -72,6 +66,8 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
             if taxonomies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'taxonomies_id'")
             __props__['taxonomies_id'] = taxonomies_id
+            __props__['child_policy_tags'] = None
+            __props__['name'] = None
         super(TaxonomyPolicyTag, __self__).__init__(
             'google-cloud:datacatalog/v1beta1:TaxonomyPolicyTag',
             resource_name,
@@ -94,7 +90,52 @@ class TaxonomyPolicyTag(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["child_policy_tags"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["parent_policy_tag"] = None
         return TaxonomyPolicyTag(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="childPolicyTags")
+    def child_policy_tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Resource names of child policy tags of this policy tag.
+        """
+        return pulumi.get(self, "child_policy_tags")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentPolicyTag")
+    def parent_policy_tag(self) -> pulumi.Output[str]:
+        """
+        Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
+        """
+        return pulumi.get(self, "parent_policy_tag")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

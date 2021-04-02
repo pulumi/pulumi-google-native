@@ -29,9 +29,9 @@ class ServiceConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network: The name of service consumer's VPC network that's connected with service producer network, in the following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC network.
-        :param pulumi.Input[str] peering: Output only. The name of the VPC Network Peering connection that was created by the service producer.
+        :param pulumi.Input[str] peering: The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: The name of one or more allocated IP address ranges for this service producer of type `PEERING`. Note that invoking this method with a different range when connection is already established will not modify already provisioned service producer subnetworks.
-        :param pulumi.Input[str] service: Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
+        :param pulumi.Input[str] service: The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

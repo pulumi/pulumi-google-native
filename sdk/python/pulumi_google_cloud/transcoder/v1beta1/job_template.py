@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['JobTemplate']
@@ -82,7 +83,25 @@ class JobTemplate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["config"] = None
+        __props__["name"] = None
         return JobTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output['outputs.JobConfigResponse']:
+        """
+        The configuration for this template.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

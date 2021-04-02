@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AccountCustomerEntitlement']
@@ -60,6 +61,18 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                 raise TypeError("Missing required property 'entitlements_id'")
             __props__['entitlements_id'] = entitlements_id
             __props__['request_id'] = request_id
+            __props__['association_info'] = None
+            __props__['commitment_settings'] = None
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['offer'] = None
+            __props__['parameters'] = None
+            __props__['provisioned_service'] = None
+            __props__['provisioning_state'] = None
+            __props__['purchase_order_id'] = None
+            __props__['suspension_reasons'] = None
+            __props__['trial_settings'] = None
+            __props__['update_time'] = None
         super(AccountCustomerEntitlement, __self__).__init__(
             'google-cloud:cloudchannel/v1:AccountCustomerEntitlement',
             resource_name,
@@ -82,7 +95,115 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["association_info"] = None
+        __props__["commitment_settings"] = None
+        __props__["create_time"] = None
+        __props__["name"] = None
+        __props__["offer"] = None
+        __props__["parameters"] = None
+        __props__["provisioned_service"] = None
+        __props__["provisioning_state"] = None
+        __props__["purchase_order_id"] = None
+        __props__["suspension_reasons"] = None
+        __props__["trial_settings"] = None
+        __props__["update_time"] = None
         return AccountCustomerEntitlement(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="associationInfo")
+    def association_info(self) -> pulumi.Output['outputs.GoogleCloudChannelV1AssociationInfoResponse']:
+        """
+        Association information to other entitlements.
+        """
+        return pulumi.get(self, "association_info")
+
+    @property
+    @pulumi.getter(name="commitmentSettings")
+    def commitment_settings(self) -> pulumi.Output['outputs.GoogleCloudChannelV1CommitmentSettingsResponse']:
+        """
+        Commitment settings for a commitment-based Offer. Required for commitment based offers.
+        """
+        return pulumi.get(self, "commitment_settings")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the entitlement is created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def offer(self) -> pulumi.Output[str]:
+        """
+        Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        """
+        return pulumi.get(self, "offer")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output[Sequence['outputs.GoogleCloudChannelV1ParameterResponse']]:
+        """
+        Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="provisionedService")
+    def provisioned_service(self) -> pulumi.Output['outputs.GoogleCloudChannelV1ProvisionedServiceResponse']:
+        """
+        Service provisioning details for the entitlement.
+        """
+        return pulumi.get(self, "provisioned_service")
+
+    @property
+    @pulumi.getter(name="provisioningState")
+    def provisioning_state(self) -> pulumi.Output[str]:
+        """
+        Current provisioning state of the entitlement.
+        """
+        return pulumi.get(self, "provisioning_state")
+
+    @property
+    @pulumi.getter(name="purchaseOrderId")
+    def purchase_order_id(self) -> pulumi.Output[str]:
+        """
+        Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+        """
+        return pulumi.get(self, "purchase_order_id")
+
+    @property
+    @pulumi.getter(name="suspensionReasons")
+    def suspension_reasons(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Enumerable of all current suspension reasons for an entitlement.
+        """
+        return pulumi.get(self, "suspension_reasons")
+
+    @property
+    @pulumi.getter(name="trialSettings")
+    def trial_settings(self) -> pulumi.Output['outputs.GoogleCloudChannelV1TrialSettingsResponse']:
+        """
+        Settings for trial offers.
+        """
+        return pulumi.get(self, "trial_settings")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the entitlement is updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

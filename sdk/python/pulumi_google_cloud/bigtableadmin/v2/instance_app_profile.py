@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceAppProfile']
@@ -91,7 +92,52 @@ class InstanceAppProfile(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["multi_cluster_routing_use_any"] = None
+        __props__["name"] = None
+        __props__["single_cluster_routing"] = None
         return InstanceAppProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Long form description of the use case for this AppProfile.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="multiClusterRoutingUseAny")
+    def multi_cluster_routing_use_any(self) -> pulumi.Output['outputs.MultiClusterRoutingUseAnyResponse']:
+        """
+        Use a multi-cluster routing policy.
+        """
+        return pulumi.get(self, "multi_cluster_routing_use_any")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="singleClusterRouting")
+    def single_cluster_routing(self) -> pulumi.Output['outputs.SingleClusterRoutingResponse']:
+        """
+        Use a single-cluster routing policy.
+        """
+        return pulumi.get(self, "single_cluster_routing")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

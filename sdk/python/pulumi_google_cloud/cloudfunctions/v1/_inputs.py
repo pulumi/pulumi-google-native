@@ -328,17 +328,13 @@ class FailurePolicyArgs:
 @pulumi.input_type
 class HttpsTriggerArgs:
     def __init__(__self__, *,
-                 security_level: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 security_level: Optional[pulumi.Input[str]] = None):
         """
         Describes HttpsTrigger, could be used to connect web hooks to function.
         :param pulumi.Input[str] security_level: The security level for the function.
-        :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
         if security_level is not None:
             pulumi.set(__self__, "security_level", security_level)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="securityLevel")
@@ -351,18 +347,6 @@ class HttpsTriggerArgs:
     @security_level.setter
     def security_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_level", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The deployed url for the function.
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
@@ -449,29 +433,13 @@ class RetryArgs:
 @pulumi.input_type
 class SourceRepositoryArgs:
     def __init__(__self__, *,
-                 deployed_url: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Describes SourceRepository, used to represent parameters related to source repository where a function is hosted.
-        :param pulumi.Input[str] deployed_url: Output only. The URL pointing to the hosted repository where the function were defined at the time of deployment. It always points to a specific commit in the format described above.
         :param pulumi.Input[str] url: The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats: To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*` To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*` In particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if you want to use the main directory.
         """
-        if deployed_url is not None:
-            pulumi.set(__self__, "deployed_url", deployed_url)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="deployedUrl")
-    def deployed_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The URL pointing to the hosted repository where the function were defined at the time of deployment. It always points to a specific commit in the format described above.
-        """
-        return pulumi.get(self, "deployed_url")
-
-    @deployed_url.setter
-    def deployed_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "deployed_url", value)
 
     @property
     @pulumi.getter

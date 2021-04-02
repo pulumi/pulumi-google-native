@@ -10,16 +10,12 @@ from ... import _utilities, _tables
 
 __all__ = [
     'GoogleCloudChannelV1AssociationInfoArgs',
-    'GoogleCloudChannelV1CloudIdentityInfoArgs',
     'GoogleCloudChannelV1CommitmentSettingsArgs',
     'GoogleCloudChannelV1ContactInfoArgs',
-    'GoogleCloudChannelV1EduDataArgs',
     'GoogleCloudChannelV1EntitlementArgs',
     'GoogleCloudChannelV1ParameterArgs',
     'GoogleCloudChannelV1PeriodArgs',
-    'GoogleCloudChannelV1ProvisionedServiceArgs',
     'GoogleCloudChannelV1RenewalSettingsArgs',
-    'GoogleCloudChannelV1TrialSettingsArgs',
     'GoogleCloudChannelV1ValueArgs',
     'GoogleTypePostalAddressArgs',
 ]
@@ -49,171 +45,15 @@ class GoogleCloudChannelV1AssociationInfoArgs:
 
 
 @pulumi.input_type
-class GoogleCloudChannelV1CloudIdentityInfoArgs:
-    def __init__(__self__, *,
-                 admin_console_uri: Optional[pulumi.Input[str]] = None,
-                 alternate_email: Optional[pulumi.Input[str]] = None,
-                 customer_type: Optional[pulumi.Input[str]] = None,
-                 edu_data: Optional[pulumi.Input['GoogleCloudChannelV1EduDataArgs']] = None,
-                 is_domain_verified: Optional[pulumi.Input[bool]] = None,
-                 language_code: Optional[pulumi.Input[str]] = None,
-                 phone_number: Optional[pulumi.Input[str]] = None,
-                 primary_domain: Optional[pulumi.Input[str]] = None):
-        """
-        Cloud Identity information for the Cloud Channel Customer.
-        :param pulumi.Input[str] admin_console_uri: Output only. URI of Customer's Admin console dashboard.
-        :param pulumi.Input[str] alternate_email: The alternate email.
-        :param pulumi.Input[str] customer_type: CustomerType indicates verification type needed for using services.
-        :param pulumi.Input['GoogleCloudChannelV1EduDataArgs'] edu_data: Edu information about the customer.
-        :param pulumi.Input[bool] is_domain_verified: Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
-        :param pulumi.Input[str] language_code: Language code.
-        :param pulumi.Input[str] phone_number: Phone number associated with the Cloud Identity.
-        :param pulumi.Input[str] primary_domain: Output only. The primary domain name.
-        """
-        if admin_console_uri is not None:
-            pulumi.set(__self__, "admin_console_uri", admin_console_uri)
-        if alternate_email is not None:
-            pulumi.set(__self__, "alternate_email", alternate_email)
-        if customer_type is not None:
-            pulumi.set(__self__, "customer_type", customer_type)
-        if edu_data is not None:
-            pulumi.set(__self__, "edu_data", edu_data)
-        if is_domain_verified is not None:
-            pulumi.set(__self__, "is_domain_verified", is_domain_verified)
-        if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
-        if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
-        if primary_domain is not None:
-            pulumi.set(__self__, "primary_domain", primary_domain)
-
-    @property
-    @pulumi.getter(name="adminConsoleUri")
-    def admin_console_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. URI of Customer's Admin console dashboard.
-        """
-        return pulumi.get(self, "admin_console_uri")
-
-    @admin_console_uri.setter
-    def admin_console_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "admin_console_uri", value)
-
-    @property
-    @pulumi.getter(name="alternateEmail")
-    def alternate_email(self) -> Optional[pulumi.Input[str]]:
-        """
-        The alternate email.
-        """
-        return pulumi.get(self, "alternate_email")
-
-    @alternate_email.setter
-    def alternate_email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "alternate_email", value)
-
-    @property
-    @pulumi.getter(name="customerType")
-    def customer_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        CustomerType indicates verification type needed for using services.
-        """
-        return pulumi.get(self, "customer_type")
-
-    @customer_type.setter
-    def customer_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "customer_type", value)
-
-    @property
-    @pulumi.getter(name="eduData")
-    def edu_data(self) -> Optional[pulumi.Input['GoogleCloudChannelV1EduDataArgs']]:
-        """
-        Edu information about the customer.
-        """
-        return pulumi.get(self, "edu_data")
-
-    @edu_data.setter
-    def edu_data(self, value: Optional[pulumi.Input['GoogleCloudChannelV1EduDataArgs']]):
-        pulumi.set(self, "edu_data", value)
-
-    @property
-    @pulumi.getter(name="isDomainVerified")
-    def is_domain_verified(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
-        """
-        return pulumi.get(self, "is_domain_verified")
-
-    @is_domain_verified.setter
-    def is_domain_verified(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_domain_verified", value)
-
-    @property
-    @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Language code.
-        """
-        return pulumi.get(self, "language_code")
-
-    @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "language_code", value)
-
-    @property
-    @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Phone number associated with the Cloud Identity.
-        """
-        return pulumi.get(self, "phone_number")
-
-    @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "phone_number", value)
-
-    @property
-    @pulumi.getter(name="primaryDomain")
-    def primary_domain(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The primary domain name.
-        """
-        return pulumi.get(self, "primary_domain")
-
-    @primary_domain.setter
-    def primary_domain(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "primary_domain", value)
-
-
-@pulumi.input_type
 class GoogleCloudChannelV1CommitmentSettingsArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 renewal_settings: Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsArgs']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
+                 renewal_settings: Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsArgs']] = None):
         """
         Commitment settings for commitment-based offers.
-        :param pulumi.Input[str] end_time: Output only. Commitment end timestamp.
         :param pulumi.Input['GoogleCloudChannelV1RenewalSettingsArgs'] renewal_settings: Optional. Renewal settings applicable for a commitment-based Offer.
-        :param pulumi.Input[str] start_time: Output only. Commitment start timestamp.
         """
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
         if renewal_settings is not None:
             pulumi.set(__self__, "renewal_settings", renewal_settings)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Commitment end timestamp.
-        """
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_time", value)
 
     @property
     @pulumi.getter(name="renewalSettings")
@@ -227,23 +67,10 @@ class GoogleCloudChannelV1CommitmentSettingsArgs:
     def renewal_settings(self, value: Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsArgs']]):
         pulumi.set(self, "renewal_settings", value)
 
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Commitment start timestamp.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
 
 @pulumi.input_type
 class GoogleCloudChannelV1ContactInfoArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  first_name: Optional[pulumi.Input[str]] = None,
                  last_name: Optional[pulumi.Input[str]] = None,
@@ -251,15 +78,12 @@ class GoogleCloudChannelV1ContactInfoArgs:
                  title: Optional[pulumi.Input[str]] = None):
         """
         Contact information for a customer account.
-        :param pulumi.Input[str] display_name: Output only. Display name of the contact in the customer account. Populated by combining customer first name and last name.
         :param pulumi.Input[str] email: Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
         :param pulumi.Input[str] first_name: First name of the contact in the customer account.
         :param pulumi.Input[str] last_name: Last name of the contact in the customer account.
         :param pulumi.Input[str] phone: Phone number of the contact in the customer account.
         :param pulumi.Input[str] title: Optional. Job title of the contact in the customer account.
         """
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if first_name is not None:
@@ -270,18 +94,6 @@ class GoogleCloudChannelV1ContactInfoArgs:
             pulumi.set(__self__, "phone", phone)
         if title is not None:
             pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Display name of the contact in the customer account. Populated by combining customer first name and last name.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -345,115 +157,31 @@ class GoogleCloudChannelV1ContactInfoArgs:
 
 
 @pulumi.input_type
-class GoogleCloudChannelV1EduDataArgs:
-    def __init__(__self__, *,
-                 institute_size: Optional[pulumi.Input[str]] = None,
-                 institute_type: Optional[pulumi.Input[str]] = None,
-                 website: Optional[pulumi.Input[str]] = None):
-        """
-        Required Edu Attributes
-        :param pulumi.Input[str] institute_size: Size of the institute.
-        :param pulumi.Input[str] institute_type: Designated institute type of customer.
-        :param pulumi.Input[str] website: Web address for the edu customer's institution.
-        """
-        if institute_size is not None:
-            pulumi.set(__self__, "institute_size", institute_size)
-        if institute_type is not None:
-            pulumi.set(__self__, "institute_type", institute_type)
-        if website is not None:
-            pulumi.set(__self__, "website", website)
-
-    @property
-    @pulumi.getter(name="instituteSize")
-    def institute_size(self) -> Optional[pulumi.Input[str]]:
-        """
-        Size of the institute.
-        """
-        return pulumi.get(self, "institute_size")
-
-    @institute_size.setter
-    def institute_size(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "institute_size", value)
-
-    @property
-    @pulumi.getter(name="instituteType")
-    def institute_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Designated institute type of customer.
-        """
-        return pulumi.get(self, "institute_type")
-
-    @institute_type.setter
-    def institute_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "institute_type", value)
-
-    @property
-    @pulumi.getter
-    def website(self) -> Optional[pulumi.Input[str]]:
-        """
-        Web address for the edu customer's institution.
-        """
-        return pulumi.get(self, "website")
-
-    @website.setter
-    def website(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "website", value)
-
-
-@pulumi.input_type
 class GoogleCloudChannelV1EntitlementArgs:
     def __init__(__self__, *,
                  association_info: Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']] = None,
                  commitment_settings: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]]] = None,
-                 provisioned_service: Optional[pulumi.Input['GoogleCloudChannelV1ProvisionedServiceArgs']] = None,
-                 provisioning_state: Optional[pulumi.Input[str]] = None,
-                 purchase_order_id: Optional[pulumi.Input[str]] = None,
-                 suspension_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trial_settings: Optional[pulumi.Input['GoogleCloudChannelV1TrialSettingsArgs']] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 purchase_order_id: Optional[pulumi.Input[str]] = None):
         """
         An entitlement is a representation of a customer's ability to use a service.
         :param pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs'] association_info: Association information to other entitlements.
         :param pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs'] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
-        :param pulumi.Input[str] create_time: Output only. The time at which the entitlement is created.
-        :param pulumi.Input[str] name: Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
         :param pulumi.Input[str] offer: Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
-        :param pulumi.Input['GoogleCloudChannelV1ProvisionedServiceArgs'] provisioned_service: Output only. Service provisioning details for the entitlement.
-        :param pulumi.Input[str] provisioning_state: Output only. Current provisioning state of the entitlement.
         :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] suspension_reasons: Output only. Enumerable of all current suspension reasons for an entitlement.
-        :param pulumi.Input['GoogleCloudChannelV1TrialSettingsArgs'] trial_settings: Output only. Settings for trial offers.
-        :param pulumi.Input[str] update_time: Output only. The time at which the entitlement is updated.
         """
         if association_info is not None:
             pulumi.set(__self__, "association_info", association_info)
         if commitment_settings is not None:
             pulumi.set(__self__, "commitment_settings", commitment_settings)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if offer is not None:
             pulumi.set(__self__, "offer", offer)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
-        if provisioned_service is not None:
-            pulumi.set(__self__, "provisioned_service", provisioned_service)
-        if provisioning_state is not None:
-            pulumi.set(__self__, "provisioning_state", provisioning_state)
         if purchase_order_id is not None:
             pulumi.set(__self__, "purchase_order_id", purchase_order_id)
-        if suspension_reasons is not None:
-            pulumi.set(__self__, "suspension_reasons", suspension_reasons)
-        if trial_settings is not None:
-            pulumi.set(__self__, "trial_settings", trial_settings)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="associationInfo")
@@ -480,30 +208,6 @@ class GoogleCloudChannelV1EntitlementArgs:
         pulumi.set(self, "commitment_settings", value)
 
     @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time at which the entitlement is created.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter
     def offer(self) -> Optional[pulumi.Input[str]]:
         """
@@ -528,30 +232,6 @@ class GoogleCloudChannelV1EntitlementArgs:
         pulumi.set(self, "parameters", value)
 
     @property
-    @pulumi.getter(name="provisionedService")
-    def provisioned_service(self) -> Optional[pulumi.Input['GoogleCloudChannelV1ProvisionedServiceArgs']]:
-        """
-        Output only. Service provisioning details for the entitlement.
-        """
-        return pulumi.get(self, "provisioned_service")
-
-    @provisioned_service.setter
-    def provisioned_service(self, value: Optional[pulumi.Input['GoogleCloudChannelV1ProvisionedServiceArgs']]):
-        pulumi.set(self, "provisioned_service", value)
-
-    @property
-    @pulumi.getter(name="provisioningState")
-    def provisioning_state(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Current provisioning state of the entitlement.
-        """
-        return pulumi.get(self, "provisioning_state")
-
-    @provisioning_state.setter
-    def provisioning_state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisioning_state", value)
-
-    @property
     @pulumi.getter(name="purchaseOrderId")
     def purchase_order_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -563,73 +243,21 @@ class GoogleCloudChannelV1EntitlementArgs:
     def purchase_order_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "purchase_order_id", value)
 
-    @property
-    @pulumi.getter(name="suspensionReasons")
-    def suspension_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Output only. Enumerable of all current suspension reasons for an entitlement.
-        """
-        return pulumi.get(self, "suspension_reasons")
-
-    @suspension_reasons.setter
-    def suspension_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "suspension_reasons", value)
-
-    @property
-    @pulumi.getter(name="trialSettings")
-    def trial_settings(self) -> Optional[pulumi.Input['GoogleCloudChannelV1TrialSettingsArgs']]:
-        """
-        Output only. Settings for trial offers.
-        """
-        return pulumi.get(self, "trial_settings")
-
-    @trial_settings.setter
-    def trial_settings(self, value: Optional[pulumi.Input['GoogleCloudChannelV1TrialSettingsArgs']]):
-        pulumi.set(self, "trial_settings", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time at which the entitlement is updated.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
 
 @pulumi.input_type
 class GoogleCloudChannelV1ParameterArgs:
     def __init__(__self__, *,
-                 editable: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input['GoogleCloudChannelV1ValueArgs']] = None):
         """
         Definition for extended entitlement parameters.
-        :param pulumi.Input[bool] editable: Output only. Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
         :param pulumi.Input[str] name: Name of the parameter.
         :param pulumi.Input['GoogleCloudChannelV1ValueArgs'] value: Value of the parameter.
         """
-        if editable is not None:
-            pulumi.set(__self__, "editable", editable)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def editable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
-        """
-        return pulumi.get(self, "editable")
-
-    @editable.setter
-    def editable(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "editable", value)
 
     @property
     @pulumi.getter
@@ -694,62 +322,6 @@ class GoogleCloudChannelV1PeriodArgs:
     @period_type.setter
     def period_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "period_type", value)
-
-
-@pulumi.input_type
-class GoogleCloudChannelV1ProvisionedServiceArgs:
-    def __init__(__self__, *,
-                 product_id: Optional[pulumi.Input[str]] = None,
-                 provisioning_id: Optional[pulumi.Input[str]] = None,
-                 sku_id: Optional[pulumi.Input[str]] = None):
-        """
-        Service provisioned for an entitlement.
-        :param pulumi.Input[str] product_id: Output only. The product pertaining to the provisioning resource as specified in the Offer.
-        :param pulumi.Input[str] provisioning_id: Output only. Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID.
-        :param pulumi.Input[str] sku_id: Output only. The SKU pertaining to the provisioning resource as specified in the Offer.
-        """
-        if product_id is not None:
-            pulumi.set(__self__, "product_id", product_id)
-        if provisioning_id is not None:
-            pulumi.set(__self__, "provisioning_id", provisioning_id)
-        if sku_id is not None:
-            pulumi.set(__self__, "sku_id", sku_id)
-
-    @property
-    @pulumi.getter(name="productId")
-    def product_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The product pertaining to the provisioning resource as specified in the Offer.
-        """
-        return pulumi.get(self, "product_id")
-
-    @product_id.setter
-    def product_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "product_id", value)
-
-    @property
-    @pulumi.getter(name="provisioningId")
-    def provisioning_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Provisioning ID of the entitlement. For Google Workspace, this would be the underlying Subscription ID.
-        """
-        return pulumi.get(self, "provisioning_id")
-
-    @provisioning_id.setter
-    def provisioning_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisioning_id", value)
-
-    @property
-    @pulumi.getter(name="skuId")
-    def sku_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The SKU pertaining to the provisioning resource as specified in the Offer.
-        """
-        return pulumi.get(self, "sku_id")
-
-    @sku_id.setter
-    def sku_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sku_id", value)
 
 
 @pulumi.input_type
@@ -822,46 +394,6 @@ class GoogleCloudChannelV1RenewalSettingsArgs:
     @resize_unit_count.setter
     def resize_unit_count(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "resize_unit_count", value)
-
-
-@pulumi.input_type
-class GoogleCloudChannelV1TrialSettingsArgs:
-    def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 trial: Optional[pulumi.Input[bool]] = None):
-        """
-        Settings for trial offers.
-        :param pulumi.Input[str] end_time: Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
-        :param pulumi.Input[bool] trial: Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
-        """
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if trial is not None:
-            pulumi.set(__self__, "trial", trial)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
-        """
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_time", value)
-
-    @property
-    @pulumi.getter
-    def trial(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
-        """
-        return pulumi.get(self, "trial")
-
-    @trial.setter
-    def trial(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "trial", value)
 
 
 @pulumi.input_type

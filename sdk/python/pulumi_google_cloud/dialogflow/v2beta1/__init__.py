@@ -17,6 +17,7 @@ from .conversation_profile import *
 from .knowledge_base import *
 from .knowledge_base_document import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

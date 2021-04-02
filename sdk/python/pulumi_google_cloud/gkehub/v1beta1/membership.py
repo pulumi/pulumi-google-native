@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Membership']
@@ -17,21 +18,14 @@ class Membership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 last_connection_time: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  memberships_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[pulumi.InputType['MembershipStateArgs']]] = None,
-                 unique_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -41,18 +35,11 @@ class Membership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AuthorityArgs']] authority: Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
-        :param pulumi.Input[str] create_time: Output only. When the Membership was created.
-        :param pulumi.Input[str] delete_time: Output only. When the Membership was deleted.
         :param pulumi.Input[str] description: Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
         :param pulumi.Input[str] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
-        :param pulumi.Input[str] last_connection_time: Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
-        :param pulumi.Input[str] name: Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        :param pulumi.Input[pulumi.InputType['MembershipStateArgs']] state: Output only. State of the Membership resource.
-        :param pulumi.Input[str] unique_id: Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
-        :param pulumi.Input[str] update_time: Output only. When the Membership was last updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,27 +59,27 @@ class Membership(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['authority'] = authority
-            __props__['create_time'] = create_time
-            __props__['delete_time'] = delete_time
             __props__['description'] = description
             __props__['endpoint'] = endpoint
             __props__['external_id'] = external_id
             __props__['infrastructure_type'] = infrastructure_type
             __props__['labels'] = labels
-            __props__['last_connection_time'] = last_connection_time
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             if memberships_id is None and not opts.urn:
                 raise TypeError("Missing required property 'memberships_id'")
             __props__['memberships_id'] = memberships_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['unique_id'] = unique_id
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['delete_time'] = None
+            __props__['last_connection_time'] = None
+            __props__['name'] = None
+            __props__['state'] = None
+            __props__['unique_id'] = None
+            __props__['update_time'] = None
         super(Membership, __self__).__init__(
             'google-cloud:gkehub/v1beta1:Membership',
             resource_name,
@@ -115,7 +102,124 @@ class Membership(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["authority"] = None
+        __props__["create_time"] = None
+        __props__["delete_time"] = None
+        __props__["description"] = None
+        __props__["endpoint"] = None
+        __props__["external_id"] = None
+        __props__["infrastructure_type"] = None
+        __props__["labels"] = None
+        __props__["last_connection_time"] = None
+        __props__["name"] = None
+        __props__["state"] = None
+        __props__["unique_id"] = None
+        __props__["update_time"] = None
         return Membership(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def authority(self) -> pulumi.Output['outputs.AuthorityResponse']:
+        """
+        Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        """
+        return pulumi.get(self, "authority")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        When the Membership was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        When the Membership was deleted.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output['outputs.MembershipEndpointResponse']:
+        """
+        Optional. Endpoint information to reach this member.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Output[str]:
+        """
+        Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="infrastructureType")
+    def infrastructure_type(self) -> pulumi.Output[str]:
+        """
+        Optional. The infrastructure type this Membership is running on.
+        """
+        return pulumi.get(self, "infrastructure_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. GCP labels for this membership.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastConnectionTime")
+    def last_connection_time(self) -> pulumi.Output[str]:
+        """
+        For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
+        """
+        return pulumi.get(self, "last_connection_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output['outputs.MembershipStateResponse']:
+        """
+        State of the Membership resource.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="uniqueId")
+    def unique_id(self) -> pulumi.Output[str]:
+        """
+        Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
+        """
+        return pulumi.get(self, "unique_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        When the Membership was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

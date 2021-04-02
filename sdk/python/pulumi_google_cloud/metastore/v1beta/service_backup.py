@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['ServiceBackup']
 
@@ -17,15 +17,11 @@ class ServiceBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 service_revision: Optional[pulumi.Input[pulumi.InputType['ServiceArgs']]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,12 +30,8 @@ class ServiceBackup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The time when the backup was started.
         :param pulumi.Input[str] description: The description of the backup.
-        :param pulumi.Input[str] end_time: Output only. The time when the backup finished creating.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-        :param pulumi.Input[pulumi.InputType['ServiceArgs']] service_revision: Output only. The revision of the service at the time of backup.
-        :param pulumi.Input[str] state: Output only. The current state of the backup.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,9 +53,7 @@ class ServiceBackup(pulumi.CustomResource):
             if backups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backups_id'")
             __props__['backups_id'] = backups_id
-            __props__['create_time'] = create_time
             __props__['description'] = description
-            __props__['end_time'] = end_time
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -71,11 +61,13 @@ class ServiceBackup(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['service_revision'] = service_revision
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__['services_id'] = services_id
-            __props__['state'] = state
+            __props__['create_time'] = None
+            __props__['end_time'] = None
+            __props__['service_revision'] = None
+            __props__['state'] = None
         super(ServiceBackup, __self__).__init__(
             'google-cloud:metastore/v1beta:ServiceBackup',
             resource_name,
@@ -98,7 +90,61 @@ class ServiceBackup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["end_time"] = None
+        __props__["name"] = None
+        __props__["service_revision"] = None
+        __props__["state"] = None
         return ServiceBackup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the backup was started.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the backup.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time when the backup finished creating.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceRevision")
+    def service_revision(self) -> pulumi.Output['outputs.ServiceResponse']:
+        """
+        The revision of the service at the time of backup.
+        """
+        return pulumi.get(self, "service_revision")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the backup.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

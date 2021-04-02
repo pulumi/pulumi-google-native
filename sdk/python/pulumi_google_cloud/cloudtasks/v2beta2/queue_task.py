@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['QueueTask']
@@ -64,6 +65,13 @@ class QueueTask(pulumi.CustomResource):
             if tasks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tasks_id'")
             __props__['tasks_id'] = tasks_id
+            __props__['app_engine_http_request'] = None
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['pull_message'] = None
+            __props__['schedule_time'] = None
+            __props__['status'] = None
+            __props__['view'] = None
         super(QueueTask, __self__).__init__(
             'google-cloud:cloudtasks/v2beta2:QueueTask',
             resource_name,
@@ -86,7 +94,70 @@ class QueueTask(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_engine_http_request"] = None
+        __props__["create_time"] = None
+        __props__["name"] = None
+        __props__["pull_message"] = None
+        __props__["schedule_time"] = None
+        __props__["status"] = None
+        __props__["view"] = None
         return QueueTask(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appEngineHttpRequest")
+    def app_engine_http_request(self) -> pulumi.Output['outputs.AppEngineHttpRequestResponse']:
+        """
+        App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
+        """
+        return pulumi.get(self, "app_engine_http_request")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time that the task was created. `create_time` will be truncated to the nearest second.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pullMessage")
+    def pull_message(self) -> pulumi.Output['outputs.PullMessageResponse']:
+        """
+        LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
+        """
+        return pulumi.get(self, "pull_message")
+
+    @property
+    @pulumi.getter(name="scheduleTime")
+    def schedule_time(self) -> pulumi.Output[str]:
+        """
+        The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
+        """
+        return pulumi.get(self, "schedule_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.TaskStatusResponse']:
+        """
+        The task status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def view(self) -> pulumi.Output[str]:
+        """
+        The view specifies which subset of the Task has been returned.
+        """
+        return pulumi.get(self, "view")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

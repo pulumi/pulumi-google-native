@@ -80,7 +80,34 @@ class Schema(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["definition"] = None
+        __props__["name"] = None
+        __props__["type"] = None
         return Schema(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> pulumi.Output[str]:
+        """
+        The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+        """
+        return pulumi.get(self, "definition")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type of the schema definition.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

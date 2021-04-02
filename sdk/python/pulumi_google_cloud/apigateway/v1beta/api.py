@@ -16,15 +16,11 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  managed_service: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,13 +29,9 @@ class Api(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Created time.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] managed_service: Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
-        :param pulumi.Input[str] name: Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-        :param pulumi.Input[str] state: Output only. State of the API.
-        :param pulumi.Input[str] update_time: Output only. Updated time.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,19 +53,19 @@ class Api(pulumi.CustomResource):
             if apis_id is None and not opts.urn:
                 raise TypeError("Missing required property 'apis_id'")
             __props__['apis_id'] = apis_id
-            __props__['create_time'] = create_time
             __props__['display_name'] = display_name
             __props__['labels'] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['managed_service'] = managed_service
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['state'] = None
+            __props__['update_time'] = None
         super(Api, __self__).__init__(
             'google-cloud:apigateway/v1beta:Api',
             resource_name,
@@ -96,7 +88,70 @@ class Api(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["display_name"] = None
+        __props__["labels"] = None
+        __props__["managed_service"] = None
+        __props__["name"] = None
+        __props__["state"] = None
+        __props__["update_time"] = None
         return Api(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Created time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Optional. Display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="managedService")
+    def managed_service(self) -> pulumi.Output[str]:
+        """
+        Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+        """
+        return pulumi.get(self, "managed_service")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the API.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Updated time.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

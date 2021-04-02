@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Feed']
@@ -60,6 +61,12 @@ class Feed(pulumi.CustomResource):
             if v1_id1 is None and not opts.urn:
                 raise TypeError("Missing required property 'v1_id1'")
             __props__['v1_id1'] = v1_id1
+            __props__['asset_names'] = None
+            __props__['asset_types'] = None
+            __props__['condition'] = None
+            __props__['content_type'] = None
+            __props__['feed_output_config'] = None
+            __props__['name'] = None
         super(Feed, __self__).__init__(
             'google-cloud:cloudasset/v1:Feed',
             resource_name,
@@ -82,7 +89,61 @@ class Feed(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["asset_names"] = None
+        __props__["asset_types"] = None
+        __props__["condition"] = None
+        __props__["content_type"] = None
+        __props__["feed_output_config"] = None
+        __props__["name"] = None
         return Feed(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="assetNames")
+    def asset_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+        """
+        return pulumi.get(self, "asset_names")
+
+    @property
+    @pulumi.getter(name="assetTypes")
+    def asset_types(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
+        """
+        return pulumi.get(self, "asset_types")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Output['outputs.ExprResponse']:
+        """
+        A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> pulumi.Output[str]:
+        """
+        Asset content type. If not specified, no content but the asset name and type will be returned.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="feedOutputConfig")
+    def feed_output_config(self) -> pulumi.Output['outputs.FeedOutputConfigResponse']:
+        """
+        Required. Feed output configuration defining where the asset updates are published to.
+        """
+        return pulumi.get(self, "feed_output_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

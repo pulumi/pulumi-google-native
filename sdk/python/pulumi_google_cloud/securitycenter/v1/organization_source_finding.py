@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
 
 __all__ = ['OrganizationSourceFinding']
 
@@ -25,7 +24,6 @@ class OrganizationSourceFinding(pulumi.CustomResource):
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  resource_name_: Optional[pulumi.Input[str]] = None,
-                 security_marks: Optional[pulumi.Input[pulumi.InputType['SecurityMarksArgs']]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
                  source_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  sources_id: Optional[pulumi.Input[str]] = None,
@@ -46,7 +44,6 @@ class OrganizationSourceFinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: The relative resource name of this finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
         :param pulumi.Input[str] parent: The relative resource name of the source the finding belongs to. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after creation time. For example: "organizations/{organization_id}/sources/{source_id}"
         :param pulumi.Input[str] resource_name_: For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is immutable after creation time.
-        :param pulumi.Input[pulumi.InputType['SecurityMarksArgs']] security_marks: Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.
         :param pulumi.Input[str] severity: The severity of the finding. This field is managed by the source that writes the finding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] source_properties: Source specific properties. These properties are managed by the source that writes the finding. The key names in the source_properties map must be between 1 and 255 characters, and must start with a letter and contain alphanumeric characters or underscores only.
         :param pulumi.Input[str] state: The state of the finding.
@@ -79,7 +76,6 @@ class OrganizationSourceFinding(pulumi.CustomResource):
             __props__['organizations_id'] = organizations_id
             __props__['parent'] = parent
             __props__['resource_name'] = resource_name_
-            __props__['security_marks'] = security_marks
             __props__['severity'] = severity
             __props__['source_properties'] = source_properties
             if sources_id is None and not opts.urn:

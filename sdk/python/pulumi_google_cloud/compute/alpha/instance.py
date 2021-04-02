@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Instance']
@@ -250,7 +251,478 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["advanced_machine_features"] = None
+        __props__["can_ip_forward"] = None
+        __props__["confidential_instance_config"] = None
+        __props__["cpu_platform"] = None
+        __props__["creation_timestamp"] = None
+        __props__["deletion_protection"] = None
+        __props__["description"] = None
+        __props__["disks"] = None
+        __props__["display_device"] = None
+        __props__["erase_windows_vss_signature"] = None
+        __props__["fingerprint"] = None
+        __props__["guest_accelerators"] = None
+        __props__["hostname"] = None
+        __props__["instance_encryption_key"] = None
+        __props__["kind"] = None
+        __props__["label_fingerprint"] = None
+        __props__["labels"] = None
+        __props__["last_start_timestamp"] = None
+        __props__["last_stop_timestamp"] = None
+        __props__["last_suspended_timestamp"] = None
+        __props__["machine_type"] = None
+        __props__["metadata"] = None
+        __props__["min_cpu_platform"] = None
+        __props__["name"] = None
+        __props__["network_interfaces"] = None
+        __props__["network_performance_config"] = None
+        __props__["post_key_revocation_action_type"] = None
+        __props__["preserved_state_size_gb"] = None
+        __props__["private_ipv6_google_access"] = None
+        __props__["reservation_affinity"] = None
+        __props__["resource_policies"] = None
+        __props__["resource_status"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["scheduling"] = None
+        __props__["secure_labels"] = None
+        __props__["secure_tags"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["service_accounts"] = None
+        __props__["shielded_instance_config"] = None
+        __props__["shielded_instance_integrity_policy"] = None
+        __props__["shielded_vm_config"] = None
+        __props__["shielded_vm_integrity_policy"] = None
+        __props__["source_machine_image"] = None
+        __props__["source_machine_image_encryption_key"] = None
+        __props__["start_restricted"] = None
+        __props__["status"] = None
+        __props__["status_message"] = None
+        __props__["tags"] = None
+        __props__["upcoming_maintenance"] = None
+        __props__["zone"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> pulumi.Output['outputs.AdvancedMachineFeaturesResponse']:
+        """
+        Controls for advanced machine-related behavior features.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> pulumi.Output[bool]:
+        """
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> pulumi.Output['outputs.ConfidentialInstanceConfigResponse']:
+        return pulumi.get(self, "confidential_instance_config")
+
+    @property
+    @pulumi.getter(name="cpuPlatform")
+    def cpu_platform(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The CPU platform used by this instance.
+        """
+        return pulumi.get(self, "cpu_platform")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Whether the resource should be protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> pulumi.Output[Sequence['outputs.AttachedDiskResponse']]:
+        """
+        Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="displayDevice")
+    def display_device(self) -> pulumi.Output['outputs.DisplayDeviceResponse']:
+        """
+        Enables display device for the instance.
+        """
+        return pulumi.get(self, "display_device")
+
+    @property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance.
+
+        To see the latest fingerprint, make get() request to the instance.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> pulumi.Output[Sequence['outputs.AcceleratorConfigResponse']]:
+        """
+        A list of the type and count of accelerator cards attached to the instance.
+        """
+        return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Output[str]:
+        """
+        Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKey")
+    def instance_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        Encrypts or decrypts data for an instance with a customer-supplied encryption key.
+
+        If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
+
+        If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.
+
+        If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
+
+        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        """
+        return pulumi.get(self, "instance_encryption_key")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#instance for instances.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.
+
+        To see the latest fingerprint, make get() request to the instance.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels to apply to this instance. These can be later modified by the setLabels method.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastStartTimestamp")
+    def last_start_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Last start timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_start_timestamp")
+
+    @property
+    @pulumi.getter(name="lastStopTimestamp")
+    def last_stop_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Last stop timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_stop_timestamp")
+
+    @property
+    @pulumi.getter(name="lastSuspendedTimestamp")
+    def last_suspended_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Last suspended timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_suspended_timestamp")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Output[str]:
+        """
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
+        zones/us-central1-f/machineTypes/n1-standard-1
+
+
+        To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
+        zones/zone/machineTypes/custom-CPUS-MEMORY
+
+
+        For example: zones/us-central1-f/machineTypes/custom-4-5120 
+
+        For a full list of restrictions, read the Specifications for custom machine types.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output['outputs.MetadataResponse']:
+        """
+        The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> pulumi.Output[str]:
+        """
+        Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> pulumi.Output[Sequence['outputs.NetworkInterfaceResponse']]:
+        """
+        An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> pulumi.Output['outputs.NetworkPerformanceConfigResponse']:
+        return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter(name="postKeyRevocationActionType")
+    def post_key_revocation_action_type(self) -> pulumi.Output[str]:
+        """
+        PostKeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "post_key_revocation_action_type")
+
+    @property
+    @pulumi.getter(name="preservedStateSizeGb")
+    def preserved_state_size_gb(self) -> pulumi.Output[str]:
+        """
+        Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+        """
+        return pulumi.get(self, "preserved_state_size_gb")
+
+    @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> pulumi.Output[str]:
+        """
+        The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        """
+        return pulumi.get(self, "private_ipv6_google_access")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Output['outputs.ReservationAffinityResponse']:
+        """
+        Specifies the reservations that this instance can consume from.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Resource policies applied to this instance.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.ResourceStatusResponse']:
+        """
+        [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        [Output Only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> pulumi.Output['outputs.SchedulingResponse']:
+        """
+        Sets the scheduling options for this instance.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @property
+    @pulumi.getter(name="secureLabels")
+    def secure_labels(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
+        """
+        return pulumi.get(self, "secure_labels")
+
+    @property
+    @pulumi.getter(name="secureTags")
+    def secure_tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
+        """
+        return pulumi.get(self, "secure_tags")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> pulumi.Output[Sequence['outputs.ServiceAccountResponse']]:
+        """
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
+
+        Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        """
+        return pulumi.get(self, "service_accounts")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Output['outputs.ShieldedInstanceConfigResponse']:
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceIntegrityPolicy")
+    def shielded_instance_integrity_policy(self) -> pulumi.Output['outputs.ShieldedInstanceIntegrityPolicyResponse']:
+        return pulumi.get(self, "shielded_instance_integrity_policy")
+
+    @property
+    @pulumi.getter(name="shieldedVmConfig")
+    def shielded_vm_config(self) -> pulumi.Output['outputs.ShieldedVmConfigResponse']:
+        """
+        Deprecating, please use shielded_instance_config.
+        """
+        return pulumi.get(self, "shielded_vm_config")
+
+    @property
+    @pulumi.getter(name="shieldedVmIntegrityPolicy")
+    def shielded_vm_integrity_policy(self) -> pulumi.Output['outputs.ShieldedVmIntegrityPolicyResponse']:
+        """
+        Deprecating, please use shielded_instance_integrity_policy.
+        """
+        return pulumi.get(self, "shielded_vm_integrity_policy")
+
+    @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> pulumi.Output[str]:
+        """
+        Source machine image
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        Source machine image encryption key when creating an instance from a machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="startRestricted")
+    def start_restricted(self) -> pulumi.Output[bool]:
+        """
+        [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
+        """
+        return pulumi.get(self, "start_restricted")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        [Output Only] An optional, human-readable explanation of the status.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output['outputs.TagsResponse']:
+        """
+        Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="upcomingMaintenance")
+    def upcoming_maintenance(self) -> pulumi.Output['outputs.UpcomingMaintenanceResponse']:
+        """
+        [Output Only] Specifies upcoming maintenance for the instance.
+        """
+        return pulumi.get(self, "upcoming_maintenance")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

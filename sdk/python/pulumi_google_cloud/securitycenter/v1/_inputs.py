@@ -14,7 +14,6 @@ __all__ = [
     'BindingArgs',
     'ExprArgs',
     'PolicyArgs',
-    'SecurityMarksArgs',
     'StreamingConfigArgs',
 ]
 
@@ -296,62 +295,6 @@ class PolicyArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class SecurityMarksArgs:
-    def __init__(__self__, *,
-                 canonical_name: Optional[pulumi.Input[str]] = None,
-                 marks: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        User specified security marks that are attached to the parent Security Command Center resource. Security marks are scoped within a Security Command Center organization -- they can be modified and viewed by all users who have proper permissions on the organization.
-        :param pulumi.Input[str] canonical_name: The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] marks: Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
-        :param pulumi.Input[str] name: The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-        """
-        if canonical_name is not None:
-            pulumi.set(__self__, "canonical_name", canonical_name)
-        if marks is not None:
-            pulumi.set(__self__, "marks", marks)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="canonicalName")
-    def canonical_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "folders/{folder_id}/assets/{asset_id}/securityMarks" "projects/{project_number}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
-        """
-        return pulumi.get(self, "canonical_name")
-
-    @canonical_name.setter
-    def canonical_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "canonical_name", value)
-
-    @property
-    @pulumi.getter
-    def marks(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
-        """
-        return pulumi.get(self, "marks")
-
-    @marks.setter
-    def marks(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "marks", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

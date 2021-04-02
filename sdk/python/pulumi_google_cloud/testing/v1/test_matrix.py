@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['TestMatrix']
@@ -41,15 +42,15 @@ class TestMatrix(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']] environment_matrix: Required. The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-        :param pulumi.Input[str] invalid_matrix_details: Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        :param pulumi.Input[str] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
         :param pulumi.Input[str] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
         :param pulumi.Input[str] project_id: The cloud project that owns the test matrix.
         :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input[str] state: Output only. Indicates the current progress of the test matrix.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]] test_executions: Output only. The list of test executions that the service creates for this matrix.
-        :param pulumi.Input[str] test_matrix_id: Output only. Unique id set by the service.
+        :param pulumi.Input[str] state: Indicates the current progress of the test matrix.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]] test_executions: The list of test executions that the service creates for this matrix.
+        :param pulumi.Input[str] test_matrix_id: Unique id set by the service.
         :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: Required. How to run the test.
-        :param pulumi.Input[str] timestamp: Output only. The time this test matrix was initially created.
+        :param pulumi.Input[str] timestamp: The time this test matrix was initially created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +108,124 @@ class TestMatrix(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["client_info"] = None
+        __props__["environment_matrix"] = None
+        __props__["fail_fast"] = None
+        __props__["flaky_test_attempts"] = None
+        __props__["invalid_matrix_details"] = None
+        __props__["outcome_summary"] = None
+        __props__["project_id"] = None
+        __props__["result_storage"] = None
+        __props__["state"] = None
+        __props__["test_executions"] = None
+        __props__["test_matrix_id"] = None
+        __props__["test_specification"] = None
+        __props__["timestamp"] = None
         return TestMatrix(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientInfo")
+    def client_info(self) -> pulumi.Output['outputs.ClientInfoResponse']:
+        """
+        Information about the client which invoked the test.
+        """
+        return pulumi.get(self, "client_info")
+
+    @property
+    @pulumi.getter(name="environmentMatrix")
+    def environment_matrix(self) -> pulumi.Output['outputs.EnvironmentMatrixResponse']:
+        """
+        Required. The devices the tests are being executed on.
+        """
+        return pulumi.get(self, "environment_matrix")
+
+    @property
+    @pulumi.getter(name="failFast")
+    def fail_fast(self) -> pulumi.Output[bool]:
+        """
+        If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
+        """
+        return pulumi.get(self, "fail_fast")
+
+    @property
+    @pulumi.getter(name="flakyTestAttempts")
+    def flaky_test_attempts(self) -> pulumi.Output[int]:
+        """
+        The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
+        """
+        return pulumi.get(self, "flaky_test_attempts")
+
+    @property
+    @pulumi.getter(name="invalidMatrixDetails")
+    def invalid_matrix_details(self) -> pulumi.Output[str]:
+        """
+        Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        """
+        return pulumi.get(self, "invalid_matrix_details")
+
+    @property
+    @pulumi.getter(name="outcomeSummary")
+    def outcome_summary(self) -> pulumi.Output[str]:
+        """
+        Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+        """
+        return pulumi.get(self, "outcome_summary")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The cloud project that owns the test matrix.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="resultStorage")
+    def result_storage(self) -> pulumi.Output['outputs.ResultStorageResponse']:
+        """
+        Required. Where the results for the matrix are written.
+        """
+        return pulumi.get(self, "result_storage")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Indicates the current progress of the test matrix.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="testExecutions")
+    def test_executions(self) -> pulumi.Output[Sequence['outputs.TestExecutionResponse']]:
+        """
+        The list of test executions that the service creates for this matrix.
+        """
+        return pulumi.get(self, "test_executions")
+
+    @property
+    @pulumi.getter(name="testMatrixId")
+    def test_matrix_id(self) -> pulumi.Output[str]:
+        """
+        Unique id set by the service.
+        """
+        return pulumi.get(self, "test_matrix_id")
+
+    @property
+    @pulumi.getter(name="testSpecification")
+    def test_specification(self) -> pulumi.Output['outputs.TestSpecificationResponse']:
+        """
+        Required. How to run the test.
+        """
+        return pulumi.get(self, "test_specification")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> pulumi.Output[str]:
+        """
+        The time this test matrix was initially created.
+        """
+        return pulumi.get(self, "timestamp")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

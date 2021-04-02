@@ -9,6 +9,7 @@ from .game_server_deployment_iam_policy import *
 from .realm import *
 from .realm_game_server_cluster import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

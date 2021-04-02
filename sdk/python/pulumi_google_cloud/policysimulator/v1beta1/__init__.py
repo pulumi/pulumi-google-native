@@ -7,6 +7,7 @@ from .folder_replay import *
 from .organization_replay import *
 from .replay import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

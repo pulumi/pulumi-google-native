@@ -13,10 +13,7 @@ __all__ = [
     'AuditLogConfigArgs',
     'BindingArgs',
     'CommonFeatureSpecArgs',
-    'CommonFeatureStateArgs',
     'ExprArgs',
-    'FeatureResourceStateArgs',
-    'FeatureStateArgs',
     'MultiClusterIngressFeatureSpecArgs',
     'PolicyArgs',
 ]
@@ -182,30 +179,6 @@ class CommonFeatureSpecArgs:
 
 
 @pulumi.input_type
-class CommonFeatureStateArgs:
-    def __init__(__self__, *,
-                 state: Optional[pulumi.Input['FeatureStateArgs']] = None):
-        """
-        CommonFeatureState contains Hub-wide Feature status information.
-        :param pulumi.Input['FeatureStateArgs'] state: Output only. The "running state" of the Feature in this Hub.
-        """
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input['FeatureStateArgs']]:
-        """
-        Output only. The "running state" of the Feature in this Hub.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input['FeatureStateArgs']]):
-        pulumi.set(self, "state", value)
-
-
-@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -275,86 +248,6 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class FeatureResourceStateArgs:
-    def __init__(__self__, *,
-                 state: Optional[pulumi.Input[str]] = None):
-        """
-        FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
-        :param pulumi.Input[str] state: The current state of the Feature resource in the Hub API.
-        """
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        The current state of the Feature resource in the Hub API.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state", value)
-
-
-@pulumi.input_type
-class FeatureStateArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[str]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
-        """
-        FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
-        :param pulumi.Input[str] code: The high-level, machine-readable status of this Feature.
-        :param pulumi.Input[str] description: A human-readable description of the current status.
-        :param pulumi.Input[str] update_time: The time this status and any related Feature-specific details were updated.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
-        """
-        The high-level, machine-readable status of this Feature.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A human-readable description of the current status.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time this status and any related Feature-specific details were updated.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type

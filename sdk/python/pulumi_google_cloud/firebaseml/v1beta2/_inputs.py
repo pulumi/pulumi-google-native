@@ -10,25 +10,19 @@ from ... import _utilities, _tables
 
 __all__ = [
     'ModelStateArgs',
-    'OperationArgs',
-    'StatusArgs',
     'TfLiteModelArgs',
 ]
 
 @pulumi.input_type
 class ModelStateArgs:
     def __init__(__self__, *,
-                 published: Optional[pulumi.Input[bool]] = None,
-                 validation_error: Optional[pulumi.Input['StatusArgs']] = None):
+                 published: Optional[pulumi.Input[bool]] = None):
         """
         State common to all model types. Includes publishing and validation information.
         :param pulumi.Input[bool] published: Indicates if this model has been published.
-        :param pulumi.Input['StatusArgs'] validation_error: Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
         """
         if published is not None:
             pulumi.set(__self__, "published", published)
-        if validation_error is not None:
-            pulumi.set(__self__, "validation_error", validation_error)
 
     @property
     @pulumi.getter
@@ -42,181 +36,21 @@ class ModelStateArgs:
     def published(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "published", value)
 
-    @property
-    @pulumi.getter(name="validationError")
-    def validation_error(self) -> Optional[pulumi.Input['StatusArgs']]:
-        """
-        Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-        """
-        return pulumi.get(self, "validation_error")
-
-    @validation_error.setter
-    def validation_error(self, value: Optional[pulumi.Input['StatusArgs']]):
-        pulumi.set(self, "validation_error", value)
-
-
-@pulumi.input_type
-class OperationArgs:
-    def __init__(__self__, *,
-                 done: Optional[pulumi.Input[bool]] = None,
-                 error: Optional[pulumi.Input['StatusArgs']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 response: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        This resource represents a long-running operation that is the result of a network API call.
-        :param pulumi.Input[bool] done: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        :param pulumi.Input['StatusArgs'] error: The error result of the operation in case of failure or cancellation.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        :param pulumi.Input[str] name: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] response: The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        """
-        if done is not None:
-            pulumi.set(__self__, "done", done)
-        if error is not None:
-            pulumi.set(__self__, "error", error)
-        if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if response is not None:
-            pulumi.set(__self__, "response", response)
-
-    @property
-    @pulumi.getter
-    def done(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-        """
-        return pulumi.get(self, "done")
-
-    @done.setter
-    def done(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "done", value)
-
-    @property
-    @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['StatusArgs']]:
-        """
-        The error result of the operation in case of failure or cancellation.
-        """
-        return pulumi.get(self, "error")
-
-    @error.setter
-    def error(self, value: Optional[pulumi.Input['StatusArgs']]):
-        pulumi.set(self, "error", value)
-
-    @property
-    @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-        """
-        return pulumi.get(self, "metadata")
-
-    @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "metadata", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def response(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-        """
-        return pulumi.get(self, "response")
-
-    @response.setter
-    def response(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "response", value)
-
-
-@pulumi.input_type
-class StatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
 
 @pulumi.input_type
 class TfLiteModelArgs:
     def __init__(__self__, *,
                  automl_model: Optional[pulumi.Input[str]] = None,
-                 gcs_tflite_uri: Optional[pulumi.Input[str]] = None,
-                 size_bytes: Optional[pulumi.Input[str]] = None):
+                 gcs_tflite_uri: Optional[pulumi.Input[str]] = None):
         """
         Information that is specific to TfLite models.
         :param pulumi.Input[str] automl_model: The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
         :param pulumi.Input[str] gcs_tflite_uri: The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
-        :param pulumi.Input[str] size_bytes: Output only. The size of the TFLite model
         """
         if automl_model is not None:
             pulumi.set(__self__, "automl_model", automl_model)
         if gcs_tflite_uri is not None:
             pulumi.set(__self__, "gcs_tflite_uri", gcs_tflite_uri)
-        if size_bytes is not None:
-            pulumi.set(__self__, "size_bytes", size_bytes)
 
     @property
     @pulumi.getter(name="automlModel")
@@ -241,17 +75,5 @@ class TfLiteModelArgs:
     @gcs_tflite_uri.setter
     def gcs_tflite_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gcs_tflite_uri", value)
-
-    @property
-    @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The size of the TFLite model
-        """
-        return pulumi.get(self, "size_bytes")
-
-    @size_bytes.setter
-    def size_bytes(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "size_bytes", value)
 
 

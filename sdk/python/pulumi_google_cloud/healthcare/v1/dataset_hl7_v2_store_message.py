@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetHl7V2StoreMessage']
@@ -65,6 +66,16 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['create_time'] = None
+            __props__['data'] = None
+            __props__['labels'] = None
+            __props__['message_type'] = None
+            __props__['name'] = None
+            __props__['parsed_data'] = None
+            __props__['patient_ids'] = None
+            __props__['schematized_data'] = None
+            __props__['send_facility'] = None
+            __props__['send_time'] = None
         super(DatasetHl7V2StoreMessage, __self__).__init__(
             'google-cloud:healthcare/v1:DatasetHl7V2StoreMessage',
             resource_name,
@@ -87,7 +98,97 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["data"] = None
+        __props__["labels"] = None
+        __props__["message_type"] = None
+        __props__["name"] = None
+        __props__["parsed_data"] = None
+        __props__["patient_ids"] = None
+        __props__["schematized_data"] = None
+        __props__["send_facility"] = None
+        __props__["send_time"] = None
         return DatasetHl7V2StoreMessage(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The datetime when the message was created. Set by the server.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def data(self) -> pulumi.Output[str]:
+        """
+        Raw message bytes.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="messageType")
+    def message_type(self) -> pulumi.Output[str]:
+        """
+        The message type for this message. MSH-9.1.
+        """
+        return pulumi.get(self, "message_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parsedData")
+    def parsed_data(self) -> pulumi.Output['outputs.ParsedDataResponse']:
+        """
+        The parsed version of the raw message data.
+        """
+        return pulumi.get(self, "parsed_data")
+
+    @property
+    @pulumi.getter(name="patientIds")
+    def patient_ids(self) -> pulumi.Output[Sequence['outputs.PatientIdResponse']]:
+        """
+        All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+        """
+        return pulumi.get(self, "patient_ids")
+
+    @property
+    @pulumi.getter(name="schematizedData")
+    def schematized_data(self) -> pulumi.Output['outputs.SchematizedDataResponse']:
+        """
+        The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+        """
+        return pulumi.get(self, "schematized_data")
+
+    @property
+    @pulumi.getter(name="sendFacility")
+    def send_facility(self) -> pulumi.Output[str]:
+        """
+        The hospital that this message came from. MSH-4.
+        """
+        return pulumi.get(self, "send_facility")
+
+    @property
+    @pulumi.getter(name="sendTime")
+    def send_time(self) -> pulumi.Output[str]:
+        """
+        The datetime the sending application sent this message. MSH-7.
+        """
+        return pulumi.get(self, "send_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

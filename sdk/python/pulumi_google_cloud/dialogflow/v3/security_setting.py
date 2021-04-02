@@ -96,7 +96,70 @@ class SecuritySetting(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["inspect_template"] = None
+        __props__["name"] = None
+        __props__["purge_data_types"] = None
+        __props__["redaction_scope"] = None
+        __props__["redaction_strategy"] = None
+        __props__["retention_window_days"] = None
         return SecuritySetting(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the security settings, unique within the location.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="inspectTemplate")
+    def inspect_template(self) -> pulumi.Output[str]:
+        """
+        DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        """
+        return pulumi.get(self, "inspect_template")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="purgeDataTypes")
+    def purge_data_types(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of types of data to remove when retention settings triggers purge.
+        """
+        return pulumi.get(self, "purge_data_types")
+
+    @property
+    @pulumi.getter(name="redactionScope")
+    def redaction_scope(self) -> pulumi.Output[str]:
+        """
+        Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        """
+        return pulumi.get(self, "redaction_scope")
+
+    @property
+    @pulumi.getter(name="redactionStrategy")
+    def redaction_strategy(self) -> pulumi.Output[str]:
+        """
+        Strategy that defines how we do redaction.
+        """
+        return pulumi.get(self, "redaction_strategy")
+
+    @property
+    @pulumi.getter(name="retentionWindowDays")
+    def retention_window_days(self) -> pulumi.Output[int]:
+        """
+        Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        """
+        return pulumi.get(self, "retention_window_days")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

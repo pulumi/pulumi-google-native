@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['QueueTask']
@@ -64,6 +65,18 @@ class QueueTask(pulumi.CustomResource):
             if tasks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tasks_id'")
             __props__['tasks_id'] = tasks_id
+            __props__['app_engine_http_request'] = None
+            __props__['create_time'] = None
+            __props__['dispatch_count'] = None
+            __props__['dispatch_deadline'] = None
+            __props__['first_attempt'] = None
+            __props__['http_request'] = None
+            __props__['last_attempt'] = None
+            __props__['name'] = None
+            __props__['pull_message'] = None
+            __props__['response_count'] = None
+            __props__['schedule_time'] = None
+            __props__['view'] = None
         super(QueueTask, __self__).__init__(
             'google-cloud:cloudtasks/v2beta3:QueueTask',
             resource_name,
@@ -86,7 +99,115 @@ class QueueTask(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_engine_http_request"] = None
+        __props__["create_time"] = None
+        __props__["dispatch_count"] = None
+        __props__["dispatch_deadline"] = None
+        __props__["first_attempt"] = None
+        __props__["http_request"] = None
+        __props__["last_attempt"] = None
+        __props__["name"] = None
+        __props__["pull_message"] = None
+        __props__["response_count"] = None
+        __props__["schedule_time"] = None
+        __props__["view"] = None
         return QueueTask(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appEngineHttpRequest")
+    def app_engine_http_request(self) -> pulumi.Output['outputs.AppEngineHttpRequestResponse']:
+        """
+        HTTP request that is sent to the App Engine app handler. An App Engine task is a task that has AppEngineHttpRequest set.
+        """
+        return pulumi.get(self, "app_engine_http_request")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time that the task was created. `create_time` will be truncated to the nearest second.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dispatchCount")
+    def dispatch_count(self) -> pulumi.Output[int]:
+        """
+        The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
+        """
+        return pulumi.get(self, "dispatch_count")
+
+    @property
+    @pulumi.getter(name="dispatchDeadline")
+    def dispatch_deadline(self) -> pulumi.Output[str]:
+        """
+        The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline.
+        """
+        return pulumi.get(self, "dispatch_deadline")
+
+    @property
+    @pulumi.getter(name="firstAttempt")
+    def first_attempt(self) -> pulumi.Output['outputs.AttemptResponse']:
+        """
+        The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
+        """
+        return pulumi.get(self, "first_attempt")
+
+    @property
+    @pulumi.getter(name="httpRequest")
+    def http_request(self) -> pulumi.Output['outputs.HttpRequestResponse']:
+        """
+        HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        """
+        return pulumi.get(self, "http_request")
+
+    @property
+    @pulumi.getter(name="lastAttempt")
+    def last_attempt(self) -> pulumi.Output['outputs.AttemptResponse']:
+        """
+        The status of the task's last attempt.
+        """
+        return pulumi.get(self, "last_attempt")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pullMessage")
+    def pull_message(self) -> pulumi.Output['outputs.PullMessageResponse']:
+        """
+        Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
+        """
+        return pulumi.get(self, "pull_message")
+
+    @property
+    @pulumi.getter(name="responseCount")
+    def response_count(self) -> pulumi.Output[int]:
+        """
+        The number of attempts which have received a response.
+        """
+        return pulumi.get(self, "response_count")
+
+    @property
+    @pulumi.getter(name="scheduleTime")
+    def schedule_time(self) -> pulumi.Output[str]:
+        """
+        The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
+        """
+        return pulumi.get(self, "schedule_time")
+
+    @property
+    @pulumi.getter
+    def view(self) -> pulumi.Output[str]:
+        """
+        The view specifies which subset of the Task has been returned.
+        """
+        return pulumi.get(self, "view")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

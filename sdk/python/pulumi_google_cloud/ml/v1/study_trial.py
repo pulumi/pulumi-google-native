@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['StudyTrial']
@@ -16,19 +17,13 @@ class StudyTrial(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
                  final_measurement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]] = None,
-                 infeasible_reason: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  studies_id: Optional[pulumi.Input[str]] = None,
-                 trial_infeasible: Optional[pulumi.Input[bool]] = None,
                  trials_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -38,16 +33,10 @@ class StudyTrial(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] client_id: Output only. The identifier of the client that originally requested this trial.
-        :param pulumi.Input[str] end_time: Output only. Time at which the trial's status changed to COMPLETED.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']] final_measurement: The final measurement containing the objective value.
-        :param pulumi.Input[str] infeasible_reason: Output only. A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]] measurements: A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
-        :param pulumi.Input[str] name: Output only. Name of the trial assigned by the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]] parameters: The parameters of the trial.
-        :param pulumi.Input[str] start_time: Output only. Time at which the trial was started.
         :param pulumi.Input[str] state: The detailed state of a trial.
-        :param pulumi.Input[bool] trial_infeasible: Output only. If true, the parameters in this trial are not attempted again.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -66,28 +55,28 @@ class StudyTrial(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['client_id'] = client_id
-            __props__['end_time'] = end_time
             __props__['final_measurement'] = final_measurement
-            __props__['infeasible_reason'] = infeasible_reason
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['measurements'] = measurements
-            __props__['name'] = name
             __props__['parameters'] = parameters
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['start_time'] = start_time
             __props__['state'] = state
             if studies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'studies_id'")
             __props__['studies_id'] = studies_id
-            __props__['trial_infeasible'] = trial_infeasible
             if trials_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trials_id'")
             __props__['trials_id'] = trials_id
+            __props__['client_id'] = None
+            __props__['end_time'] = None
+            __props__['infeasible_reason'] = None
+            __props__['name'] = None
+            __props__['start_time'] = None
+            __props__['trial_infeasible'] = None
         super(StudyTrial, __self__).__init__(
             'google-cloud:ml/v1:StudyTrial',
             resource_name,
@@ -110,7 +99,97 @@ class StudyTrial(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["client_id"] = None
+        __props__["end_time"] = None
+        __props__["final_measurement"] = None
+        __props__["infeasible_reason"] = None
+        __props__["measurements"] = None
+        __props__["name"] = None
+        __props__["parameters"] = None
+        __props__["start_time"] = None
+        __props__["state"] = None
+        __props__["trial_infeasible"] = None
         return StudyTrial(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[str]:
+        """
+        The identifier of the client that originally requested this trial.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        Time at which the trial's status changed to COMPLETED.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="finalMeasurement")
+    def final_measurement(self) -> pulumi.Output['outputs.GoogleCloudMlV1__MeasurementResponse']:
+        """
+        The final measurement containing the objective value.
+        """
+        return pulumi.get(self, "final_measurement")
+
+    @property
+    @pulumi.getter(name="infeasibleReason")
+    def infeasible_reason(self) -> pulumi.Output[str]:
+        """
+        A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+        """
+        return pulumi.get(self, "infeasible_reason")
+
+    @property
+    @pulumi.getter
+    def measurements(self) -> pulumi.Output[Sequence['outputs.GoogleCloudMlV1__MeasurementResponse']]:
+        """
+        A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+        """
+        return pulumi.get(self, "measurements")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the trial assigned by the service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output[Sequence['outputs.GoogleCloudMlV1_Trial_ParameterResponse']]:
+        """
+        The parameters of the trial.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        Time at which the trial was started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The detailed state of a trial.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="trialInfeasible")
+    def trial_infeasible(self) -> pulumi.Output[bool]:
+        """
+        If true, the parameters in this trial are not attempted again.
+        """
+        return pulumi.get(self, "trial_infeasible")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['HistoryExecutionStepPerfSampleSeries']
@@ -92,7 +93,61 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["basic_perf_sample_series"] = None
+        __props__["execution_id"] = None
+        __props__["history_id"] = None
+        __props__["project_id"] = None
+        __props__["sample_series_id"] = None
+        __props__["step_id"] = None
         return HistoryExecutionStepPerfSampleSeries(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="basicPerfSampleSeries")
+    def basic_perf_sample_series(self) -> pulumi.Output['outputs.BasicPerfSampleSeriesResponse']:
+        """
+        Basic series represented by a line chart
+        """
+        return pulumi.get(self, "basic_perf_sample_series")
+
+    @property
+    @pulumi.getter(name="executionId")
+    def execution_id(self) -> pulumi.Output[str]:
+        """
+        A tool results execution ID. @OutputOnly
+        """
+        return pulumi.get(self, "execution_id")
+
+    @property
+    @pulumi.getter(name="historyId")
+    def history_id(self) -> pulumi.Output[str]:
+        """
+        A tool results history ID. @OutputOnly
+        """
+        return pulumi.get(self, "history_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The cloud project @OutputOnly
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="sampleSeriesId")
+    def sample_series_id(self) -> pulumi.Output[str]:
+        """
+        A sample series id @OutputOnly
+        """
+        return pulumi.get(self, "sample_series_id")
+
+    @property
+    @pulumi.getter(name="stepId")
+    def step_id(self) -> pulumi.Output[str]:
+        """
+        A tool results step ID. @OutputOnly
+        """
+        return pulumi.get(self, "step_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

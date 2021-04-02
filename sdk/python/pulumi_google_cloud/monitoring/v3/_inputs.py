@@ -1788,18 +1788,14 @@ class MetricAbsenceArgs:
 class MetricDescriptorMetadataArgs:
     def __init__(__self__, *,
                  ingest_delay: Optional[pulumi.Input[str]] = None,
-                 launch_stage: Optional[pulumi.Input[str]] = None,
                  sample_period: Optional[pulumi.Input[str]] = None):
         """
         Additional annotations that can be used to guide the usage of a metric.
         :param pulumi.Input[str] ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
-        :param pulumi.Input[str] launch_stage: Deprecated. Must use the MetricDescriptor.launch_stage instead.
         :param pulumi.Input[str] sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
         """
         if ingest_delay is not None:
             pulumi.set(__self__, "ingest_delay", ingest_delay)
-        if launch_stage is not None:
-            pulumi.set(__self__, "launch_stage", launch_stage)
         if sample_period is not None:
             pulumi.set(__self__, "sample_period", sample_period)
 
@@ -1814,18 +1810,6 @@ class MetricDescriptorMetadataArgs:
     @ingest_delay.setter
     def ingest_delay(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingest_delay", value)
-
-    @property
-    @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated. Must use the MetricDescriptor.launch_stage instead.
-        """
-        return pulumi.get(self, "launch_stage")
-
-    @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "launch_stage", value)
 
     @property
     @pulumi.getter(name="samplePeriod")
@@ -2063,8 +2047,8 @@ class MonitoredResourceMetadataArgs:
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_labels: Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } 
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Output only. A map of user-defined metadata labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_labels: Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A map of user-defined metadata labels.
         """
         if system_labels is not None:
             pulumi.set(__self__, "system_labels", system_labels)
@@ -2075,7 +2059,7 @@ class MonitoredResourceMetadataArgs:
     @pulumi.getter(name="systemLabels")
     def system_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } 
+        Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } 
         """
         return pulumi.get(self, "system_labels")
 
@@ -2087,7 +2071,7 @@ class MonitoredResourceMetadataArgs:
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Output only. A map of user-defined metadata labels.
+        A map of user-defined metadata labels.
         """
         return pulumi.get(self, "user_labels")
 
@@ -2620,7 +2604,7 @@ class TimeSeriesArgs:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.
-        :param pulumi.Input['MonitoredResourceMetadataArgs'] metadata: Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
+        :param pulumi.Input['MonitoredResourceMetadataArgs'] metadata: The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
         :param pulumi.Input['MetricArgs'] metric: The associated metric. A fully-specified metric used to identify the time series.
         :param pulumi.Input[str] metric_kind: The metric kind of the time series. When listing time series, this metric kind might be different from the metric kind of the associated metric if this time series is an alignment or reduction of other time series.When creating a time series, this field is optional. If present, it must be the same as the metric kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field specifies the metric kind of the new descriptor and must be either GAUGE (the default) or CUMULATIVE.
         :param pulumi.Input[Sequence[pulumi.Input['PointArgs']]] points: The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
@@ -2647,7 +2631,7 @@ class TimeSeriesArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input['MonitoredResourceMetadataArgs']]:
         """
-        Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
+        The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
         """
         return pulumi.get(self, "metadata")
 

@@ -40,18 +40,18 @@ class SiteVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServingConfigArgs']] config: The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
-        :param pulumi.Input[str] create_time: Output only. The time at which the version was created.
-        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] create_user: Output only. Identifies the user who created the version.
-        :param pulumi.Input[str] delete_time: Output only. The time at which the version was `DELETED`.
-        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] delete_user: Output only. Identifies the user who `DELETED` the version.
-        :param pulumi.Input[str] file_count: Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
-        :param pulumi.Input[str] finalize_time: Output only. The time at which the version was `FINALIZED`.
-        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] finalize_user: Output only. Identifies the user who `FINALIZED` the version.
+        :param pulumi.Input[str] create_time: The time at which the version was created.
+        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] create_user: Identifies the user who created the version.
+        :param pulumi.Input[str] delete_time: The time at which the version was `DELETED`.
+        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] delete_user: Identifies the user who `DELETED` the version.
+        :param pulumi.Input[str] file_count: The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+        :param pulumi.Input[str] finalize_time: The time at which the version was `FINALIZED`.
+        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] finalize_user: Identifies the user who `FINALIZED` the version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
         :param pulumi.Input[pulumi.InputType['PreviewConfigArgs']] preview: Deprecated in favor of [site channels](sites.channels).
         :param pulumi.Input[str] status: The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
-        :param pulumi.Input[str] version_bytes: Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+        :param pulumi.Input[str] version_bytes: The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

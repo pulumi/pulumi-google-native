@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Bucket']
@@ -156,7 +157,250 @@ class Bucket(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["acl"] = None
+        __props__["billing"] = None
+        __props__["cors"] = None
+        __props__["default_event_based_hold"] = None
+        __props__["default_object_acl"] = None
+        __props__["encryption"] = None
+        __props__["etag"] = None
+        __props__["iam_configuration"] = None
+        __props__["kind"] = None
+        __props__["labels"] = None
+        __props__["lifecycle"] = None
+        __props__["location"] = None
+        __props__["location_type"] = None
+        __props__["logging"] = None
+        __props__["metageneration"] = None
+        __props__["name"] = None
+        __props__["owner"] = None
+        __props__["project_number"] = None
+        __props__["retention_policy"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["self_link"] = None
+        __props__["storage_class"] = None
+        __props__["time_created"] = None
+        __props__["updated"] = None
+        __props__["versioning"] = None
+        __props__["website"] = None
+        __props__["zone_affinity"] = None
         return Bucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> pulumi.Output[Sequence['outputs.BucketAccessControlResponse']]:
+        """
+        Access controls on the bucket.
+        """
+        return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def billing(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's billing configuration.
+        """
+        return pulumi.get(self, "billing")
+
+    @property
+    @pulumi.getter
+    def cors(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+        """
+        The bucket's Cross-Origin Resource Sharing (CORS) configuration.
+        """
+        return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter(name="defaultEventBasedHold")
+    def default_event_based_hold(self) -> pulumi.Output[bool]:
+        """
+        The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
+        """
+        return pulumi.get(self, "default_event_based_hold")
+
+    @property
+    @pulumi.getter(name="defaultObjectAcl")
+    def default_object_acl(self) -> pulumi.Output[Sequence['outputs.ObjectAccessControlResponse']]:
+        """
+        Default access controls to apply to new objects when no ACL is provided.
+        """
+        return pulumi.get(self, "default_object_acl")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Encryption configuration for a bucket.
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        HTTP 1.1 Entity tag for the bucket.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="iamConfiguration")
+    def iam_configuration(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's IAM configuration.
+        """
+        return pulumi.get(self, "iam_configuration")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The kind of item this is. For buckets, this is always storage#bucket.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-provided labels, in key/value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def lifecycle(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's lifecycle configuration. See lifecycle management for more information.
+        """
+        return pulumi.get(self, "lifecycle")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="locationType")
+    def location_type(self) -> pulumi.Output[str]:
+        """
+        The type of the bucket location.
+        """
+        return pulumi.get(self, "location_type")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+        """
+        return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter
+    def metageneration(self) -> pulumi.Output[str]:
+        """
+        The metadata generation of this bucket.
+        """
+        return pulumi.get(self, "metageneration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The owner of the bucket. This is always the project team's owner group.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> pulumi.Output[str]:
+        """
+        The project number of the project the bucket belongs to.
+        """
+        return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter(name="retentionPolicy")
+    def retention_policy(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+        """
+        return pulumi.get(self, "retention_policy")
+
+    @property
+    @pulumi.getter(name="satisfiesPZS")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The URI of this bucket.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Output[str]:
+        """
+        The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> pulumi.Output[str]:
+        """
+        The creation time of the bucket in RFC 3339 format.
+        """
+        return pulumi.get(self, "time_created")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        The modification time of the bucket in RFC 3339 format.
+        """
+        return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's versioning configuration.
+        """
+        return pulumi.get(self, "versioning")
+
+    @property
+    @pulumi.getter
+    def website(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+        """
+        return pulumi.get(self, "website")
+
+    @property
+    @pulumi.getter(name="zoneAffinity")
+    def zone_affinity(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
+        """
+        return pulumi.get(self, "zone_affinity")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

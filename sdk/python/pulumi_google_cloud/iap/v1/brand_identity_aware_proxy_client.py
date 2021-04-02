@@ -18,9 +18,7 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
                  brands_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  identity_aware_proxy_clients_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,8 +28,6 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
-        :param pulumi.Input[str] name: Output only. Unique identifier of the OAuth client.
-        :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,11 +53,11 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
             if identity_aware_proxy_clients_id is None and not opts.urn:
                 raise TypeError("Missing required property 'identity_aware_proxy_clients_id'")
             __props__['identity_aware_proxy_clients_id'] = identity_aware_proxy_clients_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['secret'] = secret
+            __props__['name'] = None
+            __props__['secret'] = None
         super(BrandIdentityAwareProxyClient, __self__).__init__(
             'google-cloud:iap/v1:BrandIdentityAwareProxyClient',
             resource_name,
@@ -84,7 +80,34 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["secret"] = None
         return BrandIdentityAwareProxyClient(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Human-friendly name given to the OAuth client.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Unique identifier of the OAuth client.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Output[str]:
+        """
+        Client secret of the OAuth client.
+        """
+        return pulumi.get(self, "secret")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

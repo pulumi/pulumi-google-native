@@ -18,8 +18,6 @@ class BillingAccount(pulumi.CustomResource):
                  billing_accounts_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 open: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,8 +28,6 @@ class BillingAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
-        :param pulumi.Input[str] name: Output only. The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
-        :param pulumi.Input[bool] open: Output only. True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -55,8 +51,8 @@ class BillingAccount(pulumi.CustomResource):
             __props__['billing_accounts_id'] = billing_accounts_id
             __props__['display_name'] = display_name
             __props__['master_billing_account'] = master_billing_account
-            __props__['name'] = name
-            __props__['open'] = open
+            __props__['name'] = None
+            __props__['open'] = None
         super(BillingAccount, __self__).__init__(
             'google-cloud:cloudbilling/v1:BillingAccount',
             resource_name,
@@ -79,7 +75,43 @@ class BillingAccount(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["master_billing_account"] = None
+        __props__["name"] = None
+        __props__["open"] = None
         return BillingAccount(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="masterBillingAccount")
+    def master_billing_account(self) -> pulumi.Output[str]:
+        """
+        If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+        """
+        return pulumi.get(self, "master_billing_account")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def open(self) -> pulumi.Output[bool]:
+        """
+        True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+        """
+        return pulumi.get(self, "open")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

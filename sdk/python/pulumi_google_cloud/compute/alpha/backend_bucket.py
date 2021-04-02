@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['BackendBucket']
@@ -108,7 +109,106 @@ class BackendBucket(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["bucket_name"] = None
+        __props__["cdn_policy"] = None
+        __props__["creation_timestamp"] = None
+        __props__["custom_response_headers"] = None
+        __props__["description"] = None
+        __props__["edge_security_policy"] = None
+        __props__["enable_cdn"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
         return BackendBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Output[str]:
+        """
+        Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="cdnPolicy")
+    def cdn_policy(self) -> pulumi.Output['outputs.BackendBucketCdnPolicyResponse']:
+        """
+        Cloud CDN configuration for this BackendBucket.
+        """
+        return pulumi.get(self, "cdn_policy")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customResponseHeaders")
+    def custom_response_headers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Headers that the HTTP/S load balancer should add to proxied responses.
+        """
+        return pulumi.get(self, "custom_response_headers")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional textual description of the resource; provided by the client when the resource is created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The resource URL for the edge security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @property
+    @pulumi.getter(name="enableCdn")
+    def enable_cdn(self) -> pulumi.Output[bool]:
+        """
+        If true, enable Cloud CDN for this BackendBucket.
+        """
+        return pulumi.get(self, "enable_cdn")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        Type of the resource.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

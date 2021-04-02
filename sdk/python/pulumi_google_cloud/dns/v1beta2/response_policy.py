@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ResponsePolicy']
@@ -86,7 +87,40 @@ class ResponsePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["kind"] = None
+        __props__["networks"] = None
+        __props__["response_policy_name"] = None
         return ResponsePolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        User-provided description for this Response Policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> pulumi.Output[Sequence['outputs.ResponsePolicyNetworkResponse']]:
+        """
+        List of network names specifying networks to which this policy is applied.
+        """
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="responsePolicyName")
+    def response_policy_name(self) -> pulumi.Output[str]:
+        """
+        User assigned name for this Response Policy.
+        """
+        return pulumi.get(self, "response_policy_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

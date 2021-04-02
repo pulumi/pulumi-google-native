@@ -8,6 +8,7 @@ from .managed_zone import *
 from .managed_zone_rrset import *
 from .policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

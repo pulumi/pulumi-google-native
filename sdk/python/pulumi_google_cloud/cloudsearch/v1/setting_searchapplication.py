@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['SettingSearchapplication']
@@ -21,7 +22,6 @@ class SettingSearchapplication(pulumi.CustomResource):
                  default_sort_options: Optional[pulumi.Input[pulumi.InputType['SortOptionsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
                  searchapplications_id: Optional[pulumi.Input[str]] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
@@ -38,7 +38,6 @@ class SettingSearchapplication(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SortOptionsArgs']] default_sort_options: The default options for sorting the search results
         :param pulumi.Input[str] display_name: Display name of the Search Application. The maximum length is 300 characters.
         :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
         :param pulumi.Input[pulumi.InputType['ScoringConfigArgs']] scoring_config: Configuration for ranking results.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]] source_config: Configuration for a sources specified in data_source_restrictions.
         """
@@ -64,12 +63,12 @@ class SettingSearchapplication(pulumi.CustomResource):
             __props__['default_sort_options'] = default_sort_options
             __props__['display_name'] = display_name
             __props__['name'] = name
-            __props__['operation_ids'] = operation_ids
             __props__['scoring_config'] = scoring_config
             if searchapplications_id is None and not opts.urn:
                 raise TypeError("Missing required property 'searchapplications_id'")
             __props__['searchapplications_id'] = searchapplications_id
             __props__['source_config'] = source_config
+            __props__['operation_ids'] = None
         super(SettingSearchapplication, __self__).__init__(
             'google-cloud:cloudsearch/v1:SettingSearchapplication',
             resource_name,
@@ -92,7 +91,79 @@ class SettingSearchapplication(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["data_source_restrictions"] = None
+        __props__["default_facet_options"] = None
+        __props__["default_sort_options"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["operation_ids"] = None
+        __props__["scoring_config"] = None
+        __props__["source_config"] = None
         return SettingSearchapplication(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dataSourceRestrictions")
+    def data_source_restrictions(self) -> pulumi.Output[Sequence['outputs.DataSourceRestrictionResponse']]:
+        """
+        Retrictions applied to the configurations. The maximum number of elements is 10.
+        """
+        return pulumi.get(self, "data_source_restrictions")
+
+    @property
+    @pulumi.getter(name="defaultFacetOptions")
+    def default_facet_options(self) -> pulumi.Output[Sequence['outputs.FacetOptionsResponse']]:
+        """
+        The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+        """
+        return pulumi.get(self, "default_facet_options")
+
+    @property
+    @pulumi.getter(name="defaultSortOptions")
+    def default_sort_options(self) -> pulumi.Output['outputs.SortOptionsResponse']:
+        """
+        The default options for sorting the search results
+        """
+        return pulumi.get(self, "default_sort_options")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Display name of the Search Application. The maximum length is 300 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the Search Application. Format: searchapplications/{application_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operationIds")
+    def operation_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+        """
+        return pulumi.get(self, "operation_ids")
+
+    @property
+    @pulumi.getter(name="scoringConfig")
+    def scoring_config(self) -> pulumi.Output['outputs.ScoringConfigResponse']:
+        """
+        Configuration for ranking results.
+        """
+        return pulumi.get(self, "scoring_config")
+
+    @property
+    @pulumi.getter(name="sourceConfig")
+    def source_config(self) -> pulumi.Output[Sequence['outputs.SourceConfigResponse']]:
+        """
+        Configuration for a sources specified in data_source_restrictions.
+        """
+        return pulumi.get(self, "source_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

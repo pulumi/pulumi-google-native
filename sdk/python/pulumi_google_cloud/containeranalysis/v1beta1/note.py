@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Note']
@@ -46,19 +47,19 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthorityArgs']] attestation_authority: A note describing an attestation role.
         :param pulumi.Input[pulumi.InputType['BasisArgs']] base_image: A note describing a base image.
         :param pulumi.Input[pulumi.InputType['BuildArgs']] build: A note describing build provenance for a verifiable build.
-        :param pulumi.Input[str] create_time: Output only. The time this note was created. This field can be used as a filter in list requests.
+        :param pulumi.Input[str] create_time: The time this note was created. This field can be used as a filter in list requests.
         :param pulumi.Input[pulumi.InputType['DeployableArgs']] deployable: A note describing something that can be deployed.
         :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing the initial analysis of a resource.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
         :param pulumi.Input[pulumi.InputType['InTotoArgs']] intoto: A note describing an in-toto link.
-        :param pulumi.Input[str] kind: Output only. The type of analysis. This field can be used as a filter in list requests.
+        :param pulumi.Input[str] kind: The type of analysis. This field can be used as a filter in list requests.
         :param pulumi.Input[str] long_description: A detailed description of this note.
-        :param pulumi.Input[str] name: Output only. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+        :param pulumi.Input[str] name: The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input[str] update_time: Output only. The time this note was last updated. This field can be used as a filter in list requests.
+        :param pulumi.Input[str] update_time: The time this note was last updated. This field can be used as a filter in list requests.
         :param pulumi.Input[pulumi.InputType['VulnerabilityArgs']] vulnerability: A note describing a package vulnerability.
         """
         if __name__ is not None:
@@ -123,7 +124,160 @@ class Note(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["attestation_authority"] = None
+        __props__["base_image"] = None
+        __props__["build"] = None
+        __props__["create_time"] = None
+        __props__["deployable"] = None
+        __props__["discovery"] = None
+        __props__["expiration_time"] = None
+        __props__["intoto"] = None
+        __props__["kind"] = None
+        __props__["long_description"] = None
+        __props__["name"] = None
+        __props__["package"] = None
+        __props__["related_note_names"] = None
+        __props__["related_url"] = None
+        __props__["short_description"] = None
+        __props__["update_time"] = None
+        __props__["vulnerability"] = None
         return Note(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="attestationAuthority")
+    def attestation_authority(self) -> pulumi.Output['outputs.AuthorityResponse']:
+        """
+        A note describing an attestation role.
+        """
+        return pulumi.get(self, "attestation_authority")
+
+    @property
+    @pulumi.getter(name="baseImage")
+    def base_image(self) -> pulumi.Output['outputs.BasisResponse']:
+        """
+        A note describing a base image.
+        """
+        return pulumi.get(self, "base_image")
+
+    @property
+    @pulumi.getter
+    def build(self) -> pulumi.Output['outputs.BuildResponse']:
+        """
+        A note describing build provenance for a verifiable build.
+        """
+        return pulumi.get(self, "build")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time this note was created. This field can be used as a filter in list requests.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def deployable(self) -> pulumi.Output['outputs.DeployableResponse']:
+        """
+        A note describing something that can be deployed.
+        """
+        return pulumi.get(self, "deployable")
+
+    @property
+    @pulumi.getter
+    def discovery(self) -> pulumi.Output['outputs.DiscoveryResponse']:
+        """
+        A note describing the initial analysis of a resource.
+        """
+        return pulumi.get(self, "discovery")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> pulumi.Output[str]:
+        """
+        Time of expiration for this note. Empty if note does not expire.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter
+    def intoto(self) -> pulumi.Output['outputs.InTotoResponse']:
+        """
+        A note describing an in-toto link.
+        """
+        return pulumi.get(self, "intoto")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The type of analysis. This field can be used as a filter in list requests.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> pulumi.Output[str]:
+        """
+        A detailed description of this note.
+        """
+        return pulumi.get(self, "long_description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def package(self) -> pulumi.Output['outputs.PackageResponse']:
+        """
+        A note describing a package hosted by various package managers.
+        """
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter(name="relatedNoteNames")
+    def related_note_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Other notes related to this note.
+        """
+        return pulumi.get(self, "related_note_names")
+
+    @property
+    @pulumi.getter(name="relatedUrl")
+    def related_url(self) -> pulumi.Output[Sequence['outputs.RelatedUrlResponse']]:
+        """
+        URLs associated with this note.
+        """
+        return pulumi.get(self, "related_url")
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> pulumi.Output[str]:
+        """
+        A one sentence description of this note.
+        """
+        return pulumi.get(self, "short_description")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time this note was last updated. This field can be used as a filter in list requests.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def vulnerability(self) -> pulumi.Output['outputs.VulnerabilityResponse']:
+        """
+        A note describing a package vulnerability.
+        """
+        return pulumi.get(self, "vulnerability")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

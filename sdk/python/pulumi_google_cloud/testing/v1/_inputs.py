@@ -1176,7 +1176,7 @@ class IosTestLoopArgs:
                  scenarios: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
-        :param pulumi.Input[str] app_bundle_id: Output only. The bundle id for the application under test.
+        :param pulumi.Input[str] app_bundle_id: The bundle id for the application under test.
         :param pulumi.Input['FileReferenceArgs'] app_ipa: Required. The .ipa of the application to test.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] scenarios: The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
         """
@@ -1191,7 +1191,7 @@ class IosTestLoopArgs:
     @pulumi.getter(name="appBundleId")
     def app_bundle_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The bundle id for the application under test.
+        The bundle id for the application under test.
         """
         return pulumi.get(self, "app_bundle_id")
 
@@ -1306,7 +1306,7 @@ class IosXcTestArgs:
                  xctestrun: Optional[pulumi.Input['FileReferenceArgs']] = None):
         """
         A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
-        :param pulumi.Input[str] app_bundle_id: Output only. The bundle id for the application under test.
+        :param pulumi.Input[str] app_bundle_id: The bundle id for the application under test.
         :param pulumi.Input[bool] test_special_entitlements: The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
         :param pulumi.Input['FileReferenceArgs'] tests_zip: Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         :param pulumi.Input[str] xcode_version: The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
@@ -1327,7 +1327,7 @@ class IosXcTestArgs:
     @pulumi.getter(name="appBundleId")
     def app_bundle_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The bundle id for the application under test.
+        The bundle id for the application under test.
         """
         return pulumi.get(self, "app_bundle_id")
 
@@ -1507,8 +1507,8 @@ class ResultStorageArgs:
         """
         Locations where the results of running the test are stored.
         :param pulumi.Input['GoogleCloudStorageArgs'] google_cloud_storage: Required.
-        :param pulumi.Input[str] results_url: Output only. URL to the results in the Firebase Web Console.
-        :param pulumi.Input['ToolResultsExecutionArgs'] tool_results_execution: Output only. The tool results execution that results are written to.
+        :param pulumi.Input[str] results_url: URL to the results in the Firebase Web Console.
+        :param pulumi.Input['ToolResultsExecutionArgs'] tool_results_execution: The tool results execution that results are written to.
         :param pulumi.Input['ToolResultsHistoryArgs'] tool_results_history: The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
         """
         if google_cloud_storage is not None:
@@ -1536,7 +1536,7 @@ class ResultStorageArgs:
     @pulumi.getter(name="resultsUrl")
     def results_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. URL to the results in the Firebase Web Console.
+        URL to the results in the Firebase Web Console.
         """
         return pulumi.get(self, "results_url")
 
@@ -1548,7 +1548,7 @@ class ResultStorageArgs:
     @pulumi.getter(name="toolResultsExecution")
     def tool_results_execution(self) -> Optional[pulumi.Input['ToolResultsExecutionArgs']]:
         """
-        Output only. The tool results execution that results are written to.
+        The tool results execution that results are written to.
         """
         return pulumi.get(self, "tool_results_execution")
 
@@ -1689,9 +1689,9 @@ class ShardArgs:
                  test_targets_for_shard: Optional[pulumi.Input['TestTargetsForShardArgs']] = None):
         """
         Output only. Details about the shard.
-        :param pulumi.Input[int] num_shards: Output only. The total number of shards.
-        :param pulumi.Input[int] shard_index: Output only. The index of the shard among all the shards.
-        :param pulumi.Input['TestTargetsForShardArgs'] test_targets_for_shard: Output only. Test targets for each shard.
+        :param pulumi.Input[int] num_shards: The total number of shards.
+        :param pulumi.Input[int] shard_index: The index of the shard among all the shards.
+        :param pulumi.Input['TestTargetsForShardArgs'] test_targets_for_shard: Test targets for each shard.
         """
         if num_shards is not None:
             pulumi.set(__self__, "num_shards", num_shards)
@@ -1704,7 +1704,7 @@ class ShardArgs:
     @pulumi.getter(name="numShards")
     def num_shards(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. The total number of shards.
+        The total number of shards.
         """
         return pulumi.get(self, "num_shards")
 
@@ -1716,7 +1716,7 @@ class ShardArgs:
     @pulumi.getter(name="shardIndex")
     def shard_index(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. The index of the shard among all the shards.
+        The index of the shard among all the shards.
         """
         return pulumi.get(self, "shard_index")
 
@@ -1728,7 +1728,7 @@ class ShardArgs:
     @pulumi.getter(name="testTargetsForShard")
     def test_targets_for_shard(self) -> Optional[pulumi.Input['TestTargetsForShardArgs']]:
         """
-        Output only. Test targets for each shard.
+        Test targets for each shard.
         """
         return pulumi.get(self, "test_targets_for_shard")
 
@@ -1863,8 +1863,8 @@ class TestDetailsArgs:
                  progress_messages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Additional details about the progress of the running test.
-        :param pulumi.Input[str] error_message: Output only. If the TestState is ERROR, then this string will contain human-readable details about the error.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] progress_messages: Output only. Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
+        :param pulumi.Input[str] error_message: If the TestState is ERROR, then this string will contain human-readable details about the error.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] progress_messages: Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
         """
         if error_message is not None:
             pulumi.set(__self__, "error_message", error_message)
@@ -1875,7 +1875,7 @@ class TestDetailsArgs:
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. If the TestState is ERROR, then this string will contain human-readable details about the error.
+        If the TestState is ERROR, then this string will contain human-readable details about the error.
         """
         return pulumi.get(self, "error_message")
 
@@ -1887,7 +1887,7 @@ class TestDetailsArgs:
     @pulumi.getter(name="progressMessages")
     def progress_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Output only. Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
+        Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages.
         """
         return pulumi.get(self, "progress_messages")
 
@@ -1911,16 +1911,16 @@ class TestExecutionArgs:
                  tool_results_step: Optional[pulumi.Input['ToolResultsStepArgs']] = None):
         """
         A single test executed in a single environment.
-        :param pulumi.Input['EnvironmentArgs'] environment: Output only. How the host machine(s) are configured.
-        :param pulumi.Input[str] id: Output only. Unique id set by the service.
-        :param pulumi.Input[str] matrix_id: Output only. Id of the containing TestMatrix.
-        :param pulumi.Input[str] project_id: Output only. The cloud project that owns the test execution.
-        :param pulumi.Input['ShardArgs'] shard: Output only. Details about the shard.
-        :param pulumi.Input[str] state: Output only. Indicates the current progress of the test execution (e.g., FINISHED).
-        :param pulumi.Input['TestDetailsArgs'] test_details: Output only. Additional details about the running test.
-        :param pulumi.Input['TestSpecificationArgs'] test_specification: Output only. How to run the test.
-        :param pulumi.Input[str] timestamp: Output only. The time this test execution was initially created.
-        :param pulumi.Input['ToolResultsStepArgs'] tool_results_step: Output only. Where the results for this execution are written.
+        :param pulumi.Input['EnvironmentArgs'] environment: How the host machine(s) are configured.
+        :param pulumi.Input[str] id: Unique id set by the service.
+        :param pulumi.Input[str] matrix_id: Id of the containing TestMatrix.
+        :param pulumi.Input[str] project_id: The cloud project that owns the test execution.
+        :param pulumi.Input['ShardArgs'] shard: Details about the shard.
+        :param pulumi.Input[str] state: Indicates the current progress of the test execution (e.g., FINISHED).
+        :param pulumi.Input['TestDetailsArgs'] test_details: Additional details about the running test.
+        :param pulumi.Input['TestSpecificationArgs'] test_specification: How to run the test.
+        :param pulumi.Input[str] timestamp: The time this test execution was initially created.
+        :param pulumi.Input['ToolResultsStepArgs'] tool_results_step: Where the results for this execution are written.
         """
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
@@ -1947,7 +1947,7 @@ class TestExecutionArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input['EnvironmentArgs']]:
         """
-        Output only. How the host machine(s) are configured.
+        How the host machine(s) are configured.
         """
         return pulumi.get(self, "environment")
 
@@ -1959,7 +1959,7 @@ class TestExecutionArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Unique id set by the service.
+        Unique id set by the service.
         """
         return pulumi.get(self, "id")
 
@@ -1971,7 +1971,7 @@ class TestExecutionArgs:
     @pulumi.getter(name="matrixId")
     def matrix_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Id of the containing TestMatrix.
+        Id of the containing TestMatrix.
         """
         return pulumi.get(self, "matrix_id")
 
@@ -1983,7 +1983,7 @@ class TestExecutionArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The cloud project that owns the test execution.
+        The cloud project that owns the test execution.
         """
         return pulumi.get(self, "project_id")
 
@@ -1995,7 +1995,7 @@ class TestExecutionArgs:
     @pulumi.getter
     def shard(self) -> Optional[pulumi.Input['ShardArgs']]:
         """
-        Output only. Details about the shard.
+        Details about the shard.
         """
         return pulumi.get(self, "shard")
 
@@ -2007,7 +2007,7 @@ class TestExecutionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Indicates the current progress of the test execution (e.g., FINISHED).
+        Indicates the current progress of the test execution (e.g., FINISHED).
         """
         return pulumi.get(self, "state")
 
@@ -2019,7 +2019,7 @@ class TestExecutionArgs:
     @pulumi.getter(name="testDetails")
     def test_details(self) -> Optional[pulumi.Input['TestDetailsArgs']]:
         """
-        Output only. Additional details about the running test.
+        Additional details about the running test.
         """
         return pulumi.get(self, "test_details")
 
@@ -2031,7 +2031,7 @@ class TestExecutionArgs:
     @pulumi.getter(name="testSpecification")
     def test_specification(self) -> Optional[pulumi.Input['TestSpecificationArgs']]:
         """
-        Output only. How to run the test.
+        How to run the test.
         """
         return pulumi.get(self, "test_specification")
 
@@ -2043,7 +2043,7 @@ class TestExecutionArgs:
     @pulumi.getter
     def timestamp(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time this test execution was initially created.
+        The time this test execution was initially created.
         """
         return pulumi.get(self, "timestamp")
 
@@ -2055,7 +2055,7 @@ class TestExecutionArgs:
     @pulumi.getter(name="toolResultsStep")
     def tool_results_step(self) -> Optional[pulumi.Input['ToolResultsStepArgs']]:
         """
-        Output only. Where the results for this execution are written.
+        Where the results for this execution are written.
         """
         return pulumi.get(self, "tool_results_step")
 
@@ -2400,9 +2400,9 @@ class ToolResultsExecutionArgs:
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         Represents a tool results execution resource. This has the results of a TestMatrix.
-        :param pulumi.Input[str] execution_id: Output only. A tool results execution ID.
-        :param pulumi.Input[str] history_id: Output only. A tool results history ID.
-        :param pulumi.Input[str] project_id: Output only. The cloud project that owns the tool results execution.
+        :param pulumi.Input[str] execution_id: A tool results execution ID.
+        :param pulumi.Input[str] history_id: A tool results history ID.
+        :param pulumi.Input[str] project_id: The cloud project that owns the tool results execution.
         """
         if execution_id is not None:
             pulumi.set(__self__, "execution_id", execution_id)
@@ -2415,7 +2415,7 @@ class ToolResultsExecutionArgs:
     @pulumi.getter(name="executionId")
     def execution_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. A tool results execution ID.
+        A tool results execution ID.
         """
         return pulumi.get(self, "execution_id")
 
@@ -2427,7 +2427,7 @@ class ToolResultsExecutionArgs:
     @pulumi.getter(name="historyId")
     def history_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. A tool results history ID.
+        A tool results history ID.
         """
         return pulumi.get(self, "history_id")
 
@@ -2439,7 +2439,7 @@ class ToolResultsExecutionArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The cloud project that owns the tool results execution.
+        The cloud project that owns the tool results execution.
         """
         return pulumi.get(self, "project_id")
 
@@ -2497,10 +2497,10 @@ class ToolResultsStepArgs:
                  step_id: Optional[pulumi.Input[str]] = None):
         """
         Represents a tool results step resource. This has the results of a TestExecution.
-        :param pulumi.Input[str] execution_id: Output only. A tool results execution ID.
-        :param pulumi.Input[str] history_id: Output only. A tool results history ID.
-        :param pulumi.Input[str] project_id: Output only. The cloud project that owns the tool results step.
-        :param pulumi.Input[str] step_id: Output only. A tool results step ID.
+        :param pulumi.Input[str] execution_id: A tool results execution ID.
+        :param pulumi.Input[str] history_id: A tool results history ID.
+        :param pulumi.Input[str] project_id: The cloud project that owns the tool results step.
+        :param pulumi.Input[str] step_id: A tool results step ID.
         """
         if execution_id is not None:
             pulumi.set(__self__, "execution_id", execution_id)
@@ -2515,7 +2515,7 @@ class ToolResultsStepArgs:
     @pulumi.getter(name="executionId")
     def execution_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. A tool results execution ID.
+        A tool results execution ID.
         """
         return pulumi.get(self, "execution_id")
 
@@ -2527,7 +2527,7 @@ class ToolResultsStepArgs:
     @pulumi.getter(name="historyId")
     def history_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. A tool results history ID.
+        A tool results history ID.
         """
         return pulumi.get(self, "history_id")
 
@@ -2539,7 +2539,7 @@ class ToolResultsStepArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The cloud project that owns the tool results step.
+        The cloud project that owns the tool results step.
         """
         return pulumi.get(self, "project_id")
 
@@ -2551,7 +2551,7 @@ class ToolResultsStepArgs:
     @pulumi.getter(name="stepId")
     def step_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. A tool results step ID.
+        A tool results step ID.
         """
         return pulumi.get(self, "step_id")
 

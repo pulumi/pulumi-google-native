@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Subscription']
@@ -111,7 +112,124 @@ class Subscription(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["ack_deadline_seconds"] = None
+        __props__["dead_letter_policy"] = None
+        __props__["detached"] = None
+        __props__["enable_message_ordering"] = None
+        __props__["expiration_policy"] = None
+        __props__["filter"] = None
+        __props__["labels"] = None
+        __props__["message_retention_duration"] = None
+        __props__["name"] = None
+        __props__["push_config"] = None
+        __props__["retain_acked_messages"] = None
+        __props__["retry_policy"] = None
+        __props__["topic"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="ackDeadlineSeconds")
+    def ack_deadline_seconds(self) -> pulumi.Output[int]:
+        """
+        The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        """
+        return pulumi.get(self, "ack_deadline_seconds")
+
+    @property
+    @pulumi.getter(name="deadLetterPolicy")
+    def dead_letter_policy(self) -> pulumi.Output['outputs.DeadLetterPolicyResponse']:
+        """
+        A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
+        """
+        return pulumi.get(self, "dead_letter_policy")
+
+    @property
+    @pulumi.getter
+    def detached(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
+        """
+        return pulumi.get(self, "detached")
+
+    @property
+    @pulumi.getter(name="enableMessageOrdering")
+    def enable_message_ordering(self) -> pulumi.Output[bool]:
+        """
+        If true, messages published with the same `ordering_key` in `PubsubMessage` will be delivered to the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they may be delivered in any order.
+        """
+        return pulumi.get(self, "enable_message_ordering")
+
+    @property
+    @pulumi.getter(name="expirationPolicy")
+    def expiration_policy(self) -> pulumi.Output['outputs.ExpirationPolicyResponse']:
+        """
+        A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
+        """
+        return pulumi.get(self, "expiration_policy")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[str]:
+        """
+        An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        See Creating and managing labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> pulumi.Output[str]:
+        """
+        How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
+        """
+        return pulumi.get(self, "message_retention_duration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pushConfig")
+    def push_config(self) -> pulumi.Output['outputs.PushConfigResponse']:
+        """
+        If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        """
+        return pulumi.get(self, "push_config")
+
+    @property
+    @pulumi.getter(name="retainAckedMessages")
+    def retain_acked_messages(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
+        """
+        return pulumi.get(self, "retain_acked_messages")
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> pulumi.Output['outputs.RetryPolicyResponse']:
+        """
+        A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
+        """
+        return pulumi.get(self, "topic")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

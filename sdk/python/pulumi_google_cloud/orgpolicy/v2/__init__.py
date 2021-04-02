@@ -7,6 +7,7 @@ from .folder_policy import *
 from .organization_policy import *
 from .policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

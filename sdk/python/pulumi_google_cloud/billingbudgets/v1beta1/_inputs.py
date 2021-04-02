@@ -100,7 +100,6 @@ class GoogleCloudBillingBudgetsV1beta1BudgetArgs:
                  budget_filter: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]] = None):
         """
         A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time period is configurable, with options such as month (default), quarter, year, or custom time period.
@@ -109,7 +108,6 @@ class GoogleCloudBillingBudgetsV1beta1BudgetArgs:
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
         :param pulumi.Input[str] display_name: User data for display name in UI. Validation: <= 60 chars.
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-        :param pulumi.Input[str] name: Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
         """
         if all_updates_rule is not None:
@@ -122,8 +120,6 @@ class GoogleCloudBillingBudgetsV1beta1BudgetArgs:
             pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if threshold_rules is not None:
             pulumi.set(__self__, "threshold_rules", threshold_rules)
 
@@ -186,18 +182,6 @@ class GoogleCloudBillingBudgetsV1beta1BudgetArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="thresholdRules")

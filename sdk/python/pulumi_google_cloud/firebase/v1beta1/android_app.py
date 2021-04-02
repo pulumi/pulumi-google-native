@@ -86,7 +86,52 @@ class AndroidApp(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_id"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["package_name"] = None
+        __props__["project_id"] = None
         return AndroidApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The user-assigned display name for the `AndroidApp`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageName")
+    def package_name(self) -> pulumi.Output[str]:
+        """
+        Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
+        """
+        return pulumi.get(self, "package_name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
+        """
+        return pulumi.get(self, "project_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

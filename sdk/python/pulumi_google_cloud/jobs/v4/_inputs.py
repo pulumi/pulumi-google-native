@@ -10,16 +10,11 @@ from ... import _utilities, _tables
 
 __all__ = [
     'ApplicationInfoArgs',
-    'CompanyDerivedInfoArgs',
     'CompensationEntryArgs',
     'CompensationInfoArgs',
     'CompensationRangeArgs',
-    'JobDerivedInfoArgs',
     'JobEventArgs',
-    'LatLngArgs',
-    'LocationArgs',
     'MoneyArgs',
-    'PostalAddressArgs',
     'ProcessingOptionsArgs',
 ]
 
@@ -77,30 +72,6 @@ class ApplicationInfoArgs:
     @uris.setter
     def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "uris", value)
-
-
-@pulumi.input_type
-class CompanyDerivedInfoArgs:
-    def __init__(__self__, *,
-                 headquarters_location: Optional[pulumi.Input['LocationArgs']] = None):
-        """
-        Derived details about the company.
-        :param pulumi.Input['LocationArgs'] headquarters_location: A structured headquarters location of the company, resolved from Company.headquarters_address if provided.
-        """
-        if headquarters_location is not None:
-            pulumi.set(__self__, "headquarters_location", headquarters_location)
-
-    @property
-    @pulumi.getter(name="headquartersLocation")
-    def headquarters_location(self) -> Optional[pulumi.Input['LocationArgs']]:
-        """
-        A structured headquarters location of the company, resolved from Company.headquarters_address if provided.
-        """
-        return pulumi.get(self, "headquarters_location")
-
-    @headquarters_location.setter
-    def headquarters_location(self, value: Optional[pulumi.Input['LocationArgs']]):
-        pulumi.set(self, "headquarters_location", value)
 
 
 @pulumi.input_type
@@ -210,45 +181,13 @@ class CompensationEntryArgs:
 @pulumi.input_type
 class CompensationInfoArgs:
     def __init__(__self__, *,
-                 annualized_base_compensation_range: Optional[pulumi.Input['CompensationRangeArgs']] = None,
-                 annualized_total_compensation_range: Optional[pulumi.Input['CompensationRangeArgs']] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input['CompensationEntryArgs']]]] = None):
         """
         Job compensation details.
-        :param pulumi.Input['CompensationRangeArgs'] annualized_base_compensation_range: Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-        :param pulumi.Input['CompensationRangeArgs'] annualized_total_compensation_range: Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
         :param pulumi.Input[Sequence[pulumi.Input['CompensationEntryArgs']]] entries: Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as **base compensation entry** for the job.
         """
-        if annualized_base_compensation_range is not None:
-            pulumi.set(__self__, "annualized_base_compensation_range", annualized_base_compensation_range)
-        if annualized_total_compensation_range is not None:
-            pulumi.set(__self__, "annualized_total_compensation_range", annualized_total_compensation_range)
         if entries is not None:
             pulumi.set(__self__, "entries", entries)
-
-    @property
-    @pulumi.getter(name="annualizedBaseCompensationRange")
-    def annualized_base_compensation_range(self) -> Optional[pulumi.Input['CompensationRangeArgs']]:
-        """
-        Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-        """
-        return pulumi.get(self, "annualized_base_compensation_range")
-
-    @annualized_base_compensation_range.setter
-    def annualized_base_compensation_range(self, value: Optional[pulumi.Input['CompensationRangeArgs']]):
-        pulumi.set(self, "annualized_base_compensation_range", value)
-
-    @property
-    @pulumi.getter(name="annualizedTotalCompensationRange")
-    def annualized_total_compensation_range(self) -> Optional[pulumi.Input['CompensationRangeArgs']]:
-        """
-        Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-        """
-        return pulumi.get(self, "annualized_total_compensation_range")
-
-    @annualized_total_compensation_range.setter
-    def annualized_total_compensation_range(self, value: Optional[pulumi.Input['CompensationRangeArgs']]):
-        pulumi.set(self, "annualized_total_compensation_range", value)
 
     @property
     @pulumi.getter
@@ -304,46 +243,6 @@ class CompensationRangeArgs:
 
 
 @pulumi.input_type
-class JobDerivedInfoArgs:
-    def __init__(__self__, *,
-                 job_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]] = None):
-        """
-        Derived details about the job posting.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] job_categories: Job categories derived from Job.title and Job.description.
-        :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] locations: Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
-        """
-        if job_categories is not None:
-            pulumi.set(__self__, "job_categories", job_categories)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
-
-    @property
-    @pulumi.getter(name="jobCategories")
-    def job_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Job categories derived from Job.title and Job.description.
-        """
-        return pulumi.get(self, "job_categories")
-
-    @job_categories.setter
-    def job_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "job_categories", value)
-
-    @property
-    @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]:
-        """
-        Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
-        """
-        return pulumi.get(self, "locations")
-
-    @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]):
-        pulumi.set(self, "locations", value)
-
-
-@pulumi.input_type
 class JobEventArgs:
     def __init__(__self__, *,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -381,118 +280,6 @@ class JobEventArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class LatLngArgs:
-    def __init__(__self__, *,
-                 latitude: Optional[pulumi.Input[float]] = None,
-                 longitude: Optional[pulumi.Input[float]] = None):
-        """
-        An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
-        :param pulumi.Input[float] latitude: The latitude in degrees. It must be in the range [-90.0, +90.0].
-        :param pulumi.Input[float] longitude: The longitude in degrees. It must be in the range [-180.0, +180.0].
-        """
-        if latitude is not None:
-            pulumi.set(__self__, "latitude", latitude)
-        if longitude is not None:
-            pulumi.set(__self__, "longitude", longitude)
-
-    @property
-    @pulumi.getter
-    def latitude(self) -> Optional[pulumi.Input[float]]:
-        """
-        The latitude in degrees. It must be in the range [-90.0, +90.0].
-        """
-        return pulumi.get(self, "latitude")
-
-    @latitude.setter
-    def latitude(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "latitude", value)
-
-    @property
-    @pulumi.getter
-    def longitude(self) -> Optional[pulumi.Input[float]]:
-        """
-        The longitude in degrees. It must be in the range [-180.0, +180.0].
-        """
-        return pulumi.get(self, "longitude")
-
-    @longitude.setter
-    def longitude(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "longitude", value)
-
-
-@pulumi.input_type
-class LocationArgs:
-    def __init__(__self__, *,
-                 lat_lng: Optional[pulumi.Input['LatLngArgs']] = None,
-                 location_type: Optional[pulumi.Input[str]] = None,
-                 postal_address: Optional[pulumi.Input['PostalAddressArgs']] = None,
-                 radius_miles: Optional[pulumi.Input[float]] = None):
-        """
-        A resource that represents a location with full geographic information.
-        :param pulumi.Input['LatLngArgs'] lat_lng: An object representing a latitude/longitude pair.
-        :param pulumi.Input[str] location_type: The type of a location, which corresponds to the address lines field of google.type.PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType.NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType.LOCALITY.
-        :param pulumi.Input['PostalAddressArgs'] postal_address: Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
-        :param pulumi.Input[float] radius_miles: Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from google.type.LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
-        """
-        if lat_lng is not None:
-            pulumi.set(__self__, "lat_lng", lat_lng)
-        if location_type is not None:
-            pulumi.set(__self__, "location_type", location_type)
-        if postal_address is not None:
-            pulumi.set(__self__, "postal_address", postal_address)
-        if radius_miles is not None:
-            pulumi.set(__self__, "radius_miles", radius_miles)
-
-    @property
-    @pulumi.getter(name="latLng")
-    def lat_lng(self) -> Optional[pulumi.Input['LatLngArgs']]:
-        """
-        An object representing a latitude/longitude pair.
-        """
-        return pulumi.get(self, "lat_lng")
-
-    @lat_lng.setter
-    def lat_lng(self, value: Optional[pulumi.Input['LatLngArgs']]):
-        pulumi.set(self, "lat_lng", value)
-
-    @property
-    @pulumi.getter(name="locationType")
-    def location_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of a location, which corresponds to the address lines field of google.type.PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType.NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType.LOCALITY.
-        """
-        return pulumi.get(self, "location_type")
-
-    @location_type.setter
-    def location_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location_type", value)
-
-    @property
-    @pulumi.getter(name="postalAddress")
-    def postal_address(self) -> Optional[pulumi.Input['PostalAddressArgs']]:
-        """
-        Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
-        """
-        return pulumi.get(self, "postal_address")
-
-    @postal_address.setter
-    def postal_address(self, value: Optional[pulumi.Input['PostalAddressArgs']]):
-        pulumi.set(self, "postal_address", value)
-
-    @property
-    @pulumi.getter(name="radiusMiles")
-    def radius_miles(self) -> Optional[pulumi.Input[float]]:
-        """
-        Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from google.type.LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
-        """
-        return pulumi.get(self, "radius_miles")
-
-    @radius_miles.setter
-    def radius_miles(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "radius_miles", value)
 
 
 @pulumi.input_type
@@ -549,190 +336,6 @@ class MoneyArgs:
     @units.setter
     def units(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "units", value)
-
-
-@pulumi.input_type
-class PostalAddressArgs:
-    def __init__(__self__, *,
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 administrative_area: Optional[pulumi.Input[str]] = None,
-                 language_code: Optional[pulumi.Input[str]] = None,
-                 locality: Optional[pulumi.Input[str]] = None,
-                 organization: Optional[pulumi.Input[str]] = None,
-                 postal_code: Optional[pulumi.Input[str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 region_code: Optional[pulumi.Input[str]] = None,
-                 revision: Optional[pulumi.Input[int]] = None,
-                 sorting_code: Optional[pulumi.Input[str]] = None,
-                 sublocality: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
-        :param pulumi.Input[str] administrative_area: Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
-        :param pulumi.Input[str] language_code: Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-        :param pulumi.Input[str] locality: Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
-        :param pulumi.Input[str] organization: Optional. The name of the organization at the address.
-        :param pulumi.Input[str] postal_code: Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-        :param pulumi.Input[str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-        :param pulumi.Input[int] revision: The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
-        :param pulumi.Input[str] sorting_code: Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-        :param pulumi.Input[str] sublocality: Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-        """
-        if address_lines is not None:
-            pulumi.set(__self__, "address_lines", address_lines)
-        if administrative_area is not None:
-            pulumi.set(__self__, "administrative_area", administrative_area)
-        if language_code is not None:
-            pulumi.set(__self__, "language_code", language_code)
-        if locality is not None:
-            pulumi.set(__self__, "locality", locality)
-        if organization is not None:
-            pulumi.set(__self__, "organization", organization)
-        if postal_code is not None:
-            pulumi.set(__self__, "postal_code", postal_code)
-        if recipients is not None:
-            pulumi.set(__self__, "recipients", recipients)
-        if region_code is not None:
-            pulumi.set(__self__, "region_code", region_code)
-        if revision is not None:
-            pulumi.set(__self__, "revision", revision)
-        if sorting_code is not None:
-            pulumi.set(__self__, "sorting_code", sorting_code)
-        if sublocality is not None:
-            pulumi.set(__self__, "sublocality", sublocality)
-
-    @property
-    @pulumi.getter(name="addressLines")
-    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
-        """
-        return pulumi.get(self, "address_lines")
-
-    @address_lines.setter
-    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "address_lines", value)
-
-    @property
-    @pulumi.getter(name="administrativeArea")
-    def administrative_area(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
-        """
-        return pulumi.get(self, "administrative_area")
-
-    @administrative_area.setter
-    def administrative_area(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "administrative_area", value)
-
-    @property
-    @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-        """
-        return pulumi.get(self, "language_code")
-
-    @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "language_code", value)
-
-    @property
-    @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
-        """
-        return pulumi.get(self, "locality")
-
-    @locality.setter
-    def locality(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "locality", value)
-
-    @property
-    @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The name of the organization at the address.
-        """
-        return pulumi.get(self, "organization")
-
-    @organization.setter
-    def organization(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "organization", value)
-
-    @property
-    @pulumi.getter(name="postalCode")
-    def postal_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-        """
-        return pulumi.get(self, "postal_code")
-
-    @postal_code.setter
-    def postal_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "postal_code", value)
-
-    @property
-    @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-        """
-        return pulumi.get(self, "recipients")
-
-    @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "recipients", value)
-
-    @property
-    @pulumi.getter(name="regionCode")
-    def region_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-        """
-        return pulumi.get(self, "region_code")
-
-    @region_code.setter
-    def region_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region_code", value)
-
-    @property
-    @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[int]]:
-        """
-        The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
-        """
-        return pulumi.get(self, "revision")
-
-    @revision.setter
-    def revision(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "revision", value)
-
-    @property
-    @pulumi.getter(name="sortingCode")
-    def sorting_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-        """
-        return pulumi.get(self, "sorting_code")
-
-    @sorting_code.setter
-    def sorting_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sorting_code", value)
-
-    @property
-    @pulumi.getter
-    def sublocality(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-        """
-        return pulumi.get(self, "sublocality")
-
-    @sublocality.setter
-    def sublocality(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sublocality", value)
 
 
 @pulumi.input_type

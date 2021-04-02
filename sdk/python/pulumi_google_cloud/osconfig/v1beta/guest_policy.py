@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['GuestPolicy']
@@ -17,7 +18,6 @@ class GuestPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignment: Optional[pulumi.Input[pulumi.InputType['AssignmentArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policies_id: Optional[pulumi.Input[str]] = None,
@@ -26,7 +26,6 @@ class GuestPolicy(pulumi.CustomResource):
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,14 +35,12 @@ class GuestPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AssignmentArgs']] assignment: Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
-        :param pulumi.Input[str] create_time: Output only. Time this guest policy was created.
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[str] name: Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]] packages: The software packages to be managed by this policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
-        :param pulumi.Input[str] update_time: Output only. Last time this guest policy was updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,7 +60,6 @@ class GuestPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['assignment'] = assignment
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['etag'] = etag
             if guest_policies_id is None and not opts.urn:
@@ -76,7 +72,8 @@ class GuestPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['recipes'] = recipes
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['update_time'] = None
         super(GuestPolicy, __self__).__init__(
             'google-cloud:osconfig/v1beta:GuestPolicy',
             resource_name,
@@ -99,7 +96,88 @@ class GuestPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["assignment"] = None
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["name"] = None
+        __props__["package_repositories"] = None
+        __props__["packages"] = None
+        __props__["recipes"] = None
+        __props__["update_time"] = None
         return GuestPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def assignment(self) -> pulumi.Output['outputs.AssignmentResponse']:
+        """
+        Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        """
+        return pulumi.get(self, "assignment")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time this guest policy was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of the guest policy. Length of the description is limited to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        The etag for this guest policy. If this is provided on update, it must match the server's etag.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageRepositories")
+    def package_repositories(self) -> pulumi.Output[Sequence['outputs.PackageRepositoryResponse']]:
+        """
+        A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+        """
+        return pulumi.get(self, "package_repositories")
+
+    @property
+    @pulumi.getter
+    def packages(self) -> pulumi.Output[Sequence['outputs.PackageResponse']]:
+        """
+        The software packages to be managed by this policy.
+        """
+        return pulumi.get(self, "packages")
+
+    @property
+    @pulumi.getter
+    def recipes(self) -> pulumi.Output[Sequence['outputs.SoftwareRecipeResponse']]:
+        """
+        A list of Recipes to install on the VM instance.
+        """
+        return pulumi.get(self, "recipes")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Last time this guest policy was updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

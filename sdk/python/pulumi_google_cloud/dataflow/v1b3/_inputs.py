@@ -22,7 +22,6 @@ __all__ = [
     'ExecutionStageStateArgs',
     'ExecutionStageSummaryArgs',
     'FileIODetailsArgs',
-    'JobExecutionInfoArgs',
     'JobMetadataArgs',
     'PackageArgs',
     'PipelineDescriptionArgs',
@@ -652,7 +651,6 @@ class EnvironmentArgs:
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  service_kms_key_name: Optional[pulumi.Input[str]] = None,
                  service_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shuffle_mode: Optional[pulumi.Input[str]] = None,
                  temp_storage_prefix: Optional[pulumi.Input[str]] = None,
                  user_agent: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -671,7 +669,6 @@ class EnvironmentArgs:
         :param pulumi.Input[str] service_account_email: Identity to run virtual machines as. Defaults to the default account.
         :param pulumi.Input[str] service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
-        :param pulumi.Input[str] shuffle_mode: Output only. The shuffle mode used for the job.
         :param pulumi.Input[str] temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_agent: A description of the process that generated the request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version: A structure describing which components and their versions of the service are required in order to run the job.
@@ -699,8 +696,6 @@ class EnvironmentArgs:
             pulumi.set(__self__, "service_kms_key_name", service_kms_key_name)
         if service_options is not None:
             pulumi.set(__self__, "service_options", service_options)
-        if shuffle_mode is not None:
-            pulumi.set(__self__, "shuffle_mode", shuffle_mode)
         if temp_storage_prefix is not None:
             pulumi.set(__self__, "temp_storage_prefix", temp_storage_prefix)
         if user_agent is not None:
@@ -833,18 +828,6 @@ class EnvironmentArgs:
     @service_options.setter
     def service_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_options", value)
-
-    @property
-    @pulumi.getter(name="shuffleMode")
-    def shuffle_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The shuffle mode used for the job.
-        """
-        return pulumi.get(self, "shuffle_mode")
-
-    @shuffle_mode.setter
-    def shuffle_mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "shuffle_mode", value)
 
     @property
     @pulumi.getter(name="tempStoragePrefix")
@@ -1133,30 +1116,6 @@ class FileIODetailsArgs:
     @file_pattern.setter
     def file_pattern(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_pattern", value)
-
-
-@pulumi.input_type
-class JobExecutionInfoArgs:
-    def __init__(__self__, *,
-                 stages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stages: A mapping from each stage to the information about that stage.
-        """
-        if stages is not None:
-            pulumi.set(__self__, "stages", stages)
-
-    @property
-    @pulumi.getter
-    def stages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A mapping from each stage to the information about that stage.
-        """
-        return pulumi.get(self, "stages")
-
-    @stages.setter
-    def stages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "stages", value)
 
 
 @pulumi.input_type

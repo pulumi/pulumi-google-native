@@ -56,6 +56,13 @@ class OrganizationRole(pulumi.CustomResource):
             if roles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'roles_id'")
             __props__['roles_id'] = roles_id
+            __props__['deleted'] = None
+            __props__['description'] = None
+            __props__['etag'] = None
+            __props__['included_permissions'] = None
+            __props__['name'] = None
+            __props__['stage'] = None
+            __props__['title'] = None
         super(OrganizationRole, __self__).__init__(
             'google-cloud:iam/v1:OrganizationRole',
             resource_name,
@@ -78,7 +85,70 @@ class OrganizationRole(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["deleted"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["included_permissions"] = None
+        __props__["name"] = None
+        __props__["stage"] = None
+        __props__["title"] = None
         return OrganizationRole(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def deleted(self) -> pulumi.Output[bool]:
+        """
+        The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+        """
+        return pulumi.get(self, "deleted")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. A human-readable description for the role.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Used to perform a consistent read-modify-write.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="includedPermissions")
+    def included_permissions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The names of the permissions this role grants when bound in an IAM policy.
+        """
+        return pulumi.get(self, "included_permissions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def stage(self) -> pulumi.Output[str]:
+        """
+        The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        """
+        return pulumi.get(self, "stage")
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Output[str]:
+        """
+        Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+        """
+        return pulumi.get(self, "title")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

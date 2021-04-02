@@ -61,6 +61,10 @@ class InstanceDatabaseSession(pulumi.CustomResource):
             if sessions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sessions_id'")
             __props__['sessions_id'] = sessions_id
+            __props__['approximate_last_use_time'] = None
+            __props__['create_time'] = None
+            __props__['labels'] = None
+            __props__['name'] = None
         super(InstanceDatabaseSession, __self__).__init__(
             'google-cloud:spanner/v1:InstanceDatabaseSession',
             resource_name,
@@ -83,7 +87,43 @@ class InstanceDatabaseSession(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["approximate_last_use_time"] = None
+        __props__["create_time"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
         return InstanceDatabaseSession(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="approximateLastUseTime")
+    def approximate_last_use_time(self) -> pulumi.Output[str]:
+        """
+        The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+        """
+        return pulumi.get(self, "approximate_last_use_time")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the session is created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the session. This is always system-assigned.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

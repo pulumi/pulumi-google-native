@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Reservation']
@@ -116,7 +117,124 @@ class Reservation(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["commitment"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["share_settings"] = None
+        __props__["specific_reservation"] = None
+        __props__["specific_reservation_required"] = None
+        __props__["status"] = None
+        __props__["zone"] = None
         return Reservation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def commitment(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        """
+        return pulumi.get(self, "commitment")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#reservations for reservations.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        [Output Only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined fully-qualified URL for this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> pulumi.Output['outputs.AllocationShareSettingsResponse']:
+        """
+        Share-settings for shared-reservation
+        """
+        return pulumi.get(self, "share_settings")
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> pulumi.Output['outputs.AllocationSpecificSKUReservationResponse']:
+        """
+        Reservation for instances with specific machine shapes.
+        """
+        return pulumi.get(self, "specific_reservation")
+
+    @property
+    @pulumi.getter(name="specificReservationRequired")
+    def specific_reservation_required(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
+        """
+        return pulumi.get(self, "specific_reservation_required")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The status of the reservation.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

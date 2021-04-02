@@ -27,7 +27,6 @@ __all__ = [
     'EditAtomArgs',
     'ElementaryStreamArgs',
     'EncryptionArgs',
-    'FailureDetailArgs',
     'ImageArgs',
     'InputArgs',
     'JobConfigArgs',
@@ -35,12 +34,10 @@ __all__ = [
     'MpegCommonEncryptionArgs',
     'MuxStreamArgs',
     'NormalizedCoordinateArgs',
-    'OriginUriArgs',
     'OutputArgs',
     'OverlayArgs',
     'PadArgs',
     'PreprocessingConfigArgs',
-    'ProgressArgs',
     'PubsubDestinationArgs',
     'SampleAesEncryptionArgs',
     'SegmentSettingsArgs',
@@ -1028,30 +1025,6 @@ class EncryptionArgs:
 
 
 @pulumi.input_type
-class FailureDetailArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None):
-        """
-        Additional information about the reasons for the failure.
-        :param pulumi.Input[str] description: A description of the failure.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description of the failure.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-
-@pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
                  alpha: Optional[pulumi.Input[float]] = None,
@@ -1572,46 +1545,6 @@ class NormalizedCoordinateArgs:
 
 
 @pulumi.input_type
-class OriginUriArgs:
-    def __init__(__self__, *,
-                 dash: Optional[pulumi.Input[str]] = None,
-                 hls: Optional[pulumi.Input[str]] = None):
-        """
-        The origin URI.
-        :param pulumi.Input[str] dash: Dash manifest URI. If multiple Dash manifests are created, only the first one is listed.
-        :param pulumi.Input[str] hls: HLS manifest URI per https://tools.ietf.org/html/rfc8216#section-4.3.4. If multiple HLS manifests are created, only the first one is listed.
-        """
-        if dash is not None:
-            pulumi.set(__self__, "dash", dash)
-        if hls is not None:
-            pulumi.set(__self__, "hls", hls)
-
-    @property
-    @pulumi.getter
-    def dash(self) -> Optional[pulumi.Input[str]]:
-        """
-        Dash manifest URI. If multiple Dash manifests are created, only the first one is listed.
-        """
-        return pulumi.get(self, "dash")
-
-    @dash.setter
-    def dash(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dash", value)
-
-    @property
-    @pulumi.getter
-    def hls(self) -> Optional[pulumi.Input[str]]:
-        """
-        HLS manifest URI per https://tools.ietf.org/html/rfc8216#section-4.3.4. If multiple HLS manifests are created, only the first one is listed.
-        """
-        return pulumi.get(self, "hls")
-
-    @hls.setter
-    def hls(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hls", value)
-
-
-@pulumi.input_type
 class OutputArgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
@@ -1849,78 +1782,6 @@ class PreprocessingConfigArgs:
     @pad.setter
     def pad(self, value: Optional[pulumi.Input['PadArgs']]):
         pulumi.set(self, "pad", value)
-
-
-@pulumi.input_type
-class ProgressArgs:
-    def __init__(__self__, *,
-                 analyzed: Optional[pulumi.Input[float]] = None,
-                 encoded: Optional[pulumi.Input[float]] = None,
-                 notified: Optional[pulumi.Input[float]] = None,
-                 uploaded: Optional[pulumi.Input[float]] = None):
-        """
-        Estimated fractional progress for each step, from `0` to `1`.
-        :param pulumi.Input[float] analyzed: Estimated fractional progress for `analyzing` step.
-        :param pulumi.Input[float] encoded: Estimated fractional progress for `encoding` step.
-        :param pulumi.Input[float] notified: Estimated fractional progress for `notifying` step.
-        :param pulumi.Input[float] uploaded: Estimated fractional progress for `uploading` step.
-        """
-        if analyzed is not None:
-            pulumi.set(__self__, "analyzed", analyzed)
-        if encoded is not None:
-            pulumi.set(__self__, "encoded", encoded)
-        if notified is not None:
-            pulumi.set(__self__, "notified", notified)
-        if uploaded is not None:
-            pulumi.set(__self__, "uploaded", uploaded)
-
-    @property
-    @pulumi.getter
-    def analyzed(self) -> Optional[pulumi.Input[float]]:
-        """
-        Estimated fractional progress for `analyzing` step.
-        """
-        return pulumi.get(self, "analyzed")
-
-    @analyzed.setter
-    def analyzed(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "analyzed", value)
-
-    @property
-    @pulumi.getter
-    def encoded(self) -> Optional[pulumi.Input[float]]:
-        """
-        Estimated fractional progress for `encoding` step.
-        """
-        return pulumi.get(self, "encoded")
-
-    @encoded.setter
-    def encoded(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "encoded", value)
-
-    @property
-    @pulumi.getter
-    def notified(self) -> Optional[pulumi.Input[float]]:
-        """
-        Estimated fractional progress for `notifying` step.
-        """
-        return pulumi.get(self, "notified")
-
-    @notified.setter
-    def notified(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "notified", value)
-
-    @property
-    @pulumi.getter
-    def uploaded(self) -> Optional[pulumi.Input[float]]:
-        """
-        Estimated fractional progress for `uploading` step.
-        """
-        return pulumi.get(self, "uploaded")
-
-    @uploaded.setter
-    def uploaded(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "uploaded", value)
 
 
 @pulumi.input_type

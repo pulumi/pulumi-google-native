@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['BackupRun']
@@ -120,7 +121,142 @@ class BackupRun(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["backup_kind"] = None
+        __props__["description"] = None
+        __props__["disk_encryption_configuration"] = None
+        __props__["disk_encryption_status"] = None
+        __props__["end_time"] = None
+        __props__["enqueued_time"] = None
+        __props__["error"] = None
+        __props__["instance"] = None
+        __props__["kind"] = None
+        __props__["location"] = None
+        __props__["self_link"] = None
+        __props__["start_time"] = None
+        __props__["status"] = None
+        __props__["type"] = None
+        __props__["window_start_time"] = None
         return BackupRun(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupKind")
+    def backup_kind(self) -> pulumi.Output[str]:
+        """
+        Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+        """
+        return pulumi.get(self, "backup_kind")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of this run, only applicable to on-demand backups.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskEncryptionConfiguration")
+    def disk_encryption_configuration(self) -> pulumi.Output['outputs.DiskEncryptionConfigurationResponse']:
+        """
+        Encryption configuration specific to a backup. Applies only to Second Generation instances.
+        """
+        return pulumi.get(self, "disk_encryption_configuration")
+
+    @property
+    @pulumi.getter(name="diskEncryptionStatus")
+    def disk_encryption_status(self) -> pulumi.Output['outputs.DiskEncryptionStatusResponse']:
+        """
+        Encryption status specific to a backup. Applies only to Second Generation instances.
+        """
+        return pulumi.get(self, "disk_encryption_status")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="enqueuedTime")
+    def enqueued_time(self) -> pulumi.Output[str]:
+        """
+        The time the run was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        """
+        return pulumi.get(self, "enqueued_time")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output['outputs.OperationErrorResponse']:
+        """
+        Information about why the backup operation failed. This is only present if the run has the FAILED status.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Output[str]:
+        """
+        Name of the database instance.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        This is always *sql#backupRun*.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        Location of the backups.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The URI of this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        The time the backup operation actually started in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of this run.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="windowStartTime")
+    def window_start_time(self) -> pulumi.Output[str]:
+        """
+        The start time of the backup window during which this the backup was attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        """
+        return pulumi.get(self, "window_start_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -6,7 +6,7 @@
 from .capacity_commitment import *
 from .reservation import *
 from .reservation_assignment import *
-from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

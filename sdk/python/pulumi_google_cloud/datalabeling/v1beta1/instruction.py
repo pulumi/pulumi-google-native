@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Instruction']
@@ -53,6 +54,15 @@ class Instruction(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['blocking_resources'] = None
+            __props__['create_time'] = None
+            __props__['csv_instruction'] = None
+            __props__['data_type'] = None
+            __props__['description'] = None
+            __props__['display_name'] = None
+            __props__['name'] = None
+            __props__['pdf_instruction'] = None
+            __props__['update_time'] = None
         super(Instruction, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:Instruction',
             resource_name,
@@ -75,7 +85,88 @@ class Instruction(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["blocking_resources"] = None
+        __props__["create_time"] = None
+        __props__["csv_instruction"] = None
+        __props__["data_type"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["pdf_instruction"] = None
+        __props__["update_time"] = None
         return Instruction(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="blockingResources")
+    def blocking_resources(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The names of any related resources that are blocking changes to the instruction.
+        """
+        return pulumi.get(self, "blocking_resources")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time of instruction.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="csvInstruction")
+    def csv_instruction(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1CsvInstructionResponse']:
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        """
+        return pulumi.get(self, "csv_instruction")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> pulumi.Output[str]:
+        """
+        Required. The data type of this instruction.
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The display name of the instruction. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pdfInstruction")
+    def pdf_instruction(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1PdfInstructionResponse']:
+        """
+        Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        """
+        return pulumi.get(self, "pdf_instruction")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Last update time of instruction.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

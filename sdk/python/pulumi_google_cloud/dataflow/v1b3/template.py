@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Template']
@@ -61,6 +62,10 @@ class Template(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
+            __props__['metadata'] = None
+            __props__['runtime_metadata'] = None
+            __props__['status'] = None
+            __props__['template_type'] = None
         super(Template, __self__).__init__(
             'google-cloud:dataflow/v1b3:Template',
             resource_name,
@@ -83,7 +88,43 @@ class Template(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["metadata"] = None
+        __props__["runtime_metadata"] = None
+        __props__["status"] = None
+        __props__["template_type"] = None
         return Template(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output['outputs.TemplateMetadataResponse']:
+        """
+        The template metadata describing the template name, available parameters, etc.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="runtimeMetadata")
+    def runtime_metadata(self) -> pulumi.Output['outputs.RuntimeMetadataResponse']:
+        """
+        Describes the runtime metadata with SDKInfo and available parameters.
+        """
+        return pulumi.get(self, "runtime_metadata")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        The status of the get template request. Any problems with the request will be indicated in the error_details.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="templateType")
+    def template_type(self) -> pulumi.Output[str]:
+        """
+        Template Type.
+        """
+        return pulumi.get(self, "template_type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

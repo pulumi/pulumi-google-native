@@ -6,6 +6,7 @@
 from .guest_policy import *
 from .patch_deployment import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

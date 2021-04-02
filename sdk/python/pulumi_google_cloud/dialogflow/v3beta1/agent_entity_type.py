@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentEntityType']
@@ -104,7 +105,79 @@ class AgentEntityType(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["auto_expansion_mode"] = None
+        __props__["display_name"] = None
+        __props__["enable_fuzzy_extraction"] = None
+        __props__["entities"] = None
+        __props__["excluded_phrases"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["redact"] = None
         return AgentEntityType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoExpansionMode")
+    def auto_expansion_mode(self) -> pulumi.Output[str]:
+        """
+        Indicates whether the entity type can be automatically expanded.
+        """
+        return pulumi.get(self, "auto_expansion_mode")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the entity type, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="enableFuzzyExtraction")
+    def enable_fuzzy_extraction(self) -> pulumi.Output[bool]:
+        """
+        Enables fuzzy entity extraction during classification.
+        """
+        return pulumi.get(self, "enable_fuzzy_extraction")
+
+    @property
+    @pulumi.getter
+    def entities(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse']]:
+        """
+        The collection of entity entries associated with the entity type.
+        """
+        return pulumi.get(self, "entities")
+
+    @property
+    @pulumi.getter(name="excludedPhrases")
+    def excluded_phrases(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse']]:
+        """
+        Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        """
+        return pulumi.get(self, "excluded_phrases")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        Required. Indicates the kind of entity type.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def redact(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
+        """
+        return pulumi.get(self, "redact")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

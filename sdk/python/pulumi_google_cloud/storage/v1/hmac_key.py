@@ -53,6 +53,12 @@ class HmacKey(pulumi.CustomResource):
             if service_account_email is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_email'")
             __props__['service_account_email'] = service_account_email
+            __props__['etag'] = None
+            __props__['kind'] = None
+            __props__['self_link'] = None
+            __props__['state'] = None
+            __props__['time_created'] = None
+            __props__['updated'] = None
         super(HmacKey, __self__).__init__(
             'google-cloud:storage/v1:HmacKey',
             resource_name,
@@ -75,7 +81,88 @@ class HmacKey(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["access_id"] = None
+        __props__["etag"] = None
+        __props__["kind"] = None
+        __props__["project_id"] = None
+        __props__["self_link"] = None
+        __props__["service_account_email"] = None
+        __props__["state"] = None
+        __props__["time_created"] = None
+        __props__["updated"] = None
         return HmacKey(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessId")
+    def access_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the HMAC Key.
+        """
+        return pulumi.get(self, "access_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        HTTP 1.1 Entity tag for the HMAC key.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Project ID owning the service account to which the key authenticates.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The link to this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Output[str]:
+        """
+        The email address of the key's associated service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> pulumi.Output[str]:
+        """
+        The creation time of the HMAC key in RFC 3339 format.
+        """
+        return pulumi.get(self, "time_created")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        The last modification time of the HMAC key metadata in RFC 3339 format.
+        """
+        return pulumi.get(self, "updated")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

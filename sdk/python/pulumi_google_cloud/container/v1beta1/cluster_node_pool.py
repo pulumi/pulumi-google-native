@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ClusterNodePool']
@@ -67,6 +68,22 @@ class ClusterNodePool(pulumi.CustomResource):
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
+            __props__['autoscaling'] = None
+            __props__['conditions'] = None
+            __props__['config'] = None
+            __props__['initial_node_count'] = None
+            __props__['instance_group_urls'] = None
+            __props__['locations'] = None
+            __props__['management'] = None
+            __props__['max_pods_constraint'] = None
+            __props__['name'] = None
+            __props__['network_config'] = None
+            __props__['pod_ipv4_cidr_size'] = None
+            __props__['self_link'] = None
+            __props__['status'] = None
+            __props__['status_message'] = None
+            __props__['upgrade_settings'] = None
+            __props__['version'] = None
         super(ClusterNodePool, __self__).__init__(
             'google-cloud:container/v1beta1:ClusterNodePool',
             resource_name,
@@ -89,7 +106,151 @@ class ClusterNodePool(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["autoscaling"] = None
+        __props__["conditions"] = None
+        __props__["config"] = None
+        __props__["initial_node_count"] = None
+        __props__["instance_group_urls"] = None
+        __props__["locations"] = None
+        __props__["management"] = None
+        __props__["max_pods_constraint"] = None
+        __props__["name"] = None
+        __props__["network_config"] = None
+        __props__["pod_ipv4_cidr_size"] = None
+        __props__["self_link"] = None
+        __props__["status"] = None
+        __props__["status_message"] = None
+        __props__["upgrade_settings"] = None
+        __props__["version"] = None
         return ClusterNodePool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> pulumi.Output['outputs.NodePoolAutoscalingResponse']:
+        """
+        Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        """
+        return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Output[Sequence['outputs.StatusConditionResponse']]:
+        """
+        Which conditions caused the current node pool state.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output['outputs.NodeConfigResponse']:
+        """
+        The node configuration of the pool.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> pulumi.Output[int]:
+        """
+        The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+        """
+        return pulumi.get(self, "initial_node_count")
+
+    @property
+    @pulumi.getter(name="instanceGroupUrls")
+    def instance_group_urls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        """
+        return pulumi.get(self, "instance_group_urls")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter
+    def management(self) -> pulumi.Output['outputs.NodeManagementResponse']:
+        """
+        NodeManagement configuration for this NodePool.
+        """
+        return pulumi.get(self, "management")
+
+    @property
+    @pulumi.getter(name="maxPodsConstraint")
+    def max_pods_constraint(self) -> pulumi.Output['outputs.MaxPodsConstraintResponse']:
+        """
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        """
+        return pulumi.get(self, "max_pods_constraint")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the node pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.NodeNetworkConfigResponse']:
+        """
+        Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="podIpv4CidrSize")
+    def pod_ipv4_cidr_size(self) -> pulumi.Output[int]:
+        """
+        [Output only] The pod CIDR block size per node in this node pool.
+        """
+        return pulumi.get(self, "pod_ipv4_cidr_size")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output only] The status of the nodes in this pool instance.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="upgradeSettings")
+    def upgrade_settings(self) -> pulumi.Output['outputs.UpgradeSettingsResponse']:
+        """
+        Upgrade settings control disruption and speed of the upgrade.
+        """
+        return pulumi.get(self, "upgrade_settings")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[str]:
+        """
+        The version of the Kubernetes of this node.
+        """
+        return pulumi.get(self, "version")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

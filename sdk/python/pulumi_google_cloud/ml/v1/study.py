@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Study']
@@ -16,12 +17,8 @@ class Study(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 inactive_reason: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  studies_id: Optional[pulumi.Input[str]] = None,
                  study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
                  __props__=None,
@@ -32,10 +29,6 @@ class Study(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Time at which the study was created.
-        :param pulumi.Input[str] inactive_reason: Output only. A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
-        :param pulumi.Input[str] name: Output only. The name of a study.
-        :param pulumi.Input[str] state: Output only. The detailed state of a study.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']] study_config: Required. Configuration of the study.
         """
         if __name__ is not None:
@@ -55,20 +48,20 @@ class Study(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
-            __props__['inactive_reason'] = inactive_reason
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['state'] = state
             if studies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'studies_id'")
             __props__['studies_id'] = studies_id
             __props__['study_config'] = study_config
+            __props__['create_time'] = None
+            __props__['inactive_reason'] = None
+            __props__['name'] = None
+            __props__['state'] = None
         super(Study, __self__).__init__(
             'google-cloud:ml/v1:Study',
             resource_name,
@@ -91,7 +84,52 @@ class Study(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["inactive_reason"] = None
+        __props__["name"] = None
+        __props__["state"] = None
+        __props__["study_config"] = None
         return Study(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time at which the study was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="inactiveReason")
+    def inactive_reason(self) -> pulumi.Output[str]:
+        """
+        A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
+        """
+        return pulumi.get(self, "inactive_reason")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of a study.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The detailed state of a study.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="studyConfig")
+    def study_config(self) -> pulumi.Output['outputs.GoogleCloudMlV1__StudyConfigResponse']:
+        """
+        Required. Configuration of the study.
+        """
+        return pulumi.get(self, "study_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

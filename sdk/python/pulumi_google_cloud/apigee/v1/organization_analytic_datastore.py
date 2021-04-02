@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationAnalyticDatastore']
@@ -16,14 +17,10 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  datastore_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']]] = None,
                  datastores_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 last_update_time: Optional[pulumi.Input[str]] = None,
-                 org: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
-                 self: Optional[pulumi.Input[str]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -33,12 +30,8 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']] datastore_config: Datastore Configurations.
         :param pulumi.Input[str] display_name: Required. Display name in UI
-        :param pulumi.Input[str] last_update_time: Output only. Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-        :param pulumi.Input[str] org: Output only. Organization that the datastore belongs to
-        :param pulumi.Input[str] self: Output only. Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
         :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
         """
         if __name__ is not None:
@@ -58,19 +51,19 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['datastore_config'] = datastore_config
             if datastores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datastores_id'")
             __props__['datastores_id'] = datastores_id
             __props__['display_name'] = display_name
-            __props__['last_update_time'] = last_update_time
-            __props__['org'] = org
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
-            __props__['self'] = self
             __props__['target_type'] = target_type
+            __props__['create_time'] = None
+            __props__['last_update_time'] = None
+            __props__['org'] = None
+            __props__['self'] = None
         super(OrganizationAnalyticDatastore, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationAnalyticDatastore',
             resource_name,
@@ -93,7 +86,70 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["datastore_config"] = None
+        __props__["display_name"] = None
+        __props__["last_update_time"] = None
+        __props__["org"] = None
+        __props__["self"] = None
+        __props__["target_type"] = None
         return OrganizationAnalyticDatastore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="datastoreConfig")
+    def datastore_config(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1DatastoreConfigResponse']:
+        """
+        Datastore Configurations.
+        """
+        return pulumi.get(self, "datastore_config")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. Display name in UI
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="lastUpdateTime")
+    def last_update_time(self) -> pulumi.Output[str]:
+        """
+        Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+        """
+        return pulumi.get(self, "last_update_time")
+
+    @property
+    @pulumi.getter
+    def org(self) -> pulumi.Output[str]:
+        """
+        Organization that the datastore belongs to
+        """
+        return pulumi.get(self, "org")
+
+    @property
+    @pulumi.getter
+    def self(self) -> pulumi.Output[str]:
+        """
+        Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+        """
+        return pulumi.get(self, "self")
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> pulumi.Output[str]:
+        """
+        Destination storage type. Supported types `gcs` or `bigquery`.
+        """
+        return pulumi.get(self, "target_type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

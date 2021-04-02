@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['App']
@@ -109,7 +110,121 @@ class App(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["auth_domain"] = None
+        __props__["code_bucket"] = None
+        __props__["database_type"] = None
+        __props__["default_bucket"] = None
+        __props__["default_cookie_expiration"] = None
+        __props__["default_hostname"] = None
+        __props__["dispatch_rules"] = None
+        __props__["feature_settings"] = None
+        __props__["gcr_domain"] = None
+        __props__["iap"] = None
+        __props__["location_id"] = None
+        __props__["name"] = None
+        __props__["serving_status"] = None
         return App(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="authDomain")
+    def auth_domain(self) -> pulumi.Output[str]:
+        """
+        Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
+        """
+        return pulumi.get(self, "auth_domain")
+
+    @property
+    @pulumi.getter(name="codeBucket")
+    def code_bucket(self) -> pulumi.Output[str]:
+        """
+        Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+        """
+        return pulumi.get(self, "code_bucket")
+
+    @property
+    @pulumi.getter(name="databaseType")
+    def database_type(self) -> pulumi.Output[str]:
+        """
+        The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        """
+        return pulumi.get(self, "database_type")
+
+    @property
+    @pulumi.getter(name="defaultBucket")
+    def default_bucket(self) -> pulumi.Output[str]:
+        """
+        Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+        """
+        return pulumi.get(self, "default_bucket")
+
+    @property
+    @pulumi.getter(name="defaultCookieExpiration")
+    def default_cookie_expiration(self) -> pulumi.Output[str]:
+        """
+        Cookie expiration policy for this application.
+        """
+        return pulumi.get(self, "default_cookie_expiration")
+
+    @property
+    @pulumi.getter(name="defaultHostname")
+    def default_hostname(self) -> pulumi.Output[str]:
+        """
+        Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+        """
+        return pulumi.get(self, "default_hostname")
+
+    @property
+    @pulumi.getter(name="dispatchRules")
+    def dispatch_rules(self) -> pulumi.Output[Sequence['outputs.UrlDispatchRuleResponse']]:
+        """
+        HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
+        """
+        return pulumi.get(self, "dispatch_rules")
+
+    @property
+    @pulumi.getter(name="featureSettings")
+    def feature_settings(self) -> pulumi.Output['outputs.FeatureSettingsResponse']:
+        """
+        The feature specific settings to be used in the application.
+        """
+        return pulumi.get(self, "feature_settings")
+
+    @property
+    @pulumi.getter(name="gcrDomain")
+    def gcr_domain(self) -> pulumi.Output[str]:
+        """
+        The Google Container Registry domain used for storing managed build docker images for this application.
+        """
+        return pulumi.get(self, "gcr_domain")
+
+    @property
+    @pulumi.getter
+    def iap(self) -> pulumi.Output['outputs.IdentityAwareProxyResponse']:
+        return pulumi.get(self, "iap")
+
+    @property
+    @pulumi.getter(name="locationId")
+    def location_id(self) -> pulumi.Output[str]:
+        """
+        Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+        """
+        return pulumi.get(self, "location_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="servingStatus")
+    def serving_status(self) -> pulumi.Output[str]:
+        """
+        Serving status of this application.
+        """
+        return pulumi.get(self, "serving_status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

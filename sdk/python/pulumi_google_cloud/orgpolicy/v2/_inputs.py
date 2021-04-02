@@ -21,15 +21,13 @@ class GoogleCloudOrgpolicyV2PolicySpecArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  inherit_from_parent: Optional[pulumi.Input[bool]] = None,
                  reset: Optional[pulumi.Input[bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]] = None):
         """
         Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
         :param pulumi.Input[str] etag: An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         :param pulumi.Input[bool] inherit_from_parent: Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
         :param pulumi.Input[bool] reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]] rules: Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
-        :param pulumi.Input[str] update_time: Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -39,8 +37,6 @@ class GoogleCloudOrgpolicyV2PolicySpecArgs:
             pulumi.set(__self__, "reset", reset)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -89,18 +85,6 @@ class GoogleCloudOrgpolicyV2PolicySpecArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type

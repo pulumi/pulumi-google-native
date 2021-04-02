@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DlpJob']
@@ -19,7 +20,6 @@ class DlpJob(pulumi.CustomResource):
                  dlp_jobs_id: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
@@ -33,7 +33,6 @@ class DlpJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: An inspection job scans a storage repository for InfoTypes.
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-        :param pulumi.Input[str] location_id: Deprecated. This field has no effect.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
         if __name__ is not None:
@@ -58,7 +57,6 @@ class DlpJob(pulumi.CustomResource):
             __props__['dlp_jobs_id'] = dlp_jobs_id
             __props__['inspect_job'] = inspect_job
             __props__['job_id'] = job_id
-            __props__['location_id'] = location_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -66,6 +64,16 @@ class DlpJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['risk_job'] = risk_job
+            __props__['create_time'] = None
+            __props__['end_time'] = None
+            __props__['errors'] = None
+            __props__['inspect_details'] = None
+            __props__['job_trigger_name'] = None
+            __props__['name'] = None
+            __props__['risk_details'] = None
+            __props__['start_time'] = None
+            __props__['state'] = None
+            __props__['type'] = None
         super(DlpJob, __self__).__init__(
             'google-cloud:dlp/v2:DlpJob',
             resource_name,
@@ -88,7 +96,97 @@ class DlpJob(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["end_time"] = None
+        __props__["errors"] = None
+        __props__["inspect_details"] = None
+        __props__["job_trigger_name"] = None
+        __props__["name"] = None
+        __props__["risk_details"] = None
+        __props__["start_time"] = None
+        __props__["state"] = None
+        __props__["type"] = None
         return DlpJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time when the job was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        Time when the job finished.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> pulumi.Output[Sequence['outputs.GooglePrivacyDlpV2ErrorResponse']]:
+        """
+        A stream of errors encountered running the job.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter(name="inspectDetails")
+    def inspect_details(self) -> pulumi.Output['outputs.GooglePrivacyDlpV2InspectDataSourceDetailsResponse']:
+        """
+        Results from inspecting a data source.
+        """
+        return pulumi.get(self, "inspect_details")
+
+    @property
+    @pulumi.getter(name="jobTriggerName")
+    def job_trigger_name(self) -> pulumi.Output[str]:
+        """
+        If created by a job trigger, the resource name of the trigger that instantiated the job.
+        """
+        return pulumi.get(self, "job_trigger_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The server-assigned name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="riskDetails")
+    def risk_details(self) -> pulumi.Output['outputs.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse']:
+        """
+        Results from analyzing risk of a data source.
+        """
+        return pulumi.get(self, "risk_details")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        Time when the job started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of a job.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type of job.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -488,44 +488,20 @@ class RoleArgs:
 class ServiceAccountArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 email: Optional[pulumi.Input[str]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 oauth2_client_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 unique_id: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         An IAM service account. A service account is an account for an application or a virtual machine (VM) instance, not a person. You can use a service account to call Google APIs. To learn more, read the [overview of service accounts](https://cloud.google.com/iam/help/service-accounts/overview). When you create a service account, you specify the project ID that owns the service account, as well as a name that must be unique within the project. IAM uses these values to create an email address that identifies the service account.
         :param pulumi.Input[str] description: Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
-        :param pulumi.Input[bool] disabled: Output only. Whether the service account is disabled.
         :param pulumi.Input[str] display_name: Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
-        :param pulumi.Input[str] email: Output only. The email address of the service account.
-        :param pulumi.Input[str] etag: Deprecated. Do not use.
         :param pulumi.Input[str] name: The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
-        :param pulumi.Input[str] oauth2_client_id: Output only. The OAuth 2.0 client ID for the service account.
-        :param pulumi.Input[str] project_id: Output only. The ID of the project that owns the service account.
-        :param pulumi.Input[str] unique_id: Output only. The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if email is not None:
-            pulumi.set(__self__, "email", email)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if oauth2_client_id is not None:
-            pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if unique_id is not None:
-            pulumi.set(__self__, "unique_id", unique_id)
 
     @property
     @pulumi.getter
@@ -538,18 +514,6 @@ class ServiceAccountArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Whether the service account is disabled.
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -565,30 +529,6 @@ class ServiceAccountArgs:
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The email address of the service account.
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
-
-    @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated. Do not use.
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
@@ -598,41 +538,5 @@ class ServiceAccountArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="oauth2ClientId")
-    def oauth2_client_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The OAuth 2.0 client ID for the service account.
-        """
-        return pulumi.get(self, "oauth2_client_id")
-
-    @oauth2_client_id.setter
-    def oauth2_client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "oauth2_client_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The ID of the project that owns the service account.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="uniqueId")
-    def unique_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
-        """
-        return pulumi.get(self, "unique_id")
-
-    @unique_id.setter
-    def unique_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "unique_id", value)
 
 

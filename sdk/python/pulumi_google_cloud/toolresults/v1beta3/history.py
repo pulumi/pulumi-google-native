@@ -81,7 +81,43 @@ class History(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["history_id"] = None
+        __props__["name"] = None
+        __props__["test_platform"] = None
         return History(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="historyId")
+    def history_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
+        """
+        return pulumi.get(self, "history_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="testPlatform")
+    def test_platform(self) -> pulumi.Output[str]:
+        """
+        The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+        """
+        return pulumi.get(self, "test_platform")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

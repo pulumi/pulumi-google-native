@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['Conversation']
 
@@ -19,13 +19,8 @@ class Conversation(pulumi.CustomResource):
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None,
                  conversations_id: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 phone_number: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,11 +31,6 @@ class Conversation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] conversation_profile: Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         :param pulumi.Input[str] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
-        :param pulumi.Input[str] end_time: Output only. The time the conversation was finished.
-        :param pulumi.Input[str] lifecycle_state: Output only. The current state of the Conversation.
-        :param pulumi.Input[str] name: Output only. The unique identifier of this conversation. Format: `projects//locations//conversations/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1ConversationPhoneNumberArgs']] phone_number: Output only. Required if the conversation is to be connected over telephony.
-        :param pulumi.Input[str] start_time: Output only. The time the conversation was started.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,17 +54,17 @@ class Conversation(pulumi.CustomResource):
             if conversations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'conversations_id'")
             __props__['conversations_id'] = conversations_id
-            __props__['end_time'] = end_time
-            __props__['lifecycle_state'] = lifecycle_state
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
-            __props__['phone_number'] = phone_number
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['start_time'] = start_time
+            __props__['end_time'] = None
+            __props__['lifecycle_state'] = None
+            __props__['name'] = None
+            __props__['phone_number'] = None
+            __props__['start_time'] = None
         super(Conversation, __self__).__init__(
             'google-cloud:dialogflow/v2beta1:Conversation',
             resource_name,
@@ -97,7 +87,70 @@ class Conversation(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["conversation_profile"] = None
+        __props__["conversation_stage"] = None
+        __props__["end_time"] = None
+        __props__["lifecycle_state"] = None
+        __props__["name"] = None
+        __props__["phone_number"] = None
+        __props__["start_time"] = None
         return Conversation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="conversationProfile")
+    def conversation_profile(self) -> pulumi.Output[str]:
+        """
+        Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        """
+        return pulumi.get(self, "conversation_profile")
+
+    @property
+    @pulumi.getter(name="conversationStage")
+    def conversation_stage(self) -> pulumi.Output[str]:
+        """
+        The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+        """
+        return pulumi.get(self, "conversation_stage")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time the conversation was finished.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> pulumi.Output[str]:
+        """
+        The current state of the Conversation.
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse']:
+        """
+        Required if the conversation is to be connected over telephony.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        The time the conversation was started.
+        """
+        return pulumi.get(self, "start_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

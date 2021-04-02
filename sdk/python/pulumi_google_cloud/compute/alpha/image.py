@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Image']
@@ -195,7 +196,319 @@ class Image(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["archive_size_bytes"] = None
+        __props__["creation_timestamp"] = None
+        __props__["deprecated"] = None
+        __props__["description"] = None
+        __props__["disk_size_gb"] = None
+        __props__["family"] = None
+        __props__["guest_os_features"] = None
+        __props__["image_encryption_key"] = None
+        __props__["kind"] = None
+        __props__["label_fingerprint"] = None
+        __props__["labels"] = None
+        __props__["license_codes"] = None
+        __props__["licenses"] = None
+        __props__["name"] = None
+        __props__["raw_disk"] = None
+        __props__["rollout_override"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["shielded_instance_initial_state"] = None
+        __props__["source_disk"] = None
+        __props__["source_disk_encryption_key"] = None
+        __props__["source_disk_id"] = None
+        __props__["source_image"] = None
+        __props__["source_image_encryption_key"] = None
+        __props__["source_image_id"] = None
+        __props__["source_snapshot"] = None
+        __props__["source_snapshot_encryption_key"] = None
+        __props__["source_snapshot_id"] = None
+        __props__["source_type"] = None
+        __props__["status"] = None
+        __props__["storage_locations"] = None
         return Image(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="archiveSizeBytes")
+    def archive_size_bytes(self) -> pulumi.Output[str]:
+        """
+        Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        """
+        return pulumi.get(self, "archive_size_bytes")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> pulumi.Output['outputs.DeprecationStatusResponse']:
+        """
+        The deprecation status associated with this image.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Output[str]:
+        """
+        Size of the image when restored onto a persistent disk (in GB).
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter
+    def family(self) -> pulumi.Output[str]:
+        """
+        The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
+        """
+        return pulumi.get(self, "family")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> pulumi.Output[Sequence['outputs.GuestOsFeatureResponse']]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter(name="imageEncryptionKey")
+    def image_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        Encrypts the image using a customer-supplied encryption key.
+
+        After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
+
+        Customer-supplied encryption keys do not protect access to metadata of the disk.
+
+        If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
+        """
+        return pulumi.get(self, "image_encryption_key")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#image for images.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for the labels being applied to this image, which is essentially a hash of the labels used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve an image.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels to apply to this image. These can be later modified by the setLabels method.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="licenseCodes")
+    def license_codes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Integer license codes indicating which licenses are attached to this image.
+        """
+        return pulumi.get(self, "license_codes")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rawDisk")
+    def raw_disk(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The parameters of the raw disk image.
+        """
+        return pulumi.get(self, "raw_disk")
+
+    @property
+    @pulumi.getter(name="rolloutOverride")
+    def rollout_override(self) -> pulumi.Output['outputs.RolloutPolicyResponse']:
+        """
+        A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
+        """
+        return pulumi.get(self, "rollout_override")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        [Output Only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource's resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceInitialState")
+    def shielded_instance_initial_state(self) -> pulumi.Output['outputs.InitialStateConfigResponse']:
+        """
+        Set the secure boot keys of shielded instance.
+        """
+        return pulumi.get(self, "shielded_instance_initial_state")
+
+    @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> pulumi.Output[str]:
+        """
+        URL of the source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
+        - projects/project/zones/zone/disks/disk 
+        - zones/zone/disks/disk
+        """
+        return pulumi.get(self, "source_disk")
+
+    @property
+    @pulumi.getter(name="sourceDiskEncryptionKey")
+    def source_disk_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceDiskId")
+    def source_disk_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
+        """
+        return pulumi.get(self, "source_disk_id")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> pulumi.Output[str]:
+        """
+        URL of the source image used to create this image.
+
+        In order to create an image, you must provide the full or partial URL of one of the following:  
+        - The selfLink URL  
+        - This property  
+        - The rawDisk.source URL  
+        - The sourceDisk URL
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
+        """
+        return pulumi.get(self, "source_image_id")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> pulumi.Output[str]:
+        """
+        URL of the source snapshot used to create this image.
+
+        In order to create an image, you must provide the full or partial URL of one of the following:  
+        - The selfLink URL  
+        - This property 
+        - The sourceImage URL  
+        - The rawDisk.source URL  
+        - The sourceDisk URL
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotId")
+    def source_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
+        """
+        return pulumi.get(self, "source_snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Output[str]:
+        """
+        The type of the image used to create this disk. The default and only value is RAW
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Cloud Storage bucket storage location of the image (regional or multi-regional).
+        """
+        return pulumi.get(self, "storage_locations")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

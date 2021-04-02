@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['SettingDatasource']
@@ -92,7 +93,79 @@ class SettingDatasource(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["disable_modifications"] = None
+        __props__["disable_serving"] = None
+        __props__["display_name"] = None
+        __props__["indexing_service_accounts"] = None
+        __props__["items_visibility"] = None
+        __props__["name"] = None
+        __props__["operation_ids"] = None
+        __props__["short_name"] = None
         return SettingDatasource(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="disableModifications")
+    def disable_modifications(self) -> pulumi.Output[bool]:
+        """
+        If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
+        """
+        return pulumi.get(self, "disable_modifications")
+
+    @property
+    @pulumi.getter(name="disableServing")
+    def disable_serving(self) -> pulumi.Output[bool]:
+        """
+        Disable serving any search or assist results.
+        """
+        return pulumi.get(self, "disable_serving")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. Display name of the datasource The maximum length is 300 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="indexingServiceAccounts")
+    def indexing_service_accounts(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of service accounts that have indexing access.
+        """
+        return pulumi.get(self, "indexing_service_accounts")
+
+    @property
+    @pulumi.getter(name="itemsVisibility")
+    def items_visibility(self) -> pulumi.Output[Sequence['outputs.GSuitePrincipalResponse']]:
+        """
+        This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
+        """
+        return pulumi.get(self, "items_visibility")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operationIds")
+    def operation_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        IDs of the Long Running Operations (LROs) currently running for this schema.
+        """
+        return pulumi.get(self, "operation_ids")
+
+    @property
+    @pulumi.getter(name="shortName")
+    def short_name(self) -> pulumi.Output[str]:
+        """
+        A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
+        """
+        return pulumi.get(self, "short_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

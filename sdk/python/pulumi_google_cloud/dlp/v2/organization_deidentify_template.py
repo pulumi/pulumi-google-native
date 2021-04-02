@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationDeidentifyTemplate']
@@ -18,7 +19,6 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deidentify_template: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyTemplateArgs']]] = None,
                  deidentify_templates_id: Optional[pulumi.Input[str]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,6 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyTemplateArgs']] deidentify_template: Required. The DeidentifyTemplate to create.
-        :param pulumi.Input[str] location_id: Deprecated. This field has no effect.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if __name__ is not None:
@@ -55,7 +54,6 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
             if deidentify_templates_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_templates_id'")
             __props__['deidentify_templates_id'] = deidentify_templates_id
-            __props__['location_id'] = location_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -63,6 +61,12 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['template_id'] = template_id
+            __props__['create_time'] = None
+            __props__['deidentify_config'] = None
+            __props__['description'] = None
+            __props__['display_name'] = None
+            __props__['name'] = None
+            __props__['update_time'] = None
         super(OrganizationDeidentifyTemplate, __self__).__init__(
             'google-cloud:dlp/v2:OrganizationDeidentifyTemplate',
             resource_name,
@@ -85,7 +89,61 @@ class OrganizationDeidentifyTemplate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["deidentify_config"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["update_time"] = None
         return OrganizationDeidentifyTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation timestamp of an inspectTemplate.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deidentifyConfig")
+    def deidentify_config(self) -> pulumi.Output['outputs.GooglePrivacyDlpV2DeidentifyConfigResponse']:
+        """
+        The core content of the template.
+        """
+        return pulumi.get(self, "deidentify_config")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Short description (max 256 chars).
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Display name (max 256 chars).
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last update timestamp of an inspectTemplate.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

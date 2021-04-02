@@ -13,6 +13,7 @@ from .service_service_level_objective import *
 from .time_series import *
 from .uptime_check_config import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

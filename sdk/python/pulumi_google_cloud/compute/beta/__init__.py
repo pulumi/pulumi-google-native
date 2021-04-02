@@ -87,6 +87,7 @@ from .url_map import *
 from .vpn_gateway import *
 from .vpn_tunnel import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Project']
@@ -87,7 +88,70 @@ class Project(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["labels"] = None
+        __props__["lifecycle_state"] = None
+        __props__["name"] = None
+        __props__["parent"] = None
+        __props__["project_id"] = None
+        __props__["project_number"] = None
         return Project(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time. Read-only.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> pulumi.Output[str]:
+        """
+        The Project lifecycle state. Read-only.
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output['outputs.ResourceIdResponse']:
+        """
+        An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> pulumi.Output[str]:
+        """
+        The number uniquely identifying the project. Example: `415104041262` Read-only.
+        """
+        return pulumi.get(self, "project_number")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

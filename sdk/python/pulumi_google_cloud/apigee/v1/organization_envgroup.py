@@ -15,13 +15,10 @@ class OrganizationEnvgroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
                  envgroups_id: Optional[pulumi.Input[str]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,11 +27,8 @@ class OrganizationEnvgroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_at: Output only. The time at which the environment group was created as milliseconds since epoch.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Host names for this environment group.
-        :param pulumi.Input[str] last_modified_at: Output only. The time at which the environment group was last updated as milliseconds since epoch.
         :param pulumi.Input[str] name: ID of the environment group.
-        :param pulumi.Input[str] state: Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -53,17 +47,17 @@ class OrganizationEnvgroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['created_at'] = created_at
             if envgroups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroups_id'")
             __props__['envgroups_id'] = envgroups_id
             __props__['hostnames'] = hostnames
-            __props__['last_modified_at'] = last_modified_at
             __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
-            __props__['state'] = state
+            __props__['created_at'] = None
+            __props__['last_modified_at'] = None
+            __props__['state'] = None
         super(OrganizationEnvgroup, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationEnvgroup',
             resource_name,
@@ -86,7 +80,52 @@ class OrganizationEnvgroup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["created_at"] = None
+        __props__["hostnames"] = None
+        __props__["last_modified_at"] = None
+        __props__["name"] = None
+        __props__["state"] = None
         return OrganizationEnvgroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        The time at which the environment group was created as milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Required. Host names for this environment group.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> pulumi.Output[str]:
+        """
+        The time at which the environment group was last updated as milliseconds since epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        ID of the environment group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

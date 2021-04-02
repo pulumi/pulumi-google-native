@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['ProductSet']
 
@@ -17,8 +17,6 @@ class ProductSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 index_error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
-                 index_time: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_sets_id: Optional[pulumi.Input[str]] = None,
@@ -32,8 +30,6 @@ class ProductSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] index_error: Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
-        :param pulumi.Input[str] index_time: Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
         :param pulumi.Input[str] name: The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
         """
         if __name__ is not None:
@@ -54,8 +50,6 @@ class ProductSet(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['display_name'] = display_name
-            __props__['index_error'] = index_error
-            __props__['index_time'] = index_time
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -66,6 +60,8 @@ class ProductSet(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['index_error'] = None
+            __props__['index_time'] = None
         super(ProductSet, __self__).__init__(
             'google-cloud:vision/v1:ProductSet',
             resource_name,
@@ -88,7 +84,43 @@ class ProductSet(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["index_error"] = None
+        __props__["index_time"] = None
+        __props__["name"] = None
         return ProductSet(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="indexError")
+    def index_error(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+        """
+        return pulumi.get(self, "index_error")
+
+    @property
+    @pulumi.getter(name="indexTime")
+    def index_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+        """
+        return pulumi.get(self, "index_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

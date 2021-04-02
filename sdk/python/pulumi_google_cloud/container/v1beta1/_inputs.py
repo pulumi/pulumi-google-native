@@ -719,7 +719,6 @@ class ClusterArgs:
                  expire_time: Optional[pulumi.Input[str]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
-                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
@@ -781,7 +780,6 @@ class ClusterArgs:
         :param pulumi.Input[str] expire_time: [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: Deprecated. Use node_pools.instance_group_urls.
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
@@ -864,8 +862,6 @@ class ClusterArgs:
             pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
-        if instance_group_urls is not None:
-            pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if label_fingerprint is not None:
@@ -1204,18 +1200,6 @@ class ClusterArgs:
     @initial_node_count.setter
     def initial_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "initial_node_count", value)
-
-    @property
-    @pulumi.getter(name="instanceGroupUrls")
-    def instance_group_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Deprecated. Use node_pools.instance_group_urls.
-        """
-        return pulumi.get(self, "instance_group_urls")
-
-    @instance_group_urls.setter
-    def instance_group_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "instance_group_urls", value)
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
@@ -2723,9 +2707,9 @@ class NetworkConfigArgs:
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
-        :param pulumi.Input[str] network: Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
+        :param pulumi.Input[str] network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-        :param pulumi.Input[str] subnetwork: Output only. The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        :param pulumi.Input[str] subnetwork: The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         if datapath_provider is not None:
             pulumi.set(__self__, "datapath_provider", datapath_provider)
@@ -2794,7 +2778,7 @@ class NetworkConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
+        The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         """
         return pulumi.get(self, "network")
 
@@ -2818,7 +2802,7 @@ class NetworkConfigArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         return pulumi.get(self, "subnetwork")
 
@@ -3891,9 +3875,9 @@ class PrivateClusterConfigArgs:
         :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
         :param pulumi.Input['PrivateClusterMasterGlobalAccessConfigArgs'] master_global_access_config: Controls master global access settings.
         :param pulumi.Input[str] master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
-        :param pulumi.Input[str] peering_name: Output only. The peering name in the customer VPC used by this cluster.
-        :param pulumi.Input[str] private_endpoint: Output only. The internal IP address of this cluster's master endpoint.
-        :param pulumi.Input[str] public_endpoint: Output only. The external IP address of this cluster's master endpoint.
+        :param pulumi.Input[str] peering_name: The peering name in the customer VPC used by this cluster.
+        :param pulumi.Input[str] private_endpoint: The internal IP address of this cluster's master endpoint.
+        :param pulumi.Input[str] public_endpoint: The external IP address of this cluster's master endpoint.
         """
         if enable_private_endpoint is not None:
             pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
@@ -3962,7 +3946,7 @@ class PrivateClusterConfigArgs:
     @pulumi.getter(name="peeringName")
     def peering_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The peering name in the customer VPC used by this cluster.
+        The peering name in the customer VPC used by this cluster.
         """
         return pulumi.get(self, "peering_name")
 
@@ -3974,7 +3958,7 @@ class PrivateClusterConfigArgs:
     @pulumi.getter(name="privateEndpoint")
     def private_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The internal IP address of this cluster's master endpoint.
+        The internal IP address of this cluster's master endpoint.
         """
         return pulumi.get(self, "private_endpoint")
 
@@ -3986,7 +3970,7 @@ class PrivateClusterConfigArgs:
     @pulumi.getter(name="publicEndpoint")
     def public_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The external IP address of this cluster's master endpoint.
+        The external IP address of this cluster's master endpoint.
         """
         return pulumi.get(self, "public_endpoint")
 

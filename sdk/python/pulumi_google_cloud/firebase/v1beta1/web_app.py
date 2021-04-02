@@ -22,7 +22,6 @@ class WebApp(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  web_apps_id: Optional[pulumi.Input[str]] = None,
-                 web_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,7 +35,6 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user-assigned display name for the `WebApp`.
         :param pulumi.Input[str] name: The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
         :param pulumi.Input[str] project_id: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-        :param pulumi.Input[str] web_id: Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -66,7 +64,7 @@ class WebApp(pulumi.CustomResource):
             if web_apps_id is None and not opts.urn:
                 raise TypeError("Missing required property 'web_apps_id'")
             __props__['web_apps_id'] = web_apps_id
-            __props__['web_id'] = web_id
+            __props__['web_id'] = None
         super(WebApp, __self__).__init__(
             'google-cloud:firebase/v1beta1:WebApp',
             resource_name,
@@ -89,7 +87,61 @@ class WebApp(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_id"] = None
+        __props__["app_urls"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["project_id"] = None
+        __props__["web_id"] = None
         return WebApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="appUrls")
+    def app_urls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The URLs where the `WebApp` is hosted.
+        """
+        return pulumi.get(self, "app_urls")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The user-assigned display name for the `WebApp`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="webId")
+    def web_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
+        """
+        return pulumi.get(self, "web_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

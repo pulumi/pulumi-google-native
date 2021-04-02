@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationEnvironmentTraceConfigOverride']
@@ -85,7 +86,34 @@ class OrganizationEnvironmentTraceConfigOverride(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_proxy"] = None
+        __props__["name"] = None
+        __props__["sampling_config"] = None
         return OrganizationEnvironmentTraceConfigOverride(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiProxy")
+    def api_proxy(self) -> pulumi.Output[str]:
+        """
+        ID of the API proxy that will have its trace configuration overridden.
+        """
+        return pulumi.get(self, "api_proxy")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        ID of the trace configuration override specified as a system-generated UUID.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="samplingConfig")
+    def sampling_config(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1TraceSamplingConfigResponse']:
+        """
+        Trace configuration to override.
+        """
+        return pulumi.get(self, "sampling_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

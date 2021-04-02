@@ -102,6 +102,7 @@ from .zone_in_place_snapshot_iam_policy import *
 from .zone_instant_snapshot import *
 from .zone_instant_snapshot_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Job']
@@ -17,21 +18,13 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 failure_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FailureDetailArgs']]]]] = None,
-                 failure_reason: Optional[pulumi.Input[str]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  jobs_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 origin_uri: Optional[pulumi.Input[pulumi.InputType['OriginUriArgs']]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 progress: Optional[pulumi.Input[pulumi.InputType['ProgressArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  ttl_after_completion_days: Optional[pulumi.Input[int]] = None,
                  __props__=None,
@@ -43,18 +36,10 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this job.
-        :param pulumi.Input[str] create_time: Output only. The time the job was created.
-        :param pulumi.Input[str] end_time: Output only. The time the transcoding finished.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FailureDetailArgs']]]] failure_details: Output only. List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
-        :param pulumi.Input[str] failure_reason: Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
-        :param pulumi.Input[pulumi.InputType['OriginUriArgs']] origin_uri: Output only. The origin URI. *Note*: This feature is not yet available.
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
         :param pulumi.Input[int] priority: Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
-        :param pulumi.Input[pulumi.InputType['ProgressArgs']] progress: Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
-        :param pulumi.Input[str] start_time: Output only. The time the transcoding started.
-        :param pulumi.Input[str] state: Output only. The current state of the job.
         :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
@@ -76,10 +61,6 @@ class Job(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['config'] = config
-            __props__['create_time'] = create_time
-            __props__['end_time'] = end_time
-            __props__['failure_details'] = failure_details
-            __props__['failure_reason'] = failure_reason
             __props__['input_uri'] = input_uri
             if jobs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'jobs_id'")
@@ -88,17 +69,21 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['name'] = name
-            __props__['origin_uri'] = origin_uri
             __props__['output_uri'] = output_uri
             __props__['priority'] = priority
-            __props__['progress'] = progress
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['start_time'] = start_time
-            __props__['state'] = state
             __props__['template_id'] = template_id
             __props__['ttl_after_completion_days'] = ttl_after_completion_days
+            __props__['create_time'] = None
+            __props__['end_time'] = None
+            __props__['failure_details'] = None
+            __props__['failure_reason'] = None
+            __props__['origin_uri'] = None
+            __props__['progress'] = None
+            __props__['start_time'] = None
+            __props__['state'] = None
         super(Job, __self__).__init__(
             'google-cloud:transcoder/v1beta1:Job',
             resource_name,
@@ -121,7 +106,142 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["config"] = None
+        __props__["create_time"] = None
+        __props__["end_time"] = None
+        __props__["failure_details"] = None
+        __props__["failure_reason"] = None
+        __props__["input_uri"] = None
+        __props__["name"] = None
+        __props__["origin_uri"] = None
+        __props__["output_uri"] = None
+        __props__["priority"] = None
+        __props__["progress"] = None
+        __props__["start_time"] = None
+        __props__["state"] = None
+        __props__["template_id"] = None
+        __props__["ttl_after_completion_days"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output['outputs.JobConfigResponse']:
+        """
+        The configuration for this job.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time the job was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time the transcoding finished.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="failureDetails")
+    def failure_details(self) -> pulumi.Output[Sequence['outputs.FailureDetailResponse']]:
+        """
+        List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
+        """
+        return pulumi.get(self, "failure_details")
+
+    @property
+    @pulumi.getter(name="failureReason")
+    def failure_reason(self) -> pulumi.Output[str]:
+        """
+        A description of the reason for the failure. This property is always present when `state` is `FAILED`.
+        """
+        return pulumi.get(self, "failure_reason")
+
+    @property
+    @pulumi.getter(name="inputUri")
+    def input_uri(self) -> pulumi.Output[str]:
+        """
+        Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+        """
+        return pulumi.get(self, "input_uri")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="originUri")
+    def origin_uri(self) -> pulumi.Output['outputs.OriginUriResponse']:
+        """
+        The origin URI. *Note*: This feature is not yet available.
+        """
+        return pulumi.get(self, "origin_uri")
+
+    @property
+    @pulumi.getter(name="outputUri")
+    def output_uri(self) -> pulumi.Output[str]:
+        """
+        Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+        """
+        return pulumi.get(self, "output_uri")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[int]:
+        """
+        Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def progress(self) -> pulumi.Output['outputs.ProgressResponse']:
+        """
+        Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        The time the transcoding started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the job.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> pulumi.Output[str]:
+        """
+        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        """
+        return pulumi.get(self, "template_id")
+
+    @property
+    @pulumi.getter(name="ttlAfterCompletionDays")
+    def ttl_after_completion_days(self) -> pulumi.Output[int]:
+        """
+        Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
+        """
+        return pulumi.get(self, "ttl_after_completion_days")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

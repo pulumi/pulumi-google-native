@@ -126,11 +126,11 @@ class EnvironmentConfigArgs:
                  web_server_network_access_control: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']] = None):
         """
         Configuration information for an environment.
-        :param pulumi.Input[str] airflow_uri: Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-        :param pulumi.Input[str] dag_gcs_prefix: Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
+        :param pulumi.Input[str] airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
+        :param pulumi.Input[str] dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
         :param pulumi.Input['DatabaseConfigArgs'] database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-        :param pulumi.Input[str] gke_cluster: Output only. The Kubernetes Engine cluster used to run this environment.
+        :param pulumi.Input[str] gke_cluster: The Kubernetes Engine cluster used to run this environment.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -165,7 +165,7 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="airflowUri")
     def airflow_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
+        The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         """
         return pulumi.get(self, "airflow_uri")
 
@@ -177,7 +177,7 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="dagGcsPrefix")
     def dag_gcs_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
+        The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
         """
         return pulumi.get(self, "dag_gcs_prefix")
 
@@ -213,7 +213,7 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="gkeCluster")
     def gke_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The Kubernetes Engine cluster used to run this environment.
+        The Kubernetes Engine cluster used to run this environment.
         """
         return pulumi.get(self, "gke_cluster")
 
@@ -538,20 +538,16 @@ class NodeConfigArgs:
 class PrivateClusterConfigArgs:
     def __init__(__self__, *,
                  enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
-                 master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-                 master_ipv4_reserved_range: Optional[pulumi.Input[str]] = None):
+                 master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
         Configuration options for the private GKE cluster in a Cloud Composer environment.
         :param pulumi.Input[bool] enable_private_endpoint: Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
         :param pulumi.Input[str] master_ipv4_cidr_block: Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.
-        :param pulumi.Input[str] master_ipv4_reserved_range: Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
         """
         if enable_private_endpoint is not None:
             pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         if master_ipv4_cidr_block is not None:
             pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
-        if master_ipv4_reserved_range is not None:
-            pulumi.set(__self__, "master_ipv4_reserved_range", master_ipv4_reserved_range)
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
@@ -577,18 +573,6 @@ class PrivateClusterConfigArgs:
     def master_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "master_ipv4_cidr_block", value)
 
-    @property
-    @pulumi.getter(name="masterIpv4ReservedRange")
-    def master_ipv4_reserved_range(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
-        """
-        return pulumi.get(self, "master_ipv4_reserved_range")
-
-    @master_ipv4_reserved_range.setter
-    def master_ipv4_reserved_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "master_ipv4_reserved_range", value)
-
 
 @pulumi.input_type
 class PrivateEnvironmentConfigArgs:
@@ -596,15 +580,13 @@ class PrivateEnvironmentConfigArgs:
                  cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
-                 web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
-                 web_server_ipv4_reserved_range: Optional[pulumi.Input[str]] = None):
+                 web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
         The configuration information for configuring a Private IP Cloud Composer environment.
         :param pulumi.Input[str] cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param pulumi.Input[bool] enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param pulumi.Input[str] web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
-        :param pulumi.Input[str] web_server_ipv4_reserved_range: Output only. The IP range reserved for the tenant project's App Engine VMs.
         """
         if cloud_sql_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
@@ -614,8 +596,6 @@ class PrivateEnvironmentConfigArgs:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if web_server_ipv4_cidr_block is not None:
             pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
-        if web_server_ipv4_reserved_range is not None:
-            pulumi.set(__self__, "web_server_ipv4_reserved_range", web_server_ipv4_reserved_range)
 
     @property
     @pulumi.getter(name="cloudSqlIpv4CidrBlock")
@@ -664,18 +644,6 @@ class PrivateEnvironmentConfigArgs:
     @web_server_ipv4_cidr_block.setter
     def web_server_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "web_server_ipv4_cidr_block", value)
-
-    @property
-    @pulumi.getter(name="webServerIpv4ReservedRange")
-    def web_server_ipv4_reserved_range(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The IP range reserved for the tenant project's App Engine VMs.
-        """
-        return pulumi.get(self, "web_server_ipv4_reserved_range")
-
-    @web_server_ipv4_reserved_range.setter
-    def web_server_ipv4_reserved_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "web_server_ipv4_reserved_range", value)
 
 
 @pulumi.input_type

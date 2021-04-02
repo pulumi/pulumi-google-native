@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['WorkerPool']
@@ -16,14 +17,9 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 delete_time: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -34,13 +30,8 @@ class WorkerPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Time at which the request to create the `WorkerPool` was received.
-        :param pulumi.Input[str] delete_time: Output only. Time at which the request to delete the `WorkerPool` was received.
-        :param pulumi.Input[str] name: Output only. The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] region: Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
-        :param pulumi.Input[str] state: Output only. WorkerPool state.
-        :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
         """
         if __name__ is not None:
@@ -60,20 +51,20 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
-            __props__['delete_time'] = delete_time
-            __props__['name'] = name
             __props__['network_config'] = network_config
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['region'] = region
-            __props__['state'] = state
-            __props__['update_time'] = update_time
             __props__['worker_config'] = worker_config
             if worker_pools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_pools_id'")
             __props__['worker_pools_id'] = worker_pools_id
+            __props__['create_time'] = None
+            __props__['delete_time'] = None
+            __props__['name'] = None
+            __props__['state'] = None
+            __props__['update_time'] = None
         super(WorkerPool, __self__).__init__(
             'google-cloud:cloudbuild/v1alpha2:WorkerPool',
             resource_name,
@@ -96,7 +87,79 @@ class WorkerPool(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["delete_time"] = None
+        __props__["name"] = None
+        __props__["network_config"] = None
+        __props__["region"] = None
+        __props__["state"] = None
+        __props__["update_time"] = None
+        __props__["worker_config"] = None
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time at which the request to create the `WorkerPool` was received.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        Time at which the request to delete the `WorkerPool` was received.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.NetworkConfigResponse']:
+        """
+        Network configuration for the `WorkerPool`.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        WorkerPool state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Time at which the request to update the `WorkerPool` was received.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> pulumi.Output['outputs.WorkerConfigResponse']:
+        """
+        Worker configuration for the `WorkerPool`.
+        """
+        return pulumi.get(self, "worker_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

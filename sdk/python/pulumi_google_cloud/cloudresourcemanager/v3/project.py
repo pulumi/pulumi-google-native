@@ -15,17 +15,11 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,16 +28,10 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Creation time.
-        :param pulumi.Input[str] delete_time: Output only. The time at which this resource was requested for deletion.
         :param pulumi.Input[str] display_name: Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
-        :param pulumi.Input[str] etag: Output only. A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
-        :param pulumi.Input[str] name: Output only. The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
         :param pulumi.Input[str] parent: Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
         :param pulumi.Input[str] project_id: Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
-        :param pulumi.Input[str] state: Output only. The project lifecycle state.
-        :param pulumi.Input[str] update_time: Output only. The most recent time this resource was modified.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -62,19 +50,19 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
-            __props__['delete_time'] = delete_time
             __props__['display_name'] = display_name
-            __props__['etag'] = etag
             __props__['labels'] = labels
-            __props__['name'] = name
             __props__['parent'] = parent
             __props__['project_id'] = project_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['delete_time'] = None
+            __props__['etag'] = None
+            __props__['name'] = None
+            __props__['state'] = None
+            __props__['update_time'] = None
         super(Project, __self__).__init__(
             'google-cloud:cloudresourcemanager/v3:Project',
             resource_name,
@@ -97,7 +85,97 @@ class Project(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["delete_time"] = None
+        __props__["display_name"] = None
+        __props__["etag"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["parent"] = None
+        __props__["project_id"] = None
+        __props__["state"] = None
+        __props__["update_time"] = None
         return Project(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this resource was requested for deletion.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The project lifecycle state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The most recent time this resource was modified.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

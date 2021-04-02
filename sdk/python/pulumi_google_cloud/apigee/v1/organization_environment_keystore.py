@@ -15,7 +15,6 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  keystores_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -28,7 +27,6 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Output only. Aliases in this keystore.
         :param pulumi.Input[str] name: Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         """
         if __name__ is not None:
@@ -48,7 +46,6 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['aliases'] = aliases
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
             __props__['environments_id'] = environments_id
@@ -59,6 +56,7 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            __props__['aliases'] = None
         super(OrganizationEnvironmentKeystore, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationEnvironmentKeystore',
             resource_name,
@@ -81,7 +79,25 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["aliases"] = None
+        __props__["name"] = None
         return OrganizationEnvironmentKeystore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def aliases(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Aliases in this keystore.
+        """
+        return pulumi.get(self, "aliases")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

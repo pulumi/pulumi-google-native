@@ -15,7 +15,6 @@ class GameServerDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  game_server_deployments_id: Optional[pulumi.Input[str]] = None,
@@ -23,7 +22,6 @@ class GameServerDeployment(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,12 +30,10 @@ class GameServerDeployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[str] description: Human readable description of the game server delpoyment.
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-        :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -56,7 +52,6 @@ class GameServerDeployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['etag'] = etag
             if game_server_deployments_id is None and not opts.urn:
@@ -70,7 +65,8 @@ class GameServerDeployment(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['update_time'] = None
         super(GameServerDeployment, __self__).__init__(
             'google-cloud:gameservices/v1:GameServerDeployment',
             resource_name,
@@ -93,7 +89,61 @@ class GameServerDeployment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["update_time"] = None
         return GameServerDeployment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Human readable description of the game server delpoyment.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        ETag of the resource.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels associated with this game server deployment. Each label is a key-value pair.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last-modified time.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

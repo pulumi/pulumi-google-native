@@ -6,6 +6,7 @@
 from .custom_class import *
 from .phrase_set import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

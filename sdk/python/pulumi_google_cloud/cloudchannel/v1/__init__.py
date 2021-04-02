@@ -8,6 +8,7 @@ from .account_channel_partner_link_customer import *
 from .account_customer import *
 from .account_customer_entitlement import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

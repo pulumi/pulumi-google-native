@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 
 __all__ = ['OrganizationSiteApicategory']
 
@@ -65,6 +66,11 @@ class OrganizationSiteApicategory(pulumi.CustomResource):
                 raise TypeError("Missing required property 'sites_id'")
             __props__['sites_id'] = sites_id
             __props__['update_time'] = update_time
+            __props__['data'] = None
+            __props__['error_code'] = None
+            __props__['message'] = None
+            __props__['request_id'] = None
+            __props__['status'] = None
         super(OrganizationSiteApicategory, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationSiteApicategory',
             resource_name,
@@ -87,7 +93,52 @@ class OrganizationSiteApicategory(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["data"] = None
+        __props__["error_code"] = None
+        __props__["message"] = None
+        __props__["request_id"] = None
+        __props__["status"] = None
         return OrganizationSiteApicategory(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def data(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1ApiCategoryDataResponse']:
+        """
+        Details of category.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter(name="errorCode")
+    def error_code(self) -> pulumi.Output[str]:
+        """
+        ID that can be used to find errors in the log files.
+        """
+        return pulumi.get(self, "error_code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Output[str]:
+        """
+        Description of the operation.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[str]:
+        """
+        ID that can be used to find request details in the log files.
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Status of the operation.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

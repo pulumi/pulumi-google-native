@@ -18,6 +18,7 @@ from .agent_test_case import *
 from .agent_webhook import *
 from .security_setting import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['HistoryExecution']
@@ -98,7 +99,79 @@ class HistoryExecution(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["completion_time"] = None
+        __props__["creation_time"] = None
+        __props__["dimension_definitions"] = None
+        __props__["execution_id"] = None
+        __props__["outcome"] = None
+        __props__["specification"] = None
+        __props__["state"] = None
+        __props__["test_execution_matrix_id"] = None
         return HistoryExecution(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="completionTime")
+    def completion_time(self) -> pulumi.Output['outputs.TimestampResponse']:
+        """
+        The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
+        """
+        return pulumi.get(self, "completion_time")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Output['outputs.TimestampResponse']:
+        """
+        The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="dimensionDefinitions")
+    def dimension_definitions(self) -> pulumi.Output[Sequence['outputs.MatrixDimensionDefinitionResponse']]:
+        """
+        The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
+        """
+        return pulumi.get(self, "dimension_definitions")
+
+    @property
+    @pulumi.getter(name="executionId")
+    def execution_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
+        """
+        return pulumi.get(self, "execution_id")
+
+    @property
+    @pulumi.getter
+    def outcome(self) -> pulumi.Output['outputs.OutcomeResponse']:
+        """
+        Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
+        """
+        return pulumi.get(self, "outcome")
+
+    @property
+    @pulumi.getter
+    def specification(self) -> pulumi.Output['outputs.SpecificationResponse']:
+        """
+        Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
+        """
+        return pulumi.get(self, "specification")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="testExecutionMatrixId")
+    def test_execution_matrix_id(self) -> pulumi.Output[str]:
+        """
+        TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
+        """
+        return pulumi.get(self, "test_execution_matrix_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

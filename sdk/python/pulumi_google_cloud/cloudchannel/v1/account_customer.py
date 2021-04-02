@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AccountCustomer']
@@ -19,17 +20,12 @@ class AccountCustomer(pulumi.CustomResource):
                  accounts_id: Optional[pulumi.Input[str]] = None,
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
-                 cloud_identity_id: Optional[pulumi.Input[str]] = None,
-                 cloud_identity_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CloudIdentityInfoArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  customers_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
                  org_postal_address: Optional[pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']]] = None,
                  primary_contact_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -40,16 +36,11 @@ class AccountCustomer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternate_email: Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
-        :param pulumi.Input[str] cloud_identity_id: Output only. Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CloudIdentityInfoArgs']] cloud_identity_info: Output only. Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
-        :param pulumi.Input[str] create_time: Output only. The time at which the customer is created.
         :param pulumi.Input[str] domain: Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        :param pulumi.Input[str] name: Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
         :param pulumi.Input[str] org_display_name: Required. Name of the organization that the customer entity represents.
         :param pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']] org_postal_address: Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']] primary_contact_info: Primary contact info.
-        :param pulumi.Input[str] update_time: Output only. The time at which the customer is updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,19 +64,19 @@ class AccountCustomer(pulumi.CustomResource):
             __props__['accounts_id'] = accounts_id
             __props__['alternate_email'] = alternate_email
             __props__['channel_partner_id'] = channel_partner_id
-            __props__['cloud_identity_id'] = cloud_identity_id
-            __props__['cloud_identity_info'] = cloud_identity_info
-            __props__['create_time'] = create_time
             if customers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customers_id'")
             __props__['customers_id'] = customers_id
             __props__['domain'] = domain
             __props__['language_code'] = language_code
-            __props__['name'] = name
             __props__['org_display_name'] = org_display_name
             __props__['org_postal_address'] = org_postal_address
             __props__['primary_contact_info'] = primary_contact_info
-            __props__['update_time'] = update_time
+            __props__['cloud_identity_id'] = None
+            __props__['cloud_identity_info'] = None
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['update_time'] = None
         super(AccountCustomer, __self__).__init__(
             'google-cloud:cloudchannel/v1:AccountCustomer',
             resource_name,
@@ -108,7 +99,115 @@ class AccountCustomer(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["alternate_email"] = None
+        __props__["channel_partner_id"] = None
+        __props__["cloud_identity_id"] = None
+        __props__["cloud_identity_info"] = None
+        __props__["create_time"] = None
+        __props__["domain"] = None
+        __props__["language_code"] = None
+        __props__["name"] = None
+        __props__["org_display_name"] = None
+        __props__["org_postal_address"] = None
+        __props__["primary_contact_info"] = None
+        __props__["update_time"] = None
         return AccountCustomer(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="alternateEmail")
+    def alternate_email(self) -> pulumi.Output[str]:
+        """
+        Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        """
+        return pulumi.get(self, "alternate_email")
+
+    @property
+    @pulumi.getter(name="channelPartnerId")
+    def channel_partner_id(self) -> pulumi.Output[str]:
+        """
+        Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
+        """
+        return pulumi.get(self, "channel_partner_id")
+
+    @property
+    @pulumi.getter(name="cloudIdentityId")
+    def cloud_identity_id(self) -> pulumi.Output[str]:
+        """
+        Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+        """
+        return pulumi.get(self, "cloud_identity_id")
+
+    @property
+    @pulumi.getter(name="cloudIdentityInfo")
+    def cloud_identity_info(self) -> pulumi.Output['outputs.GoogleCloudChannelV1CloudIdentityInfoResponse']:
+        """
+        Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
+        """
+        return pulumi.get(self, "cloud_identity_info")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the customer is created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Output[str]:
+        """
+        Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[str]:
+        """
+        Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgDisplayName")
+    def org_display_name(self) -> pulumi.Output[str]:
+        """
+        Required. Name of the organization that the customer entity represents.
+        """
+        return pulumi.get(self, "org_display_name")
+
+    @property
+    @pulumi.getter(name="orgPostalAddress")
+    def org_postal_address(self) -> pulumi.Output['outputs.GoogleTypePostalAddressResponse']:
+        """
+        Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        """
+        return pulumi.get(self, "org_postal_address")
+
+    @property
+    @pulumi.getter(name="primaryContactInfo")
+    def primary_contact_info(self) -> pulumi.Output['outputs.GoogleCloudChannelV1ContactInfoResponse']:
+        """
+        Primary contact info.
+        """
+        return pulumi.get(self, "primary_contact_info")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the customer is updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

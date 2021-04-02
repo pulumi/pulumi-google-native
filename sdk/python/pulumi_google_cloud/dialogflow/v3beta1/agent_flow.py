@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentFlow']
@@ -101,7 +102,70 @@ class AgentFlow(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["event_handlers"] = None
+        __props__["name"] = None
+        __props__["nlu_settings"] = None
+        __props__["transition_route_groups"] = None
+        __props__["transition_routes"] = None
         return AgentFlow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the flow.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="eventHandlers")
+    def event_handlers(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1EventHandlerResponse']]:
+        """
+        A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
+        """
+        return pulumi.get(self, "event_handlers")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nluSettings")
+    def nlu_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1NluSettingsResponse']:
+        """
+        NLU related settings of the flow.
+        """
+        return pulumi.get(self, "nlu_settings")
+
+    @property
+    @pulumi.getter(name="transitionRouteGroups")
+    def transition_route_groups(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        """
+        return pulumi.get(self, "transition_route_groups")
+
+    @property
+    @pulumi.getter(name="transitionRoutes")
+    def transition_routes(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse']]:
+        """
+        A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
+        """
+        return pulumi.get(self, "transition_routes")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

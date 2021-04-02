@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['CatalogCatalogItem']
@@ -107,7 +108,79 @@ class CatalogCatalogItem(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["category_hierarchies"] = None
+        __props__["description"] = None
+        __props__["item_attributes"] = None
+        __props__["item_group_id"] = None
+        __props__["language_code"] = None
+        __props__["product_metadata"] = None
+        __props__["tags"] = None
+        __props__["title"] = None
         return CatalogCatalogItem(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="categoryHierarchies")
+    def category_hierarchies(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse']]:
+        """
+        Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+        """
+        return pulumi.get(self, "category_hierarchies")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="itemAttributes")
+    def item_attributes(self) -> pulumi.Output['outputs.GoogleCloudRecommendationengineV1beta1FeatureMapResponse']:
+        """
+        Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
+        """
+        return pulumi.get(self, "item_attributes")
+
+    @property
+    @pulumi.getter(name="itemGroupId")
+    def item_group_id(self) -> pulumi.Output[str]:
+        """
+        Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+        """
+        return pulumi.get(self, "item_group_id")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[str]:
+        """
+        Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter(name="productMetadata")
+    def product_metadata(self) -> pulumi.Output['outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse']:
+        """
+        Optional. Metadata specific to retail products.
+        """
+        return pulumi.get(self, "product_metadata")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Output[str]:
+        """
+        Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        """
+        return pulumi.get(self, "title")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

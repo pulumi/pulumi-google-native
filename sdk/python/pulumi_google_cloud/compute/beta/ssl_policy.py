@@ -110,7 +110,109 @@ class SslPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["custom_features"] = None
+        __props__["description"] = None
+        __props__["enabled_features"] = None
+        __props__["fingerprint"] = None
+        __props__["kind"] = None
+        __props__["min_tls_version"] = None
+        __props__["name"] = None
+        __props__["profile"] = None
+        __props__["self_link"] = None
+        __props__["warnings"] = None
         return SslPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customFeatures")
+    def custom_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of features enabled when the selected profile is CUSTOM. The
+        - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        """
+        return pulumi.get(self, "custom_features")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output Only] The list of features enabled in the SSL policy.
+        """
+        return pulumi.get(self, "enabled_features")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> pulumi.Output[str]:
+        """
+        The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def profile(self) -> pulumi.Output[str]:
+        """
+        Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+        """
+        return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+        """
+        [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        """
+        return pulumi.get(self, "warnings")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

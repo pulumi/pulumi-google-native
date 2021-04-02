@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 
 __all__ = ['OrganizationApi']
 
@@ -58,6 +59,10 @@ class OrganizationApi(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            __props__['latest_revision_id'] = None
+            __props__['meta_data'] = None
+            __props__['name'] = None
+            __props__['revision'] = None
         super(OrganizationApi, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationApi',
             resource_name,
@@ -80,7 +85,43 @@ class OrganizationApi(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["latest_revision_id"] = None
+        __props__["meta_data"] = None
+        __props__["name"] = None
+        __props__["revision"] = None
         return OrganizationApi(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="latestRevisionId")
+    def latest_revision_id(self) -> pulumi.Output[str]:
+        """
+        The id of the most recently created revision for this api proxy.
+        """
+        return pulumi.get(self, "latest_revision_id")
+
+    @property
+    @pulumi.getter(name="metaData")
+    def meta_data(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1EntityMetadataResponse']:
+        """
+        Metadata describing the API proxy.
+        """
+        return pulumi.get(self, "meta_data")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the API proxy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of revisons defined for the API proxy.
+        """
+        return pulumi.get(self, "revision")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

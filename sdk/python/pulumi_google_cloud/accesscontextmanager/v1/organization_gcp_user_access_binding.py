@@ -80,7 +80,34 @@ class OrganizationGcpUserAccessBinding(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["access_levels"] = None
+        __props__["group_key"] = None
+        __props__["name"] = None
         return OrganizationGcpUserAccessBinding(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "access_levels")
+
+    @property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        """
+        return pulumi.get(self, "group_key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

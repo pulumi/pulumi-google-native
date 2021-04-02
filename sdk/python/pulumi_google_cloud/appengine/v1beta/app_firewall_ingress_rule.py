@@ -83,7 +83,43 @@ class AppFirewallIngressRule(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["action"] = None
+        __props__["description"] = None
+        __props__["priority"] = None
+        __props__["source_range"] = None
         return AppFirewallIngressRule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Output[str]:
+        """
+        The action to take on matched requests.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional string description of this rule. This field has a maximum length of 100 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[int]:
+        """
+        A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="sourceRange")
+    def source_range(self) -> pulumi.Output[str]:
+        """
+        IP address or range, defined using CIDR notation, of requests that this rule applies to. You can use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be silently performed on addresses which are not properly truncated. For example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32.
+        """
+        return pulumi.get(self, "source_range")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

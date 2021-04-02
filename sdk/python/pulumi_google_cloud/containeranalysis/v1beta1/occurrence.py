@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Occurrence']
@@ -43,18 +44,18 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DetailsArgs']] attestation: Describes an attestation of an artifact.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1BuildDetailsArgs']] build: Describes a verifiable build.
-        :param pulumi.Input[str] create_time: Output only. The time this occurrence was created.
+        :param pulumi.Input[str] create_time: The time this occurrence was created.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']] deployment: Describes the deployment of an artifact on a runtime.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']] discovered: Describes when a resource was discovered.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']] intoto: Describes a specific in-toto link.
-        :param pulumi.Input[str] kind: Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-        :param pulumi.Input[str] name: Output only. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+        :param pulumi.Input[str] kind: This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+        :param pulumi.Input[str] name: The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         :param pulumi.Input[str] note_name: Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Required. Immutable. The resource for which the occurrence applies.
-        :param pulumi.Input[str] update_time: Output only. The time this occurrence was last updated.
+        :param pulumi.Input[str] update_time: The time this occurrence was last updated.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']] vulnerability: Describes a security vulnerability.
         """
         if __name__ is not None:
@@ -117,7 +118,142 @@ class Occurrence(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["attestation"] = None
+        __props__["build"] = None
+        __props__["create_time"] = None
+        __props__["deployment"] = None
+        __props__["derived_image"] = None
+        __props__["discovered"] = None
+        __props__["installation"] = None
+        __props__["intoto"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["note_name"] = None
+        __props__["remediation"] = None
+        __props__["resource"] = None
+        __props__["update_time"] = None
+        __props__["vulnerability"] = None
         return Occurrence(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def attestation(self) -> pulumi.Output['outputs.DetailsResponse']:
+        """
+        Describes an attestation of an artifact.
+        """
+        return pulumi.get(self, "attestation")
+
+    @property
+    @pulumi.getter
+    def build(self) -> pulumi.Output['outputs.GrafeasV1beta1BuildDetailsResponse']:
+        """
+        Describes a verifiable build.
+        """
+        return pulumi.get(self, "build")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time this occurrence was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> pulumi.Output['outputs.GrafeasV1beta1DeploymentDetailsResponse']:
+        """
+        Describes the deployment of an artifact on a runtime.
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="derivedImage")
+    def derived_image(self) -> pulumi.Output['outputs.GrafeasV1beta1ImageDetailsResponse']:
+        """
+        Describes how this resource derives from the basis in the associated note.
+        """
+        return pulumi.get(self, "derived_image")
+
+    @property
+    @pulumi.getter
+    def discovered(self) -> pulumi.Output['outputs.GrafeasV1beta1DiscoveryDetailsResponse']:
+        """
+        Describes when a resource was discovered.
+        """
+        return pulumi.get(self, "discovered")
+
+    @property
+    @pulumi.getter
+    def installation(self) -> pulumi.Output['outputs.GrafeasV1beta1PackageDetailsResponse']:
+        """
+        Describes the installation of a package on the linked resource.
+        """
+        return pulumi.get(self, "installation")
+
+    @property
+    @pulumi.getter
+    def intoto(self) -> pulumi.Output['outputs.GrafeasV1beta1IntotoDetailsResponse']:
+        """
+        Describes a specific in-toto link.
+        """
+        return pulumi.get(self, "intoto")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="noteName")
+    def note_name(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        """
+        return pulumi.get(self, "note_name")
+
+    @property
+    @pulumi.getter
+    def remediation(self) -> pulumi.Output[str]:
+        """
+        A description of actions that can be taken to remedy the note.
+        """
+        return pulumi.get(self, "remediation")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Output['outputs.ResourceResponse']:
+        """
+        Required. Immutable. The resource for which the occurrence applies.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time this occurrence was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def vulnerability(self) -> pulumi.Output['outputs.GrafeasV1beta1VulnerabilityDetailsResponse']:
+        """
+        Describes a security vulnerability.
+        """
+        return pulumi.get(self, "vulnerability")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

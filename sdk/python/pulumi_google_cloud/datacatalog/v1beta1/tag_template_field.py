@@ -21,7 +21,6 @@ class TagTemplateField(pulumi.CustomResource):
                  fields_id: Optional[pulumi.Input[str]] = None,
                  is_required: Optional[pulumi.Input[bool]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  tag_templates_id: Optional[pulumi.Input[str]] = None,
@@ -37,7 +36,6 @@ class TagTemplateField(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description for this field. Defaults to an empty string.
         :param pulumi.Input[str] display_name: The display name for this field. Defaults to an empty string.
         :param pulumi.Input[bool] is_required: Whether this is a required field. Defaults to false.
-        :param pulumi.Input[str] name: Output only. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
         :param pulumi.Input[int] order: The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1FieldTypeArgs']] type: Required. The type of value this tag field can contain.
         """
@@ -67,7 +65,6 @@ class TagTemplateField(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             __props__['order'] = order
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")

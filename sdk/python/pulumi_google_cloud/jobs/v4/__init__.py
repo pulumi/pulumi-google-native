@@ -8,6 +8,7 @@ from .tenant_client_event import *
 from .tenant_company import *
 from .tenant_job import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetDicomStore']
@@ -89,7 +90,34 @@ class DatasetDicomStore(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["notification_config"] = None
         return DatasetDicomStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> pulumi.Output['outputs.NotificationConfigResponse']:
+        """
+        Notification destination for new DICOM instances. Supplied by the client.
+        """
+        return pulumi.get(self, "notification_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -11,6 +11,7 @@ from .operation import *
 from .provider_note import *
 from .provider_note_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

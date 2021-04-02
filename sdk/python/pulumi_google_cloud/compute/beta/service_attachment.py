@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ServiceAttachment']
@@ -110,7 +111,106 @@ class ServiceAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["connection_preference"] = None
+        __props__["consumer_forwarding_rules"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["enable_proxy_protocol"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["nat_subnets"] = None
+        __props__["producer_forwarding_rule"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionPreference")
+    def connection_preference(self) -> pulumi.Output[str]:
+        """
+        The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+        """
+        return pulumi.get(self, "connection_preference")
+
+    @property
+    @pulumi.getter(name="consumerForwardingRules")
+    def consumer_forwarding_rules(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentConsumerForwardingRuleResponse']]:
+        """
+        [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
+        """
+        return pulumi.get(self, "consumer_forwarding_rules")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableProxyProtocol")
+    def enable_proxy_protocol(self) -> pulumi.Output[bool]:
+        """
+        If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+        """
+        return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="natSubnets")
+    def nat_subnets(self) -> pulumi.Output[Sequence[str]]:
+        """
+        An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
+        """
+        return pulumi.get(self, "nat_subnets")
+
+    @property
+    @pulumi.getter(name="producerForwardingRule")
+    def producer_forwarding_rule(self) -> pulumi.Output[str]:
+        """
+        The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
+        """
+        return pulumi.get(self, "producer_forwarding_rule")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

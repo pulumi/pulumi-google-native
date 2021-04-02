@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceTable']
@@ -63,6 +64,11 @@ class InstanceTable(pulumi.CustomResource):
             if tables_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tables_id'")
             __props__['tables_id'] = tables_id
+            __props__['cluster_states'] = None
+            __props__['column_families'] = None
+            __props__['granularity'] = None
+            __props__['name'] = None
+            __props__['restore_info'] = None
         super(InstanceTable, __self__).__init__(
             'google-cloud:bigtableadmin/v2:InstanceTable',
             resource_name,
@@ -85,7 +91,52 @@ class InstanceTable(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cluster_states"] = None
+        __props__["column_families"] = None
+        __props__["granularity"] = None
+        __props__["name"] = None
+        __props__["restore_info"] = None
         return InstanceTable(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clusterStates")
+    def cluster_states(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
+        """
+        return pulumi.get(self, "cluster_states")
+
+    @property
+    @pulumi.getter(name="columnFamilies")
+    def column_families(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        """
+        return pulumi.get(self, "column_families")
+
+    @property
+    @pulumi.getter
+    def granularity(self) -> pulumi.Output[str]:
+        """
+        Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
+        """
+        return pulumi.get(self, "granularity")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restoreInfo")
+    def restore_info(self) -> pulumi.Output['outputs.RestoreInfoResponse']:
+        """
+        If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
+        """
+        return pulumi.get(self, "restore_info")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

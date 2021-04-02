@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ResourcePolicy']
@@ -114,7 +115,118 @@ class ResourcePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["group_placement_policy"] = None
+        __props__["instance_schedule_policy"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["region"] = None
+        __props__["resource_status"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["snapshot_schedule_policy"] = None
+        __props__["status"] = None
+        __props__["vm_maintenance_policy"] = None
         return ResourcePolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="groupPlacementPolicy")
+    def group_placement_policy(self) -> pulumi.Output['outputs.ResourcePolicyGroupPlacementPolicyResponse']:
+        """
+        Resource policy for instances for placement configuration.
+        """
+        return pulumi.get(self, "group_placement_policy")
+
+    @property
+    @pulumi.getter(name="instanceSchedulePolicy")
+    def instance_schedule_policy(self) -> pulumi.Output['outputs.ResourcePolicyInstanceSchedulePolicyResponse']:
+        """
+        Resource policy for scheduling instance operations.
+        """
+        return pulumi.get(self, "instance_schedule_policy")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.ResourcePolicyResourceStatusResponse']:
+        """
+        [Output Only] The system status of the resource policy.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined fully-qualified URL for this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="snapshotSchedulePolicy")
+    def snapshot_schedule_policy(self) -> pulumi.Output['outputs.ResourcePolicySnapshotSchedulePolicyResponse']:
+        """
+        Resource policy for persistent disks for creating snapshots.
+        """
+        return pulumi.get(self, "snapshot_schedule_policy")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The status of resource policy creation.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vmMaintenancePolicy")
+    def vm_maintenance_policy(self) -> pulumi.Output['outputs.ResourcePolicyVmMaintenancePolicyResponse']:
+        """
+        Resource policy applicable to VMs for infrastructure maintenance.
+        """
+        return pulumi.get(self, "vm_maintenance_policy")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

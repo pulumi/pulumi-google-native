@@ -16,6 +16,7 @@ from .region_workflow_template_iam_policy import *
 from .workflow_template import *
 from .workflow_template_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

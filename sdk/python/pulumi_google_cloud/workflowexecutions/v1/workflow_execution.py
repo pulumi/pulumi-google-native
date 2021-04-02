@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['WorkflowExecution']
 
@@ -17,16 +17,9 @@ class WorkflowExecution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input[pulumi.InputType['ErrorArgs']]] = None,
                  executions_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 result: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 workflow_revision_id: Optional[pulumi.Input[str]] = None,
                  workflows_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -37,13 +30,6 @@ class WorkflowExecution(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-        :param pulumi.Input[str] end_time: Output only. Marks the end of execution, successful or not.
-        :param pulumi.Input[pulumi.InputType['ErrorArgs']] error: Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-        :param pulumi.Input[str] name: Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-        :param pulumi.Input[str] result: Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-        :param pulumi.Input[str] start_time: Output only. Marks the beginning of execution.
-        :param pulumi.Input[str] state: Output only. Current state of the execution.
-        :param pulumi.Input[str] workflow_revision_id: Output only. Revision of the workflow this execution is using.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,25 +49,25 @@ class WorkflowExecution(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['argument'] = argument
-            __props__['end_time'] = end_time
-            __props__['error'] = error
             if executions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'executions_id'")
             __props__['executions_id'] = executions_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['result'] = result
-            __props__['start_time'] = start_time
-            __props__['state'] = state
-            __props__['workflow_revision_id'] = workflow_revision_id
             if workflows_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflows_id'")
             __props__['workflows_id'] = workflows_id
+            __props__['end_time'] = None
+            __props__['error'] = None
+            __props__['name'] = None
+            __props__['result'] = None
+            __props__['start_time'] = None
+            __props__['state'] = None
+            __props__['workflow_revision_id'] = None
         super(WorkflowExecution, __self__).__init__(
             'google-cloud:workflowexecutions/v1:WorkflowExecution',
             resource_name,
@@ -104,7 +90,79 @@ class WorkflowExecution(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["argument"] = None
+        __props__["end_time"] = None
+        __props__["error"] = None
+        __props__["name"] = None
+        __props__["result"] = None
+        __props__["start_time"] = None
+        __props__["state"] = None
+        __props__["workflow_revision_id"] = None
         return WorkflowExecution(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def argument(self) -> pulumi.Output[str]:
+        """
+        Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+        """
+        return pulumi.get(self, "argument")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        Marks the end of execution, successful or not.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output['outputs.ErrorResponse']:
+        """
+        The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def result(self) -> pulumi.Output[str]:
+        """
+        Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        Marks the beginning of execution.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Current state of the execution.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="workflowRevisionId")
+    def workflow_revision_id(self) -> pulumi.Output[str]:
+        """
+        Revision of the workflow this execution is using.
+        """
+        return pulumi.get(self, "workflow_revision_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

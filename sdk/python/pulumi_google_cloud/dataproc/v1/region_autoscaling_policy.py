@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RegionAutoscalingPolicy']
@@ -19,7 +20,6 @@ class RegionAutoscalingPolicy(pulumi.CustomResource):
                  autoscaling_policies_id: Optional[pulumi.Input[str]] = None,
                  basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  regions_id: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
@@ -33,7 +33,6 @@ class RegionAutoscalingPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] id: Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        :param pulumi.Input[str] name: Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
         :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
         :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] worker_config: Required. Describes how the autoscaler will operate for primary workers.
         """
@@ -59,7 +58,6 @@ class RegionAutoscalingPolicy(pulumi.CustomResource):
             __props__['autoscaling_policies_id'] = autoscaling_policies_id
             __props__['basic_algorithm'] = basic_algorithm
             __props__['id'] = id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
@@ -68,6 +66,7 @@ class RegionAutoscalingPolicy(pulumi.CustomResource):
             __props__['regions_id'] = regions_id
             __props__['secondary_worker_config'] = secondary_worker_config
             __props__['worker_config'] = worker_config
+            __props__['name'] = None
         super(RegionAutoscalingPolicy, __self__).__init__(
             'google-cloud:dataproc/v1:RegionAutoscalingPolicy',
             resource_name,
@@ -90,7 +89,40 @@ class RegionAutoscalingPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["basic_algorithm"] = None
+        __props__["name"] = None
+        __props__["secondary_worker_config"] = None
+        __props__["worker_config"] = None
         return RegionAutoscalingPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="basicAlgorithm")
+    def basic_algorithm(self) -> pulumi.Output['outputs.BasicAutoscalingAlgorithmResponse']:
+        return pulumi.get(self, "basic_algorithm")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="secondaryWorkerConfig")
+    def secondary_worker_config(self) -> pulumi.Output['outputs.InstanceGroupAutoscalingPolicyConfigResponse']:
+        """
+        Optional. Describes how the autoscaler will operate for secondary workers.
+        """
+        return pulumi.get(self, "secondary_worker_config")
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> pulumi.Output['outputs.InstanceGroupAutoscalingPolicyConfigResponse']:
+        """
+        Required. Describes how the autoscaler will operate for primary workers.
+        """
+        return pulumi.get(self, "worker_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

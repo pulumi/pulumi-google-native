@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Schedule']
@@ -16,19 +17,14 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  execution_template: Optional[pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 recent_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionArgs']]]]] = None,
                  schedules_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,15 +33,10 @@ class Schedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Time the schedule was created.
         :param pulumi.Input[str] cron_schedule: Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
         :param pulumi.Input[str] description: A brief description of this environment.
-        :param pulumi.Input[str] display_name: Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
         :param pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']] execution_template: Notebook Execution Template corresponding to this schedule.
-        :param pulumi.Input[str] name: Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionArgs']]]] recent_executions: Output only. The most recent execution names triggered from this schedule and their corresponding states.
         :param pulumi.Input[str] time_zone: Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
-        :param pulumi.Input[str] update_time: Output only. Time the schedule was last updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,25 +55,25 @@ class Schedule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['cron_schedule'] = cron_schedule
             __props__['description'] = description
-            __props__['display_name'] = display_name
             __props__['execution_template'] = execution_template
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['recent_executions'] = recent_executions
             if schedules_id is None and not opts.urn:
                 raise TypeError("Missing required property 'schedules_id'")
             __props__['schedules_id'] = schedules_id
             __props__['state'] = state
             __props__['time_zone'] = time_zone
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['display_name'] = None
+            __props__['name'] = None
+            __props__['recent_executions'] = None
+            __props__['update_time'] = None
         super(Schedule, __self__).__init__(
             'google-cloud:notebooks/v1:Schedule',
             resource_name,
@@ -105,7 +96,94 @@ class Schedule(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["cron_schedule"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["execution_template"] = None
+        __props__["name"] = None
+        __props__["recent_executions"] = None
+        __props__["state"] = None
+        __props__["time_zone"] = None
+        __props__["update_time"] = None
         return Schedule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time the schedule was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> pulumi.Output[str]:
+        """
+        Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        """
+        return pulumi.get(self, "cron_schedule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A brief description of this environment.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="executionTemplate")
+    def execution_template(self) -> pulumi.Output['outputs.ExecutionTemplateResponse']:
+        """
+        Notebook Execution Template corresponding to this schedule.
+        """
+        return pulumi.get(self, "execution_template")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="recentExecutions")
+    def recent_executions(self) -> pulumi.Output[Sequence['outputs.ExecutionResponse']]:
+        """
+        The most recent execution names triggered from this schedule and their corresponding states.
+        """
+        return pulumi.get(self, "recent_executions")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[str]:
+        """
+        Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Time the schedule was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

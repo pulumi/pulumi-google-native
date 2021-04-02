@@ -56,6 +56,12 @@ class SslCert(pulumi.CustomResource):
             if sha1_fingerprint is None and not opts.urn:
                 raise TypeError("Missing required property 'sha1_fingerprint'")
             __props__['sha1_fingerprint'] = sha1_fingerprint
+            __props__['cert'] = None
+            __props__['cert_serial_number'] = None
+            __props__['create_time'] = None
+            __props__['expiration_time'] = None
+            __props__['kind'] = None
+            __props__['self_link'] = None
         super(SslCert, __self__).__init__(
             'google-cloud:sqladmin/v1beta4:SslCert',
             resource_name,
@@ -78,7 +84,88 @@ class SslCert(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cert"] = None
+        __props__["cert_serial_number"] = None
+        __props__["common_name"] = None
+        __props__["create_time"] = None
+        __props__["expiration_time"] = None
+        __props__["instance"] = None
+        __props__["kind"] = None
+        __props__["self_link"] = None
+        __props__["sha1_fingerprint"] = None
         return SslCert(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> pulumi.Output[str]:
+        """
+        PEM representation.
+        """
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter(name="certSerialNumber")
+    def cert_serial_number(self) -> pulumi.Output[str]:
+        """
+        Serial number, as extracted from the certificate.
+        """
+        return pulumi.get(self, "cert_serial_number")
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Output[str]:
+        """
+        User supplied name. Constrained to [a-zA-Z.-_ ]+.
+        """
+        return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> pulumi.Output[str]:
+        """
+        The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Output[str]:
+        """
+        Name of the database instance.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        This is always *sql#sslCert*.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The URI of this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sha1Fingerprint")
+    def sha1_fingerprint(self) -> pulumi.Output[str]:
+        """
+        Sha1 Fingerprint.
+        """
+        return pulumi.get(self, "sha1_fingerprint")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

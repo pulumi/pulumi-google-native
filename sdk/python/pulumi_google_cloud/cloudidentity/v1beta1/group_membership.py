@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['GroupMembership']
@@ -16,15 +17,11 @@ class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  groups_id: Optional[pulumi.Input[str]] = None,
                  member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  memberships_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  preferred_member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,13 +30,9 @@ class GroupMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The time when the `Membership` was created.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-        :param pulumi.Input[str] name: Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] preferred_member_key: Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-        :param pulumi.Input[str] type: Output only. The type of the membership.
-        :param pulumi.Input[str] update_time: Output only. The time when the `Membership` was last updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,7 +51,6 @@ class GroupMembership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             if groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'groups_id'")
             __props__['groups_id'] = groups_id
@@ -66,11 +58,12 @@ class GroupMembership(pulumi.CustomResource):
             if memberships_id is None and not opts.urn:
                 raise TypeError("Missing required property 'memberships_id'")
             __props__['memberships_id'] = memberships_id
-            __props__['name'] = name
             __props__['preferred_member_key'] = preferred_member_key
             __props__['roles'] = roles
-            __props__['type'] = type
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['type'] = None
+            __props__['update_time'] = None
         super(GroupMembership, __self__).__init__(
             'google-cloud:cloudidentity/v1beta1:GroupMembership',
             resource_name,
@@ -93,7 +86,70 @@ class GroupMembership(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["member_key"] = None
+        __props__["name"] = None
+        __props__["preferred_member_key"] = None
+        __props__["roles"] = None
+        __props__["type"] = None
+        __props__["update_time"] = None
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the `Membership` was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="memberKey")
+    def member_key(self) -> pulumi.Output['outputs.EntityKeyResponse']:
+        """
+        Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        """
+        return pulumi.get(self, "member_key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="preferredMemberKey")
+    def preferred_member_key(self) -> pulumi.Output['outputs.EntityKeyResponse']:
+        """
+        Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        """
+        return pulumi.get(self, "preferred_member_key")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> pulumi.Output[Sequence['outputs.MembershipRoleResponse']]:
+        """
+        The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type of the membership.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time when the `Membership` was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

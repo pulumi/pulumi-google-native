@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationDeveloperApp']
@@ -22,12 +23,9 @@ class OrganizationDeveloperApp(pulumi.CustomResource):
                  apps_id: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
                  callback_url: Optional[pulumi.Input[str]] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CredentialArgs']]]]] = None,
                  developer_id: Optional[pulumi.Input[str]] = None,
                  developers_id: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,
-                 last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -45,11 +43,8 @@ class OrganizationDeveloperApp(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: ID of the developer app.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]] attributes: List of attributes for the developer app.
         :param pulumi.Input[str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
-        :param pulumi.Input[str] created_at: Output only. Time the developer app was created in milliseconds since epoch.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CredentialArgs']]]] credentials: Output only. Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
         :param pulumi.Input[str] developer_id: ID of the developer.
         :param pulumi.Input[str] key_expires_in: Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
-        :param pulumi.Input[str] last_modified_at: Output only. Time the developer app was modified in milliseconds since epoch.
         :param pulumi.Input[str] name: Name of the developer app.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
         :param pulumi.Input[str] status: Status of the credential. Valid values include `approved` or `revoked`.
@@ -79,20 +74,20 @@ class OrganizationDeveloperApp(pulumi.CustomResource):
             __props__['apps_id'] = apps_id
             __props__['attributes'] = attributes
             __props__['callback_url'] = callback_url
-            __props__['created_at'] = created_at
-            __props__['credentials'] = credentials
             __props__['developer_id'] = developer_id
             if developers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'developers_id'")
             __props__['developers_id'] = developers_id
             __props__['key_expires_in'] = key_expires_in
-            __props__['last_modified_at'] = last_modified_at
             __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['scopes'] = scopes
             __props__['status'] = status
+            __props__['created_at'] = None
+            __props__['credentials'] = None
+            __props__['last_modified_at'] = None
         super(OrganizationDeveloperApp, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationDeveloperApp',
             resource_name,
@@ -115,7 +110,124 @@ class OrganizationDeveloperApp(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_products"] = None
+        __props__["app_family"] = None
+        __props__["app_id"] = None
+        __props__["attributes"] = None
+        __props__["callback_url"] = None
+        __props__["created_at"] = None
+        __props__["credentials"] = None
+        __props__["developer_id"] = None
+        __props__["key_expires_in"] = None
+        __props__["last_modified_at"] = None
+        __props__["name"] = None
+        __props__["scopes"] = None
+        __props__["status"] = None
         return OrganizationDeveloperApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiProducts")
+    def api_products(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of API products associated with the developer app.
+        """
+        return pulumi.get(self, "api_products")
+
+    @property
+    @pulumi.getter(name="appFamily")
+    def app_family(self) -> pulumi.Output[str]:
+        """
+        Developer app family.
+        """
+        return pulumi.get(self, "app_family")
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        """
+        ID of the developer app.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> pulumi.Output[Sequence['outputs.GoogleCloudApigeeV1AttributeResponse']]:
+        """
+        List of attributes for the developer app.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="callbackUrl")
+    def callback_url(self) -> pulumi.Output[str]:
+        """
+        Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+        """
+        return pulumi.get(self, "callback_url")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        Time the developer app was created in milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Output[Sequence['outputs.GoogleCloudApigeeV1CredentialResponse']]:
+        """
+        Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="developerId")
+    def developer_id(self) -> pulumi.Output[str]:
+        """
+        ID of the developer.
+        """
+        return pulumi.get(self, "developer_id")
+
+    @property
+    @pulumi.getter(name="keyExpiresIn")
+    def key_expires_in(self) -> pulumi.Output[str]:
+        """
+        Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+        """
+        return pulumi.get(self, "key_expires_in")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> pulumi.Output[str]:
+        """
+        Time the developer app was modified in milliseconds since epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the developer app.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Status of the credential. Valid values include `approved` or `revoked`.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -72,6 +72,12 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['output_format'] = output_format
+            __props__['created'] = None
+            __props__['error'] = None
+            __props__['execution_time'] = None
+            __props__['self'] = None
+            __props__['state'] = None
+            __props__['updated'] = None
         super(OrganizationEnvironmentAnalyticExport, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport',
             resource_name,
@@ -94,7 +100,88 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["created"] = None
+        __props__["datastore_name"] = None
+        __props__["description"] = None
+        __props__["error"] = None
+        __props__["execution_time"] = None
+        __props__["name"] = None
+        __props__["self"] = None
+        __props__["state"] = None
+        __props__["updated"] = None
         return OrganizationEnvironmentAnalyticExport(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def created(self) -> pulumi.Output[str]:
+        """
+        Time the export job was created.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="datastoreName")
+    def datastore_name(self) -> pulumi.Output[str]:
+        """
+        Name of the datastore that is the destination of the export job [datastore]
+        """
+        return pulumi.get(self, "datastore_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of the export job.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output[str]:
+        """
+        Error is set when export fails
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="executionTime")
+    def execution_time(self) -> pulumi.Output[str]:
+        """
+        Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+        """
+        return pulumi.get(self, "execution_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Display name of the export job.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def self(self) -> pulumi.Output[str]:
+        """
+        Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+        """
+        return pulumi.get(self, "self")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        Time the export job was last updated.
+        """
+        return pulumi.get(self, "updated")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

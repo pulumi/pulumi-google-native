@@ -46,7 +46,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecArgs:
         Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the AnnotationSpec. Maximum of 64 characters.
-        :param pulumi.Input[int] index: Output only. This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
+        :param pulumi.Input[int] index: This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -83,7 +83,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecArgs:
     @pulumi.getter
     def index(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
+        This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
         """
         return pulumi.get(self, "index")
 
@@ -103,10 +103,10 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSetArgs:
         """
         An AnnotationSpecSet is a collection of label definitions. For example, in image classification tasks, you define a set of possible labels for images as an AnnotationSpecSet. An AnnotationSpecSet is immutable upon creation.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]] annotation_specs: Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: Output only. The names of any related resources that are blocking changes to the annotation spec set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the annotation spec set.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
-        :param pulumi.Input[str] name: Output only. The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        :param pulumi.Input[str] name: The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         """
         if annotation_specs is not None:
             pulumi.set(__self__, "annotation_specs", annotation_specs)
@@ -135,7 +135,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSetArgs:
     @pulumi.getter(name="blockingResources")
     def blocking_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Output only. The names of any related resources that are blocking changes to the annotation spec set.
+        The names of any related resources that are blocking changes to the annotation spec set.
         """
         return pulumi.get(self, "blocking_resources")
 
@@ -171,7 +171,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSetArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         """
         return pulumi.get(self, "name")
 
@@ -365,14 +365,14 @@ class GoogleCloudDatalabelingV1beta1DatasetArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Dataset is the resource to hold your data. You can request multiple labeling tasks for a dataset while each one will generate an AnnotatedDataset.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: Output only. The names of any related resources that are blocking changes to the dataset.
-        :param pulumi.Input[str] create_time: Output only. Time the dataset is created.
-        :param pulumi.Input[str] data_item_count: Output only. The number of data items in the dataset.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the dataset.
+        :param pulumi.Input[str] create_time: Time the dataset is created.
+        :param pulumi.Input[str] data_item_count: The number of data items in the dataset.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the dataset. Maximum of 64 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigArgs']]] input_configs: Output only. This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigArgs']]] input_configs: This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
         :param pulumi.Input[str] last_migrate_time: Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
-        :param pulumi.Input[str] name: Output only. Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+        :param pulumi.Input[str] name: Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
         """
         if blocking_resources is not None:
             pulumi.set(__self__, "blocking_resources", blocking_resources)
@@ -395,7 +395,7 @@ class GoogleCloudDatalabelingV1beta1DatasetArgs:
     @pulumi.getter(name="blockingResources")
     def blocking_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Output only. The names of any related resources that are blocking changes to the dataset.
+        The names of any related resources that are blocking changes to the dataset.
         """
         return pulumi.get(self, "blocking_resources")
 
@@ -407,7 +407,7 @@ class GoogleCloudDatalabelingV1beta1DatasetArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Time the dataset is created.
+        Time the dataset is created.
         """
         return pulumi.get(self, "create_time")
 
@@ -419,7 +419,7 @@ class GoogleCloudDatalabelingV1beta1DatasetArgs:
     @pulumi.getter(name="dataItemCount")
     def data_item_count(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The number of data items in the dataset.
+        The number of data items in the dataset.
         """
         return pulumi.get(self, "data_item_count")
 
@@ -455,7 +455,7 @@ class GoogleCloudDatalabelingV1beta1DatasetArgs:
     @pulumi.getter(name="inputConfigs")
     def input_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1InputConfigArgs']]]]:
         """
-        Output only. This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+        This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
         """
         return pulumi.get(self, "input_configs")
 
@@ -479,7 +479,7 @@ class GoogleCloudDatalabelingV1beta1DatasetArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+        Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
         """
         return pulumi.get(self, "name")
 
@@ -528,15 +528,15 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobArgs:
         """
         Defines an evaluation job that runs periodically to generate Evaluations. [Creating an evaluation job](/ml-engine/docs/continuous-evaluation/create-job) is the starting point for using continuous evaluation.
         :param pulumi.Input[str] annotation_spec_set: Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AttemptArgs']]] attempts: Output only. Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
-        :param pulumi.Input[str] create_time: Output only. Timestamp of when this evaluation job was created.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AttemptArgs']]] attempts: Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+        :param pulumi.Input[str] create_time: Timestamp of when this evaluation job was created.
         :param pulumi.Input[str] description: Required. Description of the job. The description can be up to 25,000 characters long.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs'] evaluation_job_config: Required. Configuration details for the evaluation job.
         :param pulumi.Input[bool] label_missing_ground_truth: Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
         :param pulumi.Input[str] model_version: Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
-        :param pulumi.Input[str] name: Output only. After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+        :param pulumi.Input[str] name: After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
         :param pulumi.Input[str] schedule: Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
-        :param pulumi.Input[str] state: Output only. Describes the current state of the job.
+        :param pulumi.Input[str] state: Describes the current state of the job.
         """
         if annotation_spec_set is not None:
             pulumi.set(__self__, "annotation_spec_set", annotation_spec_set)
@@ -575,7 +575,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobArgs:
     @pulumi.getter
     def attempts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatalabelingV1beta1AttemptArgs']]]]:
         """
-        Output only. Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+        Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
         """
         return pulumi.get(self, "attempts")
 
@@ -587,7 +587,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Timestamp of when this evaluation job was created.
+        Timestamp of when this evaluation job was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -647,7 +647,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+        After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
         """
         return pulumi.get(self, "name")
 
@@ -671,7 +671,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Describes the current state of the job.
+        Describes the current state of the job.
         """
         return pulumi.get(self, "state")
 
@@ -1254,15 +1254,15 @@ class GoogleCloudDatalabelingV1beta1InstructionArgs:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Instruction of how to perform the labeling task for human operators. Currently only PDF instruction is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: Output only. The names of any related resources that are blocking changes to the instruction.
-        :param pulumi.Input[str] create_time: Output only. Creation time of instruction.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the instruction.
+        :param pulumi.Input[str] create_time: Creation time of instruction.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs'] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         :param pulumi.Input[str] data_type: Required. The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
-        :param pulumi.Input[str] name: Output only. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        :param pulumi.Input[str] name: Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs'] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
-        :param pulumi.Input[str] update_time: Output only. Last update time of instruction.
+        :param pulumi.Input[str] update_time: Last update time of instruction.
         """
         if blocking_resources is not None:
             pulumi.set(__self__, "blocking_resources", blocking_resources)
@@ -1287,7 +1287,7 @@ class GoogleCloudDatalabelingV1beta1InstructionArgs:
     @pulumi.getter(name="blockingResources")
     def blocking_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Output only. The names of any related resources that are blocking changes to the instruction.
+        The names of any related resources that are blocking changes to the instruction.
         """
         return pulumi.get(self, "blocking_resources")
 
@@ -1299,7 +1299,7 @@ class GoogleCloudDatalabelingV1beta1InstructionArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Creation time of instruction.
+        Creation time of instruction.
         """
         return pulumi.get(self, "create_time")
 
@@ -1359,7 +1359,7 @@ class GoogleCloudDatalabelingV1beta1InstructionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
         """
         return pulumi.get(self, "name")
 
@@ -1383,7 +1383,7 @@ class GoogleCloudDatalabelingV1beta1InstructionArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Last update time of instruction.
+        Last update time of instruction.
         """
         return pulumi.get(self, "update_time")
 

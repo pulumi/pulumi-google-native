@@ -21,9 +21,6 @@ class Hub(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 spokes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 unique_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -37,9 +34,6 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[str] description: Short description of the hub resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a Hub resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] spokes: Output only. A list of the URIs of all attached spokes
-        :param pulumi.Input[str] state: Output only. The current lifecycle state of this Hub.
-        :param pulumi.Input[str] unique_id: Output only. Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
         :param pulumi.Input[str] update_time: Time when the Hub was updated.
         """
         if __name__ is not None:
@@ -69,10 +63,10 @@ class Hub(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['spokes'] = spokes
-            __props__['state'] = state
-            __props__['unique_id'] = unique_id
             __props__['update_time'] = update_time
+            __props__['spokes'] = None
+            __props__['state'] = None
+            __props__['unique_id'] = None
         super(Hub, __self__).__init__(
             'google-cloud:networkconnectivity/v1alpha1:Hub',
             resource_name,
@@ -95,7 +89,79 @@ class Hub(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["spokes"] = None
+        __props__["state"] = None
+        __props__["unique_id"] = None
+        __props__["update_time"] = None
         return Hub(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time when the Hub was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Short description of the hub resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-defined labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Immutable. The name of a Hub resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def spokes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of the URIs of all attached spokes
+        """
+        return pulumi.get(self, "spokes")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current lifecycle state of this Hub.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="uniqueId")
+    def unique_id(self) -> pulumi.Output[str]:
+        """
+        Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
+        """
+        return pulumi.get(self, "unique_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Time when the Hub was updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

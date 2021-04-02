@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetAnnotationStoreAnnotation']
@@ -102,7 +103,61 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["annotation_source"] = None
+        __props__["custom_data"] = None
+        __props__["image_annotation"] = None
+        __props__["name"] = None
+        __props__["resource_annotation"] = None
+        __props__["text_annotation"] = None
         return DatasetAnnotationStoreAnnotation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="annotationSource")
+    def annotation_source(self) -> pulumi.Output['outputs.AnnotationSourceResponse']:
+        """
+        Details of the source.
+        """
+        return pulumi.get(self, "annotation_source")
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Additional information for this annotation record, such as annotator and verifier information or study campaign.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @property
+    @pulumi.getter(name="imageAnnotation")
+    def image_annotation(self) -> pulumi.Output['outputs.ImageAnnotationResponse']:
+        """
+        Annotations for images. For example, bounding polygons.
+        """
+        return pulumi.get(self, "image_annotation")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceAnnotation")
+    def resource_annotation(self) -> pulumi.Output['outputs.ResourceAnnotationResponse']:
+        """
+        Annotations for resource. For example, classification tags.
+        """
+        return pulumi.get(self, "resource_annotation")
+
+    @property
+    @pulumi.getter(name="textAnnotation")
+    def text_annotation(self) -> pulumi.Output['outputs.SensitiveTextAnnotationResponse']:
+        """
+        Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+        """
+        return pulumi.get(self, "text_annotation")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

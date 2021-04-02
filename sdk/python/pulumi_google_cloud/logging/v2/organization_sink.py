@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationSink']
@@ -17,7 +18,6 @@ class OrganizationSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -26,10 +26,7 @@ class OrganizationSink(pulumi.CustomResource):
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
-                 output_version_format: Optional[pulumi.Input[str]] = None,
                  sinks_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
-                 writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,7 +36,6 @@ class OrganizationSink(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of the sink.This field may not be present for older sinks.
         :param pulumi.Input[str] description: Optional. A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         :param pulumi.Input[bool] disabled: Optional. If set to True, then this sink is disabled and it does not export any log entries.
@@ -47,9 +43,6 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR 
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance 
         :param pulumi.Input[str] name: Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-        :param pulumi.Input[str] output_version_format: Deprecated. This field is unused.
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of the sink.This field may not be present for older sinks.
-        :param pulumi.Input[str] writer_identity: Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,7 +62,6 @@ class OrganizationSink(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['bigquery_options'] = bigquery_options
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['destination'] = destination
             __props__['disabled'] = disabled
@@ -80,12 +72,12 @@ class OrganizationSink(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
-            __props__['output_version_format'] = output_version_format
             if sinks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sinks_id'")
             __props__['sinks_id'] = sinks_id
-            __props__['update_time'] = update_time
-            __props__['writer_identity'] = writer_identity
+            __props__['create_time'] = None
+            __props__['update_time'] = None
+            __props__['writer_identity'] = None
         super(OrganizationSink, __self__).__init__(
             'google-cloud:logging/v2:OrganizationSink',
             resource_name,
@@ -108,7 +100,106 @@ class OrganizationSink(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["bigquery_options"] = None
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["destination"] = None
+        __props__["disabled"] = None
+        __props__["exclusions"] = None
+        __props__["filter"] = None
+        __props__["include_children"] = None
+        __props__["name"] = None
+        __props__["update_time"] = None
+        __props__["writer_identity"] = None
         return OrganizationSink(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigqueryOptions")
+    def bigquery_options(self) -> pulumi.Output['outputs.BigQueryOptionsResponse']:
+        """
+        Optional. Options that affect sinks exporting data to BigQuery.
+        """
+        return pulumi.get(self, "bigquery_options")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation timestamp of the sink.This field may not be present for older sinks.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. A description of this sink. The maximum length of the description is 8000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Output[str]:
+        """
+        Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. If set to True, then this sink is disabled and it does not export any log entries.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> pulumi.Output[Sequence['outputs.LogExclusionResponse']]:
+        """
+        Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
+        """
+        return pulumi.get(self, "exclusions")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[str]:
+        """
+        Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR 
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="includeChildren")
+    def include_children(self) -> pulumi.Output[bool]:
+        """
+        Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance 
+        """
+        return pulumi.get(self, "include_children")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last update timestamp of the sink.This field may not be present for older sinks.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="writerIdentity")
+    def writer_identity(self) -> pulumi.Output[str]:
+        """
+        An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
+        """
+        return pulumi.get(self, "writer_identity")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

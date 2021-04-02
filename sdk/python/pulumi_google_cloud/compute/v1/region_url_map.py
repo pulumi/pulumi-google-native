@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RegionUrlMap']
@@ -132,7 +133,146 @@ class RegionUrlMap(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["default_route_action"] = None
+        __props__["default_service"] = None
+        __props__["default_url_redirect"] = None
+        __props__["description"] = None
+        __props__["fingerprint"] = None
+        __props__["header_action"] = None
+        __props__["host_rules"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["path_matchers"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
+        __props__["tests"] = None
         return RegionUrlMap(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="defaultRouteAction")
+    def default_route_action(self) -> pulumi.Output['outputs.HttpRouteActionResponse']:
+        """
+        defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
+        defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "default_route_action")
+
+    @property
+    @pulumi.getter(name="defaultService")
+    def default_service(self) -> pulumi.Output[str]:
+        """
+        The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified.
+        Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.weightedBackendService must be set.
+        defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "default_service")
+
+    @property
+    @pulumi.getter(name="defaultUrlRedirect")
+    def default_url_redirect(self) -> pulumi.Output['outputs.HttpRedirectActionResponse']:
+        """
+        When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect.
+        If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
+        Not supported when the URL map is bound to target gRPC proxy.
+        """
+        return pulumi.get(self, "default_url_redirect")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve a UrlMap.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> pulumi.Output['outputs.HttpHeaderActionResponse']:
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        The headerAction specified here take effect after headerAction specified under pathMatcher.
+        Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "header_action")
+
+    @property
+    @pulumi.getter(name="hostRules")
+    def host_rules(self) -> pulumi.Output[Sequence['outputs.HostRuleResponse']]:
+        """
+        The list of HostRules to use against the URL.
+        """
+        return pulumi.get(self, "host_rules")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#urlMaps for url maps.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pathMatchers")
+    def path_matchers(self) -> pulumi.Output[Sequence['outputs.PathMatcherResponse']]:
+        """
+        The list of named PathMatchers to use against the URL.
+        """
+        return pulumi.get(self, "path_matchers")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def tests(self) -> pulumi.Output[Sequence['outputs.UrlMapTestResponse']]:
+        """
+        The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
+        Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "tests")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

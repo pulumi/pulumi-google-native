@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['KeyRingCryptoKeyCryptoKeyVersion']
@@ -16,23 +17,12 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[str]] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['KeyOperationAttestationArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  crypto_key_versions_id: Optional[pulumi.Input[str]] = None,
                  crypto_keys_id: Optional[pulumi.Input[str]] = None,
-                 destroy_event_time: Optional[pulumi.Input[str]] = None,
-                 destroy_time: Optional[pulumi.Input[str]] = None,
                  external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
-                 generate_time: Optional[pulumi.Input[str]] = None,
-                 import_failure_reason: Optional[pulumi.Input[str]] = None,
-                 import_job: Optional[pulumi.Input[str]] = None,
-                 import_time: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 protection_level: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -42,18 +32,7 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] algorithm: Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[pulumi.InputType['KeyOperationAttestationArgs']] attestation: Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-        :param pulumi.Input[str] create_time: Output only. The time at which this CryptoKeyVersion was created.
-        :param pulumi.Input[str] destroy_event_time: Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-        :param pulumi.Input[str] destroy_time: Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
         :param pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
-        :param pulumi.Input[str] generate_time: Output only. The time this CryptoKeyVersion's key material was generated.
-        :param pulumi.Input[str] import_failure_reason: Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-        :param pulumi.Input[str] import_job: Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-        :param pulumi.Input[str] import_time: Output only. The time at which this CryptoKeyVersion's key material was imported.
-        :param pulumi.Input[str] name: Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-        :param pulumi.Input[str] protection_level: Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
         """
         if __name__ is not None:
@@ -73,34 +52,34 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['algorithm'] = algorithm
-            __props__['attestation'] = attestation
-            __props__['create_time'] = create_time
             if crypto_key_versions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key_versions_id'")
             __props__['crypto_key_versions_id'] = crypto_key_versions_id
             if crypto_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_keys_id'")
             __props__['crypto_keys_id'] = crypto_keys_id
-            __props__['destroy_event_time'] = destroy_event_time
-            __props__['destroy_time'] = destroy_time
             __props__['external_protection_level_options'] = external_protection_level_options
-            __props__['generate_time'] = generate_time
-            __props__['import_failure_reason'] = import_failure_reason
-            __props__['import_job'] = import_job
-            __props__['import_time'] = import_time
             if key_rings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_rings_id'")
             __props__['key_rings_id'] = key_rings_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['protection_level'] = protection_level
             __props__['state'] = state
+            __props__['algorithm'] = None
+            __props__['attestation'] = None
+            __props__['create_time'] = None
+            __props__['destroy_event_time'] = None
+            __props__['destroy_time'] = None
+            __props__['generate_time'] = None
+            __props__['import_failure_reason'] = None
+            __props__['import_job'] = None
+            __props__['import_time'] = None
+            __props__['name'] = None
+            __props__['protection_level'] = None
         super(KeyRingCryptoKeyCryptoKeyVersion, __self__).__init__(
             'google-cloud:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion',
             resource_name,
@@ -123,7 +102,124 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["algorithm"] = None
+        __props__["attestation"] = None
+        __props__["create_time"] = None
+        __props__["destroy_event_time"] = None
+        __props__["destroy_time"] = None
+        __props__["external_protection_level_options"] = None
+        __props__["generate_time"] = None
+        __props__["import_failure_reason"] = None
+        __props__["import_job"] = None
+        __props__["import_time"] = None
+        __props__["name"] = None
+        __props__["protection_level"] = None
+        __props__["state"] = None
         return KeyRingCryptoKeyCryptoKeyVersion(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Output[str]:
+        """
+        The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def attestation(self) -> pulumi.Output['outputs.KeyOperationAttestationResponse']:
+        """
+        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+        """
+        return pulumi.get(self, "attestation")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this CryptoKeyVersion was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="destroyEventTime")
+    def destroy_event_time(self) -> pulumi.Output[str]:
+        """
+        The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+        """
+        return pulumi.get(self, "destroy_event_time")
+
+    @property
+    @pulumi.getter(name="destroyTime")
+    def destroy_time(self) -> pulumi.Output[str]:
+        """
+        The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+        """
+        return pulumi.get(self, "destroy_time")
+
+    @property
+    @pulumi.getter(name="externalProtectionLevelOptions")
+    def external_protection_level_options(self) -> pulumi.Output['outputs.ExternalProtectionLevelOptionsResponse']:
+        """
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        """
+        return pulumi.get(self, "external_protection_level_options")
+
+    @property
+    @pulumi.getter(name="generateTime")
+    def generate_time(self) -> pulumi.Output[str]:
+        """
+        The time this CryptoKeyVersion's key material was generated.
+        """
+        return pulumi.get(self, "generate_time")
+
+    @property
+    @pulumi.getter(name="importFailureReason")
+    def import_failure_reason(self) -> pulumi.Output[str]:
+        """
+        The root cause of an import failure. Only present if state is IMPORT_FAILED.
+        """
+        return pulumi.get(self, "import_failure_reason")
+
+    @property
+    @pulumi.getter(name="importJob")
+    def import_job(self) -> pulumi.Output[str]:
+        """
+        The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+        """
+        return pulumi.get(self, "import_job")
+
+    @property
+    @pulumi.getter(name="importTime")
+    def import_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this CryptoKeyVersion's key material was imported.
+        """
+        return pulumi.get(self, "import_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> pulumi.Output[str]:
+        """
+        The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+        """
+        return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

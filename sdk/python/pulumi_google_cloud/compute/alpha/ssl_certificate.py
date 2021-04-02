@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['SslCertificate']
@@ -117,7 +118,133 @@ class SslCertificate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["certificate"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["expire_time"] = None
+        __props__["kind"] = None
+        __props__["managed"] = None
+        __props__["name"] = None
+        __props__["private_key"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["self_managed"] = None
+        __props__["subject_alternative_names"] = None
+        __props__["type"] = None
         return SslCertificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Output[str]:
+        """
+        A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Expire time of the certificate. RFC3339
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def managed(self) -> pulumi.Output['outputs.SslCertificateManagedSslCertificateResponse']:
+        """
+        Configuration and status of a managed SSL certificate.
+        """
+        return pulumi.get(self, "managed")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Output[str]:
+        """
+        A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="selfManaged")
+    def self_managed(self) -> pulumi.Output['outputs.SslCertificateSelfManagedSslCertificateResponse']:
+        """
+        Configuration and status of a self-managed SSL certificate.
+        """
+        return pulumi.get(self, "self_managed")
+
+    @property
+    @pulumi.getter(name="subjectAlternativeNames")
+    def subject_alternative_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output Only] Domains associated with the certificate via Subject Alternative Name.
+        """
+        return pulumi.get(self, "subject_alternative_names")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

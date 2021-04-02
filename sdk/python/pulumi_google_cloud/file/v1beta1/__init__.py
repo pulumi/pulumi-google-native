@@ -6,6 +6,7 @@
 from .backup import *
 from .instance import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

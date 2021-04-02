@@ -9,6 +9,7 @@ from .namespace_service import *
 from .namespace_service_endpoint import *
 from .namespace_service_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['EvaluationJob']
@@ -53,6 +54,16 @@ class EvaluationJob(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['annotation_spec_set'] = None
+            __props__['attempts'] = None
+            __props__['create_time'] = None
+            __props__['description'] = None
+            __props__['evaluation_job_config'] = None
+            __props__['label_missing_ground_truth'] = None
+            __props__['model_version'] = None
+            __props__['name'] = None
+            __props__['schedule'] = None
+            __props__['state'] = None
         super(EvaluationJob, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:EvaluationJob',
             resource_name,
@@ -75,7 +86,97 @@ class EvaluationJob(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["annotation_spec_set"] = None
+        __props__["attempts"] = None
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["evaluation_job_config"] = None
+        __props__["label_missing_ground_truth"] = None
+        __props__["model_version"] = None
+        __props__["name"] = None
+        __props__["schedule"] = None
+        __props__["state"] = None
         return EvaluationJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="annotationSpecSet")
+    def annotation_spec_set(self) -> pulumi.Output[str]:
+        """
+        Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        """
+        return pulumi.get(self, "annotation_spec_set")
+
+    @property
+    @pulumi.getter
+    def attempts(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDatalabelingV1beta1AttemptResponse']]:
+        """
+        Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+        """
+        return pulumi.get(self, "attempts")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp of when this evaluation job was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Required. Description of the job. The description can be up to 25,000 characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="evaluationJobConfig")
+    def evaluation_job_config(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse']:
+        """
+        Required. Configuration details for the evaluation job.
+        """
+        return pulumi.get(self, "evaluation_job_config")
+
+    @property
+    @pulumi.getter(name="labelMissingGroundTruth")
+    def label_missing_ground_truth(self) -> pulumi.Output[bool]:
+        """
+        Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+        """
+        return pulumi.get(self, "label_missing_ground_truth")
+
+    @property
+    @pulumi.getter(name="modelVersion")
+    def model_version(self) -> pulumi.Output[str]:
+        """
+        Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+        """
+        return pulumi.get(self, "model_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Output[str]:
+        """
+        Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Describes the current state of the job.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

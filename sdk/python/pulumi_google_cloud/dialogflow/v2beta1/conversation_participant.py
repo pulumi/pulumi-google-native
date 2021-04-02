@@ -88,7 +88,34 @@ class ConversationParticipant(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["name"] = None
+        __props__["obfuscated_external_user_id"] = None
+        __props__["role"] = None
         return ConversationParticipant(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="obfuscatedExternalUserId")
+    def obfuscated_external_user_id(self) -> pulumi.Output[str]:
+        """
+        Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
+        """
+        return pulumi.get(self, "obfuscated_external_user_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Output[str]:
+        """
+        Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        """
+        return pulumi.get(self, "role")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

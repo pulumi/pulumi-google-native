@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatabaseIndex']
@@ -88,7 +89,43 @@ class DatabaseIndex(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["collection_id"] = None
+        __props__["fields"] = None
+        __props__["name"] = None
+        __props__["state"] = None
         return DatabaseIndex(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="collectionId")
+    def collection_id(self) -> pulumi.Output[str]:
+        """
+        The collection ID to which this index applies. Required.
+        """
+        return pulumi.get(self, "collection_id")
+
+    @property
+    @pulumi.getter
+    def fields(self) -> pulumi.Output[Sequence['outputs.GoogleFirestoreAdminV1beta1IndexFieldResponse']]:
+        """
+        The fields to index.
+        """
+        return pulumi.get(self, "fields")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the index. Output only.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state of the index. Output only.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

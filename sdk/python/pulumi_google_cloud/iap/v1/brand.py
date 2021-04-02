@@ -17,8 +17,6 @@ class Brand(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_title: Optional[pulumi.Input[str]] = None,
                  brands_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 org_internal_only: Optional[pulumi.Input[bool]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -30,8 +28,6 @@ class Brand(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-        :param pulumi.Input[str] name: Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-        :param pulumi.Input[bool] org_internal_only: Output only. Whether the brand is only intended for usage inside the G Suite organization only.
         :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen.
         """
         if __name__ is not None:
@@ -55,12 +51,12 @@ class Brand(pulumi.CustomResource):
             if brands_id is None and not opts.urn:
                 raise TypeError("Missing required property 'brands_id'")
             __props__['brands_id'] = brands_id
-            __props__['name'] = name
-            __props__['org_internal_only'] = org_internal_only
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['support_email'] = support_email
+            __props__['name'] = None
+            __props__['org_internal_only'] = None
         super(Brand, __self__).__init__(
             'google-cloud:iap/v1:Brand',
             resource_name,
@@ -83,7 +79,43 @@ class Brand(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["application_title"] = None
+        __props__["name"] = None
+        __props__["org_internal_only"] = None
+        __props__["support_email"] = None
         return Brand(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="applicationTitle")
+    def application_title(self) -> pulumi.Output[str]:
+        """
+        Application name displayed on OAuth consent screen.
+        """
+        return pulumi.get(self, "application_title")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgInternalOnly")
+    def org_internal_only(self) -> pulumi.Output[bool]:
+        """
+        Whether the brand is only intended for usage inside the G Suite organization only.
+        """
+        return pulumi.get(self, "org_internal_only")
+
+    @property
+    @pulumi.getter(name="supportEmail")
+    def support_email(self) -> pulumi.Output[str]:
+        """
+        Support email displayed on the OAuth consent screen.
+        """
+        return pulumi.get(self, "support_email")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationReplay']
@@ -18,11 +19,8 @@ class OrganizationReplay(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayConfigArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  replays_id: Optional[pulumi.Input[str]] = None,
-                 results_summary: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayResultsSummaryArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -32,9 +30,6 @@ class OrganizationReplay(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayConfigArgs']] config: Required. The configuration used for the `Replay`.
-        :param pulumi.Input[str] name: Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1ReplayResultsSummaryArgs']] results_summary: Output only. Summary statistics about the replayed log entries.
-        :param pulumi.Input[str] state: Output only. The current state of the `Replay`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,15 +52,15 @@ class OrganizationReplay(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             if replays_id is None and not opts.urn:
                 raise TypeError("Missing required property 'replays_id'")
             __props__['replays_id'] = replays_id
-            __props__['results_summary'] = results_summary
-            __props__['state'] = state
+            __props__['name'] = None
+            __props__['results_summary'] = None
+            __props__['state'] = None
         super(OrganizationReplay, __self__).__init__(
             'google-cloud:policysimulator/v1:OrganizationReplay',
             resource_name,
@@ -88,7 +83,43 @@ class OrganizationReplay(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["config"] = None
+        __props__["name"] = None
+        __props__["results_summary"] = None
+        __props__["state"] = None
         return OrganizationReplay(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output['outputs.GoogleCloudPolicysimulatorV1ReplayConfigResponse']:
+        """
+        Required. The configuration used for the `Replay`.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resultsSummary")
+    def results_summary(self) -> pulumi.Output['outputs.GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse']:
+        """
+        Summary statistics about the replayed log entries.
+        """
+        return pulumi.get(self, "results_summary")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the `Replay`.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

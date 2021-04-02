@@ -6,6 +6,7 @@
 from .app_authorized_certificate import *
 from .app_domain_mapping import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

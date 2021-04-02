@@ -15,11 +15,8 @@ class Folder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folders_id: Optional[pulumi.Input[str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -29,10 +26,7 @@ class Folder(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when the Folder was created. Assigned by the server.
         :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-        :param pulumi.Input[str] lifecycle_state: Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
-        :param pulumi.Input[str] name: Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
         :param pulumi.Input[str] parent: Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         """
         if __name__ is not None:
@@ -52,14 +46,14 @@ class Folder(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['display_name'] = display_name
             if folders_id is None and not opts.urn:
                 raise TypeError("Missing required property 'folders_id'")
             __props__['folders_id'] = folders_id
-            __props__['lifecycle_state'] = lifecycle_state
-            __props__['name'] = name
             __props__['parent'] = parent
+            __props__['create_time'] = None
+            __props__['lifecycle_state'] = None
+            __props__['name'] = None
         super(Folder, __self__).__init__(
             'google-cloud:cloudresourcemanager/v2:Folder',
             resource_name,
@@ -82,7 +76,52 @@ class Folder(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["display_name"] = None
+        __props__["lifecycle_state"] = None
+        __props__["name"] = None
+        __props__["parent"] = None
         return Folder(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp when the Folder was created. Assigned by the server.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> pulumi.Output[str]:
+        """
+        The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        """
+        return pulumi.get(self, "parent")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

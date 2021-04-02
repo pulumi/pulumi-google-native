@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AnnotationSpecSet']
@@ -53,6 +54,11 @@ class AnnotationSpecSet(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['annotation_specs'] = None
+            __props__['blocking_resources'] = None
+            __props__['description'] = None
+            __props__['display_name'] = None
+            __props__['name'] = None
         super(AnnotationSpecSet, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:AnnotationSpecSet',
             resource_name,
@@ -75,7 +81,52 @@ class AnnotationSpecSet(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["annotation_specs"] = None
+        __props__["blocking_resources"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
         return AnnotationSpecSet(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="annotationSpecs")
+    def annotation_specs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse']]:
+        """
+        Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        """
+        return pulumi.get(self, "annotation_specs")
+
+    @property
+    @pulumi.getter(name="blockingResources")
+    def blocking_resources(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The names of any related resources that are blocking changes to the annotation spec set.
+        """
+        return pulumi.get(self, "blocking_resources")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

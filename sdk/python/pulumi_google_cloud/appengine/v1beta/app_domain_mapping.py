@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AppDomainMapping']
@@ -84,7 +85,34 @@ class AppDomainMapping(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["name"] = None
+        __props__["resource_records"] = None
+        __props__["ssl_settings"] = None
         return AppDomainMapping(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceRecords")
+    def resource_records(self) -> pulumi.Output[Sequence['outputs.ResourceRecordResponse']]:
+        """
+        The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+        """
+        return pulumi.get(self, "resource_records")
+
+    @property
+    @pulumi.getter(name="sslSettings")
+    def ssl_settings(self) -> pulumi.Output['outputs.SslSettingsResponse']:
+        """
+        SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        """
+        return pulumi.get(self, "ssl_settings")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

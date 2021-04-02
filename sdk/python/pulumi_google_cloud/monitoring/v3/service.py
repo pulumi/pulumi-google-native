@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Service']
@@ -103,7 +104,88 @@ class Service(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_engine"] = None
+        __props__["cloud_endpoints"] = None
+        __props__["cluster_istio"] = None
+        __props__["custom"] = None
+        __props__["display_name"] = None
+        __props__["istio_canonical_service"] = None
+        __props__["mesh_istio"] = None
+        __props__["name"] = None
+        __props__["telemetry"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appEngine")
+    def app_engine(self) -> pulumi.Output['outputs.AppEngineResponse']:
+        """
+        Type used for App Engine services.
+        """
+        return pulumi.get(self, "app_engine")
+
+    @property
+    @pulumi.getter(name="cloudEndpoints")
+    def cloud_endpoints(self) -> pulumi.Output['outputs.CloudEndpointsResponse']:
+        """
+        Type used for Cloud Endpoints services.
+        """
+        return pulumi.get(self, "cloud_endpoints")
+
+    @property
+    @pulumi.getter(name="clusterIstio")
+    def cluster_istio(self) -> pulumi.Output['outputs.ClusterIstioResponse']:
+        """
+        Type used for Istio services that live in a Kubernetes cluster.
+        """
+        return pulumi.get(self, "cluster_istio")
+
+    @property
+    @pulumi.getter
+    def custom(self) -> pulumi.Output['outputs.CustomResponse']:
+        """
+        Custom service type.
+        """
+        return pulumi.get(self, "custom")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Name used for UI elements listing this Service.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="istioCanonicalService")
+    def istio_canonical_service(self) -> pulumi.Output['outputs.IstioCanonicalServiceResponse']:
+        """
+        Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+        """
+        return pulumi.get(self, "istio_canonical_service")
+
+    @property
+    @pulumi.getter(name="meshIstio")
+    def mesh_istio(self) -> pulumi.Output['outputs.MeshIstioResponse']:
+        """
+        Type used for Istio services scoped to an Istio mesh.
+        """
+        return pulumi.get(self, "mesh_istio")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def telemetry(self) -> pulumi.Output['outputs.TelemetryResponse']:
+        """
+        Configuration for how to query telemetry on a Service.
+        """
+        return pulumi.get(self, "telemetry")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

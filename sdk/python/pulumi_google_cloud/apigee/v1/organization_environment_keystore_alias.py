@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 
 __all__ = ['OrganizationEnvironmentKeystoreAlias']
 
@@ -66,6 +67,9 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            __props__['alias'] = None
+            __props__['certs_info'] = None
+            __props__['type'] = None
         super(OrganizationEnvironmentKeystoreAlias, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationEnvironmentKeystoreAlias',
             resource_name,
@@ -88,7 +92,34 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["alias"] = None
+        __props__["certs_info"] = None
+        __props__["type"] = None
         return OrganizationEnvironmentKeystoreAlias(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def alias(self) -> pulumi.Output[str]:
+        """
+        Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+        """
+        return pulumi.get(self, "alias")
+
+    @property
+    @pulumi.getter(name="certsInfo")
+    def certs_info(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1CertificateResponse']:
+        """
+        Chain of certificates under this alias.
+        """
+        return pulumi.get(self, "certs_info")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Type of alias.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

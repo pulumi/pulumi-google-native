@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Dataset']
@@ -53,6 +54,14 @@ class Dataset(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['blocking_resources'] = None
+            __props__['create_time'] = None
+            __props__['data_item_count'] = None
+            __props__['description'] = None
+            __props__['display_name'] = None
+            __props__['input_configs'] = None
+            __props__['last_migrate_time'] = None
+            __props__['name'] = None
         super(Dataset, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:Dataset',
             resource_name,
@@ -75,7 +84,79 @@ class Dataset(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["blocking_resources"] = None
+        __props__["create_time"] = None
+        __props__["data_item_count"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["input_configs"] = None
+        __props__["last_migrate_time"] = None
+        __props__["name"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="blockingResources")
+    def blocking_resources(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The names of any related resources that are blocking changes to the dataset.
+        """
+        return pulumi.get(self, "blocking_resources")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time the dataset is created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dataItemCount")
+    def data_item_count(self) -> pulumi.Output[str]:
+        """
+        The number of data items in the dataset.
+        """
+        return pulumi.get(self, "data_item_count")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The display name of the dataset. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="inputConfigs")
+    def input_configs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDatalabelingV1beta1InputConfigResponse']]:
+        """
+        This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+        """
+        return pulumi.get(self, "input_configs")
+
+    @property
+    @pulumi.getter(name="lastMigrateTime")
+    def last_migrate_time(self) -> pulumi.Output[str]:
+        """
+        Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
+        """
+        return pulumi.get(self, "last_migrate_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

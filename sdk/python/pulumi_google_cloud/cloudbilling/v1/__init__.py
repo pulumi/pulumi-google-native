@@ -6,6 +6,7 @@
 from .billing_account import *
 from .billing_account_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

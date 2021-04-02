@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Service']
@@ -16,26 +17,18 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 endpoint_uri: Optional[pulumi.Input[str]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
                  metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
-                 metadata_management_activity: Optional[pulumi.Input[pulumi.InputType['MetadataManagementActivityArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 state_message: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
-                 uid: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,23 +37,15 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] artifact_gcs_uri: Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-        :param pulumi.Input[str] create_time: Output only. The time when the metastore service was created.
-        :param pulumi.Input[str] endpoint_uri: Output only. The URI of the endpoint used to access the metastore service.
         :param pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
         :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
-        :param pulumi.Input[pulumi.InputType['MetadataManagementActivityArgs']] metadata_management_activity: Output only. The metadata management activities of the metastore service.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-        :param pulumi.Input[str] state: Output only. The current state of the metastore service.
-        :param pulumi.Input[str] state_message: Output only. Additional information about the current state of the metastore service, if available.
         :param pulumi.Input[str] tier: The tier of the service.
-        :param pulumi.Input[str] uid: Output only. The globally unique resource identifier of the metastore service.
-        :param pulumi.Input[str] update_time: Output only. The time when the metastore service was last updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,9 +64,6 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['artifact_gcs_uri'] = artifact_gcs_uri
-            __props__['create_time'] = create_time
-            __props__['endpoint_uri'] = endpoint_uri
             __props__['hive_metastore_config'] = hive_metastore_config
             __props__['labels'] = labels
             if locations_id is None and not opts.urn:
@@ -89,7 +71,6 @@ class Service(pulumi.CustomResource):
             __props__['locations_id'] = locations_id
             __props__['maintenance_window'] = maintenance_window
             __props__['metadata_integration'] = metadata_integration
-            __props__['metadata_management_activity'] = metadata_management_activity
             __props__['name'] = name
             __props__['network'] = network
             __props__['port'] = port
@@ -100,11 +81,15 @@ class Service(pulumi.CustomResource):
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__['services_id'] = services_id
-            __props__['state'] = state
-            __props__['state_message'] = state_message
             __props__['tier'] = tier
-            __props__['uid'] = uid
-            __props__['update_time'] = update_time
+            __props__['artifact_gcs_uri'] = None
+            __props__['create_time'] = None
+            __props__['endpoint_uri'] = None
+            __props__['metadata_management_activity'] = None
+            __props__['state'] = None
+            __props__['state_message'] = None
+            __props__['uid'] = None
+            __props__['update_time'] = None
         super(Service, __self__).__init__(
             'google-cloud:metastore/v1alpha:Service',
             resource_name,
@@ -127,7 +112,160 @@ class Service(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["artifact_gcs_uri"] = None
+        __props__["create_time"] = None
+        __props__["endpoint_uri"] = None
+        __props__["hive_metastore_config"] = None
+        __props__["labels"] = None
+        __props__["maintenance_window"] = None
+        __props__["metadata_integration"] = None
+        __props__["metadata_management_activity"] = None
+        __props__["name"] = None
+        __props__["network"] = None
+        __props__["port"] = None
+        __props__["release_channel"] = None
+        __props__["state"] = None
+        __props__["state_message"] = None
+        __props__["tier"] = None
+        __props__["uid"] = None
+        __props__["update_time"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="artifactGcsUri")
+    def artifact_gcs_uri(self) -> pulumi.Output[str]:
+        """
+        A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+        """
+        return pulumi.get(self, "artifact_gcs_uri")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the metastore service was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> pulumi.Output[str]:
+        """
+        The URI of the endpoint used to access the metastore service.
+        """
+        return pulumi.get(self, "endpoint_uri")
+
+    @property
+    @pulumi.getter(name="hiveMetastoreConfig")
+    def hive_metastore_config(self) -> pulumi.Output['outputs.HiveMetastoreConfigResponse']:
+        """
+        Configuration information specific to running Hive metastore software as the metastore service.
+        """
+        return pulumi.get(self, "hive_metastore_config")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-defined labels for the metastore service.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.MaintenanceWindowResponse']:
+        """
+        The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="metadataIntegration")
+    def metadata_integration(self) -> pulumi.Output['outputs.MetadataIntegrationResponse']:
+        """
+        The setting that defines how metastore metadata should be integrated with external services and systems.
+        """
+        return pulumi.get(self, "metadata_integration")
+
+    @property
+    @pulumi.getter(name="metadataManagementActivity")
+    def metadata_management_activity(self) -> pulumi.Output['outputs.MetadataManagementActivityResponse']:
+        """
+        The metadata management activities of the metastore service.
+        """
+        return pulumi.get(self, "metadata_management_activity")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[str]:
+        """
+        Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[int]:
+        """
+        The TCP port at which the metastore service is reached. Default: 9083.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> pulumi.Output[str]:
+        """
+        Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        """
+        return pulumi.get(self, "release_channel")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the metastore service.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateMessage")
+    def state_message(self) -> pulumi.Output[str]:
+        """
+        Additional information about the current state of the metastore service, if available.
+        """
+        return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Output[str]:
+        """
+        The tier of the service.
+        """
+        return pulumi.get(self, "tier")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        The globally unique resource identifier of the metastore service.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time when the metastore service was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

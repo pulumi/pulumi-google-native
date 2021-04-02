@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .billing_account_budget import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

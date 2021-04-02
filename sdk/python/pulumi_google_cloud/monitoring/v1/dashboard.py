@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Dashboard']
@@ -93,7 +94,70 @@ class Dashboard(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["column_layout"] = None
+        __props__["display_name"] = None
+        __props__["etag"] = None
+        __props__["grid_layout"] = None
+        __props__["mosaic_layout"] = None
+        __props__["name"] = None
+        __props__["row_layout"] = None
         return Dashboard(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="columnLayout")
+    def column_layout(self) -> pulumi.Output['outputs.ColumnLayoutResponse']:
+        """
+        The content is divided into equally spaced columns and the widgets are arranged vertically.
+        """
+        return pulumi.get(self, "column_layout")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The mutable, human-readable name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="gridLayout")
+    def grid_layout(self) -> pulumi.Output['outputs.GridLayoutResponse']:
+        """
+        Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
+        """
+        return pulumi.get(self, "grid_layout")
+
+    @property
+    @pulumi.getter(name="mosaicLayout")
+    def mosaic_layout(self) -> pulumi.Output['outputs.MosaicLayoutResponse']:
+        """
+        The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
+        """
+        return pulumi.get(self, "mosaic_layout")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Immutable. The resource name of the dashboard.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rowLayout")
+    def row_layout(self) -> pulumi.Output['outputs.RowLayoutResponse']:
+        """
+        The content is divided into equally spaced rows and the widgets are arranged horizontally.
+        """
+        return pulumi.get(self, "row_layout")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

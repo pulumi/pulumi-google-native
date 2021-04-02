@@ -17,10 +17,8 @@ __all__ = [
     'GoogleCloudDatacatalogV1beta1FieldTypeArgs',
     'GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs',
     'GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs',
-    'GoogleCloudDatacatalogV1beta1GcsFileSpecArgs',
     'GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs',
     'GoogleCloudDatacatalogV1beta1SchemaArgs',
-    'GoogleCloudDatacatalogV1beta1SystemTimestampsArgs',
     'GoogleCloudDatacatalogV1beta1TableSpecArgs',
     'GoogleCloudDatacatalogV1beta1ViewSpecArgs',
     'PolicyArgs',
@@ -156,90 +154,27 @@ class ExprArgs:
 
 @pulumi.input_type
 class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs:
-    def __init__(__self__, *,
-                 dataset: Optional[pulumi.Input[str]] = None,
-                 shard_count: Optional[pulumi.Input[str]] = None,
-                 table_prefix: Optional[pulumi.Input[str]] = None):
+    def __init__(__self__):
         """
         Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding
-        :param pulumi.Input[str] dataset: Output only. The Data Catalog resource name of the dataset entry the current table belongs to, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
-        :param pulumi.Input[str] shard_count: Output only. Total number of shards.
-        :param pulumi.Input[str] table_prefix: Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `table_prefix` is `MyTable`.
         """
-        if dataset is not None:
-            pulumi.set(__self__, "dataset", dataset)
-        if shard_count is not None:
-            pulumi.set(__self__, "shard_count", shard_count)
-        if table_prefix is not None:
-            pulumi.set(__self__, "table_prefix", table_prefix)
-
-    @property
-    @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The Data Catalog resource name of the dataset entry the current table belongs to, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
-        """
-        return pulumi.get(self, "dataset")
-
-    @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dataset", value)
-
-    @property
-    @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Total number of shards.
-        """
-        return pulumi.get(self, "shard_count")
-
-    @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "shard_count", value)
-
-    @property
-    @pulumi.getter(name="tablePrefix")
-    def table_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `table_prefix` is `MyTable`.
-        """
-        return pulumi.get(self, "table_prefix")
-
-    @table_prefix.setter
-    def table_prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "table_prefix", value)
+        pass
 
 
 @pulumi.input_type
 class GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs:
     def __init__(__self__, *,
-                 table_source_type: Optional[pulumi.Input[str]] = None,
                  table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1TableSpecArgs']] = None,
                  view_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1ViewSpecArgs']] = None):
         """
         Describes a BigQuery table.
-        :param pulumi.Input[str] table_source_type: Output only. The table source type.
         :param pulumi.Input['GoogleCloudDatacatalogV1beta1TableSpecArgs'] table_spec: Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`.
         :param pulumi.Input['GoogleCloudDatacatalogV1beta1ViewSpecArgs'] view_spec: Table view specification. This field should only be populated if `table_source_type` is `BIGQUERY_VIEW`.
         """
-        if table_source_type is not None:
-            pulumi.set(__self__, "table_source_type", table_source_type)
         if table_spec is not None:
             pulumi.set(__self__, "table_spec", table_spec)
         if view_spec is not None:
             pulumi.set(__self__, "view_spec", view_spec)
-
-    @property
-    @pulumi.getter(name="tableSourceType")
-    def table_source_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The table source type.
-        """
-        return pulumi.get(self, "table_source_type")
-
-    @table_source_type.setter
-    def table_source_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "table_source_type", value)
 
     @property
     @pulumi.getter(name="tableSpec")
@@ -434,75 +369,15 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDatacatalogV1beta1GcsFileSpecArgs:
-    def __init__(__self__, *,
-                 file_path: Optional[pulumi.Input[str]] = None,
-                 gcs_timestamps: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SystemTimestampsArgs']] = None,
-                 size_bytes: Optional[pulumi.Input[str]] = None):
-        """
-        Specifications of a single file in Cloud Storage.
-        :param pulumi.Input[str] file_path: Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
-        :param pulumi.Input['GoogleCloudDatacatalogV1beta1SystemTimestampsArgs'] gcs_timestamps: Output only. Timestamps about the Cloud Storage file.
-        :param pulumi.Input[str] size_bytes: Output only. The size of the file, in bytes.
-        """
-        if file_path is not None:
-            pulumi.set(__self__, "file_path", file_path)
-        if gcs_timestamps is not None:
-            pulumi.set(__self__, "gcs_timestamps", gcs_timestamps)
-        if size_bytes is not None:
-            pulumi.set(__self__, "size_bytes", size_bytes)
-
-    @property
-    @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
-        """
-        return pulumi.get(self, "file_path")
-
-    @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "file_path", value)
-
-    @property
-    @pulumi.getter(name="gcsTimestamps")
-    def gcs_timestamps(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SystemTimestampsArgs']]:
-        """
-        Output only. Timestamps about the Cloud Storage file.
-        """
-        return pulumi.get(self, "gcs_timestamps")
-
-    @gcs_timestamps.setter
-    def gcs_timestamps(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SystemTimestampsArgs']]):
-        pulumi.set(self, "gcs_timestamps", value)
-
-    @property
-    @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The size of the file, in bytes.
-        """
-        return pulumi.get(self, "size_bytes")
-
-    @size_bytes.setter
-    def size_bytes(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "size_bytes", value)
-
-
-@pulumi.input_type
 class GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs:
     def __init__(__self__, *,
-                 file_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 sample_gcs_file_specs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFileSpecArgs']]]] = None):
+                 file_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Describes a Cloud Storage fileset entry.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_patterns: Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFileSpecArgs']]] sample_gcs_file_specs: Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here.
         """
         if file_patterns is not None:
             pulumi.set(__self__, "file_patterns", file_patterns)
-        if sample_gcs_file_specs is not None:
-            pulumi.set(__self__, "sample_gcs_file_specs", sample_gcs_file_specs)
 
     @property
     @pulumi.getter(name="filePatterns")
@@ -515,18 +390,6 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs:
     @file_patterns.setter
     def file_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "file_patterns", value)
-
-    @property
-    @pulumi.getter(name="sampleGcsFileSpecs")
-    def sample_gcs_file_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFileSpecArgs']]]]:
-        """
-        Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here.
-        """
-        return pulumi.get(self, "sample_gcs_file_specs")
-
-    @sample_gcs_file_specs.setter
-    def sample_gcs_file_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFileSpecArgs']]]]):
-        pulumi.set(self, "sample_gcs_file_specs", value)
 
 
 @pulumi.input_type
@@ -554,107 +417,21 @@ class GoogleCloudDatacatalogV1beta1SchemaArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDatacatalogV1beta1SystemTimestampsArgs:
-    def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 expire_time: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
-        """
-        Timestamps about this resource according to a particular system.
-        :param pulumi.Input[str] create_time: The creation time of the resource within the given system.
-        :param pulumi.Input[str] expire_time: Output only. The expiration time of the resource within the given system. Currently only apllicable to BigQuery resources.
-        :param pulumi.Input[str] update_time: The last-modified time of the resource within the given system.
-        """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
-        if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The creation time of the resource within the given system.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
-
-    @property
-    @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The expiration time of the resource within the given system. Currently only apllicable to BigQuery resources.
-        """
-        return pulumi.get(self, "expire_time")
-
-    @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expire_time", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The last-modified time of the resource within the given system.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
-
-@pulumi.input_type
 class GoogleCloudDatacatalogV1beta1TableSpecArgs:
-    def __init__(__self__, *,
-                 grouped_entry: Optional[pulumi.Input[str]] = None):
+    def __init__(__self__):
         """
         Normal BigQuery table spec.
-        :param pulumi.Input[str] grouped_entry: Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty.
         """
-        if grouped_entry is not None:
-            pulumi.set(__self__, "grouped_entry", grouped_entry)
-
-    @property
-    @pulumi.getter(name="groupedEntry")
-    def grouped_entry(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty.
-        """
-        return pulumi.get(self, "grouped_entry")
-
-    @grouped_entry.setter
-    def grouped_entry(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "grouped_entry", value)
+        pass
 
 
 @pulumi.input_type
 class GoogleCloudDatacatalogV1beta1ViewSpecArgs:
-    def __init__(__self__, *,
-                 view_query: Optional[pulumi.Input[str]] = None):
+    def __init__(__self__):
         """
         Table view specification.
-        :param pulumi.Input[str] view_query: Output only. The query that defines the table view.
         """
-        if view_query is not None:
-            pulumi.set(__self__, "view_query", view_query)
-
-    @property
-    @pulumi.getter(name="viewQuery")
-    def view_query(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The query that defines the table view.
-        """
-        return pulumi.get(self, "view_query")
-
-    @view_query.setter
-    def view_query(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "view_query", value)
+        pass
 
 
 @pulumi.input_type

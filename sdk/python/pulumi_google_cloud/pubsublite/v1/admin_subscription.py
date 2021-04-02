@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AdminSubscription']
@@ -85,7 +86,34 @@ class AdminSubscription(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["delivery_config"] = None
+        __props__["name"] = None
+        __props__["topic"] = None
         return AdminSubscription(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deliveryConfig")
+    def delivery_config(self) -> pulumi.Output['outputs.DeliveryConfigResponse']:
+        """
+        The settings for this subscription's message delivery.
+        """
+        return pulumi.get(self, "delivery_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Output[str]:
+        """
+        The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+        """
+        return pulumi.get(self, "topic")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ from .domain import *
 from .domain_iam_policy import *
 from .peering_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

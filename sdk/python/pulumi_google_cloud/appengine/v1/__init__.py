@@ -9,6 +9,7 @@ from .app_domain_mapping import *
 from .app_firewall_ingress_rule import *
 from .app_service_version import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

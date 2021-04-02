@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ConversationProfile']
@@ -18,7 +19,6 @@ class ConversationProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_agent_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']]] = None,
                  conversation_profiles_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']]] = None,
                  human_agent_handoff_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']]] = None,
@@ -30,7 +30,6 @@ class ConversationProfile(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -40,7 +39,6 @@ class ConversationProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']] automated_agent_config: Configuration for an automated agent to use with this profile.
-        :param pulumi.Input[str] create_time: Output only. Create time of the conversation profile.
         :param pulumi.Input[str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
@@ -50,7 +48,6 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']] new_message_event_notification_config: Configuration for publishing new message events. Event will be sent in format of ConversationEvent
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']] notification_config: Configuration for publishing conversation lifecycle events.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] stt_config: Settings for speech transcription.
-        :param pulumi.Input[str] update_time: Output only. Update time of the conversation profile.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +70,6 @@ class ConversationProfile(pulumi.CustomResource):
             if conversation_profiles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'conversation_profiles_id'")
             __props__['conversation_profiles_id'] = conversation_profiles_id
-            __props__['create_time'] = create_time
             __props__['display_name'] = display_name
             __props__['human_agent_assistant_config'] = human_agent_assistant_config
             __props__['human_agent_handoff_config'] = human_agent_handoff_config
@@ -89,7 +85,8 @@ class ConversationProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['stt_config'] = stt_config
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['update_time'] = None
         super(ConversationProfile, __self__).__init__(
             'google-cloud:dialogflow/v2:ConversationProfile',
             resource_name,
@@ -112,7 +109,115 @@ class ConversationProfile(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["automated_agent_config"] = None
+        __props__["create_time"] = None
+        __props__["display_name"] = None
+        __props__["human_agent_assistant_config"] = None
+        __props__["human_agent_handoff_config"] = None
+        __props__["language_code"] = None
+        __props__["logging_config"] = None
+        __props__["name"] = None
+        __props__["new_message_event_notification_config"] = None
+        __props__["notification_config"] = None
+        __props__["stt_config"] = None
+        __props__["update_time"] = None
         return ConversationProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="automatedAgentConfig")
+    def automated_agent_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2AutomatedAgentConfigResponse']:
+        """
+        Configuration for an automated agent to use with this profile.
+        """
+        return pulumi.get(self, "automated_agent_config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Create time of the conversation profile.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. Human readable name for this profile. Max length 1024 bytes.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="humanAgentAssistantConfig")
+    def human_agent_assistant_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse']:
+        """
+        Configuration for agent assistance to use with this profile.
+        """
+        return pulumi.get(self, "human_agent_assistant_config")
+
+    @property
+    @pulumi.getter(name="humanAgentHandoffConfig")
+    def human_agent_handoff_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse']:
+        """
+        Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+        """
+        return pulumi.get(self, "human_agent_handoff_config")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[str]:
+        """
+        Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2LoggingConfigResponse']:
+        """
+        Configuration for logging conversation lifecycle events.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="newMessageEventNotificationConfig")
+    def new_message_event_notification_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2NotificationConfigResponse']:
+        """
+        Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+        """
+        return pulumi.get(self, "new_message_event_notification_config")
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2NotificationConfigResponse']:
+        """
+        Configuration for publishing conversation lifecycle events.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @property
+    @pulumi.getter(name="sttConfig")
+    def stt_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2SpeechToTextConfigResponse']:
+        """
+        Settings for speech transcription.
+        """
+        return pulumi.get(self, "stt_config")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Update time of the conversation profile.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

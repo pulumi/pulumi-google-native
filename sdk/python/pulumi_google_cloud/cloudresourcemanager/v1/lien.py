@@ -85,7 +85,61 @@ class Lien(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["name"] = None
+        __props__["origin"] = None
+        __props__["parent"] = None
+        __props__["reason"] = None
+        __props__["restrictions"] = None
         return Lien(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of this Lien.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def origin(self) -> pulumi.Output[str]:
+        """
+        A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'
+        """
+        return pulumi.get(self, "origin")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234`
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> pulumi.Output[str]:
+        """
+        Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def restrictions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']
+        """
+        return pulumi.get(self, "restrictions")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

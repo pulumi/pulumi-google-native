@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Domain']
@@ -41,17 +42,17 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] audit_logs_enabled: Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
-        :param pulumi.Input[str] create_time: Output only. The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
-        :param pulumi.Input[str] fqdn: Output only. Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+        :param pulumi.Input[str] create_time: The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+        :param pulumi.Input[str] fqdn: Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] managed_identities_admin_name: Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
-        :param pulumi.Input[str] name: Output only. Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        :param pulumi.Input[str] name: Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-        :param pulumi.Input[str] state: Output only. The current state of this domain.
-        :param pulumi.Input[str] status_message: Output only. Additional information about the current status of this domain, if available.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustArgs']]]] trusts: Output only. The current trusts associated with the domain.
-        :param pulumi.Input[str] update_time: Output only. Last update time. Synthetic field is populated automatically by CCFE.
+        :param pulumi.Input[str] state: The current state of this domain.
+        :param pulumi.Input[str] status_message: Additional information about the current status of this domain, if available.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustArgs']]]] trusts: The current trusts associated with the domain.
+        :param pulumi.Input[str] update_time: Last update time. Synthetic field is populated automatically by CCFE.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,7 +112,124 @@ class Domain(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["audit_logs_enabled"] = None
+        __props__["authorized_networks"] = None
+        __props__["create_time"] = None
+        __props__["fqdn"] = None
+        __props__["labels"] = None
+        __props__["locations"] = None
+        __props__["managed_identities_admin_name"] = None
+        __props__["name"] = None
+        __props__["reserved_ip_range"] = None
+        __props__["state"] = None
+        __props__["status_message"] = None
+        __props__["trusts"] = None
+        __props__["update_time"] = None
         return Domain(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
+
+    @property
+    @pulumi.getter(name="authorizedNetworks")
+    def authorized_networks(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
+        """
+        return pulumi.get(self, "authorized_networks")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> pulumi.Output[str]:
+        """
+        Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Resource labels to represent user provided metadata
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
+    @pulumi.getter(name="managedIdentitiesAdminName")
+    def managed_identities_admin_name(self) -> pulumi.Output[str]:
+        """
+        Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
+        """
+        return pulumi.get(self, "managed_identities_admin_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> pulumi.Output[str]:
+        """
+        Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        """
+        return pulumi.get(self, "reserved_ip_range")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of this domain.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        Additional information about the current status of this domain, if available.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def trusts(self) -> pulumi.Output[Sequence['outputs.TrustResponse']]:
+        """
+        The current trusts associated with the domain.
+        """
+        return pulumi.get(self, "trusts")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Last update time. Synthetic field is populated automatically by CCFE.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

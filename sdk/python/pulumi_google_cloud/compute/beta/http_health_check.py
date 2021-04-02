@@ -110,7 +110,115 @@ class HttpHealthCheck(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["check_interval_sec"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["healthy_threshold"] = None
+        __props__["host"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["port"] = None
+        __props__["request_path"] = None
+        __props__["self_link"] = None
+        __props__["timeout_sec"] = None
+        __props__["unhealthy_threshold"] = None
         return HttpHealthCheck(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="checkIntervalSec")
+    def check_interval_sec(self) -> pulumi.Output[int]:
+        """
+        How often (in seconds) to send a health check. The default value is 5 seconds.
+        """
+        return pulumi.get(self, "check_interval_sec")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> pulumi.Output[int]:
+        """
+        A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Output[str]:
+        """
+        The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[int]:
+        """
+        The TCP port number for the HTTP health check request. The default value is 80.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="requestPath")
+    def request_path(self) -> pulumi.Output[str]:
+        """
+        The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+        """
+        return pulumi.get(self, "request_path")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="timeoutSec")
+    def timeout_sec(self) -> pulumi.Output[int]:
+        """
+        How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
+        """
+        return pulumi.get(self, "timeout_sec")
+
+    @property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> pulumi.Output[int]:
+        """
+        A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

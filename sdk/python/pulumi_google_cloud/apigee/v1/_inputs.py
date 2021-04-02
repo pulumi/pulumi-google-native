@@ -9,10 +9,8 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 
 __all__ = [
-    'GoogleCloudApigeeV1ApiProductRefArgs',
     'GoogleCloudApigeeV1AttributeArgs',
     'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs',
-    'GoogleCloudApigeeV1CredentialArgs',
     'GoogleCloudApigeeV1CustomReportMetricArgs',
     'GoogleCloudApigeeV1DatastoreConfigArgs',
     'GoogleCloudApigeeV1DateRangeArgs',
@@ -36,45 +34,6 @@ __all__ = [
     'GoogleIamV1PolicyArgs',
     'GoogleTypeExprArgs',
 ]
-
-@pulumi.input_type
-class GoogleCloudApigeeV1ApiProductRefArgs:
-    def __init__(__self__, *,
-                 apiproduct: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] apiproduct: Name of the API product.
-        :param pulumi.Input[str] status: Status of the API product.
-        """
-        if apiproduct is not None:
-            pulumi.set(__self__, "apiproduct", apiproduct)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def apiproduct(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the API product.
-        """
-        return pulumi.get(self, "apiproduct")
-
-    @apiproduct.setter
-    def apiproduct(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "apiproduct", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the API product.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
 
 @pulumi.input_type
 class GoogleCloudApigeeV1AttributeArgs:
@@ -170,141 +129,6 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
-
-
-@pulumi.input_type
-class GoogleCloudApigeeV1CredentialArgs:
-    def __init__(__self__, *,
-                 api_products: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ApiProductRefArgs']]]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]] = None,
-                 consumer_key: Optional[pulumi.Input[str]] = None,
-                 consumer_secret: Optional[pulumi.Input[str]] = None,
-                 expires_at: Optional[pulumi.Input[str]] = None,
-                 issued_at: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ApiProductRefArgs']]] api_products: List of API products this credential can be used for.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]] attributes: List of attributes associated with this credential.
-        :param pulumi.Input[str] consumer_key: Consumer key.
-        :param pulumi.Input[str] consumer_secret: Secret key.
-        :param pulumi.Input[str] expires_at: Time the credential will expire in milliseconds since epoch.
-        :param pulumi.Input[str] issued_at: Time the credential was issued in milliseconds since epoch.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
-        :param pulumi.Input[str] status: Status of the credential.
-        """
-        if api_products is not None:
-            pulumi.set(__self__, "api_products", api_products)
-        if attributes is not None:
-            pulumi.set(__self__, "attributes", attributes)
-        if consumer_key is not None:
-            pulumi.set(__self__, "consumer_key", consumer_key)
-        if consumer_secret is not None:
-            pulumi.set(__self__, "consumer_secret", consumer_secret)
-        if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
-        if issued_at is not None:
-            pulumi.set(__self__, "issued_at", issued_at)
-        if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="apiProducts")
-    def api_products(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ApiProductRefArgs']]]]:
-        """
-        List of API products this credential can be used for.
-        """
-        return pulumi.get(self, "api_products")
-
-    @api_products.setter
-    def api_products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ApiProductRefArgs']]]]):
-        pulumi.set(self, "api_products", value)
-
-    @property
-    @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]]:
-        """
-        List of attributes associated with this credential.
-        """
-        return pulumi.get(self, "attributes")
-
-    @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1AttributeArgs']]]]):
-        pulumi.set(self, "attributes", value)
-
-    @property
-    @pulumi.getter(name="consumerKey")
-    def consumer_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Consumer key.
-        """
-        return pulumi.get(self, "consumer_key")
-
-    @consumer_key.setter
-    def consumer_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "consumer_key", value)
-
-    @property
-    @pulumi.getter(name="consumerSecret")
-    def consumer_secret(self) -> Optional[pulumi.Input[str]]:
-        """
-        Secret key.
-        """
-        return pulumi.get(self, "consumer_secret")
-
-    @consumer_secret.setter
-    def consumer_secret(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "consumer_secret", value)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time the credential will expire in milliseconds since epoch.
-        """
-        return pulumi.get(self, "expires_at")
-
-    @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expires_at", value)
-
-    @property
-    @pulumi.getter(name="issuedAt")
-    def issued_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time the credential was issued in milliseconds since epoch.
-        """
-        return pulumi.get(self, "issued_at")
-
-    @issued_at.setter
-    def issued_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "issued_at", value)
-
-    @property
-    @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
-        """
-        return pulumi.get(self, "scopes")
-
-    @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "scopes", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the credential.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentFlowPage']
@@ -105,7 +106,70 @@ class AgentFlowPage(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["entry_fulfillment"] = None
+        __props__["event_handlers"] = None
+        __props__["form"] = None
+        __props__["name"] = None
+        __props__["transition_route_groups"] = None
+        __props__["transition_routes"] = None
         return AgentFlowPage(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the page, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="entryFulfillment")
+    def entry_fulfillment(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1FulfillmentResponse']:
+        """
+        The fulfillment to call when the session is entering the page.
+        """
+        return pulumi.get(self, "entry_fulfillment")
+
+    @property
+    @pulumi.getter(name="eventHandlers")
+    def event_handlers(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1EventHandlerResponse']]:
+        """
+        Handlers associated with the page to handle events such as webhook errors, no match or no input.
+        """
+        return pulumi.get(self, "event_handlers")
+
+    @property
+    @pulumi.getter
+    def form(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1FormResponse']:
+        """
+        The form associated with the page, used for collecting parameters relevant to the page.
+        """
+        return pulumi.get(self, "form")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="transitionRouteGroups")
+    def transition_route_groups(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        """
+        return pulumi.get(self, "transition_route_groups")
+
+    @property
+    @pulumi.getter(name="transitionRoutes")
+    def transition_routes(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse']]:
+        """
+        A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
+        """
+        return pulumi.get(self, "transition_routes")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

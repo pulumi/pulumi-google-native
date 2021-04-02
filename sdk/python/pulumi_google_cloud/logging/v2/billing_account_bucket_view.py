@@ -17,12 +17,10 @@ class BillingAccountBucketView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_accounts_id: Optional[pulumi.Input[str]] = None,
                  buckets_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  views_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -32,11 +30,9 @@ class BillingAccountBucketView(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of the view.
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] name: The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of the view.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,14 +57,12 @@ class BillingAccountBucketView(pulumi.CustomResource):
             if buckets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'buckets_id'")
             __props__['buckets_id'] = buckets_id
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['filter'] = filter
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['name'] = name
-            __props__['update_time'] = update_time
             if views_id is None and not opts.urn:
                 raise TypeError("Missing required property 'views_id'")
             __props__['views_id'] = views_id

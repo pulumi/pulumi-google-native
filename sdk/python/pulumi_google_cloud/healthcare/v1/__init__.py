@@ -20,6 +20,7 @@ from .dataset_hl7_v2_store_iam_policy import *
 from .dataset_hl7_v2_store_message import *
 from .dataset_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ from .queue import *
 from .queue_iam_policy import *
 from .queue_task import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi
