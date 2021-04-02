@@ -227,7 +227,22 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			delete(inputs, key)
 		}
 
-		op, err := sendRequestWithTimeout(ctx, "POST", uri, inputs.Mappable(), 0)
+		inputsMap := inputs.Mappable()
+		body := map[string]interface{}{}
+		for name, value := range res.CreateProperties {
+			parent := body
+			if value.Container != "" {
+				if v, has := body[value.Container].(map[string]interface{}); has {
+					parent = v
+				} else {
+					parent = map[string]interface{}{}
+					body[value.Container] = parent
+				}
+			}
+			parent[name] = inputsMap[name]
+		}
+
+		op, err := sendRequestWithTimeout(ctx, "POST", uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}

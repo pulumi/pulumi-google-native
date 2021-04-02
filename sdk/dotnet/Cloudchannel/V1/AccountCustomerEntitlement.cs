@@ -135,17 +135,47 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         [Input("accountsId", required: true)]
         public Input<string> AccountsId { get; set; } = null!;
 
+        /// <summary>
+        /// Association information to other entitlements.
+        /// </summary>
+        [Input("associationInfo")]
+        public Input<Inputs.GoogleCloudChannelV1AssociationInfoArgs>? AssociationInfo { get; set; }
+
+        /// <summary>
+        /// Commitment settings for a commitment-based Offer. Required for commitment based offers.
+        /// </summary>
+        [Input("commitmentSettings")]
+        public Input<Inputs.GoogleCloudChannelV1CommitmentSettingsArgs>? CommitmentSettings { get; set; }
+
         [Input("customersId", required: true)]
         public Input<string> CustomersId { get; set; } = null!;
 
-        /// <summary>
-        /// Required. The entitlement to create.
-        /// </summary>
-        [Input("entitlement")]
-        public Input<Inputs.GoogleCloudChannelV1EntitlementArgs>? Entitlement { get; set; }
-
         [Input("entitlementsId", required: true)]
         public Input<string> EntitlementsId { get; set; } = null!;
+
+        /// <summary>
+        /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        /// </summary>
+        [Input("offer")]
+        public Input<string>? Offer { get; set; }
+
+        [Input("parameters")]
+        private InputList<Inputs.GoogleCloudChannelV1ParameterArgs>? _parameters;
+
+        /// <summary>
+        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudChannelV1ParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.GoogleCloudChannelV1ParameterArgs>());
+            set => _parameters = value;
+        }
+
+        /// <summary>
+        /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+        /// </summary>
+        [Input("purchaseOrderId")]
+        public Input<string>? PurchaseOrderId { get; set; }
 
         /// <summary>
         /// Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).

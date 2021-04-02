@@ -42,19 +42,19 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
     /**
      * Raw message bytes.
      */
-    public /*out*/ readonly data!: pulumi.Output<string>;
+    public readonly data!: pulumi.Output<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
-    public /*out*/ readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The message type for this message. MSH-9.1.
      */
-    public /*out*/ readonly messageType!: pulumi.Output<string>;
+    public readonly messageType!: pulumi.Output<string>;
     /**
      * Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The parsed version of the raw message data.
      */
@@ -62,19 +62,19 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
     /**
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */
-    public /*out*/ readonly patientIds!: pulumi.Output<outputs.healthcare.v1.PatientIdResponse[]>;
+    public readonly patientIds!: pulumi.Output<outputs.healthcare.v1.PatientIdResponse[]>;
     /**
      * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
      */
-    public /*out*/ readonly schematizedData!: pulumi.Output<outputs.healthcare.v1.SchematizedDataResponse>;
+    public readonly schematizedData!: pulumi.Output<outputs.healthcare.v1.SchematizedDataResponse>;
     /**
      * The hospital that this message came from. MSH-4.
      */
-    public /*out*/ readonly sendFacility!: pulumi.Output<string>;
+    public readonly sendFacility!: pulumi.Output<string>;
     /**
      * The datetime the sending application sent this message. MSH-7.
      */
-    public /*out*/ readonly sendTime!: pulumi.Output<string>;
+    public readonly sendTime!: pulumi.Output<string>;
 
     /**
      * Create a DatasetHl7V2StoreMessage resource with the given unique name, arguments, and options.
@@ -102,22 +102,21 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["data"] = args ? args.data : undefined;
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
             inputs["hl7V2StoresId"] = args ? args.hl7V2StoresId : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["message"] = args ? args.message : undefined;
+            inputs["messageType"] = args ? args.messageType : undefined;
             inputs["messagesId"] = args ? args.messagesId : undefined;
+            inputs["name"] = args ? args.name : undefined;
+            inputs["patientIds"] = args ? args.patientIds : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["schematizedData"] = args ? args.schematizedData : undefined;
+            inputs["sendFacility"] = args ? args.sendFacility : undefined;
+            inputs["sendTime"] = args ? args.sendTime : undefined;
             inputs["createTime"] = undefined /*out*/;
-            inputs["data"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["messageType"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
             inputs["parsedData"] = undefined /*out*/;
-            inputs["patientIds"] = undefined /*out*/;
-            inputs["schematizedData"] = undefined /*out*/;
-            inputs["sendFacility"] = undefined /*out*/;
-            inputs["sendTime"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["data"] = undefined /*out*/;
@@ -141,13 +140,41 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetHl7V2StoreMessage resource.
  */
 export interface DatasetHl7V2StoreMessageArgs {
+    /**
+     * Raw message bytes.
+     */
+    readonly data?: pulumi.Input<string>;
     readonly datasetsId: pulumi.Input<string>;
     readonly hl7V2StoresId: pulumi.Input<string>;
+    /**
+     * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
     /**
-     * HL7v2 message.
+     * The message type for this message. MSH-9.1.
      */
-    readonly message?: pulumi.Input<inputs.healthcare.v1.Message>;
+    readonly messageType?: pulumi.Input<string>;
     readonly messagesId: pulumi.Input<string>;
+    /**
+     * Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
+     * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+     */
+    readonly patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.PatientId>[]>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+     */
+    readonly schematizedData?: pulumi.Input<inputs.healthcare.v1.SchematizedData>;
+    /**
+     * The hospital that this message came from. MSH-4.
+     */
+    readonly sendFacility?: pulumi.Input<string>;
+    /**
+     * The datetime the sending application sent this message. MSH-7.
+     */
+    readonly sendTime?: pulumi.Input<string>;
 }

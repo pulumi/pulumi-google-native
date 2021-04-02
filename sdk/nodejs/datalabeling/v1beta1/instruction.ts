@@ -38,39 +38,39 @@ export class Instruction extends pulumi.CustomResource {
     /**
      * The names of any related resources that are blocking changes to the instruction.
      */
-    public /*out*/ readonly blockingResources!: pulumi.Output<string[]>;
+    public readonly blockingResources!: pulumi.Output<string[]>;
     /**
      * Creation time of instruction.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly createTime!: pulumi.Output<string>;
     /**
      * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
      */
-    public /*out*/ readonly csvInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionResponse>;
+    public readonly csvInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionResponse>;
     /**
      * Required. The data type of this instruction.
      */
-    public /*out*/ readonly dataType!: pulumi.Output<string>;
+    public readonly dataType!: pulumi.Output<string>;
     /**
      * Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Required. The display name of the instruction. Maximum of 64 characters.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
-    public /*out*/ readonly pdfInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionResponse>;
+    public readonly pdfInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionResponse>;
     /**
      * Last update time of instruction.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Instruction resource with the given unique name, arguments, and options.
@@ -89,18 +89,17 @@ export class Instruction extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["instruction"] = args ? args.instruction : undefined;
+            inputs["blockingResources"] = args ? args.blockingResources : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["csvInstruction"] = args ? args.csvInstruction : undefined;
+            inputs["dataType"] = args ? args.dataType : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instructionsId"] = args ? args.instructionsId : undefined;
+            inputs["name"] = args ? args.name : undefined;
+            inputs["pdfInstruction"] = args ? args.pdfInstruction : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["csvInstruction"] = undefined /*out*/;
-            inputs["dataType"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pdfInstruction"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
             inputs["blockingResources"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -124,9 +123,41 @@ export class Instruction extends pulumi.CustomResource {
  */
 export interface InstructionArgs {
     /**
-     * Required. Instruction of how to perform the labeling task.
+     * The names of any related resources that are blocking changes to the instruction.
      */
-    readonly instruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1Instruction>;
+    readonly blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Creation time of instruction.
+     */
+    readonly createTime?: pulumi.Input<string>;
+    /**
+     * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     */
+    readonly csvInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstruction>;
+    /**
+     * Required. The data type of this instruction.
+     */
+    readonly dataType?: pulumi.Input<string>;
+    /**
+     * Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Required. The display name of the instruction. Maximum of 64 characters.
+     */
+    readonly displayName?: pulumi.Input<string>;
     readonly instructionsId: pulumi.Input<string>;
+    /**
+     * Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
+     * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+     */
+    readonly pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstruction>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * Last update time of instruction.
+     */
+    readonly updateTime?: pulumi.Input<string>;
 }

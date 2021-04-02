@@ -38,15 +38,15 @@ export class PhraseSet extends pulumi.CustomResource {
     /**
      * Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
      */
-    public /*out*/ readonly boost!: pulumi.Output<number>;
+    public readonly boost!: pulumi.Output<number>;
     /**
      * The resource name of the phrase set.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A list of word and phrases.
      */
-    public /*out*/ readonly phrases!: pulumi.Output<outputs.speech.v1p1beta1.PhraseResponse[]>;
+    public readonly phrases!: pulumi.Output<outputs.speech.v1p1beta1.PhraseResponse[]>;
 
     /**
      * Create a PhraseSet resource with the given unique name, arguments, and options.
@@ -68,14 +68,13 @@ export class PhraseSet extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["boost"] = args ? args.boost : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["phraseSet"] = args ? args.phraseSet : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["phraseSetId"] = args ? args.phraseSetId : undefined;
             inputs["phraseSetsId"] = args ? args.phraseSetsId : undefined;
+            inputs["phrases"] = args ? args.phrases : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["boost"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["phrases"] = undefined /*out*/;
         } else {
             inputs["boost"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -92,15 +91,23 @@ export class PhraseSet extends pulumi.CustomResource {
  * The set of arguments for constructing a PhraseSet resource.
  */
 export interface PhraseSetArgs {
+    /**
+     * Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+     */
+    readonly boost?: pulumi.Input<number>;
     readonly locationsId: pulumi.Input<string>;
     /**
-     * Required. The phrase set to create.
+     * The resource name of the phrase set.
      */
-    readonly phraseSet?: pulumi.Input<inputs.speech.v1p1beta1.PhraseSet>;
+    readonly name?: pulumi.Input<string>;
     /**
      * The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
      */
     readonly phraseSetId?: pulumi.Input<string>;
     readonly phraseSetsId: pulumi.Input<string>;
+    /**
+     * A list of word and phrases.
+     */
+    readonly phrases?: pulumi.Input<pulumi.Input<inputs.speech.v1p1beta1.Phrase>[]>;
     readonly projectsId: pulumi.Input<string>;
 }

@@ -17,11 +17,62 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[pulumi.InputType['ClusterArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[pulumi.InputType['AddonsConfigArgs']]] = None,
+                 authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['AuthenticatorGroupsConfigArgs']]] = None,
+                 autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
+                 cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  clusters_id: Optional[pulumi.Input[str]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 current_master_version: Optional[pulumi.Input[str]] = None,
+                 current_node_count: Optional[pulumi.Input[int]] = None,
+                 current_node_version: Optional[pulumi.Input[str]] = None,
+                 database_encryption: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']]] = None,
+                 default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+                 enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
+                 initial_cluster_version: Optional[pulumi.Input[str]] = None,
+                 initial_node_count: Optional[pulumi.Input[int]] = None,
+                 ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']]] = None,
+                 label_fingerprint: Optional[pulumi.Input[str]] = None,
+                 legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 logging_service: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
+                 master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
+                 master_authorized_networks_config: Optional[pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']]] = None,
+                 monitoring_service: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 node_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
+                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
+                 shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 status_message: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
+                 workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,8 +81,59 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterArgs']] cluster: Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
+        :param pulumi.Input[pulumi.InputType['AddonsConfigArgs']] addons_config: Configurations for the various addons available to run in the cluster.
+        :param pulumi.Input[pulumi.InputType['AuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration controlling RBAC group membership information.
+        :param pulumi.Input[pulumi.InputType['AutopilotArgs']] autopilot: Autopilot configuration for the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']] autoscaling: Cluster-level autoscaling configuration.
+        :param pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']] binary_authorization: Configuration for Binary Authorization.
+        :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current cluster state.
+        :param pulumi.Input[str] create_time: [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        :param pulumi.Input[str] current_master_version: [Output only] The current software version of the master endpoint.
+        :param pulumi.Input[int] current_node_count: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+        :param pulumi.Input[str] current_node_version: [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
+        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']] database_encryption: Configuration of etcd encryption.
+        :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
+        :param pulumi.Input[str] description: An optional description of this cluster.
+        :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
+        :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster.
+        :param pulumi.Input[str] endpoint: [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
+        :param pulumi.Input[str] expire_time: [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
+        :param pulumi.Input[int] initial_node_count: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+        :param pulumi.Input[pulumi.InputType['IPAllocationPolicyArgs']] ip_allocation_policy: Configuration for cluster IP allocation.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
+        :param pulumi.Input[pulumi.InputType['LegacyAbacArgs']] legacy_abac: Configuration for the legacy ABAC authorization mode.
+        :param pulumi.Input[str] location: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+        :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+        :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Configure the maintenance policy for this cluster.
+        :param pulumi.Input[pulumi.InputType['MasterAuthArgs']] master_auth: The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
+        :param pulumi.Input[pulumi.InputType['MasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The configuration options for master authorized networks feature.
+        :param pulumi.Input[str] monitoring_service: The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+        :param pulumi.Input[str] name: The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
+        :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used.
+        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Configuration for cluster networking.
+        :param pulumi.Input[pulumi.InputType['NetworkPolicyArgs']] network_policy: Configuration options for the NetworkPolicy feature.
+        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+        :param pulumi.Input[int] node_ipv4_cidr_size: [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
+        :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration of the cluster.
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
+        :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
+        :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
+        :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
+        :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
+        :param pulumi.Input[str] services_ipv4_cidr: [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
+        :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
+        :param pulumi.Input[str] status: [Output only] The current status of this cluster.
+        :param pulumi.Input[str] status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+        :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
+        :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+        :param pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+        :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,69 +152,68 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['cluster'] = cluster
+            __props__['addons_config'] = addons_config
+            __props__['authenticator_groups_config'] = authenticator_groups_config
+            __props__['autopilot'] = autopilot
+            __props__['autoscaling'] = autoscaling
+            __props__['binary_authorization'] = binary_authorization
+            __props__['cluster_ipv4_cidr'] = cluster_ipv4_cidr
             if clusters_id is None and not opts.urn:
                 raise TypeError("Missing required property 'clusters_id'")
             __props__['clusters_id'] = clusters_id
+            __props__['conditions'] = conditions
+            __props__['create_time'] = create_time
+            __props__['current_master_version'] = current_master_version
+            __props__['current_node_count'] = current_node_count
+            __props__['current_node_version'] = current_node_version
+            __props__['database_encryption'] = database_encryption
+            __props__['default_max_pods_constraint'] = default_max_pods_constraint
+            __props__['description'] = description
+            __props__['enable_kubernetes_alpha'] = enable_kubernetes_alpha
+            __props__['enable_tpu'] = enable_tpu
+            __props__['endpoint'] = endpoint
+            __props__['expire_time'] = expire_time
+            __props__['initial_cluster_version'] = initial_cluster_version
+            __props__['initial_node_count'] = initial_node_count
+            __props__['ip_allocation_policy'] = ip_allocation_policy
+            __props__['label_fingerprint'] = label_fingerprint
+            __props__['legacy_abac'] = legacy_abac
+            __props__['location'] = location
+            __props__['locations'] = locations
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
+            __props__['logging_service'] = logging_service
+            __props__['maintenance_policy'] = maintenance_policy
+            __props__['master_auth'] = master_auth
+            __props__['master_authorized_networks_config'] = master_authorized_networks_config
+            __props__['monitoring_service'] = monitoring_service
+            __props__['name'] = name
+            __props__['network'] = network
+            __props__['network_config'] = network_config
+            __props__['network_policy'] = network_policy
+            __props__['node_config'] = node_config
+            __props__['node_ipv4_cidr_size'] = node_ipv4_cidr_size
+            __props__['node_pools'] = node_pools
+            __props__['notification_config'] = notification_config
             __props__['parent'] = parent
+            __props__['private_cluster_config'] = private_cluster_config
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['addons_config'] = None
-            __props__['authenticator_groups_config'] = None
-            __props__['autopilot'] = None
-            __props__['autoscaling'] = None
-            __props__['binary_authorization'] = None
-            __props__['cluster_ipv4_cidr'] = None
-            __props__['conditions'] = None
-            __props__['create_time'] = None
-            __props__['current_master_version'] = None
-            __props__['current_node_count'] = None
-            __props__['current_node_version'] = None
-            __props__['database_encryption'] = None
-            __props__['default_max_pods_constraint'] = None
-            __props__['description'] = None
-            __props__['enable_kubernetes_alpha'] = None
-            __props__['enable_tpu'] = None
-            __props__['endpoint'] = None
-            __props__['expire_time'] = None
-            __props__['initial_cluster_version'] = None
-            __props__['initial_node_count'] = None
-            __props__['ip_allocation_policy'] = None
-            __props__['label_fingerprint'] = None
-            __props__['legacy_abac'] = None
-            __props__['location'] = None
-            __props__['locations'] = None
-            __props__['logging_service'] = None
-            __props__['maintenance_policy'] = None
-            __props__['master_auth'] = None
-            __props__['master_authorized_networks_config'] = None
-            __props__['monitoring_service'] = None
-            __props__['name'] = None
-            __props__['network'] = None
-            __props__['network_config'] = None
-            __props__['network_policy'] = None
-            __props__['node_config'] = None
-            __props__['node_ipv4_cidr_size'] = None
-            __props__['node_pools'] = None
-            __props__['notification_config'] = None
-            __props__['private_cluster_config'] = None
-            __props__['release_channel'] = None
-            __props__['resource_labels'] = None
-            __props__['resource_usage_export_config'] = None
-            __props__['self_link'] = None
-            __props__['services_ipv4_cidr'] = None
-            __props__['shielded_nodes'] = None
-            __props__['status'] = None
-            __props__['status_message'] = None
-            __props__['subnetwork'] = None
-            __props__['tpu_ipv4_cidr_block'] = None
-            __props__['vertical_pod_autoscaling'] = None
-            __props__['workload_identity_config'] = None
-            __props__['zone'] = None
+            __props__['release_channel'] = release_channel
+            __props__['resource_labels'] = resource_labels
+            __props__['resource_usage_export_config'] = resource_usage_export_config
+            __props__['self_link'] = self_link
+            __props__['services_ipv4_cidr'] = services_ipv4_cidr
+            __props__['shielded_nodes'] = shielded_nodes
+            __props__['status'] = status
+            __props__['status_message'] = status_message
+            __props__['subnetwork'] = subnetwork
+            __props__['tpu_ipv4_cidr_block'] = tpu_ipv4_cidr_block
+            __props__['vertical_pod_autoscaling'] = vertical_pod_autoscaling
+            __props__['workload_identity_config'] = workload_identity_config
+            __props__['zone'] = zone
         super(Cluster, __self__).__init__(
             'google-cloud:container/v1:Cluster',
             resource_name,

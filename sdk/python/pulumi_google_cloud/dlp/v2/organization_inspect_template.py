@@ -17,7 +17,9 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inspect_template: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectTemplateArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']]] = None,
                  inspect_templates_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
@@ -30,7 +32,9 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectTemplateArgs']] inspect_template: Required. The InspectTemplate to create.
+        :param pulumi.Input[str] description: Short description (max 256 chars).
+        :param pulumi.Input[str] display_name: Display name (max 256 chars).
+        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']] inspect_config: The core content of the template. Configuration of the scanning process.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if __name__ is not None:
@@ -50,7 +54,9 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['inspect_template'] = inspect_template
+            __props__['description'] = description
+            __props__['display_name'] = display_name
+            __props__['inspect_config'] = inspect_config
             if inspect_templates_id is None and not opts.urn:
                 raise TypeError("Missing required property 'inspect_templates_id'")
             __props__['inspect_templates_id'] = inspect_templates_id
@@ -62,9 +68,6 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
             __props__['organizations_id'] = organizations_id
             __props__['template_id'] = template_id
             __props__['create_time'] = None
-            __props__['description'] = None
-            __props__['display_name'] = None
-            __props__['inspect_config'] = None
             __props__['name'] = None
             __props__['update_time'] = None
         super(OrganizationInspectTemplate, __self__).__init__(

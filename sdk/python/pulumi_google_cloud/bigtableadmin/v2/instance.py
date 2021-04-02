@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
 
 __all__ = ['Instance']
 
@@ -17,11 +16,14 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 instance: Optional[pulumi.Input[pulumi.InputType['InstanceArgs']]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,9 +33,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
-        :param pulumi.Input[pulumi.InputType['InstanceArgs']] instance: Required. The instance to create. Fields marked `OutputOnly` must be left blank.
+        :param pulumi.Input[str] display_name: Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         :param pulumi.Input[str] instance_id: Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        :param pulumi.Input[str] name: The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
         :param pulumi.Input[str] parent: Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
+        :param pulumi.Input[str] type: Required. The type of the instance. Defaults to `PRODUCTION`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -53,20 +58,19 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['clusters'] = clusters
-            __props__['instance'] = instance
+            __props__['display_name'] = display_name
             __props__['instance_id'] = instance_id
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__['instances_id'] = instances_id
+            __props__['labels'] = labels
+            __props__['name'] = name
             __props__['parent'] = parent
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['display_name'] = None
-            __props__['labels'] = None
-            __props__['name'] = None
+            __props__['type'] = type
             __props__['state'] = None
-            __props__['type'] = None
         super(Instance, __self__).__init__(
             'google-cloud:bigtableadmin/v2:Instance',
             resource_name,

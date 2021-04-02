@@ -125,24 +125,44 @@ func (OrganizationJobTriggerState) ElementType() reflect.Type {
 }
 
 type organizationJobTriggerArgs struct {
-	// Required. The JobTrigger to create.
-	JobTrigger      *GooglePrivacyDlpV2JobTrigger `pulumi:"jobTrigger"`
-	JobTriggersId   string                        `pulumi:"jobTriggersId"`
-	LocationsId     string                        `pulumi:"locationsId"`
-	OrganizationsId string                        `pulumi:"organizationsId"`
+	// User provided description (max 256 chars)
+	Description *string `pulumi:"description"`
+	// Display name (max 100 chars)
+	DisplayName *string `pulumi:"displayName"`
+	// For inspect jobs, a snapshot of the configuration.
+	InspectJob    *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
+	JobTriggersId string                              `pulumi:"jobTriggersId"`
+	LocationsId   string                              `pulumi:"locationsId"`
+	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+	Name            *string `pulumi:"name"`
+	OrganizationsId string  `pulumi:"organizationsId"`
+	// Required. A status for this trigger.
+	Status *string `pulumi:"status"`
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
+	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+	Triggers []GooglePrivacyDlpV2Trigger `pulumi:"triggers"`
 }
 
 // The set of arguments for constructing a OrganizationJobTrigger resource.
 type OrganizationJobTriggerArgs struct {
-	// Required. The JobTrigger to create.
-	JobTrigger      GooglePrivacyDlpV2JobTriggerPtrInput
-	JobTriggersId   pulumi.StringInput
-	LocationsId     pulumi.StringInput
+	// User provided description (max 256 chars)
+	Description pulumi.StringPtrInput
+	// Display name (max 100 chars)
+	DisplayName pulumi.StringPtrInput
+	// For inspect jobs, a snapshot of the configuration.
+	InspectJob    GooglePrivacyDlpV2InspectJobConfigPtrInput
+	JobTriggersId pulumi.StringInput
+	LocationsId   pulumi.StringInput
+	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
+	// Required. A status for this trigger.
+	Status pulumi.StringPtrInput
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
+	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+	Triggers GooglePrivacyDlpV2TriggerArrayInput
 }
 
 func (OrganizationJobTriggerArgs) ElementType() reflect.Type {

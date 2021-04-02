@@ -101,27 +101,47 @@ func (InstanceWorkerpoolState) ElementType() reflect.Type {
 }
 
 type instanceWorkerpoolArgs struct {
-	InstancesId string `pulumi:"instancesId"`
+	// The autoscale policy to apply on a pool.
+	Autoscale *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale `pulumi:"autoscale"`
+	// Channel specifies the release channel of the pool.
+	Channel     *string `pulumi:"channel"`
+	InstancesId string  `pulumi:"instancesId"`
+	// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+	Name *string `pulumi:"name"`
 	// Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
 	Parent *string `pulumi:"parent"`
 	// ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	PoolId     *string `pulumi:"poolId"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.
-	WorkerPool    *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool `pulumi:"workerPool"`
-	WorkerpoolsId string                                                    `pulumi:"workerpoolsId"`
+	// State of the worker pool.
+	State *string `pulumi:"state"`
+	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+	WorkerConfig *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig `pulumi:"workerConfig"`
+	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+	WorkerCount   *string `pulumi:"workerCount"`
+	WorkerpoolsId string  `pulumi:"workerpoolsId"`
 }
 
 // The set of arguments for constructing a InstanceWorkerpool resource.
 type InstanceWorkerpoolArgs struct {
+	// The autoscale policy to apply on a pool.
+	Autoscale GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrInput
+	// Channel specifies the release channel of the pool.
+	Channel     pulumi.StringPtrInput
 	InstancesId pulumi.StringInput
+	// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+	Name pulumi.StringPtrInput
 	// Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
 	Parent pulumi.StringPtrInput
 	// ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	PoolId     pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.
-	WorkerPool    GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolPtrInput
+	// State of the worker pool.
+	State pulumi.StringPtrInput
+	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+	WorkerConfig GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput
+	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+	WorkerCount   pulumi.StringPtrInput
 	WorkerpoolsId pulumi.StringInput
 }
 

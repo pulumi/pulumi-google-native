@@ -97,13 +97,25 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public sealed class DeidentifyTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The DeidentifyTemplate to create.
+        /// The core content of the template.
         /// </summary>
-        [Input("deidentifyTemplate")]
-        public Input<Inputs.GooglePrivacyDlpV2DeidentifyTemplateArgs>? DeidentifyTemplate { get; set; }
+        [Input("deidentifyConfig")]
+        public Input<Inputs.GooglePrivacyDlpV2DeidentifyConfigArgs>? DeidentifyConfig { get; set; }
 
         [Input("deidentifyTemplatesId", required: true)]
         public Input<string> DeidentifyTemplatesId { get; set; } = null!;
+
+        /// <summary>
+        /// Short description (max 256 chars).
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Display name (max 256 chars).
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

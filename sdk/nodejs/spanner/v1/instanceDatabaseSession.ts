@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -46,7 +45,7 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
     /**
      * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
-    public /*out*/ readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the session. This is always system-assigned.
      */
@@ -77,12 +76,11 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
             }
             inputs["databasesId"] = args ? args.databasesId : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["session"] = args ? args.session : undefined;
             inputs["sessionsId"] = args ? args.sessionsId : undefined;
             inputs["approximateLastUseTime"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         } else {
             inputs["approximateLastUseTime"] = undefined /*out*/;
@@ -103,10 +101,10 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
 export interface InstanceDatabaseSessionArgs {
     readonly databasesId: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
     /**
-     * Required. The session to create.
+     * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
-    readonly session?: pulumi.Input<inputs.spanner.v1.Session>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly projectsId: pulumi.Input<string>;
     readonly sessionsId: pulumi.Input<string>;
 }

@@ -83,24 +83,28 @@ func (CustomClassState) ElementType() reflect.Type {
 }
 
 type customClassArgs struct {
-	// Required. The custom class to create.
-	CustomClass *CustomClassType `pulumi:"customClass"`
 	// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	CustomClassId   *string `pulumi:"customClassId"`
 	CustomClassesId string  `pulumi:"customClassesId"`
-	LocationsId     string  `pulumi:"locationsId"`
-	ProjectsId      string  `pulumi:"projectsId"`
+	// A collection of class items.
+	Items       []ClassItem `pulumi:"items"`
+	LocationsId string      `pulumi:"locationsId"`
+	// The resource name of the custom class.
+	Name       *string `pulumi:"name"`
+	ProjectsId string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a CustomClass resource.
 type CustomClassArgs struct {
-	// Required. The custom class to create.
-	CustomClass CustomClassTypePtrInput
 	// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	CustomClassId   pulumi.StringPtrInput
 	CustomClassesId pulumi.StringInput
-	LocationsId     pulumi.StringInput
-	ProjectsId      pulumi.StringInput
+	// A collection of class items.
+	Items       ClassItemArrayInput
+	LocationsId pulumi.StringInput
+	// The resource name of the custom class.
+	Name       pulumi.StringPtrInput
+	ProjectsId pulumi.StringInput
 }
 
 func (CustomClassArgs) ElementType() reflect.Type {

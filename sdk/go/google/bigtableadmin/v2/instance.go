@@ -94,28 +94,40 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
 	Clusters map[string]string `pulumi:"clusters"`
-	// Required. The instance to create. Fields marked `OutputOnly` must be left blank.
-	Instance *InstanceType `pulumi:"instance"`
+	// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+	DisplayName *string `pulumi:"displayName"`
 	// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
 	InstanceId  *string `pulumi:"instanceId"`
 	InstancesId string  `pulumi:"instancesId"`
+	// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+	Labels map[string]string `pulumi:"labels"`
+	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
+	Name *string `pulumi:"name"`
 	// Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
 	Parent     *string `pulumi:"parent"`
 	ProjectsId string  `pulumi:"projectsId"`
+	// Required. The type of the instance. Defaults to `PRODUCTION`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
 	Clusters pulumi.StringMapInput
-	// Required. The instance to create. Fields marked `OutputOnly` must be left blank.
-	Instance InstanceTypePtrInput
+	// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+	DisplayName pulumi.StringPtrInput
 	// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
 	InstanceId  pulumi.StringPtrInput
 	InstancesId pulumi.StringInput
+	// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+	Labels pulumi.StringMapInput
+	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
+	Name pulumi.StringPtrInput
 	// Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
 	Parent     pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	// Required. The type of the instance. Defaults to `PRODUCTION`.
+	Type pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

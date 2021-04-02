@@ -42,11 +42,11 @@ export class CustomClass extends pulumi.CustomResource {
     /**
      * A collection of class items.
      */
-    public /*out*/ readonly items!: pulumi.Output<outputs.speech.v1p1beta1.ClassItemResponse[]>;
+    public readonly items!: pulumi.Output<outputs.speech.v1p1beta1.ClassItemResponse[]>;
     /**
      * The resource name of the custom class.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a CustomClass resource with the given unique name, arguments, and options.
@@ -68,13 +68,12 @@ export class CustomClass extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["customClass"] = args ? args.customClass : undefined;
             inputs["customClassId"] = args ? args.customClassId : undefined;
             inputs["customClassesId"] = args ? args.customClassesId : undefined;
+            inputs["items"] = args ? args.items : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["items"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
         } else {
             inputs["customClassId"] = undefined /*out*/;
             inputs["items"] = undefined /*out*/;
@@ -92,14 +91,18 @@ export class CustomClass extends pulumi.CustomResource {
  */
 export interface CustomClassArgs {
     /**
-     * Required. The custom class to create.
-     */
-    readonly customClass?: pulumi.Input<inputs.speech.v1p1beta1.CustomClass>;
-    /**
      * The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
      */
     readonly customClassId?: pulumi.Input<string>;
     readonly customClassesId: pulumi.Input<string>;
+    /**
+     * A collection of class items.
+     */
+    readonly items?: pulumi.Input<pulumi.Input<inputs.speech.v1p1beta1.ClassItem>[]>;
     readonly locationsId: pulumi.Input<string>;
+    /**
+     * The resource name of the custom class.
+     */
+    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

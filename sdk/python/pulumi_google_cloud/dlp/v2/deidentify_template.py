@@ -17,8 +17,10 @@ class DeidentifyTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_template: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyTemplateArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']]] = None,
                  deidentify_templates_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
@@ -30,7 +32,9 @@ class DeidentifyTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyTemplateArgs']] deidentify_template: Required. The DeidentifyTemplate to create.
+        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']] deidentify_config: The core content of the template.
+        :param pulumi.Input[str] description: Short description (max 256 chars).
+        :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if __name__ is not None:
@@ -50,10 +54,12 @@ class DeidentifyTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['deidentify_template'] = deidentify_template
+            __props__['deidentify_config'] = deidentify_config
             if deidentify_templates_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_templates_id'")
             __props__['deidentify_templates_id'] = deidentify_templates_id
+            __props__['description'] = description
+            __props__['display_name'] = display_name
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -62,9 +68,6 @@ class DeidentifyTemplate(pulumi.CustomResource):
             __props__['projects_id'] = projects_id
             __props__['template_id'] = template_id
             __props__['create_time'] = None
-            __props__['deidentify_config'] = None
-            __props__['description'] = None
-            __props__['display_name'] = None
             __props__['name'] = None
             __props__['update_time'] = None
         super(DeidentifyTemplate, __self__).__init__(

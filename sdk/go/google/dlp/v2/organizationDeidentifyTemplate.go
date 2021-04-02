@@ -101,22 +101,30 @@ func (OrganizationDeidentifyTemplateState) ElementType() reflect.Type {
 }
 
 type organizationDeidentifyTemplateArgs struct {
-	// Required. The DeidentifyTemplate to create.
-	DeidentifyTemplate    *GooglePrivacyDlpV2DeidentifyTemplate `pulumi:"deidentifyTemplate"`
-	DeidentifyTemplatesId string                                `pulumi:"deidentifyTemplatesId"`
-	LocationsId           string                                `pulumi:"locationsId"`
-	OrganizationsId       string                                `pulumi:"organizationsId"`
+	// The core content of the template.
+	DeidentifyConfig      *GooglePrivacyDlpV2DeidentifyConfig `pulumi:"deidentifyConfig"`
+	DeidentifyTemplatesId string                              `pulumi:"deidentifyTemplatesId"`
+	// Short description (max 256 chars).
+	Description *string `pulumi:"description"`
+	// Display name (max 256 chars).
+	DisplayName     *string `pulumi:"displayName"`
+	LocationsId     string  `pulumi:"locationsId"`
+	OrganizationsId string  `pulumi:"organizationsId"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a OrganizationDeidentifyTemplate resource.
 type OrganizationDeidentifyTemplateArgs struct {
-	// Required. The DeidentifyTemplate to create.
-	DeidentifyTemplate    GooglePrivacyDlpV2DeidentifyTemplatePtrInput
+	// The core content of the template.
+	DeidentifyConfig      GooglePrivacyDlpV2DeidentifyConfigPtrInput
 	DeidentifyTemplatesId pulumi.StringInput
-	LocationsId           pulumi.StringInput
-	OrganizationsId       pulumi.StringInput
+	// Short description (max 256 chars).
+	Description pulumi.StringPtrInput
+	// Display name (max 256 chars).
+	DisplayName     pulumi.StringPtrInput
+	LocationsId     pulumi.StringInput
+	OrganizationsId pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

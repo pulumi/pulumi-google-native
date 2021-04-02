@@ -96,8 +96,26 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
 
     public sealed class InstanceWorkerpoolArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscale policy to apply on a pool.
+        /// </summary>
+        [Input("autoscale")]
+        public Input<Inputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs>? Autoscale { get; set; }
+
+        /// <summary>
+        /// Channel specifies the release channel of the pool.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
+
+        /// <summary>
+        /// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
@@ -115,10 +133,22 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
         public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.
+        /// State of the worker pool.
         /// </summary>
-        [Input("workerPool")]
-        public Input<Inputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolArgs>? WorkerPool { get; set; }
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+        /// </summary>
+        [Input("workerConfig")]
+        public Input<Inputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs>? WorkerConfig { get; set; }
+
+        /// <summary>
+        /// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+        /// </summary>
+        [Input("workerCount")]
+        public Input<string>? WorkerCount { get; set; }
 
         [Input("workerpoolsId", required: true)]
         public Input<string> WorkerpoolsId { get; set; } = null!;

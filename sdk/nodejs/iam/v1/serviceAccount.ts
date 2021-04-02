@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -38,7 +37,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Whether the service account is disabled.
      */
@@ -46,7 +45,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * The email address of the service account.
      */
@@ -54,7 +53,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The OAuth 2.0 client ID for the service account.
      */
@@ -86,14 +85,13 @@ export class ServiceAccount extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAccountsId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["serviceAccountsId"] = args ? args.serviceAccountsId : undefined;
-            inputs["description"] = undefined /*out*/;
             inputs["disabled"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
             inputs["email"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
             inputs["oauth2ClientId"] = undefined /*out*/;
             inputs["projectId"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
@@ -122,10 +120,18 @@ export interface ServiceAccountArgs {
      * Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
      */
     readonly accountId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
     /**
-     * The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
+     * Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
      */
-    readonly serviceAccount?: pulumi.Input<inputs.iam.v1.ServiceAccount>;
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
+     */
+    readonly name?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     readonly serviceAccountsId: pulumi.Input<string>;
 }

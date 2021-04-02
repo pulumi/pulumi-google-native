@@ -42,7 +42,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * Asset tag of the device.
      */
-    public /*out*/ readonly assetTag!: pulumi.Output<string>;
+    public readonly assetTag!: pulumi.Output<string>;
     /**
      * Baseband version of the device.
      */
@@ -94,7 +94,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * Most recent time when device synced with this service.
      */
-    public /*out*/ readonly lastSyncTime!: pulumi.Output<string>;
+    public readonly lastSyncTime!: pulumi.Output<string>;
     /**
      * Management state of the device
      */
@@ -142,11 +142,11 @@ export class Device extends pulumi.CustomResource {
     /**
      * Serial Number of device. Example: HT82V1A01076.
      */
-    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
+    public readonly serialNumber!: pulumi.Output<string>;
     /**
      * WiFi MAC addresses of device.
      */
-    public /*out*/ readonly wifiMacAddresses!: pulumi.Output<string[]>;
+    public readonly wifiMacAddresses!: pulumi.Output<string[]>;
 
     /**
      * Create a Device resource with the given unique name, arguments, and options.
@@ -162,10 +162,12 @@ export class Device extends pulumi.CustomResource {
             if ((!args || args.devicesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'devicesId'");
             }
-            inputs["device"] = args ? args.device : undefined;
+            inputs["assetTag"] = args ? args.assetTag : undefined;
             inputs["devicesId"] = args ? args.devicesId : undefined;
+            inputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
+            inputs["serialNumber"] = args ? args.serialNumber : undefined;
+            inputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
             inputs["androidSpecificAttributes"] = undefined /*out*/;
-            inputs["assetTag"] = undefined /*out*/;
             inputs["basebandVersion"] = undefined /*out*/;
             inputs["bootloaderVersion"] = undefined /*out*/;
             inputs["brand"] = undefined /*out*/;
@@ -178,7 +180,6 @@ export class Device extends pulumi.CustomResource {
             inputs["encryptionState"] = undefined /*out*/;
             inputs["imei"] = undefined /*out*/;
             inputs["kernelVersion"] = undefined /*out*/;
-            inputs["lastSyncTime"] = undefined /*out*/;
             inputs["managementState"] = undefined /*out*/;
             inputs["manufacturer"] = undefined /*out*/;
             inputs["meid"] = undefined /*out*/;
@@ -190,8 +191,6 @@ export class Device extends pulumi.CustomResource {
             inputs["ownerType"] = undefined /*out*/;
             inputs["releaseVersion"] = undefined /*out*/;
             inputs["securityPatchTime"] = undefined /*out*/;
-            inputs["serialNumber"] = undefined /*out*/;
-            inputs["wifiMacAddresses"] = undefined /*out*/;
         } else {
             inputs["androidSpecificAttributes"] = undefined /*out*/;
             inputs["assetTag"] = undefined /*out*/;
@@ -234,8 +233,20 @@ export class Device extends pulumi.CustomResource {
  */
 export interface DeviceArgs {
     /**
-     * Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
+     * Asset tag of the device.
      */
-    readonly device?: pulumi.Input<inputs.cloudidentity.v1beta1.Device>;
+    readonly assetTag?: pulumi.Input<string>;
     readonly devicesId: pulumi.Input<string>;
+    /**
+     * Most recent time when device synced with this service.
+     */
+    readonly lastSyncTime?: pulumi.Input<string>;
+    /**
+     * Serial Number of device. Example: HT82V1A01076.
+     */
+    readonly serialNumber?: pulumi.Input<string>;
+    /**
+     * WiFi MAC addresses of device.
+     */
+    readonly wifiMacAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }

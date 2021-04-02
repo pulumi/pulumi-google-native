@@ -42,15 +42,15 @@ export class InspectTemplate extends pulumi.CustomResource {
     /**
      * Short description (max 256 chars).
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Display name (max 256 chars).
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * The core content of the template. Configuration of the scanning process.
      */
-    public /*out*/ readonly inspectConfig!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectConfigResponse>;
+    public readonly inspectConfig!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectConfigResponse>;
     /**
      * The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
      */
@@ -80,15 +80,14 @@ export class InspectTemplate extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["inspectTemplate"] = args ? args.inspectTemplate : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["inspectConfig"] = args ? args.inspectConfig : undefined;
             inputs["inspectTemplatesId"] = args ? args.inspectTemplatesId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
             inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["inspectConfig"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -111,9 +110,17 @@ export class InspectTemplate extends pulumi.CustomResource {
  */
 export interface InspectTemplateArgs {
     /**
-     * Required. The InspectTemplate to create.
+     * Short description (max 256 chars).
      */
-    readonly inspectTemplate?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectTemplate>;
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Display name (max 256 chars).
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * The core content of the template. Configuration of the scanning process.
+     */
+    readonly inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfig>;
     readonly inspectTemplatesId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;

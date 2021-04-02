@@ -102,17 +102,53 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1beta1
 
     public sealed class BillingAccountBudgetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+        /// </summary>
+        [Input("allUpdatesRule")]
+        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs>? AllUpdatesRule { get; set; }
+
+        /// <summary>
+        /// Required. Budgeted amount.
+        /// </summary>
+        [Input("amount")]
+        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>? Amount { get; set; }
+
         [Input("billingAccountsId", required: true)]
         public Input<string> BillingAccountsId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Budget to create.
+        /// Optional. Filters that define which resources are used to compute the actual spend against the budget.
         /// </summary>
-        [Input("budget")]
-        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1BudgetArgs>? Budget { get; set; }
+        [Input("budgetFilter")]
+        public Input<Inputs.GoogleCloudBillingBudgetsV1beta1FilterArgs>? BudgetFilter { get; set; }
 
         [Input("budgetsId", required: true)]
         public Input<string> BudgetsId { get; set; } = null!;
+
+        /// <summary>
+        /// User data for display name in UI. Validation: &lt;= 60 chars.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        [Input("thresholdRules")]
+        private InputList<Inputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>? _thresholdRules;
+
+        /// <summary>
+        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs> ThresholdRules
+        {
+            get => _thresholdRules ?? (_thresholdRules = new InputList<Inputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>());
+            set => _thresholdRules = value;
+        }
 
         public BillingAccountBudgetArgs()
         {

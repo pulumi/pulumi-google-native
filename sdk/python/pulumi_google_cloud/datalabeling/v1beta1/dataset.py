@@ -17,8 +17,15 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1DatasetArgs']]] = None,
+                 blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 data_item_count: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 input_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InputConfigArgs']]]]] = None,
+                 last_migrate_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -28,7 +35,14 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1DatasetArgs']] dataset: Required. The dataset to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the dataset.
+        :param pulumi.Input[str] create_time: Time the dataset is created.
+        :param pulumi.Input[str] data_item_count: The number of data items in the dataset.
+        :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
+        :param pulumi.Input[str] display_name: Required. The display name of the dataset. Maximum of 64 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InputConfigArgs']]]] input_configs: This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+        :param pulumi.Input[str] last_migrate_time: Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
+        :param pulumi.Input[str] name: Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,21 +61,20 @@ class Dataset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['dataset'] = dataset
+            __props__['blocking_resources'] = blocking_resources
+            __props__['create_time'] = create_time
+            __props__['data_item_count'] = data_item_count
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
             __props__['datasets_id'] = datasets_id
+            __props__['description'] = description
+            __props__['display_name'] = display_name
+            __props__['input_configs'] = input_configs
+            __props__['last_migrate_time'] = last_migrate_time
+            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['blocking_resources'] = None
-            __props__['create_time'] = None
-            __props__['data_item_count'] = None
-            __props__['description'] = None
-            __props__['display_name'] = None
-            __props__['input_configs'] = None
-            __props__['last_migrate_time'] = None
-            __props__['name'] = None
         super(Dataset, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:Dataset',
             resource_name,

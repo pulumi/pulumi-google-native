@@ -114,17 +114,71 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
 
     public sealed class InstructionArgs : Pulumi.ResourceArgs
     {
+        [Input("blockingResources")]
+        private InputList<string>? _blockingResources;
+
         /// <summary>
-        /// Required. Instruction of how to perform the labeling task.
+        /// The names of any related resources that are blocking changes to the instruction.
         /// </summary>
-        [Input("instruction")]
-        public Input<Inputs.GoogleCloudDatalabelingV1beta1InstructionArgs>? Instruction { get; set; }
+        public InputList<string> BlockingResources
+        {
+            get => _blockingResources ?? (_blockingResources = new InputList<string>());
+            set => _blockingResources = value;
+        }
+
+        /// <summary>
+        /// Creation time of instruction.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        /// </summary>
+        [Input("csvInstruction")]
+        public Input<Inputs.GoogleCloudDatalabelingV1beta1CsvInstructionArgs>? CsvInstruction { get; set; }
+
+        /// <summary>
+        /// Required. The data type of this instruction.
+        /// </summary>
+        [Input("dataType")]
+        public Input<string>? DataType { get; set; }
+
+        /// <summary>
+        /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the instruction. Maximum of 64 characters.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         [Input("instructionsId", required: true)]
         public Input<string> InstructionsId { get; set; } = null!;
 
+        /// <summary>
+        /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        /// </summary>
+        [Input("pdfInstruction")]
+        public Input<Inputs.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>? PdfInstruction { get; set; }
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        /// <summary>
+        /// Last update time of instruction.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public InstructionArgs()
         {

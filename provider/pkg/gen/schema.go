@@ -289,30 +289,43 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	}
 
 	if createMethod.Request != nil {
-		request := g.rest.Schemas[createMethod.Request.Ref]
-		bodyProperties, required, err := g.genProperties(&request, false)
+		// If the request type matches the pattern when it contains a property of the type equal to the response
+		// type of the GET endpoint, then we want to flatten that property, so that the resource inputs are a superset
+		// of the resource outputs. This also helps reconcile the shape of create and update operations.
+		var flatten string
+		createRequest := g.rest.Schemas[createMethod.Request.Ref]
+		if getMethod != nil && createMethod.Request.Ref != getMethod.Response.Ref {
+			for name, v := range createRequest.Properties {
+				if v.Ref == getMethod.Response.Ref {
+					flatten = name
+				}
+			}
+		}
+
+		bodyBag, err := g.genProperties(&createRequest, flatten, false)
 		if err != nil {
 			return err
 		}
 
-		for name, prop := range bodyProperties {
+		for name, prop := range bodyBag.specs {
 			inputProperties[name] = prop
 		}
-		for _, name := range required {
+		for name := range bodyBag.requiredSpecs {
 			requiredInputProperties.Add(name)
 		}
+		resourceMeta.CreateProperties = bodyBag.properties
 	}
 
 	properties := map[string]schema.PropertySpec{}
 	requiredProperties := codegen.NewStringSet()
 	if getMethod != nil && getMethod.Response != nil {
 		response := g.rest.Schemas[getMethod.Response.Ref]
-		responseProperties, required, err := g.genProperties(&response, true)
+		responseBag, err := g.genProperties(&response, "", true)
 		if err != nil {
 			return err
 		}
-		properties = responseProperties
-		requiredProperties = codegen.NewStringSet(required...)
+		properties = responseBag.specs
+		requiredProperties = responseBag.requiredSpecs
 		g.escapeCSharpNames(typeName, properties)
 	}
 
@@ -340,9 +353,12 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	return nil
 }
 
-func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, isOutput bool) (map[string]schema.PropertySpec, []string, error) {
-	result := map[string]schema.PropertySpec{}
-	required := codegen.NewStringSet()
+func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatten string, isOutput bool) (*propertyBag, error) {
+	result := propertyBag{
+		specs:         map[string]schema.PropertySpec{},
+		requiredSpecs: codegen.NewStringSet(),
+		properties:    map[string]resources.CloudAPIProperty{},
+	}
 	for name, value := range typeSchema.Properties {
 		if strings.HasPrefix(value.Description, "Deprecated.") {
 			continue
@@ -355,27 +371,45 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, isOut
 		}
 
 		prop := value
+
+		if name == flatten {
+			subtypeSchema := g.rest.Schemas[prop.Ref]
+			sub, err := g.genProperties(&subtypeSchema, "", isOutput)
+			if err != nil {
+				return nil, err
+			}
+			for subName, subVal := range sub.specs {
+				result.specs[subName] = subVal
+			}
+			for subName := range sub.requiredSpecs {
+				result.requiredSpecs.Add(subName)
+			}
+			for subName := range sub.properties {
+				result.properties[subName] = resources.CloudAPIProperty{
+					Container: name,
+				}
+			}
+			continue
+		}
+
 		typeSpec, err := g.genTypeSpec(&prop, isOutput)
 		if err != nil {
-			return nil, nil, err
+			return nil, err
 		}
 
 		if prop.Required || isOutput {
-			required.Add(name)
+			result.requiredSpecs.Add(name)
 		}
 
 		description := strings.TrimPrefix(prop.Description, "Output only. ")
 
-		result[name] = schema.PropertySpec{
+		result.specs[name] = schema.PropertySpec{
 			Description: description,
 			TypeSpec:    *typeSpec,
 		}
+		result.properties[name] = resources.CloudAPIProperty{}
 	}
-	return result, required.SortedValues(), nil
-}
-
-func makeValidIdentifier(name string) string {
-	return strings.ReplaceAll(name, ".", "_")
+	return &result, nil
 }
 
 func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
@@ -405,7 +439,7 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool
 			g.visitedTypes.Add(tok)
 
 			typeSchema := g.rest.Schemas[prop.Ref]
-			properties, required, err := g.genProperties(&typeSchema, isOutput)
+			bag, err := g.genProperties(&typeSchema, "", isOutput)
 			if err != nil {
 				return nil, err
 			}
@@ -414,8 +448,8 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool
 				ObjectTypeSpec: schema.ObjectTypeSpec{
 					Description: typeSchema.Description,
 					Type:        "object",
-					Properties:  properties,
-					Required:    required,
+					Properties:  bag.specs,
+					Required:    bag.requiredSpecs.SortedValues(),
 				},
 			}
 		}
@@ -442,18 +476,11 @@ func (m *packageGenerator) escapeCSharpNames(typeName string, resourceResponse m
 	}
 }
 
-func resourceName(restMethod discovery.RestMethod) (name string) {
-	// TODO: This is very ad-hoc, find a universal naming approach.
-	name = restMethod.Response.Ref
-	switch name {
-	case "Operation":
-		name = restMethod.Request.Ref
-		name = strings.TrimPrefix(name, "Create")
-		name = strings.TrimSuffix(name, "Request")
-	case "Object":
-		name = "BucketObject"
-	}
-	return
+// propertyBag keeps the schema and metadata properties for a single API type.
+type propertyBag struct {
+	specs         map[string]schema.PropertySpec
+	properties    map[string]resources.CloudAPIProperty
+	requiredSpecs codegen.StringSet
 }
 
 func rawMessage(v interface{}) json.RawMessage {

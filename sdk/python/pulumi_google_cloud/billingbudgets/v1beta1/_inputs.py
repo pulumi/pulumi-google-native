@@ -10,7 +10,6 @@ from ... import _utilities, _tables
 
 __all__ = [
     'GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs',
-    'GoogleCloudBillingBudgetsV1beta1BudgetArgs',
     'GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs',
     'GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs',
     'GoogleCloudBillingBudgetsV1beta1FilterArgs',
@@ -90,110 +89,6 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs:
     @schema_version.setter
     def schema_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema_version", value)
-
-
-@pulumi.input_type
-class GoogleCloudBillingBudgetsV1beta1BudgetArgs:
-    def __init__(__self__, *,
-                 all_updates_rule: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']] = None,
-                 amount: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']] = None,
-                 budget_filter: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs']] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]] = None):
-        """
-        A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time period is configurable, with options such as month (default), quarter, year, or custom time period.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs'] all_updates_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs'] amount: Required. Budgeted amount.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
-        :param pulumi.Input[str] display_name: User data for display name in UI. Validation: <= 60 chars.
-        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
-        """
-        if all_updates_rule is not None:
-            pulumi.set(__self__, "all_updates_rule", all_updates_rule)
-        if amount is not None:
-            pulumi.set(__self__, "amount", amount)
-        if budget_filter is not None:
-            pulumi.set(__self__, "budget_filter", budget_filter)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
-        if threshold_rules is not None:
-            pulumi.set(__self__, "threshold_rules", threshold_rules)
-
-    @property
-    @pulumi.getter(name="allUpdatesRule")
-    def all_updates_rule(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']]:
-        """
-        Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-        """
-        return pulumi.get(self, "all_updates_rule")
-
-    @all_updates_rule.setter
-    def all_updates_rule(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']]):
-        pulumi.set(self, "all_updates_rule", value)
-
-    @property
-    @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']]:
-        """
-        Required. Budgeted amount.
-        """
-        return pulumi.get(self, "amount")
-
-    @amount.setter
-    def amount(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']]):
-        pulumi.set(self, "amount", value)
-
-    @property
-    @pulumi.getter(name="budgetFilter")
-    def budget_filter(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs']]:
-        """
-        Optional. Filters that define which resources are used to compute the actual spend against the budget.
-        """
-        return pulumi.get(self, "budget_filter")
-
-    @budget_filter.setter
-    def budget_filter(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs']]):
-        pulumi.set(self, "budget_filter", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        User data for display name in UI. Validation: <= 60 chars.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter(name="thresholdRules")
-    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]]:
-        """
-        Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
-        """
-        return pulumi.get(self, "threshold_rules")
-
-    @threshold_rules.setter
-    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]]):
-        pulumi.set(self, "threshold_rules", value)
 
 
 @pulumi.input_type

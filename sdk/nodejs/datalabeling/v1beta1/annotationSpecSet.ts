@@ -38,23 +38,23 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
     /**
      * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
-    public /*out*/ readonly annotationSpecs!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse[]>;
+    public readonly annotationSpecs!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse[]>;
     /**
      * The names of any related resources that are blocking changes to the annotation spec set.
      */
-    public /*out*/ readonly blockingResources!: pulumi.Output<string[]>;
+    public readonly blockingResources!: pulumi.Output<string[]>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a AnnotationSpecSet resource with the given unique name, arguments, and options.
@@ -73,14 +73,13 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["annotationSpecSet"] = args ? args.annotationSpecSet : undefined;
             inputs["annotationSpecSetsId"] = args ? args.annotationSpecSetsId : undefined;
+            inputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
+            inputs["blockingResources"] = args ? args.blockingResources : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["annotationSpecs"] = undefined /*out*/;
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
         } else {
             inputs["annotationSpecs"] = undefined /*out*/;
             inputs["blockingResources"] = undefined /*out*/;
@@ -99,10 +98,26 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
  * The set of arguments for constructing a AnnotationSpecSet resource.
  */
 export interface AnnotationSpecSetArgs {
-    /**
-     * Required. Annotation spec set to create. Annotation specs must be included. Only one annotation spec will be accepted for annotation specs with same display_name.
-     */
-    readonly annotationSpecSet?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
     readonly annotationSpecSetsId: pulumi.Input<string>;
+    /**
+     * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+     */
+    readonly annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpec>[]>;
+    /**
+     * The names of any related resources that are blocking changes to the annotation spec set.
+     */
+    readonly blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+     */
+    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

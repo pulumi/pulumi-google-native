@@ -111,20 +111,28 @@ func (ServiceAccountState) ElementType() reflect.Type {
 
 type serviceAccountArgs struct {
 	// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-	AccountId  *string `pulumi:"accountId"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
-	ServiceAccount    *ServiceAccountType `pulumi:"serviceAccount"`
-	ServiceAccountsId string              `pulumi:"serviceAccountsId"`
+	AccountId *string `pulumi:"accountId"`
+	// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
+	Description *string `pulumi:"description"`
+	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+	DisplayName *string `pulumi:"displayName"`
+	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
+	Name              *string `pulumi:"name"`
+	ProjectsId        string  `pulumi:"projectsId"`
+	ServiceAccountsId string  `pulumi:"serviceAccountsId"`
 }
 
 // The set of arguments for constructing a ServiceAccount resource.
 type ServiceAccountArgs struct {
 	// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-	AccountId  pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
-	ServiceAccount    ServiceAccountTypePtrInput
+	AccountId pulumi.StringPtrInput
+	// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
+	Description pulumi.StringPtrInput
+	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+	DisplayName pulumi.StringPtrInput
+	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
+	Name              pulumi.StringPtrInput
+	ProjectsId        pulumi.StringInput
 	ServiceAccountsId pulumi.StringInput
 }
 

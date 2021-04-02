@@ -90,6 +90,24 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
 
     public sealed class InstanceTableArgs : Pulumi.ResourceArgs
     {
+        [Input("columnFamilies")]
+        private InputMap<string>? _columnFamilies;
+
+        /// <summary>
+        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        /// </summary>
+        public InputMap<string> ColumnFamilies
+        {
+            get => _columnFamilies ?? (_columnFamilies = new InputMap<string>());
+            set => _columnFamilies = value;
+        }
+
+        /// <summary>
+        /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
+        /// </summary>
+        [Input("granularity")]
+        public Input<string>? Granularity { get; set; }
+
         [Input("initialSplits")]
         private InputList<Inputs.SplitArgs>? _initialSplits;
 
@@ -105,14 +123,14 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
 
+        /// <summary>
+        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Required. The Table to create.
-        /// </summary>
-        [Input("table")]
-        public Input<Inputs.TableArgs>? Table { get; set; }
 
         /// <summary>
         /// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.

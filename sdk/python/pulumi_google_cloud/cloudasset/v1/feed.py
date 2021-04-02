@@ -17,9 +17,14 @@ class Feed(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 feed: Optional[pulumi.Input[pulumi.InputType['FeedArgs']]] = None,
+                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ExprArgs']]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
+                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']]] = None,
                  feeds_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  v1_id: Optional[pulumi.Input[str]] = None,
                  v1_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -30,8 +35,13 @@ class Feed(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FeedArgs']] feed: Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
+        :param pulumi.Input[pulumi.InputType['ExprArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
+        :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
         :param pulumi.Input[str] feed_id: Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+        :param pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']] feed_output_config: Required. Feed output configuration defining where the asset updates are published to.
+        :param pulumi.Input[str] name: Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,23 +60,22 @@ class Feed(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['feed'] = feed
+            __props__['asset_names'] = asset_names
+            __props__['asset_types'] = asset_types
+            __props__['condition'] = condition
+            __props__['content_type'] = content_type
             __props__['feed_id'] = feed_id
+            __props__['feed_output_config'] = feed_output_config
             if feeds_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feeds_id'")
             __props__['feeds_id'] = feeds_id
+            __props__['name'] = name
             if v1_id is None and not opts.urn:
                 raise TypeError("Missing required property 'v1_id'")
             __props__['v1_id'] = v1_id
             if v1_id1 is None and not opts.urn:
                 raise TypeError("Missing required property 'v1_id1'")
             __props__['v1_id1'] = v1_id1
-            __props__['asset_names'] = None
-            __props__['asset_types'] = None
-            __props__['condition'] = None
-            __props__['content_type'] = None
-            __props__['feed_output_config'] = None
-            __props__['name'] = None
         super(Feed, __self__).__init__(
             'google-cloud:cloudasset/v1:Feed',
             resource_name,

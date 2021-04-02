@@ -18,9 +18,13 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accounts_id: Optional[pulumi.Input[str]] = None,
+                 association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
+                 commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
                  customers_id: Optional[pulumi.Input[str]] = None,
-                 entitlement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1EntitlementArgs']]] = None,
                  entitlements_id: Optional[pulumi.Input[str]] = None,
+                 offer: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
+                 purchase_order_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -30,7 +34,11 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1EntitlementArgs']] entitlement: Required. The entitlement to create.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']] association_info: Association information to other entitlements.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
+        :param pulumi.Input[str] offer: Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
         :param pulumi.Input[str] request_id: Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
         """
         if __name__ is not None:
@@ -53,23 +61,22 @@ class AccountCustomerEntitlement(pulumi.CustomResource):
             if accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accounts_id'")
             __props__['accounts_id'] = accounts_id
+            __props__['association_info'] = association_info
+            __props__['commitment_settings'] = commitment_settings
             if customers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customers_id'")
             __props__['customers_id'] = customers_id
-            __props__['entitlement'] = entitlement
             if entitlements_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entitlements_id'")
             __props__['entitlements_id'] = entitlements_id
+            __props__['offer'] = offer
+            __props__['parameters'] = parameters
+            __props__['purchase_order_id'] = purchase_order_id
             __props__['request_id'] = request_id
-            __props__['association_info'] = None
-            __props__['commitment_settings'] = None
             __props__['create_time'] = None
             __props__['name'] = None
-            __props__['offer'] = None
-            __props__['parameters'] = None
             __props__['provisioned_service'] = None
             __props__['provisioning_state'] = None
-            __props__['purchase_order_id'] = None
             __props__['suspension_reasons'] = None
             __props__['trial_settings'] = None
             __props__['update_time'] = None

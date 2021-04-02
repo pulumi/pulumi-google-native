@@ -17,9 +17,18 @@ class EvaluationJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotation_spec_set: Optional[pulumi.Input[str]] = None,
+                 attempts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AttemptArgs']]]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 evaluation_job_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs']]] = None,
                  evaluation_jobs_id: Optional[pulumi.Input[str]] = None,
-                 job: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1EvaluationJobArgs']]] = None,
+                 label_missing_ground_truth: Optional[pulumi.Input[bool]] = None,
+                 model_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,7 +37,16 @@ class EvaluationJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1EvaluationJobArgs']] job: Required. The evaluation job to create.
+        :param pulumi.Input[str] annotation_spec_set: Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AttemptArgs']]]] attempts: Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+        :param pulumi.Input[str] create_time: Timestamp of when this evaluation job was created.
+        :param pulumi.Input[str] description: Required. Description of the job. The description can be up to 25,000 characters long.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs']] evaluation_job_config: Required. Configuration details for the evaluation job.
+        :param pulumi.Input[bool] label_missing_ground_truth: Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+        :param pulumi.Input[str] model_version: Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+        :param pulumi.Input[str] name: After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+        :param pulumi.Input[str] schedule: Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+        :param pulumi.Input[str] state: Describes the current state of the job.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,23 +65,22 @@ class EvaluationJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['annotation_spec_set'] = annotation_spec_set
+            __props__['attempts'] = attempts
+            __props__['create_time'] = create_time
+            __props__['description'] = description
+            __props__['evaluation_job_config'] = evaluation_job_config
             if evaluation_jobs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'evaluation_jobs_id'")
             __props__['evaluation_jobs_id'] = evaluation_jobs_id
-            __props__['job'] = job
+            __props__['label_missing_ground_truth'] = label_missing_ground_truth
+            __props__['model_version'] = model_version
+            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['annotation_spec_set'] = None
-            __props__['attempts'] = None
-            __props__['create_time'] = None
-            __props__['description'] = None
-            __props__['evaluation_job_config'] = None
-            __props__['label_missing_ground_truth'] = None
-            __props__['model_version'] = None
-            __props__['name'] = None
-            __props__['schedule'] = None
-            __props__['state'] = None
+            __props__['schedule'] = schedule
+            __props__['state'] = state
         super(EvaluationJob, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:EvaluationJob',
             resource_name,

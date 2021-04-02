@@ -17,9 +17,14 @@ class BillingAccountBudget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_updates_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']]] = None,
+                 amount: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']]] = None,
                  billing_accounts_id: Optional[pulumi.Input[str]] = None,
-                 budget: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetArgs']]] = None,
+                 budget_filter: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1FilterArgs']]] = None,
                  budgets_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,7 +33,12 @@ class BillingAccountBudget(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetArgs']] budget: Required. Budget to create.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']] all_updates_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']] amount: Required. Budgeted amount.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1FilterArgs']] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        :param pulumi.Input[str] display_name: User data for display name in UI. Validation: <= 60 chars.
+        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,20 +57,19 @@ class BillingAccountBudget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['all_updates_rule'] = all_updates_rule
+            __props__['amount'] = amount
             if billing_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_accounts_id'")
             __props__['billing_accounts_id'] = billing_accounts_id
-            __props__['budget'] = budget
+            __props__['budget_filter'] = budget_filter
             if budgets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'budgets_id'")
             __props__['budgets_id'] = budgets_id
-            __props__['all_updates_rule'] = None
-            __props__['amount'] = None
-            __props__['budget_filter'] = None
-            __props__['display_name'] = None
-            __props__['etag'] = None
+            __props__['display_name'] = display_name
+            __props__['etag'] = etag
+            __props__['threshold_rules'] = threshold_rules
             __props__['name'] = None
-            __props__['threshold_rules'] = None
         super(BillingAccountBudget, __self__).__init__(
             'google-cloud:billingbudgets/v1beta1:BillingAccountBudget',
             resource_name,

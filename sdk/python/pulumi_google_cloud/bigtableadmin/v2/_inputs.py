@@ -14,12 +14,9 @@ __all__ = [
     'BindingArgs',
     'EncryptionConfigArgs',
     'ExprArgs',
-    'InstanceArgs',
     'MultiClusterRoutingUseAnyArgs',
-    'PolicyArgs',
     'SingleClusterRoutingArgs',
     'SplitArgs',
-    'TableArgs',
 ]
 
 @pulumi.input_type
@@ -255,156 +252,12 @@ class ExprArgs:
 
 
 @pulumi.input_type
-class InstanceArgs:
-    def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all Clusters in the instance.
-        :param pulumi.Input[str] display_name: Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
-        :param pulumi.Input[str] name: The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
-        :param pulumi.Input[str] type: Required. The type of the instance. Defaults to `PRODUCTION`.
-        """
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The type of the instance. Defaults to `PRODUCTION`.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class MultiClusterRoutingUseAnyArgs:
     def __init__(__self__):
         """
         Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
         """
         pass
-
-
-@pulumi.input_type
-class PolicyArgs:
-    def __init__(__self__, *,
-                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[int]] = None):
-        """
-        An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-        :param pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
-        :param pulumi.Input[Sequence[pulumi.Input['BindingArgs']]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-        :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-        :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        """
-        if audit_configs is not None:
-            pulumi.set(__self__, "audit_configs", audit_configs)
-        if bindings is not None:
-            pulumi.set(__self__, "bindings", bindings)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter(name="auditConfigs")
-    def audit_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]:
-        """
-        Specifies cloud audit logging configuration for this policy.
-        """
-        return pulumi.get(self, "audit_configs")
-
-    @audit_configs.setter
-    def audit_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]):
-        pulumi.set(self, "audit_configs", value)
-
-    @property
-    @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]:
-        """
-        Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-        """
-        return pulumi.get(self, "bindings")
-
-    @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]):
-        pulumi.set(self, "bindings", value)
-
-    @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[int]]:
-        """
-        Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -469,61 +322,5 @@ class SplitArgs:
     @key.setter
     def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
-
-
-@pulumi.input_type
-class TableArgs:
-    def __init__(__self__, *,
-                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 granularity: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
-        :param pulumi.Input[str] granularity: Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-        :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-        """
-        if column_families is not None:
-            pulumi.set(__self__, "column_families", column_families)
-        if granularity is not None:
-            pulumi.set(__self__, "granularity", granularity)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="columnFamilies")
-    def column_families(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
-        """
-        return pulumi.get(self, "column_families")
-
-    @column_families.setter
-    def column_families(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "column_families", value)
-
-    @property
-    @pulumi.getter
-    def granularity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-        """
-        return pulumi.get(self, "granularity")
-
-    @granularity.setter
-    def granularity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "granularity", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 

@@ -42,15 +42,15 @@ export class InstanceTable extends pulumi.CustomResource {
     /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
      */
-    public /*out*/ readonly columnFamilies!: pulumi.Output<{[key: string]: string}>;
+    public readonly columnFamilies!: pulumi.Output<{[key: string]: string}>;
     /**
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */
-    public /*out*/ readonly granularity!: pulumi.Output<string>;
+    public readonly granularity!: pulumi.Output<string>;
     /**
      * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
      */
@@ -76,16 +76,15 @@ export class InstanceTable extends pulumi.CustomResource {
             if ((!args || args.tablesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tablesId'");
             }
+            inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
+            inputs["granularity"] = args ? args.granularity : undefined;
             inputs["initialSplits"] = args ? args.initialSplits : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["table"] = args ? args.table : undefined;
             inputs["tableId"] = args ? args.tableId : undefined;
             inputs["tablesId"] = args ? args.tablesId : undefined;
             inputs["clusterStates"] = undefined /*out*/;
-            inputs["columnFamilies"] = undefined /*out*/;
-            inputs["granularity"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
             inputs["restoreInfo"] = undefined /*out*/;
         } else {
             inputs["clusterStates"] = undefined /*out*/;
@@ -106,15 +105,23 @@ export class InstanceTable extends pulumi.CustomResource {
  */
 export interface InstanceTableArgs {
     /**
+     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+     */
+    readonly columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
+     */
+    readonly granularity?: pulumi.Input<string>;
+    /**
      * The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
      */
     readonly initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.Split>[]>;
     readonly instancesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
     /**
-     * Required. The Table to create.
+     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
      */
-    readonly table?: pulumi.Input<inputs.bigtableadmin.v2.Table>;
+    readonly name?: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */

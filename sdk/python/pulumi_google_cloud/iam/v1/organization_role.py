@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
 
 __all__ = ['OrganizationRole']
 
@@ -16,10 +15,16 @@ class OrganizationRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deleted: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 included_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['RoleArgs']]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  roles_id: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,8 +33,14 @@ class OrganizationRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RoleArgs']] role: The Role resource to create.
+        :param pulumi.Input[bool] deleted: The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+        :param pulumi.Input[str] description: Optional. A human-readable description for the role.
+        :param pulumi.Input[str] etag: Used to perform a consistent read-modify-write.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_permissions: The names of the permissions this role grants when bound in an IAM policy.
+        :param pulumi.Input[str] name: The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
         :param pulumi.Input[str] role_id: The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
+        :param pulumi.Input[str] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        :param pulumi.Input[str] title: Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -48,21 +59,20 @@ class OrganizationRole(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['deleted'] = deleted
+            __props__['description'] = description
+            __props__['etag'] = etag
+            __props__['included_permissions'] = included_permissions
+            __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
-            __props__['role'] = role
             __props__['role_id'] = role_id
             if roles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'roles_id'")
             __props__['roles_id'] = roles_id
-            __props__['deleted'] = None
-            __props__['description'] = None
-            __props__['etag'] = None
-            __props__['included_permissions'] = None
-            __props__['name'] = None
-            __props__['stage'] = None
-            __props__['title'] = None
+            __props__['stage'] = stage
+            __props__['title'] = title
         super(OrganizationRole, __self__).__init__(
             'google-cloud:iam/v1:OrganizationRole',
             resource_name,

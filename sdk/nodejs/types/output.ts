@@ -579,7 +579,6 @@ export namespace apigateway {
              */
             title: string;
         }
-
     }
 
     export namespace v1beta {
@@ -708,7 +707,6 @@ export namespace apigateway {
              */
             backendConfig: outputs.apigateway.v1beta.ApigatewayBackendConfigResponse;
         }
-
     }
 }
 
@@ -2842,7 +2840,6 @@ export namespace artifactregistry {
              */
             title: string;
         }
-
     }
 
     export namespace v1beta2 {
@@ -2885,7 +2882,6 @@ export namespace artifactregistry {
              */
             title: string;
         }
-
     }
 }
 
@@ -4527,7 +4523,6 @@ export namespace bigqueryconnection {
              */
             title: string;
         }
-
     }
 }
 
@@ -4776,7 +4771,6 @@ export namespace bigtableadmin {
              */
             message: string;
         }
-
     }
 }
 
@@ -5375,7 +5369,6 @@ export namespace cloudbilling {
              */
             title: string;
         }
-
     }
 }
 
@@ -7336,7 +7329,6 @@ export namespace cloudresourcemanager {
              */
             title: string;
         }
-
     }
 
     export namespace v2beta1 {
@@ -7407,7 +7399,6 @@ export namespace cloudresourcemanager {
              */
             title: string;
         }
-
     }
 
     export namespace v3 {
@@ -7478,7 +7469,6 @@ export namespace cloudresourcemanager {
              */
             title: string;
         }
-
     }
 }
 
@@ -8275,7 +8265,6 @@ export namespace cloudtasks {
              */
             message: string;
         }
-
     }
 
     export namespace v2beta2 {
@@ -8824,7 +8813,6 @@ export namespace cloudtasks {
              */
             message: string;
         }
-
     }
 }
 
@@ -27795,7 +27783,6 @@ export namespace datacatalog {
              */
             viewQuery: string;
         }
-
     }
 }
 
@@ -39745,7 +39732,6 @@ export namespace domains {
              */
             title: string;
         }
-
     }
 
     export namespace v1beta1 {
@@ -39816,7 +39802,6 @@ export namespace domains {
              */
             title: string;
         }
-
     }
 }
 
@@ -41658,7 +41643,6 @@ export namespace gkehub {
              */
             code: string;
         }
-
     }
 
     export namespace v1alpha {
@@ -42207,7 +42191,6 @@ export namespace gkehub {
              */
             configMembership: string;
         }
-
     }
 
     export namespace v1beta1 {
@@ -43430,7 +43413,6 @@ export namespace iam {
              */
             issuerUri: string;
         }
-
     }
 }
 
@@ -43475,7 +43457,6 @@ export namespace iap {
              */
             title: string;
         }
-
     }
 
     export namespace v1beta1 {
@@ -43518,7 +43499,6 @@ export namespace iap {
              */
             title: string;
         }
-
     }
 }
 
@@ -51881,7 +51861,6 @@ export namespace remotebuildexecution {
              */
             vmImage: string;
         }
-
     }
 }
 
@@ -54653,7 +54632,6 @@ export namespace securitycenter {
              */
             title: string;
         }
-
     }
 }
 
@@ -54720,7 +54698,6 @@ export namespace servicedirectory {
              */
             title: string;
         }
-
     }
 
     export namespace v1beta1 {
@@ -54785,7 +54762,6 @@ export namespace servicedirectory {
              */
             title: string;
         }
-
     }
 }
 
@@ -55955,7 +55931,6 @@ export namespace sourcerepo {
              */
             webhookId: string;
         }
-
     }
 }
 
@@ -56110,7 +56085,6 @@ export namespace speech {
              */
             value: string;
         }
-
     }
 }
 

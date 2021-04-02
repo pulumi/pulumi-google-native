@@ -9,85 +9,12 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 
 __all__ = [
-    'DeviceArgs',
     'DynamicGroupMetadataArgs',
     'DynamicGroupQueryArgs',
     'EntityKeyArgs',
     'ExpiryDetailArgs',
     'MembershipRoleArgs',
 ]
-
-@pulumi.input_type
-class DeviceArgs:
-    def __init__(__self__, *,
-                 asset_tag: Optional[pulumi.Input[str]] = None,
-                 last_sync_time: Optional[pulumi.Input[str]] = None,
-                 serial_number: Optional[pulumi.Input[str]] = None,
-                 wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is assigned or in use by a user.
-        :param pulumi.Input[str] asset_tag: Asset tag of the device.
-        :param pulumi.Input[str] last_sync_time: Most recent time when device synced with this service.
-        :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
-        """
-        if asset_tag is not None:
-            pulumi.set(__self__, "asset_tag", asset_tag)
-        if last_sync_time is not None:
-            pulumi.set(__self__, "last_sync_time", last_sync_time)
-        if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
-        if wifi_mac_addresses is not None:
-            pulumi.set(__self__, "wifi_mac_addresses", wifi_mac_addresses)
-
-    @property
-    @pulumi.getter(name="assetTag")
-    def asset_tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        Asset tag of the device.
-        """
-        return pulumi.get(self, "asset_tag")
-
-    @asset_tag.setter
-    def asset_tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "asset_tag", value)
-
-    @property
-    @pulumi.getter(name="lastSyncTime")
-    def last_sync_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Most recent time when device synced with this service.
-        """
-        return pulumi.get(self, "last_sync_time")
-
-    @last_sync_time.setter
-    def last_sync_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_sync_time", value)
-
-    @property
-    @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Serial Number of device. Example: HT82V1A01076.
-        """
-        return pulumi.get(self, "serial_number")
-
-    @serial_number.setter
-    def serial_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "serial_number", value)
-
-    @property
-    @pulumi.getter(name="wifiMacAddresses")
-    def wifi_mac_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        WiFi MAC addresses of device.
-        """
-        return pulumi.get(self, "wifi_mac_addresses")
-
-    @wifi_mac_addresses.setter
-    def wifi_mac_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "wifi_mac_addresses", value)
-
 
 @pulumi.input_type
 class DynamicGroupMetadataArgs:

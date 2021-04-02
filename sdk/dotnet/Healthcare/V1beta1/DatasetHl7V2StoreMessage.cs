@@ -120,26 +120,80 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
 
     public sealed class DatasetHl7V2StoreMessageArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Raw message bytes.
+        /// </summary>
+        [Input("data")]
+        public Input<string>? Data { get; set; }
+
         [Input("datasetsId", required: true)]
         public Input<string> DatasetsId { get; set; } = null!;
 
         [Input("hl7V2StoresId", required: true)]
         public Input<string> Hl7V2StoresId { get; set; } = null!;
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
-        /// HL7v2 message.
+        /// The message type for this message. MSH-9.1.
         /// </summary>
-        [Input("message")]
-        public Input<Inputs.MessageArgs>? Message { get; set; }
+        [Input("messageType")]
+        public Input<string>? MessageType { get; set; }
 
         [Input("messagesId", required: true)]
         public Input<string> MessagesId { get; set; } = null!;
 
+        /// <summary>
+        /// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("patientIds")]
+        private InputList<Inputs.PatientIdArgs>? _patientIds;
+
+        /// <summary>
+        /// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+        /// </summary>
+        public InputList<Inputs.PatientIdArgs> PatientIds
+        {
+            get => _patientIds ?? (_patientIds = new InputList<Inputs.PatientIdArgs>());
+            set => _patientIds = value;
+        }
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        /// <summary>
+        /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+        /// </summary>
+        [Input("schematizedData")]
+        public Input<Inputs.SchematizedDataArgs>? SchematizedData { get; set; }
+
+        /// <summary>
+        /// The hospital that this message came from. MSH-4.
+        /// </summary>
+        [Input("sendFacility")]
+        public Input<string>? SendFacility { get; set; }
+
+        /// <summary>
+        /// The datetime the sending application sent this message. MSH-7.
+        /// </summary>
+        [Input("sendTime")]
+        public Input<string>? SendTime { get; set; }
 
         public DatasetHl7V2StoreMessageArgs()
         {

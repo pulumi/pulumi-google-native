@@ -17,12 +17,26 @@ class ClusterNodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
                  clusters_id: Optional[pulumi.Input[str]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 initial_node_count: Optional[pulumi.Input[int]] = None,
+                 instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 node_pool: Optional[pulumi.Input[pulumi.InputType['NodePoolArgs']]] = None,
+                 management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  node_pools_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 status_message: Optional[pulumi.Input[str]] = None,
+                 upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,8 +45,22 @@ class ClusterNodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodePoolArgs']] node_pool: Required. The node pool to create.
+        :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
+        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
+        :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+        :param pulumi.Input[pulumi.InputType['NodeManagementArgs']] management: NodeManagement configuration for this NodePool.
+        :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+        :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
+        :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
+        :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
+        :param pulumi.Input[str] status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
+        :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,35 +79,34 @@ class ClusterNodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['autoscaling'] = autoscaling
             if clusters_id is None and not opts.urn:
                 raise TypeError("Missing required property 'clusters_id'")
             __props__['clusters_id'] = clusters_id
+            __props__['conditions'] = conditions
+            __props__['config'] = config
+            __props__['initial_node_count'] = initial_node_count
+            __props__['instance_group_urls'] = instance_group_urls
+            __props__['locations'] = locations
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['node_pool'] = node_pool
+            __props__['management'] = management
+            __props__['max_pods_constraint'] = max_pods_constraint
+            __props__['name'] = name
             if node_pools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pools_id'")
             __props__['node_pools_id'] = node_pools_id
             __props__['parent'] = parent
+            __props__['pod_ipv4_cidr_size'] = pod_ipv4_cidr_size
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['autoscaling'] = None
-            __props__['conditions'] = None
-            __props__['config'] = None
-            __props__['initial_node_count'] = None
-            __props__['instance_group_urls'] = None
-            __props__['locations'] = None
-            __props__['management'] = None
-            __props__['max_pods_constraint'] = None
-            __props__['name'] = None
-            __props__['pod_ipv4_cidr_size'] = None
-            __props__['self_link'] = None
-            __props__['status'] = None
-            __props__['status_message'] = None
-            __props__['upgrade_settings'] = None
-            __props__['version'] = None
+            __props__['self_link'] = self_link
+            __props__['status'] = status
+            __props__['status_message'] = status_message
+            __props__['upgrade_settings'] = upgrade_settings
+            __props__['version'] = version
         super(ClusterNodePool, __self__).__init__(
             'google-cloud:container/v1:ClusterNodePool',
             resource_name,

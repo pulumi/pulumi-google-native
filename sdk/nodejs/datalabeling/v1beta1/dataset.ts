@@ -38,35 +38,35 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * The names of any related resources that are blocking changes to the dataset.
      */
-    public /*out*/ readonly blockingResources!: pulumi.Output<string[]>;
+    public readonly blockingResources!: pulumi.Output<string[]>;
     /**
      * Time the dataset is created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly createTime!: pulumi.Output<string>;
     /**
      * The number of data items in the dataset.
      */
-    public /*out*/ readonly dataItemCount!: pulumi.Output<string>;
+    public readonly dataItemCount!: pulumi.Output<string>;
     /**
      * Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Required. The display name of the dataset. Maximum of 64 characters.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
      */
-    public /*out*/ readonly inputConfigs!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigResponse[]>;
+    public readonly inputConfigs!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigResponse[]>;
     /**
      * Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
      */
-    public /*out*/ readonly lastMigrateTime!: pulumi.Output<string>;
+    public readonly lastMigrateTime!: pulumi.Output<string>;
     /**
      * Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -85,17 +85,16 @@ export class Dataset extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["dataset"] = args ? args.dataset : undefined;
+            inputs["blockingResources"] = args ? args.blockingResources : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["dataItemCount"] = args ? args.dataItemCount : undefined;
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["inputConfigs"] = args ? args.inputConfigs : undefined;
+            inputs["lastMigrateTime"] = args ? args.lastMigrateTime : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dataItemCount"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["inputConfigs"] = undefined /*out*/;
-            inputs["lastMigrateTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
         } else {
             inputs["blockingResources"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -118,9 +117,37 @@ export class Dataset extends pulumi.CustomResource {
  */
 export interface DatasetArgs {
     /**
-     * Required. The dataset to be created.
+     * The names of any related resources that are blocking changes to the dataset.
      */
-    readonly dataset?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1Dataset>;
+    readonly blockingResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time the dataset is created.
+     */
+    readonly createTime?: pulumi.Input<string>;
+    /**
+     * The number of data items in the dataset.
+     */
+    readonly dataItemCount?: pulumi.Input<string>;
     readonly datasetsId: pulumi.Input<string>;
+    /**
+     * Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Required. The display name of the dataset. Maximum of 64 characters.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+     */
+    readonly inputConfigs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfig>[]>;
+    /**
+     * Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
+     */
+    readonly lastMigrateTime?: pulumi.Input<string>;
+    /**
+     * Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+     */
+    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

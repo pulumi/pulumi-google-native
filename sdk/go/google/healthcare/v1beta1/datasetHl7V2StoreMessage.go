@@ -131,24 +131,52 @@ func (DatasetHl7V2StoreMessageState) ElementType() reflect.Type {
 }
 
 type datasetHl7V2StoreMessageArgs struct {
-	DatasetsId    string `pulumi:"datasetsId"`
-	Hl7V2StoresId string `pulumi:"hl7V2StoresId"`
-	LocationsId   string `pulumi:"locationsId"`
-	// HL7v2 message.
-	Message    *Message `pulumi:"message"`
-	MessagesId string   `pulumi:"messagesId"`
-	ProjectsId string   `pulumi:"projectsId"`
+	// Raw message bytes.
+	Data          *string `pulumi:"data"`
+	DatasetsId    string  `pulumi:"datasetsId"`
+	Hl7V2StoresId string  `pulumi:"hl7V2StoresId"`
+	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+	Labels      map[string]string `pulumi:"labels"`
+	LocationsId string            `pulumi:"locationsId"`
+	// The message type for this message. MSH-9.1.
+	MessageType *string `pulumi:"messageType"`
+	MessagesId  string  `pulumi:"messagesId"`
+	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+	Name *string `pulumi:"name"`
+	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+	PatientIds []PatientId `pulumi:"patientIds"`
+	ProjectsId string      `pulumi:"projectsId"`
+	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+	SchematizedData *SchematizedData `pulumi:"schematizedData"`
+	// The hospital that this message came from. MSH-4.
+	SendFacility *string `pulumi:"sendFacility"`
+	// The datetime the sending application sent this message. MSH-7.
+	SendTime *string `pulumi:"sendTime"`
 }
 
 // The set of arguments for constructing a DatasetHl7V2StoreMessage resource.
 type DatasetHl7V2StoreMessageArgs struct {
+	// Raw message bytes.
+	Data          pulumi.StringPtrInput
 	DatasetsId    pulumi.StringInput
 	Hl7V2StoresId pulumi.StringInput
-	LocationsId   pulumi.StringInput
-	// HL7v2 message.
-	Message    MessagePtrInput
-	MessagesId pulumi.StringInput
+	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+	Labels      pulumi.StringMapInput
+	LocationsId pulumi.StringInput
+	// The message type for this message. MSH-9.1.
+	MessageType pulumi.StringPtrInput
+	MessagesId  pulumi.StringInput
+	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+	Name pulumi.StringPtrInput
+	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+	PatientIds PatientIdArrayInput
 	ProjectsId pulumi.StringInput
+	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+	SchematizedData SchematizedDataPtrInput
+	// The hospital that this message came from. MSH-4.
+	SendFacility pulumi.StringPtrInput
+	// The datetime the sending application sent this message. MSH-7.
+	SendTime pulumi.StringPtrInput
 }
 
 func (DatasetHl7V2StoreMessageArgs) ElementType() reflect.Type {

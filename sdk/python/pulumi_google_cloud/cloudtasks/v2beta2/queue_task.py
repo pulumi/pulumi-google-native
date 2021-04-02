@@ -17,12 +17,18 @@ class QueueTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_engine_http_request: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 pull_message: Optional[pulumi.Input[pulumi.InputType['PullMessageArgs']]] = None,
                  queues_id: Optional[pulumi.Input[str]] = None,
                  response_view: Optional[pulumi.Input[str]] = None,
-                 task: Optional[pulumi.Input[pulumi.InputType['TaskArgs']]] = None,
+                 schedule_time: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[pulumi.InputType['TaskStatusArgs']]] = None,
                  tasks_id: Optional[pulumi.Input[str]] = None,
+                 view: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,8 +37,14 @@ class QueueTask(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']] app_engine_http_request: App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
+        :param pulumi.Input[str] create_time: The time that the task was created. `create_time` will be truncated to the nearest second.
+        :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        :param pulumi.Input[pulumi.InputType['PullMessageArgs']] pull_message: LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
         :param pulumi.Input[str] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-        :param pulumi.Input[pulumi.InputType['TaskArgs']] task: Required. The task to add. Task names have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a task name. If a name is not specified then the system will generate a random unique task id, which will be set in the task returned in the response. If schedule_time is not set or is in the past then Cloud Tasks will set it to the current time. Task De-duplication: Explicitly specifying a task ID enables task de-duplication. If a task's ID is identical to that of an existing task or a task that was deleted or completed recently then the call will fail with ALREADY_EXISTS. If the task's queue was created using Cloud Tasks, then another task with the same name can't be created for ~1hour after the original task was deleted or completed. If the task's queue was created using queue.yaml or queue.xml, then another task with the same name can't be created for ~9days after the original task was deleted or completed. Because there is an extra lookup cost to identify duplicate task names, these CreateTask calls have significantly increased latency. Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task ids to store and serve tasks efficiently.
+        :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
+        :param pulumi.Input[pulumi.InputType['TaskStatusArgs']] status: The task status.
+        :param pulumi.Input[str] view: The view specifies which subset of the Task has been returned.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,27 +63,26 @@ class QueueTask(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['app_engine_http_request'] = app_engine_http_request
+            __props__['create_time'] = create_time
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
+            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['pull_message'] = pull_message
             if queues_id is None and not opts.urn:
                 raise TypeError("Missing required property 'queues_id'")
             __props__['queues_id'] = queues_id
             __props__['response_view'] = response_view
-            __props__['task'] = task
+            __props__['schedule_time'] = schedule_time
+            __props__['status'] = status
             if tasks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tasks_id'")
             __props__['tasks_id'] = tasks_id
-            __props__['app_engine_http_request'] = None
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['pull_message'] = None
-            __props__['schedule_time'] = None
-            __props__['status'] = None
-            __props__['view'] = None
+            __props__['view'] = view
         super(QueueTask, __self__).__init__(
             'google-cloud:cloudtasks/v2beta2:QueueTask',
             resource_name,
