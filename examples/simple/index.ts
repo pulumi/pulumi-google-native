@@ -27,12 +27,10 @@ const iamHello = new cloud.run.v1.ServiceIamPolicy("allow-all", {
     projectsId: project,
     locationsId: region,
     servicesId: service.metadata.name,
-    policy: {
-        bindings: [{
-            members: ["allUsers"],
-            role: "roles/run.invoker",
-        }],
-    },
+    bindings: [{
+        members: ["allUsers"],
+        role: "roles/run.invoker",
+    }],
 });
 
 const bucketName = "bucket-nextgen";
@@ -71,14 +69,12 @@ const pyInvoker = new cloud.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
     projectsId: project,
     locationsId: region,
     functionsId: functionName,
-    policy: {
-        bindings: [
-            {
-                members: ["allUsers"],
-                role: "roles/cloudfunctions.invoker",
-            }
-        ],
-    },
+    bindings: [
+        {
+            members: ["allUsers"],
+            role: "roles/cloudfunctions.invoker",
+        }
+    ],
 }, { dependsOn: [functionPython] });
 
 export const functionUrl = functionPython.httpsTrigger.url;
@@ -89,26 +85,24 @@ const cluster = new cloud.container.v1.Cluster("cluster", {
     locationsId: region,
     clustersId: clusterName,
     parent: `projects/${project}/locations/${region}`,
-    cluster: {
-        initialClusterVersion: "1.18.16-gke.500",
-        initialNodeCount: 1,
-        masterAuth: {
-            password: "hDiqST+U7{t+BkQA+OD*",
-            username: "admin",
-        },
-        name: clusterName,
-        network: `projects/${project}/global/networks/default`,
-        nodeConfig: {
-            oauthScopes: [
-                "https://www.googleapis.com/auth/devstorage.read_only",
-                "https://www.googleapis.com/auth/logging.write",
-                "https://www.googleapis.com/auth/monitoring",
-                "https://www.googleapis.com/auth/service.management.readonly",
-                "https://www.googleapis.com/auth/servicecontrol",
-                "https://www.googleapis.com/auth/trace.append",
-            ],            
-        },
-    }
+    initialClusterVersion: "1.18.16-gke.500",
+    initialNodeCount: 1,
+    masterAuth: {
+        password: "hDiqST+U7{t+BkQA+OD*",
+        username: "admin",
+    },
+    name: clusterName,
+    network: `projects/${project}/global/networks/default`,
+    nodeConfig: {
+        oauthScopes: [
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/logging.write",
+            "https://www.googleapis.com/auth/monitoring",
+            "https://www.googleapis.com/auth/service.management.readonly",
+            "https://www.googleapis.com/auth/servicecontrol",
+            "https://www.googleapis.com/auth/trace.append",
+        ],            
+    },
 });
 
 const nodePoolName = "extra-node-pool";
@@ -118,22 +112,20 @@ const pool = new cloud.container.v1.ClusterNodePool(nodePoolName, {
     clustersId: cluster.name,
     nodePoolsId: nodePoolName,
     parent: `projects/${project}/locations/${region}/clusters/${clusterName}`,
-    nodePool: {
-        config: {
-            machineType: "n1-standard-1",
-            oauthScopes: [
-                "https://www.googleapis.com/auth/monitoring",
-                "https://www.googleapis.com/auth/devstorage.read_only",
-                "https://www.googleapis.com/auth/logging.write",
-                "https://www.googleapis.com/auth/compute",
-            ],
-            preemptible: true,
-        },
-        initialNodeCount: 3,
-        management: {
-            autoRepair: true,
-        },
-        name: nodePoolName,
-        version: "1.18.16-gke.500",
+    config: {
+        machineType: "n1-standard-1",
+        oauthScopes: [
+            "https://www.googleapis.com/auth/monitoring",
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/logging.write",
+            "https://www.googleapis.com/auth/compute",
+        ],
+        preemptible: true,
     },
+    initialNodeCount: 1,
+    management: {
+        autoRepair: true,
+    },
+    name: nodePoolName,
+    version: "1.18.16-gke.500",
 });
